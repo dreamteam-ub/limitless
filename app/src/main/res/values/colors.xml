@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3a6fc0</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#497ed0</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorDarkWhite">#ACACAC</color>
+
+    <!-- Welcome Activity -->
+    <color name="colorWelcomeText">#3075c8</color>
+    <color name="colorWelcomeName">#e91922</color>
+    <color name="colorETGrayWelcome">#545454</color>
 </resources>

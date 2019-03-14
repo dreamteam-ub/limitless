@@ -5,4 +5,7 @@
     <string name="ask_name">What\'s gonna be your in-game name?</string>
     <string name="example_user">Cepeda Calvo</string>
     <string name="go">GO</string>
+    <string name="play">Play</string>
+    <string name="rankings">Rankings</string>
+    <string name="options">Options</string>
 </resources>

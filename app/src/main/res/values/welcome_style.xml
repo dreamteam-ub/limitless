@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Welcome Activity -->
+    <style name="ET_Color_Welcome" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@color/colorETGrayWelcome</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColorHint">@color/colorDarkWhite</item>
+        <item name="android:padding">10dp</item>
+    </style>
+</resources>
