@@ -13,10 +13,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/limitless_black"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp" app:srcCompat="@drawable/limitless_black"
                 android:id="@+id/limitless_logo" android:contentDescription="@string/app_name"
-        />
+                android:adjustViewBounds="true" android:layout_gravity="center_horizontal"/>
         <Space
                 android:layout_width="match_parent"
                 android:layout_height="40dp"/>
@@ -27,7 +27,8 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@android:color/transparent"
                 app:srcCompat="@drawable/play_button" android:id="@+id/play_btn"
-                android:adjustViewBounds="true" android:contentDescription="@string/play"/>
+                android:adjustViewBounds="true" android:contentDescription="@string/play"
+                android:cropToPadding="true"/>
         <Space
                 android:layout_width="match_parent"
                 android:layout_height="40dp"/>
@@ -39,7 +40,8 @@
                 android:background="@android:color/transparent"
                 app:srcCompat="@drawable/rankings_button"
                 android:id="@+id/rankings_btn"
-                android:adjustViewBounds="true" android:contentDescription="@string/rankings"/>
+                android:adjustViewBounds="true" android:contentDescription="@string/rankings"
+                android:cropToPadding="true"/>
         <Space
                 android:layout_width="match_parent"
                 android:layout_height="40dp"/>
@@ -52,7 +54,7 @@
                 app:srcCompat="@drawable/options_button"
                 android:id="@+id/option_btn"
                 android:adjustViewBounds="true"
-                android:contentDescription="@string/options"/>
+                android:contentDescription="@string/options" android:cropToPadding="true"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
