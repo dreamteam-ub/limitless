@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".InfinitePauseActivity"
+        android:orientation="vertical"
+        android:background="@color/colorBlack"
+        android:padding="40dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:orientation="vertical"
+
+
+
+    >
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+
+
+        <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/resume"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:adjustViewBounds="true"
+                android:id="@+id/resumeButtonIM"/>
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+
+        <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/menu"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:adjustViewBounds="true"
+                android:id="@+id/menuButtonPauseIM"/>
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="150dp"/>
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/pause_heart"
+                android:id="@+id/pauseHeart"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

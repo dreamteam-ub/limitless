@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        tools:context=".GameWonActivity" android:background="@color/colorBlack"
+        android:padding="40dp">
+
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:orientation="vertical">
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/win_text" android:id="@+id/youWonImage"/>
+
+
+        <Space
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"/>
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/won_heart" android:id="@+id/heartWon"/>
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="70dp"/>
+        <ImageButton
+                android:layout_width="match_parent"
+                android:background="@android:color/transparent"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/next_lvl" android:id="@+id/nextlvlButton"/>
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+        <ImageButton
+                android:layout_width="match_parent"
+                android:background="@android:color/transparent"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/worlds" android:id="@+id/worldsButton"/>
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+        <ImageButton
+                android:layout_width="match_parent"
+                android:background="@android:color/transparent"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/menu" android:id="@+id/menuButton"/>
+    </LinearLayout>
+
+</LinearLayout>
