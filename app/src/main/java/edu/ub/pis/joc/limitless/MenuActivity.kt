@@ -1,5 +1,6 @@
 package edu.ub.pis.joc.limitless
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.Toast
@@ -12,7 +13,8 @@ class MenuActivity : ActivityNoTopBar() {
 
         val playButton : ImageButton = findViewById(R.id.play_btn)
         playButton.setOnClickListener {
-            Toast.makeText(this,"PLAY",Toast.LENGTH_SHORT).show()
+            val gameModeInt = Intent(this, GameModeActivity::class.java)
+            startActivity(gameModeInt)
         }
 
         val rankButton : ImageButton = findViewById(R.id.rankings_btn)

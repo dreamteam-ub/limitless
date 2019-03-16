@@ -8,4 +8,9 @@
     <string name="play">Play</string>
     <string name="rankings">Rankings</string>
     <string name="options">Options</string>
+    <string name="winButton">WIN</string>
+    <string name="loseButton">LOSE</string>
+    <string name="pauseButton">PAUSE</string>
+
+
 </resources>
