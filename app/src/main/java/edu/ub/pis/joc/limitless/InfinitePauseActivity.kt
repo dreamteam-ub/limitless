@@ -17,7 +17,7 @@ class InfinitePauseActivity : ActivityNoTopBar() {
             finish()
         }
 
-        val menu : ImageButton = findViewById(R.id.resumeButtonIM)
+        val menu : ImageButton = findViewById(R.id.menuButtonPauseIM)
         menu.setOnClickListener {
             val backToMenu = Intent(this, MenuActivity::class.java)
             startActivity(backToMenu)

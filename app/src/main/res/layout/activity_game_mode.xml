@@ -8,29 +8,29 @@
         tools:context=".GameModeActivity" android:orientation="vertical" android:background="@color/colorBlack"
         android:padding="40dp">
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                      android:orientation="vertical">
 
 
                 <ImageButton
-                        android:layout_width="match_parent"
-                        android:scaleType="fitStart"
-                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
                         android:layout_gravity="top"
-                        android:layout_height="40dp"
+                        android:layout_width="50dp"
+                        android:adjustViewBounds="true"
+                        android:layout_height="50dp"
                         android:background="@android:color/transparent"
                         app:srcCompat="@drawable/back_arrow"
+                        android:contentDescription="@string/back"
                         android:id="@+id/blackArrowButton"/>
                 <Space
                         android:layout_width="match_parent"
                         android:layout_height="40dp"/>
                 <ImageButton
                         android:layout_width="match_parent"
-                        android:scaleType="fitCenter"
+                        android:scaleType="fitXY"
                         android:background="@android:color/transparent"
                         android:adjustViewBounds="true"
                         android:layout_height="wrap_content" app:srcCompat="@drawable/my_map"
                         android:id="@+id/myMapButton"
+                        android:contentDescription="@string/mymapbutton"
                         android:layout_gravity="center_horizontal"/>
                 <Space
                         android:layout_width="match_parent"
@@ -38,11 +38,11 @@
                 <ImageButton
                         android:layout_width="match_parent"
                         android:background="@android:color/transparent"
-                        android:scaleType="fitCenter"
+                        android:scaleType="fitXY"
                         android:adjustViewBounds="true"
+                        android:contentDescription="@string/infButton"
                         android:layout_height="wrap_content" app:srcCompat="@drawable/infinite_mode"
                         android:id="@+id/infiniteModeButton"/>
-        </LinearLayout>
 
 
 </LinearLayout>

@@ -6,49 +6,60 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".GameActivity" android:orientation="vertical" android:background="@color/colorBlack"
-        android:padding="40dp">
+        android:padding="20dp">
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                  android:orientation="vertical"
-
-
-    >
 
 
         <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="546dp" app:srcCompat="@drawable/in_game_temporal"
+                android:layout_width="384dp"
+                android:layout_height="559dp" app:srcCompat="@drawable/in_game_temporal"
                 android:scaleType="fitCenter"
                 android:adjustViewBounds="true"
                 android:layout_gravity="center_horizontal"
+                android:contentDescription="@string/liveGame"
                 android:id="@+id/liveGameImage"/>
         <Space
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="10dp"
         />
         <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
                       android:orientation="horizontal">
+            <Space
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"/>
             <Button
                     android:text="@string/loseButton"
+                    android:layout_height="50dp"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/loseButton"
+                    android:id="@+id/loseButton"
             />
             <Space android:layout_width="35dp" android:layout_height="match_parent"/>
             <Button
                     android:text="@string/winButton"
+                    android:layout_height="50dp"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/winButton"
+                    android:id="@+id/winButton"
             />
             <Space android:layout_width="30dp" android:layout_height="match_parent"/>
 
             <Button
                     android:text="@string/pauseButton"
-                    android:layout_height="wrap_content" android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
                     android:id="@+id/pauseButton"/>
+
 
         </LinearLayout>
 
 
-    </LinearLayout>
 
 </LinearLayout>

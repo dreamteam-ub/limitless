@@ -9,42 +9,58 @@
         tools:context=".GameWonActivity" android:background="@color/colorBlack"
         android:padding="40dp">
 
-
-    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                  android:orientation="vertical">
         <ImageView
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
                 android:layout_width="match_parent"
+                android:contentDescription="@string/youWonImg"
                 android:layout_height="wrap_content" app:srcCompat="@drawable/win_text" android:id="@+id/youWonImage"/>
 
 
         <Space
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"/>
+                android:layout_height="30dp"/>
 
         <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/won_heart" android:id="@+id/heartWon"/>
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="200dp"
+                android:contentDescription="@string/youwonHeart"
+                android:layout_height="200dp" app:srcCompat="@drawable/won_heart" android:id="@+id/heartWon"/>
         <Space
                 android:layout_width="match_parent"
-                android:layout_height="70dp"/>
+                android:layout_height="30dp"/>
         <ImageButton
-                android:layout_width="match_parent"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="250dp"
+                android:contentDescription="@string/nextLevel"
                 android:background="@android:color/transparent"
                 android:layout_height="wrap_content" app:srcCompat="@drawable/next_lvl" android:id="@+id/nextlvlButton"/>
         <Space
                 android:layout_width="match_parent"
                 android:layout_height="30dp"/>
         <ImageButton
-                android:layout_width="match_parent"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/worldsButton"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="250dp"
                 android:background="@android:color/transparent"
                 android:layout_height="wrap_content" app:srcCompat="@drawable/worlds" android:id="@+id/worldsButton"/>
         <Space
                 android:layout_width="match_parent"
                 android:layout_height="30dp"/>
         <ImageButton
-                android:layout_width="match_parent"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/menubutton"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="250dp"
                 android:background="@android:color/transparent"
                 android:layout_height="wrap_content" app:srcCompat="@drawable/menu" android:id="@+id/menuButton"/>
-    </LinearLayout>
 
 </LinearLayout>

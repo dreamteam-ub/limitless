@@ -11,6 +11,28 @@
     <string name="winButton">WIN</string>
     <string name="loseButton">LOSE</string>
     <string name="pauseButton">PAUSE</string>
+    <string name="resumeButton">RESUME</string>
+    <string name="menubutton">MENU</string>
+    <string name="mymapbutton">MY MAP</string>
+    <string name="infButton">INFINITY MODE</string>
+    <string name="back">BACK ARROW</string>
+    <string name="liveGame">GAME</string>
+    <string name="youWonImg">YOU WON</string>
+    <string name="youwonHeart">WON HEART</string>
+    <string name="nextLevel">NEXT LEVEL</string>
+    <string name="worldsButton">WORLDS</string>
+    <string name="pauseHeart">PAUSE HEART</string>
+
+
+
+
+
+
+
+
+
+
+
 
 
 </resources>
