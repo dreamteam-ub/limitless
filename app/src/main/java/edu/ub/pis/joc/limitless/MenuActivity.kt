@@ -19,7 +19,8 @@ class MenuActivity : ActivityNoTopBar() {
 
         val rankButton : ImageButton = findViewById(R.id.rankings_btn)
         rankButton.setOnClickListener {
-            Toast.makeText(this,"RANKINGS",Toast.LENGTH_SHORT).show()
+            val gameModeInt = Intent(this, RankingActivity::class.java)
+            startActivity(gameModeInt)
         }
 
         val optButton : ImageButton = findViewById(R.id.option_btn)
@@ -29,7 +30,8 @@ class MenuActivity : ActivityNoTopBar() {
 
         val infoButton : ImageButton = findViewById(R.id.info_btn)
         infoButton.setOnClickListener {
-            Toast.makeText(this,"INFO",Toast.LENGTH_SHORT).show()
+            val gameModeInt = Intent(this, InfoActivity::class.java)
+            startActivity(gameModeInt)
         }
 
     }

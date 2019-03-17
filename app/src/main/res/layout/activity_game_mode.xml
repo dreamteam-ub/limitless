@@ -9,17 +9,16 @@
         android:padding="40dp">
 
 
-
-                <ImageButton
-                        android:scaleType="fitXY"
-                        android:layout_gravity="top"
-                        android:layout_width="50dp"
-                        android:adjustViewBounds="true"
-                        android:layout_height="50dp"
-                        android:background="@android:color/transparent"
-                        app:srcCompat="@drawable/back_arrow"
-                        android:contentDescription="@string/back"
-                        android:id="@+id/blackArrowButton"/>
+    <ImageButton
+            android:scaleType="fitXY"
+            android:layout_gravity="top"
+            android:layout_width="69dp"
+            android:adjustViewBounds="true"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/back_arrow"
+            android:contentDescription="@string/back"
+            android:id="@+id/blackArrowButton"/>
                 <Space
                         android:layout_width="match_parent"
                         android:layout_height="40dp"/>
