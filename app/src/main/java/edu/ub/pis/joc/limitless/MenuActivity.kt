@@ -25,7 +25,8 @@ class MenuActivity : ActivityNoTopBar() {
 
         val optButton : ImageButton = findViewById(R.id.option_btn)
         optButton.setOnClickListener {
-            Toast.makeText(this,"OPTIONS",Toast.LENGTH_SHORT).show()
+            val gameModeInt = Intent(this, OptionsActivity::class.java)
+            startActivity(gameModeInt)
         }
 
         val infoButton : ImageButton = findViewById(R.id.info_btn)

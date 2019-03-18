@@ -5,6 +5,7 @@
     <string name="ask_name">What\'s gonna be your nickname?</string>
     <string name="example_user">Cepeda Calvo</string>
     <string name="go">GO</string>
+    <string name="logout">LOGOUT</string>
     <string name="play">Play</string>
     <string name="rankings">Rankings</string>
     <string name="options">Options</string>
@@ -32,8 +33,11 @@
     <string name="detail_developers3">Arnau Calvo</string>
     <string name="detail_developers4">Manu Calvo</string>
     <string name="music_rights">MUSIC RIGHTS</string>
+    <string name="volume">VOLUME</string>
     <string name="detail_music_rights">Cepeda Calvísimo</string>
     <string name="textMyMap">-Learn step by step\n\-One boss at time\n\-Short stages</string>
+    <string name="music">MUSIC</string>
+    <string name="sfx">SFX</string>
 
 
 </resources>

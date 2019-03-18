@@ -14,7 +14,7 @@
             android:adjustViewBounds="true"
             android:layout_height="50dp"
             android:background="@android:color/transparent"
-            app:srcCompat="@drawable/back_arrow"
+            app:srcCompat="@drawable/back_arrow_ranking"
             android:contentDescription="@string/back"
             android:id="@+id/ranking_back_button"/>
     <TextView
@@ -31,6 +31,6 @@
             android:id="@+id/ranking_lines" style="@style/cts_limitless_yellow"/>
     <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:id="@+id/ranking_recicler"
-            android:background="@android:color/transparent" android:paddingTop="1dp"/>
+            android:layout_height="wrap_content" android:id="@+id/ranking_recicler"
+            android:background="@android:color/transparent" android:paddingTop="1dp" android:layout_marginTop="20dp"/>
 </LinearLayout>

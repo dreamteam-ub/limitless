@@ -62,7 +62,7 @@
             android:layout_height="match_parent" android:gravity="bottom">
         <ImageButton
                 android:layout_width="wrap_content"
-                android:layout_height="70dp"
+                android:layout_height="50dp"
                 android:scaleType="fitXY"
                 android:background="@android:color/transparent"
                 app:srcCompat="@drawable/info_button"

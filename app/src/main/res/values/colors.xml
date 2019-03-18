@@ -7,6 +7,8 @@
     <color name="colorYellow">#BCE201</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorDarkWhite">#ACACAC</color>
+    <color name="colorStylePurple">#6164cf</color>
+    <color name="colorStylePink">#ff4cda</color>
 
     <!-- Welcome Activity -->
     <color name="colorWelcomeText">#3075c8</color>

@@ -1,7 +1,5 @@
 package edu.ub.pis.joc.limitless
 
-
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 

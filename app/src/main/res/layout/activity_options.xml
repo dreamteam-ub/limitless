@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MenuActivity" android:background="@color/colorBlack"
+        android:padding="40dp" android:orientation="vertical">
+    <ImageButton
+            android:scaleType="fitXY"
+            android:layout_gravity="top"
+            android:layout_width="61dp"
+            android:adjustViewBounds="true"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/back_arrow_options"
+            android:contentDescription="@string/back"
+            android:id="@+id/ranking_back_button"/>
+    <TextView
+            android:text="@string/volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/crimes_times_six"
+            style="@style/cts_limitless_pink" android:layout_marginTop="20dp"/>
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
+    <TextView
+            android:text="@string/music"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/music_options" style="@style/cts_limitless_pink"
+            android:layout_marginLeft="20dp" android:textSize="30sp"/>
+    <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/music_seekbar"
+            android:progress="90"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+    />
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+    <TextView
+            android:text="@string/sfx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/sfx_options" style="@style/cts_limitless_pink"
+            android:layout_marginLeft="20dp" android:textSize="30sp"/>
+    <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="70"
+            android:id="@+id/sfx_seekbar"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+    />
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+    <ImageButton
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            android:layout_height="80dp" app:srcCompat="@drawable/logout"
+            android:id="@+id/logout_button"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/logout" android:layout_width="wrap_content"
+            android:adjustViewBounds="true" android:cropToPadding="true"/>
+</LinearLayout>

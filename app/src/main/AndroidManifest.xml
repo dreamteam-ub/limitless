@@ -31,6 +31,9 @@
         <activity android:name=".InfoActivity"
                   android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".OptionsActivity"
+                  android:screenOrientation="portrait">
+        </activity>
         <activity
                 android:name=".LoginActivity"
                 android:noHistory="true"

@@ -21,4 +21,20 @@
         <item name="android:fontFamily">@font/crimes_times_six</item>
         <item name="android:textSize">50sp</item>
     </style>
+    <style name="cts_limitless_purple">
+        <item name="android:inputType">textPersonName</item>
+        <item name="android:ems">10</item>
+        <item name="android:textColor">@color/colorStylePurple</item>
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:fontFamily">@font/crimes_times_six</item>
+        <item name="android:textSize">50sp</item>
+    </style>
+    <style name="cts_limitless_pink">
+        <item name="android:inputType">textPersonName</item>
+        <item name="android:ems">10</item>
+        <item name="android:textColor">@color/colorStylePink</item>
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:fontFamily">@font/crimes_times_six</item>
+        <item name="android:textSize">50sp</item>
+    </style>
 </resources>
