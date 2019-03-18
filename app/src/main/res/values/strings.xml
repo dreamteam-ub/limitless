@@ -35,9 +35,7 @@
     <string name="music_rights">MUSIC RIGHTS</string>
     <string name="volume">VOLUME</string>
     <string name="detail_music_rights">Cepeda Calvísimo</string>
-    <string name="textMyMap1">-Learn step by step</string>
-    <string name="textMyMap2">-One boss at time</string>
-    <string name="textMyMap3">-Short stages</string>
+    <string name="text_mymap">-Learn step by step\n-One boss at time\n-Short stages</string>
     <string name="music">MUSIC</string>
     <string name="sfx">SFX</string>
 

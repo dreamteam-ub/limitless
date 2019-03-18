@@ -8,7 +8,7 @@ import android.widget.TextView
 
 class RankingReciclerAdapter (val llista : ArrayList<RankingRecicler>) : RecyclerView.Adapter<RankingReciclerAdapter.ViewHolder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        val v = LayoutInflater.from(p0?.context).inflate(R.layout.ranking_list, p0, false)
+        val v = LayoutInflater.from(p0.context).inflate(R.layout.ranking_list, p0, false)
         return  ViewHolder(v)
     }
 
@@ -18,8 +18,8 @@ class RankingReciclerAdapter (val llista : ArrayList<RankingRecicler>) : Recycle
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         val user : RankingRecicler = llista[p1]
-        p0?.textViewName.text = user.name
-        p0?.textViewAdress.text = user.address
+        p0.textViewName.text = user.name
+        p0.textViewAdress.text = user.address
 
     }
 

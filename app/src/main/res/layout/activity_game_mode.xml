@@ -32,12 +32,11 @@
                         android:contentDescription="@string/mymapbutton"
                         android:layout_gravity="center_horizontal"/>
     <TextView
-            android:fontFamily="@font/crimes_times_six"
             style="@style/cts_limitless_purple"
-            android:lines="5"
             android:layout_width="wrap_content"
-            android:textSize="30dp"
-            android:layout_height="118dp" android:id="@+id/MyMapText"/>
+            android:textSize="30sp"
+            android:layout_height="118dp" android:id="@+id/MyMapText"
+            android:singleLine="false" tools:text="@string/text_mymap" android:text="@string/text_mymap"/>
     <ImageButton
             android:layout_width="match_parent"
             android:background="@android:color/transparent"

@@ -44,13 +44,14 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
             android:layout_marginBottom="301dp" app:layout_constraintBottom_toBottomOf="@+id/imageView"/>
     <ImageView
-            android:layout_width="422dp"
-            android:layout_height="731dp" app:srcCompat="@drawable/in_game_temporal"
+            android:layout_width="0dp"
+            android:layout_height="0dp" app:srcCompat="@drawable/in_game_temporal"
             android:id="@+id/imageView"
             android:contentDescription="@string/liveGame"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="1.0"/>
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="1.0"
+            android:cropToPadding="true" android:adjustViewBounds="true" android:scaleType="fitXY"/>
 
 
 </android.support.constraint.ConstraintLayout>

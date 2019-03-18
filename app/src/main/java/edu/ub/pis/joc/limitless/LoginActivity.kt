@@ -28,7 +28,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signIn() {
-        val welcomeInt = Intent(this, WelcomeActivity::class.java)
-        startActivity(welcomeInt)
+        val intent = Intent(this, WelcomeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
     }
 }

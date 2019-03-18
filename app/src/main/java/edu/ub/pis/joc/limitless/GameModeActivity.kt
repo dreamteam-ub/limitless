@@ -34,12 +34,12 @@ class GameModeActivity : ActivityNoTopBar() {
         infiniteMode.setOnClickListener{
             mode="Infinity"
             val infiniteGameInt = Intent (this, GameActivity::class.java)
-            infiniteGameInt.putExtra("mode",mode)
+            infiniteGameInt.putExtra("mode", mode)
             startActivity(infiniteGameInt)
         }
 
         val textMyMap : TextView = findViewById(R.id.MyMapText)
-        textMyMap.setText(getString(R.string.textMyMap1) + "\n" + getString(R.string.textMyMap2) + "\n" + getString(R.string.textMyMap3))
+        textMyMap.text = getString(R.string.text_mymap)
 
     }
 }

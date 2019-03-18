@@ -36,7 +36,6 @@
         </activity>
         <activity
                 android:name=".LoginActivity"
-                android:noHistory="true"
                 android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -46,12 +45,10 @@
         </activity>
         <activity
                 android:name=".WelcomeActivity"
-                android:noHistory="true"
                 android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".MenuActivity"
-                android:launchMode="singleTop"
                 android:screenOrientation="portrait">
         </activity>
     </application>

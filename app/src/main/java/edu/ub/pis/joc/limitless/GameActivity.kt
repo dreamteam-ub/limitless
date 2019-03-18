@@ -14,14 +14,14 @@ class GameActivity : ActivityNoTopBar() {
         setContentView(R.layout.activity_game)
 
         val setMode : Intent = intent
-        val mode = setMode.extras.getString("mode")
+        val mode = setMode.extras!!.getString("mode")
 
         val winButton: Button = findViewById<Button>(R.id.winButton)
-        if (mode.equals("Infinity")){
+        if (mode =="Infinity"){
             winButton.visibility= View.GONE
             winButton.isClickable=false
 
-        }else if (mode.equals("My Map")){
+        }else if (mode == "My Map"){
             winButton.visibility= View.VISIBLE
             winButton.isClickable=true
         }
@@ -38,11 +38,11 @@ class GameActivity : ActivityNoTopBar() {
         val pauseButton :  Button = findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
 
-            if (mode.equals("My Map")){
+            if (mode == "My Map"){
                 val pauseIntent = Intent(this,MyMapPauseActivity::class.java)
                 startActivity(pauseIntent)
 
-            }else if (mode.equals("Infinity")){
+            }else if (mode == "Infinity"){
                 val pauseIntent = Intent(this,InfinitePauseActivity::class.java)
                 startActivity(pauseIntent)
             }
