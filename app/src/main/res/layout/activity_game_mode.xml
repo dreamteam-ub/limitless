@@ -31,17 +31,21 @@
                         android:id="@+id/myMapButton"
                         android:contentDescription="@string/mymapbutton"
                         android:layout_gravity="center_horizontal"/>
-    <Space
-            android:layout_width="match_parent"
-            android:layout_height="145dp"/>
+    <TextView
+            android:fontFamily="@font/crimes_times_six"
+            style="@style/cts_limitless_purple"
+            android:lines="5"
+            android:layout_width="wrap_content"
+            android:textSize="30dp"
+            android:layout_height="118dp" android:id="@+id/MyMapText"/>
     <ImageButton
-                        android:layout_width="match_parent"
-                        android:background="@android:color/transparent"
-                        android:scaleType="fitXY"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/infButton"
-                        android:layout_height="wrap_content" app:srcCompat="@drawable/infinite_mode"
-                        android:id="@+id/infiniteModeButton"/>
+            android:layout_width="match_parent"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/infButton"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/infinite_mode"
+            android:id="@+id/infiniteModeButton"/>
 
 
 </LinearLayout>

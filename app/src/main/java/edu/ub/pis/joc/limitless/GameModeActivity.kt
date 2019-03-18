@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.TextView
 
 class GameModeActivity : ActivityNoTopBar() {
 
@@ -36,5 +37,9 @@ class GameModeActivity : ActivityNoTopBar() {
             infiniteGameInt.putExtra("mode",mode)
             startActivity(infiniteGameInt)
         }
+
+        val textMyMap : TextView = findViewById(R.id.MyMapText)
+        textMyMap.setText(getString(R.string.textMyMap1) + "\n" + getString(R.string.textMyMap2) + "\n" + getString(R.string.textMyMap3))
+
     }
 }
