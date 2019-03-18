@@ -13,9 +13,9 @@
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
                 android:layout_gravity="center_horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:contentDescription="@string/youWonImg"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/win_text" android:id="@+id/youWonImage"/>
+                android:layout_height="52dp" app:srcCompat="@drawable/win_text" android:id="@+id/youWonImage"/>
 
 
         <Space

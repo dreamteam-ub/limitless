@@ -31,10 +31,10 @@
                         android:id="@+id/myMapButton"
                         android:contentDescription="@string/mymapbutton"
                         android:layout_gravity="center_horizontal"/>
-                <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"/>
-                <ImageButton
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="145dp"/>
+    <ImageButton
                         android:layout_width="match_parent"
                         android:background="@android:color/transparent"
                         android:scaleType="fitXY"

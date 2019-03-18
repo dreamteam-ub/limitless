@@ -14,7 +14,7 @@
             android:adjustViewBounds="true"
             android:layout_height="50dp"
             android:background="@android:color/transparent"
-            app:srcCompat="@drawable/back_arrow_ranking"
+            app:srcCompat="@drawable/back_arrow"
             android:contentDescription="@string/back"
             android:id="@+id/ranking_back_button"/>
     <TextView
