@@ -25,16 +25,26 @@ class GameActivity : ActivityNoTopBar() {
             winButton.visibility= View.VISIBLE
             winButton.isClickable=true
         }
+
         winButton.setOnClickListener {
             val winIntent = Intent(this, GameWonActivity::class.java)
             startActivity(winIntent)
         }
+
+        //LOSE BUTTON
         val loseButton : Button = findViewById(R.id.loseButton)
         loseButton.setOnClickListener {
-            //TO DO by Aarón
-            Toast.makeText(this, "You Lose", Toast.LENGTH_SHORT).show()
+            if(mode=="Infinity"){
+                val loseInfintyIntent = Intent(this, InfinityDeadActivity::class.java)
+                startActivity(loseInfintyIntent)
+            }else if(mode=="My Map"){
+                val DeadIntent = Intent(this,GameDeadActivity::class.java)
+                startActivity(DeadIntent)
+            }
         }
 
+
+        //PAUSE BUTTOM
         val pauseButton :  Button = findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
 

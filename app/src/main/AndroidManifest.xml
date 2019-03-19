@@ -9,30 +9,41 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-
-        <activity android:name=".InfinitePauseActivity"
-                  android:screenOrientation="portrait">
+        <activity android:name=".InfinityDeadActivity">
         </activity>
-        <activity android:name=".MyMapPauseActivity"
-                  android:screenOrientation="portrait">
+        <activity android:name=".GameDeadActivity">
         </activity>
-        <activity android:name=".GameWonActivity"
-                  android:screenOrientation="portrait">
+        <activity
+                android:name=".InfinitePauseActivity"
+                android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".GameActivity"
-                  android:screenOrientation="portrait">
+        <activity
+                android:name=".MyMapPauseActivity"
+                android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".GameModeActivity"
-                  android:screenOrientation="portrait">
+        <activity
+                android:name=".GameWonActivity"
+                android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".RankingActivity"
-                  android:screenOrientation="portrait">
+        <activity
+                android:name=".GameActivity"
+                android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".InfoActivity"
-                  android:screenOrientation="portrait">
+        <activity
+                android:name=".GameModeActivity"
+                android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".OptionsActivity"
-                  android:screenOrientation="portrait">
+        <activity
+                android:name=".RankingActivity"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".InfoActivity"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".OptionsActivity"
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".LoginActivity"

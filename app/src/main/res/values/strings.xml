@@ -19,6 +19,7 @@
     <string name="back">BACK ARROW</string>
     <string name="liveGame">GAME</string>
     <string name="youWonImg">YOU WON</string>
+    <string name="youDiedIMG">YOU DIED</string>
     <string name="youwonHeart">WON HEART</string>
     <string name="nextLevel">NEXT LEVEL</string>
     <string name="worldsButton">WORLDS</string>
@@ -39,6 +40,8 @@
     <string name="text_infinite">-Hardcore mode\n-Any number of bosses\n-Go until you die</string>
     <string name="music">MUSIC</string>
     <string name="sfx">SFX</string>
+    <string name="youDiedheart">BROKEN HEART</string>
+    <string name="retry_level">RETRY</string>
 
 
 </resources>
