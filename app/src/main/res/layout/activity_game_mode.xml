@@ -31,6 +31,9 @@
                         android:id="@+id/myMapButton"
                         android:contentDescription="@string/mymapbutton"
                         android:layout_gravity="center_horizontal"/>
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="19dp"/>
     <TextView
             style="@style/cts_limitless_purple"
             android:layout_width="wrap_content"
@@ -45,6 +48,17 @@
             android:contentDescription="@string/infButton"
             android:layout_height="wrap_content" app:srcCompat="@drawable/infinite_mode"
             android:id="@+id/infiniteModeButton"/>
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="19dp"/>
+    <TextView
+            android:text="@string/text_infinite"
+            tools:text="@string/text_infinite"
+            android:layout_width="match_parent"
+            android:singleLine="false"
+            style="@style/cts_limitless_purple"
+            android:textSize="30sp"
+            android:layout_height="wrap_content" android:id="@+id/infiniteText"/>
 
 
 </LinearLayout>

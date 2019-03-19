@@ -41,5 +41,8 @@ class GameModeActivity : ActivityNoTopBar() {
         val textMyMap : TextView = findViewById(R.id.MyMapText)
         textMyMap.text = getString(R.string.text_mymap)
 
+        val textInf : TextView = findViewById(R.id.infiniteText)
+        textInf.text = getString(R.string.text_infinite)
+
     }
 }
