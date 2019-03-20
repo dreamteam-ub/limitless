@@ -62,6 +62,8 @@
                 android:name=".MenuActivity"
                 android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".WorldSelectorActivity">
+        </activity>
     </application>
 
 </manifest>

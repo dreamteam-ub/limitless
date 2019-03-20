@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Dfault -->
     <color name="colorPrimary">#3A6FC0</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#497ed0</color>
+
+    <!-- Colours -->
     <color name="colorBlack">#000000</color>
     <color name="colorYellow">#BCE201</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorDarkWhite">#ACACAC</color>
     <color name="colorStylePurple">#6164cf</color>
     <color name="colorStylePink">#ff4cda</color>
+
+    <color name="colorLiteBlue">#33f2f5</color>
 
     <!-- Welcome Activity -->
     <color name="colorWelcomeText">#3075c8</color>
