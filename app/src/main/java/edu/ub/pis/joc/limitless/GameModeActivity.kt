@@ -24,10 +24,13 @@ class GameModeActivity : ActivityNoTopBar() {
 
         val myMap : ImageButton = findViewById(R.id.myMapButton)
         myMap.setOnClickListener{
-            mode="My Map"
+            /*mode="My Map"
             val myMapGameInt = Intent(this, GameActivity::class.java)
             myMapGameInt.putExtra("mode",mode)
-            startActivity(myMapGameInt)
+            startActivity(myMapGameInt)*/
+
+            val myMapIntent = Intent(this,WorldSelectorActivity::class.java)
+            startActivity(myMapIntent)
         }
 
         val infiniteMode : ImageButton = findViewById(R.id.infiniteModeButton)

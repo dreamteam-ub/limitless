@@ -17,6 +17,8 @@ class InfinityDeadActivity : ActivityNoTopBar() {
             startActivity(retryIntent)
         }
 
+
+
         val menuButton: ImageButton = findViewById(R.id.menuButtonPauseImg_inf)
         menuButton.setOnClickListener {
             val menuIntent = Intent(this, MenuActivity::class.java)

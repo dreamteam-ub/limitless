@@ -20,7 +20,8 @@ class GameDeadActivity : ActivityNoTopBar() {
 
         val worldsButton: ImageButton = findViewById(R.id.dead_worldsButton)
         worldsButton.setOnClickListener {
-            Toast.makeText(this,"WORLDS",Toast.LENGTH_SHORT).show()
+            val worldsIntent = Intent(this,WorldSelectorActivity::class.java)
+            startActivity(worldsIntent)
         }
 
         val menuButton: ImageButton = findViewById(R.id.dead_menuButton)

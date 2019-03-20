@@ -18,8 +18,8 @@ class MyMapPauseActivity : ActivityNoTopBar() {
         }
         val worlds : ImageButton = findViewById(R.id.worldsButtonPauseMM)
         worlds.setOnClickListener{
-            //TO DO
-            Toast.makeText(this,"Worlds", Toast.LENGTH_SHORT).show()
+            val worldsIntent = Intent(this,WorldSelectorActivity::class.java)
+            startActivity(worldsIntent)
         }
         val menu : ImageButton = findViewById(R.id.menuButtonPauseMM)
         menu.setOnClickListener{

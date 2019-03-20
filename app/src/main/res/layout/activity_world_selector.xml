@@ -25,13 +25,14 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"/>
 
-    <ImageView
+    <ImageButton
             android:scaleType="fitXY"
             android:layout_width="67dp"
             android:layout_height="46dp"
             android:contentDescription="@string/change_up"
             app:srcCompat="@drawable/change_world_arrow_up"
             android:id="@+id/change_up_arrow"
+            android:background="@android:color/transparent"
             android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal"/>
 
@@ -44,17 +45,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
 
-        <ImageView
+        <ImageButton
                 android:scaleType="fitXY"
                 android:layout_width="46dp"
                 android:layout_height="67dp"
                 android:contentDescription="@string/change_left"
                 app:srcCompat="@drawable/change_world_arrow_left"
                 android:id="@+id/change_left_arrow"
+                android:background="@android:color/transparent"
                 android:adjustViewBounds="true"
                 android:layout_gravity="center_vertical"/>
 
-        <ImageView
+        <ImageButton
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
                 android:layout_width="150dp"
@@ -64,13 +66,14 @@
                 android:background="@color/colorDarkWhite"
                 android:id="@+id/world_one" android:layout_marginLeft="20dp" android:layout_marginRight="20dp"/>
 
-        <ImageView
+        <ImageButton
                 android:scaleType="fitXY"
                 android:layout_width="46dp"
                 android:layout_height="67dp"
                 android:contentDescription="@string/change_right"
                 app:srcCompat="@drawable/change_world_arrow_right"
-                android:id="@+id/change__arrow"
+                android:id="@+id/change_right_arrow"
+                android:background="@android:color/transparent"
                 android:adjustViewBounds="true"
                 android:layout_gravity="center_vertical"/>
 
@@ -80,15 +83,16 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"/>
 
-    <ImageView
+    <ImageButton
             android:scaleType="fitXY"
             android:layout_width="67dp"
             android:layout_height="46dp"
             android:contentDescription="@string/change_down"
             app:srcCompat="@drawable/change_world_arrow_down"
             android:id="@+id/change_down_arrow"
+            android:background="@android:color/transparent"
             android:adjustViewBounds="true"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal" android:visibility="visible" android:clickable="false"/>
 
     <Space
             android:layout_width="wrap_content"
@@ -98,9 +102,10 @@
             android:text="@string/world_one_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/world_one_title"
             android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_purple_worlds" android:layout_marginTop="20dp" android:textAlignment="center"
-            android:textSize="50sp"/>
+            style="@style/cts_limitless_black_worlds" android:layout_marginTop="20dp" android:textAlignment="center"
+            android:textSize="40sp"/>
 
     <Space
             android:layout_width="wrap_content"
@@ -110,8 +115,9 @@
             android:text="@string/first_level"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/level_title"
             android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_purple_worlds" android:layout_marginTop="20dp" android:textAlignment="center"
+            style="@style/cts_limitless_black_worlds" android:layout_marginTop="20dp" android:textAlignment="center"
             android:textSize="40sp"/>
 
     <Space
@@ -123,7 +129,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_purple_worlds" android:layout_marginTop="20dp"
+            style="@style/cts_limitless_black_worlds" android:layout_marginTop="20dp"
             android:textSize="40sp"/>
 
 

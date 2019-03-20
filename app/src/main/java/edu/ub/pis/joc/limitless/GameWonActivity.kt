@@ -21,8 +21,8 @@ class GameWonActivity : ActivityNoTopBar() {
 
         val worlds : ImageButton = findViewById(R.id.worldsButton)
         worlds.setOnClickListener{
-            //TO DO
-            Toast.makeText(this,"Worlds",Toast.LENGTH_SHORT).show()
+            val worldsIntent = Intent(this,WorldSelectorActivity::class.java)
+            startActivity(worldsIntent)
         }
 
         val backToMenu : ImageButton = findViewById(R.id.menuButton)
