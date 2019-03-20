@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorLiteBlue"
+        android:background="@color/colorBlack"
         tools:context=".WorldSelectorActivity"
         android:orientation="vertical"
         android:padding="20dp">
@@ -17,7 +17,7 @@
             android:adjustViewBounds="true"
             android:layout_height="50dp"
             android:background="@android:color/transparent"
-            app:srcCompat="@drawable/back_arrow_options"
+            app:srcCompat="@drawable/back_arrow"
             android:contentDescription="@string/back"
             android:id="@+id/world_back_button"/>
 
@@ -51,19 +51,19 @@
                 android:layout_height="67dp"
                 android:contentDescription="@string/change_left"
                 app:srcCompat="@drawable/change_world_arrow_left"
-                android:id="@+id/change_left_arrow"
                 android:background="@android:color/transparent"
+                android:id="@+id/change_left_arrow"
                 android:adjustViewBounds="true"
                 android:layout_gravity="center_vertical"/>
 
         <ImageButton
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="182dp"
+                android:layout_height="186dp"
                 android:contentDescription="@string/world_one"
-                app:srcCompat="@drawable/portada_mundo1"
-                android:background="@color/colorDarkWhite"
+                app:srcCompat="@drawable/world1_select"
+                android:background="@android:color/transparent"
                 android:id="@+id/world_one" android:layout_marginLeft="20dp" android:layout_marginRight="20dp"/>
 
         <ImageButton
@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/world_one_title"
             android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_black_worlds" android:layout_marginTop="20dp" android:textAlignment="center"
+            style="@style/cts_limitless_white_worlds" android:layout_marginTop="20dp" android:textAlignment="center"
             android:textSize="40sp"/>
 
     <Space
@@ -117,29 +117,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/level_title"
             android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_black_worlds" android:layout_marginTop="20dp" android:textAlignment="center"
+            style="@style/cts_limitless_white_worlds" android:layout_marginTop="20dp" android:textAlignment="center"
             android:textSize="40sp"/>
 
     <Space
             android:layout_width="wrap_content"
             android:layout_height="20dp"/>
-
-    <TextView
-            android:text="@string/Personal_best"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_black_worlds" android:layout_marginTop="20dp"
-            android:textSize="40sp"/>
-
-
-
-
-
-
-
-
-
-
 
 </LinearLayout>

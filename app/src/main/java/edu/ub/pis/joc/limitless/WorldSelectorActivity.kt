@@ -4,6 +4,7 @@ package edu.ub.pis.joc.limitless
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -21,14 +22,15 @@ class WorldSelectorActivity : ActivityNoTopBar() {
         //var selectLevel: Boolean = false
         var LVL = 0
         var World = 0
-        val img = arrayOf(R.drawable.portada_mundo1,
-                                         R.drawable.eye,
-                                         R.drawable.skull,
-                                         R.drawable.demon)
+        val img = arrayOf(R.drawable.world1_select,
+                                         R.drawable.world2_select,
+                                         R.drawable.world3_select,
+                                         R.drawable.world4_select)
 
         //TextViews
         val worldTitle: TextView = findViewById(R.id.world_one_title)
         val lvlTitle: TextView = findViewById(R.id.level_title)
+
 
         val arrowBack: ImageButton = findViewById(R.id.world_back_button)
         arrowBack.setOnClickListener {

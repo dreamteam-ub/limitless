@@ -49,12 +49,12 @@
     <string name="world_one">WORLD ONE</string>
     <string name="world_one_title">WORLD 1 - INTRO </string>
     <string name="world_two_title">WORLD 2 - BATS </string>
-    <string name="world_three_title">WORLD 3 - SKULLS</string>
-    <string name="world_four_title">WORLD 4 - DEMONS</string>
+    <string name="world_three_title">WORLD 3 - DEMONS</string>
+    <string name="world_four_title">WORLD 4 - SKULLS</string>
     <string name="first_level">FIRST LEVEL</string>
     <string name="second_level">SECOND LEVEL</string>
     <string name="third_level">THIRD LEVEL</string>
-    <string name="Personal_best">PERSONAL BEST: 0</string>
+    <string name="PLAY_BUTTON">PLAY</string>
 
 
 </resources>
