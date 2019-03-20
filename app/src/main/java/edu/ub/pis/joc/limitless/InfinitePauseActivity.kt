@@ -1,12 +1,10 @@
 package edu.ub.pis.joc.limitless
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageButton
 
-class InfinitePauseActivity : ActivityNoTopBar() {
+class InfinitePauseActivity : FullScreenActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,8 +17,9 @@ class InfinitePauseActivity : ActivityNoTopBar() {
 
         val menu : ImageButton = findViewById(R.id.menuButtonPauseIM)
         menu.setOnClickListener {
-            val backToMenu = Intent(this, MenuActivity::class.java)
-            startActivity(backToMenu)
+            val intent = Intent(this, MenuActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
         }
     }
 }

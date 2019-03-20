@@ -1,13 +1,11 @@
 package edu.ub.pis.joc.limitless
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 
 import com.google.android.gms.common.SignInButton
 
-class LoginActivity : ActivityNoTopBar() {
+class LoginActivity : FullScreenActivity() {
 
     public val TAG = "LoginActivity"
     private val RC_LOGIN = 1000

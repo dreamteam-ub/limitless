@@ -1,12 +1,11 @@
 package edu.ub.pis.joc.limitless
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
 
-class GameModeActivity : ActivityNoTopBar() {
+class GameModeActivity : FullScreenActivity() {
 
     var mode : String? = null
 

@@ -3,7 +3,7 @@ package edu.ub.pis.joc.limitless
 import android.os.Bundle
 import android.widget.ImageButton
 
-class InfoActivity : ActivityNoTopBar() {
+class InfoActivity : FullScreenActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
