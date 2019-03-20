@@ -13,9 +13,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="100dp" app:srcCompat="@drawable/limitless_black"
-                android:id="@+id/limitless_logo" android:contentDescription="@string/app_name"
+                android:layout_width="250dp"
+                android:layout_height="200dp" app:srcCompat="@drawable/game_logo"
+                android:id="@+id/menu_game_logo" android:contentDescription="@string/app_name"
                 android:adjustViewBounds="true" android:layout_gravity="center_horizontal"/>
         <Space
                 android:layout_width="match_parent"
