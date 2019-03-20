@@ -7,7 +7,7 @@ import android.view.View
 
 import com.google.android.gms.common.SignInButton
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : ActivityNoTopBar() {
 
     public val TAG = "LoginActivity"
     private val RC_LOGIN = 1000
@@ -29,8 +29,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun signIn() {
         val intent = Intent(this, WelcomeActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
+        finish()
     }
 }

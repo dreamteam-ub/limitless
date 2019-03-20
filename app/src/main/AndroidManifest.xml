@@ -11,7 +11,8 @@
             android:theme="@style/AppTheme">
         <activity android:name=".InfinityDeadActivity">
         </activity>
-        <activity android:name=".GameDeadActivity">
+        <activity android:name=".GameDeadActivity"
+                  android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".InfinitePauseActivity"
@@ -45,24 +46,27 @@
                 android:name=".OptionsActivity"
                 android:screenOrientation="portrait">
         </activity>
-        <activity
-                android:name=".LoginActivity"
-                android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".WelcomeActivity"
-                android:screenOrientation="portrait">
+        <activity android:name=".WorldSelectorActivity"
+                  android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".MenuActivity"
                 android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".WorldSelectorActivity">
+        <activity
+                android:name=".WelcomeActivity"
+                android:screenOrientation="portrait"
+                android:noHistory="true">
+        </activity>
+        <activity
+                android:name=".LoginActivity"
+                android:launchMode="singleTop"
+                android:screenOrientation="portrait"
+                android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

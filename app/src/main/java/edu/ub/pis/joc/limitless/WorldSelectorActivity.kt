@@ -18,7 +18,7 @@ class WorldSelectorActivity : ActivityNoTopBar() {
         setContentView(R.layout.activity_world_selector)
 
         //Variables
-        var SelectLevel: Boolean = false
+        //var selectLevel: Boolean = false
         var LVL = 0
         var World = 0
         val img = arrayOf(R.drawable.portada_mundo1,
