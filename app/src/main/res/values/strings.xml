@@ -2,8 +2,8 @@
     <string name="app_name">Limitless</string>
     <string name="sigin">Sign In</string>
     <string name="welcome">Welcome</string>
-    <string name="ask_name">What\'s gonna be your nickname?</string>
-    <string name="example_user">Cepeda Calvo</string>
+    <string name="ask_name">Enter your nickname</string>
+    <string name="example_user">Nickname here</string>
     <string name="go">GO</string>
     <string name="logout">LOGOUT</string>
     <string name="play">Play</string>
@@ -55,6 +55,7 @@
     <string name="second_level">SECOND LEVEL</string>
     <string name="third_level">THIRD LEVEL</string>
     <string name="PLAY_BUTTON">PLAY</string>
+    <string name="tmp_user">EXAMPLEUSER</string>
 
 
 </resources>

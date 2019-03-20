@@ -12,33 +12,33 @@
             android:text="@string/welcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/welcome_tv" android:gravity="center_horizontal"
-            android:textSize="35sp" android:textStyle="bold"
-            android:textColor="@color/colorWelcomeText"/>
+            android:textSize="35sp" style="@style/cts_limitless_blue"
+            android:layout_marginTop="30dp"/>
     <Space
             android:layout_width="match_parent"
             android:layout_height="5dp"/>
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/username_tv" tools:text="ExampleUser"
-            android:textStyle="bold" android:textSize="30sp" android:layout_gravity="center_horizontal"
-            android:textColor="@color/colorWelcomeText"/>
+            android:text="@string/tmp_user"
+            android:layout_height="wrap_content" android:id="@+id/username_tv" tools:text="@string/tmp_user"
+            style="@style/cts_limitless_blue" android:textSize="30sp" android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content" android:textAlignment="center"/>
     <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+            android:layout_height="40dp"/>
     <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="100dp" app:srcCompat="@drawable/demon_skull_logo"
+            android:layout_height="130dp" app:srcCompat="@drawable/nickname_logo"
             android:id="@+id/logo_img"
             android:contentDescription="@string/app_name" android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal"/>
     <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+            android:layout_height="40dp"/>
     <TextView
             android:text="@string/ask_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/ask_name_tv" android:textSize="25sp"
-            android:textStyle="bold" android:textColor="@color/colorWelcomeName"/>
+            style="@style/cts_limitless_red" android:textColor="@color/colorWelcomeName"/>
     <Space
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
@@ -52,7 +52,7 @@
             style="@style/ET_Color_Welcome"/>
     <Space
             android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            android:layout_height="40dp"/>
     <ImageButton
             android:scaleType="fitXY"
             android:background="@android:color/transparent"
