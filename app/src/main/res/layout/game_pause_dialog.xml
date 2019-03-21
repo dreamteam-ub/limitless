@@ -4,8 +4,6 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               android:id="@+id/pauseDialog"
-              android:background="@android:color/transparent"
-                android:padding="40dp"
                 >
 
     <ImageButton

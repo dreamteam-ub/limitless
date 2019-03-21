@@ -65,4 +65,5 @@
         <item name="android:fontFamily">@font/crimes_times_six</item>
         <item name="android:textSize">50sp</item>
     </style>
+
 </resources>

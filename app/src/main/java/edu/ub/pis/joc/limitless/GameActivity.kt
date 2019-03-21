@@ -3,10 +3,14 @@ package edu.ub.pis.joc.limitless
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 
 class GameActivity : FullScreenActivity() {
 
@@ -54,15 +58,16 @@ class GameActivity : FullScreenActivity() {
         val pauseButton :  Button = findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
 
-            val dialog = AlertDialog.Builder(this)
+            val dialog = Dialog(this)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             val vista = layoutInflater.inflate(R.layout.game_pause_dialog,null)
             val resumeDiag : ImageButton = vista.findViewById(R.id.resumeButtonDiag)
             val worldsDiag : ImageButton = vista.findViewById(R.id.worldsButtonPauseDiag)
             val menuDiag : ImageButton = vista.findViewById(R.id.menuButtonPauseDiag)
-            dialog.setView(vista)
-            val diagShow = dialog.create()
+            dialog.setContentView(vista)
+            dialog.window!!.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
 
-            if (mode.equals("Infinity")){
+            if (mode!!.equals("Infinity")){
                 worldsDiag.visibility=View.GONE
                 worldsDiag.isClickable=false
             }else if(mode.equals("My Map")){
@@ -71,12 +76,12 @@ class GameActivity : FullScreenActivity() {
 
             }
 
+            dialog.show()
 
-            diagShow.show()
 
 
             resumeDiag.setOnClickListener {
-                diagShow.dismiss()
+                dialog.dismiss()
 
             }
 
@@ -100,4 +105,6 @@ class GameActivity : FullScreenActivity() {
     // DESACTIVAMOS EL BACK DENTRO DEL JUEGO
     override fun onBackPressed() {
     }
+
+
 }
