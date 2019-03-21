@@ -10,11 +10,11 @@ class GameActivity : FullScreenActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
-
         val setMode : Intent = intent
         val mode = setMode.extras!!.getString("mode")
 
-        val winButton: Button = findViewById<Button>(R.id.winButton)
+        val winButton: Button = findViewById(R.id.winButton)
+
         if (mode =="Infinity"){
             winButton.visibility= View.GONE
             winButton.isClickable=false
@@ -33,10 +33,14 @@ class GameActivity : FullScreenActivity() {
         val loseButton : Button = findViewById(R.id.loseButton)
         loseButton.setOnClickListener {
             if(mode=="Infinity"){
-                val loseInfintyIntent = Intent(this, InfinityDeadActivity::class.java)
-                startActivity(loseInfintyIntent)
+                val DeadIntent = Intent(this,GameDeadActivity::class.java)
+                DeadIntent.putExtra("mode","inf")
+                startActivity(DeadIntent)
+
+
             }else if(mode=="My Map"){
                 val DeadIntent = Intent(this,GameDeadActivity::class.java)
+                DeadIntent.putExtra("mode","mymap")
                 startActivity(DeadIntent)
             }
         }
@@ -48,10 +52,12 @@ class GameActivity : FullScreenActivity() {
 
             if (mode == "My Map"){
                 val pauseIntent = Intent(this,MyMapPauseActivity::class.java)
+                pauseIntent.putExtra("mode","mymap")
                 startActivity(pauseIntent)
 
             }else if (mode == "Infinity"){
-                val pauseIntent = Intent(this,InfinitePauseActivity::class.java)
+                val pauseIntent = Intent(this,MyMapPauseActivity::class.java)
+                pauseIntent.putExtra("mode","inf")
                 startActivity(pauseIntent)
             }
 

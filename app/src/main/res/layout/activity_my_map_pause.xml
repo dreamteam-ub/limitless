@@ -11,13 +11,12 @@
         android:padding="40dp">
 
 
-
         <ImageButton
                 android:scaleType="fitXY"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="match_parent"
                 android:contentDescription="@string/resumeButton"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/resume"
+                android:layout_height="94dp" app:srcCompat="@drawable/resume"
                 android:background="@android:color/transparent"
                 android:adjustViewBounds="true"
                 android:id="@+id/resumeButtonMM"/>

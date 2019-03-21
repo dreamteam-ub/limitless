@@ -45,7 +45,7 @@
             android:layout_width="250dp"
             android:contentDescription="@string/retry_level"
             android:background="@android:color/transparent"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/retry_button" android:id="@+id/retryButton_normal"/>
+            android:layout_height="68dp" app:srcCompat="@drawable/retry_button" android:id="@+id/retryButton_normal"/>
 
     <Space
             android:layout_width="match_parent"
