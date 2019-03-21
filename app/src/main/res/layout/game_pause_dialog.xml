@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:id="@+id/pauseDialog"
+              android:background="@android:color/transparent"
+                android:padding="40dp"
+                >
+
+    <ImageButton
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="270dp"
+            android:contentDescription="@string/resumeButton"
+            android:layout_height="77dp" android:src="@drawable/resume"
+            android:background="@android:color/transparent"
+            android:adjustViewBounds="true"
+            android:id="@+id/resumeButtonDiag"/>
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+    <ImageButton
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="270dp"
+            android:contentDescription="@string/worldsButton"
+            android:layout_height="wrap_content" android:src="@drawable/worlds"
+            android:background="@android:color/transparent"
+            android:adjustViewBounds="true"
+            android:id="@+id/worldsButtonPauseDiag"/>
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+    <ImageButton
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="270dp"
+            android:contentDescription="@string/menubutton"
+            android:layout_height="wrap_content" android:src="@drawable/menu"
+            android:background="@android:color/transparent"
+            android:adjustViewBounds="true"
+            android:id="@+id/menuButtonPauseDiag"/>
+    <Space
+            android:layout_width="315dp"
+            android:layout_height="68dp"/>
+    <ImageView
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="168dp"
+            android:contentDescription="@string/pauseHeart"
+            android:layout_height="152dp" android:src="@drawable/pause_heart"
+            android:id="@+id/pauseHeartDiag"/>
+
+</LinearLayout>

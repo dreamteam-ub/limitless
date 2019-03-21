@@ -1,9 +1,12 @@
 package edu.ub.pis.joc.limitless
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 
 class GameActivity : FullScreenActivity() {
 
@@ -12,6 +15,7 @@ class GameActivity : FullScreenActivity() {
         setContentView(R.layout.activity_game)
         val setMode : Intent = intent
         val mode = setMode.extras!!.getString("mode")
+
 
         val winButton: Button = findViewById(R.id.winButton)
 
@@ -50,16 +54,45 @@ class GameActivity : FullScreenActivity() {
         val pauseButton :  Button = findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
 
-            if (mode == "My Map"){
-                val pauseIntent = Intent(this,MyMapPauseActivity::class.java)
-                pauseIntent.putExtra("mode","mymap")
-                startActivity(pauseIntent)
+            val dialog = AlertDialog.Builder(this)
+            val vista = layoutInflater.inflate(R.layout.game_pause_dialog,null)
+            val resumeDiag : ImageButton = vista.findViewById(R.id.resumeButtonDiag)
+            val worldsDiag : ImageButton = vista.findViewById(R.id.worldsButtonPauseDiag)
+            val menuDiag : ImageButton = vista.findViewById(R.id.menuButtonPauseDiag)
+            dialog.setView(vista)
+            val diagShow = dialog.create()
 
-            }else if (mode == "Infinity"){
-                val pauseIntent = Intent(this,MyMapPauseActivity::class.java)
-                pauseIntent.putExtra("mode","inf")
-                startActivity(pauseIntent)
+            if (mode.equals("Infinity")){
+                worldsDiag.visibility=View.GONE
+                worldsDiag.isClickable=false
+            }else if(mode.equals("My Map")){
+                worldsDiag.visibility=View.VISIBLE
+                worldsDiag.isClickable=true
+
             }
+
+
+            diagShow.show()
+
+
+            resumeDiag.setOnClickListener {
+                diagShow.dismiss()
+
+            }
+
+            worldsDiag.setOnClickListener {
+                val intent = Intent(this,WorldSelectorActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+            }
+
+            menuDiag.setOnClickListener {
+                val intent = Intent(this, MenuActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+            }
+
+
 
         }
     }
