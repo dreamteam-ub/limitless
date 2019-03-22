@@ -8,18 +8,20 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.view.Window
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 
 class GameActivity : FullScreenActivity() {
 
+    lateinit var dialog : Dialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
         val setMode : Intent = intent
         val mode = setMode.extras!!.getString("mode")
-
 
         val winButton: Button = findViewById(R.id.winButton)
 
@@ -53,20 +55,18 @@ class GameActivity : FullScreenActivity() {
             }
         }
 
+        dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        val vista = layoutInflater.inflate(R.layout.game_pause_dialog,null)
+        val resumeDiag : ImageButton = vista.findViewById(R.id.resumeButtonDiag)
+        val worldsDiag : ImageButton = vista.findViewById(R.id.worldsButtonPauseDiag)
+        val menuDiag : ImageButton = vista.findViewById(R.id.menuButtonPauseDiag)
+        dialog.setContentView(vista)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
 
         //PAUSE BUTTOM
         val pauseButton :  Button = findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
-
-            val dialog = Dialog(this)
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            val vista = layoutInflater.inflate(R.layout.game_pause_dialog,null)
-            val resumeDiag : ImageButton = vista.findViewById(R.id.resumeButtonDiag)
-            val worldsDiag : ImageButton = vista.findViewById(R.id.worldsButtonPauseDiag)
-            val menuDiag : ImageButton = vista.findViewById(R.id.menuButtonPauseDiag)
-            dialog.setContentView(vista)
-            dialog.window!!.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
-
             if (mode!!.equals("Infinity")){
                 worldsDiag.visibility=View.GONE
                 worldsDiag.isClickable=false
@@ -76,9 +76,11 @@ class GameActivity : FullScreenActivity() {
 
             }
 
+            dialog.window.setFlags(
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+
             dialog.show()
-
-
 
             resumeDiag.setOnClickListener {
                 dialog.dismiss()
@@ -97,14 +99,14 @@ class GameActivity : FullScreenActivity() {
                 startActivity(intent)
             }
 
-
-
         }
     }
 
     // DESACTIVAMOS EL BACK DENTRO DEL JUEGO
     override fun onBackPressed() {
+        if (dialog.isShowing) {
+            dialog.dismiss()
+        }
     }
-
 
 }

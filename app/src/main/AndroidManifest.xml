@@ -9,67 +9,66 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ResumeGameDialog">
-        </activity>
-        <activity android:name=".InfinityDeadActivity">
-        </activity>
         <activity
                 android:name=".GameDeadActivity"
-                android:screenOrientation="portrait">
-        </activity>
-        <activity
-                android:name=".InfinitePauseActivity"
-                android:screenOrientation="portrait">
-        </activity>
-        <activity
-                android:name=".MyMapPauseActivity"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:noHistory="true"
+                android:launchMode="singleTask">
         </activity>
         <activity
                 android:name=".GameWonActivity"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:noHistory="true"
+                android:launchMode="singleTask">
         </activity>
         <activity
                 android:name=".GameActivity"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:noHistory="true">
         </activity>
         <activity
                 android:name=".GameModeActivity"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:launchMode="singleTask">
         </activity>
         <activity
                 android:name=".RankingActivity"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:launchMode="singleTask">
         </activity>
         <activity
                 android:name=".InfoActivity"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:launchMode="singleTask">
         </activity>
         <activity
                 android:name=".OptionsActivity"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:launchMode="singleTask">
         </activity>
         <activity
                 android:name=".WorldSelectorActivity"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:launchMode="singleTask">
         </activity>
         <activity
                 android:name=".MenuActivity"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:launchMode="singleTask">
         </activity>
         <activity
                 android:name=".WelcomeActivity"
                 android:noHistory="true"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:launchMode="singleTask">
         </activity>
         <activity
                 android:name=".LoginActivity"
-                android:launchMode="singleTop"
+                android:launchMode="singleTask"
                 android:noHistory="true"
                 android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>

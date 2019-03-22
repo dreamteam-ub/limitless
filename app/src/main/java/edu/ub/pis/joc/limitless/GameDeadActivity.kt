@@ -22,7 +22,6 @@ class GameDeadActivity : FullScreenActivity() {
             }else if(modo == "mymap"){
                 intent.putExtra("mode","My Map")
             }
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
 
@@ -38,19 +37,14 @@ class GameDeadActivity : FullScreenActivity() {
         }
         worldsButton.setOnClickListener {
             val intent = Intent(this,WorldSelectorActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
 
         val menuButton: ImageButton = findViewById(R.id.dead_menuButton)
         menuButton.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
     }
 
-    // DESACTIVAMOS EL BACK DENTRO DEL JUEGO
-    override fun onBackPressed() {
-    }
 }
