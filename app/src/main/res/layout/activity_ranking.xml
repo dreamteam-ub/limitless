@@ -10,7 +10,7 @@
     <ImageButton
             android:scaleType="fitXY"
             android:layout_gravity="top"
-            android:layout_width="61dp"
+            android:layout_width="60dp"
             android:adjustViewBounds="true"
             android:layout_height="50dp"
             android:background="@android:color/transparent"
@@ -22,13 +22,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_yellow" android:layout_marginTop="20dp"/>
+            style="@style/cts_limitless_yellow" android:layout_marginTop="20dp" android:textSize="50sp"/>
     <TextView
             android:text="@string/ranking_lines"
             android:layout_width="match_parent"
             android:layout_height="41dp"
             android:layout_gravity="center"
-            android:id="@+id/ranking_lines" style="@style/cts_limitless_yellow"/>
+            android:id="@+id/ranking_lines" style="@style/cts_limitless_yellow" android:textSize="45sp"/>
     <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/ranking_recicler"

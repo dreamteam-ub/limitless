@@ -9,45 +9,45 @@
     <ImageButton
             android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
-            android:layout_width="270dp"
-            android:contentDescription="@string/resumeButton"
-            android:layout_height="77dp" android:src="@drawable/resume"
+            android:layout_width="220dp"
+            android:contentDescription="@string/resume_button"
+            android:layout_height="60dp" android:src="@drawable/resume"
             android:background="@android:color/transparent"
             android:adjustViewBounds="true"
             android:id="@+id/resumeButtonDiag"/>
     <Space
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"/>
     <ImageButton
             android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
-            android:layout_width="270dp"
-            android:contentDescription="@string/worldsButton"
-            android:layout_height="wrap_content" android:src="@drawable/worlds"
+            android:layout_width="220dp"
+            android:contentDescription="@string/worlds_button"
+            android:layout_height="60dp" android:src="@drawable/worlds"
             android:background="@android:color/transparent"
             android:adjustViewBounds="true"
             android:id="@+id/worldsButtonPauseDiag"/>
     <Space
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"/>
     <ImageButton
             android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
-            android:layout_width="270dp"
-            android:contentDescription="@string/menubutton"
-            android:layout_height="wrap_content" android:src="@drawable/menu"
+            android:layout_width="220dp"
+            android:contentDescription="@string/menu_button"
+            android:layout_height="60dp" android:src="@drawable/menu"
             android:background="@android:color/transparent"
             android:adjustViewBounds="true"
             android:id="@+id/menuButtonPauseDiag"/>
     <Space
-            android:layout_width="315dp"
-            android:layout_height="68dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"/>
     <ImageView
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal"
             android:layout_width="168dp"
-            android:contentDescription="@string/pauseHeart"
+            android:contentDescription="@string/pause_heart"
             android:layout_height="152dp" android:src="@drawable/pause_heart"
             android:id="@+id/pauseHeartDiag"/>
 

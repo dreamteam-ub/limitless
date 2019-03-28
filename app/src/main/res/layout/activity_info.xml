@@ -10,7 +10,7 @@
     <ImageButton
             android:scaleType="fitXY"
             android:layout_gravity="top"
-            android:layout_width="61dp"
+            android:layout_width="60dp"
             android:adjustViewBounds="true"
             android:layout_height="50dp"
             android:background="@android:color/transparent"
@@ -22,19 +22,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/info_version"
             android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_white" android:layout_marginTop="20dp"/>
+            style="@style/cts_limitless_white" android:layout_marginTop="20dp" android:textSize="45sp"/>
     <TextView
-            android:text="@string/versionDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/version_details" style="@style/cts_limitless_white"
-            android:layout_marginLeft="40dp" android:textSize="40sp"/>
+            android:layout_marginLeft="40dp" android:textSize="40sp" tools:text="1.0.0"/>
     />
     <TextView
             android:text="@string/developers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/info_developers"
             android:fontFamily="@font/crimes_times_six" android:textColor="@color/colorWhite"
-            style="@style/cts_limitless_white" android:layout_marginTop="20dp"/>
+            style="@style/cts_limitless_white" android:layout_marginTop="20dp" android:textSize="45sp"/>
     <TextView
             android:text="@string/detail_developers1"
             android:layout_width="match_parent"
@@ -61,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/info_music_rights"
             android:fontFamily="@font/crimes_times_six" android:textColor="@color/colorWhite"
-            style="@style/cts_limitless_white" android:layout_marginTop="20dp"/>
+            style="@style/cts_limitless_white" android:layout_marginTop="20dp" android:textSize="45sp"/>
     <TextView
             android:text="@string/detail_music_rights"
             android:layout_width="match_parent"

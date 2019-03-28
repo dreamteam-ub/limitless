@@ -1,16 +1,17 @@
 package edu.ub.pis.joc.limitless
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 
-const val nLevels = 3
-const val nWorlds = 4
+const val N_LEVELS = 3
+const val N_WORLDS = 4
 
 class WorldSelectorActivity : FullScreenActivity() {
+
+    private val TAG = "WorldSelectorActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

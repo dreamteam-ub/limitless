@@ -1,9 +1,7 @@
 package edu.ub.pis.joc.limitless
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
@@ -11,9 +9,10 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.Toast
 
 class GameActivity : FullScreenActivity() {
+
+    private val TAG = "GameActivity"
 
     lateinit var dialog : Dialog
 
@@ -67,16 +66,16 @@ class GameActivity : FullScreenActivity() {
         //PAUSE BUTTOM
         val pauseButton :  Button = findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
-            if (mode!!.equals("Infinity")){
+            if (mode!! == "Infinity"){
                 worldsDiag.visibility=View.GONE
                 worldsDiag.isClickable=false
-            }else if(mode.equals("My Map")){
+            }else if(mode == "My Map"){
                 worldsDiag.visibility=View.VISIBLE
                 worldsDiag.isClickable=true
 
             }
 
-            dialog.window.setFlags(
+            dialog.window!!.setFlags(
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
 

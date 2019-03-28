@@ -6,68 +6,61 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MenuActivity" android:orientation="vertical" android:background="@color/colorBlack"
-        android:padding="40dp">
+        android:padding="40dp" android:gravity="center_vertical">
 
-    <LinearLayout
-            android:orientation="vertical"
+    <ImageView
+            android:layout_width="250dp"
+            android:layout_height="200dp" app:srcCompat="@drawable/game_logo"
+            android:id="@+id/menu_game_logo" android:contentDescription="@string/app_name"
+            android:adjustViewBounds="true" android:layout_gravity="center_horizontal"/>
+    <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <ImageView
-                android:layout_width="250dp"
-                android:layout_height="200dp" app:srcCompat="@drawable/game_logo"
-                android:id="@+id/menu_game_logo" android:contentDescription="@string/app_name"
-                android:adjustViewBounds="true" android:layout_gravity="center_horizontal"/>
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="40dp"/>
-        <ImageButton
-                android:layout_width="205dp"
-                android:layout_height="70dp"
-                android:scaleType="fitXY"
-                android:layout_gravity="center_horizontal"
-                android:background="@android:color/transparent"
-                app:srcCompat="@drawable/play_button" android:id="@+id/play_btn"
-                android:adjustViewBounds="true" android:contentDescription="@string/play"
-                android:cropToPadding="true"/>
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="40dp"/>
-        <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:scaleType="fitXY"
-                android:layout_gravity="center_horizontal"
-                android:background="@android:color/transparent"
-                app:srcCompat="@drawable/rankings_button"
-                android:id="@+id/rankings_btn"
-                android:adjustViewBounds="true" android:contentDescription="@string/rankings"
-                android:cropToPadding="true"/>
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="40dp"/>
-        <ImageButton
-                android:layout_width="210dp"
-                android:layout_height="70dp"
-                android:scaleType="fitXY"
-                android:layout_gravity="center_horizontal"
-                android:background="@android:color/transparent"
-                app:srcCompat="@drawable/options_button"
-                android:id="@+id/option_btn"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/options" android:cropToPadding="true"/>
-    </LinearLayout>
-    <LinearLayout
-            android:orientation="vertical"
+            android:layout_height="30dp"/>
+    <ImageButton
+            android:layout_height="60dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/play_button" android:id="@+id/play_btn"
+            android:adjustViewBounds="true" android:contentDescription="@string/play_button"
+            android:cropToPadding="true" android:layout_width="180dp"/>
+    <Space
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:gravity="bottom">
-        <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:scaleType="fitXY"
-                android:background="@android:color/transparent"
-                app:srcCompat="@drawable/info_button"
-                android:id="@+id/info_btn"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/options" android:layout_gravity="end"/>
-    </LinearLayout>
+            android:layout_height="30dp"/>
+    <ImageButton
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/rankings_button"
+            android:id="@+id/rankings_btn"
+            android:adjustViewBounds="true" android:contentDescription="@string/rankings_button"
+            android:cropToPadding="true"/>
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+    <ImageButton
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/options_button"
+            android:id="@+id/option_btn"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/options_button" android:cropToPadding="true"/>
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/info_button"
+            android:id="@+id/info_btn"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/options_button" android:layout_gravity="end"/>
+
 </LinearLayout>

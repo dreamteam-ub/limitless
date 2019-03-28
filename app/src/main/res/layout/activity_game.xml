@@ -10,7 +10,7 @@
 
 
     <Button
-            android:text="@string/loseButton"
+            android:text="@string/lose_button"
             android:layout_height="0dp"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
@@ -22,7 +22,7 @@
             android:layout_marginLeft="8dp" android:layout_marginBottom="301dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"/>
     <Button
-            android:text="@string/winButton"
+            android:text="@string/win_button"
             android:layout_height="0dp"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
@@ -33,7 +33,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView"/>
 
     <Button
-            android:text="@string/pauseButton"
+            android:text="@string/pause_button"
             android:layout_height="0dp"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
@@ -47,7 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp" app:srcCompat="@drawable/in_game_temporal"
             android:id="@+id/imageView"
-            android:contentDescription="@string/liveGame"
+            android:contentDescription="@string/live_game"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="1.0"

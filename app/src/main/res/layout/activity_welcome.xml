@@ -18,8 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="5dp"/>
     <TextView
-            android:text="@string/tmp_user"
-            android:layout_height="wrap_content" android:id="@+id/username_tv" tools:text="@string/tmp_user"
+            android:layout_height="wrap_content" android:id="@+id/usermail_tv" tools:text="EXAMPLEUSER"
             style="@style/cts_limitless_blue" android:textSize="30sp" android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content" android:textAlignment="center"/>
     <Space
@@ -49,7 +48,7 @@
             android:ems="10"
             android:id="@+id/input_name_et"
             tools:ignore="Autofill" android:hint="@string/example_user"
-            style="@style/ET_Color_Welcome"/>
+            style="@style/ET_Color_Welcome" android:maxLength="15"/>
     <Space
             android:layout_width="match_parent"
             android:layout_height="40dp"/>

@@ -6,6 +6,8 @@ import android.widget.ImageButton
 
 class GameWonActivity : FullScreenActivity() {
 
+    private val TAG = "GameWonActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_won)

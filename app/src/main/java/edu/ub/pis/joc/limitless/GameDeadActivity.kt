@@ -7,12 +7,14 @@ import android.widget.ImageButton
 
 class GameDeadActivity : FullScreenActivity() {
 
+    private val TAG = "GameDeadActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_dead)
 
         val setMode : Intent = intent
-        val modo = setMode.extras.getString("mode")
+        val modo = setMode.extras!!.getString("mode")
 
         val retryButton: ImageButton = findViewById(R.id.retryButton_normal)
         retryButton.setOnClickListener {
@@ -28,12 +30,11 @@ class GameDeadActivity : FullScreenActivity() {
         val worldsButton: ImageButton = findViewById(R.id.dead_worldsButton)
         if (modo == "inf"){
             worldsButton.visibility= View.GONE
-            worldsButton.isClickable=false
+            worldsButton.isClickable = false
 
         }else if (modo == "mymap"){
-            worldsButton.visibility= View.VISIBLE
-            worldsButton.isClickable=true
-
+            worldsButton.visibility = View.VISIBLE
+            worldsButton.isClickable = true
         }
         worldsButton.setOnClickListener {
             val intent = Intent(this,WorldSelectorActivity::class.java)

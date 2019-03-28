@@ -6,6 +6,8 @@ import android.widget.ImageButton
 
 class OptionsActivity : FullScreenActivity() {
 
+    private val TAG = "OptionsActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_options)
@@ -18,11 +20,10 @@ class OptionsActivity : FullScreenActivity() {
         val logoutButton : ImageButton = findViewById(R.id.logout_button)
         logoutButton.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
-            //finishAffinity()
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra(LOGOUT, true)
             startActivity(intent)
-            //finish()
         }
     }
 }

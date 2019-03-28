@@ -12,7 +12,7 @@
     <ImageButton
             android:scaleType="fitXY"
             android:layout_gravity="top"
-            android:layout_width="69dp"
+            android:layout_width="60dp"
             android:adjustViewBounds="true"
             android:layout_height="50dp"
             android:background="@android:color/transparent"
@@ -22,32 +22,33 @@
                 <Space
                         android:layout_width="match_parent"
                         android:layout_height="40dp"/>
-                <ImageButton
-                        android:layout_width="match_parent"
-                        android:scaleType="fitXY"
-                        android:background="@android:color/transparent"
-                        android:adjustViewBounds="true"
-                        android:layout_height="wrap_content" app:srcCompat="@drawable/my_map"
-                        android:id="@+id/myMapButton"
-                        android:contentDescription="@string/mymapbutton"
-                        android:layout_gravity="center_horizontal"/>
+    <ImageButton
+            android:layout_width="250dp"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            android:adjustViewBounds="true"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/my_map"
+            android:id="@+id/myMapButton"
+            android:contentDescription="@string/mymap_button"
+            android:layout_gravity="center_horizontal"/>
     <Space
             android:layout_width="match_parent"
             android:layout_height="19dp"/>
     <TextView
             style="@style/cts_limitless_purple"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:textSize="30sp"
             android:layout_height="118dp" android:id="@+id/MyMapText"
-            android:singleLine="false" tools:text="@string/text_mymap" android:text="@string/text_mymap"/>
+            android:singleLine="false" tools:text="@string/text_mymap" android:text="@string/text_mymap"
+    />
     <ImageButton
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/infButton"
+            android:contentDescription="@string/inf_button"
             android:layout_height="wrap_content" app:srcCompat="@drawable/infinite_mode"
-            android:id="@+id/infiniteModeButton"/>
+            android:id="@+id/infiniteModeButton" android:layout_gravity="center_horizontal"/>
     <Space
             android:layout_width="match_parent"
             android:layout_height="19dp"/>
@@ -58,7 +59,8 @@
             android:singleLine="false"
             style="@style/cts_limitless_purple"
             android:textSize="30sp"
-            android:layout_height="wrap_content" android:id="@+id/infiniteText"/>
+            android:layout_height="wrap_content" android:id="@+id/infiniteText"
+    />
 
 
 </LinearLayout>

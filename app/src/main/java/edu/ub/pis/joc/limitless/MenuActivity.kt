@@ -6,6 +6,8 @@ import android.widget.ImageButton
 
 class MenuActivity : FullScreenActivity() {
 
+    private val TAG = "MenuActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)

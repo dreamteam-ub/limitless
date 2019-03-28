@@ -7,9 +7,9 @@ import android.widget.TextView
 
 class GameModeActivity : FullScreenActivity() {
 
+    private val TAG = "GameModeActivity"
+
     var mode : String? = null
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

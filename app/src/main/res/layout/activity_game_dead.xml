@@ -15,7 +15,7 @@
             android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:contentDescription="@string/youDiedIMG"
+            android:contentDescription="@string/you_died"
             android:layout_height="52dp"
             app:srcCompat="@drawable/you_died"
             android:id="@+id/youDiedImg"/>
@@ -42,10 +42,10 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal"
-            android:layout_width="250dp"
+            android:layout_width="220dp"
             android:contentDescription="@string/retry_level"
             android:background="@android:color/transparent"
-            android:layout_height="68dp" app:srcCompat="@drawable/retry_button" android:id="@+id/retryButton_normal"/>
+            android:layout_height="60dp" app:srcCompat="@drawable/retry_button" android:id="@+id/retryButton_normal"/>
 
     <Space
             android:layout_width="match_parent"
@@ -53,22 +53,22 @@
     <ImageButton
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/worldsButton"
+            android:contentDescription="@string/worlds_button"
             android:layout_gravity="center_horizontal"
-            android:layout_width="250dp"
+            android:layout_width="220dp"
             android:background="@android:color/transparent"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/worlds" android:id="@+id/dead_worldsButton"/>
+            android:layout_height="60dp" app:srcCompat="@drawable/worlds" android:id="@+id/dead_worldsButton"/>
     <Space
             android:layout_width="match_parent"
             android:layout_height="30dp"/>
     <ImageButton
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/menubutton"
+            android:contentDescription="@string/menu_button"
             android:layout_gravity="center_horizontal"
-            android:layout_width="250dp"
+            android:layout_width="220dp"
             android:background="@android:color/transparent"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/menu" android:id="@+id/dead_menuButton"/>
+            android:layout_height="60dp" app:srcCompat="@drawable/menu" android:id="@+id/dead_menuButton"/>
 
 
 

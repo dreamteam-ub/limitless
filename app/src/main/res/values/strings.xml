@@ -1,4 +1,6 @@
 <resources>
+    <string name="web_client_id">278147507172-eea5ob9vp3kfnftc867f9hfpc5ajkamq.apps.googleusercontent.com</string>
+
     <string name="app_name">Limitless</string>
     <string name="sigin">Sign In</string>
     <string name="welcome">Welcome</string>
@@ -6,28 +8,27 @@
     <string name="example_user">Nickname here</string>
     <string name="go">GO</string>
     <string name="logout">LOGOUT</string>
-    <string name="play">Play</string>
-    <string name="rankings">Rankings</string>
-    <string name="options">Options</string>
-    <string name="winButton">WIN</string>
-    <string name="loseButton">LOSE</string>
-    <string name="pauseButton">PAUSE</string>
-    <string name="resumeButton">RESUME</string>
-    <string name="menubutton">MENU</string>
-    <string name="mymapbutton">MY MAP</string>
-    <string name="infButton">INFINITY MODE</string>
+    <string name="play_button">PLAY</string>
+    <string name="rankings_button">RANKINGS</string>
+    <string name="options_button">OPTIONS</string>
+    <string name="win_button">WIN</string>
+    <string name="lose_button">LOSE</string>
+    <string name="pause_button">PAUSE</string>
+    <string name="resume_button">RESUME</string>
+    <string name="menu_button">MENU</string>
+    <string name="mymap_button">MY MAP</string>
+    <string name="inf_button">INFINITY MODE</string>
     <string name="back">BACK ARROW</string>
-    <string name="liveGame">GAME</string>
-    <string name="youWonImg">YOU WON</string>
-    <string name="youDiedIMG">YOU DIED</string>
-    <string name="youwonHeart">WON HEART</string>
-    <string name="nextLevel">NEXT LEVEL</string>
-    <string name="worldsButton">WORLDS</string>
-    <string name="pauseHeart">PAUSE HEART</string>
+    <string name="live_game">GAME</string>
+    <string name="you_won">YOU WON</string>
+    <string name="you_died">YOU DIED</string>
+    <string name="won_heart">WON HEART</string>
+    <string name="next_level">NEXT LEVEL</string>
+    <string name="worlds_button">WORLDS</string>
+    <string name="pause_heart">PAUSE HEART</string>
     <string name="inf_mode">INFINITE MODE</string>
     <string name="ranking_lines">-----------------------</string>
     <string name="info_version">VERSION</string>
-    <string name="versionDetails">0.0.3</string>
     <string name="developers">DEVELOPERS</string>
     <string name="detail_developers1">Aaron Calvo</string>
     <string name="detail_developers2">Pau Calvo</string>
@@ -36,8 +37,8 @@
     <string name="music_rights">MUSIC RIGHTS</string>
     <string name="volume">VOLUME</string>
     <string name="detail_music_rights">Cepeda Calvísimo</string>
-    <string name="text_mymap">-Learn step by step\n-One boss at time\n-Short stages</string>
-    <string name="text_infinite">-Hardcore mode\n-Any number of bosses\n-Go until you die</string>
+    <string name="text_mymap">- Learn step by step\n- One boss at time\n- Short stages</string>
+    <string name="text_infinite">- Hardcore mode\n- Any number of bosses\n- Go until you die</string>
     <string name="music">MUSIC</string>
     <string name="sfx">SFX</string>
     <string name="youDiedheart">BROKEN HEART</string>
@@ -54,8 +55,14 @@
     <string name="first_level">FIRST LEVEL</string>
     <string name="second_level">SECOND LEVEL</string>
     <string name="third_level">THIRD LEVEL</string>
-    <string name="PLAY_BUTTON">PLAY</string>
-    <string name="tmp_user">EXAMPLEUSER</string>
-
-
+    <string name="cuenta_google_btn">Sign In</string>
+    <string name="fail_auth">Authentication Failed</string>
+    <string name="ok_auth">Authenticated</string>
+    <string name="bad_user_name">Bad username</string>
+    <string name="fail_create_user">User can\'t be create at this moment</string>
+    <string name="loading_content">Loading</string>
+    <string name="logout_success">Logout Successfully</string>
+    <string name="user_created">User created</string>
+    <string name="user_name_exist">User name already exist</string>
+    <string name="fail_google_auth">Google sign in failed</string>
 </resources>

@@ -13,7 +13,7 @@
     <ImageButton
             android:scaleType="fitXY"
             android:layout_gravity="top"
-            android:layout_width="61dp"
+            android:layout_width="60dp"
             android:adjustViewBounds="true"
             android:layout_height="50dp"
             android:background="@android:color/transparent"

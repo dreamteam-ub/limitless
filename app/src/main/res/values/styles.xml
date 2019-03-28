@@ -16,54 +16,40 @@
     </style>
     <!-- Font -->
     <style name="cts_limitless_yellow">
-        <item name="android:ems">10</item>
         <item name="android:textColor">@color/colorYellow</item>
         <item name="android:includeFontPadding">true</item>
         <item name="android:fontFamily">@font/crimes_times_six</item>
-        <item name="android:textSize">50sp</item>
     </style>
     <style name="cts_limitless_white">
-        <item name="android:ems">10</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:includeFontPadding">true</item>
         <item name="android:fontFamily">@font/crimes_times_six</item>
-        <item name="android:textSize">50sp</item>
     </style>
     <style name="cts_limitless_purple">
-        <item name="android:ems">10</item>
         <item name="android:textColor">@color/colorStylePurple</item>
         <item name="android:includeFontPadding">true</item>
         <item name="android:fontFamily">@font/crimes_times_six</item>
-        <item name="android:textSize">50sp</item>
     </style>
     <style name="cts_limitless_pink">
-        <item name="android:ems">10</item>
         <item name="android:textColor">@color/colorStylePink</item>
         <item name="android:includeFontPadding">true</item>
         <item name="android:fontFamily">@font/crimes_times_six</item>
-        <item name="android:textSize">50sp</item>
     </style>
 
     <style name="cts_limitless_white_worlds">
-        <item name="android:ems">10</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:includeFontPadding">true</item>
         <item name="android:fontFamily">@font/crimes_times_six</item>
-        <item name="android:textSize">45sp</item>
     </style>
     <style name="cts_limitless_blue">
-        <item name="android:ems">10</item>
         <item name="android:textColor">@color/colorWelcomeText</item>
         <item name="android:includeFontPadding">true</item>
         <item name="android:fontFamily">@font/crimes_times_six</item>
-        <item name="android:textSize">50sp</item>
     </style>
     <style name="cts_limitless_red">
-        <item name="android:ems">10</item>
         <item name="android:textColor">@color/colorWelcomeName</item>
         <item name="android:includeFontPadding">true</item>
         <item name="android:fontFamily">@font/crimes_times_six</item>
-        <item name="android:textSize">50sp</item>
     </style>
 
 </resources>
