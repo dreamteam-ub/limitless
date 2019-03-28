@@ -65,8 +65,8 @@ class LoginActivity : FullScreenActivity() {
 
         val checkLogout = intent.extras
         if (checkLogout != null) {
-            val logout = checkLogout.getBoolean(LOGOUT)
-            if (logout) {
+            val logout = checkLogout.getString(LOGOUT)
+            if (logout == "logout") {
                 customToast( getString(R.string.logout_success),
                     Toast.LENGTH_SHORT).show()
                 signOut()

@@ -22,7 +22,7 @@ class OptionsActivity : FullScreenActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.putExtra(LOGOUT, true)
+            intent.putExtra(LOGOUT, "logout")
             startActivity(intent)
         }
     }

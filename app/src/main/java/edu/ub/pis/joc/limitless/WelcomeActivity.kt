@@ -68,11 +68,11 @@ class WelcomeActivity : FullScreenActivity() {
             if (task.isSuccessful) {
                 val intent = Intent(this, MenuActivity::class.java)
                 customImageToast(R.drawable.world4_select, getString(R.string.user_created),
-                    Toast.LENGTH_SHORT, Gravity.BOTTOM).show()
+                    Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL).show()
                 startActivity(intent)
             } else {
                 customToast(getString(R.string.fail_create_user),
-                    Toast.LENGTH_SHORT, Gravity.BOTTOM).show()
+                    Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL).show()
             }
         }
     }
