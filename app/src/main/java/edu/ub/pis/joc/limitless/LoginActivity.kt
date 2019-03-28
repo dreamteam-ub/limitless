@@ -129,9 +129,9 @@ class LoginActivity : FullScreenActivity() {
 
     private fun setAuth(user: FirebaseUser?) {
         if (user != null) {
+            setContentView(R.layout.activity_login_wait)
             var intent = Intent(this, MenuActivity::class.java)
             val userDb = db.collection(USERS).document(user.uid)
-            setContentView(R.layout.activity_login_wait)
             userDb.get().addOnSuccessListener { doc ->
                     if (doc!!.exists()) {
                         Log.d(TAG, "User document: " + doc.data!!)

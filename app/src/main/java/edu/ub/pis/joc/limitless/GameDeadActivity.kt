@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import android.widget.Space
 
 class GameDeadActivity : FullScreenActivity() {
 
@@ -27,14 +28,17 @@ class GameDeadActivity : FullScreenActivity() {
             startActivity(intent)
         }
 
-        val worldsButton: ImageButton = findViewById(R.id.dead_worldsButton)
+        val worldsButton : ImageButton = findViewById(R.id.dead_worldsButton)
+        val spaceWorlds : Space = findViewById(R.id.space_world)
         if (modo == "inf"){
-            worldsButton.visibility= View.GONE
+            worldsButton.visibility = View.GONE
             worldsButton.isClickable = false
+            spaceWorlds.visibility = View.GONE
 
         }else if (modo == "mymap"){
             worldsButton.visibility = View.VISIBLE
             worldsButton.isClickable = true
+            spaceWorlds.visibility = View.VISIBLE
         }
         worldsButton.setOnClickListener {
             val intent = Intent(this,WorldSelectorActivity::class.java)
