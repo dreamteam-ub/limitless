@@ -61,8 +61,8 @@ abstract class FullScreenActivity : AppCompatActivity() {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
-    fun customImageToast(r_draw_image : Int, text: String, length : Int, gravity : Int = Gravity.CENTER_VERTICAL,
-                    offX : Int = 0, offY : Int = 0) : Toast {
+    fun customImageToast(r_draw_image : Int, text: String, length : Int, gravity : Int = (Gravity.TOP
+            or Gravity.FILL_HORIZONTAL), offX : Int = 0, offY : Int = 0) : Toast {
 
         val layout = layoutInflater.inflate(R.layout.custom_image_toast, findViewById(R.id.custom_image_toast_layout))
 
@@ -78,11 +78,12 @@ abstract class FullScreenActivity : AppCompatActivity() {
         toast.setGravity(gravity, offX, offY)
         toast.duration = length
         toast.view = layout
+
         return toast
     }
 
-    fun customToast(text: String, length : Int, gravity : Int = Gravity.CENTER_VERTICAL,
-                    offX : Int = 0, offY : Int = 0) : Toast {
+    fun customToast(text: String, length : Int, gravity : Int = (Gravity.TOP or
+            Gravity.FILL_HORIZONTAL), offX : Int = 0, offY : Int = 0) : Toast {
 
         val layout = layoutInflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_layout))
 
@@ -94,6 +95,7 @@ abstract class FullScreenActivity : AppCompatActivity() {
         toast.setGravity(gravity, offX, offY)
         toast.duration = length
         toast.view = layout
+
         return toast
     }
 

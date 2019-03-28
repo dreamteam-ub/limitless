@@ -3,7 +3,6 @@ package edu.ub.pis.joc.limitless
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -69,7 +68,7 @@ class LoginActivity : FullScreenActivity() {
             val logout = checkLogout.getBoolean(LOGOUT)
             if (logout) {
                 customToast( getString(R.string.logout_success),
-                    Toast.LENGTH_SHORT, Gravity.BOTTOM).show()
+                    Toast.LENGTH_SHORT).show()
                 signOut()
             }
         } else {
@@ -89,7 +88,7 @@ class LoginActivity : FullScreenActivity() {
                     // Google Sign In failed
                     Log.w(TAG, "Google sign in failed", e)
                     customToast(getString(R.string.fail_google_auth),
-                        Toast.LENGTH_SHORT, Gravity.BOTTOM).show()
+                        Toast.LENGTH_SHORT).show()
                     setAuth(null)
                 }
             }
@@ -109,7 +108,7 @@ class LoginActivity : FullScreenActivity() {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                     customToast(getString(R.string.fail_auth),
-                        Toast.LENGTH_SHORT, Gravity.BOTTOM).show()
+                        Toast.LENGTH_SHORT).show()
                     setAuth(null)
                 }
             }
@@ -129,14 +128,15 @@ class LoginActivity : FullScreenActivity() {
 
     private fun setAuth(user: FirebaseUser?) {
         if (user != null) {
-            setContentView(R.layout.activity_login_wait)
+            layoutInflater.inflate(R.layout.activity_login_wait,findViewById(R.id.login_layout), true)
+
             var intent = Intent(this, MenuActivity::class.java)
             val userDb = db.collection(USERS).document(user.uid)
             userDb.get().addOnSuccessListener { doc ->
                     if (doc!!.exists()) {
                         Log.d(TAG, "User document: " + doc.data!!)
                         customImageToast(R.drawable.world4_select, getString(R.string.ok_auth) + "\n" + doc.data!![USER_NAME],
-                            Toast.LENGTH_SHORT, Gravity.BOTTOM).show()
+                            Toast.LENGTH_SHORT).show()
                     } else {
                         Log.d(TAG, "No such document")
                         intent = Intent(this, WelcomeActivity::class.java)
@@ -145,6 +145,7 @@ class LoginActivity : FullScreenActivity() {
                         intent.putExtra(NEW_USER_NAME, user.displayName)
                     }
                 startActivity(intent)
+                finish()
             }
         }
     }

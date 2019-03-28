@@ -36,6 +36,7 @@ class GameActivity : FullScreenActivity() {
         winButton.setOnClickListener {
             val winIntent = Intent(this, GameWonActivity::class.java)
             startActivity(winIntent)
+            finish()
         }
 
         //LOSE BUTTON
@@ -45,12 +46,14 @@ class GameActivity : FullScreenActivity() {
                 val DeadIntent = Intent(this,GameDeadActivity::class.java)
                 DeadIntent.putExtra("mode","inf")
                 startActivity(DeadIntent)
+                finish()
 
 
             }else if(mode=="My Map"){
                 val DeadIntent = Intent(this,GameDeadActivity::class.java)
                 DeadIntent.putExtra("mode","mymap")
                 startActivity(DeadIntent)
+                finish()
             }
         }
 
@@ -90,12 +93,14 @@ class GameActivity : FullScreenActivity() {
                 val intent = Intent(this,WorldSelectorActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
+                finish()
             }
 
             menuDiag.setOnClickListener {
                 val intent = Intent(this, MenuActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
+                finish()
             }
 
         }

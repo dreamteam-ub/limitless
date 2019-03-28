@@ -16,19 +16,30 @@ class GameWonActivity : FullScreenActivity() {
         nextLevel.setOnClickListener{
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra("mode","My Map")
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            finish()
         }
 
         val worlds : ImageButton = findViewById(R.id.worldsButton)
         worlds.setOnClickListener{
             val intent = Intent(this,WorldSelectorActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            finish()
         }
 
         val backToMenu : ImageButton = findViewById(R.id.menuButton)
         backToMenu.setOnClickListener{
             val intent = Intent (this, MenuActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            finish()
         }
+    }
+
+    // DESACTIVAMOS EL BACK DENTRO DEL JUEGO
+    override fun onBackPressed() {
+
     }
 }

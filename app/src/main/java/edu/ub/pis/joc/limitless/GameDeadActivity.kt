@@ -25,7 +25,9 @@ class GameDeadActivity : FullScreenActivity() {
             }else if(modo == "mymap"){
                 intent.putExtra("mode","My Map")
             }
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            finish()
         }
 
         val worldsButton : ImageButton = findViewById(R.id.dead_worldsButton)
@@ -35,21 +37,30 @@ class GameDeadActivity : FullScreenActivity() {
             worldsButton.isClickable = false
             spaceWorlds.visibility = View.GONE
 
-        }else if (modo == "mymap"){
+        } else if (modo == "mymap"){
             worldsButton.visibility = View.VISIBLE
             worldsButton.isClickable = true
             spaceWorlds.visibility = View.VISIBLE
         }
         worldsButton.setOnClickListener {
             val intent = Intent(this,WorldSelectorActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            finish()
         }
 
         val menuButton: ImageButton = findViewById(R.id.dead_menuButton)
         menuButton.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            finish()
         }
+    }
+
+    // DESACTIVAMOS EL BACK DENTRO DEL JUEGO
+    override fun onBackPressed() {
+
     }
 
 }

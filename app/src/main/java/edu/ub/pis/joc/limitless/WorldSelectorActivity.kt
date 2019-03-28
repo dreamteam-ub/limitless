@@ -44,9 +44,10 @@ class WorldSelectorActivity : FullScreenActivity() {
         }
 
         worldPhoto.setOnClickListener {
-            val myMapGameInt = Intent(this, GameActivity::class.java)
-            myMapGameInt.putExtra("mode","My Map")
-            startActivity(myMapGameInt)
+            val intent = Intent(this, GameActivity::class.java)
+            intent.putExtra("mode","My Map")
+            startActivity(intent)
+            finish()
         }
 
         leftArrow.setOnClickListener {

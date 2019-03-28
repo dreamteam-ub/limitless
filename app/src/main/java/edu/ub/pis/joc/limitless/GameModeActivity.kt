@@ -28,16 +28,18 @@ class GameModeActivity : FullScreenActivity() {
             myMapGameInt.putExtra("mode",mode)
             startActivity(myMapGameInt)*/
 
-            val myMapIntent = Intent(this,WorldSelectorActivity::class.java)
-            startActivity(myMapIntent)
+            val intent = Intent(this,WorldSelectorActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
         }
 
         val infiniteMode : ImageButton = findViewById(R.id.infiniteModeButton)
         infiniteMode.setOnClickListener{
             mode="Infinity"
-            val infiniteGameInt = Intent (this, GameActivity::class.java)
-            infiniteGameInt.putExtra("mode", mode)
-            startActivity(infiniteGameInt)
+            val intent = Intent (this, GameActivity::class.java)
+            intent.putExtra("mode", mode)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
         }
 
         val textMyMap : TextView = findViewById(R.id.MyMapText)
