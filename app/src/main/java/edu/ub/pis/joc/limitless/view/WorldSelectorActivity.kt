@@ -1,10 +1,11 @@
-package edu.ub.pis.joc.limitless
+package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import edu.ub.pis.joc.limitless.R
 
 const val N_LEVELS = 3
 const val N_WORLDS = 4
@@ -21,10 +22,12 @@ class WorldSelectorActivity : FullScreenActivity() {
         //var selectLevel: Boolean = false
         var LVL = 0
         var World = 0
-        val img = arrayOf(R.drawable.world1_select,
-                                         R.drawable.world2_select,
-                                         R.drawable.world3_select,
-                                         R.drawable.world4_select)
+        val img = arrayOf(
+            R.drawable.world1_select,
+            R.drawable.world2_select,
+            R.drawable.world3_select,
+            R.drawable.world4_select
+        )
 
         //Variables
         val worldTitle: TextView = findViewById(R.id.world_one_title)

@@ -1,4 +1,4 @@
-package edu.ub.pis.joc.limitless
+package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
+import edu.ub.pis.joc.limitless.R
 
 const val USER_NAME = "uname"
 const val USER_REAL_NAME = "urealname"
@@ -67,7 +68,8 @@ class WelcomeActivity : FullScreenActivity() {
         users.document(uid!!).set(user).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val intent = Intent(this, MenuActivity::class.java)
-                customImageToast(R.drawable.world4_select, getString(R.string.user_created),
+                customImageToast(
+                    R.drawable.world4_select, getString(R.string.user_created),
                     Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL).show()
                 startActivity(intent)
             } else {

@@ -1,4 +1,4 @@
-package edu.ub.pis.joc.limitless
+package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -9,6 +9,7 @@ import android.widget.Toast
 import android.view.Gravity
 import android.widget.ImageView
 import android.widget.TextView
+import edu.ub.pis.joc.limitless.R
 
 abstract class FullScreenActivity : AppCompatActivity() {
 

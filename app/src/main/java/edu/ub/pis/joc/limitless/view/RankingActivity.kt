@@ -1,12 +1,13 @@
-package edu.ub.pis.joc.limitless
+package edu.ub.pis.joc.limitless.view
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.ImageButton
 import android.widget.LinearLayout
-import edu.ub.pis.joc.limitless.ranking.RankingRecicler
-import edu.ub.pis.joc.limitless.ranking.RankingReciclerAdapter
+import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.view.ranking.RankingRecicler
+import edu.ub.pis.joc.limitless.view.ranking.RankingReciclerAdapter
 
 class RankingActivity : FullScreenActivity() {
 

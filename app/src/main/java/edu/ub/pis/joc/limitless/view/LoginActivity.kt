@@ -1,4 +1,4 @@
-package edu.ub.pis.joc.limitless
+package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
+import edu.ub.pis.joc.limitless.R
 
 const val LOGOUT = "logout"
 
@@ -135,7 +136,8 @@ class LoginActivity : FullScreenActivity() {
             userDb.get().addOnSuccessListener { doc ->
                     if (doc!!.exists()) {
                         Log.d(TAG, "User document: " + doc.data!!)
-                        customImageToast(R.drawable.world4_select, getString(R.string.ok_auth) + "\n" + doc.data!![USER_NAME],
+                        customImageToast(
+                            R.drawable.world4_select, getString(R.string.ok_auth) + "\n" + doc.data!![USER_NAME],
                             Toast.LENGTH_SHORT).show()
                     } else {
                         Log.d(TAG, "No such document")

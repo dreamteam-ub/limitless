@@ -1,4 +1,4 @@
-package edu.ub.pis.joc.limitless.ranking
+package edu.ub.pis.joc.limitless.view.ranking
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

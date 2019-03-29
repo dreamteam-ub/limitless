@@ -1,4 +1,4 @@
-package edu.ub.pis.joc.limitless
+package edu.ub.pis.joc.limitless.view
 
 import android.app.Dialog
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
+import edu.ub.pis.joc.limitless.R
 
 class GameActivity : FullScreenActivity() {
 
@@ -43,14 +44,14 @@ class GameActivity : FullScreenActivity() {
         val loseButton : Button = findViewById(R.id.loseButton)
         loseButton.setOnClickListener {
             if(mode=="Infinity"){
-                val DeadIntent = Intent(this,GameDeadActivity::class.java)
+                val DeadIntent = Intent(this, GameDeadActivity::class.java)
                 DeadIntent.putExtra("mode","inf")
                 startActivity(DeadIntent)
                 finish()
 
 
             }else if(mode=="My Map"){
-                val DeadIntent = Intent(this,GameDeadActivity::class.java)
+                val DeadIntent = Intent(this, GameDeadActivity::class.java)
                 DeadIntent.putExtra("mode","mymap")
                 startActivity(DeadIntent)
                 finish()
@@ -90,7 +91,7 @@ class GameActivity : FullScreenActivity() {
             }
 
             worldsDiag.setOnClickListener {
-                val intent = Intent(this,WorldSelectorActivity::class.java)
+                val intent = Intent(this, WorldSelectorActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
                 finish()

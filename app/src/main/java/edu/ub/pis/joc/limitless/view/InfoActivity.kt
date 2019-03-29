@@ -1,8 +1,10 @@
-package edu.ub.pis.joc.limitless
+package edu.ub.pis.joc.limitless.view
 
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
+import edu.ub.pis.joc.limitless.BuildConfig
+import edu.ub.pis.joc.limitless.R
 
 class InfoActivity : FullScreenActivity() {
 

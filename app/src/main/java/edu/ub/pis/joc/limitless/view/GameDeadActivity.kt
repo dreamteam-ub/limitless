@@ -1,10 +1,11 @@
-package edu.ub.pis.joc.limitless
+package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.Space
+import edu.ub.pis.joc.limitless.R
 
 class GameDeadActivity : FullScreenActivity() {
 
@@ -19,7 +20,7 @@ class GameDeadActivity : FullScreenActivity() {
 
         val retryButton: ImageButton = findViewById(R.id.retryButton_normal)
         retryButton.setOnClickListener {
-           val intent = Intent(this,GameActivity::class.java)
+           val intent = Intent(this, GameActivity::class.java)
             if (modo == "inf"){
                 intent.putExtra("mode","Infinity")
             }else if(modo == "mymap"){
@@ -43,7 +44,7 @@ class GameDeadActivity : FullScreenActivity() {
             spaceWorlds.visibility = View.VISIBLE
         }
         worldsButton.setOnClickListener {
-            val intent = Intent(this,WorldSelectorActivity::class.java)
+            val intent = Intent(this, WorldSelectorActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()

@@ -1,8 +1,9 @@
-package edu.ub.pis.joc.limitless
+package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
+import edu.ub.pis.joc.limitless.R
 
 class OptionsActivity : FullScreenActivity() {
 

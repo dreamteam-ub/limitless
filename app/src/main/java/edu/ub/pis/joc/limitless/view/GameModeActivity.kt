@@ -1,9 +1,10 @@
-package edu.ub.pis.joc.limitless
+package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
+import edu.ub.pis.joc.limitless.R
 
 class GameModeActivity : FullScreenActivity() {
 
@@ -28,7 +29,7 @@ class GameModeActivity : FullScreenActivity() {
             myMapGameInt.putExtra("mode",mode)
             startActivity(myMapGameInt)*/
 
-            val intent = Intent(this,WorldSelectorActivity::class.java)
+            val intent = Intent(this, WorldSelectorActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }

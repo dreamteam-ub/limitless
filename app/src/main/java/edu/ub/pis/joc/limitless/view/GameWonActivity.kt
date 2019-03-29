@@ -1,8 +1,9 @@
-package edu.ub.pis.joc.limitless
+package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
+import edu.ub.pis.joc.limitless.R
 
 class GameWonActivity : FullScreenActivity() {
 
@@ -23,7 +24,7 @@ class GameWonActivity : FullScreenActivity() {
 
         val worlds : ImageButton = findViewById(R.id.worldsButton)
         worlds.setOnClickListener{
-            val intent = Intent(this,WorldSelectorActivity::class.java)
+            val intent = Intent(this, WorldSelectorActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()
