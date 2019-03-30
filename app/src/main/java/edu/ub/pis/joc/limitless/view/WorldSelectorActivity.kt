@@ -48,14 +48,14 @@ class WorldSelectorActivity : FullScreenActivity() {
 
         worldPhoto.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra("mode","My Map")
+            intent.putExtra("mode", "My Map")
             startActivity(intent)
             finish()
         }
 
         leftArrow.setOnClickListener {
             LVL -= 1
-            when(LVL) {
+            when (LVL) {
                 0 -> {
                     lvlTitle.text = resources.getString(R.string.first_level)
                     leftArrow.visibility = View.INVISIBLE
@@ -70,12 +70,12 @@ class WorldSelectorActivity : FullScreenActivity() {
 
         rightArrow.setOnClickListener {
             LVL += 1
-            when(LVL){
-                1-> {
+            when (LVL) {
+                1 -> {
                     lvlTitle.text = resources.getString(R.string.second_level)
                     leftArrow.visibility = View.VISIBLE
                 }
-                2->{
+                2 -> {
                     lvlTitle.text = resources.getString(R.string.third_level)
                     rightArrow.visibility = View.INVISIBLE
                 }
@@ -91,15 +91,15 @@ class WorldSelectorActivity : FullScreenActivity() {
 
             World += 1
             worldPhoto.setImageResource(img[World])
-            when(World){
-                1-> {
+            when (World) {
+                1 -> {
                     worldTitle.text = resources.getString(R.string.world_two_title)
                     upArrow.visibility = View.VISIBLE
                 }
-                2-> {
+                2 -> {
                     worldTitle.text = resources.getString(R.string.world_three_title)
                 }
-                3-> {
+                3 -> {
                     worldTitle.text = resources.getString(R.string.world_four_title)
                     downArrow.visibility = View.INVISIBLE
                 }
@@ -115,15 +115,15 @@ class WorldSelectorActivity : FullScreenActivity() {
 
             World -= 1
             worldPhoto.setImageResource(img[World])
-            when(World){
-                0-> {
+            when (World) {
+                0 -> {
                     worldTitle.text = resources.getString(R.string.world_one_title)
                     upArrow.visibility = View.INVISIBLE
                 }
-                1-> {
+                1 -> {
                     worldTitle.text = resources.getString(R.string.world_two_title)
                 }
-                2-> {
+                2 -> {
                     worldTitle.text = resources.getString(R.string.world_three_title)
                     downArrow.visibility = View.VISIBLE
                 }

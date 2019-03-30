@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-                android:background="@color/colorBlack"
-                android:padding="10dp">
-
+        android:orientation="horizontal"
+        android:background="@color/colorBlack"
+        android:padding="10dp"
+        android:gravity="center_vertical">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/ranking_position"
+            style="@style/cts_limitless_yellow" tools:text="1" android:textSize="40sp"
+            android:layout_marginEnd="20dp" android:textStyle="bold"/>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ranking_recicle_list"
+                    android:id="@+id/ranking_user"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:background="@color/colorBlack"
-                    style="@style/cts_limitless_yellow" android:textSize="45sp" tools:text="Cepeda Calvo"/>
-
+                    style="@style/cts_limitless_yellow" android:textSize="35sp" tools:text="Cepeda Calvo"/>
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ranking_recicle_address"
+                    android:id="@+id/ranking_time"
                     android:layout_marginStart="50dp"
                     android:textSize="30sp"
                     android:background="@color/colorBlack"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    style="@style/cts_limitless_yellow" tools:text="Cepeda Calvisimo"/>
-
+                    style="@style/cts_limitless_yellow" tools:text="Time: MM:SS"/>
         </LinearLayout>
+
+</LinearLayout>

@@ -65,4 +65,6 @@
     <string name="user_created">User created</string>
     <string name="user_name_exist">User name already exist</string>
     <string name="fail_google_auth">Google sign in failed</string>
+    <string name="survived_rank">Survived</string>
+    <string name="no_ranking">No records yet</string>
 </resources>

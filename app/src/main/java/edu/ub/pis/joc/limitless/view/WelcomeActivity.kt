@@ -13,10 +13,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.User
 
-const val USER_NAME = "uname"
-const val USER_REAL_NAME = "urealname"
-const val USER_MAIL = "umail"
+const val USER_NAME = "userName"
+const val SURVIVED = "survived"
 
 class WelcomeActivity : FullScreenActivity() {
 
@@ -41,13 +41,13 @@ class WelcomeActivity : FullScreenActivity() {
 
         db = FirebaseFirestore.getInstance()
 
-        val uid = intent.extras!!.getString(NEW_USER_UID)
-        val name = intent.extras!!.getString(NEW_USER_NAME)
-        val email = intent.extras!!.getString(NEW_USER_MAIL)
+        val uid = intent.extras!!.getString(NEW_USER_UID)!!
+        val name = intent.extras!!.getString(NEW_USER_NAME)!!
+        val email = intent.extras!!.getString(NEW_USER_MAIL)!!
 
         val realNameTv : TextView = findViewById(R.id.usermail_tv)
 
-        realNameTv.text = name!!.split('@')[0]
+        realNameTv.text = email.split('@')[0]
 
         val nameField: EditText = findViewById(R.id.input_name_et)
 
@@ -73,15 +73,12 @@ class WelcomeActivity : FullScreenActivity() {
         }
     }
 
-    private fun createUser(uid: String?, realName: String?, email: String?, userName: String?) {
+    private fun createUser(uid: String, realName: String, email: String, userName: String) {
         val users = db.collection(USERS)
 
-        val user : HashMap<String, String?> = HashMap()
-        user[USER_NAME] = userName
-        user[USER_MAIL] = email
-        user[USER_REAL_NAME] = realName
+        val user = User(userName, realName, email, 0)
 
-        users.document(uid!!).set(user).addOnCompleteListener { task ->
+        users.document(uid).set(user).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val intent = Intent(this, MenuActivity::class.java)
                 customImageToast(

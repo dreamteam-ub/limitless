@@ -10,20 +10,20 @@ class GameModeActivity : FullScreenActivity() {
 
     private val TAG = "GameModeActivity"
 
-    var mode : String? = null
+    var mode: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_mode)
 
 
-        val backArrow : ImageButton = findViewById(R.id.blackArrowButton)
-        backArrow.setOnClickListener{
+        val backArrow: ImageButton = findViewById(R.id.blackArrowButton)
+        backArrow.setOnClickListener {
             finish()
         }
 
-        val myMap : ImageButton = findViewById(R.id.myMapButton)
-        myMap.setOnClickListener{
+        val myMap: ImageButton = findViewById(R.id.myMapButton)
+        myMap.setOnClickListener {
             /*mode="My Map"
             val myMapGameInt = Intent(this, GameActivity::class.java)
             myMapGameInt.putExtra("mode",mode)
@@ -34,19 +34,19 @@ class GameModeActivity : FullScreenActivity() {
             startActivity(intent)
         }
 
-        val infiniteMode : ImageButton = findViewById(R.id.infiniteModeButton)
-        infiniteMode.setOnClickListener{
-            mode="Infinity"
-            val intent = Intent (this, GameActivity::class.java)
+        val infiniteMode: ImageButton = findViewById(R.id.infiniteModeButton)
+        infiniteMode.setOnClickListener {
+            mode = "Infinity"
+            val intent = Intent(this, GameActivity::class.java)
             intent.putExtra("mode", mode)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
 
-        val textMyMap : TextView = findViewById(R.id.MyMapText)
+        val textMyMap: TextView = findViewById(R.id.MyMapText)
         textMyMap.text = getString(R.string.text_mymap)
 
-        val textInf : TextView = findViewById(R.id.infiniteText)
+        val textInf: TextView = findViewById(R.id.infiniteText)
         textInf.text = getString(R.string.text_infinite)
 
     }

@@ -14,11 +14,11 @@ class InfoActivity : FullScreenActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
-        val versionView : TextView = findViewById(R.id.version_details)
+        val versionView: TextView = findViewById(R.id.version_details)
         versionView.text = BuildConfig.VERSION_NAME
 
-        val infoBackArrow : ImageButton = findViewById(R.id.info_back_button)
-        infoBackArrow.setOnClickListener{
+        val infoBackArrow: ImageButton = findViewById(R.id.info_back_button)
+        infoBackArrow.setOnClickListener {
             finish()
         }
     }
