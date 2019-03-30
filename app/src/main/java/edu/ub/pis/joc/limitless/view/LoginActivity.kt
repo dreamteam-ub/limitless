@@ -19,7 +19,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
 
-const val LOGOUT = "logout"
+
 
 const val USERS = "users"
 
@@ -67,19 +67,22 @@ class LoginActivity : FullScreenActivity() {
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
-                val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-                try {
+            val gsign = GoogleSignIn.getSignedInAccountFromIntent(data)
                     // Google Sign In was successful, authenticate with Firebase
-                    val account = task.getResult(ApiException::class.java)!!
-                    firebaseAuthWithGoogle(account)
-                } catch (e: ApiException) {
-                    // Google Sign In failed
-                    Log.w(TAG, "Google sign in failed", e)
-                    customToast(getString(R.string.fail_google_auth),
-                        Toast.LENGTH_SHORT, Gravity.TOP or
-                                Gravity.FILL_HORIZONTAL,0,200).show()
-                    setAuth(null)
-                }
+            gsign.addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            firebaseAuthWithGoogle(task.result!!)
+                        } else {
+                            // Google Sign In failed
+                            Log.w(TAG, "Google sign in failed", task.exception)
+                            customToast(getString(R.string.fail_google_auth),
+                                Toast.LENGTH_SHORT, Gravity.TOP or
+                                        Gravity.FILL_HORIZONTAL,0,200).show()
+                            setAuth(null)
+
+                        }
+                    }
+
             }
     }
 
