@@ -26,11 +26,40 @@
     <TextView
             android:text="@string/ranking_lines"
             android:layout_width="match_parent"
-            android:layout_height="41dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/ranking_lines" style="@style/cts_limitless_yellow" android:textSize="45sp"/>
+            android:id="@+id/ranking_lines" style="@style/cts_limitless_yellow" android:textSize="45sp"
+            android:gravity="center_horizontal" android:maxLines="1"/>
     <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/ranking_recicler"
-            android:background="@android:color/transparent" android:paddingTop="1dp" android:layout_marginTop="20dp"/>
+            android:id="@+id/ranking_recicler"
+            android:background="@android:color/transparent" android:layout_marginTop="10dp" android:layout_weight="1"
+            android:layout_height="0dp" android:layout_marginBottom="10dp"/>
+
+    <TextView
+            android:text="@string/ranking_lines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ranking_lines2" style="@style/cts_limitless_yellow" android:textSize="45sp"
+            android:gravity="center_horizontal" android:layout_marginBottom="10dp" android:maxLines="1"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical" android:id="@+id/your_rank_ly">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/your_user"
+                style="@style/cts_limitless_white" android:textSize="35sp" tools:text="Cepeda Calvo"
+        />
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/your_time"
+                android:layout_marginStart="30dp"
+                android:textSize="30sp"
+                style="@style/cts_limitless_white" tools:text="Time: MM:SS"/>
+
+    </LinearLayout>
 </LinearLayout>

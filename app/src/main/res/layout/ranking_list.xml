@@ -5,7 +5,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/colorBlack"
         android:padding="10dp"
         android:gravity="center_vertical">
     <TextView
@@ -21,17 +20,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/ranking_user"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                    android:background="@color/colorBlack"
                     style="@style/cts_limitless_yellow" android:textSize="35sp" tools:text="Cepeda Calvo"/>
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/ranking_time"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginStart="30dp"
                     android:textSize="30sp"
-                    android:background="@color/colorBlack"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     style="@style/cts_limitless_yellow" tools:text="Time: MM:SS"/>
         </LinearLayout>
 

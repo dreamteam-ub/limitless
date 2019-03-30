@@ -8,7 +8,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.User
@@ -16,8 +15,10 @@ import edu.ub.pis.joc.limitless.model.User
 class OptionsActivity : FullScreenActivity() {
 
     private val TAG = "OptionsActivity"
+
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var db : FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +31,7 @@ class OptionsActivity : FullScreenActivity() {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
         mAuth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         val optionsBackArrow: ImageButton = findViewById(R.id.ranking_back_button)
         optionsBackArrow.setOnClickListener {
@@ -38,7 +40,7 @@ class OptionsActivity : FullScreenActivity() {
 
         val userName : TextView = findViewById(R.id.userNameTv)
 
-        FirebaseFirestore.getInstance().collection(USERS).document(mAuth.currentUser!!.uid).get().addOnSuccessListener { u ->
+        db.collection(USERS).document(mAuth.currentUser!!.uid).get().addOnSuccessListener { u ->
             val user = u.toObject(User::class.java)
             userName.text = user!!.userName
         }
