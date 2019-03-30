@@ -14,6 +14,7 @@ import edu.ub.pis.joc.limitless.model.Ranking
 import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.view.ranking.RankingRecyclerAdapter
 
+const val LIMIT : Long = 10
 
 class RankingActivity : FullScreenActivity() {
 
@@ -29,7 +30,7 @@ class RankingActivity : FullScreenActivity() {
         val adapter = RankingRecyclerAdapter(rankings)
         recyclerView.adapter = adapter
 
-        FirebaseFirestore.getInstance().collection(USERS).whereGreaterThan(SURVIVED, 0).orderBy(
+        FirebaseFirestore.getInstance().collection(USERS).whereGreaterThan(SURVIVED, 0).limit(LIMIT).orderBy(
             SURVIVED,
             Query.Direction.DESCENDING
         ).get().addOnCompleteListener { task ->
