@@ -48,7 +48,7 @@ class RankingActivity : FullScreenActivity() {
         db.collection(USERS).document(mAuth.currentUser!!.uid).get().addOnSuccessListener { u ->
             val myUser = u.toObject(User::class.java)!!
             yourUserName.text = myUser.userName
-            yourUserTime.text = myUser.survived.toString()
+            yourUserTime.text = numberToMMSS(myUser.survived!!)
         }.continueWith {
             db.collection(USERS).whereGreaterThan(SURVIVED, 0).limit(LIMIT).orderBy(
                 SURVIVED,

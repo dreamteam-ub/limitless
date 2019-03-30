@@ -42,7 +42,7 @@ class LoginActivity : FullScreenActivity() {
 
         setContentView(R.layout.activity_login)
 
-       val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.web_client_id))
             .requestEmail()
             .build()
