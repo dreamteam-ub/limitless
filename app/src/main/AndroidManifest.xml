@@ -12,60 +12,50 @@
         <activity
                 android:name=".view.GameDeadActivity"
                 android:screenOrientation="portrait"
-                android:noHistory="true"
-                android:launchMode="singleTop">
+                android:noHistory="true">
         </activity>
         <activity
                 android:name=".view.GameWonActivity"
                 android:screenOrientation="portrait"
-                android:noHistory="true"
-                android:launchMode="singleTop">
+                android:noHistory="true">
         </activity>
         <activity
                 android:name=".view.GameActivity"
                 android:screenOrientation="portrait"
-                android:noHistory="true"
-                android:launchMode="singleTop">
+                android:noHistory="true">
         </activity>
         <activity
                 android:name=".view.GameModeActivity"
-                android:screenOrientation="portrait"
-                android:launchMode="singleTop">
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".view.RankingActivity"
-                android:screenOrientation="portrait"
-                android:launchMode="singleTop">
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".view.InfoActivity"
-                android:screenOrientation="portrait"
-                android:launchMode="singleTop">
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".view.OptionsActivity"
-                android:screenOrientation="portrait"
-                android:launchMode="singleTop">
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".view.WorldSelectorActivity"
-                android:screenOrientation="portrait"
-                android:launchMode="singleTop">
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".view.MenuActivity"
                 android:screenOrientation="portrait"
-                android:launchMode="singleTop">
+>
         </activity>
         <activity
                 android:name=".view.WelcomeActivity"
                 android:noHistory="true"
-                android:screenOrientation="portrait"
-                android:launchMode="singleTop">
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".view.LoginActivity"
-                android:launchMode="singleTop"
                 android:noHistory="true"
                 android:screenOrientation="portrait">
             <intent-filter>

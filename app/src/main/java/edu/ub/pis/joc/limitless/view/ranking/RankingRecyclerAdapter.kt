@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.Ranking
 
-class RankingReciclerAdapter (val llista : ArrayList<RankingRecicler>) : RecyclerView.Adapter<RankingReciclerAdapter.ViewHolder>() {
+class RankingRecyclerAdapter (val llista : ArrayList<Ranking>) : RecyclerView.Adapter<RankingRecyclerAdapter.ViewHolder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(p0.context).inflate(R.layout.ranking_list, p0, false)
         return ViewHolder(v)
@@ -18,15 +19,15 @@ class RankingReciclerAdapter (val llista : ArrayList<RankingRecicler>) : Recycle
     }
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        val user : RankingRecicler = llista[p1]
-        p0.textViewName.text = user.name
-        p0.textViewAdress.text = user.address
+        val user : Ranking = llista[p1]
+        p0.tvName.text = user.name
+        p0.tvScore.text = user.score
 
     }
 
     class ViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView){
-        val textViewName = itemView.findViewById(R.id.ranking_recicle_list) as TextView
-        val textViewAdress = itemView.findViewById(R.id.ranking_recicle_address) as TextView
+        val tvName = itemView.findViewById(R.id.ranking_recicle_list) as TextView
+        val tvScore = itemView.findViewById(R.id.ranking_recicle_address) as TextView
     }
 
 }

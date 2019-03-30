@@ -7,6 +7,10 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
 
@@ -18,12 +22,22 @@ class WelcomeActivity : FullScreenActivity() {
 
     private val TAG = "WelcomeActivity"
 
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var mAuth: FirebaseAuth
     private lateinit var db : FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_welcome)
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.web_client_id))
+            .requestEmail()
+            .build()
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+        mAuth = FirebaseAuth.getInstance()
 
         db = FirebaseFirestore.getInstance()
 
@@ -46,13 +60,15 @@ class WelcomeActivity : FullScreenActivity() {
                             createUser(uid, name, email, nameField.text.toString())
                         } else {
                             customToast(getString(R.string.user_name_exist),
-                                Toast.LENGTH_SHORT, Gravity.BOTTOM).show()
+                                Toast.LENGTH_SHORT,Gravity.TOP or
+                                        Gravity.FILL_HORIZONTAL,0,200).show()
                         }
                     }
                 }
             } else {
                 customToast(getString(R.string.bad_user_name),
-                    Toast.LENGTH_SHORT, Gravity.BOTTOM).show()
+                    Toast.LENGTH_SHORT,Gravity.TOP or
+                            Gravity.FILL_HORIZONTAL,0,200).show()
             }
         }
     }
@@ -70,11 +86,13 @@ class WelcomeActivity : FullScreenActivity() {
                 val intent = Intent(this, MenuActivity::class.java)
                 customImageToast(
                     R.drawable.world4_select, getString(R.string.user_created),
-                    Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL).show()
+                    Toast.LENGTH_SHORT, Gravity.TOP or
+                            Gravity.FILL_HORIZONTAL,0,200).show()
                 startActivity(intent)
             } else {
                 customToast(getString(R.string.fail_create_user),
-                    Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL).show()
+                    Toast.LENGTH_SHORT, Gravity.TOP or
+                            Gravity.FILL_HORIZONTAL,0,200).show()
             }
         }
     }
@@ -82,7 +100,9 @@ class WelcomeActivity : FullScreenActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         val intent = Intent(this, LoginActivity::class.java)
-        intent.putExtra(LOGOUT, true)
+        // LOGOUT
+        mAuth.signOut()
+        mGoogleSignInClient.signOut()
         startActivity(intent)
     }
 }

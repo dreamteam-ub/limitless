@@ -1,18 +1,6 @@
 package edu.ub.pis.joc.limitless.presenter
 
-
-
-
+// HAY QUE PENSARLO
 class Presenter {
-
-
-    companion object {
-        val instance : Presenter by lazy(LazyThreadSafetyMode.PUBLICATION){ Presenter()}
-
-    }
-    fun getInstance(): Presenter {
-        return instance
-    }
-
 
 }
