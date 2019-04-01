@@ -20,4 +20,6 @@
     <color name="colorWelcomeText">#3075c8</color>
     <color name="colorWelcomeName">#e91922</color>
     <color name="colorETGrayWelcome">#545454</color>
+
+    <color name="colorTransparent">#43000000</color>
 </resources>
