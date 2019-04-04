@@ -24,12 +24,7 @@ class OptionsActivity : FullScreenActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_options)
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.web_client_id))
-            .requestEmail()
-            .build()
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+        mGoogleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
@@ -54,7 +49,6 @@ class OptionsActivity : FullScreenActivity() {
             // LOGOUT
             mAuth.signOut()
             mGoogleSignInClient.signOut()
-
             startActivity(intent)
         }
     }

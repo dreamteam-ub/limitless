@@ -1,5 +1,6 @@
 package edu.ub.pis.joc.limitless.view.ranking
 
+import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import edu.ub.pis.joc.limitless.R
 
-class RankingRecyclerAdapter(val llista: ArrayList<Ranking>) :
+class RankingRecyclerAdapter(private val llista: ArrayList<Ranking>) :
     RecyclerView.Adapter<RankingRecyclerAdapter.ViewHolder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(p0.context).inflate(R.layout.ranking_list, p0, false)
@@ -23,6 +24,12 @@ class RankingRecyclerAdapter(val llista: ArrayList<Ranking>) :
         p0.posRank.text = user.position
         p0.tvName.text = user.name
         p0.tvSurvived.text = user.survived
+
+        if (user.me) {
+            p0.posRank.setTextColor(Color.WHITE)
+            p0.tvName.setTextColor(Color.WHITE)
+            p0.tvSurvived.setTextColor(Color.WHITE)
+        }
 
     }
 

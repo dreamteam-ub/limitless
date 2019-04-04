@@ -1,15 +1,14 @@
 package edu.ub.pis.joc.limitless.view
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
-import android.view.Gravity
 import android.view.View
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
@@ -37,8 +36,8 @@ class RankingActivity : FullScreenActivity() {
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        val your: LinearLayout = findViewById(R.id.your_rank_ly)
-        your.visibility = View.GONE
+        val yourStatsNoTop: LinearLayout = findViewById(R.id.your_rank_ly)
+        yourStatsNoTop.visibility = View.GONE
 
         val yourUserName: TextView = findViewById(R.id.your_user)
         val yourUserTime: TextView = findViewById(R.id.your_time)
@@ -68,24 +67,33 @@ class RankingActivity : FullScreenActivity() {
                 Log.d(TAG, "Current data: " + docSnapshot.documents)
                 rankings.clear()
                 var amI = false
-                for ((i, u) in docSnapshot.documents!!.withIndex()) {
+                var posIam = -1
+                for ((i, u) in docSnapshot.documents.withIndex()) {
                     val user = u.toObject(User::class.java)
-                    if (u.id == mAuth!!.currentUser!!.uid) {
+                    if (u.id == mAuth.currentUser!!.uid) {
                         yourUserName.text = user!!.userName
                         yourUserTime.text = numberToMMSS(user.survived!!)
                         amI = true
-                    }
-                    rankings.add(
-                        Ranking(
-                            (i + 1).toString(), user!!.userName!!,
-                            getString(R.string.survived_rank) + ": " + numberToMMSS(user.survived!!)
+                        rankings.add(
+                            Ranking(
+                                (i + 1).toString(), user.userName!!,
+                                getString(R.string.survived_rank) + ": " + numberToMMSS(user.survived!!),
+                                true
+                            )
                         )
-                    )
+                    } else {
+                        rankings.add(
+                            Ranking(
+                                (i + 1).toString(), user!!.userName!!,
+                                getString(R.string.survived_rank) + ": " + numberToMMSS(user.survived!!)
+                            )
+                        )
+                    }
                 }
                 if (!amI) {
-                    your.visibility = View.VISIBLE
+                    yourStatsNoTop.visibility = View.VISIBLE
                 } else {
-                    your.visibility = View.GONE
+                    yourStatsNoTop.visibility = View.GONE
                 }
                 adapter.notifyDataSetChanged()
             } else {

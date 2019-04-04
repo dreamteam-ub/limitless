@@ -31,12 +31,7 @@ class WelcomeActivity : FullScreenActivity() {
 
         setContentView(R.layout.activity_welcome)
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.web_client_id))
-            .requestEmail()
-            .build()
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+        mGoogleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)
         mAuth = FirebaseAuth.getInstance()
 
         db = FirebaseFirestore.getInstance()
@@ -86,6 +81,7 @@ class WelcomeActivity : FullScreenActivity() {
                     Toast.LENGTH_SHORT, Gravity.TOP or
                             Gravity.FILL_HORIZONTAL,0,200).show()
                 startActivity(intent)
+                finish()
             } else {
                 customToast(getString(R.string.fail_create_user),
                     Toast.LENGTH_SHORT, Gravity.TOP or
@@ -101,5 +97,6 @@ class WelcomeActivity : FullScreenActivity() {
         mAuth.signOut()
         mGoogleSignInClient.signOut()
         startActivity(intent)
+        finish()
     }
 }

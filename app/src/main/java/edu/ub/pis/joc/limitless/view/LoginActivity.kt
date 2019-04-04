@@ -10,7 +10,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
@@ -18,7 +17,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
-
 
 const val USERS = "users"
 
@@ -66,20 +64,20 @@ class LoginActivity : FullScreenActivity() {
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
-                val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-                try {
-                    // Google Sign In was successful, authenticate with Firebase
-                    val account = task.getResult(ApiException::class.java)!!
-                    firebaseAuthWithGoogle(account)
-                } catch (e: ApiException) {
-                    // Google Sign In failed
-                    Log.w(TAG, "Google sign in failed", e)
-                    customToast(getString(R.string.fail_google_auth),
-                        Toast.LENGTH_SHORT, Gravity.TOP or
-                                Gravity.FILL_HORIZONTAL,0,200).show()
-                    setAuth(null)
-                }
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                val account = task.getResult(ApiException::class.java)!!
+                firebaseAuthWithGoogle(account)
+            } catch (e: ApiException) {
+                // Google Sign In failed
+                Log.w(TAG, "Google sign in failed", e)
+                customToast(getString(R.string.fail_google_auth),
+                    Toast.LENGTH_SHORT, Gravity.TOP or
+                            Gravity.FILL_HORIZONTAL,0,200).show()
+                setAuth(null)
             }
+        }
     }
 
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
@@ -121,19 +119,19 @@ class LoginActivity : FullScreenActivity() {
             var intent = Intent(this, MenuActivity::class.java)
             val userDb = db.collection(USERS).document(user.uid)
             userDb.get().addOnSuccessListener { doc ->
-                    if (doc!!.exists()) {
-                        Log.d(TAG, "User document: " + doc.data!!)
-                        customImageToast(
-                            R.drawable.world4_select, getString(R.string.ok_auth) + "\n" + doc.data!![USER_NAME],
-                            Toast.LENGTH_SHORT,Gravity.TOP or
-                                    Gravity.FILL_HORIZONTAL,0,200).show()
-                    } else {
-                        Log.d(TAG, "No such document")
-                        intent = Intent(this, WelcomeActivity::class.java)
-                        intent.putExtra(NEW_USER_UID, user.uid)
-                        intent.putExtra(NEW_USER_MAIL, user.email)
-                        intent.putExtra(NEW_USER_NAME, user.displayName)
-                    }
+                if (doc!!.exists()) {
+                    Log.d(TAG, "User document: " + doc.data!!)
+                    customImageToast(
+                        R.drawable.world4_select, getString(R.string.ok_auth) + "\n" + doc.data!![USER_NAME],
+                        Toast.LENGTH_SHORT,Gravity.TOP or
+                                Gravity.FILL_HORIZONTAL,0,200).show()
+                } else {
+                    Log.d(TAG, "No such document")
+                    intent = Intent(this, WelcomeActivity::class.java)
+                    intent.putExtra(NEW_USER_UID, user.uid)
+                    intent.putExtra(NEW_USER_MAIL, user.email)
+                    intent.putExtra(NEW_USER_NAME, user.displayName)
+                }
             }.continueWith {
                 startActivity(intent)
                 finish()

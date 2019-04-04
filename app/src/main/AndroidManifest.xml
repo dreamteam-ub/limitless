@@ -10,19 +10,25 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
+                android:name=".view.LoginActivity"
+                android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
                 android:name=".view.GameDeadActivity"
-                android:screenOrientation="portrait"
-                android:noHistory="true">
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".view.GameWonActivity"
-                android:screenOrientation="portrait"
-                android:noHistory="true">
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".view.GameActivity"
-                android:screenOrientation="portrait"
-                android:noHistory="true">
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".view.GameModeActivity"
@@ -46,22 +52,11 @@
         </activity>
         <activity
                 android:name=".view.MenuActivity"
-                android:screenOrientation="portrait"
->
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".view.WelcomeActivity"
-                android:noHistory="true"
                 android:screenOrientation="portrait">
-        </activity>
-        <activity
-                android:name=".view.LoginActivity"
-                android:noHistory="true"
-                android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
     </application>
 

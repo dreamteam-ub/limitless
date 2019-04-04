@@ -44,16 +44,16 @@ class GameActivity : FullScreenActivity() {
         val loseButton: Button = findViewById(R.id.loseButton)
         loseButton.setOnClickListener {
             if (mode == "Infinity") {
-                val DeadIntent = Intent(this, GameDeadActivity::class.java)
-                DeadIntent.putExtra("mode", "inf")
-                startActivity(DeadIntent)
+                val intent = Intent(this, GameDeadActivity::class.java)
+                intent.putExtra("mode", "inf")
+                startActivity(intent)
                 finish()
 
 
             } else if (mode == "My Map") {
-                val DeadIntent = Intent(this, GameDeadActivity::class.java)
-                DeadIntent.putExtra("mode", "mymap")
-                startActivity(DeadIntent)
+                val intent = Intent(this, GameDeadActivity::class.java)
+                intent.putExtra("mode", "mymap")
+                startActivity(intent)
                 finish()
             }
         }
@@ -108,11 +108,17 @@ class GameActivity : FullScreenActivity() {
         }
     }
 
+    override fun onStop() {
+        super.onStop()
+        if (dialog.isShowing) {
+            dialog.dismiss()
+        }
+    }
+
     // DESACTIVAMOS EL BACK DENTRO DEL JUEGO
     override fun onBackPressed() {
         if (dialog.isShowing) {
             dialog.dismiss()
         }
     }
-
 }
