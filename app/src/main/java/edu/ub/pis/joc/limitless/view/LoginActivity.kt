@@ -16,10 +16,8 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
-
 
 
 const val USERS = "users"
@@ -120,7 +118,6 @@ class LoginActivity : FullScreenActivity() {
     private fun setAuth(user: FirebaseUser?) {
         if (user != null) {
             layoutInflater.inflate(R.layout.activity_login_wait,findViewById(R.id.login_layout), true)
-
             var intent = Intent(this, MenuActivity::class.java)
             val userDb = db.collection(USERS).document(user.uid)
             userDb.get().addOnSuccessListener { doc ->
@@ -137,6 +134,7 @@ class LoginActivity : FullScreenActivity() {
                         intent.putExtra(NEW_USER_MAIL, user.email)
                         intent.putExtra(NEW_USER_NAME, user.displayName)
                     }
+            }.continueWith {
                 startActivity(intent)
                 finish()
             }

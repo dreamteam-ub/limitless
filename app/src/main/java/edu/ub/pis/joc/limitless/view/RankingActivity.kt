@@ -3,6 +3,7 @@ package edu.ub.pis.joc.limitless.view
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageButton
@@ -11,9 +12,10 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Query
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.model.Ranking
+import edu.ub.pis.joc.limitless.view.ranking.Ranking
 import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.view.ranking.RankingRecyclerAdapter
 
@@ -25,6 +27,8 @@ class RankingActivity : FullScreenActivity() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+
+    private lateinit var rankListener: ListenerRegistration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,38 +53,43 @@ class RankingActivity : FullScreenActivity() {
             val myUser = u.toObject(User::class.java)!!
             yourUserName.text = myUser.userName
             yourUserTime.text = numberToMMSS(myUser.survived!!)
-        }.continueWith {
-            db.collection(USERS).whereGreaterThan(SURVIVED, 0).limit(LIMIT).orderBy(
-                SURVIVED,
-                Query.Direction.DESCENDING
-            ).get().addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    if (!task.result!!.isEmpty) {
-                        var amI = false
-                        for ((i, u) in task.result!!.withIndex()) {
-                            val user = u.toObject(User::class.java)
-                            if (user.userName!! == yourUserName.text) {
-                                amI = true
-                            }
-                            rankings.add(
-                                Ranking(
-                                    (i + 1).toString(), user.userName!!,
-                                    getString(R.string.survived_rank) + ": " + numberToMMSS(user.survived!!)
-                                )
-                            )
-                        }
-                        adapter.notifyDataSetChanged()
-                        if (!amI) {
-                            your.visibility = View.VISIBLE
-                        }
-                    } else {
-                        customToast(
-                            getString(R.string.no_ranking),
-                            Toast.LENGTH_SHORT, Gravity.CENTER_VERTICAL or
-                                    Gravity.FILL_HORIZONTAL
-                        ).show()
+        }
+
+        // SYNC DB
+        val rank = db.collection(USERS).whereGreaterThan(SURVIVED, 0).limit(LIMIT).orderBy(
+            SURVIVED,
+            Query.Direction.DESCENDING
+        )
+        rankListener = rank.addSnapshotListener { docSnapshot, exception ->
+            if (exception != null) {
+                Log.w(TAG, "Listen failed.", exception)
+            }
+            if (docSnapshot != null && !docSnapshot.isEmpty) {
+                Log.d(TAG, "Current data: " + docSnapshot.documents)
+                rankings.clear()
+                var amI = false
+                for ((i, u) in docSnapshot.documents!!.withIndex()) {
+                    val user = u.toObject(User::class.java)
+                    if (u.id == mAuth!!.currentUser!!.uid) {
+                        yourUserName.text = user!!.userName
+                        yourUserTime.text = numberToMMSS(user.survived!!)
+                        amI = true
                     }
+                    rankings.add(
+                        Ranking(
+                            (i + 1).toString(), user!!.userName!!,
+                            getString(R.string.survived_rank) + ": " + numberToMMSS(user.survived!!)
+                        )
+                    )
                 }
+                if (!amI) {
+                    your.visibility = View.VISIBLE
+                } else {
+                    your.visibility = View.GONE
+                }
+                adapter.notifyDataSetChanged()
+            } else {
+                Log.d(TAG, "Current data: null")
             }
         }
 
@@ -88,6 +97,11 @@ class RankingActivity : FullScreenActivity() {
         rankingBackArrow.setOnClickListener {
             finish()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        rankListener.remove() // IMPORTANTE
     }
 
     private fun numberToMMSS(num: Long): String {
