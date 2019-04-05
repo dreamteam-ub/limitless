@@ -10,10 +10,12 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.presenter.GamePresenter
 
 class GameActivity : FullScreenActivity() {
 
     private val TAG = "GameActivity"
+    private val gamePresenter = GamePresenter()
 
     lateinit var dialog: Dialog
 

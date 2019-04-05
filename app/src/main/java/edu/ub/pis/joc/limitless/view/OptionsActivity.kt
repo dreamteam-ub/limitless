@@ -11,10 +11,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.User
+import edu.ub.pis.joc.limitless.presenter.OptionsPresenter
 
 class OptionsActivity : FullScreenActivity() {
 
     private val TAG = "OptionsActivity"
+    private val optionsPresenter = OptionsPresenter()
 
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var mAuth: FirebaseAuth

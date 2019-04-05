@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.presenter.WorldSelectorPresenter
 
 const val N_LEVELS = 3
 const val N_WORLDS = 4
@@ -13,6 +14,7 @@ const val N_WORLDS = 4
 class WorldSelectorActivity : FullScreenActivity() {
 
     private val TAG = "WorldSelectorActivity"
+    private val wsPresenter = WorldSelectorPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

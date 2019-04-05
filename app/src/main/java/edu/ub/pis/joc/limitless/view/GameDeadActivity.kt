@@ -5,11 +5,16 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.Space
+import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.presenter.GameDeadPresenter
 
 class GameDeadActivity : FullScreenActivity() {
 
     private val TAG = "GameDeadActivity"
+
+    private val gameDeadPresenter = GameDeadPresenter()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +22,6 @@ class GameDeadActivity : FullScreenActivity() {
 
         val setMode: Intent = intent
         val modo = setMode.extras!!.getString("mode")
-
         val retryButton: ImageButton = findViewById(R.id.retryButton_normal)
         retryButton.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
