@@ -25,8 +25,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/ranking_time"
-                    android:layout_marginStart="30dp"
-                    android:textSize="30sp"
+                    android:textSize="24sp"
                     style="@style/cts_limitless_yellow" tools:text="Time: MM:SS"/>
         </LinearLayout>
 

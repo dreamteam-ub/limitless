@@ -19,11 +19,7 @@
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/back_arrow"
             android:contentDescription="@string/back"
-            android:id="@+id/world_back_button"/>
-
-    <Space
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"/>
+            android:id="@+id/world_back_button" android:layout_marginBottom="20dp"/>
 
     <ImageButton
             android:scaleType="fitXY"
@@ -34,16 +30,13 @@
             android:id="@+id/change_up_arrow"
             android:background="@android:color/transparent"
             android:adjustViewBounds="true"
-            android:layout_gravity="center_horizontal"/>
-
-    <Space
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"/>
+            android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"/>
 
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
+            android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp">
 
         <ImageButton
                 android:scaleType="fitXY"
@@ -79,10 +72,6 @@
 
     </LinearLayout>
 
-    <Space
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"/>
-
     <ImageButton
             android:scaleType="fitXY"
             android:layout_width="67dp"
@@ -92,11 +81,8 @@
             android:id="@+id/change_down_arrow"
             android:background="@android:color/transparent"
             android:adjustViewBounds="true"
-            android:layout_gravity="center_horizontal" android:visibility="visible" android:clickable="false"/>
-
-    <Space
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"/>
+            android:layout_gravity="center_horizontal" android:visibility="visible" android:clickable="false"
+            android:layout_marginBottom="20dp"/>
 
     <TextView
             android:text="@string/world_one_title"
@@ -106,10 +92,6 @@
             android:fontFamily="@font/crimes_times_six"
             style="@style/cts_limitless_white_worlds" android:layout_marginTop="20dp" android:textAlignment="center"
             android:textSize="40sp"/>
-
-    <Space
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"/>
 
     <TextView
             android:text="@string/first_level"

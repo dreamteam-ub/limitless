@@ -57,8 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/your_time"
-                android:layout_marginStart="30dp"
-                android:textSize="30sp"
+                android:textSize="24sp"
                 style="@style/cts_limitless_white" tools:text="Time: MM:SS"/>
 
     </LinearLayout>

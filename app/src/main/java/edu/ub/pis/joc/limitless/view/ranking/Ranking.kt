@@ -1,5 +1,4 @@
 package edu.ub.pis.joc.limitless.view.ranking
 
-data class Ranking (val position : String, val name : String, val survived : String, val me : Boolean = false) {
-
+data class Ranking (val position : String, val name : String, val survived : String, var me : Boolean = false) {
 }

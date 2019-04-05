@@ -36,16 +36,13 @@ class GameDeadActivity : FullScreenActivity() {
         }
 
         val worldsButton: ImageButton = findViewById(R.id.dead_worldsButton)
-        val spaceWorlds: Space = findViewById(R.id.space_world)
         if (modo == "inf") {
             worldsButton.visibility = View.GONE
             worldsButton.isClickable = false
-            spaceWorlds.visibility = View.GONE
 
         } else if (modo == "mymap") {
             worldsButton.visibility = View.VISIBLE
             worldsButton.isClickable = true
-            spaceWorlds.visibility = View.VISIBLE
         }
         worldsButton.setOnClickListener {
             val intent = Intent(this, WorldSelectorActivity::class.java)

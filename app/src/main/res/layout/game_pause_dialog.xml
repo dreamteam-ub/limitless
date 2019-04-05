@@ -14,10 +14,8 @@
             android:layout_height="60dp" android:src="@drawable/resume"
             android:background="@android:color/transparent"
             android:adjustViewBounds="true"
-            android:id="@+id/resumeButtonDiag"/>
-    <Space
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"/>
+            android:id="@+id/resumeButtonDiag"
+            android:layout_marginBottom="30dp"/>
     <ImageButton
             android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
@@ -26,10 +24,8 @@
             android:layout_height="60dp" android:src="@drawable/worlds"
             android:background="@android:color/transparent"
             android:adjustViewBounds="true"
-            android:id="@+id/worldsButtonPauseDiag"/>
-    <Space
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"/>
+            android:id="@+id/worldsButtonPauseDiag"
+            android:layout_marginBottom="30dp"/>
     <ImageButton
             android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
@@ -38,10 +34,8 @@
             android:layout_height="60dp" android:src="@drawable/menu"
             android:background="@android:color/transparent"
             android:adjustViewBounds="true"
-            android:id="@+id/menuButtonPauseDiag"/>
-    <Space
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"/>
+            android:id="@+id/menuButtonPauseDiag"
+            android:layout_marginBottom="30dp"/>
     <ImageView
             android:scaleType="fitXY"
             android:adjustViewBounds="true"

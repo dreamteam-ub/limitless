@@ -67,4 +67,5 @@
     <string name="fail_google_auth">Google sign in failed</string>
     <string name="survived_rank">Survived</string>
     <string name="no_ranking">No records yet</string>
+    <string name="no_records">No Records</string>
 </resources>

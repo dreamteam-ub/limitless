@@ -28,6 +28,7 @@ class RankingActivity : FullScreenActivity() {
     private lateinit var db: FirebaseFirestore
 
     private lateinit var rankListener: ListenerRegistration
+    private lateinit var userListener: ListenerRegistration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,15 +47,24 @@ class RankingActivity : FullScreenActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
         val rankings = ArrayList<Ranking>()
         val adapter = RankingRecyclerAdapter(rankings)
-        recyclerView.adapter = adapter
 
-        db.collection(USERS).document(mAuth.currentUser!!.uid).get().addOnSuccessListener { u ->
-            val myUser = u.toObject(User::class.java)!!
-            yourUserName.text = myUser.userName
-            yourUserTime.text = numberToMMSS(myUser.survived!!)
-        }
+        // SYNC DB START
+        userListener =
+            db.collection(USERS).document(mAuth.currentUser!!.uid).addSnapshotListener { docSnapshot, exception ->
+                if (exception != null) {
+                    Log.w(TAG, "Listen failed.", exception)
+                }
+                if (docSnapshot != null && docSnapshot.exists()) {
+                    val myUser = docSnapshot.toObject(User::class.java)!!
+                    yourUserName.text = myUser.userName
+                    if (myUser.survived!! == 0L) {
+                        yourUserTime.text = getString(R.string.no_records)
+                    } else {
+                        yourUserTime.text = numberToMMSS(myUser.survived!!)
+                    }
 
-        // SYNC DB
+                }
+            }
         val rank = db.collection(USERS).whereGreaterThan(SURVIVED, 0).limit(LIMIT).orderBy(
             SURVIVED,
             Query.Direction.DESCENDING
@@ -66,50 +76,47 @@ class RankingActivity : FullScreenActivity() {
             if (docSnapshot != null && !docSnapshot.isEmpty) {
                 Log.d(TAG, "Current data: " + docSnapshot.documents)
                 rankings.clear()
-                var amI = false
                 var posIam = -1
                 for ((i, u) in docSnapshot.documents.withIndex()) {
                     val user = u.toObject(User::class.java)
                     if (u.id == mAuth.currentUser!!.uid) {
-                        yourUserName.text = user!!.userName
-                        yourUserTime.text = numberToMMSS(user.survived!!)
-                        amI = true
-                        rankings.add(
-                            Ranking(
-                                (i + 1).toString(), user.userName!!,
-                                getString(R.string.survived_rank) + ": " + numberToMMSS(user.survived!!),
-                                true
-                            )
-                        )
-                    } else {
-                        rankings.add(
-                            Ranking(
-                                (i + 1).toString(), user!!.userName!!,
-                                getString(R.string.survived_rank) + ": " + numberToMMSS(user.survived!!)
-                            )
-                        )
+                        posIam = i
                     }
+
+                    rankings.add(
+                        Ranking(
+                            (i + 1).toString(), user!!.userName!!,
+                            getString(R.string.survived_rank) + ": " + numberToMMSS(user.survived!!),
+                            false
+                        )
+                    )
+
                 }
-                if (!amI) {
+                if (posIam == -1) {
                     yourStatsNoTop.visibility = View.VISIBLE
                 } else {
                     yourStatsNoTop.visibility = View.GONE
+                    rankings.get(posIam).me = true
                 }
                 adapter.notifyDataSetChanged()
             } else {
                 Log.d(TAG, "Current data: null")
             }
         }
+        // SYNC DB END
 
         val rankingBackArrow: ImageButton = findViewById(R.id.ranking_back_button)
         rankingBackArrow.setOnClickListener {
             finish()
         }
+
+        recyclerView.adapter = adapter
     }
 
     override fun onDestroy() {
         super.onDestroy()
         rankListener.remove() // IMPORTANTE
+        userListener.remove() // IMPORTANTE
     }
 
     private fun numberToMMSS(num: Long): String {

@@ -18,11 +18,7 @@
             android:contentDescription="@string/you_died"
             android:layout_height="52dp"
             app:srcCompat="@drawable/you_died"
-            android:id="@+id/youDiedImg"/>
-
-    <Space
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"/>
+            android:id="@+id/youDiedImg" android:layout_marginBottom="30dp"/>
 
     <ImageView
             android:scaleType="fitXY"
@@ -33,10 +29,7 @@
             android:background="@android:color/transparent"
             android:layout_height="185dp"
             app:srcCompat="@drawable/corazon_muerte"
-            android:id="@+id/dead_heart"/>
-    <Space
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"/>
+            android:id="@+id/dead_heart" android:layout_marginBottom="30dp"/>
 
     <ImageButton
             android:scaleType="fitXY"
@@ -45,11 +38,9 @@
             android:layout_width="220dp"
             android:contentDescription="@string/retry_level"
             android:background="@android:color/transparent"
-            android:layout_height="60dp" app:srcCompat="@drawable/retry_button" android:id="@+id/retryButton_normal"/>
+            android:layout_height="60dp" app:srcCompat="@drawable/retry_button" android:id="@+id/retryButton_normal"
+            android:layout_marginBottom="30dp"/>
 
-    <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp" android:id="@+id/space_world"/>
     <ImageButton
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
@@ -57,10 +48,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="220dp"
             android:background="@android:color/transparent"
-            android:layout_height="60dp" app:srcCompat="@drawable/worlds" android:id="@+id/dead_worldsButton"/>
-    <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            android:layout_height="60dp" app:srcCompat="@drawable/worlds" android:id="@+id/dead_worldsButton"
+            android:layout_marginBottom="30dp"/>
     <ImageButton
             android:scaleType="fitXY"
             android:adjustViewBounds="true"

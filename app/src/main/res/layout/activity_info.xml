@@ -26,8 +26,8 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/version_details" style="@style/cts_limitless_white"
-            android:layout_marginLeft="40dp" android:textSize="40sp" tools:text="1.0.0"/>
-    />
+            android:layout_marginStart="40dp" android:textSize="40sp" tools:text="1.0.0"/>
+
     <TextView
             android:text="@string/developers"
             android:layout_width="match_parent"
@@ -38,23 +38,23 @@
             android:text="@string/detail_developers1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/developers_details1"
-            android:layout_marginLeft="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
+            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
     <TextView
             android:text="@string/detail_developers2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/developers_details2"
-            android:layout_marginLeft="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
+            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
     <TextView
             android:text="@string/detail_developers3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/developers_details3"
-            android:layout_marginLeft="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
+            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
     <TextView
             android:text="@string/detail_developers4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/developers_details4"
-            android:layout_marginLeft="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
-    />
+            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
+
     <TextView
             android:text="@string/music_rights"
             android:layout_width="match_parent"
@@ -65,5 +65,5 @@
             android:text="@string/detail_music_rights"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/music_rights_details"
-            android:layout_marginLeft="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
+            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
 </LinearLayout>
