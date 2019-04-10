@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
@@ -21,7 +22,7 @@ class WorldSelectorActivity : FullScreenActivity() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db : FirebaseFirestore
-    private var worlds : Long = 0
+    private var worlds : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,19 +113,29 @@ class WorldSelectorActivity : FullScreenActivity() {
             rightArrow.visibility = View.VISIBLE
 
             World += 1
-            worldPhoto.setImageResource(img[World])
-            when (World) {
-                1 -> {
-                    worldTitle.text = resources.getString(R.string.world_two_title)
-                    upArrow.visibility = View.VISIBLE
+
+            if(World <= worlds) {
+                worldPhoto.setImageResource(img[World])
+
+                when (World) {
+
+                    1 -> {
+                        worldTitle.text = resources.getString(R.string.world_two_title)
+                        upArrow.visibility = View.VISIBLE
+                    }
+                    2 -> {
+                        worldTitle.text = resources.getString(R.string.world_three_title)
+
+
+                    }
+                    3 -> {
+                        worldTitle.text = resources.getString(R.string.world_four_title)
+                        downArrow.visibility = View.INVISIBLE
+                    }
                 }
-                2 -> {
-                    worldTitle.text = resources.getString(R.string.world_three_title)
-                }
-                3 -> {
-                    worldTitle.text = resources.getString(R.string.world_four_title)
-                    downArrow.visibility = View.INVISIBLE
-                }
+
+                if(World==worlds){ downArrow.visibility = View.INVISIBLE}
+
             }
         }
 
@@ -150,6 +161,8 @@ class WorldSelectorActivity : FullScreenActivity() {
                     downArrow.visibility = View.VISIBLE
                 }
             }
+
+            if(World!=worlds){downArrow.visibility = View.VISIBLE}
         }
     }
 

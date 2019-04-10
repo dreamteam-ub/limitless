@@ -7,12 +7,12 @@ class User : Serializable {
     var realName: String? = null
     var email: String? = null
     var survived: Long? = null
-    var world: Long? = null
+    var world: Int? = null
 
     constructor() {
     }
 
-    constructor(userName: String, realName: String, email: String, survived: Long, world: Long) {
+    constructor(userName: String, realName: String, email: String, survived: Long, world: Int) {
         this.userName = userName
         this.realName = realName
         this.email = email
