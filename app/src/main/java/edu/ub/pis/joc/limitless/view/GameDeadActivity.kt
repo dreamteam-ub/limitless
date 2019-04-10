@@ -4,16 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
-import android.widget.Space
-import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.presenter.GameDeadPresenter
 
 class GameDeadActivity : FullScreenActivity() {
 
     private val TAG = "GameDeadActivity"
-
-    private val gameDeadPresenter = GameDeadPresenter()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

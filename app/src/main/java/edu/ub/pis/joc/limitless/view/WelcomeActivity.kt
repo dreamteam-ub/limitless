@@ -13,6 +13,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.User
 
 const val USER_NAME = "userName"
@@ -36,13 +37,11 @@ class WelcomeActivity : FullScreenActivity() {
 
         db = FirebaseFirestore.getInstance()
 
-        val uid = intent.extras!!.getString(NEW_USER_UID)!!
-        val name = intent.extras!!.getString(NEW_USER_NAME)!!
-        val email = intent.extras!!.getString(NEW_USER_MAIL)!!
+        val uid = mAuth.currentUser!!.uid
 
-        val realNameTv : TextView = findViewById(R.id.usermail_tv)
+        val emailNameTv : TextView = findViewById(R.id.usermail_tv)
 
-        realNameTv.text = email.split('@')[0]
+        emailNameTv.text = mAuth.currentUser!!.email!!.split('@')[0]
 
         val nameField: EditText = findViewById(R.id.input_name_et)
 
@@ -52,7 +51,7 @@ class WelcomeActivity : FullScreenActivity() {
                 db.collection(USERS).whereEqualTo(USER_NAME, nameField.text.toString()).get().addOnCompleteListener { task ->
                     if(task.isSuccessful) {
                         if (task.result!!.documents.isEmpty()) {
-                            createUser(uid, name, email, nameField.text.toString())
+                            createUser(uid, nameField.text.toString())
                         } else {
                             customToast(getString(R.string.user_name_exist),
                                 Toast.LENGTH_SHORT,Gravity.TOP or
@@ -68,10 +67,10 @@ class WelcomeActivity : FullScreenActivity() {
         }
     }
 
-    private fun createUser(uid: String, realName: String, email: String, userName: String) {
+    private fun createUser(uid: String, userName: String) {
         val users = db.collection(USERS)
 
-        val user = User(userName, realName, email, 0, 1)
+        val user = User(userName)
 
         users.document(uid).set(user).addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -80,6 +79,7 @@ class WelcomeActivity : FullScreenActivity() {
                     R.drawable.world4_select, getString(R.string.user_created),
                     Toast.LENGTH_SHORT, Gravity.TOP or
                             Gravity.FILL_HORIZONTAL,0,200).show()
+                Data.getInstance().user = user
                 startActivity(intent)
                 finish()
             } else {

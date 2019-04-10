@@ -17,12 +17,10 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.User
 
 const val USERS = "users"
-
-const val NEW_USER_UID = "nuid"
-const val NEW_USER_MAIL = "nmail"
-const val NEW_USER_NAME = "nname"
 
 class LoginActivity : FullScreenActivity() {
 
@@ -118,23 +116,31 @@ class LoginActivity : FullScreenActivity() {
             layoutInflater.inflate(R.layout.activity_login_wait,findViewById(R.id.login_layout), true)
             var intent = Intent(this, MenuActivity::class.java)
             val userDb = db.collection(USERS).document(user.uid)
-            userDb.get().addOnSuccessListener { doc ->
-                if (doc!!.exists()) {
-                    Log.d(TAG, "User document: " + doc.data!!)
+
+            userDb.get().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val doc = task.result!!
+                    if (doc.exists()) {
+                        Log.d(TAG, "User document: " + doc.data!!)
+                        customImageToast(
+                            R.drawable.world4_select, getString(R.string.ok_auth) + "\n" + doc.data!![USER_NAME],
+                            Toast.LENGTH_SHORT,Gravity.TOP or
+                                    Gravity.FILL_HORIZONTAL,0,200).show()
+                        val user = doc.toObject(User::class.java)!!
+                        Data.getInstance().user = user
+                    } else {
+                        Log.d(TAG, "No such document")
+                        intent = Intent(this, WelcomeActivity::class.java)
+                    }
+                    startActivity(intent)
+                    finish()
+                } else {
                     customImageToast(
-                        R.drawable.world4_select, getString(R.string.ok_auth) + "\n" + doc.data!![USER_NAME],
+                        R.drawable.world4_select, getString(R.string.imp_create_user),
                         Toast.LENGTH_SHORT,Gravity.TOP or
                                 Gravity.FILL_HORIZONTAL,0,200).show()
-                } else {
-                    Log.d(TAG, "No such document")
-                    intent = Intent(this, WelcomeActivity::class.java)
-                    intent.putExtra(NEW_USER_UID, user.uid)
-                    intent.putExtra(NEW_USER_MAIL, user.email)
-                    intent.putExtra(NEW_USER_NAME, user.displayName)
                 }
-            }.continueWith {
-                startActivity(intent)
-                finish()
+
             }
         }
     }

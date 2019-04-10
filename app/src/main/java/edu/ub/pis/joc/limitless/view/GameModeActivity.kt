@@ -5,12 +5,10 @@ import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.presenter.GameModePresenter
 
 class GameModeActivity : FullScreenActivity() {
 
     private val TAG = "GameModeActivity"
-    private val gmPresenter=GameModePresenter()
 
     var mode: String? = null
 

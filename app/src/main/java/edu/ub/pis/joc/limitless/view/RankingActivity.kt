@@ -1,6 +1,5 @@
 package edu.ub.pis.joc.limitless.view
 
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -14,6 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Query
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.view.ranking.Ranking
 import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.view.ranking.RankingRecyclerAdapter
@@ -45,8 +45,7 @@ class RankingActivity : FullScreenActivity() {
 
         val recyclerView: RecyclerView = findViewById(R.id.ranking_recicler)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-        val rankings = ArrayList<Ranking>()
-        val adapter = RankingRecyclerAdapter(rankings)
+        val adapter = RankingRecyclerAdapter(Data.getInstance().ranking)
 
         // SYNC DB START
         userListener =
@@ -55,12 +54,12 @@ class RankingActivity : FullScreenActivity() {
                     Log.w(TAG, "Listen failed.", exception)
                 }
                 if (docSnapshot != null && docSnapshot.exists()) {
-                    val myUser = docSnapshot.toObject(User::class.java)!!
-                    yourUserName.text = myUser.userName
-                    if (myUser.survived!! == 0L) {
+                    Data.getInstance().user = docSnapshot.toObject(User::class.java)!!
+                    yourUserName.text = Data.getInstance().user!!.userName
+                    if (Data.getInstance().user!!.survived!! == 0L) {
                         yourUserTime.text = getString(R.string.no_records)
                     } else {
-                        yourUserTime.text = numberToMMSS(myUser.survived!!)
+                        yourUserTime.text = numberToMMSS(Data.getInstance().user!!.survived!!)
                     }
 
                 }
@@ -75,7 +74,7 @@ class RankingActivity : FullScreenActivity() {
             }
             if (docSnapshot != null && !docSnapshot.isEmpty) {
                 Log.d(TAG, "Current data: " + docSnapshot.documents)
-                rankings.clear()
+                Data.getInstance().ranking.clear()
                 var posIam = -1
                 for ((i, u) in docSnapshot.documents.withIndex()) {
                     val user = u.toObject(User::class.java)
@@ -83,7 +82,7 @@ class RankingActivity : FullScreenActivity() {
                         posIam = i
                     }
 
-                    rankings.add(
+                    Data.getInstance().ranking.add(
                         Ranking(
                             (i + 1).toString(), user!!.userName!!,
                             getString(R.string.survived_rank) + ": " + numberToMMSS(user.survived!!),
@@ -96,7 +95,7 @@ class RankingActivity : FullScreenActivity() {
                     yourStatsNoTop.visibility = View.VISIBLE
                 } else {
                     yourStatsNoTop.visibility = View.GONE
-                    rankings.get(posIam).me = true
+                    Data.getInstance().ranking.get(posIam).me = true
                 }
                 adapter.notifyDataSetChanged()
             } else {

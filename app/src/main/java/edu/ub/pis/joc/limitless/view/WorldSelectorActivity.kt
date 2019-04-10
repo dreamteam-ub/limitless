@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.presenter.WorldSelectorPresenter
 
@@ -22,7 +22,6 @@ class WorldSelectorActivity : FullScreenActivity() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db : FirebaseFirestore
-    private var worlds : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +33,9 @@ class WorldSelectorActivity : FullScreenActivity() {
 
         //Variables
         //var selectLevel: Boolean = false
-        var LVL = 0
-        var World = 0
+        var lvl = 0
+        var world = 0
+
         val img = arrayOf(
             R.drawable.world1_select,
             R.drawable.world2_select,
@@ -59,8 +59,7 @@ class WorldSelectorActivity : FullScreenActivity() {
         leftArrow.visibility = View.INVISIBLE
 
         db.collection(USERS).document(mAuth.currentUser!!.uid).get().addOnSuccessListener { u ->
-            val user = u.toObject(User::class.java)!!
-            worlds = user.world!!
+            Data.getInstance().user = u.toObject(User::class.java)!!
         }
 
 
@@ -77,8 +76,8 @@ class WorldSelectorActivity : FullScreenActivity() {
         }
 
         leftArrow.setOnClickListener {
-            LVL -= 1
-            when (LVL) {
+            lvl -= 1
+            when (lvl) {
                 0 -> {
                     lvlTitle.text = resources.getString(R.string.first_level)
                     leftArrow.visibility = View.INVISIBLE
@@ -92,8 +91,8 @@ class WorldSelectorActivity : FullScreenActivity() {
         }
 
         rightArrow.setOnClickListener {
-            LVL += 1
-            when (LVL) {
+            lvl += 1
+            when (lvl) {
                 1 -> {
                     lvlTitle.text = resources.getString(R.string.second_level)
                     leftArrow.visibility = View.VISIBLE
@@ -107,48 +106,43 @@ class WorldSelectorActivity : FullScreenActivity() {
         }
 
         downArrow.setOnClickListener {
-            LVL = 0
+            lvl = 0
             lvlTitle.text = resources.getString(R.string.first_level)
             leftArrow.visibility = View.INVISIBLE
             rightArrow.visibility = View.VISIBLE
 
-            World += 1
-
-            if(World <= worlds) {
-                worldPhoto.setImageResource(img[World])
-
-                when (World) {
-
+            if (world + 1 <= Data.getInstance().user!!.world!!) {
+                world += 1
+                worldPhoto.setImageResource(img[world])
+                when (world) {
                     1 -> {
                         worldTitle.text = resources.getString(R.string.world_two_title)
                         upArrow.visibility = View.VISIBLE
                     }
                     2 -> {
                         worldTitle.text = resources.getString(R.string.world_three_title)
-
-
                     }
                     3 -> {
                         worldTitle.text = resources.getString(R.string.world_four_title)
                         downArrow.visibility = View.INVISIBLE
                     }
                 }
-
-                if(World==worlds){ downArrow.visibility = View.INVISIBLE}
-
+                if (world == Data.getInstance().user!!.world) {
+                    downArrow.visibility = View.INVISIBLE
+                }
             }
         }
 
         upArrow.setOnClickListener {
             //SETEAMOS EL Nivel
-            LVL = 0
+            lvl = 0
             lvlTitle.text = resources.getString(R.string.first_level)
             leftArrow.visibility = View.INVISIBLE
             rightArrow.visibility = View.VISIBLE
 
-            World -= 1
-            worldPhoto.setImageResource(img[World])
-            when (World) {
+            world -= 1
+            worldPhoto.setImageResource(img[world])
+            when (world) {
                 0 -> {
                     worldTitle.text = resources.getString(R.string.world_one_title)
                     upArrow.visibility = View.INVISIBLE
@@ -161,8 +155,9 @@ class WorldSelectorActivity : FullScreenActivity() {
                     downArrow.visibility = View.VISIBLE
                 }
             }
-
-            if(World!=worlds){downArrow.visibility = View.VISIBLE}
+            if (world != Data.getInstance().user!!.world) {
+                downArrow.visibility = View.VISIBLE
+            }
         }
     }
 

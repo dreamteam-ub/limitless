@@ -10,6 +10,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.presenter.OptionsPresenter
 
@@ -38,8 +39,8 @@ class OptionsActivity : FullScreenActivity() {
         val userName : TextView = findViewById(R.id.userNameTv)
 
         db.collection(USERS).document(mAuth.currentUser!!.uid).get().addOnSuccessListener { u ->
-            val user = u.toObject(User::class.java)
-            userName.text = user!!.userName
+            Data.getInstance().user = u.toObject(User::class.java)
+            userName.text = Data.getInstance().user!!.userName
         }
 
         val logoutButton: ImageButton = findViewById(R.id.logout_button)
