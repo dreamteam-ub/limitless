@@ -24,13 +24,6 @@ class RankingRecyclerAdapter(private val llista: ArrayList<Ranking>) :
         p0.posRank.text = user.position
         p0.tvName.text = user.name
         p0.tvSurvived.text = user.survived
-
-        if (user.me) {
-            p0.posRank.setTextColor(Color.WHITE)
-            p0.tvName.setTextColor(Color.WHITE)
-            p0.tvSurvived.setTextColor(Color.WHITE)
-        }
-
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

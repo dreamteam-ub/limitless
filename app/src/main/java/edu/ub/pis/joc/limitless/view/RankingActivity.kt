@@ -28,7 +28,7 @@ class RankingActivity : FullScreenActivity() {
     private lateinit var db: FirebaseFirestore
 
     private lateinit var rankListener: ListenerRegistration
-    private lateinit var userListener: ListenerRegistration
+    private var userListener: ListenerRegistration? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,22 +48,8 @@ class RankingActivity : FullScreenActivity() {
         val adapter = RankingRecyclerAdapter(Data.getInstance().ranking)
 
         // SYNC DB START
-        userListener =
-            db.collection(USERS).document(mAuth.currentUser!!.uid).addSnapshotListener { docSnapshot, exception ->
-                if (exception != null) {
-                    Log.w(TAG, "Listen failed.", exception)
-                }
-                if (docSnapshot != null && docSnapshot.exists()) {
-                    Data.getInstance().user = docSnapshot.toObject(User::class.java)!!
-                    yourUserName.text = Data.getInstance().user!!.userName
-                    if (Data.getInstance().user!!.survived!! == 0L) {
-                        yourUserTime.text = getString(R.string.no_records)
-                    } else {
-                        yourUserTime.text = numberToMMSS(Data.getInstance().user!!.survived!!)
-                    }
 
-                }
-            }
+
         val rank = db.collection(USERS).whereGreaterThan(SURVIVED, 0).limit(LIMIT).orderBy(
             SURVIVED,
             Query.Direction.DESCENDING
@@ -85,17 +71,37 @@ class RankingActivity : FullScreenActivity() {
                     Data.getInstance().ranking.add(
                         Ranking(
                             (i + 1).toString(), user!!.userName!!,
-                            getString(R.string.survived_rank) + ": " + numberToMMSS(user.survived!!),
-                            false
+                            getString(R.string.survived_rank) + ": " + numberToMMSS(user.survived!!)
                         )
                     )
 
                 }
                 if (posIam == -1) {
                     yourStatsNoTop.visibility = View.VISIBLE
+
+                    userListener =
+                            db.collection(USERS).document(mAuth.currentUser!!.uid).addSnapshotListener { docSnapshot, exception ->
+                                if (exception != null) {
+                                    Log.w(TAG, "Listen failed.", exception)
+                                }
+                                if (docSnapshot != null && docSnapshot.exists()) {
+                                    Data.getInstance().user = docSnapshot.toObject(User::class.java)!!
+                                    yourUserName.text = Data.getInstance().user!!.userName
+                                    if (Data.getInstance().user!!.survived!! == 0L) {
+                                        yourUserTime.text = getString(R.string.no_records)
+                                    } else {
+                                        yourUserTime.text = numberToMMSS(Data.getInstance().user!!.survived!!)
+                                    }
+
+                                }
+                            }
+
                 } else {
                     yourStatsNoTop.visibility = View.GONE
-                    Data.getInstance().ranking.get(posIam).me = true
+                    if (userListener != null) {
+                        userListener!!.remove()
+                    }
+
                 }
                 adapter.notifyDataSetChanged()
             } else {
@@ -115,7 +121,9 @@ class RankingActivity : FullScreenActivity() {
     override fun onDestroy() {
         super.onDestroy()
         rankListener.remove() // IMPORTANTE
-        userListener.remove() // IMPORTANTE
+        if (userListener != null) {
+            userListener!!.remove() // IMPORTANTE
+        }
     }
 
     private fun numberToMMSS(num: Long): String {
