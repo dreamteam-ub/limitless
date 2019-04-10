@@ -71,7 +71,7 @@ class WelcomeActivity : FullScreenActivity() {
     private fun createUser(uid: String, realName: String, email: String, userName: String) {
         val users = db.collection(USERS)
 
-        val user = User(userName, realName, email, 0)
+        val user = User(userName, realName, email, 0, 1)
 
         users.document(uid).set(user).addOnCompleteListener { task ->
             if (task.isSuccessful) {

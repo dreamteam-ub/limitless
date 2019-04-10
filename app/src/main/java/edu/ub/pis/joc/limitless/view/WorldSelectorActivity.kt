@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.presenter.WorldSelectorPresenter
 
 const val N_LEVELS = 3
@@ -16,9 +19,17 @@ class WorldSelectorActivity : FullScreenActivity() {
     private val TAG = "WorldSelectorActivity"
     private val wsPresenter = WorldSelectorPresenter()
 
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var db : FirebaseFirestore
+    private var worlds : Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_world_selector)
+
+        mAuth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
 
         //Variables
         //var selectLevel: Boolean = false
@@ -30,6 +41,8 @@ class WorldSelectorActivity : FullScreenActivity() {
             R.drawable.world3_select,
             R.drawable.world4_select
         )
+
+
 
         //Variables
         val worldTitle: TextView = findViewById(R.id.world_one_title)
@@ -43,6 +56,13 @@ class WorldSelectorActivity : FullScreenActivity() {
 
         upArrow.visibility = View.INVISIBLE
         leftArrow.visibility = View.INVISIBLE
+
+        db.collection(USERS).document(mAuth.currentUser!!.uid).get().addOnSuccessListener { u ->
+            val user = u.toObject(User::class.java)!!
+            worlds = user.world!!
+        }
+
+
 
         arrowBack.setOnClickListener {
             finish()
