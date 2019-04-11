@@ -1,19 +1,25 @@
 package edu.ub.pis.joc.limitless.view
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.model.game.Character
+
+import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {
     private val thread: GameThread
-    private var personatge : Character? = null
+    private var personatge : PlayerCharacter? = null
+    //Tamaño pantalla
+    private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
+    private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
 
     init {
@@ -27,12 +33,16 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
 
-        personatge = Character(
+        personatge = PlayerCharacter(
             BitmapFactory.decodeResource(
                 resources,
                 R.drawable.won_heart
             )
         )
+        //Character tendra un Rectangulo, le asginaremos los bounds aqui
+        personatge!!.rect.set(resources.getDrawable(R.drawable.won_heart).bounds)
+
+
 
         // start the game thread
         thread.setRunning(true)
@@ -58,13 +68,13 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
     }
 
     /**
-     * Function to update the positions of player and game objects
-     */
+     * Function to update the positions of game objects
+    */
     fun update() {
 
-        personatge!!.update()
 
     }
+
 
     /**
      * Everything that has to be drawn on Canvas
@@ -74,10 +84,44 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
         personatge!!.draw(canvas)
     }
 
-    override fun onTouchEvent(event: MotionEvent) : Boolean {
-        Toast.makeText(context,"hey",Toast.LENGTH_SHORT).show()
-        return super.onTouchEvent(event)
+    private var oldX: Float = 0.toFloat()
+    private var oldY: Float = 0.toFloat()
+
+
+    //ontouch per a moure el character
+
+    //falta que no surti dels limits de la pantalla
+    //falta que l'objecte pugui arrosegar-se bé i des del centre del bitmap
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                oldX = event.x
+                oldY = event.y
+
+            }
+
+            MotionEvent.ACTION_MOVE -> {
+
+                val newX = event.x
+                val newY = event.y
+
+                //if (personatge!!.rect.contains(oldX.toInt(),oldY.toInt())) {
+                //comprovar si anteriorment estava a aquesta posició
+
+                    personatge!!.update(newX.toInt(), newY.toInt())
+
+                    oldX = newX
+                    oldY = newY
+
+
+            }
+        }
+
+        return true
     }
+
+
 
 }
 

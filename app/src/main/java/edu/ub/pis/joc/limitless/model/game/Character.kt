@@ -3,23 +3,28 @@ package edu.ub.pis.joc.limitless.model.game
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Rect
 
-class Character(var image: Bitmap) {
+open abstract class Character(var image: Bitmap) {
     var x: Int = 0
     var y: Int = 0
     var w: Int = 0
     var h: Int = 0
-    private var xVelocity = 20
-    private var yVelocity = 20
+    var rect = Rect() //hitbox
+
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
     init {
+        //medida imagen
         w = image.width
         h = image.height
 
-        x = screenWidth/2
-        y = screenHeight/2
+        //posicion inicial
+        x = screenWidth/3
+        y = screenHeight/3
+
+
     }
 
     /**
@@ -29,22 +34,17 @@ class Character(var image: Bitmap) {
         canvas.drawBitmap(image, x.toFloat(), y.toFloat(), null)
     }
 
-    /**
-     * update properties for the game object
-     */
-    fun update() {
-        //val randomNum = ThreadLocalRandom.current().nextInt(1, 5)
 
-        if (x > screenWidth - image.width || x < image.width) {
-            xVelocity = xVelocity * -1
-        }
-        if (y > screenHeight - image.height || y < image.height) {
-            yVelocity = yVelocity * -1
-        }
+    //getters of screen width and height
 
-        x += (xVelocity)
-        y += (yVelocity)
-
+    fun getScreenWidth() : Int {
+        return screenWidth
     }
+
+    fun getScreenHeight() : Int {
+        return screenHeight
+    }
+
+
 
 }
