@@ -1,5 +1,8 @@
 package edu.ub.pis.joc.limitless.model
 
+import edu.ub.pis.joc.limitless.view.MAX_LEVEL
+import edu.ub.pis.joc.limitless.view.MAX_WORLD
+import edu.ub.pis.joc.limitless.view.MIN_LVL_WORLD
 import java.io.Serializable
 
 const val LEVEL = "level"
@@ -20,7 +23,15 @@ class User : Serializable {
     constructor(userName: String, survived: Long = 0, world: Int = 0, level : Int = 0) {
         this.userName = userName
         this.survived = survived
-        this.world = world
-        this.level = level
+        this.world = when {
+            world > MAX_WORLD -> MAX_WORLD
+            world < MIN_LVL_WORLD -> 0
+            else -> world
+        }
+        this.level = when {
+            level > MAX_LEVEL -> MAX_LEVEL
+            level < MIN_LVL_WORLD -> 0
+            else -> level
+        }
     }
 }

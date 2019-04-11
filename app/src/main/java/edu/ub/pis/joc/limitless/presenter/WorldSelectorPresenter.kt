@@ -6,78 +6,68 @@ import edu.ub.pis.joc.limitless.view.MAX_LEVEL
 import edu.ub.pis.joc.limitless.view.MAX_WORLD
 import edu.ub.pis.joc.limitless.view.MIN_LVL_WORLD
 
-class WorldSelectorPresenter(var view : View) {
+class WorldSelectorPresenter(var view: View) {
 
     fun updateUser(user: User) {
         Data.user = user
-    }
-
-    fun updateLvl(lvl : Int) {
-        var hideLeft = false
-        var hideRight = false
-        val tmp = Data.currentLvl + lvl
-
-        val maxLvl = if (Data.currentWorld < Data.user!!.world!!) {
-            MAX_LEVEL
-        } else {
-            if (Data.user!!.level!! <= MAX_LEVEL) {
-                Data.user!!.level!!
-            } else {
-                MAX_LEVEL
-            }
+        if (Data.currentWorld > Data.user!!.world!!) {
+            Data.currentWorld = Data.user!!.world!!
         }
-
-        if (tmp in MIN_LVL_WORLD..maxLvl) {
-            if (tmp == MIN_LVL_WORLD) {
-                hideLeft = true
-            } else if (tmp == maxLvl) {
-                hideRight = true
-            }
-            Data.currentLvl += lvl
-            view.changeLvlView(Data.currentLvl, hideLeft, hideRight)
+        if (Data.currentLvl > Data.user!!.level!!) {
+            Data.currentLvl = Data.user!!.level!!
         }
     }
 
-    fun updateWorld(world : Int) {
+    fun updateWorld(worldPlus: Int = 0) {
         var hideTop = false
         var hideDown = false
 
-        var hideLeft = false
-        var hideRight = false
-
-        val tmp = Data.currentWorld + world
         val maxWorld = if (Data.user!!.world!! <= MAX_WORLD) {
             Data.user!!.world!!
         } else {
             MAX_WORLD
         }
 
-        if (tmp in MIN_LVL_WORLD..maxWorld) {
-            if (tmp == MIN_LVL_WORLD) {
+        if (Data.currentWorld + worldPlus in MIN_LVL_WORLD..maxWorld) {
+            Data.currentWorld += worldPlus
+            if (Data.currentWorld == MIN_LVL_WORLD) {
                 hideTop = true
-            } else if (tmp == maxWorld) {
+            }
+            if (Data.currentWorld == maxWorld) {
+                if (Data.currentLvl > Data.user!!.level!!) {
+                    Data.currentLvl = Data.user!!.level!!
+                }
                 hideDown = true
             }
-            Data.currentWorld += world
-            view.changeWorldView(Data.currentWorld, hideTop, hideDown)
+        }
+        view.changeWorldView(Data.currentWorld, hideTop, hideDown)
+    }
 
-            if (Data.user!!.level!! < MAX_LEVEL && Data.user!!.world == Data.currentWorld) {
-                Data.currentLvl = Data.user!!.level!!
-                hideRight = true
-            } else if (Data.currentLvl == MAX_LEVEL) {
-                hideRight = true
-            }
+    fun updateLevel(levelPlus: Int = 0) {
+        var hideLeft = false
+        var hideRight = false
 
+        val maxLvl = if (Data.currentWorld < Data.user!!.world!!) {
+            MAX_LEVEL
+        } else {
+            Data.user!!.level!!
+        }
+
+        if (Data.currentLvl + levelPlus in MIN_LVL_WORLD..maxLvl) {
+            Data.currentLvl += levelPlus
             if (Data.currentLvl == MIN_LVL_WORLD) {
                 hideLeft = true
             }
-
-            view.changeLvlView(Data.currentLvl, hideLeft, hideRight)
+            if (Data.currentLvl == maxLvl) {
+                hideRight = true
+            }
         }
+
+        view.changeLevelView(Data.currentLvl, hideLeft, hideRight)
     }
 
     interface View {
-        fun changeLvlView(lvl: Int, hideLeft : Boolean, hideRight : Boolean)
-        fun changeWorldView(world : Int, hideTop : Boolean, hideDown : Boolean)
+        fun changeWorldView(world: Int, hideTop: Boolean, hideDown: Boolean)
+        fun changeLevelView(level: Int, hideLeft: Boolean, hideRight: Boolean)
     }
 }

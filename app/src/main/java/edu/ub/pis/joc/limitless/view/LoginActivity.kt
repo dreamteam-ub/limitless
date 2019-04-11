@@ -24,7 +24,7 @@ const val USERS = "users"
 class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListener {
 
     private val TAG = "LoginActivity"
-    private val RC_SIGN_IN : Int = 1000
+    private val RC_SIGN_IN: Int = 1000
 
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var mAuth: FirebaseAuth
@@ -64,9 +64,11 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
             } catch (e: ApiException) {
                 // Google Sign In failed
                 Log.w(TAG, "Google sign in failed", e)
-                customToast(getString(R.string.fail_google_auth),
+                customToast(
+                    getString(R.string.fail_google_auth),
                     Toast.LENGTH_SHORT, Gravity.TOP or
-                            Gravity.FILL_HORIZONTAL,0,200).show()
+                            Gravity.FILL_HORIZONTAL, 0, 200
+                ).show()
                 setAuth(null)
             }
         }
@@ -85,9 +87,11 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    customToast(getString(R.string.fail_auth),
-                        Toast.LENGTH_SHORT,Gravity.TOP or
-                                Gravity.FILL_HORIZONTAL,0,200).show()
+                    customToast(
+                        getString(R.string.fail_auth),
+                        Toast.LENGTH_SHORT, Gravity.TOP or
+                                Gravity.FILL_HORIZONTAL, 0, 200
+                    ).show()
                     mGoogleSignInClient.revokeAccess().addOnCompleteListener {
                         setAuth(null)
                     }
@@ -114,16 +118,31 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
                         Log.d(TAG, "User document: " + doc.data!!)
                         customImageToast(
                             R.drawable.world4_select, getString(R.string.ok_auth) + "\n" + doc.data!![USER_NAME],
-                            Toast.LENGTH_SHORT,Gravity.TOP or
-                                    Gravity.FILL_HORIZONTAL,0,200).show()
+                            Toast.LENGTH_SHORT, Gravity.TOP or
+                                    Gravity.FILL_HORIZONTAL, 0, 200
+                        ).show()
                         val myUser = doc.toObject(User::class.java)!!
                         if (myUser.level == null) {
                             myUser.level = 0
                             db.collection(USERS).document(user.uid).update(LEVEL, myUser.level)
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        Log.d(TAG, "SUCCESS Fix level")
+                                    } else {
+                                        Log.d(TAG, "FAILED Fix level")
+                                    }
+                                }
                         }
                         if (myUser.world == null) {
                             myUser.world = 0
                             db.collection(USERS).document(user.uid).update(WORLD, myUser.world)
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        Log.d(TAG, "SUCCESS Fix world")
+                                    } else {
+                                        Log.d(TAG, "FAILED Fix world")
+                                    }
+                                }
                         }
                         Data.user = myUser
                     } else {
@@ -135,8 +154,9 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
                 } else {
                     customImageToast(
                         R.drawable.world4_select, getString(R.string.imp_create_user),
-                        Toast.LENGTH_SHORT,Gravity.TOP or
-                                Gravity.FILL_HORIZONTAL,0,200).show()
+                        Toast.LENGTH_SHORT, Gravity.TOP or
+                                Gravity.FILL_HORIZONTAL, 0, 200
+                    ).show()
                     supportFragmentManager.beginTransaction().replace(R.id.fragment_login, LoginSignFragment()).commit()
                 }
             }

@@ -23,10 +23,10 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
 
     private val TAG = "WorldSelectorActivity"
 
-    private lateinit var presenter : WorldSelectorPresenter
+    private lateinit var presenter: WorldSelectorPresenter
 
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var db : FirebaseFirestore
+    private lateinit var db: FirebaseFirestore
 
     private lateinit var userListener: ListenerRegistration
 
@@ -39,9 +39,9 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
     private lateinit var downArrow: ImageButton
     private lateinit var upArrow: ImageButton
 
-    private lateinit var imgWorld : Array<Int>
-    private lateinit var strWorld : Array<Int>
-    private lateinit var strLvl : Array<Int>
+    private lateinit var imgWorld: Array<Int>
+    private lateinit var strWorld: Array<Int>
+    private lateinit var strLvl: Array<Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,14 +61,17 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         downArrow = findViewById(R.id.change_down_arrow)
         upArrow = findViewById(R.id.change_up_arrow)
 
-        userListener = db.collection(USERS).document(mAuth.currentUser!!.uid).addSnapshotListener { docSnapshot, exception ->
-            if (exception != null) {
-                Log.w(TAG, "Listen failed.", exception)
+        userListener =
+            db.collection(USERS).document(mAuth.currentUser!!.uid).addSnapshotListener { docSnapshot, exception ->
+                if (exception != null) {
+                    Log.w(TAG, "Listen failed.", exception)
+                }
+                if (docSnapshot != null && docSnapshot.exists()) {
+                    presenter.updateUser(docSnapshot.toObject(User::class.java)!!)
+                    presenter.updateWorld()
+                    presenter.updateLevel()
+                }
             }
-            if (docSnapshot != null && docSnapshot.exists()) {
-                presenter.updateUser(docSnapshot.toObject(User::class.java)!!)
-            }
-        }
 
         imgWorld = arrayOf(
             R.drawable.world1_select,
@@ -93,27 +96,29 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         worldPhoto.setImageResource(imgWorld[Data.currentWorld])
         worldTitle.text = resources.getString(strWorld[Data.currentWorld])
         lvlTitle.text = resources.getString(strLvl[Data.currentLvl])
-        presenter.updateLvl(0)
-        presenter.updateWorld(0)
 
         arrowBack.setOnClickListener {
             finish()
         }
 
         leftArrow.setOnClickListener {
-            presenter.updateLvl(-1)
+            presenter.updateLevel(-1)
+            presenter.updateWorld()
         }
 
         rightArrow.setOnClickListener {
-            presenter.updateLvl(+1)
+            presenter.updateLevel(+1)
+            presenter.updateWorld()
         }
 
         upArrow.setOnClickListener {
             presenter.updateWorld(-1)
+            presenter.updateLevel()
         }
 
         downArrow.setOnClickListener {
             presenter.updateWorld(+1)
+            presenter.updateLevel()
         }
 
         worldPhoto.setOnClickListener {
@@ -130,23 +135,7 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         userListener.remove() // IMPORTANTE
     }
 
-    override fun changeLvlView(lvl: Int, hideLeft : Boolean, hideRight : Boolean) {
-        if (hideLeft) {
-            leftArrow.visibility = View.INVISIBLE
-        } else {
-            leftArrow.visibility = View.VISIBLE
-        }
-
-        if (hideRight) {
-            rightArrow.visibility = View.INVISIBLE
-        } else {
-            rightArrow.visibility = View.VISIBLE
-        }
-
-        lvlTitle.text = resources.getString(strLvl[lvl])
-    }
-
-    override fun changeWorldView(world: Int, hideTop : Boolean, hideDown : Boolean) {
+    override fun changeWorldView(world: Int, hideTop: Boolean, hideDown: Boolean) {
         if (hideTop) {
             upArrow.visibility = View.INVISIBLE
         } else {
@@ -161,6 +150,22 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
 
         worldPhoto.setImageResource(imgWorld[world])
         worldTitle.text = resources.getString(strWorld[world])
+    }
+
+    override fun changeLevelView(level: Int, hideLeft: Boolean, hideRight: Boolean) {
+        if (hideLeft) {
+            leftArrow.visibility = View.INVISIBLE
+        } else {
+            leftArrow.visibility = View.VISIBLE
+        }
+
+        if (hideRight) {
+            rightArrow.visibility = View.INVISIBLE
+        } else {
+            rightArrow.visibility = View.VISIBLE
+        }
+
+        lvlTitle.text = resources.getString(strLvl[level])
 
     }
 
