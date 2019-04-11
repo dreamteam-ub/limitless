@@ -17,13 +17,10 @@ class GameActivity : FullScreenActivity() {
 
     override fun onStop() {
         super.onStop()
-        if (dialog.isShowing) {
-            dialog.dismiss()
-        }
     }
 
     // DESACTIVAMOS EL BACK DENTRO DEL JUEGO
     override fun onBackPressed() {
-        System.exit(0) // TEMPORAL
+        super.onBackPressed() // TEMPORAL
     }
 }
