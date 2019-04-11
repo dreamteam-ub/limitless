@@ -9,6 +9,7 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
 
 class GameActivity : FullScreenActivity() {
@@ -16,13 +17,18 @@ class GameActivity : FullScreenActivity() {
     private val TAG = "GameActivity"
 
     lateinit var dialog: Dialog
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_game)
+        var surface = GameView(this)
+
+        setContentView(surface)
         val setMode: Intent = intent
         val mode = setMode.extras!!.getString("mode")
 
+
+
+
+/*
         val winButton: Button = findViewById(R.id.winButton)
 
         if (mode == "Infinity") {
@@ -106,6 +112,8 @@ class GameActivity : FullScreenActivity() {
             }
 
         }
+    }
+    */
     }
 
     override fun onStop() {
