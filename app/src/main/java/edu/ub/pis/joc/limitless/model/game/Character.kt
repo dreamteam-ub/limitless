@@ -1,11 +1,10 @@
-package edu.ub.pis.joc.limitless.model
+package edu.ub.pis.joc.limitless.model.game
 
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import java.util.concurrent.ThreadLocalRandom
 
-class Personatge(var image: Bitmap) {
+class Character(var image: Bitmap) {
     var x: Int = 0
     var y: Int = 0
     var w: Int = 0

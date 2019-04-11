@@ -1,10 +1,8 @@
 package edu.ub.pis.joc.limitless.model
 
-import edu.ub.pis.joc.limitless.view.ranking.Ranking
-
 class Data private constructor() {
-    var user : User? = null
-    val ranking : ArrayList<Ranking> = ArrayList<Ranking>()
+    var user : User = User()
+    var ranking : ArrayList<Ranking> = ArrayList<Ranking>()
 
     companion object {
         private var instance : Data? = null

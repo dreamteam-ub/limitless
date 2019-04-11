@@ -20,12 +20,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/ranking_user"
-                    style="@style/cts_limitless_yellow" android:textSize="35sp" tools:text="Cepeda Calvo"/>
+                    style="@style/cts_limitless_yellow" android:textSize="30sp" tools:text="Cepeda Calvo"/>
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/ranking_time"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     style="@style/cts_limitless_yellow" tools:text="Time: MM:SS"/>
         </LinearLayout>
 

@@ -4,11 +4,11 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
-import android.widget.Toast
 import android.view.Gravity
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
 
 abstract class FullScreenActivity : AppCompatActivity() {

@@ -20,13 +20,13 @@
                 android:background="@android:color/transparent"
                 app:srcCompat="@drawable/back_arrow_options"
                 android:contentDescription="@string/back"
-                android:id="@+id/ranking_back_button" android:layout_marginEnd="40dp"/>
+                android:id="@+id/ranking_back_button" android:layout_marginEnd="30dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/userNameTv"
                 style="@style/cts_limitless_pink"
-                tools:text="USERNAME" android:textSize="40sp" android:layout_gravity="center_vertical"
-        />
+                tools:text="USERNAME" android:textSize="35sp" android:layout_gravity="center_vertical"
+                android:maxLines="1"/>
     </LinearLayout>
     <TextView
             android:text="@string/volume"
@@ -60,7 +60,7 @@
             android:id="@+id/sfx_seekbar"
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="60dp"/>
+            android:layout_marginBottom="40dp"/>
     <ImageButton
             android:scaleType="fitXY"
             android:background="@android:color/transparent"

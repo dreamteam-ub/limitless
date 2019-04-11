@@ -68,11 +68,8 @@ class WelcomeActivity : FullScreenActivity() {
     }
 
     private fun createUser(uid: String, userName: String) {
-        val users = db.collection(USERS)
-
         val user = User(userName)
-
-        users.document(uid).set(user).addOnCompleteListener { task ->
+        db.collection(USERS).document(uid).set(user).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val intent = Intent(this, MenuActivity::class.java)
                 customImageToast(

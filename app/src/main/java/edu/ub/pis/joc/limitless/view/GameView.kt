@@ -1,22 +1,22 @@
 package edu.ub.pis.joc.limitless.view
 
 import android.content.Context
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import android.graphics.*
-import android.view.MotionEvent
 import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.model.Personatge
+import edu.ub.pis.joc.limitless.model.game.Character
 
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {
     private val thread: GameThread
-    private var personatge : Personatge? = null
+    private var personatge : Character? = null
 
 
     init {
-
         // add callback
         holder.addCallback(this)
 
@@ -27,7 +27,12 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
 
-        personatge = Personatge(BitmapFactory.decodeResource(resources, R.drawable.won_heart))
+        personatge = Character(
+            BitmapFactory.decodeResource(
+                resources,
+                R.drawable.won_heart
+            )
+        )
 
         // start the game thread
         thread.setRunning(true)

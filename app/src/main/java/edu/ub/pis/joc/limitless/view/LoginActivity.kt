@@ -4,13 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
-import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -19,10 +17,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.User
+import edu.ub.pis.joc.limitless.view.login.LoginSignFragment
+import edu.ub.pis.joc.limitless.view.login.LoginWaitFragment
 
 const val USERS = "users"
 
-class LoginActivity : FullScreenActivity() {
+class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListener {
 
     private val TAG = "LoginActivity"
     private val RC_SIGN_IN : Int = 1000
@@ -45,13 +45,8 @@ class LoginActivity : FullScreenActivity() {
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        val signInButton: SignInButton = findViewById(R.id.signin_btn)
-        val textView = signInButton.getChildAt(0) as TextView
-        textView.text = getString(R.string.cuenta_google_btn)
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_login, LoginSignFragment()).commit()
 
-        signInButton.setOnClickListener {
-            signIn()
-        }
     }
 
     override fun onStart() {
@@ -94,7 +89,9 @@ class LoginActivity : FullScreenActivity() {
                     customToast(getString(R.string.fail_auth),
                         Toast.LENGTH_SHORT,Gravity.TOP or
                                 Gravity.FILL_HORIZONTAL,0,200).show()
-                    setAuth(null)
+                    mGoogleSignInClient.revokeAccess().addOnCompleteListener {
+                        setAuth(null)
+                    }
                 }
             }
     }
@@ -104,16 +101,10 @@ class LoginActivity : FullScreenActivity() {
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-    private fun signOut() {
-        // Firebase sign out
-        mAuth.signOut()
-        // Google sign out
-        mGoogleSignInClient.signOut()
-    }
-
     private fun setAuth(user: FirebaseUser?) {
         if (user != null) {
-            layoutInflater.inflate(R.layout.activity_login_wait,findViewById(R.id.login_layout), true)
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_login, LoginWaitFragment()).commit()
+
             var intent = Intent(this, MenuActivity::class.java)
             val userDb = db.collection(USERS).document(user.uid)
 
@@ -126,8 +117,7 @@ class LoginActivity : FullScreenActivity() {
                             R.drawable.world4_select, getString(R.string.ok_auth) + "\n" + doc.data!![USER_NAME],
                             Toast.LENGTH_SHORT,Gravity.TOP or
                                     Gravity.FILL_HORIZONTAL,0,200).show()
-                        val user = doc.toObject(User::class.java)!!
-                        Data.getInstance().user = user
+                        Data.getInstance().user = doc.toObject(User::class.java)!!
                     } else {
                         Log.d(TAG, "No such document")
                         intent = Intent(this, WelcomeActivity::class.java)
@@ -139,9 +129,13 @@ class LoginActivity : FullScreenActivity() {
                         R.drawable.world4_select, getString(R.string.imp_create_user),
                         Toast.LENGTH_SHORT,Gravity.TOP or
                                 Gravity.FILL_HORIZONTAL,0,200).show()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_login, LoginSignFragment()).commit()
                 }
-
             }
         }
+    }
+
+    override fun onLoginSign() {
+        signIn()
     }
 }

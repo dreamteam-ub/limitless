@@ -14,14 +14,9 @@
             android:id="@+id/limitless_logo"
             android:contentDescription="@string/app_name" android:layout_gravity="center_horizontal"
             android:adjustViewBounds="true" android:layout_marginTop="40dp" android:layout_marginBottom="20dp"/>
-    <TextView
-            android:text="@string/sigin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/signin_tv"
-            android:textColor="@color/colorPrimary" android:layout_gravity="center" android:textSize="30sp"
-            android:textStyle="bold" android:layout_marginBottom="40dp"/>
-    <com.google.android.gms.common.SignInButton
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:id="@+id/signin_btn" android:layout_gravity="center"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent" android:id="@+id/fragment_login">
+    </LinearLayout>
 </LinearLayout>

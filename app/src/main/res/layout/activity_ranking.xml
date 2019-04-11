@@ -46,18 +46,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_vertical" android:id="@+id/your_rank_ly">
+            android:gravity="center_vertical" android:id="@+id/my_rank_ly">
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/your_user"
-                style="@style/cts_limitless_white" android:textSize="35sp" tools:text="Cepeda Calvo"
+                android:id="@+id/my_user_name"
+                style="@style/cts_limitless_white" android:textSize="30sp" tools:text="Cepeda Calvo"
         />
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/your_time"
-                android:textSize="24sp"
+                android:id="@+id/my_time"
+                android:textSize="20sp"
                 style="@style/cts_limitless_white" tools:text="Time: MM:SS"/>
 
     </LinearLayout>
