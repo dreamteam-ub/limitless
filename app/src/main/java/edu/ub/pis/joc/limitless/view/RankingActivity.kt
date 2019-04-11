@@ -14,6 +14,7 @@ import com.google.firebase.firestore.Query
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.Ranking
+import edu.ub.pis.joc.limitless.model.SURVIVED
 import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.presenter.RankingPresenter
 import edu.ub.pis.joc.limitless.view.ranking.RankingRecyclerAdapter
@@ -62,7 +63,7 @@ class RankingActivity : FullScreenActivity(), RankingPresenter.View {
 
         recyclerView = findViewById(R.id.ranking_recicler)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-        recyclerView.adapter = RankingRecyclerAdapter(Data.getInstance().ranking)
+        recyclerView.adapter = RankingRecyclerAdapter(Data.ranking)
 
         // RANK
         val rank = db.collection(USERS).whereGreaterThan(SURVIVED, 0).limit(LIMIT).orderBy(

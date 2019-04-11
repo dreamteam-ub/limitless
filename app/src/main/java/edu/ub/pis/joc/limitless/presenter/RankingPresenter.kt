@@ -7,12 +7,12 @@ import edu.ub.pis.joc.limitless.model.User
 class RankingPresenter(var view : View) {
 
     fun updateUser(user: User) {
-        Data.getInstance().user = user
+        Data.user = user
         view.updateUserInfo(user)
     }
 
     fun updateRanking(ranks: ArrayList<Ranking>) {
-        Data.getInstance().ranking = ranks
+        Data.ranking = ranks
         view.updateRankInfo(ranks)
     }
 

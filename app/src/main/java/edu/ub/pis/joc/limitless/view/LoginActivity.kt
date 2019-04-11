@@ -15,8 +15,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.model.Data
-import edu.ub.pis.joc.limitless.model.User
+import edu.ub.pis.joc.limitless.model.*
 import edu.ub.pis.joc.limitless.view.login.LoginSignFragment
 import edu.ub.pis.joc.limitless.view.login.LoginWaitFragment
 
@@ -117,7 +116,16 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
                             R.drawable.world4_select, getString(R.string.ok_auth) + "\n" + doc.data!![USER_NAME],
                             Toast.LENGTH_SHORT,Gravity.TOP or
                                     Gravity.FILL_HORIZONTAL,0,200).show()
-                        Data.getInstance().user = doc.toObject(User::class.java)!!
+                        val myUser = doc.toObject(User::class.java)!!
+                        if (myUser.level == null) {
+                            myUser.level = 0
+                            db.collection(USERS).document(user.uid).update(LEVEL, myUser.level)
+                        }
+                        if (myUser.world == null) {
+                            myUser.world = 0
+                            db.collection(USERS).document(user.uid).update(WORLD, myUser.world)
+                        }
+                        Data.user = myUser
                     } else {
                         Log.d(TAG, "No such document")
                         intent = Intent(this, WelcomeActivity::class.java)

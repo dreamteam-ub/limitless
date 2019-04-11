@@ -14,10 +14,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.USER_NAME
 import edu.ub.pis.joc.limitless.model.User
 
-const val USER_NAME = "userName"
-const val SURVIVED = "survived"
+
 
 class WelcomeActivity : FullScreenActivity() {
 
@@ -76,7 +76,7 @@ class WelcomeActivity : FullScreenActivity() {
                     R.drawable.world4_select, getString(R.string.user_created),
                     Toast.LENGTH_SHORT, Gravity.TOP or
                             Gravity.FILL_HORIZONTAL,0,200).show()
-                Data.getInstance().user = user
+                Data.user = user
                 startActivity(intent)
                 finish()
             } else {

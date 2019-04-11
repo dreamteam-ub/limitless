@@ -6,7 +6,7 @@ import edu.ub.pis.joc.limitless.model.User
 class OptionsPresenter(var view : OptionsPresenter.View) {
 
     fun updateUser(user: User) {
-        Data.getInstance().user = user
+        Data.user = user
         view.updateUserInfo(user)
     }
 
