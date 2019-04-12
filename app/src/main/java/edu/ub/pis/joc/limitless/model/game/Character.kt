@@ -25,6 +25,8 @@ open abstract class Character(var image: Bitmap) {
         y = screenHeight/3
 
 
+
+
     }
 
     /**

@@ -4,8 +4,8 @@ import android.graphics.Bitmap
 
 class Skull(image: Bitmap) : Character(image) , EnemieInterface {
 
-    override var xVelocity: Int = 20
-    override var yVelocity: Int = 20
+    override var xVelocity: Int = 5
+    override var yVelocity: Int = 5
 
 
 

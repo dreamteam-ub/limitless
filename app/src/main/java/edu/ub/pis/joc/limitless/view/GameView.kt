@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.Resources
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
-import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
@@ -12,14 +11,12 @@ import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
 
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
+import edu.ub.pis.joc.limitless.model.game.Skull
 
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {
     private val thread: GameThread
     private var personatge : PlayerCharacter? = null
-    //Tamaño pantalla
-    private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
-    private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
 
     init {
@@ -39,8 +36,9 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
                 R.drawable.won_heart
             )
         )
+
         //Character tendra un Rectangulo, le asginaremos los bounds aqui
-        personatge!!.rect.set(resources.getDrawable(R.drawable.won_heart).bounds)
+        personatge!!.rect.set(100,100,100,100)
 
 
 
@@ -72,6 +70,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
     */
     fun update() {
 
+        //skull!!.update()
+
 
     }
 
@@ -95,28 +95,46 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                oldX = event.x
-                oldY = event.y
 
-            }
 
-            MotionEvent.ACTION_MOVE -> {
+                MotionEvent.ACTION_DOWN -> {
 
-                val newX = event.x
-                val newY = event.y
+                    oldX = event.x
+                    oldY = event.y
 
-                //if (personatge!!.rect.contains(oldX.toInt(),oldY.toInt())) {
-                //comprovar si anteriorment estava a aquesta posició
+                    /* amb aixó farem que no es faci teletansport (a arreglar)
+                    if (event.x >= personatge!!.x && event.x < (personatge!!.x + personatge!!.w)
+                        && event.y >= personatge!!.x && event.y < (personatge!!.x + personatge!!.h)) {
+
+
+
+                    }
+                    */
+
+                }
+
+
+                MotionEvent.ACTION_MOVE -> {
+
+                    val newX = event.x
+                    val newY = event.y
 
                     personatge!!.update(newX.toInt(), newY.toInt())
+
+
 
                     oldX = newX
                     oldY = newY
 
 
-            }
+
+                }
+
+
+
+
         }
+        
 
         return true
     }

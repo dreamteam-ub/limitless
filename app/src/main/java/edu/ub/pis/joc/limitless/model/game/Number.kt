@@ -6,4 +6,10 @@ class Number(image: Bitmap) : Character(image), ObjectsInGameInterface {
     override fun update() {
 
     }
+
+    override fun isTaken() {
+
+        image.recycle()
+
+    }
 }
