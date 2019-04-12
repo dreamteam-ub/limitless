@@ -17,8 +17,8 @@ open abstract class Character(var image: Bitmap) {
 
     init {
         //medida imagen
-        w = image.width
-        h = image.height
+        w = image.width/2
+        h = image.height/2
 
         //posicion inicial
         x = screenWidth/3
@@ -33,7 +33,12 @@ open abstract class Character(var image: Bitmap) {
      * Draws the object on to the canvas.
      */
     fun draw(canvas: Canvas) {
-        canvas.drawBitmap(image, x.toFloat(), y.toFloat(), null)
+        //vamos a hacer nosotros mismos las coordenadas left,top,right y bottom para meterlas en
+        //el hitbox
+        var halfW : Int = w/2
+        var halfH : Int = h/2
+        rect.set(x-halfW,y-halfH,x+halfW,y+halfH)
+        canvas.drawBitmap(image, null, rect, null)
     }
 
 

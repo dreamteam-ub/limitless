@@ -1,11 +1,12 @@
 package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
+import android.widget.Toast
 
 class Skull(image: Bitmap) : Character(image) , EnemieInterface {
 
-    override var xVelocity: Int = 5
-    override var yVelocity: Int = 5
+    override var xVelocity: Int = 10
+    override var yVelocity: Int = 10
 
 
 
@@ -18,6 +19,10 @@ class Skull(image: Bitmap) : Character(image) , EnemieInterface {
             if (y > this.getScreenHeight() - image.height || y < image.height) {
                 yVelocity = yVelocity * -1
             }
+
+
+
+
 
                 x  += (xVelocity)
                 y += (yVelocity)

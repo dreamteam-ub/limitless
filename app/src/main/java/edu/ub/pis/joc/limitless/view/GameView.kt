@@ -17,6 +17,8 @@ import edu.ub.pis.joc.limitless.model.game.Skull
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {
     private val thread: GameThread
     private var personatge : PlayerCharacter? = null
+    private var skull : Skull? = null
+
 
 
     init {
@@ -37,8 +39,13 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
             )
         )
 
-        //Character tendra un Rectangulo, le asginaremos los bounds aqui
-        personatge!!.rect.set(100,100,100,100)
+        skull = Skull(
+            BitmapFactory.decodeResource(
+                resources,
+                R.drawable.corazon_muerte
+            )
+        )
+
 
 
 
@@ -70,7 +77,12 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
     */
     fun update() {
 
-        //skull!!.update()
+        skull!!.update()
+        if (touched){
+            personatge!!.update(touched_x, touched_y)
+
+        }
+
 
 
     }
@@ -82,62 +94,50 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
         personatge!!.draw(canvas)
+        skull!!.draw(canvas)
     }
 
-    private var oldX: Float = 0.toFloat()
-    private var oldY: Float = 0.toFloat()
 
 
-    //ontouch per a moure el character
-
-    //falta que no surti dels limits de la pantalla
-    //falta que l'objecte pugui arrosegar-se bé i des del centre del bitmap
+    var touched_x = 0
+    var touched_y =0
+    var touched = false
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        when (event.action) {
+        // when ever there is a touch on the screen,
+        // we can get the position of touch
+        // which we may use it for tracking some of the game objects
+        touched_x = event.x.toInt()
+        touched_y = event.y.toInt()
 
-
-                MotionEvent.ACTION_DOWN -> {
-
-                    oldX = event.x
-                    oldY = event.y
-
-                    /* amb aixó farem que no es faci teletansport (a arreglar)
-                    if (event.x >= personatge!!.x && event.x < (personatge!!.x + personatge!!.w)
-                        && event.y >= personatge!!.x && event.y < (personatge!!.x + personatge!!.h)) {
-
-
-
-                    }
-                    */
-
-                }
-
-
-                MotionEvent.ACTION_MOVE -> {
-
-                    val newX = event.x
-                    val newY = event.y
-
-                    personatge!!.update(newX.toInt(), newY.toInt())
-
-
-
-                    oldX = newX
-                    oldY = newY
-
-
-
-                }
-
-
-
+        val action = event.action
+        when (action) {
+            MotionEvent.ACTION_DOWN -> touched = true
+            MotionEvent.ACTION_MOVE -> touched = true
+            MotionEvent.ACTION_UP -> touched = false
+            MotionEvent.ACTION_CANCEL -> touched = false
+            MotionEvent.ACTION_OUTSIDE -> touched = false
 
         }
+        //es posa aqui ja que al crear-se els dos elements, es coloquen a la mateixa posició i hi ha
+        //colissio
         
+        if (onContactEvent()){
+            personatge!!.die()
+        }
 
         return true
     }
+
+
+    fun onContactEvent() : Boolean{
+        var hit = false
+        if (skull!!.rect.intersect(personatge!!.rect)){
+            hit=true
+        }
+        return hit
+    }
+
 
 
 
