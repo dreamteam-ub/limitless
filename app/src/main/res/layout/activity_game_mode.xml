@@ -18,23 +18,24 @@
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/back_arrow"
             android:contentDescription="@string/back"
-            android:id="@+id/blackArrowButton" android:layout_marginBottom="40dp"/>
+            android:id="@+id/blackArrowButton" android:layout_marginBottom="30dp"/>
     <ImageButton
             android:layout_width="250dp"
             android:scaleType="fitXY"
             android:background="@android:color/transparent"
-            android:adjustViewBounds="true"
             android:layout_height="wrap_content" app:srcCompat="@drawable/my_map"
             android:id="@+id/myMapButton"
             android:contentDescription="@string/mymap_button"
-            android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal" android:adjustViewBounds="true"/>
     <TextView
             style="@style/cts_limitless_purple"
-            android:layout_width="match_parent"
-            android:textSize="30sp"
-            android:layout_height="118dp" android:id="@+id/MyMapText"
+            android:layout_width="250dp"
+            android:textSize="24sp"
+            android:id="@+id/MyMapText"
             android:singleLine="false" tools:text="@string/text_mymap" android:text="@string/text_mymap"
-            android:layout_marginStart="30dp" android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp" android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"/>
     <ImageButton
             android:layout_width="250dp"
             android:background="@android:color/transparent"
@@ -42,17 +43,17 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/inf_button"
             android:layout_height="wrap_content" app:srcCompat="@drawable/infinite_mode"
-            android:id="@+id/infiniteModeButton" android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"/>
+            android:id="@+id/infiniteModeButton"
+            android:layout_marginBottom="20dp" android:layout_gravity="center_horizontal"/>
     <TextView
             android:text="@string/text_infinite"
             tools:text="@string/text_infinite"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:singleLine="false"
             style="@style/cts_limitless_purple"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:layout_height="wrap_content" android:id="@+id/infiniteText"
-            android:layout_marginStart="30dp"/>
+            android:layout_gravity="center_horizontal"/>
 
 
 </LinearLayout>

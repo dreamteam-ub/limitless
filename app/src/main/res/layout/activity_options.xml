@@ -10,7 +10,7 @@
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" android:layout_gravity="top" android:layout_marginBottom="30dp">
         <ImageButton
                 android:scaleType="fitXY"
                 android:layout_gravity="top"
@@ -26,14 +26,14 @@
                 android:layout_height="wrap_content" android:id="@+id/userNameTv"
                 style="@style/cts_limitless_pink"
                 tools:text="USERNAME" android:textSize="35sp" android:layout_gravity="center_vertical"
-                android:maxLines="1"/>
+        />
     </LinearLayout>
     <TextView
             android:text="@string/volume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_pink" android:layout_marginTop="20dp" android:textSize="50sp"
+            style="@style/cts_limitless_pink" android:textSize="40sp"
             android:layout_marginBottom="20dp"/>
     <TextView
             android:text="@string/music"
