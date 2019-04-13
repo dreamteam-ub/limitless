@@ -1,7 +1,6 @@
-package edu.ub.pis.joc.limitless.model.game
+package edu.ub.pis.joc.limitless.view.ranking.model.game
 
 import android.graphics.Bitmap
-import android.widget.Toast
 
 class Skull(image: Bitmap) : Character(image) , EnemieInterface {
 

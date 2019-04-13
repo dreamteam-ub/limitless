@@ -1,4 +1,4 @@
-package edu.ub.pis.joc.limitless.model.game
+package edu.ub.pis.joc.limitless.view.ranking.model.game
 
 import android.content.res.Resources
 import android.graphics.Bitmap

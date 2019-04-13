@@ -12,8 +12,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.model.User
+import edu.ub.pis.joc.limitless.view.ranking.model.User
 import edu.ub.pis.joc.limitless.presenter.OptionsPresenter
+import android.widget.SeekBar
+import edu.ub.pis.joc.limitless.view.ranking.model.Data
+import android.widget.SeekBar.OnSeekBarChangeListener
+
+
+
 
 class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
 
@@ -29,6 +35,9 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
 
     private lateinit var userName : TextView
 
+    private lateinit var sfxSeekBar: SeekBar
+    private lateinit var musicSeekBar: SeekBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_options)
@@ -38,6 +47,12 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         mGoogleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+
+        sfxSeekBar = findViewById(R.id.sfx_seekbar)
+        musicSeekBar = findViewById(R.id.music_seekbar)
+
+        sfxSeekBar.progress = if (Data.user.sfx != null) Data.user.sfx!! else 100
+        musicSeekBar.progress = if (Data.user.music != null) Data.user.music!! else 100
 
         val optionsBackArrow: ImageButton = findViewById(R.id.ranking_back_button)
         optionsBackArrow.setOnClickListener {
@@ -66,6 +81,32 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
             mGoogleSignInClient.signOut()
             startActivity(intent)
         }
+
+        sfxSeekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+            }
+
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                presenter.updateSFX(sfxSeekBar.progress)
+            }
+        })
+
+        musicSeekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+            }
+
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                presenter.updateMusic(musicSeekBar.progress)
+            }
+        })
     }
 
     override fun onDestroy() {
@@ -75,5 +116,13 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
 
     override fun updateUserInfo(user: User) {
         userName.text = user.userName
+    }
+
+    override fun updateSFX(value: Int) {
+        //Resetear la musica con el nuevo nivel de volumen
+    }
+
+    override fun updateMusic(value: Int) {
+        //Resetear la musica con el nuevo nivel de volumen
     }
 }

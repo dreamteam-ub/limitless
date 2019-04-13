@@ -1,7 +1,7 @@
 package edu.ub.pis.joc.limitless.presenter
 
-import edu.ub.pis.joc.limitless.model.Data
-import edu.ub.pis.joc.limitless.model.User
+import edu.ub.pis.joc.limitless.view.ranking.model.Data
+import edu.ub.pis.joc.limitless.view.ranking.model.User
 import edu.ub.pis.joc.limitless.view.MAX_LEVEL
 import edu.ub.pis.joc.limitless.view.MAX_WORLD
 import edu.ub.pis.joc.limitless.view.MIN_LVL_WORLD

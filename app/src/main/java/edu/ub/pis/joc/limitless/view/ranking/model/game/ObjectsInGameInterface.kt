@@ -1,4 +1,4 @@
-package edu.ub.pis.joc.limitless.model.game
+package edu.ub.pis.joc.limitless.view.ranking.model.game
 
 interface ObjectsInGameInterface {
     fun update()

@@ -1,17 +1,15 @@
 package edu.ub.pis.joc.limitless.view
 
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
 
-import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
-import edu.ub.pis.joc.limitless.model.game.Skull
+import edu.ub.pis.joc.limitless.view.ranking.model.game.PlayerCharacter
+import edu.ub.pis.joc.limitless.view.ranking.model.game.Skull
 
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {

@@ -1,4 +1,4 @@
-package edu.ub.pis.joc.limitless.model
+package edu.ub.pis.joc.limitless.view.ranking.model
 
 import edu.ub.pis.joc.limitless.view.MAX_LEVEL
 import edu.ub.pis.joc.limitless.view.MAX_WORLD
@@ -17,12 +17,17 @@ class User : Serializable {
     var world: Int? = null
     var level: Int? = null
 
+    var sfx : Int? = null
+    var music : Int? = null
+
     constructor() {
     }
 
-    constructor(userName: String, survived: Long = 0, world: Int = 0, level : Int = 0) {
+    constructor(userName: String, survived: Long = 0, world: Int = 0, level : Int = 0, sfx : Int = 100,music : Int = 100) {
         this.userName = userName
         this.survived = survived
+        this.sfx = sfx
+        this.music = music
         this.world = when {
             world > MAX_WORLD -> MAX_WORLD
             world < MIN_LVL_WORLD -> 0

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.model.Ranking
+import edu.ub.pis.joc.limitless.view.ranking.model.Ranking
 
 class RankingRecyclerAdapter(private val llista: ArrayList<Ranking>) :
     RecyclerView.Adapter<RankingRecyclerAdapter.ViewHolder>() {

@@ -1,4 +1,4 @@
-package edu.ub.pis.joc.limitless.model
+package edu.ub.pis.joc.limitless.view.ranking.model
 
 import edu.ub.pis.joc.limitless.view.MAX_LEVEL
 import edu.ub.pis.joc.limitless.view.MAX_WORLD

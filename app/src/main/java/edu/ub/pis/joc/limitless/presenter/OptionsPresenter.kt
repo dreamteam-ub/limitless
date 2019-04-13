@@ -1,7 +1,7 @@
 package edu.ub.pis.joc.limitless.presenter
 
-import edu.ub.pis.joc.limitless.model.Data
-import edu.ub.pis.joc.limitless.model.User
+import edu.ub.pis.joc.limitless.view.ranking.model.Data
+import edu.ub.pis.joc.limitless.view.ranking.model.User
 
 class OptionsPresenter(var view : OptionsPresenter.View) {
 
@@ -10,10 +10,19 @@ class OptionsPresenter(var view : OptionsPresenter.View) {
         view.updateUserInfo(user)
     }
 
-    // TODO FALTAN METODOS SFX Y AUDIO
+    fun updateSFX(value: Int) {
+        Data.user.sfx = value
+        view.updateSFX(value)
+    }
+
+    fun updateMusic(value: Int) {
+        Data.user.music = value
+        view.updateMusic(value)
+    }
 
     interface View {
         fun updateUserInfo(user: User)
-        // TODO FALTAN METODOS SFX Y AUDIO
+        fun updateSFX(value: Int)
+        fun updateMusic(value: Int)
     }
 }
