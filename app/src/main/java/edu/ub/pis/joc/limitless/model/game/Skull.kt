@@ -24,8 +24,9 @@ class Skull(image: Bitmap) : Character(image) , EnemieInterface {
 
 
 
-                x  += (xVelocity)
-                y += (yVelocity)
+
+            x  += (xVelocity)
+            y += (yVelocity)
 
     }
 }

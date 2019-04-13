@@ -121,7 +121,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
         }
         //es posa aqui ja que al crear-se els dos elements, es coloquen a la mateixa posició i hi ha
         //colissio
-        
+
         if (onContactEvent()){
             personatge!!.die()
         }
