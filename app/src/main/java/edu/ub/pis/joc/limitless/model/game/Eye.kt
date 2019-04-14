@@ -1,8 +1,8 @@
-package edu.ub.pis.joc.limitless.view.ranking.model.game
+package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 
-class Ghost(image: Bitmap) : Character(image), EnemieInterface {
+class Eye(image: Bitmap) : Character(image), EnemieInterface {
 
     override var xVelocity: Int = 20
     override var yVelocity: Int = 20
@@ -23,7 +23,4 @@ class Ghost(image: Bitmap) : Character(image), EnemieInterface {
         y += (yVelocity)
 
     }
-
-
-
 }

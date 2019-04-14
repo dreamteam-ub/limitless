@@ -1,8 +1,8 @@
 package edu.ub.pis.joc.limitless.presenter
 
-import edu.ub.pis.joc.limitless.view.ranking.model.Data
-import edu.ub.pis.joc.limitless.view.ranking.model.Ranking
-import edu.ub.pis.joc.limitless.view.ranking.model.User
+import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.Ranking
+import edu.ub.pis.joc.limitless.model.User
 
 class RankingPresenter(var view : View) {
 

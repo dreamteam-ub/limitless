@@ -1,7 +1,10 @@
 package edu.ub.pis.joc.limitless.presenter
 
-import edu.ub.pis.joc.limitless.view.ranking.model.Data
-import edu.ub.pis.joc.limitless.view.ranking.model.User
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.User
+import edu.ub.pis.joc.limitless.view.*
 
 class OptionsPresenter(var view : OptionsPresenter.View) {
 
@@ -11,18 +14,20 @@ class OptionsPresenter(var view : OptionsPresenter.View) {
     }
 
     fun updateSFX(value: Int) {
-        Data.user.sfx = value
-        view.updateSFX(value)
+        val mAuth = FirebaseAuth.getInstance()
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection(USERS).document(mAuth.currentUser!!.uid).update(SFX, value)
     }
 
     fun updateMusic(value: Int) {
-        Data.user.music = value
-        view.updateMusic(value)
+        val mAuth = FirebaseAuth.getInstance()
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection(USERS).document(mAuth.currentUser!!.uid).update(MUSIC, value)
     }
 
     interface View {
         fun updateUserInfo(user: User)
-        fun updateSFX(value: Int)
-        fun updateMusic(value: Int)
     }
 }

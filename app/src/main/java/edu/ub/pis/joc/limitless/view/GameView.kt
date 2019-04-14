@@ -8,8 +8,8 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import edu.ub.pis.joc.limitless.R
 
-import edu.ub.pis.joc.limitless.view.ranking.model.game.PlayerCharacter
-import edu.ub.pis.joc.limitless.view.ranking.model.game.Skull
+import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
+import edu.ub.pis.joc.limitless.model.game.Skull
 
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {

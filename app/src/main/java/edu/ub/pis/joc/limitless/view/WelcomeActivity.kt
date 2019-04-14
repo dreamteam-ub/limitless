@@ -13,9 +13,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.view.ranking.model.Data
-import edu.ub.pis.joc.limitless.view.ranking.model.USER_NAME
-import edu.ub.pis.joc.limitless.view.ranking.model.User
+import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.USER_NAME
+import edu.ub.pis.joc.limitless.model.User
 
 
 

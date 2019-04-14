@@ -1,7 +1,7 @@
 package edu.ub.pis.joc.limitless.presenter
 
-import edu.ub.pis.joc.limitless.view.ranking.model.Data
-import edu.ub.pis.joc.limitless.view.ranking.model.User
+import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.view.MAX_LEVEL
 import edu.ub.pis.joc.limitless.view.MAX_WORLD
 import edu.ub.pis.joc.limitless.view.MIN_LVL_WORLD
@@ -10,11 +10,11 @@ class WorldSelectorPresenter(var view: View) {
 
     fun updateUser(user: User) {
         Data.user = user
-        if (Data.currentWorld > Data.user!!.world!!) {
-            Data.currentWorld = Data.user!!.world!!
+        if (Data.currentWorld > Data.user.world!!) {
+            Data.currentWorld = Data.user.world!!
         }
-        if (Data.currentLvl > Data.user!!.level!!) {
-            Data.currentLvl = Data.user!!.level!!
+        if (Data.currentLvl > Data.user.level!!) {
+            Data.currentLvl = Data.user.level!!
         }
     }
 
@@ -22,8 +22,8 @@ class WorldSelectorPresenter(var view: View) {
         var hideTop = false
         var hideDown = false
 
-        val maxWorld = if (Data.user!!.world!! <= MAX_WORLD) {
-            Data.user!!.world!!
+        val maxWorld = if (Data.user.world!! <= MAX_WORLD) {
+            Data.user.world!!
         } else {
             MAX_WORLD
         }
@@ -34,8 +34,8 @@ class WorldSelectorPresenter(var view: View) {
                 hideTop = true
             }
             if (Data.currentWorld == maxWorld) {
-                if (Data.currentLvl > Data.user!!.level!!) {
-                    Data.currentLvl = Data.user!!.level!!
+                if (Data.currentLvl > Data.user.level!!) {
+                    Data.currentLvl = Data.user.level!!
                 }
                 hideDown = true
             }
@@ -47,10 +47,10 @@ class WorldSelectorPresenter(var view: View) {
         var hideLeft = false
         var hideRight = false
 
-        val maxLvl = if (Data.currentWorld < Data.user!!.world!!) {
+        val maxLvl = if (Data.currentWorld < Data.user.world!!) {
             MAX_LEVEL
         } else {
-            Data.user!!.level!!
+            Data.user.level!!
         }
 
         if (Data.currentLvl + levelPlus in MIN_LVL_WORLD..maxLvl) {

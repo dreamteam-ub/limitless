@@ -12,12 +12,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Query
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.view.ranking.model.Data
-import edu.ub.pis.joc.limitless.view.ranking.model.Ranking
-import edu.ub.pis.joc.limitless.view.ranking.model.SURVIVED
-import edu.ub.pis.joc.limitless.view.ranking.model.User
+import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.Ranking
+import edu.ub.pis.joc.limitless.model.SURVIVED
+import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.presenter.RankingPresenter
-import edu.ub.pis.joc.limitless.view.ranking.RankingRecyclerAdapter
 
 const val LIMIT: Long = 10
 

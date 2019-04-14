@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.view.ranking.model.*
+import edu.ub.pis.joc.limitless.model.*
 import edu.ub.pis.joc.limitless.view.login.LoginSignFragment
 import edu.ub.pis.joc.limitless.view.login.LoginWaitFragment
 
@@ -122,28 +122,6 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
                                     Gravity.FILL_HORIZONTAL, 0, 200
                         ).show()
                         val myUser = doc.toObject(User::class.java)!!
-                        if (myUser.level == null) {
-                            myUser.level = 0
-                            db.collection(USERS).document(user.uid).update(LEVEL, myUser.level)
-                                .addOnCompleteListener { task ->
-                                    if (task.isSuccessful) {
-                                        Log.d(TAG, "SUCCESS Fix level")
-                                    } else {
-                                        Log.d(TAG, "FAILED Fix level")
-                                    }
-                                }
-                        }
-                        if (myUser.world == null) {
-                            myUser.world = 0
-                            db.collection(USERS).document(user.uid).update(WORLD, myUser.world)
-                                .addOnCompleteListener { task ->
-                                    if (task.isSuccessful) {
-                                        Log.d(TAG, "SUCCESS Fix world")
-                                    } else {
-                                        Log.d(TAG, "FAILED Fix world")
-                                    }
-                                }
-                        }
                         Data.user = myUser
                     } else {
                         Log.d(TAG, "No such document")

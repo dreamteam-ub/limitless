@@ -10,8 +10,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.view.ranking.model.Data
-import edu.ub.pis.joc.limitless.view.ranking.model.User
+import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.presenter.WorldSelectorPresenter
 
 const val MAX_LEVEL = 2 // 0-2
@@ -122,7 +122,6 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
 
         worldPhoto.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra("mode", "My Map")
             startActivity(intent)
             finish()
         }

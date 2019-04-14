@@ -12,14 +12,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.view.ranking.model.User
+import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.presenter.OptionsPresenter
 import android.widget.SeekBar
-import edu.ub.pis.joc.limitless.view.ranking.model.Data
+import edu.ub.pis.joc.limitless.model.Data
 import android.widget.SeekBar.OnSeekBarChangeListener
 
-
-
+const val SFX = "sfx"
+const val MUSIC = "music"
 
 class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
 
@@ -116,13 +116,5 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
 
     override fun updateUserInfo(user: User) {
         userName.text = user.userName
-    }
-
-    override fun updateSFX(value: Int) {
-        //Resetear la musica con el nuevo nivel de volumen
-    }
-
-    override fun updateMusic(value: Int) {
-        //Resetear la musica con el nuevo nivel de volumen
     }
 }
