@@ -6,6 +6,8 @@ interface EnemieInterface {
     var xVelocity : Int
     var yVelocity : Int
 
+
+
     fun update()
 
 }

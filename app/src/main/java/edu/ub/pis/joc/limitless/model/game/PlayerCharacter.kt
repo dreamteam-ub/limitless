@@ -4,38 +4,73 @@ import android.graphics.Bitmap
 
 class PlayerCharacter(image: Bitmap) : Character(image), PlayerCharacterInterface {
 
+    init{
+        w=image.width/3
+        h=image.height/3
+    }
+
+
+
 
     override fun update(newX : Int , newY : Int) {
-        /* colissio parets
-        if (x >= getScreenWidth() - w){
-            x = newX-1;
-            y=newY
+        var nX = newX
+        var nY = newY
+
+
+
+        if (newX >= getScreenWidth()-w){
+            var resta = newX-(getScreenWidth()-w)
+            nX -=resta
+            x=nX
+            y=nY
+
         }
 
-        if (x <= 0){
-            x = newX+1;
-            y=newY
+        if (newX <= 0 + w){
+            var resta = w-newX
+            nX +=resta
+            x=nX
+            y=nY
         }
 
-        if (y >= getScreenHeight() - h){
-            y =newY-1
-            x= newX
+        if (newY >= getScreenHeight()-h){
+            var resta = newY-(getScreenHeight()-h)
+            nY-=resta
+            y=nY
+            x=nX
         }
 
-        if (y <= 0){
-            y=newY+1
-            x= newX
+        if (newY <= 0 + h) {
+            var resta = h-newY
+            nY+= resta
+            y=nY
+            x=nX
+
+
+        }else{
+            x=nX
+            y=nY
         }
-        */
-            x = newX
-            y = newY
+
+
 
 
     }
 
+    override fun playerTakesNumber(number: Number) {
+
+            if (this!!.rect!!.intersect(number!!.rect)){
+                //get number value etc etc
+                number.isTaken()
+            }
+        }
+
+
+
     //elimina totalment el bitmap de la surfaceview
     override fun die() {
-        image.recycle()
+
+        this.image.recycle()
     }
 
 

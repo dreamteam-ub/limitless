@@ -12,12 +12,13 @@ class Eye(image: Bitmap) : Character(image), EnemieInterface {
     override fun update() {
         //val randomNum = ThreadLocalRandom.current().nextInt(1, 5)
 
-        if (x > this.getScreenWidth() - image.width || x < image.width) {
+        if (x > this.getScreenWidth() - w || x < w) {
             xVelocity = xVelocity * -1
         }
-        if (y > this.getScreenHeight() - image.height || y < image.height) {
+        if (y > this.getScreenHeight() - h || y < h) {
             yVelocity = yVelocity * -1
         }
+
 
         x  += (xVelocity)
         y += (yVelocity)

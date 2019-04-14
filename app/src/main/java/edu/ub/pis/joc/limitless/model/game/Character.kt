@@ -4,25 +4,32 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
+import android.util.Log
+import android.widget.Toast
 
-open abstract class Character(var image: Bitmap) {
+abstract class Character(var image: Bitmap) {
+
     var x: Int = 0
     var y: Int = 0
     var w: Int = 0
     var h: Int = 0
-    var rect = Rect() //hitbox
+
+    var rect : Rect? = null //hitbox
 
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
     init {
         //medida imagen
+
         w = image.width/2
         h = image.height/2
 
         //posicion inicial
         x = screenWidth/3
         y = screenHeight/3
+
+        rect = Rect()
 
 
 
@@ -37,7 +44,7 @@ open abstract class Character(var image: Bitmap) {
         //el hitbox
         var halfW : Int = w/2
         var halfH : Int = h/2
-        rect.set(x-halfW,y-halfH,x+halfW,y+halfH)
+        rect!!.set(x-halfW,y-halfH,x+halfW,y+halfH)
         canvas.drawBitmap(image, null, rect, null)
     }
 
@@ -52,6 +59,16 @@ open abstract class Character(var image: Bitmap) {
         return screenHeight
     }
 
+    fun characterHitsPlayer(playerCharacter: PlayerCharacter){
+
+        if (this.rect!!.intersect(playerCharacter.rect)){
+
+            playerCharacter.die()
+
+        }
+
+
+    }
 
 
 }

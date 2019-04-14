@@ -6,18 +6,19 @@ import android.graphics.Canvas
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.game.Character
 
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 import edu.ub.pis.joc.limitless.model.game.Skull
+import java.util.ArrayList
 
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {
     private val thread: GameThread
     private var personatge : PlayerCharacter? = null
     private var skull : Skull? = null
-
-
 
     init {
         // add callback
@@ -40,10 +41,9 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
         skull = Skull(
             BitmapFactory.decodeResource(
                 resources,
-                R.drawable.corazon_muerte
+                R.drawable.world4_select
             )
         )
-
 
 
 
@@ -80,6 +80,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
             personatge!!.update(touched_x, touched_y)
 
         }
+        skull!!.characterHitsPlayer(personatge!!)
 
 
 
@@ -91,8 +92,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
      */
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
-        personatge!!.draw(canvas)
         skull!!.draw(canvas)
+        personatge!!.draw(canvas)
     }
 
 
@@ -117,24 +118,11 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
             MotionEvent.ACTION_OUTSIDE -> touched = false
 
         }
-        //es posa aqui ja que al crear-se els dos elements, es coloquen a la mateixa posició i hi ha
-        //colissio
 
-        if (onContactEvent()){
-            personatge!!.die()
-        }
 
         return true
     }
 
-
-    fun onContactEvent() : Boolean{
-        var hit = false
-        if (skull!!.rect.intersect(personatge!!.rect)){
-            hit=true
-        }
-        return hit
-    }
 
 
 
