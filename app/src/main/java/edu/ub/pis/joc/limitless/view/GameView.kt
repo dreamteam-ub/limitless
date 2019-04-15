@@ -8,11 +8,9 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.model.game.Character
 
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 import edu.ub.pis.joc.limitless.model.game.Skull
-import java.util.ArrayList
 
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {
@@ -103,16 +101,21 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
     var touched = false
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        // when ever there is a touch on the screen,
-        // we can get the position of touch
-        // which we may use it for tracking some of the game objects
+
         touched_x = event.x.toInt()
         touched_y = event.y.toInt()
 
         val action = event.action
         when (action) {
-            MotionEvent.ACTION_DOWN -> touched = true
-            MotionEvent.ACTION_MOVE -> touched = true
+            MotionEvent.ACTION_DOWN->
+                if (touched_x > (personatge!!.x - personatge!!.w) && touched_x < (personatge!!.x + personatge!!.w)
+                    && touched_y < (personatge!!.y + personatge!!.h) && touched_y > (personatge!!.y - personatge!!.h)) {
+                    touched=true
+                }
+            MotionEvent.ACTION_MOVE -> if (touched_x > (personatge!!.x - personatge!!.w) && touched_x < (personatge!!.x + personatge!!.w)
+                && touched_y < (personatge!!.y + personatge!!.h) && touched_y > (personatge!!.y - personatge!!.h)) {
+                touched=true
+            }
             MotionEvent.ACTION_UP -> touched = false
             MotionEvent.ACTION_CANCEL -> touched = false
             MotionEvent.ACTION_OUTSIDE -> touched = false
@@ -120,7 +123,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
         }
 
 
-        return true
+        return touched
     }
 
 

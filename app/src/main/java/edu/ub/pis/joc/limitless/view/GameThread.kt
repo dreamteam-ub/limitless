@@ -6,7 +6,7 @@ import android.view.SurfaceHolder
 class GameThread(private val surfaceHolder: SurfaceHolder, private val gameView: GameView) : Thread() {
     private var running: Boolean = false
 
-    private val targetFPS = 50 // frames per second, the rate at which you would like to refresh the Canvas
+    private val targetFPS = 60 // frames per second, the rate at which you would like to refresh the Canvas
 
     fun setRunning(isRunning: Boolean) {
         this.running = isRunning
