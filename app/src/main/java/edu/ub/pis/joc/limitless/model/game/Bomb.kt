@@ -2,7 +2,7 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 
-class Bomb(image: Bitmap) : Character(image), EnemieInterface {
+class Bomb(image: Bitmap) : Character(image), EnemyInterface {
 
     override var xVelocity: Int = 0
     override var yVelocity: Int = 0

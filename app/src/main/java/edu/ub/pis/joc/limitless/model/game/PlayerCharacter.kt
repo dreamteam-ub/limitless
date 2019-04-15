@@ -5,95 +5,89 @@ import java.lang.Math.abs
 
 class PlayerCharacter(image: Bitmap) : Character(image), PlayerCharacterInterface {
 
-    init{
-        w=image.width/3
-        h=image.height/3
+    init {
+        w = image.width / 3
+        h = image.height / 3
     }
 
 
-
-
-    override fun update(newX : Int , newY : Int, movimentRapid :Boolean) {
-        if(movimentRapid){
-            moveFast(newX,newY)
+    override fun update(_x: Int, _y: Int, canFast: Boolean) {
+        if (canFast) {
+            moveFast(_x, _y)
         } else {
-            moveNormal(newX,newY)
+            moveNormal(_x, _y)
         }
     }
 
     override fun playerTakesNumber(number: Number) {
 
-            if (this!!.rect!!.intersect(number!!.rect)){
-                //get number value etc etc
-                number.isTaken()
-            }
+        if (this.rect.intersect(number.rect)) {
+            //get number value etc etc
+            number.isTaken()
         }
-
+    }
 
 
     //elimina totalment el bitmap de la surfaceview
     override fun die() {
-
         this.image.recycle()
     }
 
-    fun moveNormal(newX: Int, newY : Int){
+    fun moveNormal(_x: Int, _y: Int) {
 
-        var nX = newX
-        var nY = newY
+        var nX = _x
+        var nY = _y
 
 
 
-        if (newX >= getScreenWidth()-w){
-            var resta = newX-(getScreenWidth()-w)
-            nX -=resta
-            x=nX
-            y=nY
+        if (_x >= getScreenWidth() - w) {
+            val resta = _x - (getScreenWidth() - w)
+            nX -= resta
+            x = nX
+            y = nY
 
         }
 
-        if (newX <= 0 + w){
-            var resta = w-newX
-            nX +=resta
-            x=nX
-            y=nY
+        if (_x <= 0 + w) {
+            val resta = w - _x
+            nX += resta
+            x = nX
+            y = nY
         }
 
-        if (newY >= getScreenHeight()-h){
-            var resta = newY-(getScreenHeight()-h)
-            nY-=resta
-            y=nY
-            x=nX
+        if (_y >= getScreenHeight() - h) {
+            val resta = _y - (getScreenHeight() - h)
+            nY -= resta
+            y = nY
+            x = nX
         }
 
-        if (newY <= 0 + h) {
-            var resta = h-newY
-            nY+= resta
-            y=nY
-            x=nX
-
-
-        }else{
-            x=nX
-            y=nY
+        if (_y <= 0 + h) {
+            val resta = h - _y
+            nY += resta
+            y = nY
+            x = nX
+        } else {
+            x = nX
+            y = nY
         }
 
     }
 
-    fun moveFast(newX: Int, newY : Int){
+    fun moveFast(_x: Int, _y: Int) {
 
-        var xVelocity: Int = abs(newX-x)/3
-        var yVelocity: Int = abs(newY-y)/3
+        var xVelocity: Int = abs(_x - x) / 3
+        var yVelocity: Int = abs(_y - y) / 3
 
-        if(newX<x){
+        if (_x < x) {
             xVelocity *= -1
         }
 
-        if(newY<y){
+        if (_y < y) {
             yVelocity *= -1
         }
 
-        x  += (xVelocity)
+        x += (xVelocity)
         y += (yVelocity)
 
     }
