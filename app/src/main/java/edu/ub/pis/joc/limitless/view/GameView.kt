@@ -74,13 +74,12 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
     fun update() {
 
         skull!!.update()
-        if (touched){
-            personatge!!.update(touched_x, touched_y)
-
+        if (touched==1){
+            personatge!!.update(touched_x, touched_y,false)
+        } else  if (touched ==2 ){
+            personatge!!.update(touched_x, touched_y,true)
         }
         skull!!.characterHitsPlayer(personatge!!)
-
-
 
     }
 
@@ -98,7 +97,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
 
     var touched_x = 0
     var touched_y =0
-    var touched = false
+    var touched : Int = 0
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
@@ -110,20 +109,22 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
             MotionEvent.ACTION_DOWN->
                 if (touched_x > (personatge!!.x - personatge!!.w) && touched_x < (personatge!!.x + personatge!!.w)
                     && touched_y < (personatge!!.y + personatge!!.h) && touched_y > (personatge!!.y - personatge!!.h)) {
-                    touched=true
+                    touched= 1
+                } else {
+                    touched = 2
                 }
             MotionEvent.ACTION_MOVE -> if (touched_x > (personatge!!.x - personatge!!.w) && touched_x < (personatge!!.x + personatge!!.w)
                 && touched_y < (personatge!!.y + personatge!!.h) && touched_y > (personatge!!.y - personatge!!.h)) {
-                touched=true
+                touched= 1
+            } else {
+                touched = 2
             }
-            MotionEvent.ACTION_UP -> touched = false
-            MotionEvent.ACTION_CANCEL -> touched = false
-            MotionEvent.ACTION_OUTSIDE -> touched = false
+            MotionEvent.ACTION_UP -> touched = 0
+            MotionEvent.ACTION_CANCEL -> touched = 0
+            MotionEvent.ACTION_OUTSIDE -> touched = 0
 
         }
-
-
-        return touched
+        return true
     }
 
 
