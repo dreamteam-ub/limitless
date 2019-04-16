@@ -6,9 +6,11 @@ import android.graphics.BitmapFactory
 import android.widget.Toast
 
 
-class CharacterFactory: FactoryPattern {
+class CharacterFactory(context: Context): FactoryPattern {
+    var ctxt=context
 
-    override fun createCharacterByName(character: String, ctxt: Context): Character? {
+
+    override fun createCharacterByName(character: String): Character? {
 
 
 
@@ -35,7 +37,7 @@ class CharacterFactory: FactoryPattern {
                 Ghost(BitmapFactory.decodeResource(ctxt.resources,R.drawable.ghost)) }
 
             "PlayerCharacter" -> {
-                Toast.makeText(ctxt, "6", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(ctxt, "6", Toast.LENGTH_SHORT).show()
                 PlayerCharacter(BitmapFactory.decodeResource(ctxt.resources, R.drawable.won_heart))}
 
             "Skull" -> {
@@ -43,6 +45,7 @@ class CharacterFactory: FactoryPattern {
                 Skull(BitmapFactory.decodeResource(ctxt.resources,R.drawable.world4_select))}
 
             else -> {
+                System.exit(0)
                 Toast.makeText(ctxt, "8", Toast.LENGTH_SHORT).show()
                 null }
 

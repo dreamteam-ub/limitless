@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.game.CharacterFactory
 
@@ -30,6 +31,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
 
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
+        character=CharacterFactory(context)
 
         /*
         personatge = PlayerCharacter(
@@ -41,17 +43,18 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
 
         */
 
-
+        /*
         skull = Skull(
             BitmapFactory.decodeResource(
                 resources,
                 R.drawable.world4_select
             )
         )
+        */
 
 
 
-        personatge = character?.createCharacterByName("PlayerCharacter",context) as PlayerCharacter?
+        personatge=character!!.createCharacterByName("PlayerCharacter") as PlayerCharacter?
 
 
 
@@ -86,13 +89,13 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
     */
     fun update() {
 
-        skull!!.update()
+        //skull!!.update()
         if (touched==1){
             personatge!!.update(touched_x, touched_y,false)
         } else  if (touched ==2 ){
             personatge!!.update(touched_x, touched_y,true)
         }
-        skull!!.characterHitsPlayer(personatge!!)
+        //skull!!.characterHitsPlayer(personatge!!)
 
     }
 
@@ -102,7 +105,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
      */
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
-        skull!!.draw(canvas)
+        //skull!!.draw(canvas)
         personatge!!.draw(canvas)
     }
 

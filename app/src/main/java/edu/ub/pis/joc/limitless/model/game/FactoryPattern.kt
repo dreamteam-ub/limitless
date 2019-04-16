@@ -4,5 +4,5 @@ import android.content.Context
 
 interface FactoryPattern {
 
-    fun createCharacterByName(character: String, resources: Context) : Character?
+    fun createCharacterByName(character: String) : Character?
 }
