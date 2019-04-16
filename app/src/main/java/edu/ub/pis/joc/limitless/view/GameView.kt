@@ -6,17 +6,19 @@ import android.graphics.Canvas
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.game.CharacterFactory
 
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 import edu.ub.pis.joc.limitless.model.game.Skull
+
 
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {
     private val thread: GameThread
     private var personatge : PlayerCharacter? = null
     private var skull : Skull? = null
+    private var character : CharacterFactory? = null
 
     init {
         // add callback
@@ -29,6 +31,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
 
+        /*
         personatge = PlayerCharacter(
             BitmapFactory.decodeResource(
                 resources,
@@ -36,12 +39,22 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
             )
         )
 
+        */
+
+
         skull = Skull(
             BitmapFactory.decodeResource(
                 resources,
                 R.drawable.world4_select
             )
         )
+
+
+
+        personatge = character?.createCharacterByName("PlayerCharacter",context) as PlayerCharacter?
+
+
+
 
 
 

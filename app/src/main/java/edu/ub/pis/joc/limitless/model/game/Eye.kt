@@ -21,4 +21,5 @@ class Eye(image: Bitmap) : Character(image), EnemyInterface {
         y += (yVelocity)
 
     }
+
 }
