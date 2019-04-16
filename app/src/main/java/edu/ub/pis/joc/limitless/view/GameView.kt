@@ -19,7 +19,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
     private val thread: GameThread
     private var personatge : PlayerCharacter? = null
     private var skull : Skull? = null
-    private var character : CharacterFactory? = null
+    private var characterFactory : CharacterFactory? = null
 
     init {
         // add callback
@@ -27,38 +27,13 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
 
         // instantiate the game thread
         thread = GameThread(holder, this)
+        characterFactory=CharacterFactory(context)
     }
 
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
-        character=CharacterFactory(context)
 
-        /*
-        personatge = PlayerCharacter(
-            BitmapFactory.decodeResource(
-                resources,
-                R.drawable.won_heart
-            )
-        )
-
-        */
-
-        /*
-        skull = Skull(
-            BitmapFactory.decodeResource(
-                resources,
-                R.drawable.world4_select
-            )
-        )
-        */
-
-
-
-        personatge=character!!.createCharacterByName("PlayerCharacter") as PlayerCharacter?
-
-
-
-
+        personatge=characterFactory!!.createCharacterByName("PlayerCharacter") as PlayerCharacter?
 
 
         // start the game thread
