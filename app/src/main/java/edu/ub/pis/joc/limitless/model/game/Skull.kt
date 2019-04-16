@@ -2,7 +2,7 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 
-class Skull(image: Bitmap) : Character(image), EnemyInterface {
+class Skull(image: Bitmap) : Enemy(image), EnemyInterface {
 
     override var xVelocity: Int = 10
     override var yVelocity: Int = 10
@@ -15,22 +15,7 @@ class Skull(image: Bitmap) : Character(image), EnemyInterface {
         w = image.width / 4
     }
 
-    override fun update() {
-        //val randomNum = ThreadLocalRandom.current().nextInt(1, 5)
 
-
-        if (x > this.getScreenWidth() - w || x < w) {
-            xVelocity *= -1
-        }
-        if (y > this.getScreenHeight() - h || y < h) {
-            yVelocity *= -1
-        }
-
-
-        x += (xVelocity)
-        y += (yVelocity)
-
-    }
 
 
 }

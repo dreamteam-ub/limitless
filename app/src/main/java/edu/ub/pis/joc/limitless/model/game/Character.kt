@@ -33,6 +33,8 @@ abstract class Character(var image: Bitmap) {
     }
 
 
+
+
     //getters of screen width and height
 
     fun getScreenWidth(): Int {

@@ -8,18 +8,15 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.model.game.CharacterFactory
-
-import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
-import edu.ub.pis.joc.limitless.model.game.Skull
-
+import edu.ub.pis.joc.limitless.engine.GameEngine
+import edu.ub.pis.joc.limitless.model.game.*
 
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {
     private val thread: GameThread
     private var personatge : PlayerCharacter? = null
-    private var skull : Skull? = null
     private var characterFactory : CharacterFactory? = null
+    private var gameEngine : GameEngine? = null
 
     init {
         // add callback
@@ -28,13 +25,13 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
         // instantiate the game thread
         thread = GameThread(holder, this)
         characterFactory=CharacterFactory(context)
+        gameEngine= GameEngine(context)
     }
 
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
 
-        personatge=characterFactory!!.createCharacterByName("PlayerCharacter") as PlayerCharacter?
-
+        personatge=characterFactory!!.createCharacterByName("PlayerCharacter") as PlayerCharacter
 
         // start the game thread
         thread.setRunning(true)
@@ -64,13 +61,16 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
     */
     fun update() {
 
-        //skull!!.update()
+        for(i in 0 until gameEngine!!.listOfCharacters.size){
+            gameEngine!!.listOfCharacters.get(i).update()
+            gameEngine!!.listOfCharacters.get(i).characterHitsPlayer(personatge!!)
+
+        }
         if (touched==1){
             personatge!!.update(touched_x, touched_y,false)
         } else  if (touched ==2 ){
             personatge!!.update(touched_x, touched_y,true)
         }
-        //skull!!.characterHitsPlayer(personatge!!)
 
     }
 
@@ -80,7 +80,9 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
      */
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
-        //skull!!.draw(canvas)
+        for(i in 0 until gameEngine!!.listOfCharacters.size) {
+            gameEngine!!.listOfCharacters.get(i).draw(canvas)
+        }
         personatge!!.draw(canvas)
     }
 
