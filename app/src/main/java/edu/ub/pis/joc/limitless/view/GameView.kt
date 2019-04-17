@@ -14,24 +14,21 @@ import edu.ub.pis.joc.limitless.model.game.*
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {
     private val thread: GameThread
-    private var personatge : PlayerCharacter? = null
-    private var characterFactory : CharacterFactory? = null
-    private var gameEngine : GameEngine? = null
+    //private var characterFactory : CharacterFactory? = null
+    private val gameEngine : GameEngine
 
     init {
         // add callback
         holder.addCallback(this)
-
-        // instantiate the game thread
-        thread = GameThread(holder, this)
-        characterFactory=CharacterFactory(context)
         gameEngine= GameEngine(context)
+        // instantiate the game thread
+        thread = GameThread(holder,this, gameEngine)
+        //characterFactory=CharacterFactory(context)
+
     }
 
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
-
-        personatge=characterFactory!!.createCharacterByName("PlayerCharacter") as PlayerCharacter
 
         // start the game thread
         thread.setRunning(true)
@@ -56,68 +53,39 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
         }
     }
 
-    /**
-     * Function to update the positions of game objects
-    */
-    fun update() {
 
-        for(i in 0 until gameEngine!!.listOfCharacters.size){
-            gameEngine!!.listOfCharacters.get(i).update()
-            gameEngine!!.listOfCharacters.get(i).characterHitsPlayer(personatge!!)
-
-        }
-        if (touched==1){
-            personatge!!.update(touched_x, touched_y,false)
-        } else  if (touched ==2 ){
-            personatge!!.update(touched_x, touched_y,true)
-        }
-
-    }
-
-
-    /**
-     * Everything that has to be drawn on Canvas
-     */
-    override fun draw(canvas: Canvas) {
-        super.draw(canvas)
-        for(i in 0 until gameEngine!!.listOfCharacters.size) {
-            gameEngine!!.listOfCharacters.get(i).draw(canvas)
-        }
-        personatge!!.draw(canvas)
-    }
-
-
-
-    var touched_x = 0
-    var touched_y =0
-    var touched : Int = 0
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
-        touched_x = event.x.toInt()
-        touched_y = event.y.toInt()
+        gameEngine.touched_x = event.x.toInt()
+        gameEngine.touched_y = event.y.toInt()
 
         val action = event.action
         when (action) {
             MotionEvent.ACTION_DOWN->
-                if (touched_x > (personatge!!.x - personatge!!.w) && touched_x < (personatge!!.x + personatge!!.w)
-                    && touched_y < (personatge!!.y + personatge!!.h) && touched_y > (personatge!!.y - personatge!!.h)) {
-                    touched= 1
+                if (gameEngine.touched_x > (gameEngine.getPlayer().x - gameEngine.getPlayer().w) && gameEngine.touched_x < (gameEngine.getPlayer().x + gameEngine.getPlayer().w)
+                    && gameEngine.touched_y < (gameEngine.getPlayer().y + gameEngine.getPlayer().h) && gameEngine.touched_y > (gameEngine.getPlayer().y - gameEngine.getPlayer().h)) {
+                    gameEngine.touched= 1
                 } else {
-                    touched = 2
+                    gameEngine.touched = 2
                 }
-            MotionEvent.ACTION_MOVE -> if (touched_x > (personatge!!.x - personatge!!.w) && touched_x < (personatge!!.x + personatge!!.w)
-                && touched_y < (personatge!!.y + personatge!!.h) && touched_y > (personatge!!.y - personatge!!.h)) {
-                touched= 1
+            MotionEvent.ACTION_MOVE -> if (gameEngine.touched_x > (gameEngine.getPlayer().x - gameEngine.getPlayer().w) && gameEngine.touched_x < (gameEngine.getPlayer().x + gameEngine.getPlayer().w)
+                && gameEngine.touched_y < (gameEngine.getPlayer().y + gameEngine.getPlayer().h) && gameEngine.touched_y > (gameEngine.getPlayer().y - gameEngine.getPlayer().h)) {
+                gameEngine.touched= 1
             } else {
-                touched = 2
+                gameEngine.touched = 2
             }
-            MotionEvent.ACTION_UP -> touched = 0
-            MotionEvent.ACTION_CANCEL -> touched = 0
-            MotionEvent.ACTION_OUTSIDE -> touched = 0
+            MotionEvent.ACTION_UP -> gameEngine.touched = 0
+            MotionEvent.ACTION_CANCEL -> gameEngine.touched = 0
+            MotionEvent.ACTION_OUTSIDE -> gameEngine.touched = 0
 
         }
         return true
+    }
+
+    override fun draw(canvas: Canvas?) {
+        super.draw(canvas)
+        gameEngine.draw(canvas!!)
     }
 
 

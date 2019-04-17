@@ -2,6 +2,8 @@ package edu.ub.pis.joc.limitless.view
 
 import android.app.Dialog
 import android.os.Bundle
+import android.view.MotionEvent
+import edu.ub.pis.joc.limitless.engine.GameEngine
 
 class GameActivity : FullScreenActivity() {
 
@@ -11,9 +13,9 @@ class GameActivity : FullScreenActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val surface = GameView(this)
-
         setContentView(surface)
     }
+
 
     override fun onStop() {
         super.onStop()
@@ -23,4 +25,6 @@ class GameActivity : FullScreenActivity() {
     override fun onBackPressed() {
         super.onBackPressed() // TEMPORAL
     }
+
+
 }

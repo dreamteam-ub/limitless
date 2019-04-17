@@ -2,8 +2,9 @@ package edu.ub.pis.joc.limitless.view
 
 import android.graphics.Canvas
 import android.view.SurfaceHolder
+import edu.ub.pis.joc.limitless.engine.GameEngine
 
-class GameThread(private val surfaceHolder: SurfaceHolder, private val gameView: GameView) : Thread() {
+class GameThread(private val surfaceHolder: SurfaceHolder,private val gameView: GameView, private val gameEngine: GameEngine) : Thread() {
     private var running: Boolean = false
 
     private val targetFPS = 60 // frames per second, the rate at which you would like to refresh the Canvas
@@ -26,7 +27,8 @@ class GameThread(private val surfaceHolder: SurfaceHolder, private val gameView:
                 // locking the canvas allows us to draw on to it
                 canvas = this.surfaceHolder.lockCanvas()
                 synchronized(surfaceHolder) {
-                    this.gameView.update()
+
+                    this.gameEngine.update()
                     this.gameView.draw(canvas!!)
                 }
             } catch (e: Exception) {
