@@ -11,12 +11,12 @@ abstract class Character(var image: Bitmap) {
     private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
     //posicion inicial
-    var x: Int = screenWidth / 3
-    var y: Int = screenHeight / 3
+    open var x: Int = screenWidth / 3
+    open var y: Int = screenHeight/ 3
 
     //medida imagen
-    var w: Int = image.width / 2
-    var h: Int = image.height / 2
+    open var w: Int = image.width / 2
+    open var h: Int = image.height / 2
 
     var rect: Rect = Rect() //hitbox
 

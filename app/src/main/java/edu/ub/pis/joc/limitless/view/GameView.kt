@@ -53,8 +53,6 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
         }
     }
 
-
-
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
         gameEngine.touched_x = event.x.toInt()
@@ -87,10 +85,6 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
         super.draw(canvas)
         gameEngine.draw(canvas!!)
     }
-
-
-
-
 
 }
 

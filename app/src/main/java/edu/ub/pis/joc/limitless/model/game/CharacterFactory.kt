@@ -12,8 +12,7 @@ class CharacterFactory(context: Context): FactoryPattern {
 
     override fun createCharacterByName(character: String): Character? {
 
-
-
+        
         return when(character){
 
             "BlackHole" ->{
@@ -23,10 +22,10 @@ class CharacterFactory(context: Context): FactoryPattern {
                 Bomb(BitmapFactory.decodeResource(ctxt.resources,R.drawable.bomb))}
 
             "Demon" -> {
-                Demon(BitmapFactory.decodeResource(ctxt.resources,R.drawable.world3_select)) }
+                Demon(BitmapFactory.decodeResource(ctxt.resources,R.drawable.demon)) }
 
             "Eye" -> {
-                Eye(BitmapFactory.decodeResource(ctxt.resources,R.drawable.world2_select)) }
+                Eye(BitmapFactory.decodeResource(ctxt.resources,R.drawable.eye)) }
 
             "Ghost" -> {
                 Ghost(BitmapFactory.decodeResource(ctxt.resources,R.drawable.ghost)) }
@@ -35,13 +34,11 @@ class CharacterFactory(context: Context): FactoryPattern {
                 PlayerCharacter(BitmapFactory.decodeResource(ctxt.resources, R.drawable.won_heart))}
 
             "Skull" -> {
-                Skull(BitmapFactory.decodeResource(ctxt.resources,R.drawable.world4_select))}
+                Skull(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull))}
 
             else -> {
 
                 null }
-
-
 
         }
     }

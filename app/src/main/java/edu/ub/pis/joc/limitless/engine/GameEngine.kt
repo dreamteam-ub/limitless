@@ -28,8 +28,6 @@ class GameEngine(context : Context) {
         characterFactory= CharacterFactory(context)
         personatge = characterFactory!!.createCharacterByName("PlayerCharacter") as PlayerCharacter
         addCharactersToList()
-
-
     }
 
 
@@ -51,7 +49,6 @@ class GameEngine(context : Context) {
         for(i in 0 until listOfCharacters.size){
             listOfCharacters.get(i).update()
             listOfCharacters.get(i).characterHitsPlayer(personatge!!)
-
         }
         if (!personatge!!.image.isRecycled) {
             if (touched == 1) {
@@ -75,11 +72,5 @@ class GameEngine(context : Context) {
             getPlayer().draw(canvas)
         }
     }
-
-
-
-
-
-
 
 }

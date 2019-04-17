@@ -8,6 +8,9 @@ class PlayerCharacter(image: Bitmap) : Character(image), PlayerCharacterInterfac
     init {
         w = image.width / 3
         h = image.height / 3
+
+        x = getScreenWidth()/2
+        y = getScreenHeight()/2
     }
 
 
