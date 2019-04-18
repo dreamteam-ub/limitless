@@ -6,21 +6,23 @@ import android.graphics.Canvas
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.widget.ImageView
 import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.engine.GameEngine
 import edu.ub.pis.joc.limitless.model.game.*
 
 
-class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {
+class GameView(context: Context, nivell:Int) : SurfaceView(context), SurfaceHolder.Callback {
     private val thread: GameThread
     //private var characterFactory : CharacterFactory? = null
     private val gameEngine : GameEngine
 
+
     init {
         // add callback
         holder.addCallback(this)
-        gameEngine= GameEngine(context)
+        gameEngine= GameEngine(context,nivell)
         // instantiate the game thread
         thread = GameThread(holder,this, gameEngine)
         //characterFactory=CharacterFactory(context)

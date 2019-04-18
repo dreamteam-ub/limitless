@@ -66,6 +66,10 @@ class WorldSelectorPresenter(var view: View) {
         view.changeLevelView(Data.currentLvl, hideLeft, hideRight)
     }
 
+    fun getCurrenLevel():Int{
+        return Data.currentWorld*3 + Data.currentLvl
+    }
+
     interface View {
         fun changeWorldView(world: Int, hideTop: Boolean, hideDown: Boolean)
         fun changeLevelView(level: Int, hideLeft: Boolean, hideRight: Boolean)

@@ -19,7 +19,6 @@ class Ghost(image: Bitmap) : Enemy(image), EnemyInterface {
             yVelocity *= -1
         }
 
-
         x += (xVelocity)
         y += (yVelocity)
 

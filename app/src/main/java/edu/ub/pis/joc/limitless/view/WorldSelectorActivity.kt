@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
@@ -122,6 +123,9 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
 
         worldPhoto.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
+            intent.putExtra("nivell",presenter.getCurrenLevel())
+            Toast.makeText(this,presenter.getCurrenLevel().toString(),Toast.LENGTH_SHORT).show()
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()
         }

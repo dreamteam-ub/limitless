@@ -9,8 +9,8 @@ class PlayerCharacter(image: Bitmap) : Character(image), PlayerCharacterInterfac
         w = image.width / 3
         h = image.height / 3
 
-        x = getScreenWidth()/2
-        y = getScreenHeight()/2
+        x = getScreenWidth()
+        y = getScreenHeight()
     }
 
 
@@ -41,31 +41,50 @@ class PlayerCharacter(image: Bitmap) : Character(image), PlayerCharacterInterfac
         var nX = _x
         var nY = _y
 
+        x = _x
+        y = _y
+
+        if(_x<=getScreenWidth()*0.1+w){
+            x = getScreenWidth()*0.1.toInt()+w
+        }
+
+        if(_x>=getScreenWidth()*0.9-w){
+            x = getScreenWidth()*0.9.toInt()-w
+        }
+
+        if(_y<=getScreenHeight()*0.1+h){
+            y = getScreenHeight()*0.1.toInt()+h
+        }
+
+        if(_y>=getScreenHeight()*0.9-h){
+            y = getScreenHeight()*0.9.toInt()-h
+        }
 
 
-        if (_x >= getScreenWidth() - w) {
-            val resta = _x - (getScreenWidth() - w)
-            nX -= resta
+        /*
+        if (_x >= getScreenWidth()*0.8 - w) {
+            val resta = _x - (getScreenWidth()*0.8 - w)
+            nX -= resta.toInt()
             x = nX
             y = nY
 
         }
 
-        if (_x <= 0 + w) {
+        if (_x <= getScreenWidth()*0.4 + w) {
             val resta = w - _x
             nX += resta
             x = nX
             y = nY
         }
 
-        if (_y >= getScreenHeight() - h) {
-            val resta = _y - (getScreenHeight() - h)
-            nY -= resta
+        if (_y >= getScreenHeight()*0.8 - h) {
+            val resta = _y - (getScreenHeight()*0.8 - h)
+            nY -= resta.toInt()
             y = nY
             x = nX
         }
 
-        if (_y <= 0 + h) {
+        if (_y <= getScreenHeight()*0.4 + h) {
             val resta = h - _y
             nY += resta
             y = nY
@@ -74,6 +93,7 @@ class PlayerCharacter(image: Bitmap) : Character(image), PlayerCharacterInterfac
             x = nX
             y = nY
         }
+        */
 
     }
 

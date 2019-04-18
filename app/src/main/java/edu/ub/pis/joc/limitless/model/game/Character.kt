@@ -46,11 +46,8 @@ abstract class Character(var image: Bitmap) {
     }
 
     fun characterHitsPlayer(playerCharacter: PlayerCharacter) {
-
         if (this.rect.intersect(playerCharacter.rect)) {
-
             playerCharacter.die()
-
         }
     }
 

@@ -7,8 +7,8 @@ class Skull(image: Bitmap) : Enemy(image), EnemyInterface {
     override var xVelocity: Int = 10
     override var yVelocity: Int = 10
 
-    override var h = image.height / 3
-    override var w = image.width / 3
+    override var h = image.height /4
+    override var w = image.width /4
 
     override fun update() {
 
