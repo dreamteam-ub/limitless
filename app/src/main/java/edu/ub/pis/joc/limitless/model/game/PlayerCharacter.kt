@@ -38,62 +38,24 @@ class PlayerCharacter(image: Bitmap) : Character(image), PlayerCharacterInterfac
 
     fun moveNormal(_x: Int, _y: Int) {
 
-        var nX = _x
-        var nY = _y
-
         x = _x
         y = _y
 
-        if(_x<=getScreenWidth()*0.1+w){
-            x = getScreenWidth()*0.1.toInt()+w
+        if(_x<=getScreenWidth()*0.1+w/2){
+            x = (getScreenWidth()*0.1).toInt()+w/2
         }
 
-        if(_x>=getScreenWidth()*0.9-w){
-            x = getScreenWidth()*0.9.toInt()-w
+        if(_x>=getScreenWidth()*0.9-w/2){
+            x = (getScreenWidth()*0.9).toInt()-w/2
         }
 
-        if(_y<=getScreenHeight()*0.1+h){
-            y = getScreenHeight()*0.1.toInt()+h
+        if(_y<=getScreenHeight()*0.1+h/2){
+            y = (getScreenHeight()*0.1).toInt()+h/2
         }
 
-        if(_y>=getScreenHeight()*0.9-h){
-            y = getScreenHeight()*0.9.toInt()-h
+        if(_y>=getScreenHeight()*0.9-h/2){
+            y = (getScreenHeight()*0.9).toInt()-h/2
         }
-
-
-        /*
-        if (_x >= getScreenWidth()*0.8 - w) {
-            val resta = _x - (getScreenWidth()*0.8 - w)
-            nX -= resta.toInt()
-            x = nX
-            y = nY
-
-        }
-
-        if (_x <= getScreenWidth()*0.4 + w) {
-            val resta = w - _x
-            nX += resta
-            x = nX
-            y = nY
-        }
-
-        if (_y >= getScreenHeight()*0.8 - h) {
-            val resta = _y - (getScreenHeight()*0.8 - h)
-            nY -= resta.toInt()
-            y = nY
-            x = nX
-        }
-
-        if (_y <= getScreenHeight()*0.4 + h) {
-            val resta = h - _y
-            nY += resta
-            y = nY
-            x = nX
-        } else {
-            x = nX
-            y = nY
-        }
-        */
 
     }
 
@@ -108,6 +70,26 @@ class PlayerCharacter(image: Bitmap) : Character(image), PlayerCharacterInterfac
 
         if (_y < y) {
             yVelocity *= -1
+        }
+
+        if(_x<=getScreenWidth()*0.1+w/2){
+            x = (getScreenWidth()*0.1).toInt()+w/2
+            x -= (xVelocity)
+        }
+
+        if(_x>=getScreenWidth()*0.9-w/2){
+            x = (getScreenWidth()*0.9).toInt()-w/2
+            x -= (xVelocity)
+        }
+
+        if(_y<=getScreenHeight()*0.1+h/2){
+            y = (getScreenHeight()*0.1).toInt()+h/2
+            y -= (yVelocity)
+        }
+
+        if(_y>=getScreenHeight()*0.9-h/2){
+            y = (getScreenHeight()*0.9).toInt()-h/2
+            y -= (yVelocity)
         }
 
         x += (xVelocity)
