@@ -13,42 +13,43 @@ class EnemyPositionListGenerator() {
 
     fun generarPosicions(nivell:Int): ArrayList<Array<Int>>{
         when(nivell){
+            0->{
+                listOfPositions.add(arrayOf((xPixels*0.3).toInt(),(yPixels*0.3).toInt()))
+            }
             1->{
-                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(xPixels*0.2).toInt()))
+                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(yPixels*0.2).toInt()))
             }
             2->{
-                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(xPixels*0.2).toInt()))
+                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(yPixels*0.2).toInt()))
             }
             3->{
-                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(xPixels*0.2).toInt()))
+                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(yPixels*0.2).toInt()))
             }
             4->{
-                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(xPixels*0.2).toInt()))
+                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(yPixels*0.2).toInt()))
             }
             5->{
-                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(xPixels*0.2).toInt()))
+                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(yPixels*0.2).toInt()))
             }
             6->{
-                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(xPixels*0.2).toInt()))
+                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(yPixels*0.2).toInt()))
             }
             7->{
-                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(xPixels*0.2).toInt()))
+                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(yPixels*0.2).toInt()))
             }
             8->{
-                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(xPixels*0.2).toInt()))
+                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(yPixels*0.2).toInt()))
             }
             9->{
-                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(xPixels*0.2).toInt()))
+                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(yPixels*0.2).toInt()))
             }
             10->{
-                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(xPixels*0.2).toInt()))
+                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(yPixels*0.2).toInt()))
             }
             11->{
-                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(xPixels*0.2).toInt()))
+                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(yPixels*0.2).toInt()))
             }
-            12->{
-                listOfPositions.add(arrayOf((xPixels*0.2).toInt(),(xPixels*0.2).toInt()))
-            }
+
         }
         return listOfPositions
     }

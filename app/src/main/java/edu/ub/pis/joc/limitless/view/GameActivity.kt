@@ -17,11 +17,10 @@ class GameActivity : FullScreenActivity() {
         super.onCreate(savedInstanceState)
 
 
-        //val setMode: Intent = intent
-        //val nivell = setMode.extras!!.getString("nivell")
-        //val nivellEnter : Int = nivell.toInt()
+        val setMode: Intent = intent
+        val nivell = setMode.extras!!.getInt("nivell")
 
-        val surface = GameView(this,1)
+        val surface = GameView(this,nivell)
         setContentView(surface)
     }
 

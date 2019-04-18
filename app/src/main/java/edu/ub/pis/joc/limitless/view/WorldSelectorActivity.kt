@@ -124,8 +124,6 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         worldPhoto.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra("nivell",presenter.getCurrenLevel())
-            Toast.makeText(this,presenter.getCurrenLevel().toString(),Toast.LENGTH_SHORT).show()
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()
         }

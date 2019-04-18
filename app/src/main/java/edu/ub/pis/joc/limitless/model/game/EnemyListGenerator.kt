@@ -9,6 +9,9 @@ class EnemyListGenerator() {
 
     fun generarNivell(nivell:Int): ArrayList<String>{
         when(nivell){
+            0->{
+                listOfCharacters.add("Demon")
+            }
             1->{
                 listOfCharacters.add("Skull")
             }
@@ -42,9 +45,7 @@ class EnemyListGenerator() {
             11->{
                 listOfCharacters.add("Skull")
             }
-            12->{
-                listOfCharacters.add("Demon")
-            }
+
         }
         return listOfCharacters
     }
