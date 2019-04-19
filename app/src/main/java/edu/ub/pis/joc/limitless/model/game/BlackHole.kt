@@ -2,7 +2,7 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 
-class BlackHole(image: Bitmap) : Enemy(image) , EnemyInterface {
+class BlackHole(image: Bitmap) : Enemy(image) {
 
     override var xVelocity: Int = 0
     override var yVelocity: Int = 0

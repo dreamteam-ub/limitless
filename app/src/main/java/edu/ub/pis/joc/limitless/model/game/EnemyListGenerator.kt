@@ -36,7 +36,7 @@ class EnemyListGenerator() {
             8->{
                 listOfCharacters.add("Demon")
             }
-            91->{
+            9->{
                 listOfCharacters.add("Skull")
             }
             10->{

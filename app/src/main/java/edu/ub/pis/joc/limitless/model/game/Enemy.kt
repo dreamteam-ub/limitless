@@ -27,6 +27,13 @@ open class Enemy(image: Bitmap) : Character(image), EnemyInterface {
 
     }
 
+    fun characterHitsPlayer(playerCharacter: PlayerCharacter) {
+        if (this.rect.intersect(playerCharacter.rect)) {
+            playerCharacter.die()
+        }
+
+    }
+
 
 
 }

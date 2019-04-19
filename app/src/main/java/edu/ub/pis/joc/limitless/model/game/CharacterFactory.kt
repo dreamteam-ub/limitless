@@ -3,7 +3,6 @@ package edu.ub.pis.joc.limitless.model.game
 import android.content.Context
 import edu.ub.pis.joc.limitless.R
 import android.graphics.BitmapFactory
-import android.widget.Toast
 
 
 class CharacterFactory(context: Context): FactoryPattern {
@@ -35,6 +34,10 @@ class CharacterFactory(context: Context): FactoryPattern {
 
             "Skull" -> {
                 Skull(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull))}
+
+            "NumberCharacter" ->{
+                NumberCharacter(BitmapFactory.decodeResource(ctxt.resources,R.drawable.corazon_muerte))
+            }
 
             else -> {
 

@@ -5,12 +5,14 @@ import java.lang.Math.abs
 
 class PlayerCharacter(image: Bitmap) : Character(image), PlayerCharacterInterface {
 
+    private var accumulate : Int? = null
     init {
         w = image.width / 3
         h = image.height / 3
 
-        x = (getScreenWidth()*0.5).toInt()
-        y = (getScreenHeight()*0.5).toInt()
+        x = (getScreenWidth()*0.75).toInt()
+        y = (getScreenHeight()*0.75).toInt()
+        accumulate=0
     }
 
 
@@ -22,11 +24,11 @@ class PlayerCharacter(image: Bitmap) : Character(image), PlayerCharacterInterfac
         }
     }
 
-    override fun playerTakesNumber(number: Number) {
+    override fun takesNumber(numberCharacter: NumberCharacter) {
 
-        if (this.rect.intersect(number.rect)) {
-            //get number value etc etc
-            number.isTaken()
+        if (this.rect.intersect(numberCharacter.rect)) {
+            accumulate = accumulate!!+numberCharacter.getValue()
+            numberCharacter.isTaken()
         }
     }
 
