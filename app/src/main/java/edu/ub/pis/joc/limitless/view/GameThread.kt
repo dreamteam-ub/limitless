@@ -56,5 +56,4 @@ class GameThread(private val surfaceHolder: SurfaceHolder,private val gameView: 
     companion object {
         private var canvas: Canvas? = null
     }
-
 }

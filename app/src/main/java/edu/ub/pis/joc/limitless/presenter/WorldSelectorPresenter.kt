@@ -67,7 +67,7 @@ class WorldSelectorPresenter(var view: View) {
     }
 
     fun getCurrenLevel():Int{
-        return Data.currentWorld*3 + Data.currentLvl
+        return Data.currentWorld * MAX_WORLD + Data.currentLvl
     }
 
     interface View {
