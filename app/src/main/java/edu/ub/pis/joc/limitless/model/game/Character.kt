@@ -5,18 +5,20 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
 
-abstract class Character(var image: ArrayList<Bitmap>) {
+abstract class Character(image: ArrayList<Bitmap>) {
 
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
     //posicion inicial
-    open var x: Int = screenWidth / 3
-    open var y: Int = screenHeight/ 3
+    open var x: Int = screenWidth / 2
+    open var y: Int = screenHeight/ 10
 
     //medida imagen
     open var w: Int = image[0].width / 2
     open var h: Int = image[0].height / 2
+
+    open val imageList : ArrayList<Bitmap> = image
 
     var rect: Rect = Rect() //hitbox
 
@@ -29,7 +31,7 @@ abstract class Character(var image: ArrayList<Bitmap>) {
         val halfW: Int = w / 2
         val halfH: Int = h / 2
         rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
-        canvas.drawBitmap(image[0], null, rect, null)
+        canvas.drawBitmap(imageList[0], null, rect, null)
     }
 
 

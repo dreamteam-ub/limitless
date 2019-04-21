@@ -1,10 +1,9 @@
 package edu.ub.pis.joc.limitless.model.game
 
-import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
 
-class Skull(image: ArrayList<Bitmap>) : Enemy(image) {
+class SkullLaser(image: ArrayList<Bitmap>) : Enemy(image) {
 
     override var h = image[0].height /4
     override var w = image[0].width /4
@@ -23,36 +22,28 @@ class Skull(image: ArrayList<Bitmap>) : Enemy(image) {
 
     override fun draw(canvas: Canvas){
         val halfW: Int = w / 2
-        val halfH: Int = h / 2
-        rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
-        if(contador<=10) {
+        val appropiateH: Int = (((h/3.36).toInt())/2)-10
+        rect.set(x - halfW, y+appropiateH,x + halfW, getScreenHeight())
+        if (contador in 41..50){
             canvas.drawBitmap(imageList[0], null, rect, null)
-        } else if (contador <= 20){
+        } else if (contador in 51..60){
             canvas.drawBitmap(imageList[1], null, rect, null)
-        } else if (contador <= 30){
+        } else if (contador in 61..70){
             canvas.drawBitmap(imageList[2], null, rect, null)
-        } else if (contador <= 40){
+        } else if (contador in 71..80){
             canvas.drawBitmap(imageList[3], null, rect, null)
-        } else if (contador <= 50){
+        } else if (contador in 81..90){
             canvas.drawBitmap(imageList[4], null, rect, null)
-        } else if (contador <= 60){
+        } else if (contador in 91..100){
             canvas.drawBitmap(imageList[5], null, rect, null)
-        } else if (contador <= 70){
+        } else if (contador in 101..110){
             canvas.drawBitmap(imageList[6], null, rect, null)
-        } else if (contador <= 80){
+        } else if (contador in 111..120){
             canvas.drawBitmap(imageList[7], null, rect, null)
-        } else if (contador <= 90){
+        } else if (contador in 121..130){
             canvas.drawBitmap(imageList[8], null, rect, null)
-        } else if (contador <= 100){
+        } else if (contador in 131..140){
             canvas.drawBitmap(imageList[9], null, rect, null)
-        } else if (contador <= 110){
-            canvas.drawBitmap(imageList[10], null, rect, null)
-        } else if (contador <= 120){
-            canvas.drawBitmap(imageList[11], null, rect, null)
-        } else if (contador <= 130){
-            canvas.drawBitmap(imageList[12], null, rect, null)
-        } else if (contador <= 140){
-            canvas.drawBitmap(imageList[13], null, rect, null)
         }
 
         contador++

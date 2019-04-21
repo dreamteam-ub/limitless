@@ -2,10 +2,12 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 
-open class Enemy(image: ArrayList<Bitmap>) : Character(ArrayList<Bitmap>()), EnemyInterface {
+open class Enemy(image: ArrayList<Bitmap>) : Character(image), EnemyInterface {
 
     override var xVelocity: Int = 10
     override var yVelocity: Int = 10
+
+    override val imageList : ArrayList<Bitmap> = image
 
 
     //a no ser que la clase que herede haga un override del update, por defecto se llamara

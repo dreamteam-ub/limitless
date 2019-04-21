@@ -39,6 +39,7 @@ class GameModeActivity : FullScreenActivity() {
             mode = "Infinity"
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra("mode", mode)
+            intent.putExtra("nivell", 12)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }

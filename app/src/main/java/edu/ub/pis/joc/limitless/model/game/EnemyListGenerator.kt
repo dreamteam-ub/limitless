@@ -14,6 +14,7 @@ class EnemyListGenerator() {
             }
             1->{
                 listOfCharacters.add("Skull")
+                listOfCharacters.add("SkullLaser")
             }
             2->{
                 listOfCharacters.add("Demon")
@@ -43,6 +44,9 @@ class EnemyListGenerator() {
                 listOfCharacters.add("Demon")
             }
             11->{
+                listOfCharacters.add("Skull")
+            }
+            12->{
                 listOfCharacters.add("Skull")
             }
 

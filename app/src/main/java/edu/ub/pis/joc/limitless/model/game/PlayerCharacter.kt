@@ -3,17 +3,18 @@ package edu.ub.pis.joc.limitless.model.game
 import android.graphics.Bitmap
 import java.lang.Math.abs
 
-class PlayerCharacter(image: ArrayList<Bitmap>) : Character(ArrayList<Bitmap>()), PlayerCharacterInterface {
+class PlayerCharacter(image: ArrayList<Bitmap>) : Character(image), PlayerCharacterInterface {
 
-    private var accumulate : Int? = null
-    init {
-        w = image[0].width / 3
-        h = image[0].height / 3
+    private var accumulate : Int = 0
 
-        x = (getScreenWidth()*0.75).toInt()
-        y = (getScreenHeight()*0.75).toInt()
-        accumulate=0
-    }
+    override var w = image[0].width /6
+    override var h = image[0].height /6
+
+    override var x = (getScreenWidth()*0.75).toInt()
+    override var y = (getScreenHeight()*0.75).toInt()
+
+    override val imageList : ArrayList<Bitmap> = image
+
 
 
     override fun update(_x: Int, _y: Int, canFast: Boolean) {
@@ -27,7 +28,7 @@ class PlayerCharacter(image: ArrayList<Bitmap>) : Character(ArrayList<Bitmap>())
     override fun takesNumber(numberCharacter: NumberCharacter) {
 
         if (this.rect.intersect(numberCharacter.rect)) {
-            accumulate = accumulate!!+numberCharacter.getValue()
+            accumulate += numberCharacter.getValue()
             numberCharacter.isTaken()
         }
     }
@@ -35,7 +36,7 @@ class PlayerCharacter(image: ArrayList<Bitmap>) : Character(ArrayList<Bitmap>())
 
     //elimina totalment el bitmap de la surfaceview
     override fun die() {
-        this.image[0].recycle()
+        this.imageList[0].recycle()
     }
 
     fun moveNormal(_x: Int, _y: Int) {
