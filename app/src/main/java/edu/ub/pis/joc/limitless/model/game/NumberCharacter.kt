@@ -2,7 +2,7 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 
-class NumberCharacter(image: Bitmap) : Character(image), ObjectsInGameInterface {
+class NumberCharacter(image: ArrayList<Bitmap>) : Character(ArrayList<Bitmap>()), ObjectsInGameInterface {
 
     var value : Int? = null
 
@@ -16,7 +16,7 @@ class NumberCharacter(image: Bitmap) : Character(image), ObjectsInGameInterface 
     }
 
     override fun isTaken() {
-        image.recycle()
+        image[0].recycle()
     }
 
     fun getValue() : Int{

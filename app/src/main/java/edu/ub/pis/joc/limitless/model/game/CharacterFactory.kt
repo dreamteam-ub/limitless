@@ -25,9 +25,9 @@ class CharacterFactory(context: Context): FactoryPattern {
             "Bomb" -> {
                 var arrayImatges : ArrayList<Bitmap>? = null
                 arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.bomb1))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.bomb2))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.bomb3))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.bomb4))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.bomb2))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.bomb3))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.bomb4))
                 Bomb(arrayImatges)}
 
             "Demon" -> {
@@ -53,23 +53,25 @@ class CharacterFactory(context: Context): FactoryPattern {
             "Skull" -> {
                 var arrayImatges : ArrayList<Bitmap>? = null
                 arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull1))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull2))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull3))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull3_light))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull4))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull4_light))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull5))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull5_light))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull6))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull6_light))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull7))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull7_light))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull8))
-                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull8_light))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull2))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull3))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull3_light))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull4))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull4_light))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull5))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull5_light))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull6))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull6_light))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull7))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull7_light))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull8))
+                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull8_light))
                 Skull(arrayImatges)}
 
             "NumberCharacter" ->{
-                NumberCharacter(BitmapFactory.decodeResource(ctxt.resources,R.drawable.corazon_muerte))
+                var arrayImatges : ArrayList<Bitmap>? = null
+                arrayImatges!!.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.coin))
+                NumberCharacter(arrayImatges)
             }
 
             else -> {

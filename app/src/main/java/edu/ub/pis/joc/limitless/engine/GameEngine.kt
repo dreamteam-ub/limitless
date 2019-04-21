@@ -88,7 +88,7 @@ class GameEngine(context : Context, nivell:Int) {
             listOfCharacters.get(i).update()
             listOfCharacters.get(i).characterHitsPlayer(personatge!!)
         }
-        if (!personatge!!.image.isRecycled) {
+        if (!personatge!!.image[0].isRecycled) {
 
             if (touched == 1) {
                 getPlayer().update(touched_x, touched_y, false)
@@ -114,7 +114,7 @@ class GameEngine(context : Context, nivell:Int) {
     fun draw(canvas: Canvas) {
         inGameBorder!!.draw(canvas)
 
-        if (!personatge!!.image.isRecycled) {
+        if (!personatge!!.image[0].isRecycled) {
             getPlayer().draw(canvas)
         }
         for(i in 0 until listOfCharacters.size) {
@@ -122,7 +122,7 @@ class GameEngine(context : Context, nivell:Int) {
 
         }
         for(i in 0 until listOfNumbers.size){
-            if(listOfNumbers.get(i).image.isRecycled){
+            if(listOfNumbers.get(i).image[0].isRecycled){
                 listOfNumbers.remove(listOfNumbers.get(i))
             }else {
                 listOfNumbers.get(i).draw(canvas)

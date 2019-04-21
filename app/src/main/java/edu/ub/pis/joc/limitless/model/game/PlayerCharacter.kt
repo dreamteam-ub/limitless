@@ -35,7 +35,7 @@ class PlayerCharacter(image: ArrayList<Bitmap>) : Character(ArrayList<Bitmap>())
 
     //elimina totalment el bitmap de la surfaceview
     override fun die() {
-        this.image.recycle()
+        this.image[0].recycle()
     }
 
     fun moveNormal(_x: Int, _y: Int) {
