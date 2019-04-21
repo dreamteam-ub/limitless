@@ -2,7 +2,7 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 
-open class Enemy(image: Bitmap) : Character(image), EnemyInterface {
+open class Enemy(image: ArrayList<Bitmap>) : Character(ArrayList<Bitmap>()), EnemyInterface {
 
     override var xVelocity: Int = 10
     override var yVelocity: Int = 10
@@ -33,7 +33,5 @@ open class Enemy(image: Bitmap) : Character(image), EnemyInterface {
         }
 
     }
-
-
 
 }

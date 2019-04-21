@@ -3,12 +3,12 @@ package edu.ub.pis.joc.limitless.model.game
 import android.graphics.Bitmap
 import java.lang.Math.abs
 
-class PlayerCharacter(image: Bitmap) : Character(image), PlayerCharacterInterface {
+class PlayerCharacter(image: ArrayList<Bitmap>) : Character(ArrayList<Bitmap>()), PlayerCharacterInterface {
 
     private var accumulate : Int? = null
     init {
-        w = image.width / 3
-        h = image.height / 3
+        w = image[0].width / 3
+        h = image[0].height / 3
 
         x = (getScreenWidth()*0.75).toInt()
         y = (getScreenHeight()*0.75).toInt()

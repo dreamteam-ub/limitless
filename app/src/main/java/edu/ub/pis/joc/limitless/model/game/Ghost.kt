@@ -2,13 +2,13 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 
-class Ghost(image: Bitmap) : Enemy(image) {
+class Ghost(image: ArrayList<Bitmap>) : Enemy(ArrayList<Bitmap>()) {
 
     override var xVelocity: Int = 10
     override var yVelocity: Int = 10
 
-    override var h = image.height / 3
-    override var w = image.width / 3
+    override var h = image[0].height / 3
+    override var w = image[0].width / 3
 
     override fun update() {
 
