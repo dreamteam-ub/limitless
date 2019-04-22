@@ -5,17 +5,12 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import android.widget.TextView
-import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.game.*
 import java.util.ArrayList
 import android.graphics.Typeface
-
-
-
-
-
+import edu.ub.pis.joc.limitless.view.GameScreen.InGameBorder
+import edu.ub.pis.joc.limitless.view.GameScreen.PauseButton
 
 
 class GameEngine(context : Context, nivell:Int) {
@@ -27,6 +22,7 @@ class GameEngine(context : Context, nivell:Int) {
 
     private var personatge : PlayerCharacter? = null //habrá un player
     private var inGameBorder : InGameBorder? = null
+    var pauseButton : PauseButton? = null
     private var generador = EnemyListGenerator()
     private var generadorPosicions = EnemyPositionListGenerator()
     private var generadorNumbers = NumberListGenerator()
@@ -46,7 +42,13 @@ class GameEngine(context : Context, nivell:Int) {
 
 
     init{
-        inGameBorder = InGameBorder(BitmapFactory.decodeResource(context.resources,R.drawable.in_game_border))
+        inGameBorder = InGameBorder(
+            BitmapFactory.decodeResource(
+                context.resources,
+                R.drawable.in_game_border
+            )
+        )
+        pauseButton = PauseButton(BitmapFactory.decodeResource(context.resources,R.drawable.pause_button))
         listOfCharacterNames = generador.generarNivell(nivell)
         listOfPositions = generadorPosicions.generarPosicions(nivell)
 
@@ -122,7 +124,7 @@ class GameEngine(context : Context, nivell:Int) {
 
     fun draw(canvas: Canvas) {
         inGameBorder!!.draw(canvas)
-        paint.typeface = fuenteNueva
+        pauseButton!!.draw(canvas)
 
         if (!personatge!!.imageList[0].isRecycled) {
             getPlayer().draw(canvas)
@@ -139,8 +141,9 @@ class GameEngine(context : Context, nivell:Int) {
                 paint.color= Color.WHITE
                 paint.style= Paint.Style.FILL
                 paint.textSize=40.0f
+                paint.typeface = fuenteNueva
                 var text : String = listOfNumbers.get(i).getValue().toString()
-                canvas.drawText(text,listOfNumbers.get(i).x.toFloat(),listOfNumbers.get(i).y.toFloat(),paint)
+                canvas.drawText(text,listOfNumbers.get(i).x.toFloat()-20f,listOfNumbers.get(i).y.toFloat()+10f,paint)
             }
         }
     }

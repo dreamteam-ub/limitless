@@ -1,20 +1,20 @@
-package edu.ub.pis.joc.limitless.model.game
+package edu.ub.pis.joc.limitless.view.GameScreen
 
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
 
-class InGameBorder (var image: Bitmap){
+class PauseButton(var image : Bitmap) {
 
     var xPixels = Resources.getSystem().displayMetrics.widthPixels
     var yPixels = Resources.getSystem().displayMetrics.heightPixels
 
-    var w = xPixels*0.8
-    var h = yPixels*0.8
+    var w = xPixels*0.1
+    var h = yPixels*0.05
 
-    var x = xPixels/2
-    var y = yPixels/2
+    var x = w.toInt()
+    var y = yPixels
 
     var rect: Rect = Rect() //hitbox
 

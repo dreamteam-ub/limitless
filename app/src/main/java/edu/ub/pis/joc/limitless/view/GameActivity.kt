@@ -2,26 +2,33 @@ package edu.ub.pis.joc.limitless.view
 
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.MotionEvent
-import edu.ub.pis.joc.limitless.engine.GameEngine
+import android.view.Window
+import android.widget.ImageButton
+import android.widget.Toast
+import edu.ub.pis.joc.limitless.R
+import kotlin.concurrent.thread
 
 class GameActivity : FullScreenActivity() {
 
     private val TAG = "GameActivity"
+    private var surface : GameView? = null
 
-
-    lateinit var dialog: Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
 
 
+
         val setMode: Intent = intent
         val nivell = setMode.extras!!.getInt("nivell")
 
-        val surface = GameView(this,nivell)
+        surface = GameView(this,nivell)
         setContentView(surface)
+
+
     }
 
 
@@ -29,10 +36,14 @@ class GameActivity : FullScreenActivity() {
         super.onStop()
     }
 
+
     // DESACTIVAMOS EL BACK DENTRO DEL JUEGO
     override fun onBackPressed() {
-        super.onBackPressed() // TEMPORAL
+        //does nothing
+
     }
+
+
 
 
 }
