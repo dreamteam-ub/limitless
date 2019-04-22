@@ -5,10 +5,17 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.widget.TextView
 import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.game.*
 import java.util.ArrayList
+import android.graphics.Typeface
+
+
+
+
+
 
 
 class GameEngine(context : Context, nivell:Int) {
@@ -24,6 +31,7 @@ class GameEngine(context : Context, nivell:Int) {
     private var generadorPosicions = EnemyPositionListGenerator()
     private var generadorNumbers = NumberListGenerator()
     private var generadorPosicionsNumbers = NumberListPositionGenerator()
+    private val contextEngine : Context = context
 
     private var characterFactory : CharacterFactory? = null
     var listOfCharacters = ArrayList<Enemy>() //tendremos una lista de enemigos la cual iteraremos donde nos interese
@@ -110,9 +118,11 @@ class GameEngine(context : Context, nivell:Int) {
      * Everything that has to be drawn on Canvas
      */
     var paint = Paint()
+    val fuenteNueva: Typeface = Typeface.createFromAsset(contextEngine.assets,"fonts/Crimes Times Six.ttf")
 
     fun draw(canvas: Canvas) {
         inGameBorder!!.draw(canvas)
+        paint.typeface = fuenteNueva
 
         if (!personatge!!.imageList[0].isRecycled) {
             getPlayer().draw(canvas)
@@ -129,8 +139,8 @@ class GameEngine(context : Context, nivell:Int) {
                 paint.color= Color.WHITE
                 paint.style= Paint.Style.FILL
                 paint.textSize=40.0f
-                canvas.drawText(listOfNumbers.get(i).getValue().toString(),
-                    listOfNumbers.get(i).x.toFloat(),listOfNumbers.get(i).y.toFloat(),paint)
+                var text : String = listOfNumbers.get(i).getValue().toString()
+                canvas.drawText(text,listOfNumbers.get(i).x.toFloat(),listOfNumbers.get(i).y.toFloat(),paint)
             }
         }
     }
