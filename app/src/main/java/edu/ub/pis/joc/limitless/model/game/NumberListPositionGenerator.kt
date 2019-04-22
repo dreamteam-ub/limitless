@@ -16,7 +16,8 @@ class NumberListPositionGenerator {
     fun generarPosicions(nivell:Int): ArrayList<Array<Int>> {
         when(nivell){
             0->{
-                listOfPositions.add(arrayOf((xPixels*0.5).toInt(),(yPixels*0.1).toInt()))
+                listOfPositions.add(arrayOf((xPixels*0.5).toInt(),(yPixels*0.2).toInt()))
+                listOfPositions.add(arrayOf((xPixels*0.3).toInt(),(yPixels*0.3).toInt()))
             }
             1->{
                 listOfPositions.add(arrayOf((xPixels*0.5).toInt(),(yPixels*0.1).toInt()))

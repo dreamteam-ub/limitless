@@ -13,7 +13,6 @@ class NumberListGenerator {
             0 -> {
                 listOfNumbers.add("NumberCharacter")
                 listOfNumbers.add("NumberCharacter")
-
             }
             1 -> {
 

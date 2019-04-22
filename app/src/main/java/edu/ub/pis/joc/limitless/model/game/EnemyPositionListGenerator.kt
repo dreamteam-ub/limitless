@@ -19,7 +19,6 @@ class EnemyPositionListGenerator() {
             1->{
                 listOfPositions.add(arrayOf((xPixels*0.5).toInt(),(yPixels*0.05).toInt()))
                 listOfPositions.add(arrayOf((xPixels*0.5).toInt(),(yPixels*0.05).toInt()))
-
             }
             2->{
                 listOfPositions.add(arrayOf((xPixels*0.5).toInt(),(yPixels*0.2).toInt()))

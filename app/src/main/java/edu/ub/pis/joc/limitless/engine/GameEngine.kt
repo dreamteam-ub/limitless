@@ -59,7 +59,7 @@ class GameEngine(context : Context, nivell:Int) {
             num=characterFactory!!.createCharacterByName(listOfNumbersName.get(i)) as NumberCharacter
             num.setValue(listOfNumbersValues.get(i))
             num.x=listOfNumberPositions[i][0]
-            num.y=listOfNumberPositions[i][0]
+            num.y=listOfNumberPositions[i][1]
             listOfNumbers.add(num)
 
         }
