@@ -45,6 +45,7 @@ class GameView(context: Context, nivell: Int) : SurfaceView(context), SurfaceHol
         val vista = layoutInflater.inflate(R.layout.game_pause_dialog, null)
         dialog.setContentView(vista)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCanceledOnTouchOutside(false)
         val resumeDiag : ImageButton = vista.findViewById(R.id.resumeButtonDiag)
         val worldsDiag : ImageButton = vista.findViewById(R.id.worldsButtonPauseDiag)
         val menuDiag : ImageButton = vista.findViewById(R.id.menuButtonPauseDiag)
@@ -93,13 +94,12 @@ class GameView(context: Context, nivell: Int) : SurfaceView(context), SurfaceHol
                 && gameEngine.touched_x < (gameEngine.pauseButton!!.x + gameEngine.pauseButton!!.w)
                 && gameEngine.touched_y < (gameEngine.pauseButton!!.y + gameEngine.pauseButton!!.h)
                 && gameEngine.touched_y > (gameEngine.pauseButton!!.y - gameEngine.pauseButton!!.h)
-                ){
+                ) {
 
-                    if(!dialog.isShowing){
+                    if (!dialog.isShowing) {
                         dialog.show()
-                        pause=true
+                        pause = true
                     }
-
 
 
                 }else {
