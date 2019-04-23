@@ -1,35 +1,31 @@
 package edu.ub.pis.joc.limitless.engine
 
 import android.content.Context
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.game.*
-import java.util.ArrayList
-import android.graphics.Typeface
 import edu.ub.pis.joc.limitless.view.GameScreen.InGameBorder
 import edu.ub.pis.joc.limitless.view.GameScreen.PauseButton
+import java.util.*
 
 
-class GameEngine(context : Context, nivell:Int) {
+class GameEngine(context: Context, nivell: Int) {
 
     var touched_x = 0
-    var touched_y =0
-    var touched : Int = 0
+    var touched_y = 0
+    var touched: Int = 0
 
 
-    private var personatge : PlayerCharacter? = null //habrá un player
-    private var inGameBorder : InGameBorder? = null
-    var pauseButton : PauseButton? = null
+    private var personatge: PlayerCharacter? = null //habrá un player
+    private var inGameBorder: InGameBorder? = null
+    var pauseButton: PauseButton? = null
     private var generador = EnemyListGenerator()
     private var generadorPosicions = EnemyPositionListGenerator()
     private var generadorNumbers = NumberListGenerator()
     private var generadorPosicionsNumbers = NumberListPositionGenerator()
-    private val contextEngine : Context = context
+    private val contextEngine: Context = context
 
-    private var characterFactory : CharacterFactory? = null
+    private var characterFactory: CharacterFactory? = null
     var listOfCharacters = ArrayList<Enemy>() //tendremos una lista de enemigos la cual iteraremos donde nos interese
     private var listOfCharacterNames = ArrayList<String>()
     private var listOfPositions = ArrayList<Array<Int>>()
@@ -40,15 +36,14 @@ class GameEngine(context : Context, nivell:Int) {
     private var listOfNumbersValues = ArrayList<Int>()
 
 
-
-    init{
+    init {
         inGameBorder = InGameBorder(
             BitmapFactory.decodeResource(
                 context.resources,
                 R.drawable.in_game_border
             )
         )
-        pauseButton = PauseButton(BitmapFactory.decodeResource(context.resources,R.drawable.pause_button))
+        pauseButton = PauseButton(BitmapFactory.decodeResource(context.resources, R.drawable.pause_button))
         listOfCharacterNames = generador.generarNivell(nivell)
         listOfPositions = generadorPosicions.generarPosicions(nivell)
 
@@ -56,45 +51,42 @@ class GameEngine(context : Context, nivell:Int) {
         listOfNumbersValues = generadorNumbers.generateNumValues(nivell)
         listOfNumberPositions = generadorPosicionsNumbers.generarPosicions(nivell)
 
-        characterFactory= CharacterFactory(context)
+        characterFactory = CharacterFactory(context)
         personatge = characterFactory!!.createCharacterByName("PlayerCharacter") as PlayerCharacter
         addCharactersToList()
         addNumbersToList()
     }
 
-    fun addNumbersToList(){
-        for(i in 0 until listOfNumbersName.size){
-            val num : NumberCharacter
-
-            num=characterFactory!!.createCharacterByName(listOfNumbersName.get(i)) as NumberCharacter
+    fun addNumbersToList() {
+        for (i in 0 until listOfNumbersName.size) {
+            val num: NumberCharacter =
+                characterFactory!!.createCharacterByName(listOfNumbersName.get(i)) as NumberCharacter
             num.setValue(listOfNumbersValues.get(i))
-            num.x=listOfNumberPositions[i][0]
-            num.y=listOfNumberPositions[i][1]
+            num.x = listOfNumberPositions[i][0]
+            num.y = listOfNumberPositions[i][1]
             listOfNumbers.add(num)
 
         }
     }
 
-    fun addCharactersToList(){
-        for(i in 0 until listOfCharacterNames.size){
-            val enemy : Enemy//habrán indefinidos Enemigos
+    fun addCharactersToList() {
+        for (i in 0 until listOfCharacterNames.size) {
+            val enemy: Enemy =
+                characterFactory!!.createCharacterByName(listOfCharacterNames.get(i)) as Enemy//habrán indefinidos Enemigos
 
-            enemy=characterFactory!!.createCharacterByName(listOfCharacterNames.get(i)) as Enemy
             enemy.x = listOfPositions[i][0]
             enemy.y = listOfPositions[i][1]
             listOfCharacters.add(enemy)
         }
     }
 
-    fun getPlayer() : PlayerCharacter{
+    fun getPlayer(): PlayerCharacter {
         return personatge!!
     }
 
-
-
     fun update() {
 
-        for(i in 0 until listOfCharacters.size){
+        for (i in 0 until listOfCharacters.size) {
             listOfCharacters.get(i).update()
             listOfCharacters.get(i).characterHitsPlayer(personatge!!)
         }
@@ -107,7 +99,7 @@ class GameEngine(context : Context, nivell:Int) {
             }
         }
 
-        for (i in 0 until listOfNumbers.size){
+        for (i in 0 until listOfNumbers.size) {
 
             personatge!!.takesNumber(listOfNumbers.get(i))
 
@@ -115,12 +107,11 @@ class GameEngine(context : Context, nivell:Int) {
 
     }
 
-
     /**
      * Everything that has to be drawn on Canvas
      */
     var paint = Paint()
-    val fuenteNueva: Typeface = Typeface.createFromAsset(contextEngine.assets,"fonts/Crimes Times Six.ttf")
+    val fuenteNueva: Typeface = Typeface.createFromAsset(contextEngine.assets, "fonts/Crimes Times Six.ttf")
 
     fun draw(canvas: Canvas) {
         inGameBorder!!.draw(canvas)
@@ -129,21 +120,21 @@ class GameEngine(context : Context, nivell:Int) {
         if (!personatge!!.imageList[0].isRecycled) {
             getPlayer().draw(canvas)
         }
-        for(i in 0 until listOfCharacters.size) {
+        for (i in 0 until listOfCharacters.size) {
             listOfCharacters.get(i).draw(canvas)
 
         }
-        for(i in 0 until listOfNumbers.size){
-            if(listOfNumbers.get(i).imageList[0].isRecycled){
+        for (i in 0 until listOfNumbers.size) {
+            if (listOfNumbers[i].imageList[0].isRecycled) {
                 listOfNumbers.remove(listOfNumbers.get(i))
-            }else {
-                listOfNumbers.get(i).draw(canvas)
-                paint.color= Color.WHITE
-                paint.style= Paint.Style.FILL
-                paint.textSize=40.0f
+            } else {
+                listOfNumbers[i].draw(canvas)
+                paint.color = Color.WHITE
+                paint.style = Paint.Style.FILL
+                paint.textSize = 40.0f
                 paint.typeface = fuenteNueva
-                var text : String = listOfNumbers.get(i).getValue().toString()
-                canvas.drawText(text,listOfNumbers.get(i).x.toFloat()-20f,listOfNumbers.get(i).y.toFloat()+10f,paint)
+                val text: String = listOfNumbers[i].getValue().toString()
+                canvas.drawText(text, listOfNumbers[i].x.toFloat() - 20f, listOfNumbers.get(i).y.toFloat() + 10f, paint)
             }
         }
     }

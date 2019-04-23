@@ -6,11 +6,10 @@ import android.widget.ImageButton
 import android.widget.TextView
 import edu.ub.pis.joc.limitless.R
 
+const val MODE_INFINITY = "infinity"
+
 class GameModeActivity : FullScreenActivity() {
-
     private val TAG = "GameModeActivity"
-
-    var mode: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +23,6 @@ class GameModeActivity : FullScreenActivity() {
 
         val myMap: ImageButton = findViewById(R.id.myMapButton)
         myMap.setOnClickListener {
-            /*mode="My Map"
-            val myMapGameInt = Intent(this, GameActivity::class.java)
-            myMapGameInt.putExtra("mode",mode)
-            startActivity(myMapGameInt)*/
-
             val intent = Intent(this, WorldSelectorActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
@@ -36,10 +30,9 @@ class GameModeActivity : FullScreenActivity() {
 
         val infiniteMode: ImageButton = findViewById(R.id.infiniteModeButton)
         infiniteMode.setOnClickListener {
-            mode = "Infinity"
             val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra("mode", mode)
-            intent.putExtra("nivell", 12)
+            intent.putExtra(MODE_INFINITY, true)
+            intent.putExtra(LEVEL_BY_WORLD, 12) // TMP
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }

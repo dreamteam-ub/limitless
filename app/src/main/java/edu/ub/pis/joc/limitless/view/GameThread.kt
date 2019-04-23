@@ -2,16 +2,20 @@ package edu.ub.pis.joc.limitless.view
 
 import android.graphics.Canvas
 import android.view.SurfaceHolder
-import android.widget.Toast
 import edu.ub.pis.joc.limitless.engine.GameEngine
-import java.util.concurrent.locks.ReentrantLock
-import kotlin.concurrent.withLock
 
-class GameThread(private val surfaceHolder: SurfaceHolder,private val gameView: GameView, private val gameEngine: GameEngine) : Thread() {
+class GameThread(
+    private val surfaceHolder: SurfaceHolder,
+    private val gameView: GameView,
+    private val gameEngine: GameEngine
+) : Thread() {
     private var running: Boolean = false
-    val lock = ReentrantLock()
-    val condition = lock.newCondition()
+
     private val targetFPS = 60 // frames per second, the rate at which you would like to refresh the Canvas
+
+    init {
+        this.name = "GameThread"
+    }
 
     fun setRunning(isRunning: Boolean) {
         this.running = isRunning
@@ -23,53 +27,41 @@ class GameThread(private val surfaceHolder: SurfaceHolder,private val gameView: 
         var waitTime: Long
         val targetTime = (1000 / targetFPS).toLong()
         while (running) {
-            startTime = System.nanoTime()
-            canvas = null
+                startTime = System.nanoTime()
+                canvas = null
 
-            try {
-                // locking the canvas allows us to draw on to it
-                canvas = this.surfaceHolder.lockCanvas()
-                synchronized(surfaceHolder) {
-                    this.gameEngine.update()
-                    this.gameView.draw(canvas!!)
-
-
-                    lock.withLock {
-                        if(gameView.pause){
-                            condition.await()
+                try {
+                    // locking the canvas allows us to draw on to it
+                    canvas = this.surfaceHolder.lockCanvas()
+                    synchronized(surfaceHolder) {
+                        if (gameView.pause) {
+                            running = false
                         }
 
+                        this.gameEngine.update()
+                        this.gameView.draw(canvas!!)
                     }
-
-
-
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            } finally {
-                if (canvas != null) {
-                    try {
-                        surfaceHolder.unlockCanvasAndPost(canvas)
-                    } catch (e: Exception) {
-                        e.printStackTrace()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                } finally {
+                    if (canvas != null) {
+                        try {
+                            surfaceHolder.unlockCanvasAndPost(canvas)
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
                     }
                 }
-            }
 
-            timeMillis = (System.nanoTime() - startTime) / 1000000
-            waitTime = targetTime - timeMillis
+                timeMillis = (System.nanoTime() - startTime) / 1000000
+                waitTime = targetTime - timeMillis
 
-            if (waitTime > 0) {
-                sleep(waitTime)
-            }
-
+                if (waitTime > 0) {
+                    sleep(waitTime)
+                }
 
         }
     }
-
-
-
-
 
     companion object {
         private var canvas: Canvas? = null

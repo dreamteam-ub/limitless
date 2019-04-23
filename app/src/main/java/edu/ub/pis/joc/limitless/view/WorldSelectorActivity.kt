@@ -19,6 +19,8 @@ const val MAX_LEVEL = 2 // 0-2
 const val MAX_WORLD = 3 // 0-3
 const val MIN_LVL_WORLD = 0
 
+const val LEVEL_BY_WORLD = "level"
+
 class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View {
 
     private val TAG = "WorldSelectorActivity"
@@ -123,7 +125,8 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
 
         worldPhoto.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra("nivell",presenter.getCurrenLevel())
+            intent.putExtra(MODE_INFINITY, false)
+            intent.putExtra(LEVEL_BY_WORLD, presenter.getCurrenLevel())
             startActivity(intent)
             finish()
         }
