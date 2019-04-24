@@ -13,8 +13,8 @@ class PauseButton(var image : Bitmap) {
     var w = xPixels*0.1
     var h = yPixels*0.05
 
-    var x = w.toInt()
-    var y = yPixels
+    var x = (xPixels*0.1).toInt()
+    var y = (yPixels*0.99).toInt()
 
     var rect: Rect = Rect() //hitbox
 

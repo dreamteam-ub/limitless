@@ -12,6 +12,8 @@ class Ghost(image: ArrayList<Bitmap>) : Enemy(image) {
 
     override val imageList : ArrayList<Bitmap> = image
 
+    override var activeEnemy: Boolean = true
+
     override fun update() {
 
         if (x > this.getScreenWidth() - w || x < w) {

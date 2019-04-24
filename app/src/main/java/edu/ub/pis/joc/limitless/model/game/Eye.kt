@@ -13,6 +13,7 @@ class Eye(image: ArrayList<Bitmap>) : Enemy(image) {
 
     override val imageList : ArrayList<Bitmap> = image
 
+
     override fun update() {
 
         if (x > this.getScreenWidth() - w || x < w) {

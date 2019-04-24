@@ -62,6 +62,7 @@ class SkullLaser(image: ArrayList<Bitmap>) : Enemy(image) {
             canvas.drawBitmap(imageList[5], null, rect, null)
         } else if (contador in 69..70){
             //Beam 4 - Corresponde a Skull 7
+            activeEnemy = true
             canvas.drawBitmap(imageList[6], null, rect, null)
         } else if (contador in 71..72){
             //Beam 4 Light - Corresponde a Skull 7 Light
@@ -114,6 +115,7 @@ class SkullLaser(image: ArrayList<Bitmap>) : Enemy(image) {
 
         if(contador ==101) {
             contador = 0
+            activeEnemy = false
         }
     }
 }

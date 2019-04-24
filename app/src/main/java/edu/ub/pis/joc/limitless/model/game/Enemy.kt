@@ -9,6 +9,8 @@ open class Enemy(image: ArrayList<Bitmap>) : Character(image), EnemyInterface {
 
     override val imageList : ArrayList<Bitmap> = image
 
+    open var activeEnemy : Boolean = false
+
 
     //a no ser que la clase que herede haga un override del update, por defecto se llamara
     //al update de la clase Enemy. De esta forma facilitamos la creación de objetos con el
@@ -30,10 +32,8 @@ open class Enemy(image: ArrayList<Bitmap>) : Character(image), EnemyInterface {
     }
 
     fun characterHitsPlayer(playerCharacter: PlayerCharacter) {
-        if (this.rect.intersect(playerCharacter.rect)) {
+        if (this.rect.intersect(playerCharacter.rect) && this.activeEnemy) {
             playerCharacter.die()
         }
-
     }
-
 }

@@ -10,6 +10,7 @@ class Demon(image: ArrayList<Bitmap>) : Enemy(image) {
     override var h = image[0].height / 4
     override var w = image[0].width / 4
 
+
     override fun update() {
 
         if (x > this.getScreenWidth() - w || x < w) {

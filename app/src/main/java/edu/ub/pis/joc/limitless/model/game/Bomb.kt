@@ -9,6 +9,8 @@ class Bomb(image: ArrayList<Bitmap>) : Enemy(image) {
 
     override val imageList : ArrayList<Bitmap> = image
 
+    override var activeEnemy: Boolean = true
+
 
     override fun update() {
         //static only we update if it is visible or not

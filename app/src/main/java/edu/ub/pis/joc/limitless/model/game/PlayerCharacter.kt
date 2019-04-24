@@ -67,6 +67,9 @@ class PlayerCharacter(image: ArrayList<Bitmap>) : Character(image), PlayerCharac
         var xVelocity: Int = abs(_x - x) / 3
         var yVelocity: Int = abs(_y - y) / 3
 
+        var xOutOfBorder : Boolean = false
+        var yOutOfBorder : Boolean = false
+
         if (_x < x) {
             xVelocity *= -1
         }
@@ -75,28 +78,48 @@ class PlayerCharacter(image: ArrayList<Bitmap>) : Character(image), PlayerCharac
             yVelocity *= -1
         }
 
-        if(_x<=getScreenWidth()*0.1+w/2){
-            x = (getScreenWidth()*0.1).toInt()+w/2
-            x -= (xVelocity)
+        if(_x<=(getScreenWidth()*0.1).toInt()+w/2){
+            xOutOfBorder = true
+            if(x + (xVelocity) >= (getScreenWidth()*0.1).toInt()+w/2){
+                x += (xVelocity)
+            } else {
+                x = (getScreenWidth() * 0.1).toInt() + w / 2
+            }
         }
 
-        if(_x>=getScreenWidth()*0.9-w/2){
-            x = (getScreenWidth()*0.9).toInt()-w/2
-            x -= (xVelocity)
+        if(_x>=(getScreenWidth()*0.9).toInt()-w/2){
+            xOutOfBorder = true
+            if(x + (xVelocity) <=(getScreenWidth()*0.9).toInt()-w/2){
+                x += (xVelocity)
+            } else {
+                x = (getScreenWidth()*0.9).toInt()-w/2
+            }
         }
 
-        if(_y<=getScreenHeight()*0.1+h/2){
-            y = (getScreenHeight()*0.1).toInt()+h/2
-            y -= (yVelocity)
+        if(_y<=(getScreenHeight()*0.1).toInt()+h/2){
+            yOutOfBorder = true
+            if(y + (yVelocity) >=(getScreenHeight()*0.1).toInt()+h/2){
+                y += (yVelocity)
+            } else {
+                y = (getScreenHeight()*0.1).toInt()+h/2
+            }
         }
 
-        if(_y>=getScreenHeight()*0.9-h/2){
-            y = (getScreenHeight()*0.9).toInt()-h/2
-            y -= (yVelocity)
+        if(_y>=(getScreenHeight()*0.9).toInt()-h/2){
+            yOutOfBorder = true
+            if(y + (yVelocity) <=(getScreenHeight()*0.9).toInt()-h/2){
+                y += (yVelocity)
+            } else {
+                y = (getScreenHeight()*0.9).toInt()-h/2
+            }
         }
 
-        x += (xVelocity)
-        y += (yVelocity)
+        if(!xOutOfBorder) {
+            x += (xVelocity)
+        }
+        if(!yOutOfBorder) {
+            y += (yVelocity)
+        }
 
     }
 
