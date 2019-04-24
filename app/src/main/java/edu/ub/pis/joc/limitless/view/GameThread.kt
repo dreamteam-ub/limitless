@@ -23,42 +23,45 @@ class GameThread(
 
     override fun run() {
         var startTime: Long
+        var actualTimeMilis: Long
         var timeMillis: Long
         var waitTime: Long
         val targetTime = (1000 / targetFPS).toLong()
+        val initialTime:Long = System.currentTimeMillis()
         while (running) {
-                startTime = System.nanoTime()
-                canvas = null
+            startTime = System.nanoTime()
+            actualTimeMilis = System.currentTimeMillis()
+            canvas = null
 
-                try {
-                    // locking the canvas allows us to draw on to it
-                    canvas = this.surfaceHolder.lockCanvas()
-                    synchronized(surfaceHolder) {
-                        if (gameView.pause) {
-                            running = false
-                        }
-
-                        this.gameEngine.update()
-                        this.gameView.draw(canvas!!)
+            try {
+                // locking the canvas allows us to draw on to it
+                canvas = this.surfaceHolder.lockCanvas()
+                synchronized(surfaceHolder) {
+                    if (gameView.pause) {
+                        running = false
                     }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                } finally {
-                    if (canvas != null) {
-                        try {
-                            surfaceHolder.unlockCanvasAndPost(canvas)
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
+
+                    this.gameEngine.update(actualTimeMilis-initialTime)
+                    this.gameView.draw(canvas!!)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            } finally {
+                if (canvas != null) {
+                    try {
+                        surfaceHolder.unlockCanvasAndPost(canvas)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
+            }
 
-                timeMillis = (System.nanoTime() - startTime) / 1000000
-                waitTime = targetTime - timeMillis
+            timeMillis = (System.nanoTime() - startTime) / 1000000
+            waitTime = targetTime - timeMillis
 
-                if (waitTime > 0) {
-                    sleep(waitTime)
-                }
+            if (waitTime > 0) {
+                sleep(waitTime)
+            }
 
         }
     }

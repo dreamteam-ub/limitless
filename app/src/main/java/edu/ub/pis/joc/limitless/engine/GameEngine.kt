@@ -2,6 +2,7 @@ package edu.ub.pis.joc.limitless.engine
 
 import android.content.Context
 import android.graphics.*
+import android.util.Log
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.GameScreen.InGameBorder
@@ -14,15 +15,12 @@ class GameEngine(context: Context, nivell: Int) {
     var touched_x = 0
     var touched_y = 0
     var touched: Int = 0
+    val nivellActual : Int = nivell
 
 
     private var personatge: PlayerCharacter? = null //habrá un player
     private var inGameBorder: InGameBorder? = null
     var pauseButton: PauseButton? = null
-    private var generador = EnemyListGenerator()
-    private var generadorPosicions = EnemyPositionListGenerator()
-    private var generadorNumbers = NumberListGenerator()
-    private var generadorPosicionsNumbers = NumberListPositionGenerator()
     private val contextEngine: Context = context
 
     private var characterFactory: CharacterFactory? = null
@@ -35,6 +33,8 @@ class GameEngine(context: Context, nivell: Int) {
     private var listOfNumbersName = ArrayList<String>()
     private var listOfNumbersValues = ArrayList<Int>()
 
+    private var generadorNivells : LevelGenerator = LevelGenerator()
+
 
     init {
         inGameBorder = InGameBorder(
@@ -44,17 +44,9 @@ class GameEngine(context: Context, nivell: Int) {
             )
         )
         pauseButton = PauseButton(BitmapFactory.decodeResource(context.resources, R.drawable.pause_button))
-        listOfCharacterNames = generador.generarNivell(nivell)
-        listOfPositions = generadorPosicions.generarPosicions(nivell)
-
-        listOfNumbersName = generadorNumbers.generateNums(nivell)
-        listOfNumbersValues = generadorNumbers.generateNumValues(nivell)
-        listOfNumberPositions = generadorPosicionsNumbers.generarPosicions(nivell)
 
         characterFactory = CharacterFactory(context)
         personatge = characterFactory!!.createCharacterByName("PlayerCharacter") as PlayerCharacter
-        addCharactersToList()
-        addNumbersToList()
     }
 
     fun addNumbersToList() {
@@ -70,6 +62,7 @@ class GameEngine(context: Context, nivell: Int) {
     }
 
     fun addCharactersToList() {
+        Log.d("BORRANT LLISTA","a")
         for (i in 0 until listOfCharacterNames.size) {
             val enemy: Enemy =
                 characterFactory!!.createCharacterByName(listOfCharacterNames.get(i)) as Enemy//habrán indefinidos Enemigos
@@ -84,7 +77,26 @@ class GameEngine(context: Context, nivell: Int) {
         return personatge!!
     }
 
-    fun update() {
+    fun update(timeInMilis:Long) {
+
+        var newListOfCharacterNames = generadorNivells.generarEnemics(nivellActual,timeInMilis)
+        var newListOfPositions = generadorNivells.generarPosicionsEnemics(nivellActual,timeInMilis)
+
+        var newListOfNumbersName = generadorNivells.generarMonedes(nivellActual,timeInMilis)
+        var newListOfNumbersValues = generadorNivells.generarValorMonedes(nivellActual,timeInMilis)
+        var newListOfNumberPositions = generadorNivells.generarPosicionsMonedes(nivellActual,timeInMilis)
+
+        if(generadorNivells.enemyChange) {
+            listOfCharacterNames = newListOfCharacterNames
+            listOfPositions = newListOfPositions
+            listOfNumbersName = newListOfNumbersName
+            listOfNumbersValues = newListOfNumbersValues
+            listOfNumberPositions = newListOfNumberPositions
+            listOfCharacters.clear()
+            listOfNumbers.clear()
+            addCharactersToList()
+            addNumbersToList()
+        }
 
         for (i in 0 until listOfCharacters.size) {
             listOfCharacters.get(i).update()
