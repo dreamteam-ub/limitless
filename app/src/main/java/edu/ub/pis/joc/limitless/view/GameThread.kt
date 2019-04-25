@@ -23,26 +23,26 @@ class GameThread(
 
     override fun run() {
         var startTime: Long
-        var actualTimeMilis: Long
         var timeMillis: Long
         var waitTime: Long
         val targetTime = (1000 / targetFPS).toLong()
-        val initialTime:Long = System.currentTimeMillis()
         while (running) {
             startTime = System.nanoTime()
-            actualTimeMilis = System.currentTimeMillis()
             canvas = null
 
             try {
                 // locking the canvas allows us to draw on to it
                 canvas = this.surfaceHolder.lockCanvas()
+
                 synchronized(surfaceHolder) {
                     if (gameView.pause) {
                         running = false
                     }
 
-                    this.gameEngine.update(actualTimeMilis-initialTime)
+                    this.gameEngine.update()
                     this.gameView.draw(canvas!!)
+                    this.gameEngine.architect()
+                    this.gameEngine.gameTime++
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

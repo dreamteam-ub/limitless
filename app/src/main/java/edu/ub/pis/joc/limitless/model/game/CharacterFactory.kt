@@ -4,98 +4,106 @@ import android.content.Context
 import android.graphics.Bitmap
 import edu.ub.pis.joc.limitless.R
 import android.graphics.BitmapFactory
-import android.graphics.drawable.AnimationDrawable
-import android.widget.ImageView
-import android.widget.Toast
+import android.graphics.Typeface
 
+const val BLACKHOLE_CHAR = "BlackHole"
+const val BOMB_CHAR = "Bomb"
+const val DEMON_CHAR = "Demon"
+const val EYE_CHAR = "Eye"
+const val GHOST_CHAR = "Ghost"
+const val PLAYER_CHARACTER = "PlayerCharacter"
+const val SKULL_CHAR = "Skull"
 
-class CharacterFactory(context: Context): FactoryPattern {
-    var ctxt=context
+const val SKULL_LASER = "SkullLaser"
 
+const val NUMBER_COIN = "NumberCharacter"
 
-    override fun createCharacterByName(character: String): Character? {
+class CharacterFactory(context: Context) : FactoryPattern {
+    var ctxt = context
 
-        
-        return when(character){
-
-            "BlackHole" ->{
-                var arrayImatges : ArrayList<Bitmap> = ArrayList<Bitmap>()
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.hole))
-                BlackHole(arrayImatges)}
-
-            "Bomb" -> {
-                var arrayImatges : ArrayList<Bitmap> = ArrayList<Bitmap>()
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.bomb1))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.bomb2))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.bomb3))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.bomb4))
-                Bomb(arrayImatges)}
-
-            "Demon" -> {
-                var arrayImatges : ArrayList<Bitmap> = ArrayList<Bitmap>()
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.demon))
-                Demon(arrayImatges) }
-
-            "Eye" -> {
-                var arrayImatges : ArrayList<Bitmap> =  ArrayList<Bitmap>()
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.eye))
-                Eye(arrayImatges) }
-
-            "Ghost" -> {
-                var arrayImatges : ArrayList<Bitmap> =  ArrayList<Bitmap>()
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.ghost))
-                Ghost(arrayImatges) }
-
-            "PlayerCharacter" -> {
-                var arrayImatges : ArrayList<Bitmap> = ArrayList<Bitmap>()
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.main_character))
-                PlayerCharacter(arrayImatges)}
-
-            "Skull" -> {
-                var arrayImatges : ArrayList<Bitmap> =  ArrayList<Bitmap>()
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull1))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull2))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull3))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull3_light))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull4))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull4_light))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull5))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull5_light))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull6))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull6_light))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull7))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull7_light))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull8))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.skull8_light))
-                Skull(arrayImatges)}
-
-            "NumberCharacter" ->{
-                var arrayImatges : ArrayList<Bitmap> =  ArrayList<Bitmap>()
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.coin))
-                NumberCharacter(arrayImatges)
+    override fun createCharacter(character: String, posX : Int, posY : Int, value : Int, font : Typeface?): Character? {
+        return when (character) {
+            BLACKHOLE_CHAR -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.hole))
+                BlackHole(arrayImatges, posX, posY)
             }
 
-            "SkullLaser" -> {
-                var arrayImatges : ArrayList<Bitmap> =  ArrayList<Bitmap>()
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.beam1))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.beam1_light))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.beam2))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.beam2_light))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.beam3))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.beam3_light))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.beam4))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.beam4_light))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.beam5))
-                arrayImatges.add(BitmapFactory.decodeResource(ctxt.resources,R.drawable.beam5_light))
-                SkullLaser(arrayImatges)}
+            BOMB_CHAR -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.bomb1),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.bomb2),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.bomb3),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.bomb4))
+                Bomb(arrayImatges, posX, posY)
+            }
 
+            DEMON_CHAR -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.demon))
+                Demon(arrayImatges, posX, posY)
+            }
+
+            EYE_CHAR -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.eye))
+                Eye(arrayImatges, posX, posY)
+            }
+
+            GHOST_CHAR -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                    BitmapFactory.decodeResource(ctxt.resources, R.drawable.ghost))
+                Ghost(arrayImatges, posX, posY)
+            }
+
+            PLAYER_CHARACTER -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.main_character))
+                PlayerCharacter(arrayImatges, posX, posY)
+            }
+
+            SKULL_CHAR -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull1),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull2),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull3),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull3_light),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull4),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull4_light),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull5),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull5_light),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull6),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull6_light),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull7),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull7_light),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull8),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.skull8_light))
+                Skull(arrayImatges, posX, posY)
+            }
+
+            NUMBER_COIN -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.coin))
+                NumberCharacter(arrayImatges, posX, posY, value, font!!)
+            }
+
+            SKULL_LASER -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.beam1),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.beam1_light),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.beam2),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.beam2_light),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.beam3),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.beam3_light),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.beam4),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.beam4_light),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.beam5),
+                BitmapFactory.decodeResource(ctxt.resources, R.drawable.beam5_light))
+                SkullLaser(arrayImatges, posX, posY)
+            }
             else -> {
-
-                null }
-
+                null
+            }
         }
     }
-
-
-
 }

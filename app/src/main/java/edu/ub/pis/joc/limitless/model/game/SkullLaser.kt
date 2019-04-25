@@ -2,17 +2,12 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import edu.ub.pis.joc.limitless.model.Data.screenHeight
 
-class SkullLaser(image: ArrayList<Bitmap>) : Enemy(image) {
+class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, posY) {
 
     override var h = image[0].height /4
     override var w = image[0].width /4
-
-    //posicion inicial
-    override var x: Int = (getScreenWidth()*0.5).toInt()
-    override var y: Int = (getScreenHeight()*0.1).toInt()
-
-    override val imageList : ArrayList<Bitmap> = image
 
     var contador : Int = 0
 
@@ -23,7 +18,7 @@ class SkullLaser(image: ArrayList<Bitmap>) : Enemy(image) {
     override fun draw(canvas: Canvas){
         val halfW: Int = w / 2
         val appropiateH: Int = (((h/3.36).toInt())/2)-10
-        rect.set(x - halfW, y+appropiateH,x + halfW, getScreenHeight())
+        rect.set(x - halfW, y+appropiateH,x + halfW, screenHeight)
         if (contador in 21..25){
             //Beam 1 - Corresponde a Skull 4
             canvas.drawBitmap(imageList[0], null, rect, null)
@@ -111,10 +106,9 @@ class SkullLaser(image: ArrayList<Bitmap>) : Enemy(image) {
             canvas.drawBitmap(imageList[9], null, rect, null)
         }
 
-        contador++
+        contador = (contador+1) % 101
 
-        if(contador ==101) {
-            contador = 0
+        if(contador == 0) {
             activeEnemy = false
         }
     }

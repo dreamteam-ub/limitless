@@ -1,24 +1,21 @@
 package edu.ub.pis.joc.limitless.model.game
 
-import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
 
-abstract class Character(image: ArrayList<Bitmap>) {
-
-    private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
-    private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
+abstract class Character(image: ArrayList<Bitmap>, posX: Int, posY: Int) {
 
     //posicion inicial
-    open var x: Int = screenWidth / 2
-    open var y: Int = screenHeight/ 10
+    open var x: Int = posX
+    open var y: Int = posY
 
     //medida imagen
     open var w: Int = image[0].width / 2
     open var h: Int = image[0].height / 2
 
-    open val imageList : ArrayList<Bitmap> = image
+    open val imageList: ArrayList<Bitmap> = image
+
 
     var rect: Rect = Rect() //hitbox
 
@@ -33,20 +30,5 @@ abstract class Character(image: ArrayList<Bitmap>) {
         rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
         canvas.drawBitmap(imageList[0], null, rect, null)
     }
-
-
-
-
-    //getters of screen width and height
-
-    fun getScreenWidth(): Int {
-        return screenWidth
-    }
-
-    fun getScreenHeight(): Int {
-        return screenHeight
-    }
-
-
 
 }

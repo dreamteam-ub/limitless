@@ -1,4 +1,4 @@
-package edu.ub.pis.joc.limitless.view.GameScreen
+package edu.ub.pis.joc.limitless.view.gamescreen
 
 import android.content.res.Resources
 import android.graphics.Bitmap

@@ -56,16 +56,16 @@ class GameView(appContext: Context, private val dialog: Dialog, level: Int) : Su
 
         when (event.action) {
             MotionEvent.ACTION_DOWN ->
-                if (gameEngine.touched_x > (gameEngine.getPlayer().x - gameEngine.getPlayer().w)
-                    && gameEngine.touched_x < (gameEngine.getPlayer().x + gameEngine.getPlayer().w)
-                    && gameEngine.touched_y < (gameEngine.getPlayer().y + gameEngine.getPlayer().h)
-                    && gameEngine.touched_y > (gameEngine.getPlayer().y - gameEngine.getPlayer().h)
+                if (gameEngine.touched_x > (gameEngine.player.x - gameEngine.player.w)
+                    && gameEngine.touched_x < (gameEngine.player.x + gameEngine.player.w)
+                    && gameEngine.touched_y < (gameEngine.player.y + gameEngine.player.h)
+                    && gameEngine.touched_y > (gameEngine.player.y - gameEngine.player.h)
                 ) {
                     gameEngine.touched = 1
-                } else if (gameEngine.touched_x > (gameEngine.pauseButton!!.x - gameEngine.pauseButton!!.w)
-                    && gameEngine.touched_x < (gameEngine.pauseButton!!.x + gameEngine.pauseButton!!.w)
-                    && gameEngine.touched_y < (gameEngine.pauseButton!!.y + gameEngine.pauseButton!!.h)
-                    && gameEngine.touched_y > (gameEngine.pauseButton!!.y - gameEngine.pauseButton!!.h)
+                } else if (gameEngine.touched_x > (gameEngine.pauseButton.x - gameEngine.pauseButton.w)
+                    && gameEngine.touched_x < (gameEngine.pauseButton.x + gameEngine.pauseButton.w)
+                    && gameEngine.touched_y < (gameEngine.pauseButton.y + gameEngine.pauseButton.h)
+                    && gameEngine.touched_y > (gameEngine.pauseButton.y - gameEngine.pauseButton.h)
                 ) {
                     if (!dialog.isShowing) {
                         dialog.show()
@@ -74,10 +74,10 @@ class GameView(appContext: Context, private val dialog: Dialog, level: Int) : Su
                     gameEngine.touched = 2
                 }
             MotionEvent.ACTION_MOVE ->
-                if (gameEngine.touched_x > (gameEngine.getPlayer().x - gameEngine.getPlayer().w)
-                    && gameEngine.touched_x < (gameEngine.getPlayer().x + gameEngine.getPlayer().w)
-                    && gameEngine.touched_y < (gameEngine.getPlayer().y + gameEngine.getPlayer().h)
-                    && gameEngine.touched_y > (gameEngine.getPlayer().y - gameEngine.getPlayer().h)
+                if (gameEngine.touched_x > (gameEngine.player.x - gameEngine.player.w)
+                    && gameEngine.touched_x < (gameEngine.player.x + gameEngine.player.w)
+                    && gameEngine.touched_y < (gameEngine.player.y + gameEngine.player.h)
+                    && gameEngine.touched_y > (gameEngine.player.y - gameEngine.player.h)
                 ) {
                     gameEngine.touched = 1
                 } else {

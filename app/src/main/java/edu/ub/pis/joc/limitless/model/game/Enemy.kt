@@ -1,34 +1,30 @@
 package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
+import edu.ub.pis.joc.limitless.model.Data.screenHeight
+import edu.ub.pis.joc.limitless.model.Data.screenWidth
 
-open class Enemy(image: ArrayList<Bitmap>) : Character(image), EnemyInterface {
+open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), EnemyInterface {
 
     override var xVelocity: Int = 10
     override var yVelocity: Int = 10
 
-    override val imageList : ArrayList<Bitmap> = image
-
-    open var activeEnemy : Boolean = false
+    open var activeEnemy: Boolean = false
 
 
     //a no ser que la clase que herede haga un override del update, por defecto se llamara
     //al update de la clase Enemy. De esta forma facilitamos la creación de objetos con el
     //patron Factory
     override fun update() {
-
-
-        if (x > this.getScreenWidth() - w || x < w) {
+        if (x > screenWidth - w || x < w) {
             xVelocity *= -1
         }
-        if (y > this.getScreenHeight() - h || y < h) {
+        if (y > screenHeight - h || y < h) {
             yVelocity *= -1
         }
 
-
         x += (xVelocity)
         y += (yVelocity)
-
     }
 
     fun characterHitsPlayer(playerCharacter: PlayerCharacter) {

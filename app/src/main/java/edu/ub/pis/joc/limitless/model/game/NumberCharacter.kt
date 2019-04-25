@@ -1,22 +1,22 @@
 package edu.ub.pis.joc.limitless.model.game
 
-import android.graphics.Bitmap
+import android.graphics.*
 
-class NumberCharacter(image: ArrayList<Bitmap>) : Character(image), ObjectsInGameInterface {
+class NumberCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int, var value: Int, font : Typeface) : Character(image, posX, posY), ObjectsInGameInterface {
 
-    var value : Int? = null
+    override var h = image[0].height / 10
+    override var w = image[0].width / 10
 
-    override var x = (getScreenWidth()*0.5).toInt()
-    override var y = (getScreenHeight()*0.5).toInt()
+    private val paint = Paint()
 
-    override var h = image[0].height /10
-    override var w = image[0].width /10
+    init {
+        paint.color = Color.WHITE
+        paint.style = Paint.Style.FILL
+        paint.textSize = 40.0f
+        paint.typeface = font
+    }
 
-    override val imageList : ArrayList<Bitmap> = image
-
-
-
-     override fun update() {
+    override fun update() {
 
     }
 
@@ -24,11 +24,12 @@ class NumberCharacter(image: ArrayList<Bitmap>) : Character(image), ObjectsInGam
         imageList[0].recycle()
     }
 
-    fun getValue() : Int{
-        return this.value!!
-    }
+    override fun draw(canvas: Canvas) {
+        val halfW: Int = w / 2
+        val halfH: Int = h / 2
+        rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
 
-    fun setValue(value : Int){
-        this.value=value
+        canvas.drawBitmap(imageList[0], null, rect, null)
+        canvas.drawText(value.toString(), x.toFloat() - 20f, y.toFloat() + 10f, paint)
     }
 }

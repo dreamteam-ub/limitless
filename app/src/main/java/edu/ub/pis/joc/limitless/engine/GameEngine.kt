@@ -2,152 +2,104 @@ package edu.ub.pis.joc.limitless.engine
 
 import android.content.Context
 import android.graphics.*
-import android.util.Log
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.game.*
-import edu.ub.pis.joc.limitless.view.GameScreen.InGameBorder
-import edu.ub.pis.joc.limitless.view.GameScreen.PauseButton
+import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
+import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
 import java.util.*
 
 
-class GameEngine(context: Context, nivell: Int) {
+class GameEngine (contextEngine: Context, levelWorld: Int) {
 
     var touched_x = 0
     var touched_y = 0
     var touched: Int = 0
-    val nivellActual : Int = nivell
 
+    var gameTime : Long = 0
 
-    private var personatge: PlayerCharacter? = null //habrá un player
-    private var inGameBorder: InGameBorder? = null
-    var pauseButton: PauseButton? = null
-    private val contextEngine: Context = context
+    private val currentLevelWorld : Int = levelWorld
 
-    private var characterFactory: CharacterFactory? = null
-    var listOfCharacters = ArrayList<Enemy>() //tendremos una lista de enemigos la cual iteraremos donde nos interese
-    private var listOfCharacterNames = ArrayList<String>()
-    private var listOfPositions = ArrayList<Array<Int>>()
-
-    private var listOfNumberPositions = ArrayList<Array<Int>>()
-    var listOfNumbers = ArrayList<NumberCharacter>()
-    private var listOfNumbersName = ArrayList<String>()
-    private var listOfNumbersValues = ArrayList<Int>()
-
-    private var generadorNivells : LevelGenerator = LevelGenerator()
-
-
-    init {
-        inGameBorder = InGameBorder(
-            BitmapFactory.decodeResource(
-                context.resources,
-                R.drawable.in_game_border
-            )
+    private var inGameBorder: InGameBorder = InGameBorder(
+        BitmapFactory.decodeResource(
+            contextEngine.resources,
+            R.drawable.in_game_border
         )
-        pauseButton = PauseButton(BitmapFactory.decodeResource(context.resources, R.drawable.pause_button))
+    )
 
-        characterFactory = CharacterFactory(context)
-        personatge = characterFactory!!.createCharacterByName("PlayerCharacter") as PlayerCharacter
-    }
+    var pauseButton: PauseButton  = PauseButton(BitmapFactory.decodeResource(contextEngine.resources, R.drawable.pause_button))
 
-    fun addNumbersToList() {
-        for (i in 0 until listOfNumbersName.size) {
-            val num: NumberCharacter =
-                characterFactory!!.createCharacterByName(listOfNumbersName.get(i)) as NumberCharacter
-            num.setValue(listOfNumbersValues.get(i))
-            num.x = listOfNumberPositions[i][0]
-            num.y = listOfNumberPositions[i][1]
-            listOfNumbers.add(num)
+    var listOfEnemyCharacters = ArrayList<Enemy>() //tendremos una lista de enemigos la cual iteraremos donde nos interese
+    var listOfCoins = ArrayList<NumberCharacter>()
 
+    private var levelGen : LevelGenerator =
+        LevelGenerator(contextEngine, listOfEnemyCharacters, listOfCoins)
+
+    var player: PlayerCharacter = levelGen.buildPlayer()
+
+    private var archThread: ArchThread = ArchThread(levelGen, currentLevelWorld, gameTime)
+
+    fun update() {
+        for (i in 0 until listOfEnemyCharacters.size) {
+            listOfEnemyCharacters[i].update()
+            listOfEnemyCharacters[i].characterHitsPlayer(player)
         }
-    }
-
-    fun addCharactersToList() {
-        Log.d("BORRANT LLISTA","a")
-        for (i in 0 until listOfCharacterNames.size) {
-            val enemy: Enemy =
-                characterFactory!!.createCharacterByName(listOfCharacterNames.get(i)) as Enemy//habrán indefinidos Enemigos
-
-            enemy.x = listOfPositions[i][0]
-            enemy.y = listOfPositions[i][1]
-            listOfCharacters.add(enemy)
-        }
-    }
-
-    fun getPlayer(): PlayerCharacter {
-        return personatge!!
-    }
-
-    fun update(timeInMilis:Long) {
-
-        var newListOfCharacterNames = generadorNivells.generarEnemics(nivellActual,timeInMilis)
-        var newListOfPositions = generadorNivells.generarPosicionsEnemics(nivellActual,timeInMilis)
-
-        var newListOfNumbersName = generadorNivells.generarMonedes(nivellActual,timeInMilis)
-        var newListOfNumbersValues = generadorNivells.generarValorMonedes(nivellActual,timeInMilis)
-        var newListOfNumberPositions = generadorNivells.generarPosicionsMonedes(nivellActual,timeInMilis)
-
-        if(generadorNivells.enemyChange) {
-            listOfCharacterNames = newListOfCharacterNames
-            listOfPositions = newListOfPositions
-            listOfNumbersName = newListOfNumbersName
-            listOfNumbersValues = newListOfNumbersValues
-            listOfNumberPositions = newListOfNumberPositions
-            listOfCharacters.clear()
-            listOfNumbers.clear()
-            addCharactersToList()
-            addNumbersToList()
-        }
-
-        for (i in 0 until listOfCharacters.size) {
-            listOfCharacters.get(i).update()
-            listOfCharacters.get(i).characterHitsPlayer(personatge!!)
-        }
-        if (!personatge!!.imageList[0].isRecycled) {
-
+        if (!player.imageList[0].isRecycled) {
             if (touched == 1) {
-                getPlayer().update(touched_x, touched_y, false)
+                player.update(touched_x, touched_y, false)
             } else if (touched == 2) {
-                getPlayer().update(touched_x, touched_y, true)
+                player.update(touched_x, touched_y, true)
             }
         }
 
-        for (i in 0 until listOfNumbers.size) {
-
-            personatge!!.takesNumber(listOfNumbers.get(i))
-
+        for (i in 0 until listOfCoins.size) {
+            player.takesNumber(listOfCoins[i])
         }
-
     }
 
     /**
      * Everything that has to be drawn on Canvas
      */
-    var paint = Paint()
-    val fuenteNueva: Typeface = Typeface.createFromAsset(contextEngine.assets, "fonts/Crimes Times Six.ttf")
 
     fun draw(canvas: Canvas) {
-        inGameBorder!!.draw(canvas)
-        pauseButton!!.draw(canvas)
+        inGameBorder.draw(canvas)
+        pauseButton.draw(canvas)
 
-        if (!personatge!!.imageList[0].isRecycled) {
-            getPlayer().draw(canvas)
+        if (!player.imageList[0].isRecycled) {
+            player.draw(canvas)
         }
-        for (i in 0 until listOfCharacters.size) {
-            listOfCharacters.get(i).draw(canvas)
+        for (i in 0 until listOfEnemyCharacters.size) {
+            listOfEnemyCharacters[i].draw(canvas)
 
         }
-        for (i in 0 until listOfNumbers.size) {
-            if (listOfNumbers[i].imageList[0].isRecycled) {
-                listOfNumbers.remove(listOfNumbers.get(i))
+        for (i in 0 until listOfCoins.size) {
+            if (listOfCoins[i].imageList[0].isRecycled) {
+                listOfCoins.remove(listOfCoins[i])
             } else {
-                listOfNumbers[i].draw(canvas)
-                paint.color = Color.WHITE
-                paint.style = Paint.Style.FILL
-                paint.textSize = 40.0f
-                paint.typeface = fuenteNueva
-                val text: String = listOfNumbers[i].getValue().toString()
-                canvas.drawText(text, listOfNumbers[i].x.toFloat() - 20f, listOfNumbers.get(i).y.toFloat() + 10f, paint)
+                listOfCoins[i].draw(canvas)
             }
+        }
+    }
+
+    fun architect() {
+        // start the game thread
+        if (archThread.state == Thread.State.TERMINATED) {
+            archThread = ArchThread(levelGen, currentLevelWorld, gameTime)
+        }
+
+        if (!archThread.isAlive) {
+            archThread.start()
+        }
+
+        // archThread.join()
+    }
+
+    class ArchThread (private var levelGen : LevelGenerator, private var currentLevelWorld : Int, private var gameTime : Long) : Thread() {
+        init {
+            this.name = "ArchitectThread"
+        }
+        override fun run() {
+            levelGen.buildEnemies(currentLevelWorld, gameTime)
+            levelGen.buildCoins(currentLevelWorld, gameTime)
         }
     }
 
