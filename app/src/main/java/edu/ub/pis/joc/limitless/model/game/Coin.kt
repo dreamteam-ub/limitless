@@ -2,18 +2,20 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.*
 
-class NumberCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int, var value: Int, font : Typeface) : Character(image, posX, posY), ObjectsInGameInterface {
+class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), ObjectsInGameInterface {
 
     override var h = image[0].height / 10
     override var w = image[0].width / 10
 
-    private val paint = Paint()
+    val paint = Paint()
+
+    var value: Int = 0
 
     init {
         paint.color = Color.WHITE
         paint.style = Paint.Style.FILL
         paint.textSize = 40.0f
-        paint.typeface = font
+        paint.typeface = Typeface.DEFAULT
     }
 
     override fun update() {

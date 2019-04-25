@@ -9,15 +9,15 @@ import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
 import java.util.*
 
 
-class GameEngine (contextEngine: Context, levelWorld: Int) {
+class GameEngine(contextEngine: Context, levelWorld: Int) {
 
     var touched_x = 0
     var touched_y = 0
     var touched: Int = 0
 
-    var gameTime : Long = 0
+    var gameTime: Long = 0
 
-    private val currentLevelWorld : Int = levelWorld
+    private val currentLevelWorld: Int = levelWorld
 
     private var inGameBorder: InGameBorder = InGameBorder(
         BitmapFactory.decodeResource(
@@ -26,12 +26,14 @@ class GameEngine (contextEngine: Context, levelWorld: Int) {
         )
     )
 
-    var pauseButton: PauseButton  = PauseButton(BitmapFactory.decodeResource(contextEngine.resources, R.drawable.pause_button))
+    var pauseButton: PauseButton =
+        PauseButton(BitmapFactory.decodeResource(contextEngine.resources, R.drawable.pause_button))
 
-    var listOfEnemyCharacters = ArrayList<Enemy>() //tendremos una lista de enemigos la cual iteraremos donde nos interese
-    var listOfCoins = ArrayList<NumberCharacter>()
+    var listOfEnemyCharacters =
+        ArrayList<Enemy>() //tendremos una lista de enemigos la cual iteraremos donde nos interese
+    var listOfCoins = ArrayList<Coin>()
 
-    private var levelGen : LevelGenerator =
+    private var levelGen: LevelGenerator =
         LevelGenerator(contextEngine, listOfEnemyCharacters, listOfCoins)
 
     var player: PlayerCharacter = levelGen.buildPlayer()
@@ -52,7 +54,7 @@ class GameEngine (contextEngine: Context, levelWorld: Int) {
         }
 
         for (i in 0 until listOfCoins.size) {
-            player.takesNumber(listOfCoins[i])
+            player.takesCoin(listOfCoins[i])
         }
     }
 
@@ -89,14 +91,17 @@ class GameEngine (contextEngine: Context, levelWorld: Int) {
         if (!archThread.isAlive) {
             archThread.start()
         }
-
-        // archThread.join()
     }
 
-    class ArchThread (private var levelGen : LevelGenerator, private var currentLevelWorld : Int, private var gameTime : Long) : Thread() {
+    class ArchThread(
+        private var levelGen: LevelGenerator,
+        private var currentLevelWorld: Int,
+        private var gameTime: Long
+    ) : Thread() {
         init {
             this.name = "ArchitectThread"
         }
+
         override fun run() {
             levelGen.buildEnemies(currentLevelWorld, gameTime)
             levelGen.buildCoins(currentLevelWorld, gameTime)
