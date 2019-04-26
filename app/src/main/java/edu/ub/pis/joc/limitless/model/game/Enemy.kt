@@ -10,14 +10,17 @@ open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(ima
     override var yVelocity: Int = 10
 
     open var activeEnemy: Boolean = false
-    open var behaviour : Int = 0 //por defecto
+
+    var concreteBehavior : Int = 0
+
+    var dissapearTimer : Int = 0
 
 
     //a no ser que la clase que herede haga un override del update, por defecto se llamara
     //al update de la clase Enemy. De esta forma facilitamos la creación de objetos con el
     //patron Factory
-    override fun update(behaviour: Int) {
-        when (behaviour) {
+    override fun update() {
+        when (concreteBehavior) {
         0 -> {
             if (x > screenWidth - w || x < w) {
                 xVelocity *= -1

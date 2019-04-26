@@ -40,21 +40,33 @@ class GameEngine(contextEngine: Context, levelWorld: Int) {
 
     private var archThread: ArchThread = ArchThread(levelGen, currentLevelWorld, gameTime)
 
-    fun update() {
-        for (i in 0 until listOfEnemyCharacters.size) {
-            listOfEnemyCharacters[i].update(listOfEnemyCharacters[i].behaviour)
-            listOfEnemyCharacters[i].characterHitsPlayer(player)
-        }
-        if (!player.imageList[0].isRecycled) {
-            if (touched == 1) {
-                player.update(touched_x, touched_y, false)
-            } else if (touched == 2) {
-                player.update(touched_x, touched_y, true)
-            }
-        }
+    private var scoreLimtis = levelGen.createLimits(levelWorld)
 
-        for (i in 0 until listOfCoins.size) {
-            player.takesCoin(listOfCoins[i])
+    fun update() {
+        if(levelGen.endOfLevel){
+            if(player.accumulate > scoreLimtis[0] && player.accumulate < scoreLimtis[1]){
+                levelGen.endOfLevel = false
+                //ACTIVITY DE GANAR
+            } else {
+                levelGen.endOfLevel = false
+                //ACTIVITY DE PERDER
+            }
+        } else {
+            for (i in 0 until listOfEnemyCharacters.size) {
+                listOfEnemyCharacters[i].update()
+                listOfEnemyCharacters[i].characterHitsPlayer(player)
+            }
+            if (!player.imageList[0].isRecycled) {
+                if (touched == 1) {
+                    player.update(touched_x, touched_y, false)
+                } else if (touched == 2) {
+                    player.update(touched_x, touched_y, true)
+                }
+            }
+
+            for (i in 0 until listOfCoins.size) {
+                player.takesCoin(listOfCoins[i])
+            }
         }
     }
 

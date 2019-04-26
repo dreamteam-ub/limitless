@@ -9,7 +9,7 @@ class BlackHole(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, p
 
     override var activeEnemy: Boolean = true
 
-    override fun update(behaviour : Int) {
+    override fun update() {
         //static only we update if it is visible or not
 
     }

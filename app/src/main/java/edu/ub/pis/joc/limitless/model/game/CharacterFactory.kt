@@ -31,6 +31,12 @@ class CharacterFactory(context: Context) : FactoryPattern {
 
             BOMB_CHAR -> {
                 val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb_size6),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb_size5),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb_size4),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb_size3),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb_size2),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb_size1),
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb1),
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb2),
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb3),

@@ -5,5 +5,5 @@ interface FactoryPattern {
         character: String,
         posX: Int,
         posY: Int
-    ): Character?
+        ): Character?
 }

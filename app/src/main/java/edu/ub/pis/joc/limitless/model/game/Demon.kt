@@ -11,8 +11,8 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX,
     override var h = image[0].height / 4
     override var w = image[0].width / 4
 
-    override fun update(behaviour: Int) {
-        when (behaviour) {
+    override fun update() {
+        when (concreteBehavior) {
             0 -> {
                 if (x > Data.screenWidth - w || x < w) {
                     xVelocity *= -1
@@ -42,6 +42,5 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX,
 
             }
         }
-
     }
 }

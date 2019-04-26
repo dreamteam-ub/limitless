@@ -7,7 +7,7 @@ import java.lang.Math.abs
 
 class PlayerCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), PlayerCharacterInterface {
 
-    private var accumulate: Int = 0
+    var accumulate: Int = 0
 
     override var w = image[0].width / 6
     override var h = image[0].height / 6

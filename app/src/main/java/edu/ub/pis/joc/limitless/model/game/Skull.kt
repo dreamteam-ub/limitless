@@ -2,6 +2,7 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.support.design.widget.CoordinatorLayout
 
 class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, posY) {
 
@@ -10,7 +11,7 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX,
 
     var contador: Int = 0
 
-    override fun update(behaviour : Int) {
+    override fun update() {
 
     }
 

@@ -13,7 +13,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, p
     override var h = image[0].height / 3
     override var w = image[0].width / 3
 
-    override fun update(behaviour : Int) {
+    override fun update() {
 
         if (x > screenWidth - w || x < w) {
             xVelocity *= -1
