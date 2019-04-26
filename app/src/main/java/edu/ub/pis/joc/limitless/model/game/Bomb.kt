@@ -11,7 +11,7 @@ class Bomb(
     override var activeEnemy: Boolean = true
 
 
-    override fun update() {
+    override fun update(behaviour : Int) {
         //static only we update if it is visible or not
 
     }

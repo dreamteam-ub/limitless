@@ -11,7 +11,7 @@ class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, 
 
     var contador : Int = 0
 
-    override fun update() {
+    override fun update(behaviour : Int) {
 
     }
 

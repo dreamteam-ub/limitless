@@ -12,4 +12,8 @@ class Ghost(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX,
 
     override var activeEnemy: Boolean = true
 
+    override fun update(behaviour: Int) {
+
+    }
+
 }

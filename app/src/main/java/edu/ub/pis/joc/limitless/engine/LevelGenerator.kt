@@ -7,6 +7,7 @@ import edu.ub.pis.joc.limitless.model.Data.screenHeight
 import edu.ub.pis.joc.limitless.model.Data.screenWidth
 import edu.ub.pis.joc.limitless.model.game.*
 import java.util.ArrayList
+import java.util.concurrent.ConcurrentHashMap
 
 const val FONT_CRIME_SIX = "fonts/Crimes Times Six.ttf"
 
@@ -42,32 +43,46 @@ class LevelGenerator(
         posY: Int = (screenHeight * 0.5).toInt()
     ): Enemy {
         Log.d("AÑADE ENEMY", character)
-        return characterFactory.createCharacter(character, posX, posY) as Enemy
+        val tmpChar : Character
+        tmpChar=characterFactory.createCharacter(character, posX, posY) as Enemy
+        return tmpChar
+
     }
+
+
 
     fun buildEnemies(levelWorld: Int, time: Long) {
         //Log.d("TIME", (time).toInt().toString())
         //Log.d("CONTADOR ENEMIGOS", enemyCounter.toString())
         var tmpListOfEnemyCharacters: ArrayList<Enemy> = ArrayList()
-
+        var listOfTmpEnemies = ArrayList<Enemy>()
+        var tmp : Enemy
         when (levelWorld) {
             0 -> {
                 if (time == 0L && enemyCounter == 0) {
-                    tmpListOfEnemyCharacters =
-                        arrayListOf(createEnemy(DEMON_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt()))
+                    tmp = createEnemy(DEMON_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt())
+                    tmp.behaviour = 0
+                    listOfTmpEnemies.add(tmp)
+                    tmpListOfEnemyCharacters = listOfTmpEnemies
                     enemyCounter = 1
                 } else if (time > 200L && enemyCounter == 1) {
-                    tmpListOfEnemyCharacters = arrayListOf(
-                        createEnemy(SKULL_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt()),
-                        createEnemy(SKULL_LASER, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt())
-                    )
+                    tmp = createEnemy(SKULL_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt())
+                    tmp.behaviour=0
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(SKULL_LASER, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt())
+                    tmp.behaviour=0
+                    listOfTmpEnemies.add(tmp)
+                    tmpListOfEnemyCharacters = listOfTmpEnemies
                     enemyCounter = 2
                 } else if (time > 400L && enemyCounter == 2) {
                     listOfEnemyCharacters.clear()
-                    tmpListOfEnemyCharacters = arrayListOf(
-                        createEnemy(DEMON_CHAR, (screenWidth * 0.6).toInt(), (screenHeight * 0.7).toInt()),
-                        createEnemy(DEMON_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt())
-                    )
+                    tmp=createEnemy(DEMON_CHAR, (screenWidth * 0.6).toInt(), (screenHeight * 0.7).toInt())
+                    tmp.behaviour=1
+                    listOfTmpEnemies.add(tmp)
+                    tmp=createEnemy(DEMON_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt())
+                    tmp.behaviour=2
+                    listOfTmpEnemies.add(tmp)
+                    tmpListOfEnemyCharacters = listOfTmpEnemies
                     enemyCounter = 3
                 }
             }
@@ -148,6 +163,8 @@ class LevelGenerator(
             "PlayerCharacter",
             (screenWidth * 0.75).toInt(),
             (screenHeight * 0.75).toInt()
+
+
         ) as PlayerCharacter
     }
 }

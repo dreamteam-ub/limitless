@@ -42,7 +42,7 @@ class GameEngine(contextEngine: Context, levelWorld: Int) {
 
     fun update() {
         for (i in 0 until listOfEnemyCharacters.size) {
-            listOfEnemyCharacters[i].update()
+            listOfEnemyCharacters[i].update(listOfEnemyCharacters[i].behaviour)
             listOfEnemyCharacters[i].characterHitsPlayer(player)
         }
         if (!player.imageList[0].isRecycled) {

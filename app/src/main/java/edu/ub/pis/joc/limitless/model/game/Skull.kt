@@ -10,7 +10,7 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX,
 
     var contador: Int = 0
 
-    override fun update() {
+    override fun update(behaviour : Int) {
 
     }
 
