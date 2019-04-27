@@ -50,7 +50,7 @@ class GameEngine(contextEngine: Context, levelWorld: Int) {
 
     fun update() {
 
-        if (!END_GAME){
+        if (!END_GAME) {
             activityGame.endGame(levelGen, player, scoreLimtis, context)
         }
 
@@ -77,21 +77,23 @@ class GameEngine(contextEngine: Context, levelWorld: Int) {
      */
 
     fun draw(canvas: Canvas) {
-        inGameBorder.draw(canvas)
-        pauseButton.draw(canvas)
+        if (!END_GAME) {
+            inGameBorder.draw(canvas)
+            pauseButton.draw(canvas)
 
-        if (!player.imageList[0].isRecycled) {
-            player.draw(canvas)
-        }
-        for (i in 0 until listOfEnemyCharacters.size) {
-            listOfEnemyCharacters[i].draw(canvas)
+            if (!player.imageList[0].isRecycled) {
+                player.draw(canvas)
+            }
+            for (i in 0 until listOfEnemyCharacters.size) {
+                listOfEnemyCharacters[i].draw(canvas)
 
-        }
-        for (i in 0 until listOfCoins.size) {
-            if (listOfCoins[i].imageList[0].isRecycled) {
-                listOfCoins.remove(listOfCoins[i])
-            } else {
-                listOfCoins[i].draw(canvas)
+            }
+            for (i in 0 until listOfCoins.size) {
+                if (listOfCoins[i].imageList[0].isRecycled) {
+                    listOfCoins.remove(listOfCoins[i])
+                } else {
+                    listOfCoins[i].draw(canvas)
+                }
             }
         }
     }

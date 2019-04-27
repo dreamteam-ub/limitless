@@ -127,7 +127,7 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         worldPhoto.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra(MODE_INFINITY, false)
-            intent.putExtra(LEVEL_BY_WORLD, presenter.getCurrenLevel())
+            intent.putExtra(LEVEL_BY_WORLD, Data.getCurrenLevel())
             startActivity(intent)
             finish()
         }

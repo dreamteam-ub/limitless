@@ -9,6 +9,7 @@ object Data  {
     var currentLvl : Int = 0
     var currentWorld : Int = 0
 
+
     var user : User = User()
     set(u) {
         u.world = when {
@@ -23,9 +24,15 @@ object Data  {
         }
         field = u
     }
+
+    fun getCurrenLevel():Int{
+        return Data.currentWorld * MAX_WORLD + Data.currentLvl
+    }
+
     var ranking : ArrayList<Ranking> = ArrayList()
 
     val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     val screenHeight = Resources.getSystem().displayMetrics.heightPixels
+
 
 }

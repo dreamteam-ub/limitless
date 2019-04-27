@@ -1,5 +1,6 @@
 package edu.ub.pis.joc.limitless.presenter
 
+import android.util.Log
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.view.MAX_LEVEL
@@ -66,9 +67,6 @@ class WorldSelectorPresenter(var view: View) {
         view.changeLevelView(Data.currentLvl, hideLeft, hideRight)
     }
 
-    fun getCurrenLevel():Int{
-        return Data.currentWorld * MAX_WORLD + Data.currentLvl
-    }
 
     interface View {
         fun changeWorldView(world: Int, hideTop: Boolean, hideDown: Boolean)

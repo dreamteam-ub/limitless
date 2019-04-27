@@ -91,7 +91,7 @@ class GameActivity : FullScreenActivity() {
 
     override fun onPause() {
         super.onPause()
-        if(!END_GAME) {
+        if (!END_GAME) {
             if (surface != null) {
                 if (!dialog.isShowing and !exit) {
                     dialog.show()
@@ -109,15 +109,17 @@ class GameActivity : FullScreenActivity() {
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
-        if (!hasFocus) {
-            if (!dialog.isShowing and !exit) {
-                dialog.show()
+        if (!END_GAME) {
+            if (!hasFocus) {
+                if (!dialog.isShowing and !exit) {
+                    dialog.show()
+                }
             }
         }
         super.onWindowFocusChanged(hasFocus)
     }
 
-    fun endGame(levelGen : LevelGenerator, player : PlayerCharacter, scoreLimtis : ArrayList<Int>, context : Context){
+    fun endGame(levelGen: LevelGenerator, player: PlayerCharacter, scoreLimtis: ArrayList<Int>, context: Context) {
 
         if (levelGen.endOfLevel) {
             if (player.accumulate > scoreLimtis[0] && player.accumulate < scoreLimtis[1]) {
@@ -125,6 +127,7 @@ class GameActivity : FullScreenActivity() {
                 levelGen.endOfLevel = false
                 //ACTIVITY DE GANAR PUNTUACION
                 var intent = Intent(context, GameWonActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 context.startActivity(intent)
                 finish()
             } else {
@@ -133,6 +136,7 @@ class GameActivity : FullScreenActivity() {
                 levelGen.endOfLevel = false
                 var intent = Intent(context, GameDeadActivity::class.java)
                 intent.putExtra(MODE_GAME, LEVEL_BY_WORLD)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 context.startActivity(intent)
                 finish()
             }
@@ -142,6 +146,7 @@ class GameActivity : FullScreenActivity() {
             levelGen.endOfLevel = true
             var intent = Intent(context, GameDeadActivity::class.java)
             intent.putExtra(MODE_GAME, LEVEL_BY_WORLD)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             context.startActivity(intent)
             finish()
         }
