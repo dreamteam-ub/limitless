@@ -18,7 +18,8 @@ import edu.ub.pis.joc.limitless.presenter.WorldSelectorPresenter
 const val MAX_LEVEL = 2 // 0-2
 const val MAX_WORLD = 3 // 0-3
 const val MIN_LVL_WORLD = 0
-
+const val LEVEL = "level"
+const val WORLD = "world"
 const val LEVEL_BY_WORLD = "level"
 
 class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View {

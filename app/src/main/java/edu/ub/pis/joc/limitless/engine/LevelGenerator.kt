@@ -94,6 +94,7 @@ class LevelGenerator(
                 }
             }
             1 -> {
+                endOfLevel = false
                 if (time == 0L && enemyCounter == 0) {
                     tmp = createEnemy(DEMON_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
@@ -192,8 +193,8 @@ class LevelGenerator(
 
         when (levelWorld) {
             0 -> {
-                listOfLimits.add(50)
-                listOfLimits.add(100)
+                listOfLimits.add(2)
+                listOfLimits.add(10)
             }
             1 -> {
                 listOfLimits.add(50)

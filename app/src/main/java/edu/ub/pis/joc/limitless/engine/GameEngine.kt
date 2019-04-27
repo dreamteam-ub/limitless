@@ -1,9 +1,12 @@
 package edu.ub.pis.joc.limitless.engine
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.*
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.game.*
+import edu.ub.pis.joc.limitless.view.*
 import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
 import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
 import java.util.*
@@ -16,6 +19,9 @@ class GameEngine(contextEngine: Context, levelWorld: Int) {
     var touched: Int = 0
 
     var gameTime: Long = 0
+    val context = contextEngine
+    val activityGame = context as GameActivity
+
 
     private val currentLevelWorld: Int = levelWorld
 
@@ -43,31 +49,27 @@ class GameEngine(contextEngine: Context, levelWorld: Int) {
     private var scoreLimtis = levelGen.createLimits(levelWorld)
 
     fun update() {
-        if(levelGen.endOfLevel){
-            if(player.accumulate > scoreLimtis[0] && player.accumulate < scoreLimtis[1]){
-                levelGen.endOfLevel = false
-                //ACTIVITY DE GANAR
-            } else {
-                levelGen.endOfLevel = false
-                //ACTIVITY DE PERDER
-            }
-        } else {
-            for (i in 0 until listOfEnemyCharacters.size) {
-                listOfEnemyCharacters[i].update()
-                listOfEnemyCharacters[i].characterHitsPlayer(player)
-            }
-            if (!player.imageList[0].isRecycled) {
-                if (touched == 1) {
-                    player.update(touched_x, touched_y, false)
-                } else if (touched == 2) {
-                    player.update(touched_x, touched_y, true)
-                }
-            }
 
-            for (i in 0 until listOfCoins.size) {
-                player.takesCoin(listOfCoins[i])
+        if (!END_GAME){
+            activityGame.endGame(levelGen, player, scoreLimtis, context)
+        }
+
+        for (i in 0 until listOfEnemyCharacters.size) {
+            listOfEnemyCharacters[i].update()
+            listOfEnemyCharacters[i].characterHitsPlayer(player)
+        }
+        if (!player.imageList[0].isRecycled) {
+            if (touched == 1) {
+                player.update(touched_x, touched_y, false)
+            } else if (touched == 2) {
+                player.update(touched_x, touched_y, true)
             }
         }
+
+        for (i in 0 until listOfCoins.size) {
+            player.takesCoin(listOfCoins[i])
+        }
+
     }
 
     /**

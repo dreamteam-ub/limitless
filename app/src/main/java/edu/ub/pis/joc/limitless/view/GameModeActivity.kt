@@ -7,6 +7,7 @@ import android.widget.TextView
 import edu.ub.pis.joc.limitless.R
 
 const val MODE_INFINITY = "infinity"
+const val MODE_GAME = "mode"
 
 class GameModeActivity : FullScreenActivity() {
     private val TAG = "GameModeActivity"

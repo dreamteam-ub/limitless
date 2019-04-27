@@ -11,7 +11,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageButton
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.engine.LevelGenerator
+import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 
+var END_GAME = false
 
 class GameActivity : FullScreenActivity() {
 
@@ -28,6 +31,7 @@ class GameActivity : FullScreenActivity() {
 
         val level: Int = intent.extras!!.getInt(LEVEL_BY_WORLD)
         val mode: Boolean = intent.extras!!.getBoolean(MODE_INFINITY)
+        END_GAME = false
 
         dialog = Dialog(this)
 
@@ -87,15 +91,19 @@ class GameActivity : FullScreenActivity() {
 
     override fun onPause() {
         super.onPause()
-        if (surface != null) {
-            if (!dialog.isShowing and !exit) {
-                dialog.show()
+        if(!END_GAME) {
+            if (surface != null) {
+                if (!dialog.isShowing and !exit) {
+                    dialog.show()
+                }
             }
         }
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
+
         if (dialog.isShowing) {
             dialog.dismiss()
         }
@@ -109,5 +117,43 @@ class GameActivity : FullScreenActivity() {
         }
         super.onWindowFocusChanged(hasFocus)
     }
+
+    fun endGame(levelGen : LevelGenerator, player : PlayerCharacter, scoreLimtis : ArrayList<Int>, context : Context){
+
+        if (levelGen.endOfLevel) {
+            if (player.accumulate > scoreLimtis[0] && player.accumulate < scoreLimtis[1]) {
+                END_GAME = true
+                levelGen.endOfLevel = false
+                //ACTIVITY DE GANAR PUNTUACION
+                var intent = Intent(context, GameWonActivity::class.java)
+                context.startActivity(intent)
+                finish()
+
+
+            } else {
+                END_GAME = true
+                //PERDER por PUNTUACIÓN
+                levelGen.endOfLevel = false
+                var intent = Intent(context, GameDeadActivity::class.java)
+                intent.putExtra(MODE_GAME, LEVEL_BY_WORLD)
+                context.startActivity(intent)
+                finish()
+
+            }
+        } else if (player.imageList[0].isRecycled) {
+            //ACTIVITY DE PERDER POR MUERTE
+            END_GAME = true
+            levelGen.endOfLevel = true
+            var intent = Intent(context, GameDeadActivity::class.java)
+            intent.putExtra(MODE_GAME, LEVEL_BY_WORLD)
+            context.startActivity(intent)
+            finish()
+
+        }
+
+
+
+    }
+
 
 }
