@@ -98,7 +98,6 @@ class GameActivity : FullScreenActivity() {
                 }
             }
         }
-
     }
 
     override fun onDestroy() {
@@ -128,8 +127,6 @@ class GameActivity : FullScreenActivity() {
                 var intent = Intent(context, GameWonActivity::class.java)
                 context.startActivity(intent)
                 finish()
-
-
             } else {
                 END_GAME = true
                 //PERDER por PUNTUACIÓN
@@ -138,7 +135,6 @@ class GameActivity : FullScreenActivity() {
                 intent.putExtra(MODE_GAME, LEVEL_BY_WORLD)
                 context.startActivity(intent)
                 finish()
-
             }
         } else if (player.imageList[0].isRecycled) {
             //ACTIVITY DE PERDER POR MUERTE
@@ -148,12 +144,6 @@ class GameActivity : FullScreenActivity() {
             intent.putExtra(MODE_GAME, LEVEL_BY_WORLD)
             context.startActivity(intent)
             finish()
-
         }
-
-
-
     }
-
-
 }
