@@ -31,33 +31,36 @@ class GameWonActivity : FullScreenActivity() {
 
 
             val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra(LEVEL_BY_WORLD,Data.getCurrenLevel())
+            intent.putExtra(LEVEL_BY_WORLD, Data.getCurrenLevel())
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
 
-        if (Data.user.level!! != MAX_LEVEL && Data.user.world!! != MAX_WORLD) {
-
-            Data.user.level = (Data.user.level!! + 1) % MAX_LEVEL
-
-            if (Data.user.level!! == 0) {
-                Data.user.world = Data.user.world!! + 1
+        if (Data.user.level!! != MAX_LEVEL + 1 && Data.user.world!! != MAX_WORLD) {
+            if (Data.user.level!! < Data.currentLvl) {
+                Data.user.level = (Data.user.level!! + 1)
             }
-
             db.collection(USERS).document(mAuth.currentUser!!.uid).update(LEVEL, Data.user.level!!)
             db.collection(USERS).document(mAuth.currentUser!!.uid).update(WORLD, Data.user.world!!)
 
         }
-        if (Data.currentLvl != MAX_LEVEL && Data.currentWorld != MAX_WORLD) {
-            Data.currentLvl = (Data.currentLvl + 1) % MAX_LEVEL
-            if (Data.currentLvl == 0) {
-                Data.currentWorld = Data.currentWorld + 1
-            }
-            Log.d("current",Data.currentLvl.toString())
-        } else {
-            nextLevel.visibility = View.GONE
+        if (Data.user.level!! == MAX_LEVEL + 1) {
+            Data.user.level = 0
+            Data.user.world = Data.user.world!! + 1
+
+            db.collection(USERS).document(mAuth.currentUser!!.uid).update(LEVEL, Data.user.level!!)
+            db.collection(USERS).document(mAuth.currentUser!!.uid).update(WORLD, Data.user.world!!)
         }
 
+        if (Data.currentLvl != MAX_LEVEL + 1 && Data.currentWorld != MAX_WORLD) {
+            Data.currentLvl = (Data.currentLvl + 1)
+        }
+        if (Data.currentLvl == MAX_LEVEL + 1) {
+            Data.currentLvl = 0
+            Data.currentWorld = Data.currentWorld + 1
+        } else if (Data.currentLvl == MAX_LEVEL && Data.currentWorld == MAX_WORLD) {
+            nextLevel.visibility = View.GONE
+        }
 
         val worlds: ImageButton = findViewById(R.id.worldsButton)
         worlds.setOnClickListener {

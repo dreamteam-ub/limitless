@@ -32,7 +32,7 @@ class GameActivity : FullScreenActivity() {
         val level: Int = intent.extras!!.getInt(LEVEL_BY_WORLD)
         val mode: Boolean = intent.extras!!.getBoolean(MODE_INFINITY)
         END_GAME = false
-
+        Log.d("level in game", level.toString())
         dialog = Dialog(this)
 
         surface = GameView(this, dialog, level)
