@@ -37,7 +37,7 @@ class GameWonActivity : FullScreenActivity() {
         }
 
         if (Data.user.level!! != MAX_LEVEL + 1 && Data.user.world!! != MAX_WORLD) {
-            if (Data.user.level!! < Data.currentLvl) {
+            if (Data.user.level!! <= Data.currentLvl && Data.user.world == Data.currentWorld) {
                 Data.user.level = (Data.user.level!! + 1)
             }
             db.collection(USERS).document(mAuth.currentUser!!.uid).update(LEVEL, Data.user.level!!)

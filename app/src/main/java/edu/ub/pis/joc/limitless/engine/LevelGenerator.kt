@@ -64,20 +64,27 @@ class LevelGenerator(
             0 -> {
                 endOfLevel = false
                 if (time == 0L && enemyCounter == 0) {
-                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.4).toInt(), (screenHeight * 0.5).toInt(),0,300)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), 0, 300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(), 0, 300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.4).toInt(), (screenHeight * 0.5).toInt(), 0, 300)
                     listOfTmpEnemies.add(tmp)
                     tmpListOfEnemyCharacters = listOfTmpEnemies
                     enemyCounter = 1
-                } else if (time > 200L && enemyCounter == 1) {
-                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.6).toInt(), (screenHeight * 0.7).toInt(),0,120)
+                } else if (time > 100L && enemyCounter == 1) {
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(), 0, 300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(), 0, 300)
                     listOfTmpEnemies.add(tmp)
                     tmpListOfEnemyCharacters = listOfTmpEnemies
                     enemyCounter = 2
                 } else if (time > 400L && enemyCounter == 2) {
-                    listOfEnemyCharacters.clear()
-                    tmp=createEnemy(GHOST_CHAR, 0, 0,0,300)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.8).toInt(), (screenHeight * 0.5).toInt(), 0, 300)
                     listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, 0, (screenHeight * 0.5).toInt(),2,150)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), 0, 300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.6).toInt(), (screenHeight * 0.5).toInt(), 0, 300)
                     listOfTmpEnemies.add(tmp)
                     tmpListOfEnemyCharacters = listOfTmpEnemies
                     enemyCounter = 3
@@ -96,28 +103,95 @@ class LevelGenerator(
             1 -> {
                 endOfLevel = false
                 if (time == 0L && enemyCounter == 0) {
-                    tmp = createEnemy(DEMON_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(),0,100)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
                     tmpListOfEnemyCharacters = listOfTmpEnemies
                     enemyCounter = 1
                 } else if (time > 200L && enemyCounter == 1) {
-                    tmp = createEnemy(SKULL_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt(),0,100)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt(),1,300)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(SKULL_LASER, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt(),0,100)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt(),2,300)
                     listOfTmpEnemies.add(tmp)
                     tmpListOfEnemyCharacters = listOfTmpEnemies
                     enemyCounter = 2
                 } else if (time > 400L && enemyCounter == 2) {
                     listOfEnemyCharacters.clear()
-                    tmp=createEnemy(DEMON_CHAR, (screenWidth * 0.6).toInt(), (screenHeight * 0.7).toInt(),1,100)
+                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0.6).toInt(), (screenHeight * 0.7).toInt(),0,300)
                     listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(DEMON_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(),2,100)
+                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(),0,300)
                     listOfTmpEnemies.add(tmp)
                     tmpListOfEnemyCharacters = listOfTmpEnemies
                     enemyCounter = 3
+                }else if(time > 700L && enemyCounter == 3){
+                    endOfLevel=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
                 }
             }
             2 -> {
+                endOfLevel = false
+                if (time == 0L && enemyCounter == 0) {
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(),1,300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.3).toInt(),1,300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(),0,300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.6).toInt(),0,300)
+                    listOfTmpEnemies.add(tmp)
+                    tmpListOfEnemyCharacters = listOfTmpEnemies
+                    enemyCounter = 1
+                } else if (time > 200L && enemyCounter == 1) {
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt(),1,300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(),2,300)
+                    listOfTmpEnemies.add(tmp)
+                    tmpListOfEnemyCharacters = listOfTmpEnemies
+                    enemyCounter = 2
+                } else if (time > 400L && enemyCounter == 2) {
+                    listOfEnemyCharacters.clear()
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 1, 300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.3).toInt(), 1, 300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 2, 300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.7).toInt(), 2, 300)
+                    listOfTmpEnemies.add(tmp)
+                    tmpListOfEnemyCharacters = listOfTmpEnemies
+                    enemyCounter = 3
+                }else if(time > 500L && enemyCounter == 3){
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.4).toInt(), (screenHeight * 0.75).toInt(),0,300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.6).toInt(),0,300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.75).toInt(),0,300)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.6).toInt(),0,300)
+                    listOfTmpEnemies.add(tmp)
+                    tmpListOfEnemyCharacters = listOfTmpEnemies
+                    enemyCounter = 4
+                }else if(time > 800L && enemyCounter == 4){
+                    listOfEnemyCharacters.clear()
+                    endOfLevel=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
+
+
+
             }
             3 -> {
             }
@@ -155,13 +229,49 @@ class LevelGenerator(
                 if (time > 100L && coinCounter == 0) {
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
-                    createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 5))
+                    createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 3))
                     coinCounter = 1
+                } else if (time > 600L && coinCounter == 1){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.7).toInt(), 4))
+                    coinCounter = 2
                 }
             }
             1 -> {
+                if (time > 100L && coinCounter == 0) {
+                    listOfCoins.clear()
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 5))
+                    coinCounter = 1
+                } else if (time > 400L && coinCounter == 1){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.7).toInt(), 6),
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), 1))
+                    coinCounter = 2
+                }
+
             }
             2 -> {
+
+                if (time > 100L && coinCounter == 0) {
+                    listOfCoins.clear()
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 3))
+                    coinCounter = 1
+                } else if (time > 200L && coinCounter == 1){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(), 2))
+                    coinCounter = 2
+                } else if (time > 400L && coinCounter == 2){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.75).toInt(), 7))
+                    coinCounter = 3
+                } else if (time > 600L && coinCounter == 3){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.4).toInt(), 5))
+                    coinCounter = 4
+                }
+
             }
             3 -> {
             }
@@ -197,12 +307,12 @@ class LevelGenerator(
                 listOfLimits.add(10)
             }
             1 -> {
-                listOfLimits.add(50)
-                listOfLimits.add(100)
+                listOfLimits.add(10)
+                listOfLimits.add(25)
             }
             2 -> {
-                listOfLimits.add(50)
-                listOfLimits.add(100)
+                listOfLimits.add(10)
+                listOfLimits.add(30)
             }
             3 -> {
                 listOfLimits.add(50)

@@ -40,7 +40,10 @@ class Ghost(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX,
 
 
             }
-            2->{
+            2-> {
+                if (x > Data.screenWidth - w || y < w){
+                    xVelocity *= -1
+                }
                 x += (xVelocity)
                 //movimiento horizontal
             }
