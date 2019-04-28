@@ -2,9 +2,11 @@ package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.Data
 
 class GameDeadActivity : FullScreenActivity() {
 
@@ -23,10 +25,11 @@ class GameDeadActivity : FullScreenActivity() {
             if (modo == MODE_INFINITY) {
                 intent.putExtra(MODE_GAME, MODE_INFINITY)
             } else if (modo == LEVEL_BY_WORLD) {
-                intent.putExtra(MODE_GAME, LEVEL_BY_WORLD)
+                intent.putExtra(LEVEL_BY_WORLD, Data.getCurrenLevel())
             }
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            Log.d("RETRY", Data.currentLvl.toString())
             finish()
         }
 

@@ -1,9 +1,11 @@
 package edu.ub.pis.joc.limitless.engine
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.*
+import android.os.Vibrator
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.*
@@ -21,6 +23,7 @@ class GameEngine(contextEngine: Context, levelWorld: Int) {
     var gameTime: Long = 0
     val context = contextEngine
     val activityGame = context as GameActivity
+    val vibrator = contextEngine.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
 
     private val currentLevelWorld: Int = levelWorld
@@ -56,7 +59,8 @@ class GameEngine(contextEngine: Context, levelWorld: Int) {
 
         for (i in 0 until listOfEnemyCharacters.size) {
             listOfEnemyCharacters[i].update()
-            listOfEnemyCharacters[i].characterHitsPlayer(player)
+            (listOfEnemyCharacters[i].characterHitsPlayer(player))
+
         }
         if (!player.imageList[0].isRecycled) {
             if (touched == 1) {
@@ -67,7 +71,9 @@ class GameEngine(contextEngine: Context, levelWorld: Int) {
         }
 
         for (i in 0 until listOfCoins.size) {
-            player.takesCoin(listOfCoins[i])
+            if (player.takesCoin(listOfCoins[i])){
+                vibrator.vibrate(25)
+            }
         }
 
     }

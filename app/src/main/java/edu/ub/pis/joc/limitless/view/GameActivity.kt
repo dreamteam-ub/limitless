@@ -6,6 +6,8 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -26,10 +28,13 @@ class GameActivity : FullScreenActivity() {
 
     lateinit var dialog: Dialog
 
+    lateinit var vibrator: Vibrator
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val level: Int = intent.extras!!.getInt(LEVEL_BY_WORLD)
+        vibrator = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         val mode: Boolean = intent.extras!!.getBoolean(MODE_INFINITY)
         END_GAME = false
         Log.d("level in game", level.toString())
@@ -142,6 +147,7 @@ class GameActivity : FullScreenActivity() {
             }
         } else if (player.imageList[0].isRecycled) {
             //ACTIVITY DE PERDER POR MUERTE
+            vibrator.vibrate(50)
             END_GAME = true
             levelGen.endOfLevel = true
             var intent = Intent(context, GameDeadActivity::class.java)
