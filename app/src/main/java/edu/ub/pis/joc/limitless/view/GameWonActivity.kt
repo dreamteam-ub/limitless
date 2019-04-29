@@ -34,6 +34,7 @@ class GameWonActivity : FullScreenActivity() {
             intent.putExtra(LEVEL_BY_WORLD, Data.getCurrenLevel())
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            finish()
         }
 
         if (Data.user.level!! != MAX_LEVEL + 1 && Data.user.world!! != MAX_WORLD) {
