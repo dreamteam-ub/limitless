@@ -3,6 +3,7 @@ package edu.ub.pis.joc.limitless.engine
 import android.content.Context
 import android.graphics.Typeface
 import android.util.Log
+import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.Data.screenHeight
 import edu.ub.pis.joc.limitless.model.Data.screenWidth
 import edu.ub.pis.joc.limitless.model.game.*
@@ -194,6 +195,45 @@ class LevelGenerator(
 
             }
             3 -> {
+                endOfLevel = false
+                if (time == 0L && enemyCounter == 0) {
+                    tmp = createEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 100)
+                    listOfTmpEnemies.add(tmp)
+                    tmpListOfEnemyCharacters = listOfTmpEnemies
+                    enemyCounter = 1
+                } else if(time > 100L && enemyCounter == 1){
+                    var x =  listOfEnemyCharacters[0].x
+                    var y = listOfEnemyCharacters[0].y
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 80)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 80)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 80)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 80)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 80)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 80)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 80)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 80)
+                    listOfTmpEnemies.add(tmp)
+                    tmpListOfEnemyCharacters = listOfTmpEnemies
+                    enemyCounter = 2
+                }else if(time > 300L && enemyCounter == 2){
+                    listOfEnemyCharacters.clear()
+                    endOfLevel=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
             }
             4 -> {
             }

@@ -12,8 +12,8 @@ const val EYE_CHAR = "Eye"
 const val GHOST_CHAR = "Ghost"
 const val PLAYER_CHARACTER = "PlayerCharacter"
 const val SKULL_CHAR = "Skull"
-
 const val SKULL_LASER = "SkullLaser"
+const val EYE_PROJECTILE = "EyeProjectile"
 
 const val NUMBER_COIN = "Coin"
 
@@ -114,6 +114,19 @@ class CharacterFactory(context: Context) : FactoryPattern {
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.beam5_light)
                 )
                 SkullLaser(arrayImatges, posX, posY)
+            }
+            EYE_PROJECTILE -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye_projectile_1),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye_projectile_2),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye_projectile_3),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye_projectile_4),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye_projectile_5),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye_projectile_6),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye_projectile_7),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye_projectile_8)
+                )
+                EyeProjectile(arrayImatges, posX, posY)
             }
             else -> {
                 null
