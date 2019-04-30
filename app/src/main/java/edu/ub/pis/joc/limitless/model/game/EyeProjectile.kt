@@ -7,8 +7,8 @@ import android.graphics.Matrix
 
 class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, posY) {
 
-    override var xVelocity: Int = 13
-    override var yVelocity: Int = 13
+    override var xVelocity: Int = 26
+    override var yVelocity: Int = 26
 
     var chosenWAndH = false
 

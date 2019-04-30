@@ -5,8 +5,8 @@ import edu.ub.pis.joc.limitless.model.Data
 
 class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, posY) {
 
-    override var xVelocity: Int = 10
-    override var yVelocity: Int = 10
+    override var xVelocity: Int = 20
+    override var yVelocity: Int = 20
 
     override var h = image[0].height / 4
     override var w = image[0].width / 4

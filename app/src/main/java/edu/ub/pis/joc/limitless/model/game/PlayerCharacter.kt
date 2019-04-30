@@ -61,8 +61,8 @@ class PlayerCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Characte
 
     fun moveFast(_x: Int, _y: Int) {
 
-        var xVelocity: Int = abs(_x - x) / 3
-        var yVelocity: Int = abs(_y - y) / 3
+        var xVelocity: Int = (abs(_x - x) / 3)*2
+        var yVelocity: Int = (abs(_y - y) / 3)*2
 
         var xOutOfBorder: Boolean = false
         var yOutOfBorder: Boolean = false

@@ -8,8 +8,8 @@ import kotlin.math.sin
 
 class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, posY) {
 
-    override var xVelocity: Int = 5
-    override var yVelocity: Int = 3
+    override var xVelocity: Int = 10
+    override var yVelocity: Int = 9
 
 
     override var h = image[0].height / 10
@@ -21,10 +21,10 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, p
         contador++
         when (concreteBehavior) {
             0 -> {
-                //Sinusoidal desde esquerra
+                //Amunt i avall desde esquerra
                 x += xVelocity
                 y += yVelocity
-                if(contador==20){
+                if(contador==10){
                     yVelocity *= -1
                     contador = 0
                 }

@@ -11,7 +11,7 @@ class GameThread(
 ) : Thread() {
     private var running: Boolean = false
 
-    private val targetFPS = 60 // frames per second, the rate at which you would like to refresh the Canvas
+    private val targetFPS = 30
 
     init {
         this.name = "GameThread"

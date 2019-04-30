@@ -6,8 +6,8 @@ import edu.ub.pis.joc.limitless.model.Data.screenWidth
 
 open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), EnemyInterface {
 
-    override var xVelocity: Int = 10
-    override var yVelocity: Int = 10
+    override var xVelocity: Int = 20
+    override var yVelocity: Int = 20
 
     open var activeEnemy: Boolean = false
 
