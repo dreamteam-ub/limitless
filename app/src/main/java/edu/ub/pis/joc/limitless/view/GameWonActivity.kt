@@ -31,7 +31,7 @@ class GameWonActivity : FullScreenActivity() {
 
 
             val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra(LEVEL_BY_WORLD, Data.getCurrenLevel())
+            intent.putExtra(MODE_INFINITY,false)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()

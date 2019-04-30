@@ -6,8 +6,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.os.VibrationEffect
-import android.os.Vibrator
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +14,6 @@ import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.engine.LevelGenerator
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 
-var END_GAME = false
 
 class GameActivity : FullScreenActivity() {
 
@@ -28,19 +25,19 @@ class GameActivity : FullScreenActivity() {
 
     lateinit var dialog: Dialog
 
-    lateinit var vibrator: Vibrator
+    var end_game = false
+
+    var mode : Boolean ?= null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val level: Int = intent.extras!!.getInt(LEVEL_BY_WORLD)
-        vibrator = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        val mode: Boolean = intent.extras!!.getBoolean(MODE_INFINITY)
-        END_GAME = false
-        Log.d("level in game", level.toString())
+        mode= intent.extras!!.getBoolean(MODE_INFINITY)
+        end_game = false
         dialog = Dialog(this)
 
-        surface = GameView(this, dialog, level)
+        surface = GameView(this, dialog)
         setContentView(surface)
 
         val layoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -53,7 +50,7 @@ class GameActivity : FullScreenActivity() {
         val worldsDiag: ImageButton = vista.findViewById(R.id.worldsButtonPauseDiag)
         val menuDiag: ImageButton = vista.findViewById(R.id.menuButtonPauseDiag)
 
-        if (mode) {
+        if (mode!!) {
             worldsDiag.visibility = View.GONE
             worldsDiag.isClickable = false
         }
@@ -96,7 +93,7 @@ class GameActivity : FullScreenActivity() {
 
     override fun onPause() {
         super.onPause()
-        if (!END_GAME) {
+        if (!end_game) {
             if (surface != null) {
                 if (!dialog.isShowing and !exit) {
                     dialog.show()
@@ -114,7 +111,7 @@ class GameActivity : FullScreenActivity() {
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
-        if (!END_GAME) {
+        if (!end_game) {
             if (!hasFocus) {
                 if (!dialog.isShowing and !exit) {
                     dialog.show()
@@ -128,7 +125,7 @@ class GameActivity : FullScreenActivity() {
 
         if (levelGen.endOfLevel) {
             if (player.accumulate > scoreLimtis[0] && player.accumulate < scoreLimtis[1]) {
-                END_GAME = true
+                end_game = true
                 levelGen.endOfLevel = false
                 //ACTIVITY DE GANAR PUNTUACION
                 var intent = Intent(context, GameWonActivity::class.java)
@@ -136,22 +133,21 @@ class GameActivity : FullScreenActivity() {
                 context.startActivity(intent)
                 finish()
             } else {
-                END_GAME = true
+                end_game = true
                 //PERDER por PUNTUACIÓN
                 levelGen.endOfLevel = false
                 var intent = Intent(context, GameDeadActivity::class.java)
-                intent.putExtra(MODE_GAME, LEVEL_BY_WORLD)
+                intent.putExtra(MODE_INFINITY, mode)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 context.startActivity(intent)
                 finish()
             }
         } else if (player.imageList[0].isRecycled) {
             //ACTIVITY DE PERDER POR MUERTE
-            vibrator.vibrate(50)
-            END_GAME = true
+            end_game = true
             levelGen.endOfLevel = true
             var intent = Intent(context, GameDeadActivity::class.java)
-            intent.putExtra(MODE_GAME, LEVEL_BY_WORLD)
+            intent.putExtra(MODE_INFINITY, mode)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             context.startActivity(intent)
             finish()

@@ -1,12 +1,10 @@
 package edu.ub.pis.joc.limitless.engine
 
-import android.annotation.SuppressLint
-import android.app.Activity
+
 import android.content.Context
-import android.content.Intent
 import android.graphics.*
-import android.os.Vibrator
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.*
 import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
@@ -14,7 +12,7 @@ import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
 import java.util.*
 
 
-class GameEngine(contextEngine: Context, levelWorld: Int) {
+class GameEngine(contextEngine: Context) {
 
     var touched_x = 0
     var touched_y = 0
@@ -23,11 +21,9 @@ class GameEngine(contextEngine: Context, levelWorld: Int) {
     var gameTime: Long = 0
     val context = contextEngine
     val activityGame = context as GameActivity
-    val vibrator = contextEngine.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
 
-    private val currentLevelWorld: Int = levelWorld
-
+    private val currentLevelWorld: Int = Data.getCurrenLevel()
     private var inGameBorder: InGameBorder = InGameBorder(
         BitmapFactory.decodeResource(
             contextEngine.resources,
@@ -49,11 +45,11 @@ class GameEngine(contextEngine: Context, levelWorld: Int) {
 
     private var archThread: ArchThread = ArchThread(levelGen, currentLevelWorld, gameTime)
 
-    private var scoreLimtis = levelGen.createLimits(levelWorld)
+    private var scoreLimtis = levelGen.createLimits(currentLevelWorld)
 
     fun update() {
 
-        if (!END_GAME) {
+        if (!activityGame.end_game) {
             activityGame.endGame(levelGen, player, scoreLimtis, context)
         }
 
@@ -71,9 +67,8 @@ class GameEngine(contextEngine: Context, levelWorld: Int) {
         }
 
         for (i in 0 until listOfCoins.size) {
-            if (player.takesCoin(listOfCoins[i])){
-                vibrator.vibrate(25)
-            }
+            player.takesCoin(listOfCoins[i])
+
         }
 
     }
@@ -83,7 +78,7 @@ class GameEngine(contextEngine: Context, levelWorld: Int) {
      */
 
     fun draw(canvas: Canvas) {
-        if (!END_GAME) {
+        if (!activityGame.end_game) {
             inGameBorder.draw(canvas)
             pauseButton.draw(canvas)
 

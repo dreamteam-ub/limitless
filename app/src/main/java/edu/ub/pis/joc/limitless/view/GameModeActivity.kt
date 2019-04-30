@@ -7,7 +7,6 @@ import android.widget.TextView
 import edu.ub.pis.joc.limitless.R
 
 const val MODE_INFINITY = "infinity"
-const val MODE_GAME = "mode"
 
 class GameModeActivity : FullScreenActivity() {
     private val TAG = "GameModeActivity"
@@ -33,7 +32,6 @@ class GameModeActivity : FullScreenActivity() {
         infiniteMode.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra(MODE_INFINITY, true)
-            intent.putExtra(LEVEL_BY_WORLD, 12) // TMP
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }

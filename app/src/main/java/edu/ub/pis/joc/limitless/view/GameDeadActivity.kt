@@ -18,14 +18,14 @@ class GameDeadActivity : FullScreenActivity() {
         setContentView(R.layout.activity_game_dead)
 
         val setMode: Intent = intent
-        val modo = setMode.extras!!.getString(MODE_GAME)
+        val modo = setMode.extras!!.getBoolean(MODE_INFINITY)
         val retryButton: ImageButton = findViewById(R.id.retryButton_normal)
         retryButton.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
-            if (modo == MODE_INFINITY) {
-                intent.putExtra(MODE_GAME, MODE_INFINITY)
-            } else if (modo == LEVEL_BY_WORLD) {
-                intent.putExtra(LEVEL_BY_WORLD, Data.getCurrenLevel())
+            if (modo) {
+                intent.putExtra(MODE_INFINITY,true)
+            }else{
+                intent.putExtra(MODE_INFINITY,false)
             }
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
@@ -34,11 +34,11 @@ class GameDeadActivity : FullScreenActivity() {
         }
 
         val worldsButton: ImageButton = findViewById(R.id.dead_worldsButton)
-        if (modo != LEVEL_BY_WORLD) {
+        if (modo) {
             worldsButton.visibility = View.GONE
             worldsButton.isClickable = false
 
-        } else if (modo == LEVEL_BY_WORLD) {
+        } else if (!modo) {
             worldsButton.visibility = View.VISIBLE
             worldsButton.isClickable = true
         }

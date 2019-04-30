@@ -20,14 +20,12 @@ class PlayerCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Characte
         }
     }
 
-    override fun takesCoin(coin: Coin) : Boolean {
-        var take = false
+    override fun takesCoin(coin: Coin) {
         if (this.rect.intersect(coin.rect)) {
             accumulate += coin.value
             coin.isTaken()
-            take = true
         }
-        return take
+
     }
 
 
