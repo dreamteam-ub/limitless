@@ -237,9 +237,18 @@ class LevelGenerator(
             5 -> {
                 endOfLevel = false
                 if (time == 0L) {
-                    tmp = createEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 1, 150)
+                    tmp = createEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 150)
                     listOfTmpEnemies.add(tmp)
-                }else if(time == 200L){
+                }else if(time == 180L){
+                    tmp = createEnemy(EYE_CHAR, screenWidth, (screenHeight * 0.5).toInt(), 1, 150)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 360L){
+                    tmp = createEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 350)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 580L){
+                    tmp = createEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), screenHeight, 3, 350)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 750L){
                     listOfEnemyCharacters.clear()
                     endOfLevel=true
                 }
