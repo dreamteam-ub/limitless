@@ -93,6 +93,7 @@ class GameEngine(contextEngine: Context) {
                 if (listOfCoins[i].imageList[0].isRecycled) {
                     listOfCoins.remove(listOfCoins[i])
                 } else {
+                    listOfCoins[i].update()
                     listOfCoins[i].draw(canvas)
                 }
             }

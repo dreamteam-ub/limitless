@@ -13,9 +13,8 @@ open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(ima
 
     var concreteBehavior : Int = 0
 
-    var dissapearTimer : Int = 0
+    override var dissapearTimer : Int = 0
 
-    var rotateAngle : Float = 0f
 
 
     //a no ser que la clase que herede haga un override del update, por defecto se llamara

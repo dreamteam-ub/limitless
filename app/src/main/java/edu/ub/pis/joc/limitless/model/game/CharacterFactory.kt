@@ -54,7 +54,12 @@ class CharacterFactory(context: Context) : FactoryPattern {
 
             EYE_CHAR -> {
                 val arrayImatges: ArrayList<Bitmap> = arrayListOf(
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye)
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye1),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye2),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye3),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye4),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye5_test),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye6_test)
                 )
                 Eye(arrayImatges, posX, posY)
             }

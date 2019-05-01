@@ -16,6 +16,8 @@ abstract class Character(image: ArrayList<Bitmap>, posX: Int, posY: Int) {
 
     open val imageList: ArrayList<Bitmap> = image
 
+    open var dissapearTimer : Int = 0
+
 
     var rect: Rect = Rect() //hitbox
 

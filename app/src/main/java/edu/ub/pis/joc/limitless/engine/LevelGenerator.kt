@@ -28,12 +28,14 @@ class LevelGenerator(
         posX: Int = (screenWidth * 0.5).toInt(),
         posY: Int = (screenHeight * 0.5).toInt(),
         value: Int = 1,
-        font : Typeface = Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX)
+        font : Typeface = Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX),
+        dissapearTimer : Int
     ): Coin {
         Log.d("AÑADE MONEDA", character)
         val coin = characterFactory.createCharacter(character, posX, posY) as Coin
         coin.value = value
         coin.paint.typeface = font
+        coin.dissapearTimer = dissapearTimer
         return coin
     }
 
@@ -291,21 +293,37 @@ class LevelGenerator(
                 if (time  == 50L) {
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
-                    createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 3))
+                    createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 3,dissapearTimer = 100))
                 } else if (time == 300L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.7).toInt(), 4))
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.7).toInt(), 4,dissapearTimer = 100))
+                }
+                var contador : Int = 0
+                while(contador < listOfCoins.size){
+                    if(listOfCoins.get(contador).dissapearTimer == 0){
+                        listOfCoins.removeAt(contador)
+                        contador--
+                    }
+                    contador++
                 }
             }
             1 -> {
                 if (time == 50L) {
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 5))
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 5,dissapearTimer = 100))
                 } else if (time == 200L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.7).toInt(), 6),
-                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), 1))
+                        createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.7).toInt(), 6,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), 1,dissapearTimer = 100))
+                }
+                var contador : Int = 0
+                while(contador < listOfCoins.size){
+                    if(listOfCoins.get(contador).dissapearTimer == 0){
+                        listOfCoins.removeAt(contador)
+                        contador--
+                    }
+                    contador++
                 }
 
             }
@@ -314,18 +332,25 @@ class LevelGenerator(
                 if (time == 50L) {
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 3))
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 3,dissapearTimer = 100))
                 } else if (time == 100L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(), 2))
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(), 2,dissapearTimer = 100))
                 } else if (time == 200L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.75).toInt(), 7))
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.75).toInt(), 7,dissapearTimer = 100))
                 } else if (time == 300L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.4).toInt(), 5))
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.4).toInt(), 5,dissapearTimer = 100))
                 }
-
+                var contador : Int = 0
+                while(contador < listOfCoins.size){
+                    if(listOfCoins.get(contador).dissapearTimer == 0){
+                        listOfCoins.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
             }
             3 -> {
             }

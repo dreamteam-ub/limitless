@@ -1,6 +1,7 @@
 package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.util.Log
 import edu.ub.pis.joc.limitless.model.Data
 import kotlin.math.PI
@@ -21,7 +22,6 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, p
     var contador : Int = 0
     override fun update() {
         dissapearTimer--
-        contador++
         when (concreteBehavior) {
             0 -> {
                 //Sinusoidal esquerra a dreta
@@ -72,6 +72,34 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, p
                 y += yVelocity+5
             }
         }
+    }
+
+    override fun draw (canvas:Canvas){
+        val halfW: Int = w / 2
+        val halfH: Int = h / 2
+        rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
+        if (contador <= 3) {
+            canvas.drawBitmap(imageList[0], null, rect, null)
+        } else if (contador <= 6) {
+            canvas.drawBitmap(imageList[1], null, rect, null)
+        } else if (contador <= 9) {
+            canvas.drawBitmap(imageList[2], null, rect, null)
+        } else if (contador <= 12) {
+            canvas.drawBitmap(imageList[3], null, rect, null)
+        } else if (contador <= 15) {
+            canvas.drawBitmap(imageList[4], null, rect, null)
+        } else if (contador <= 18) {
+            canvas.drawBitmap(imageList[5], null, rect, null)
+        } else if (contador <= 21) {
+            canvas.drawBitmap(imageList[4], null, rect, null)
+        } else if (contador <= 24) {
+            canvas.drawBitmap(imageList[3], null, rect, null)
+        } else if (contador <= 27) {
+            canvas.drawBitmap(imageList[2], null, rect, null)
+        } else if (contador <= 30) {
+            canvas.drawBitmap(imageList[1], null, rect, null)
+        }
+        contador = (contador + 1) % 31
     }
 
 }
