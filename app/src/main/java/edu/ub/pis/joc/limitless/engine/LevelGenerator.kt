@@ -215,8 +215,42 @@ class LevelGenerator(
                 }
             }
             4 -> {
+                endOfLevel = false
+                if (time == 0L) {
+                    tmp = createEnemy(SKULL_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt(), 0, 150)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(SKULL_LASER, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt(), 0, 150)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 200L){
+                    listOfEnemyCharacters.clear()
+                    endOfLevel=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
             }
             5 -> {
+                endOfLevel = false
+                if (time == 0L) {
+                    tmp = createEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 1, 150)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 200L){
+                    listOfEnemyCharacters.clear()
+                    endOfLevel=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
             }
             6 -> {
             }

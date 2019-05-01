@@ -1,10 +1,11 @@
 package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
+import android.util.Log
 import edu.ub.pis.joc.limitless.model.Data
-import edu.ub.pis.joc.limitless.model.Data.screenHeight
-import edu.ub.pis.joc.limitless.model.Data.screenWidth
+import kotlin.math.PI
 import kotlin.math.sin
+import kotlin.math.abs
 
 class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, posY) {
 
@@ -14,6 +15,8 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, p
 
     override var h = image[0].height / 10
     override var w = image[0].width / 10
+
+    var yOriginal = posY
 
     var contador : Int = 0
     override fun update() {
@@ -30,8 +33,12 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, p
                 }
             }
             1 -> {
-                //Izquierda
-                x -= xVelocity
+                //Sinusoidal
+                var altura = Data.screenHeight*0.05 //Subir el multiplicador para mas altura
+                var movimientos = 2 //Se haran tantos movimientos sinusoidales
+                x += xVelocity
+                y = yOriginal-(sin(((x.toDouble()/Data.screenWidth)*movimientos*2*PI))*altura).toInt()
+
             }
             2 -> {
                 //Arriba
