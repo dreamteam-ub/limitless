@@ -6,12 +6,12 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageButton
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.engine.LevelGenerator
+import edu.ub.pis.joc.limitless.engine.Level
+import edu.ub.pis.joc.limitless.engine.LevelPractice
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 
 
@@ -121,7 +121,7 @@ class GameActivity : FullScreenActivity() {
         super.onWindowFocusChanged(hasFocus)
     }
 
-    fun endGame(levelGen: LevelGenerator, player: PlayerCharacter, scoreLimtis: ArrayList<Int>, context: Context) {
+    fun endGame(levelGen: Level, player: PlayerCharacter, scoreLimtis: ArrayList<Int>, context: Context) {
 
         if (levelGen.endOfLevel) {
             if (player.accumulate > scoreLimtis[0] && player.accumulate < scoreLimtis[1]) {

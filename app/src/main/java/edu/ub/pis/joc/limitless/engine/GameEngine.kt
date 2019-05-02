@@ -38,19 +38,20 @@ class GameEngine(contextEngine: Context) {
         ArrayList<Enemy>() //tendremos una lista de enemigos la cual iteraremos donde nos interese
     var listOfCoins = ArrayList<Coin>()
 
-    private var levelGen: LevelGenerator =
-        LevelGenerator(contextEngine, listOfEnemyCharacters, listOfCoins)
+    private var level: Level =
+        LevelPractice(contextEngine, listOfEnemyCharacters, listOfCoins)
 
-    var player: PlayerCharacter = levelGen.buildPlayer()
 
-    private var archThread: ArchThread = ArchThread(levelGen, currentLevelWorld, gameTime)
+    var player: PlayerCharacter = level.buildPlayer()
 
-    private var scoreLimtis = levelGen.createLimits(currentLevelWorld)
+    private var archThread: ArchThread = ArchThread(level, currentLevelWorld, gameTime)
+
+    private var scoreLimtis = level.createLimits(currentLevelWorld)
 
     fun update() {
 
         if (!activityGame.end_game) {
-            activityGame.endGame(levelGen, player, scoreLimtis, context)
+            activityGame.endGame(level, player, scoreLimtis, context)
         }
 
         for (i in 0 until listOfEnemyCharacters.size) {
@@ -103,7 +104,7 @@ class GameEngine(contextEngine: Context) {
     fun architect() {
         // start the game thread
         if (archThread.state == Thread.State.TERMINATED) {
-            archThread = ArchThread(levelGen, currentLevelWorld, gameTime)
+            archThread = ArchThread(level, currentLevelWorld, gameTime)
         }
 
         if (!archThread.isAlive) {
@@ -112,7 +113,7 @@ class GameEngine(contextEngine: Context) {
     }
 
     class ArchThread(
-        private var levelGen: LevelGenerator,
+        private var levelGen: Level,
         private var currentLevelWorld: Int,
         private var gameTime: Long
     ) : Thread() {

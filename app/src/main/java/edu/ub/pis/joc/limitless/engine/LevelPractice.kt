@@ -12,50 +12,15 @@ import java.util.concurrent.ConcurrentHashMap
 
 const val FONT_CRIME_SIX = "fonts/Crimes Times Six.ttf"
 
-class LevelGenerator(
-    var contextApp: Context,
-    var listOfEnemyCharacters: ArrayList<Enemy>,
-    var listOfCoins: ArrayList<Coin>
-) {
-
-    var characterFactory: CharacterFactory =
-        CharacterFactory(contextApp)
-
-    var endOfLevel : Boolean = false
-
-    fun createCoin(
-        character: String,
-        posX: Int = (screenWidth * 0.5).toInt(),
-        posY: Int = (screenHeight * 0.5).toInt(),
-        value: Int = 1,
-        font : Typeface = Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX),
-        dissapearTimer : Int
-    ): Coin {
-        Log.d("AÑADE MONEDA", character)
-        val coin = characterFactory.createCharacter(character, posX, posY) as Coin
-        coin.value = value
-        coin.paint.typeface = font
-        coin.dissapearTimer = dissapearTimer
-        return coin
-    }
-
-    fun createEnemy(
-        character: String,
-        posX: Int = (screenWidth * 0.5).toInt(),
-        posY: Int = (screenHeight * 0.5).toInt(),
-        behaviour : Int,
-        dissapearTimer : Int
-        ): Enemy {
-        Log.d("AÑADE ENEMY", character)
-        val enemy =characterFactory.createCharacter(character, posX, posY) as Enemy
-        enemy.concreteBehavior = behaviour
-        enemy.dissapearTimer = dissapearTimer
-        return enemy
-    }
+class LevelPractice(contextApp: Context,
+                    listOfEnemyCharacters: ArrayList<Enemy>,
+                    listOfCoins: ArrayList<Coin>): Level(contextApp,listOfEnemyCharacters,listOfCoins){
 
 
 
-    fun buildEnemies(levelWorld: Int, time: Long) {
+
+
+    override fun buildEnemies(levelWorld: Int, time: Long) {
         //Log.d("TIME", (time).toInt().toString())
         //Log.d("CONTADOR ENEMIGOS", enemyCounter.toString())
         var listOfTmpEnemies = ArrayList<Enemy>()
@@ -387,7 +352,7 @@ class LevelGenerator(
         listOfEnemyCharacters.addAll(listOfTmpEnemies)
     }
 
-    fun buildCoins(levelWorld: Int, time: Long) {
+    override fun buildCoins(levelWorld: Int, time: Long) {
         //Log.d("TIME", (time).toInt().toString())
         //Log.d("CONTADOR MONEDAS", coinCounter.toString())
 
@@ -526,7 +491,7 @@ class LevelGenerator(
         listOfCoins.addAll(tmpListOfCoins)
     }
 
-    fun createLimits(levelWorld: Int):ArrayList<Int> {
+    override fun createLimits(levelWorld: Int):ArrayList<Int> {
 
         var listOfLimits: ArrayList<Int> = ArrayList()
 
@@ -589,11 +554,4 @@ class LevelGenerator(
         return listOfLimits
     }
 
-    fun buildPlayer(): PlayerCharacter {
-        return characterFactory.createCharacter(
-            "PlayerCharacter",
-            (screenWidth * 0.75).toInt(),
-            (screenHeight * 0.75).toInt()
-        ) as PlayerCharacter
-    }
 }
