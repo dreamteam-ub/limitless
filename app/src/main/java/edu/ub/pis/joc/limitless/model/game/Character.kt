@@ -2,6 +2,7 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Matrix
 import android.graphics.Rect
 
 abstract class Character(image: ArrayList<Bitmap>, posX: Int, posY: Int) {
@@ -20,6 +21,15 @@ abstract class Character(image: ArrayList<Bitmap>, posX: Int, posY: Int) {
 
 
     var rect: Rect = Rect() //hitbox
+
+    open fun rotate(degrees : Float) {
+        val matrix = Matrix()
+        matrix.postRotate(degrees)
+
+        for ((i, img) in imageList.withIndex()) {
+            imageList[i] = Bitmap.createBitmap(img, 0, 0, img.width, img.height, matrix, true)
+        }
+    }
 
     /**
      * Draws the object on to the canvas.
