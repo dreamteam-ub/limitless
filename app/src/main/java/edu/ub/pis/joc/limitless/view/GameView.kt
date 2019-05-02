@@ -9,7 +9,7 @@ import android.view.SurfaceView
 import edu.ub.pis.joc.limitless.engine.GameEngine
 
 
-class GameView(appContext: Context, private val dialog: Dialog) : SurfaceView(appContext), SurfaceHolder.Callback {
+class GameView(appContext: Context, private val dialog: Dialog, var mode : Boolean) : SurfaceView(appContext), SurfaceHolder.Callback {
     private var thread: GameThread
     private val gameEngine: GameEngine
 
@@ -18,7 +18,7 @@ class GameView(appContext: Context, private val dialog: Dialog) : SurfaceView(ap
     init {
         // add callback
         holder.addCallback(this)
-        gameEngine = GameEngine(appContext)
+        gameEngine = GameEngine(appContext, mode)
         // instantiate the game thread
         thread = GameThread(holder, this, gameEngine)
     }

@@ -9,7 +9,7 @@ import edu.ub.pis.joc.limitless.model.game.Coin
 import edu.ub.pis.joc.limitless.model.game.Enemy
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 import java.util.ArrayList
-
+const val NIVEL_INFINITO = -1
 abstract class Level(
     var contextApp: Context,
     var listOfEnemyCharacters: ArrayList<Enemy>,

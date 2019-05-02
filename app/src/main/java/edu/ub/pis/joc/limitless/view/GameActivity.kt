@@ -78,7 +78,7 @@ class GameActivity : FullScreenActivity() {
         end_game = false
         dialog = Dialog(this)
 
-        surface = GameView(this, dialog)
+        surface = GameView(this, dialog, mode!!)
         setContentView(surface)
 
         val layoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

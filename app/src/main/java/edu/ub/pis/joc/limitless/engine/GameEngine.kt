@@ -14,7 +14,7 @@ import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
 import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
 import java.util.*
 
-class GameEngine(private var contextEngine: Context) {
+class GameEngine(private var contextEngine: Context, var mode : Boolean) {
 
     var touched_x = 0
     var touched_y = 0
@@ -23,8 +23,26 @@ class GameEngine(private var contextEngine: Context) {
     var gameTime: Long = 0
     val context = contextEngine
 
+    var listOfEnemyCharacters =
+        ArrayList<Enemy>() //tendremos una lista de enemigos la cual iteraremos donde nos interese
+    var listOfCoins = ArrayList<Coin>()
 
-    private val currentLevelWorld: Int = Data.getCurrenLevel()
+    var level: Level? = null
+    private var currentLevelWorld: Int? = null
+
+
+    init{
+        if (mode){
+            currentLevelWorld = NIVEL_INFINITO
+            level = LevelInfinite(contextEngine, listOfEnemyCharacters, listOfCoins)
+        }else{
+            currentLevelWorld = Data.getCurrenLevel()
+            level = LevelPractice(contextEngine, listOfEnemyCharacters, listOfCoins)
+        }
+
+        Log.d("CURRENT LEVEL", currentLevelWorld.toString())
+
+    }
     private var inGameBorder: InGameBorder = InGameBorder(
         BitmapFactory.decodeResource(
             contextEngine.resources,
@@ -35,19 +53,13 @@ class GameEngine(private var contextEngine: Context) {
     var pauseButton: PauseButton =
         PauseButton(BitmapFactory.decodeResource(contextEngine.resources, R.drawable.pause_button))
 
-    var listOfEnemyCharacters =
-        ArrayList<Enemy>() //tendremos una lista de enemigos la cual iteraremos donde nos interese
-    var listOfCoins = ArrayList<Coin>()
-
-    var level: Level =
-        LevelPractice(contextEngine, listOfEnemyCharacters, listOfCoins)
 
 
-    var player: PlayerCharacter = level.buildPlayer()
+    var player: PlayerCharacter = level!!.buildPlayer()
 
-    private var archThread: ArchThread = ArchThread(level, currentLevelWorld, gameTime)
+    private var archThread: ArchThread = ArchThread(level!!, currentLevelWorld!!, gameTime)
 
-    private var scoreLimits = level.createLimits(currentLevelWorld)
+    private var scoreLimits = level!!.createLimits(currentLevelWorld!!)
 
     private var lockGame = false
 
@@ -83,7 +95,7 @@ class GameEngine(private var contextEngine: Context) {
         if (!player.imageList[0].isRecycled) {
             player.draw(canvas)
         } else {
-            level.endOfLevel = true
+            level!!.endOfLevel = true
         }
 
         for (i in 0 until listOfEnemyCharacters.size) {
@@ -103,7 +115,7 @@ class GameEngine(private var contextEngine: Context) {
     fun architect() {
         // start the game thread
         if (archThread.state == Thread.State.TERMINATED) {
-            archThread = ArchThread(level, currentLevelWorld, gameTime)
+            archThread = ArchThread(level!!, currentLevelWorld!!, gameTime)
         }
 
         if (!archThread.isAlive) {
@@ -127,7 +139,7 @@ class GameEngine(private var contextEngine: Context) {
     }
 
     fun endLevel(gameThread: GameThread) {
-        if (level.endOfLevel) {
+        if (level!!.endOfLevel) {
             Log.d("LEVEL", "END_LEVEL MSG")
             val intent = Intent(END_LEVEL)
             intent.putExtra(RECYCLED, player.imageList[0].isRecycled)
