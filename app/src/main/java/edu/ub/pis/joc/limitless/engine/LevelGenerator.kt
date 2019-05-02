@@ -125,9 +125,9 @@ class LevelGenerator(
             2 -> {
                 endOfLevel = false
                 if (time == 0L) {
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(),1,150)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.1).toInt(), (screenHeight * 0.3).toInt(),1,150)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.3).toInt(),1,150)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.9).toInt(), (screenHeight * 0.3).toInt(),1,150)
                     listOfTmpEnemies.add(tmp)
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(),0,150)
                     listOfTmpEnemies.add(tmp)
@@ -181,9 +181,9 @@ class LevelGenerator(
                 } else if(time == 25L){
                     var x =  listOfEnemyCharacters[0].x
                     var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 40)
-                    listOfTmpEnemies.add(tmp)
                     tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 40)
                     listOfTmpEnemies.add(tmp)
                 } else if(time == 50L){
                     var x =  listOfEnemyCharacters[0].x
@@ -199,11 +199,45 @@ class LevelGenerator(
                 }else if(time == 75L) {
                     var x = listOfEnemyCharacters[0].x
                     var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 40)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
                     listOfTmpEnemies.add(tmp)
                 }else if(time == 150L){
+                    listOfEnemyCharacters.clear()
+                    tmp = createEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.5).toInt(), 1, 150)
+                    listOfTmpEnemies.add(tmp)
+                    //endOfLevel=true
+                }else if(time == 175L) {
+                    var x =  listOfEnemyCharacters[0].x
+                    var y = listOfEnemyCharacters[0].y
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 40)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 200L) {
+                    var x =  listOfEnemyCharacters[0].x
+                    var y = listOfEnemyCharacters[0].y
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 225L) {
+                    var x =  listOfEnemyCharacters[0].x
+                    var y = listOfEnemyCharacters[0].y
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 275L){
                     listOfEnemyCharacters.clear()
                     endOfLevel=true
                 }
@@ -219,11 +253,82 @@ class LevelGenerator(
             4 -> {
                 endOfLevel = false
                 if (time == 0L) {
-                    tmp = createEnemy(SKULL_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt(), 0, 150)
+                    tmp = createEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 150)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(SKULL_LASER, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt(), 0, 150)
+                } else if(time == 25L){
+                    var x =  listOfEnemyCharacters[0].x
+                    var y = listOfEnemyCharacters[0].y
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
                     listOfTmpEnemies.add(tmp)
-                }else if(time == 200L){
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
+                    listOfTmpEnemies.add(tmp)
+                } else if(time == 50L){
+                    var x =  listOfEnemyCharacters[0].x
+                    var y = listOfEnemyCharacters[0].y
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 75L) {
+                    var x = listOfEnemyCharacters[0].x
+                    var y = listOfEnemyCharacters[0].y
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 150L){
+                    listOfEnemyCharacters.clear()
+                    tmp = createEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), (screenWidth * 2), 3, 150)
+                    listOfTmpEnemies.add(tmp)
+                    //endOfLevel=true
+                }else if(time == 175L) {
+                    var x =  listOfEnemyCharacters[0].x
+                    var y = listOfEnemyCharacters[0].y
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 200L) {
+                    var x =  listOfEnemyCharacters[0].x
+                    var y = listOfEnemyCharacters[0].y
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 225L) {
+                    var x =  listOfEnemyCharacters[0].x
+                    var y = listOfEnemyCharacters[0].y
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 275L){
                     listOfEnemyCharacters.clear()
                     endOfLevel=true
                 }
@@ -332,16 +437,17 @@ class LevelGenerator(
                 if (time == 50L) {
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 3,dissapearTimer = 100))
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 3,dissapearTimer = 150))
+
                 } else if (time == 100L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(), 2,dissapearTimer = 100))
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(), 2,dissapearTimer = 150))
                 } else if (time == 200L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.75).toInt(), 7,dissapearTimer = 100))
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.75).toInt(), 7,dissapearTimer = 150))
                 } else if (time == 300L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.4).toInt(), 5,dissapearTimer = 100))
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.4).toInt(), 5,dissapearTimer = 150))
                 }
                 var contador : Int = 0
                 while(contador < listOfCoins.size){
@@ -353,8 +459,52 @@ class LevelGenerator(
                 }
             }
             3 -> {
+                if (time == 20L) {
+                    listOfCoins.clear()
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.7).toInt(), 3,dissapearTimer = 100))
+                }else if (time == 70L){
+                    listOfCoins.clear()
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.5).toInt(), 8,dissapearTimer = 100))
+                }else if (time == 200L){
+                    listOfCoins.clear()
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(), 4,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.2).toInt(), 6,dissapearTimer = 100))
+                }
+                var contador : Int = 0
+                while(contador < listOfCoins.size){
+                    if(listOfCoins.get(contador).dissapearTimer == 0){
+                        listOfCoins.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
+
             }
             4 -> {
+                if (time == 20L) {
+                    listOfCoins.clear()
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 3,dissapearTimer = 100))
+                }else if (time == 70L){
+                    listOfCoins.clear()
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.4).toInt(), 8,dissapearTimer = 100))
+                }else if (time == 200L){
+                    listOfCoins.clear()
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(), 4,dissapearTimer = 100))
+                }
+                var contador : Int = 0
+                while(contador < listOfCoins.size){
+                    if(listOfCoins.get(contador).dissapearTimer == 0){
+                        listOfCoins.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
             }
             5 -> {
             }
@@ -394,11 +544,11 @@ class LevelGenerator(
                 listOfLimits.add(30)
             }
             3 -> {
-                listOfLimits.add(50)
+                listOfLimits.add(10)
                 listOfLimits.add(100)
             }
             4 -> {
-                listOfLimits.add(50)
+                listOfLimits.add(12)
                 listOfLimits.add(100)
             }
             5 -> {
