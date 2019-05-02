@@ -7,7 +7,6 @@ import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import edu.ub.pis.joc.limitless.engine.GameEngine
-import edu.ub.pis.joc.limitless.model.Data
 
 
 class GameView(appContext: Context, private val dialog: Dialog) : SurfaceView(appContext), SurfaceHolder.Callback {
@@ -38,15 +37,13 @@ class GameView(appContext: Context, private val dialog: Dialog) : SurfaceView(ap
     }
 
     override fun surfaceDestroyed(surfaceHolder: SurfaceHolder) {
-        var retry = true
-        while (retry) {
+        while (thread.isAlive) {
             try {
                 thread.setRunning(false)
                 thread.join()
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-            retry = false
         }
     }
 

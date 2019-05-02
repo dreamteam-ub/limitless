@@ -10,23 +10,25 @@ import edu.ub.pis.joc.limitless.model.game.Enemy
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 import java.util.ArrayList
 
-abstract class Level(var contextApp: Context,
-                     var listOfEnemyCharacters: ArrayList<Enemy>,
-                     var listOfCoins: ArrayList<Coin>) {
+abstract class Level(
+    var contextApp: Context,
+    var listOfEnemyCharacters: ArrayList<Enemy>,
+    var listOfCoins: ArrayList<Coin>
+) {
 
 
     var characterFactory: CharacterFactory =
         CharacterFactory(contextApp)
 
-    var endOfLevel : Boolean = false
+    var endOfLevel: Boolean = false
 
     fun createCoin(
         character: String,
         posX: Int = (Data.screenWidth * 0.5).toInt(),
         posY: Int = (Data.screenHeight * 0.5).toInt(),
         value: Int = 1,
-        font : Typeface = Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX),
-        dissapearTimer : Int
+        font: Typeface = Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX),
+        dissapearTimer: Int
     ): Coin {
         Log.d("AÑADE MONEDA", character)
         val coin = characterFactory.createCharacter(character, posX, posY) as Coin
@@ -40,11 +42,11 @@ abstract class Level(var contextApp: Context,
         character: String,
         posX: Int = (Data.screenWidth * 0.5).toInt(),
         posY: Int = (Data.screenHeight * 0.5).toInt(),
-        behaviour : Int,
-        dissapearTimer : Int
+        behaviour: Int,
+        dissapearTimer: Int
     ): Enemy {
         Log.d("AÑADE ENEMY", character)
-        val enemy =characterFactory.createCharacter(character, posX, posY) as Enemy
+        val enemy = characterFactory.createCharacter(character, posX, posY) as Enemy
         enemy.concreteBehavior = behaviour
         enemy.dissapearTimer = dissapearTimer
         return enemy
@@ -62,10 +64,6 @@ abstract class Level(var contextApp: Context,
 
     abstract fun buildEnemies(levelWorld: Int, time: Long)
     abstract fun buildCoins(levelWorld: Int, time: Long)
-    abstract fun createLimits(levelWorld: Int):ArrayList<Int>
+    abstract fun createLimits(levelWorld: Int): ArrayList<Int>
 
-
-
-
-
-    }
+}

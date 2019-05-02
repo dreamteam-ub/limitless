@@ -2,7 +2,10 @@ package edu.ub.pis.joc.limitless.engine
 
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.*
+import android.support.v4.content.LocalBroadcastManager
+import android.util.Log
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
@@ -11,8 +14,7 @@ import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
 import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
 import java.util.*
 
-
-class GameEngine(contextEngine: Context) {
+class GameEngine(private var contextEngine: Context) {
 
     var touched_x = 0
     var touched_y = 0
@@ -20,7 +22,6 @@ class GameEngine(contextEngine: Context) {
 
     var gameTime: Long = 0
     val context = contextEngine
-    val activityGame = context as GameActivity
 
 
     private val currentLevelWorld: Int = Data.getCurrenLevel()
@@ -38,7 +39,7 @@ class GameEngine(contextEngine: Context) {
         ArrayList<Enemy>() //tendremos una lista de enemigos la cual iteraremos donde nos interese
     var listOfCoins = ArrayList<Coin>()
 
-    private var level: Level =
+    var level: Level =
         LevelPractice(contextEngine, listOfEnemyCharacters, listOfCoins)
 
 
@@ -46,14 +47,11 @@ class GameEngine(contextEngine: Context) {
 
     private var archThread: ArchThread = ArchThread(level, currentLevelWorld, gameTime)
 
-    private var scoreLimtis = level.createLimits(currentLevelWorld)
+    private var scoreLimits = level.createLimits(currentLevelWorld)
+
+    private var lockGame = false
 
     fun update() {
-
-        if (!activityGame.end_game) {
-            activityGame.endGame(level, player, scoreLimtis, context)
-        }
-
         for (i in 0 until listOfEnemyCharacters.size) {
             listOfEnemyCharacters[i].update()
             (listOfEnemyCharacters[i].characterHitsPlayer(player))
@@ -79,24 +77,25 @@ class GameEngine(contextEngine: Context) {
      */
 
     fun draw(canvas: Canvas) {
-        if (!activityGame.end_game) {
-            inGameBorder.draw(canvas)
-            pauseButton.draw(canvas)
+        inGameBorder.draw(canvas)
+        pauseButton.draw(canvas)
 
-            if (!player.imageList[0].isRecycled) {
-                player.draw(canvas)
-            }
-            for (i in 0 until listOfEnemyCharacters.size) {
-                listOfEnemyCharacters[i].draw(canvas)
+        if (!player.imageList[0].isRecycled) {
+            player.draw(canvas)
+        } else {
+            level.endOfLevel = true
+        }
 
-            }
-            for (i in 0 until listOfCoins.size) {
-                if (listOfCoins[i].imageList[0].isRecycled) {
-                    listOfCoins.remove(listOfCoins[i])
-                } else {
-                    listOfCoins[i].update()
-                    listOfCoins[i].draw(canvas)
-                }
+        for (i in 0 until listOfEnemyCharacters.size) {
+            listOfEnemyCharacters[i].draw(canvas)
+
+        }
+        for (i in 0 until listOfCoins.size) {
+            if (listOfCoins[i].imageList[0].isRecycled) {
+                listOfCoins.remove(listOfCoins[i])
+            } else {
+                listOfCoins[i].update()
+                listOfCoins[i].draw(canvas)
             }
         }
     }
@@ -113,7 +112,7 @@ class GameEngine(contextEngine: Context) {
     }
 
     class ArchThread(
-        private var levelGen: Level,
+        private var level: Level,
         private var currentLevelWorld: Int,
         private var gameTime: Long
     ) : Thread() {
@@ -122,8 +121,20 @@ class GameEngine(contextEngine: Context) {
         }
 
         override fun run() {
-            levelGen.buildEnemies(currentLevelWorld, gameTime)
-            levelGen.buildCoins(currentLevelWorld, gameTime)
+            level.buildEnemies(currentLevelWorld, gameTime)
+            level.buildCoins(currentLevelWorld, gameTime)
+        }
+    }
+
+    fun endLevel(gameThread: GameThread) {
+        if (level.endOfLevel) {
+            Log.d("LEVEL", "END_LEVEL MSG")
+            val intent = Intent(END_LEVEL)
+            intent.putExtra(RECYCLED, player.imageList[0].isRecycled)
+            intent.putExtra(PLAYER_ACC_SCORE, player.accumulate)
+            intent.putExtra(SCORES, scoreLimits)
+            LocalBroadcastManager.getInstance(contextEngine).sendBroadcast(intent)
+            gameThread.setRunning(false)
         }
     }
 
