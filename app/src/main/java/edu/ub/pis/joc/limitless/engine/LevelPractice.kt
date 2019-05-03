@@ -444,9 +444,43 @@ class LevelPractice(
                     }
                     contador++
                 }
-
             }
             6 -> {
+                endOfLevel = false
+                if (time == 0L) {
+                    tmp = createEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 150)
+                    listOfTmpEnemies.add(tmp)
+                } else if(time == 50L){
+                    var x =  listOfEnemyCharacters[0].x
+                    var y = listOfEnemyCharacters[0].y
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 150L){
+                    listOfEnemyCharacters.clear()
+                    endOfLevel=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
             }
             7 -> {
             }
