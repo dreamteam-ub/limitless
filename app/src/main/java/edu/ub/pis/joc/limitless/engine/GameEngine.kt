@@ -30,6 +30,9 @@ class GameEngine(private var contextEngine: Context, var mode : Boolean) {
     var level: Level? = null
     private var currentLevelWorld: Int? = null
 
+    var ai = ArtificialIntelligence()
+
+
 
     init{
         if (mode){
@@ -67,6 +70,10 @@ class GameEngine(private var contextEngine: Context, var mode : Boolean) {
         for (i in 0 until listOfEnemyCharacters.size) {
             listOfEnemyCharacters[i].update()
             (listOfEnemyCharacters[i].characterHitsPlayer(player))
+            if (mode && (listOfEnemyCharacters[i].characterHitsPlayer(player))){
+                ai.updateBestBehaviour(listOfEnemyCharacters[i])
+            }
+
 
         }
         if (!player.imageList[0].isRecycled) {

@@ -15,8 +15,6 @@ open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(ima
 
     override var dissapearTimer : Int = 0
 
-
-
     //a no ser que la clase que herede haga un override del update, por defecto se llamara
     //al update de la clase Enemy. De esta forma facilitamos la creación de objetos con el
     //patron Factory
@@ -36,9 +34,12 @@ open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(ima
     }
 }
 
-    fun characterHitsPlayer(playerCharacter: PlayerCharacter) {
+    fun characterHitsPlayer(playerCharacter: PlayerCharacter) : Boolean {
+        var hit = false
         if (this.rect.intersect(playerCharacter.rect) && this.activeEnemy) {
             playerCharacter.die()
+            hit = true
         }
+        return hit
     }
 }

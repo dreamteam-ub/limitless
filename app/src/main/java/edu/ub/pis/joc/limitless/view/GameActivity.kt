@@ -43,8 +43,8 @@ class GameActivity : FullScreenActivity() {
 
             Log.d(TAG, "Alive: ${!isDead}")
             Log.d(TAG, "Player Score: $playerScore")
-            Log.d(TAG, "ScoreLimits 0: ${scoreLimits!![0]}")
-            Log.d(TAG, "ScoreLimits 1: ${scoreLimits[1]}")
+            //Log.d(TAG, "ScoreLimits 0: ${scoreLimits!![0]}")
+            //Log.d(TAG, "ScoreLimits 1: ${scoreLimits[1]}")
             Log.d(TAG, "THREAD ${Thread.currentThread().name}")
 
             var intent : Intent
