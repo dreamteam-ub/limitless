@@ -40,10 +40,6 @@ class GameThread(
                     }
                     this.gameEngine.update()
                     this.gameView.draw(canvas!!)
-                    this.gameEngine.architect()
-                    this.gameEngine.gameTime++
-
-                    this.gameEngine.endLevel(this)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

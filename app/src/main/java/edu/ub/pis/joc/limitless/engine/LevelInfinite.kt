@@ -34,7 +34,7 @@ class LevelInfinite(contextApp: Context,
                     listOfTmpEnemies.add(tmp)
 
 
-                }else if (time%autoLvl.time == 0L){
+                } else if (time%autoLvl.time == 0L){
 
                     autoLvl.increaseTime()
 
@@ -78,7 +78,7 @@ class LevelInfinite(contextApp: Context,
                 }
                 var contador: Int = 0
                 while (contador < listOfCoins.size) {
-                    if (listOfCoins.get(contador).dissapearTimer == 0) {
+                    if (listOfCoins[contador].dissapearTimer == 0) {
                         listOfCoins.removeAt(contador)
                         contador--
                     }

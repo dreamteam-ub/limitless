@@ -2,9 +2,7 @@ package edu.ub.pis.joc.limitless.engine
 
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.*
-import android.support.v4.content.LocalBroadcastManager
 import android.util.Log
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
@@ -21,7 +19,6 @@ class GameEngine(private var contextEngine: Context, var mode : Boolean) {
     var touched: Int = 0
 
     var gameTime: Long = 0
-    val context = contextEngine
 
     var listOfEnemyCharacters =
         ArrayList<Enemy>() //tendremos una lista de enemigos la cual iteraremos donde nos interese
@@ -64,9 +61,11 @@ class GameEngine(private var contextEngine: Context, var mode : Boolean) {
 
     private var scoreLimits = level!!.createLimits(currentLevelWorld!!)
 
-    private var lockGame = false
-
     fun update() {
+        if (!end_game) {
+            (contextEngine as GameActivity).endGame(level!!, player, scoreLimits, contextEngine)
+        }
+
         for (i in 0 until listOfEnemyCharacters.size) {
             listOfEnemyCharacters[i].update()
             (listOfEnemyCharacters[i].characterHitsPlayer(player))
@@ -89,6 +88,8 @@ class GameEngine(private var contextEngine: Context, var mode : Boolean) {
 
         }
 
+        architect()
+        gameTime++
     }
 
     /**
@@ -96,25 +97,25 @@ class GameEngine(private var contextEngine: Context, var mode : Boolean) {
      */
 
     fun draw(canvas: Canvas) {
-        inGameBorder.draw(canvas)
-        pauseButton.draw(canvas)
+        if (!end_game) {
+            inGameBorder.draw(canvas)
+            pauseButton.draw(canvas)
 
-        if (!player.imageList[0].isRecycled) {
-            player.draw(canvas)
-        } else {
-            level!!.endOfLevel = true
-        }
+            if (!player.imageList[0].isRecycled) {
+                player.draw(canvas)
+            }
 
-        for (i in 0 until listOfEnemyCharacters.size) {
-            listOfEnemyCharacters[i].draw(canvas)
+            for (i in 0 until listOfEnemyCharacters.size) {
+                listOfEnemyCharacters[i].draw(canvas)
 
-        }
-        for (i in 0 until listOfCoins.size) {
-            if (listOfCoins[i].imageList[0].isRecycled) {
-                listOfCoins.remove(listOfCoins[i])
-            } else {
-                listOfCoins[i].update()
-                listOfCoins[i].draw(canvas)
+            }
+            for (i in 0 until listOfCoins.size) {
+                if (listOfCoins[i].imageList[0].isRecycled) {
+                    listOfCoins.remove(listOfCoins[i])
+                } else {
+                    listOfCoins[i].update()
+                    listOfCoins[i].draw(canvas)
+                }
             }
         }
     }
@@ -142,18 +143,6 @@ class GameEngine(private var contextEngine: Context, var mode : Boolean) {
         override fun run() {
             level.buildEnemies(currentLevelWorld, gameTime)
             level.buildCoins(currentLevelWorld, gameTime)
-        }
-    }
-
-    fun endLevel(gameThread: GameThread) {
-        if (level!!.endOfLevel) {
-            Log.d("LEVEL", "END_LEVEL MSG")
-            val intent = Intent(END_LEVEL)
-            intent.putExtra(RECYCLED, player.imageList[0].isRecycled)
-            intent.putExtra(PLAYER_ACC_SCORE, player.accumulate)
-            intent.putExtra(SCORES, scoreLimits)
-            LocalBroadcastManager.getInstance(contextEngine).sendBroadcast(intent)
-            gameThread.setRunning(false)
         }
     }
 

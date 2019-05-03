@@ -6,19 +6,14 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.support.v4.content.LocalBroadcastManager
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageButton
 import edu.ub.pis.joc.limitless.R
-import android.content.BroadcastReceiver
-import android.content.IntentFilter
-import android.util.Log
+import edu.ub.pis.joc.limitless.engine.Level
+import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 
-const val END_LEVEL = "end_level"
-const val RECYCLED = "recycled"
-const val SCORES = "scores"
-const val PLAYER_ACC_SCORE = "player_score"
+var end_game = false
 
 class GameActivity : FullScreenActivity() {
 
@@ -30,52 +25,14 @@ class GameActivity : FullScreenActivity() {
 
     lateinit var dialog: Dialog
 
-    var end_game = false
-
-    var mode : Boolean ?= null
-
-    private val endLevelNotification = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            end_game = true
-            val isDead = intent.extras!!.getBoolean(RECYCLED)
-            val playerScore = intent.extras!!.getInt(PLAYER_ACC_SCORE)
-            val scoreLimits = intent.extras!!.getIntegerArrayList(SCORES)
-
-            Log.d(TAG, "Alive: ${!isDead}")
-            Log.d(TAG, "Player Score: $playerScore")
-            //Log.d(TAG, "ScoreLimits 0: ${scoreLimits!![0]}")
-            //Log.d(TAG, "ScoreLimits 1: ${scoreLimits[1]}")
-            Log.d(TAG, "THREAD ${Thread.currentThread().name}")
-
-            var intent : Intent
-
-            if (isDead) {
-                //ACTIVITY DE PERDER POR MUERTE
-                intent = Intent(context, GameDeadActivity::class.java)
-            } else {
-                if (playerScore > scoreLimits[0] && playerScore < scoreLimits[1]) {
-                    //ACTIVITY DE GANAR PUNTUACION
-                    intent = Intent(context, GameWonActivity::class.java)
-                } else {
-                    //PERDER por PUNTUACIÓN
-                    intent = Intent(context, GameDeadActivity::class.java)
-                }
-            }
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            intent.putExtra(MODE_INFINITY, mode)
-            startActivity(intent)
-            finish()
-        }
-    }
-
+    var mode: Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(endLevelNotification, IntentFilter(END_LEVEL))
-
-        mode= intent.extras!!.getBoolean(MODE_INFINITY)
         end_game = false
+
+        mode = intent.extras!!.getBoolean(MODE_INFINITY)
         dialog = Dialog(this)
 
         surface = GameView(this, dialog, mode!!)
@@ -143,8 +100,8 @@ class GameActivity : FullScreenActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onStop() {
+        super.onStop()
 
         if (dialog.isShowing) {
             dialog.dismiss()
@@ -160,5 +117,42 @@ class GameActivity : FullScreenActivity() {
             }
         }
         super.onWindowFocusChanged(hasFocus)
+    }
+
+    fun endGame(levelGen: Level, player: PlayerCharacter, scoreLimtis: ArrayList<Int>, context: Context) {
+        if (levelGen.endOfLevel) {
+            val activity = (context as FullScreenActivity)
+            if (player.accumulate > scoreLimtis[0] && player.accumulate < scoreLimtis[1]) {
+                end_game = true
+                levelGen.endOfLevel = false
+                //ACTIVITY DE GANAR PUNTUACION
+                val intent = Intent(context, GameWonActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                activity.startActivity(intent)
+                activity.finish()
+            } else {
+                end_game = true
+                //PERDER por PUNTUACIÓN
+                levelGen.endOfLevel = false
+                val intent = Intent(context, GameDeadActivity::class.java)
+                intent.putExtra(MODE_INFINITY, mode)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                activity.startActivity(intent)
+                activity.finish()
+            }
+        } else if (player.imageList[0].isRecycled) {
+            val activity = (context as FullScreenActivity)
+            //ACTIVITY DE PERDER POR MUERTE
+            end_game = true
+            levelGen.endOfLevel = true
+            val intent = Intent(context, GameDeadActivity::class.java)
+            intent.putExtra(MODE_INFINITY, mode)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            activity.startActivity(intent)
+            activity.finish()
+        }
     }
 }
