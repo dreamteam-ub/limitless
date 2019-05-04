@@ -29,7 +29,8 @@ class GameDeadActivity : FullScreenActivity() {
             }
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
-            Log.d("RETRY", Data.currentLvl.toString())
+            retryButton.isClickable = false
+            Log.d("RETRY", retryButton.isClickable.toString())
             finish()
         }
 
@@ -46,6 +47,7 @@ class GameDeadActivity : FullScreenActivity() {
             val intent = Intent(this, WorldSelectorActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            worldsButton.isClickable = false
             finish()
         }
 
@@ -54,6 +56,7 @@ class GameDeadActivity : FullScreenActivity() {
             val intent = Intent(this, MenuActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            menuButton.isClickable = false
             finish()
         }
     }
