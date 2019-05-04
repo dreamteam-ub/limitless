@@ -45,25 +45,6 @@ class CharacterFactory(context: Context) : FactoryPattern {
                 Bomb(arrayImatges, posX, posY)
             }
 
-            DEMON_CHAR -> {
-                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.demon)
-                )
-                Demon(arrayImatges, posX, posY)
-            }
-
-            EYE_CHAR -> {
-                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye1),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye2),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye3),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye4),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye5_test),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye6_test)
-                )
-                Eye(arrayImatges, posX, posY)
-            }
-
             GHOST_CHAR -> {
                 val arrayImatges: ArrayList<Bitmap> = arrayListOf(
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.ghost)
@@ -76,26 +57,6 @@ class CharacterFactory(context: Context) : FactoryPattern {
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.main_character)
                 )
                 PlayerCharacter(arrayImatges, posX, posY)
-            }
-
-            SKULL_CHAR -> {
-                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull1),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull2),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull3),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull3_light),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull4),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull4_light),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull5),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull5_light),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull6),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull6_light),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull7),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull7_light),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull8),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull8_light)
-                )
-                Skull(arrayImatges, posX, posY)
             }
 
             NUMBER_COIN -> {
@@ -133,6 +94,54 @@ class CharacterFactory(context: Context) : FactoryPattern {
                 )
                 EyeProjectile(arrayImatges, posX, posY)
             }
+            else -> {
+                null
+            }
+        }
+    }
+
+    override fun createComplexCharacter(character: String, posX: Int, posY: Int, childList:Int, context: Context): Character? {
+        return when (character) {
+
+            DEMON_CHAR -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.demon)
+                )
+                Demon(arrayImatges, posX, posY,childList,context)
+            }
+
+            EYE_CHAR -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye1),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye2),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye3),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye4),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye5_test),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye6_test)
+                )
+                Eye(arrayImatges, posX, posY,childList,context)
+            }
+
+            SKULL_CHAR -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull1),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull2),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull3),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull3_light),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull4),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull4_light),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull5),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull5_light),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull6),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull6_light),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull7),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull7_light),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull8),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull8_light)
+                )
+                Skull(arrayImatges, posX, posY,childList,context)
+            }
+
             else -> {
                 null
             }

@@ -136,68 +136,51 @@ class LevelPractice(
             }
             3 -> {
                 endOfLevel = false
+                var tmpEye:Eye
                 if (time == 0L) {
-                    tmp = createEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 150)
+                    tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 150,0)
                     listOfTmpEnemies.add(tmp)
                 } else if(time == 25L){
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.drawChild = true
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileRelocate[0] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 } else if(time == 50L){
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileDraw[1] = true
+                    tmpEye.projectileRelocate[1] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 75L) {
-                    var x = listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.projectileDraw[1] = true
+                    tmpEye.projectileDraw[2] = true
+                    tmpEye.projectileRelocate[2] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 150L){
                     listOfEnemyCharacters.clear()
-                    tmp = createEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.5).toInt(), 1, 150)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.5).toInt(), 1, 150,1)
                     listOfTmpEnemies.add(tmp)
                     //endOfLevel=true
                 }else if(time == 175L) {
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.drawChild = true
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileRelocate[0] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 200L) {
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileDraw[1] = true
+                    tmpEye.projectileRelocate[1] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 225L) {
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.projectileDraw[1] = true
+                    tmpEye.projectileDraw[2] = true
+                    tmpEye.projectileRelocate[2] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 275L){
                     listOfEnemyCharacters.clear()
                     endOfLevel=true
@@ -212,83 +195,52 @@ class LevelPractice(
                 }
             }
             4 -> {
+                var tmpEye : Eye
                 endOfLevel = false
                 if (time == 0L) {
-                    tmp = createEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 150)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 150,2)
                     listOfTmpEnemies.add(tmp)
                 } else if(time == 25L){
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.drawChild = true
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileRelocate[0] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 } else if(time == 50L){
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.projectileDraw[1] = true
+                    tmpEye.projectileDraw[1] = true
+                    tmpEye.projectileRelocate[1] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 75L) {
-                    var x = listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.projectileDraw[1] = true
+                    tmpEye.projectileDraw[2] = true
+                    tmpEye.projectileRelocate[2] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 150L){
                     listOfEnemyCharacters.clear()
-                    tmp = createEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), (screenWidth * 2), 3, 150)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), (screenWidth * 2), 3, 150,3)
                     listOfTmpEnemies.add(tmp)
                     //endOfLevel=true
                 }else if(time == 175L) {
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.drawChild = true
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileRelocate[0] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 200L) {
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileDraw[1] = true
+                    tmpEye.projectileRelocate[1] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 225L) {
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.projectileDraw[1] = true
+                    tmpEye.projectileDraw[2] = true
+                    tmpEye.projectileRelocate[2] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 275L){
                     listOfEnemyCharacters.clear()
                     endOfLevel=true
@@ -303,131 +255,86 @@ class LevelPractice(
                 }
             }
             5 -> {
+                var tmpEye : Eye
                 endOfLevel = false
                 if (time == 0L) {
-                    tmp = createEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 150)
+                    tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 150,4)
                     listOfTmpEnemies.add(tmp)
                 } else if(time == 25L){
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.drawChild = true
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileRelocate[0] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 } else if(time == 50L){
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileDraw[1] = true
+                    tmpEye.projectileRelocate[1] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 75L) {
-                    var x = listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.projectileDraw[1] = true
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileRelocate[0] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 125L) {
                     listOfEnemyCharacters.clear()
 
-                    tmp = createEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 150)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 150,5)
                     listOfTmpEnemies.add(tmp)
                 } else if(time == 150L){
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.drawChild = true
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileRelocate[0] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 } else if(time == 175L){
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileDraw[1] = true
+                    tmpEye.projectileRelocate[1] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 220L) {
-                    var x = listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.projectileDraw[1] = true
+                    tmpEye.projectileDraw[2] = true
+                    tmpEye.projectileRelocate[2] = true
+                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time==300L){
                     listOfEnemyCharacters.clear()
-                    tmp = createEnemy(EYE_CHAR, 0, (screenHeight * 0.3).toInt(), 0, 150)
+                    tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.3).toInt(), 0, 150,6)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(), 1, 150)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(), 1, 150,7)
                     listOfTmpEnemies.add(tmp)
                 }else if (time == 350L){
-                    var x1 = listOfEnemyCharacters[0].x
-                    var y1 = listOfEnemyCharacters[0].y
-                    var x2 = listOfEnemyCharacters[1].x
-                    var y2 = listOfEnemyCharacters[1].y
-                    tmp = createEnemy(EYE_PROJECTILE, x1, y1, 0, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x1, y1, 1, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x1, y1, 7, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x2, y2, 3, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x2, y2, 4, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x2, y2, 5, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.drawChild = true
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileRelocate[0] = true
+                    listOfEnemyCharacters[0] = tmpEye
+                    tmpEye = listOfEnemyCharacters[1] as Eye
+                    tmpEye.drawChild = true
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileRelocate[0] = true
+                    listOfEnemyCharacters[1] = tmpEye
                 }else if (time == 400L){
                     listOfEnemyCharacters.clear()
-                    tmp = createEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 150)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 150,8)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), (screenWidth * 2), 3, 150)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), (screenWidth * 2), 3, 150,9)
                     listOfTmpEnemies.add(tmp)
                 }else if (time == 450L){
-                    var x1 = listOfEnemyCharacters[0].x
-                    var y1 = listOfEnemyCharacters[0].y
-                    var x2 = listOfEnemyCharacters[1].x
-                    var y2 = listOfEnemyCharacters[1].y
-                    tmp = createEnemy(EYE_PROJECTILE, x1, y1, 5, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x1, y1, 6, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x1, y1, 7, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x2, y2, 1, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x2, y2, 2, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x2, y2, 3, 40)
-                    listOfTmpEnemies.add(tmp)
+                    tmpEye = listOfEnemyCharacters[0] as Eye
+                    tmpEye.drawChild = true
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileRelocate[0] = true
+                    listOfEnemyCharacters[0] = tmpEye
+                    tmpEye = listOfEnemyCharacters[1] as Eye
+                    tmpEye.drawChild = true
+                    tmpEye.projectileDraw[0] = true
+                    tmpEye.projectileRelocate[0] = true
+                    listOfEnemyCharacters[1] = tmpEye
                 }else if(time == 500L){
                     listOfEnemyCharacters.clear()
                     endOfLevel=true
@@ -442,41 +349,6 @@ class LevelPractice(
                 }
             }
             6 -> {
-                endOfLevel = false
-                if (time == 0L) {
-                    tmp = createEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 150)
-                    listOfTmpEnemies.add(tmp)
-                } else if(time == 50L){
-                    var x =  listOfEnemyCharacters[0].x
-                    var y = listOfEnemyCharacters[0].y
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 0, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 1, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 2, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 3, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 4, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 5, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 6, 40)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(EYE_PROJECTILE, x, y, 7, 40)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 150L){
-                    listOfEnemyCharacters.clear()
-                    endOfLevel=true
-                }
-                var contador : Int = 0
-                while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
-                        listOfEnemyCharacters.removeAt(contador)
-                        contador--
-                    }
-                    contador++
-                }
             }
             7 -> {
             }

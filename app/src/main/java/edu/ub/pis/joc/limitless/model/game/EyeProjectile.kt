@@ -12,6 +12,8 @@ class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(imag
 
     var chosenWAndH = false
 
+    override var activeEnemy = true
+
     fun chooseWidhtAndHeight(){
         when (concreteBehavior) {
             0 -> {
@@ -37,9 +39,6 @@ class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(imag
             }
         }
     }
-
-
-    override var activeEnemy = true
 
     override fun update() {
         dissapearTimer--

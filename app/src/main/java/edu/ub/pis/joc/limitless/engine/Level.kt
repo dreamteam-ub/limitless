@@ -9,6 +9,7 @@ import edu.ub.pis.joc.limitless.model.game.Coin
 import edu.ub.pis.joc.limitless.model.game.Enemy
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 import java.util.ArrayList
+
 const val NIVEL_INFINITO = -1
 abstract class Level(
     var contextApp: Context,
@@ -47,6 +48,21 @@ abstract class Level(
     ): Enemy {
         Log.d("AÑADE ENEMY", character)
         val enemy = characterFactory.createCharacter(character, posX, posY) as Enemy
+        enemy.concreteBehavior = behaviour
+        enemy.dissapearTimer = dissapearTimer
+        return enemy
+    }
+
+    fun createComplexEnemy(
+        character: String,
+        posX: Int = (Data.screenWidth * 0.5).toInt(),
+        posY: Int = (Data.screenHeight * 0.5).toInt(),
+        behaviour: Int,
+        dissapearTimer: Int,
+        childList : Int
+    ): Enemy {
+        Log.d("AÑADE COMPLEX ENEMY", character)
+        val enemy = characterFactory.createComplexCharacter(character, posX, posY,childList,contextApp) as Enemy
         enemy.concreteBehavior = behaviour
         enemy.dissapearTimer = dissapearTimer
         return enemy

@@ -82,11 +82,14 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean) {
             }
         }
 
-        for (i in 0 until listOfCoins.size) {
-            val taken : Boolean = player.takesCoin(listOfCoins[i])
+        var coinIterator = 0
+        while(coinIterator<listOfCoins.size){
+            val taken : Boolean = player.takesCoin(listOfCoins[coinIterator])
             if (taken) {
-                listOfCoins.removeAt(i)
+                listOfCoins.removeAt(coinIterator)
+                coinIterator--
             }
+            coinIterator++
         }
 
         for (i in 0 until listOfCoins.size) {

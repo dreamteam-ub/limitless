@@ -34,7 +34,7 @@ open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(ima
     }
 }
 
-    fun characterHitsPlayer(playerCharacter: PlayerCharacter) : Boolean {
+    open fun characterHitsPlayer(playerCharacter: PlayerCharacter) : Boolean {
         var hit = false
         if (this.rect.intersect(playerCharacter.rect) && this.activeEnemy) {
             playerCharacter.die()

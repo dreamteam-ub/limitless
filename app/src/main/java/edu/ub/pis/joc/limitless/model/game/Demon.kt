@@ -2,8 +2,9 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 import edu.ub.pis.joc.limitless.model.Data
+import android.content.Context
 
-class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, posY) {
+class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context: Context) : ComplexEnemy(image, posX, posY,childList,context) {
 
     override var xVelocity: Int = 20
     override var yVelocity: Int = 20
