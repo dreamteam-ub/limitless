@@ -39,7 +39,9 @@ class GameThread(
                         running = false
                     }
                     this.gameEngine.update()
-                    this.gameView.draw(canvas!!)
+                    if (canvas != null) {
+                        this.gameView.draw(canvas!!)
+                    }
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

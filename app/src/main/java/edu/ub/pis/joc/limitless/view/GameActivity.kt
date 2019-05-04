@@ -6,6 +6,9 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageButton
@@ -25,7 +28,7 @@ class GameActivity : FullScreenActivity() {
 
     lateinit var dialog: Dialog
 
-    var mode: Boolean? = null
+    var mode: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +38,7 @@ class GameActivity : FullScreenActivity() {
         mode = intent.extras!!.getBoolean(MODE_INFINITY)
         dialog = Dialog(this)
 
-        surface = GameView(this, dialog, mode!!)
+        surface = GameView(this, dialog, mode)
         setContentView(surface)
 
         val layoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -48,7 +51,7 @@ class GameActivity : FullScreenActivity() {
         val worldsDiag: ImageButton = vista.findViewById(R.id.worldsButtonPauseDiag)
         val menuDiag: ImageButton = vista.findViewById(R.id.menuButtonPauseDiag)
 
-        if (mode!!) {
+        if (mode) {
             worldsDiag.visibility = View.GONE
             worldsDiag.isClickable = false
         }
@@ -56,7 +59,10 @@ class GameActivity : FullScreenActivity() {
         resumeDiag.setOnClickListener {
             surface!!.resumeThread()
             dialog.dismiss()
+                resumeDiag.isClickable = false
         }
+
+        dialog.setOnDismissListener { resumeDiag.isClickable = true }
 
         worldsDiag.setOnClickListener {
             exit = true
@@ -67,6 +73,7 @@ class GameActivity : FullScreenActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()
+            worldsDiag.isClickable = false
         }
 
         menuDiag.setOnClickListener {
@@ -78,6 +85,7 @@ class GameActivity : FullScreenActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()
+            menuDiag.isClickable = false
         }
 
         dialog.setOnCancelListener { resumeDiag.performClick() }
@@ -117,42 +125,5 @@ class GameActivity : FullScreenActivity() {
             }
         }
         super.onWindowFocusChanged(hasFocus)
-    }
-
-    fun endGame(levelGen: Level, player: PlayerCharacter, scoreLimtis: ArrayList<Int>, context: Context) {
-        if (levelGen.endOfLevel) {
-            val activity = (context as FullScreenActivity)
-            if (player.accumulate > scoreLimtis[0] && player.accumulate < scoreLimtis[1]) {
-                end_game = true
-                levelGen.endOfLevel = false
-                //ACTIVITY DE GANAR PUNTUACION
-                val intent = Intent(context, GameWonActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                activity.startActivity(intent)
-                activity.finish()
-            } else {
-                end_game = true
-                //PERDER por PUNTUACIÓN
-                levelGen.endOfLevel = false
-                val intent = Intent(context, GameDeadActivity::class.java)
-                intent.putExtra(MODE_INFINITY, mode)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                activity.startActivity(intent)
-                activity.finish()
-            }
-        } else if (player.imageList[0].isRecycled) {
-            val activity = (context as FullScreenActivity)
-            //ACTIVITY DE PERDER POR MUERTE
-            end_game = true
-            levelGen.endOfLevel = true
-            val intent = Intent(context, GameDeadActivity::class.java)
-            intent.putExtra(MODE_INFINITY, mode)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            activity.startActivity(intent)
-            activity.finish()
-        }
     }
 }

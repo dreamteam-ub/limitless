@@ -3,6 +3,7 @@ package edu.ub.pis.joc.limitless.view
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Canvas
+import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView

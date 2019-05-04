@@ -2,7 +2,9 @@ package edu.ub.pis.joc.limitless.engine
 
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.*
+import android.os.AsyncTask
 import android.util.Log
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
@@ -12,7 +14,7 @@ import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
 import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
 import java.util.*
 
-class GameEngine(private var contextEngine: Context, var mode : Boolean) {
+class GameEngine(private var contextEngine: Context, var mode: Boolean) {
 
     var touched_x = 0
     var touched_y = 0
@@ -24,18 +26,17 @@ class GameEngine(private var contextEngine: Context, var mode : Boolean) {
         ArrayList<Enemy>() //tendremos una lista de enemigos la cual iteraremos donde nos interese
     var listOfCoins = ArrayList<Coin>()
 
-    var level: Level? = null
-    private var currentLevelWorld: Int? = null
+    var level: Level
+    private var currentLevelWorld: Int
 
     var ai = ArtificialIntelligence()
 
 
-
-    init{
-        if (mode){
+    init {
+        if (mode) {
             currentLevelWorld = NIVEL_INFINITO
             level = LevelInfinite(contextEngine, listOfEnemyCharacters, listOfCoins)
-        }else{
+        } else {
             currentLevelWorld = Data.getCurrenLevel()
             level = LevelPractice(contextEngine, listOfEnemyCharacters, listOfCoins)
         }
@@ -43,6 +44,7 @@ class GameEngine(private var contextEngine: Context, var mode : Boolean) {
         Log.d("CURRENT LEVEL", currentLevelWorld.toString())
 
     }
+
     private var inGameBorder: InGameBorder = InGameBorder(
         BitmapFactory.decodeResource(
             contextEngine.resources,
@@ -54,22 +56,19 @@ class GameEngine(private var contextEngine: Context, var mode : Boolean) {
         PauseButton(BitmapFactory.decodeResource(contextEngine.resources, R.drawable.pause_button))
 
 
+    var player: PlayerCharacter = level.buildPlayer()
 
-    var player: PlayerCharacter = level!!.buildPlayer()
-
-    private var archThread: ArchThread = ArchThread(level!!, currentLevelWorld!!, gameTime)
-
-    private var scoreLimits = level!!.createLimits(currentLevelWorld!!)
+    private var scoreLimits = level.createLimits(currentLevelWorld)
 
     fun update() {
         if (!end_game) {
-            (contextEngine as GameActivity).endGame(level!!, player, scoreLimits, contextEngine)
+            endGame(level, player, scoreLimits, contextEngine)
         }
 
         for (i in 0 until listOfEnemyCharacters.size) {
             listOfEnemyCharacters[i].update()
             (listOfEnemyCharacters[i].characterHitsPlayer(player))
-            if (mode && (listOfEnemyCharacters[i].characterHitsPlayer(player))){
+            if (mode && (listOfEnemyCharacters[i].characterHitsPlayer(player))) {
                 ai.updateBestBehaviour(listOfEnemyCharacters[i])
             }
 
@@ -88,7 +87,7 @@ class GameEngine(private var contextEngine: Context, var mode : Boolean) {
 
         }
 
-        architect()
+        BuildTask(level, currentLevelWorld, gameTime).execute()
         gameTime++
     }
 
@@ -120,30 +119,63 @@ class GameEngine(private var contextEngine: Context, var mode : Boolean) {
         }
     }
 
-    fun architect() {
-        // start the game thread
-        if (archThread.state == Thread.State.TERMINATED) {
-            archThread = ArchThread(level!!, currentLevelWorld!!, gameTime)
-        }
-
-        if (!archThread.isAlive) {
-            archThread.start()
-        }
-    }
-
-    class ArchThread(
+    class BuildTask(
         private var level: Level,
         private var currentLevelWorld: Int,
         private var gameTime: Long
-    ) : Thread() {
-        init {
-            this.name = "ArchitectThread"
-        }
-
-        override fun run() {
+    ) : AsyncTask<Void, Void, Boolean>() {
+        override fun doInBackground(vararg params: Void?): Boolean? {
             level.buildEnemies(currentLevelWorld, gameTime)
             level.buildCoins(currentLevelWorld, gameTime)
+            return true
+        }
+
+        override fun onPreExecute() {
+            super.onPreExecute()
+            // ...
+        }
+
+        override fun onPostExecute(result: Boolean?) {
+            super.onPostExecute(result)
+            // ...
         }
     }
 
+    fun endGame(levelGen: Level, player: PlayerCharacter, scoreLimits: ArrayList<Int>, context: Context) {
+        //Log.d("THREAD NAME", Thread.currentThread().name)
+        if (levelGen.endOfLevel) {
+            val activity = (context as FullScreenActivity)
+            if (player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1]) {
+                end_game = true
+                levelGen.endOfLevel = false
+                //ACTIVITY DE GANAR PUNTUACION
+                val intent = Intent(context, GameWonActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                activity.startActivity(intent)
+                activity.finish()
+            } else {
+                end_game = true
+                //PERDER por PUNTUACIÓN
+                levelGen.endOfLevel = false
+                val intent = Intent(context, GameDeadActivity::class.java)
+                intent.putExtra(MODE_INFINITY, mode)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                activity.startActivity(intent)
+                activity.finish()
+            }
+        } else if (player.imageList[0].isRecycled) {
+            val activity = (context as FullScreenActivity)
+            //ACTIVITY DE PERDER POR MUERTE
+            end_game = true
+            levelGen.endOfLevel = true
+            val intent = Intent(context, GameDeadActivity::class.java)
+            intent.putExtra(MODE_INFINITY, mode)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            activity.startActivity(intent)
+            activity.finish()
+        }
+    }
 }

@@ -1,16 +1,13 @@
 package edu.ub.pis.joc.limitless.view
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
-import edu.ub.pis.joc.limitless.presenter.WorldSelectorPresenter
 
 class GameWonActivity : FullScreenActivity() {
 
@@ -28,13 +25,12 @@ class GameWonActivity : FullScreenActivity() {
 
         val nextLevel: ImageButton = findViewById(R.id.nextlvlButton)
         nextLevel.setOnClickListener {
-
-
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra(MODE_INFINITY,false)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()
+            nextLevel.isClickable = false
         }
 
         if (Data.user.level!! != MAX_LEVEL + 1 && Data.user.world!! != MAX_WORLD) {
@@ -69,6 +65,7 @@ class GameWonActivity : FullScreenActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()
+            worlds.isClickable = false
         }
 
         val backToMenu: ImageButton = findViewById(R.id.menuButton)
@@ -77,6 +74,7 @@ class GameWonActivity : FullScreenActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()
+            backToMenu.isClickable = false
         }
     }
 

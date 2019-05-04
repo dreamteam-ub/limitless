@@ -1,14 +1,10 @@
 package edu.ub.pis.joc.limitless.engine
 
 import android.content.Context
-import android.graphics.Typeface
-import android.util.Log
-import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.Data.screenHeight
 import edu.ub.pis.joc.limitless.model.Data.screenWidth
 import edu.ub.pis.joc.limitless.model.game.*
 import java.util.ArrayList
-import java.util.concurrent.ConcurrentHashMap
 
 const val FONT_CRIME_SIX = "fonts/Crimes Times Six.ttf"
 
