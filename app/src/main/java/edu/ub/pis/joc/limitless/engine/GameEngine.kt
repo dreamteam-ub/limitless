@@ -83,8 +83,14 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean) {
         }
 
         for (i in 0 until listOfCoins.size) {
-            player.takesCoin(listOfCoins[i])
+            val taken : Boolean = player.takesCoin(listOfCoins[i])
+            if (taken) {
+                listOfCoins.removeAt(i)
+            }
+        }
 
+        for (i in 0 until listOfCoins.size) {
+            listOfCoins[i].update()
         }
 
         BuildTask(level, currentLevelWorld, gameTime).execute()
@@ -112,7 +118,6 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean) {
                 if (listOfCoins[i].imageList[0].isRecycled) {
                     listOfCoins.remove(listOfCoins[i])
                 } else {
-                    listOfCoins[i].update()
                     listOfCoins[i].draw(canvas)
                 }
             }

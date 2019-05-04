@@ -524,11 +524,13 @@ class LevelPractice(
                 if (time == 50L) {
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 5,dissapearTimer = 100))
-                } else if (time == 200L){
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 5,dissapearTimer = 120))
+                } else if (time == 220L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.7).toInt(), 6,dissapearTimer = 100),
-                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), 1,dissapearTimer = 100))
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), 1,dissapearTimer = 120))
+                } else if (time == 275L){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), 1,dissapearTimer = 120))
                 }
                 var contador : Int = 0
                 while(contador < listOfCoins.size){

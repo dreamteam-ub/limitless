@@ -24,7 +24,9 @@ class AutoLevelGenerate {
         var listOfEnemyParams = ArrayList<String>()
 
         listOfEnemyParams.add(listOfEnemies[(0 until 5).random()])
-        //faltan parametros uwu
+        listOfEnemyParams.add(Random.nextInt((Data.screenWidth*0.7).toInt()).toString())
+        listOfEnemyParams.add(Random.nextInt((Data.screenHeight*0.7).toInt()).toString())
+
 
 
 
@@ -39,11 +41,10 @@ class AutoLevelGenerate {
         var listOfCoinParams = ArrayList<String>()
 
         listOfCoinParams.add(NUMBER_COIN)
-        listOfCoinParams.add(Random.nextInt(Data.screenWidth/3).toString())
-        listOfCoinParams.add(Random.nextInt(Data.screenHeight/3).toString())
+        listOfCoinParams.add(Random.nextInt((Data.screenWidth*0.7).toInt()).toString())
+        listOfCoinParams.add(Random.nextInt((Data.screenHeight*0.7).toInt()).toString())
         listOfCoinParams.add(Random.nextInt(-generateLimits()[0],generateLimits()[1]).toString())
-        //falta dissapeartime
-
+        listOfCoinParams.add(Random.nextInt((time-100L).toInt(), (time).toInt()).toString())
 
         return listOfCoinParams
 
