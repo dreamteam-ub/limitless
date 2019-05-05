@@ -9,7 +9,6 @@ import edu.ub.pis.joc.limitless.model.game.Coin
 import edu.ub.pis.joc.limitless.model.game.Enemy
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 import java.util.ArrayList
-
 const val NIVEL_INFINITO = -1
 abstract class Level(
     var contextApp: Context,
@@ -25,9 +24,9 @@ abstract class Level(
 
     fun createCoin(
         character: String,
-        posX: Int = (Data.screenWidth * 0.5).toInt(),
-        posY: Int = (Data.screenHeight * 0.5).toInt(),
-        value: Int = 1,
+        posX: Int ,
+        posY: Int ,
+        value: Int,
         font: Typeface = Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX),
         dissapearTimer: Int
     ): Coin {
@@ -41,8 +40,8 @@ abstract class Level(
 
     fun createEnemy(
         character: String,
-        posX: Int = (Data.screenWidth * 0.5).toInt(),
-        posY: Int = (Data.screenHeight * 0.5).toInt(),
+        posX: Int,
+        posY: Int,
         behaviour: Int,
         dissapearTimer: Int
     ): Enemy {

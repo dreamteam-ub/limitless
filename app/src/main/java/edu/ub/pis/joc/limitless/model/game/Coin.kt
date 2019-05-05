@@ -50,6 +50,10 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
         rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
 
         canvas.drawBitmap(imageList[0], null, rect, null)
-        canvas.drawText(value.toString(), x.toFloat() - 20f, y.toFloat() + 10f, paint)
+        if (value.toString().length == 1) {
+            canvas.drawText(value.toString(), x.toFloat() - 15f, y.toFloat() + 10f, paint)
+        }else if (value.toString().length == 2){
+            canvas.drawText(value.toString(), x.toFloat() - 20f, y.toFloat() + 10f, paint)
+        }
     }
 }

@@ -1,6 +1,8 @@
 package edu.ub.pis.joc.limitless.engine
 
 import android.content.Context
+import android.graphics.Typeface
+import android.util.Log
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
 import java.util.ArrayList
@@ -11,7 +13,6 @@ class LevelInfinite(contextApp: Context,
                     Level(contextApp,listOfEnemyCharacters,listOfCoins) {
 
     var autoLvl = AutoLevelGenerate()
-    var parameters = autoLvl.generateEnemies()
 
 
     override fun buildEnemies(levelWorld: Int, time: Long) {
@@ -22,21 +23,67 @@ class LevelInfinite(contextApp: Context,
                 endOfLevel = false
                 if (time == 0L) {
 
+                    for (i in 0 until autoLvl.spawnEnemyFreq) {
+                        var parameters = autoLvl.generateRandomTypeEnemy()
 
-                    tmp = createEnemy(
-                        parameters[0],
-                        (Data.screenWidth * 0.2).toInt(),
-                        (Data.screenHeight * 0.5).toInt(),
-                        0,
-                        150
-                    )
+                        if (parameters[0].equals(EYE_CHAR) || parameters[0].equals(SKULL_CHAR) || parameters[0].equals(
+                                DEMON_CHAR)){
 
-                    listOfTmpEnemies.add(tmp)
+                            tmp = createComplexEnemy(
+                                parameters[0],
+                                parameters[1].toInt(),
+                                parameters[2].toInt(),
+                                0,
+                                150,
+                                0
+                            )
 
 
-                } else if (time%autoLvl.time == 0L){
+                        }else {
+                            tmp = createEnemy(
+                                parameters[0],
+                                parameters[1].toInt(),
+                                parameters[2].toInt(),
+                                0,
+                                150
+                            )
+                        }
 
+                        listOfTmpEnemies.add(tmp)
+                    }
+
+
+                } else if (time!= 0L && time%autoLvl.time == 0L){
+                    listOfEnemyCharacters.clear()
                     autoLvl.increaseTime()
+                    for (i in 0 until autoLvl.spawnEnemyFreq) {
+                        var parameters = autoLvl.generateRandomTypeEnemy()
+
+                        if (parameters[0].equals(EYE_CHAR) || parameters[0].equals(SKULL_CHAR) || parameters[0].equals(
+                                DEMON_CHAR)){
+
+                            tmp = createComplexEnemy(
+                                parameters[0],
+                                parameters[1].toInt(),
+                                parameters[2].toInt(),
+                                0,
+                                150,
+                                0
+                            )
+
+
+                        }else {
+                            tmp = createEnemy(
+                                parameters[0],
+                                parameters[1].toInt(),
+                                parameters[2].toInt(),
+                                0,
+                                150
+                            )
+                        }
+
+                        listOfTmpEnemies.add(tmp)
+                    }
 
                 }
 
@@ -59,23 +106,48 @@ class LevelInfinite(contextApp: Context,
 
         //Log.d("TIME", (time).toInt().toString())
         //Log.d("CONTADOR MONEDAS", coinCounter.toString())
-        var parameters = autoLvl.generateCoins()
         var tmpListOfCoins: ArrayList<Coin> = ArrayList()
-
+        var coin : Coin
         when (levelWorld) {
             -1 -> {
-                if (time == 50L) {
+
+                if (time == 0L) {
                     listOfCoins.clear()
-                    tmpListOfCoins = arrayListOf(
-                        createCoin(
+                    for (j in 0 until autoLvl.spawnCoinFreq) {
+                        var parameters = autoLvl.generateCoins()
+
+                        coin = createCoin(
+                                parameters[0],
+                                parameters[1].toInt(),
+                                parameters[2].toInt(),
+                                parameters[3].toInt(),
+                                Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX),
+                                parameters[4].toInt()
+                            )
+
+                        tmpListOfCoins.add(coin)
+
+                    }
+                }
+                else if (time!= 0L && time%autoLvl.time == 0L) {
+                    listOfCoins.clear()
+                    for (j in 0 until autoLvl.spawnCoinFreq) {
+                        var parameters = autoLvl.generateCoins()
+
+                        coin = createCoin(
                             parameters[0],
                             parameters[1].toInt(),
                             parameters[2].toInt(),
                             parameters[3].toInt(),
-                            dissapearTimer = 100
+                            Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX),
+                            parameters[4].toInt()
                         )
-                    )
+                        Log.d("COINS CREATED", parameters[3])
+                        tmpListOfCoins.add(coin)
+                    }
+
                 }
+
                 var contador: Int = 0
                 while (contador < listOfCoins.size) {
                     if (listOfCoins[contador].dissapearTimer == 0) {
@@ -85,6 +157,7 @@ class LevelInfinite(contextApp: Context,
                     contador++
                 }
             }
+
         }
         listOfCoins.addAll(tmpListOfCoins)
     }
@@ -96,6 +169,8 @@ class LevelInfinite(contextApp: Context,
         when (levelWorld) {
             -1 -> {
 
+                listOfLimits.add(autoLvl.generateLimits()[0])
+                listOfLimits.add(autoLvl.generateLimits()[1])
 
             }
 
