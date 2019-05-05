@@ -76,8 +76,8 @@ class AutoLevelGenerate {
         var listOfCoinParams = ArrayList<String>()
 
         listOfCoinParams.add(NUMBER_COIN)
-        listOfCoinParams.add(Random.nextInt((Data.screenWidth*0.1).toInt(),(Data.screenWidth*0.85).toInt()).toString())
-        listOfCoinParams.add(Random.nextInt((Data.screenHeight*0.1).toInt(),(Data.screenHeight*0.85).toInt()).toString())
+        listOfCoinParams.add(Random.nextInt((Data.screenWidth*0.19).toInt(),(Data.screenWidth*0.81).toInt()).toString())
+        listOfCoinParams.add(Random.nextInt((Data.screenHeight*0.19).toInt(),(Data.screenHeight*0.81).toInt()).toString())
         listOfCoinParams.add(Random.nextInt(-generateLimits()[0],generateLimits()[1]).toString())
         listOfCoinParams.add(Random.nextInt((minTimeInGame).toInt(), (time).toInt()).toString())
         Log.d("RANDOM X",listOfCoinParams[1])

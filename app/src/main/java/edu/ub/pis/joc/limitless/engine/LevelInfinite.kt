@@ -3,8 +3,11 @@ package edu.ub.pis.joc.limitless.engine
 import android.content.Context
 import android.graphics.Typeface
 import android.util.Log
+import android.view.Gravity
+import android.widget.Toast
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
+import edu.ub.pis.joc.limitless.view.FullScreenActivity
 import java.util.ArrayList
 
 class LevelInfinite(contextApp: Context,
@@ -13,7 +16,9 @@ class LevelInfinite(contextApp: Context,
                     Level(contextApp,listOfEnemyCharacters,listOfCoins) {
 
     var autoLvl = AutoLevelGenerate()
-
+    var coinSpawnInf = false //con esto controlaremos cuando debe haber spawn de monedas, ya que si usamos
+    //el tiempo, no será preciso porque la llamada del método de generar monedas se llama despues del de enemigos
+    // en el gamEngine
 
     override fun buildEnemies(levelWorld: Int, time: Long) {
         var listOfTmpEnemies = ArrayList<Enemy>()
@@ -21,6 +26,7 @@ class LevelInfinite(contextApp: Context,
         when (levelWorld) {
             -1 -> {
                 endOfLevel = false
+
                 if (time == 0L) {
 
                     for (i in 0 until autoLvl.spawnEnemyFreq) {
@@ -56,6 +62,7 @@ class LevelInfinite(contextApp: Context,
                 } else if (time!= 0L && time%autoLvl.time == 0L){
                     listOfEnemyCharacters.clear()
                     autoLvl.increaseTime()
+                    coinSpawnInf = true
                     for (i in 0 until autoLvl.spawnEnemyFreq) {
                         var parameters = autoLvl.generateRandomTypeEnemy()
 
@@ -112,7 +119,6 @@ class LevelInfinite(contextApp: Context,
             -1 -> {
 
                 if (time == 0L) {
-                    listOfCoins.clear()
                     for (j in 0 until autoLvl.spawnCoinFreq) {
                         var parameters = autoLvl.generateCoins()
 
@@ -129,7 +135,7 @@ class LevelInfinite(contextApp: Context,
 
                     }
                 }
-                else if (time!= 0L && time%autoLvl.time == 0L) {
+                else if (time!= 0L && coinSpawnInf ) {
                     listOfCoins.clear()
                     for (j in 0 until autoLvl.spawnCoinFreq) {
                         var parameters = autoLvl.generateCoins()
@@ -145,6 +151,7 @@ class LevelInfinite(contextApp: Context,
                         Log.d("COINS CREATED", parameters[3])
                         tmpListOfCoins.add(coin)
                     }
+                    coinSpawnInf = false
 
                 }
 

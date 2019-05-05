@@ -1,5 +1,6 @@
 package edu.ub.pis.joc.limitless.engine
 
+import android.app.backup.FullBackupDataOutput
 import android.content.Context
 import android.graphics.Typeface
 import android.util.Log
@@ -8,6 +9,7 @@ import edu.ub.pis.joc.limitless.model.game.CharacterFactory
 import edu.ub.pis.joc.limitless.model.game.Coin
 import edu.ub.pis.joc.limitless.model.game.Enemy
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
+import edu.ub.pis.joc.limitless.view.FullScreenActivity
 import java.util.ArrayList
 const val NIVEL_INFINITO = -1
 abstract class Level(
@@ -75,6 +77,7 @@ abstract class Level(
             (Data.screenHeight * 0.75).toInt()
         ) as PlayerCharacter
     }
+
 
 
     abstract fun buildEnemies(levelWorld: Int, time: Long)
