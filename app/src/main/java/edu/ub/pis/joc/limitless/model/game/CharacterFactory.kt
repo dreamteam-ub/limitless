@@ -14,6 +14,7 @@ const val PLAYER_CHARACTER = "PlayerCharacter"
 const val SKULL_CHAR = "Skull"
 const val SKULL_LASER = "SkullLaser"
 const val EYE_PROJECTILE = "EyeProjectile"
+const val DEMON_FIRE_COLUMN = "DemonFireColumn"
 
 const val NUMBER_COIN = "Coin"
 
@@ -93,6 +94,47 @@ class CharacterFactory(context: Context) : FactoryPattern {
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye_projectile_8)
                 )
                 EyeProjectile(arrayImatges, posX, posY)
+            }
+            DEMON_FIRE_COLUMN -> {
+                val arrayImatges: ArrayList<Bitmap> = arrayListOf(
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego1),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego2),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego3),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego4),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego5),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego6),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego7),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego8),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego9),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego10),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego11),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego12),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego13),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego14),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego15),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego16),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego17),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego18),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego19),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego20),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego21),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego22),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego23),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego24),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego25),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego26),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego27),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego28),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego29),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego30),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego31),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego32),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego33),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego34),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego35),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego36)
+                )
+                DemonFireColumn(arrayImatges, posX, posY)
             }
             else -> {
                 null

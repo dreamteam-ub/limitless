@@ -8,7 +8,6 @@ open class ComplexEnemy(image: ArrayList<Bitmap>, posX: Int, posY: Int, childLis
 
     var characterFactory: CharacterFactory = CharacterFactory(context)
     open var childListConditional = childList
-    open var projectileWavesList : ArrayList<ArrayList<EyeProjectile>> = ArrayList()
     open var projectileDraw : ArrayList<Boolean> = ArrayList()
     open var projectileRelocate : ArrayList<Boolean> = ArrayList()
 

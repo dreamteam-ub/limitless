@@ -349,12 +349,76 @@ class LevelPractice(
                 }
             }
             6 -> {
+                endOfLevel = false
+                if (time == 0L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 8, 300,0)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 300L) {
+                    listOfEnemyCharacters.clear()
+                    endOfLevel=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
             }
             7 -> {
+                endOfLevel = false
+                if (time == 0L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 8, 300,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 300L) {
+                    listOfEnemyCharacters.clear()
+                    endOfLevel=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
             }
             8 -> {
+                endOfLevel = false
+                if (time == 0L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 8, 300,2)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 300L) {
+                    listOfEnemyCharacters.clear()
+                    endOfLevel=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
             }
             9 -> {
+                endOfLevel = false
+                if (time == 0L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, screenWidth , (screenHeight * 0.5).toInt(), 1, 300,3)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 300L) {
+                    listOfEnemyCharacters.clear()
+                    endOfLevel=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
             }
             10 -> {
             }

@@ -22,7 +22,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList:Int,context:
 
     var contador : Int = 0
 
-    override var projectileWavesList : ArrayList<ArrayList<EyeProjectile>> = generateChildList()
+    var projectileWavesList : ArrayList<ArrayList<EyeProjectile>> = generateChildList()
     override var projectileDraw : ArrayList<Boolean> = generateBooleans()
     override var projectileRelocate : ArrayList<Boolean> = generateBooleans()
 
@@ -109,27 +109,6 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList:Int,context:
         }
         contador = (contador + 1) % 31
 
-        if(drawChild){
-            for (i in 0 until projectileRelocate.size){
-                if(projectileRelocate[i]) {
-                    for (j in 0 until projectileWavesList[i].size) {
-                        projectileWavesList[i][j].x = this.x
-                        projectileWavesList[i][j].y = this.y
-                    }
-                }
-                projectileRelocate[i] = false
-            }
-
-            for (i in 0 until projectileDraw.size){
-                if(projectileDraw[i]) {
-                    for (j in 0 until projectileWavesList[i].size) {
-                        projectileWavesList[i][j].draw(canvas)
-                        projectileWavesList[i][j].update()
-                    }
-                }
-            }
-
-        }
     }
 
     fun generateChildList(): ArrayList<ArrayList<EyeProjectile>>{
