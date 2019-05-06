@@ -2,17 +2,19 @@ package edu.ub.pis.joc.limitless.engine
 
 import android.util.Log
 import edu.ub.pis.joc.limitless.model.game.*
+import kotlin.random.Random
 
-const val WEIGHT = 4
 
 class ArtificialIntelligence {
 
 
 
-    var allLists = arrayListOf<Array<Int>>(AIData.behaviourDemon,AIData.behaviourGhost,AIData.behaviourBomb,AIData.behaviourSkull,
-        AIData.behaviourEye,AIData.behaviourBlackHole)
+    var allLists = arrayListOf<Array<Int>>(AIData.behaviourDemon,AIData.behaviourGhost,AIData.behaviourSkull,
+        AIData.behaviourEye)
 
+    var calls = 0
 
+    // in complex enemies we will take its childList and in simple enemies we will take its behaviour
     fun updateBestBehaviour(enemy : Enemy){
 
         when(enemy){
@@ -30,30 +32,20 @@ class ArtificialIntelligence {
 
             }
 
-            is Bomb -> {
-                allLists.remove(AIData.behaviourBomb)
-                calculateProbabilities(AIData.behaviourBomb,enemy.concreteBehavior)
-                allLists.add(2,AIData.behaviourBomb)
 
-            }
             is Skull -> {
                 allLists.remove(AIData.behaviourSkull)
                 calculateProbabilities(AIData.behaviourSkull,enemy.concreteBehavior)
-                allLists.add(3,AIData.behaviourSkull)
+                allLists.add(2,AIData.behaviourSkull)
 
             }
             is Eye -> {
                 allLists.remove(AIData.behaviourEye)
                 calculateProbabilities(AIData.behaviourEye,enemy.concreteBehavior)
-                allLists.add(4,AIData.behaviourEye)
+                allLists.add(3,AIData.behaviourEye)
 
             }
-            is BlackHole -> {
-                allLists.remove(AIData.behaviourBlackHole)
-                calculateProbabilities(AIData.behaviourBlackHole,enemy.concreteBehavior)
-                allLists.add(5,AIData.behaviourBlackHole)
 
-            }
 
         }
 
@@ -62,22 +54,62 @@ class ArtificialIntelligence {
 
 
     }
-
     fun calculateProbabilities(listProb : Array<Int>, behaviour : Int) : Array<Int>{
-        Log.d("BEFORE CALCULATE",listProb[0].toString())
 
-        if (listProb[behaviour]<40) {
-            listProb[behaviour] += WEIGHT
-            for (i in 0 until listProb.size) {
-                if (i != behaviour) {
-                    listProb[i] -= WEIGHT / 4
+        Log.d("BEFORE CALCULATE",listProb[behaviour].toString())
+            if (listProb[behaviour] < listProb[listProb.size-1]) {
+                Log.d("calculate min 1",listProb[listProb.size-1].toString())
+                listProb[behaviour] += listProb.size - 1
+                for (i in 0 until listProb.size - 1) {
+                    if (i != behaviour) {
+                        listProb[i] -= (listProb.size - 1 / listProb.size - 1)
 
+                    }
                 }
             }
-        }
-        Log.d("calculate",listProb[0].toString())
 
+        Log.d("calculate",listProb[behaviour].toString())
+        calls += 1
         return listProb
+
+    }
+
+    fun getList(chr : String) : Array<Int>{
+        var lista = emptyArray<Int>()
+        when(chr){
+
+            EYE_CHAR -> return AIData.behaviourEye
+            DEMON_CHAR -> return AIData.behaviourDemon
+            SKULL_CHAR -> return AIData.behaviourSkull
+            GHOST_CHAR -> return AIData.behaviourGhost
+
+        }
+        return lista
+    }
+
+    fun pickABehaviour(str : String) : Int{
+        Log.d("STR", str)
+        var list = getList(str)
+        var long = list.size-1
+        var behaviour : Int? = null
+
+        var probability = Random.nextInt(1,101)
+        Log.d("PROB", probability.toString())
+        var accumulateInList = 0
+
+        for (i in 0 until long){
+            if(probability > accumulateInList){
+                accumulateInList += list[i]
+                Log.d("ACC", accumulateInList.toString())
+            }
+            if (probability <= accumulateInList){
+                behaviour = i
+                return behaviour
+            }
+
+        }
+        Log.d("BEHAVIOUR", behaviour.toString())
+        return behaviour!!
 
     }
 

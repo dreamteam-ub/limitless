@@ -77,10 +77,7 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
                 x += xVelocity+5
                 y += yVelocity+5
             }
-            8->{
-                x = x
-                y = y
-            }
+
 
         }
 

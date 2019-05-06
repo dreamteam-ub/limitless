@@ -6,8 +6,11 @@ import android.content.Intent
 import android.graphics.*
 import android.os.AsyncTask
 import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.SURVIVED
 import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.*
 import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
@@ -31,6 +34,8 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean) {
 
     var ai = ArtificialIntelligence()
 
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     init {
         if (mode) {
@@ -40,6 +45,8 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean) {
             currentLevelWorld = Data.getCurrenLevel()
             level = LevelPractice(contextEngine, listOfEnemyCharacters, listOfCoins)
         }
+        mAuth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         Log.d("CURRENT LEVEL", currentLevelWorld.toString())
 
@@ -69,7 +76,9 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean) {
             listOfEnemyCharacters[i].update()
             (listOfEnemyCharacters[i].characterHitsPlayer(player))
             if (mode && (listOfEnemyCharacters[i].characterHitsPlayer(player))) {
-                ai.updateBestBehaviour(listOfEnemyCharacters[i])
+                if (ai.calls < 1) {
+                    ai.updateBestBehaviour(listOfEnemyCharacters[i])
+                }
             }
 
 
@@ -164,6 +173,11 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean) {
                 activity.finish()
             } else {
                 end_game = true
+                if (mode && gameTime/30 >= Data.user.survived!!){
+                    Data.user.survived = gameTime/(30)
+                    db.collection(USERS).document(mAuth.currentUser!!.uid).update(SURVIVED, Data.user.survived!!)
+
+                }
                 //PERDER por PUNTUACIÓN
                 levelGen.endOfLevel = false
                 val intent = Intent(context, GameDeadActivity::class.java)
@@ -177,6 +191,11 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean) {
             val activity = (context as FullScreenActivity)
             //ACTIVITY DE PERDER POR MUERTE
             end_game = true
+            if (mode && gameTime/30 >= Data.user.survived!! ){
+                Data.user.survived = gameTime/(30)
+                Log.d("gametime", (gameTime/(30)).toString())
+                db.collection(USERS).document(mAuth.currentUser!!.uid).update(SURVIVED, Data.user.survived!!)
+            }
             levelGen.endOfLevel = true
             val intent = Intent(context, GameDeadActivity::class.java)
             intent.putExtra(MODE_INFINITY, mode)

@@ -3,12 +3,10 @@ package edu.ub.pis.joc.limitless.engine
 import android.content.Context
 import android.graphics.Typeface
 import android.util.Log
-import android.view.Gravity
-import android.widget.Toast
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
-import edu.ub.pis.joc.limitless.view.FullScreenActivity
 import java.util.ArrayList
+import kotlin.random.Random
 
 class LevelInfinite(contextApp: Context,
                     listOfEnemyCharacters: ArrayList<Enemy>,
@@ -19,7 +17,7 @@ class LevelInfinite(contextApp: Context,
     var coinSpawnInf = false //con esto controlaremos cuando debe haber spawn de monedas, ya que si usamos
     //el tiempo, no será preciso porque la llamada del método de generar monedas se llama despues del de enemigos
     // en el gamEngine
-
+    var limitsChange = false
     override fun buildEnemies(levelWorld: Int, time: Long) {
         var listOfTmpEnemies = ArrayList<Enemy>()
         var tmp: Enemy
@@ -29,37 +27,99 @@ class LevelInfinite(contextApp: Context,
 
                 if (time == 0L) {
 
+                    //primera oleada de fantasmas
                     for (i in 0 until autoLvl.spawnEnemyFreq) {
-                        var parameters = autoLvl.generateRandomTypeEnemy()
+                        var parameters = autoLvl.generateEnemies()
 
-                        if (parameters[0].equals(EYE_CHAR) || parameters[0].equals(SKULL_CHAR) || parameters[0].equals(
-                                DEMON_CHAR)){
-
-                            tmp = createComplexEnemy(
-                                parameters[0],
-                                parameters[1].toInt(),
-                                parameters[2].toInt(),
-                                0,
-                                150,
-                                0
-                            )
-
-
-                        }else {
-                            tmp = createEnemy(
-                                parameters[0],
-                                parameters[1].toInt(),
-                                parameters[2].toInt(),
-                                0,
-                                150
-                            )
-                        }
-
+                        tmp = createEnemy(
+                            BOMB_CHAR,
+                            Random.nextInt((Data.screenWidth*0.2).toInt(), (Data.screenWidth*0.8).toInt()),
+                            Random.nextInt((Data.screenHeight*0.2).toInt(), (Data.screenHeight*0.8).toInt()),
+                            0,
+                           150
+                        )
                         listOfTmpEnemies.add(tmp)
                     }
 
+                }else if (time == 200L) {
 
-                } else if (time!= 0L && time%autoLvl.time == 0L){
+                    //segunda oleada fantasmas
+                    coinSpawnInf = true
+
+                    for (i in 0 until autoLvl.spawnEnemyFreq) {
+                        var parameters = autoLvl.generateEnemies()
+
+                            tmp = createEnemy(
+                            GHOST_CHAR,
+                            parameters[1].toInt(),
+                            parameters[2].toInt(),
+                            autoLvl.ai.pickABehaviour(GHOST_CHAR),
+                            parameters[3].toInt()
+                        )
+
+
+                        listOfTmpEnemies.add(tmp)
+
+                    }
+                }else if (time == 400L) {
+
+                    coinSpawnInf = true
+                    // tercera oleada Eyes
+                    for (i in 0 until autoLvl.spawnEnemyFreq) {
+                        var parameters = autoLvl.generateComplexEnemy()
+
+                        tmp = createComplexEnemy(
+                            EYE_CHAR,
+                            parameters[1].toInt(),
+                            parameters[2].toInt(),
+                            0,
+                            parameters[3].toInt(),
+                            autoLvl.ai.pickABehaviour(EYE_CHAR)
+                        )
+
+                        listOfTmpEnemies.add(tmp)
+
+                    }
+
+                }else if (time == 600L) {
+                    coinSpawnInf = true
+                    // cuarta oleada de Demons
+                        for (i in 0 until autoLvl.spawnEnemyFreq) {
+                            var parameters = autoLvl.generateComplexEnemy()
+
+                            tmp = createComplexEnemy(
+                                DEMON_CHAR,
+                                parameters[1].toInt(),
+                                parameters[2].toInt(),
+                                0,
+                                parameters[3].toInt(),
+                                autoLvl.ai.pickABehaviour(DEMON_CHAR)
+                            )
+
+                            listOfTmpEnemies.add(tmp)
+
+                        }
+
+                }else if (time == 800L) {
+                    coinSpawnInf = true
+                    // quinta y ultima oleada de Skull
+                    for (i in 0 until autoLvl.spawnEnemyFreq) {
+                        var parameters = autoLvl.generateComplexEnemy()
+
+                        tmp = createComplexEnemy(
+                            SKULL_CHAR,
+                            parameters[1].toInt(),
+                            parameters[2].toInt(),
+                            0,
+                            parameters[3].toInt(),
+                            0
+                        )
+
+                        listOfTmpEnemies.add(tmp)
+
+                    }
+
+                } else if (time%autoLvl.time == 0L){
                     listOfEnemyCharacters.clear()
                     autoLvl.increaseTime()
                     coinSpawnInf = true
@@ -74,8 +134,8 @@ class LevelInfinite(contextApp: Context,
                                 parameters[1].toInt(),
                                 parameters[2].toInt(),
                                 0,
-                                150,
-                                0
+                                parameters[3].toInt(),
+                                parameters[4].toInt()
                             )
 
 
@@ -84,9 +144,10 @@ class LevelInfinite(contextApp: Context,
                                 parameters[0],
                                 parameters[1].toInt(),
                                 parameters[2].toInt(),
-                                0,
-                                150
+                                parameters[4].toInt(),
+                                parameters[3].toInt()
                             )
+
                         }
 
                         listOfTmpEnemies.add(tmp)
