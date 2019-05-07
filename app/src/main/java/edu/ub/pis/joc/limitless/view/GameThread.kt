@@ -1,8 +1,10 @@
 package edu.ub.pis.joc.limitless.view
 
 import android.graphics.Canvas
+import android.util.Log
 import android.view.SurfaceHolder
 import edu.ub.pis.joc.limitless.engine.GameEngine
+
 
 class GameThread(
     private val surfaceHolder: SurfaceHolder,
@@ -12,6 +14,8 @@ class GameThread(
     private var running: Boolean = false
 
     private val targetFPS = 30
+
+    private var changeScreen : Boolean = false
 
     init {
         this.name = "GameThread"
@@ -29,6 +33,11 @@ class GameThread(
         while (running) {
             startTime = System.nanoTime()
             canvas = null
+
+            if (end_game) {
+                changeScreen = true
+                break
+            }
 
             try {
                 // locking the canvas allows us to draw on to it
@@ -62,6 +71,11 @@ class GameThread(
                 sleep(waitTime)
             }
 
+        }
+
+        if (changeScreen) {
+            Log.d("ENDGAME", "FINALIZANDO JUEGO")
+            gameView.endThisGame()
         }
     }
 

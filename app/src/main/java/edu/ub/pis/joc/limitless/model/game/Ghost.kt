@@ -43,7 +43,7 @@ class Ghost(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) : Ene
 
             }
             2-> {
-                if (x > Data.screenWidth - w || y < w){
+                if (x > Data.screenWidth - w || x < w){
                     xVelocity *= -1
                 }
                 x += (xVelocity)

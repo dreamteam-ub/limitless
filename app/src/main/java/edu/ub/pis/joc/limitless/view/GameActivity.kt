@@ -1,20 +1,25 @@
 package edu.ub.pis.joc.limitless.view
 
 import android.app.Dialog
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.os.Handler
-import android.os.HandlerThread
-import android.util.Log
+import android.support.v4.content.LocalBroadcastManager
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageButton
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.engine.Level
-import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
+import android.content.IntentFilter
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.SURVIVED
+
+
+const val END_GAME = "endgame"
 
 var end_game = false
 
@@ -30,8 +35,37 @@ class GameActivity : FullScreenActivity() {
 
     var mode: Boolean = false
 
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
+
+    val endGameMsg = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val endGameType = intent.extras!!.getInt(END_GAME)
+            val modeType = intent.extras!!.getBoolean(MODE_INFINITY)
+            if (endGameType == 0) {
+                if (modeType) {
+                    db.collection(USERS).document(mAuth.currentUser!!.uid).update(SURVIVED, Data.user.survived!!)
+                }
+                val intent = Intent(context, GameDeadActivity::class.java)
+                intent.putExtra(MODE_INFINITY, mode)
+                startActivity(intent)
+                finish()
+            } else if (endGameType == 1) {
+                val intent = Intent(context, GameWonActivity::class.java)
+                intent.putExtra(MODE_INFINITY, mode)
+                startActivity(intent)
+                finish()
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(endGameMsg, IntentFilter(END_GAME))
+
+        mAuth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         end_game = false
 
@@ -114,6 +148,11 @@ class GameActivity : FullScreenActivity() {
         if (dialog.isShowing) {
             dialog.dismiss()
         }
+    }
+
+    override fun onDestroy() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(endGameMsg)
+        super.onDestroy()
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {

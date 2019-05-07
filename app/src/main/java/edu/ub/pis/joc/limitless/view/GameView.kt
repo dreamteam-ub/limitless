@@ -3,11 +3,13 @@ package edu.ub.pis.joc.limitless.view
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Canvas
-import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import edu.ub.pis.joc.limitless.engine.GameEngine
+import android.support.v4.content.LocalBroadcastManager
+import android.content.Intent
+import edu.ub.pis.joc.limitless.model.Data
 
 
 class GameView(appContext: Context, private val dialog: Dialog, var mode : Boolean) : SurfaceView(appContext), SurfaceHolder.Callback {
@@ -101,6 +103,33 @@ class GameView(appContext: Context, private val dialog: Dialog, var mode : Boole
 
     fun pauseThread() {
         pause = true
+    }
+
+    fun endThisGame() {
+        val lbm = LocalBroadcastManager.getInstance(context)
+        val intent = Intent(END_GAME)
+        intent.putExtra(MODE_INFINITY, mode)
+        if (gameEngine.player.imageList[0].isRecycled) {
+            // PERDER POR MUERTE
+            intent.putExtra(END_GAME, 0)
+            if (mode) {
+                val time = gameEngine.gameTime/30
+                if (time > Data.user.survived!!) {
+                    Data.user.survived = time
+                } else {
+                    intent.putExtra(MODE_INFINITY, false)
+                }
+            }
+        } else {
+            if (gameEngine.player.accumulate > gameEngine.scoreLimits[0] && gameEngine.player.accumulate < gameEngine.scoreLimits[1]) {
+                // GANAR PUNTUACION
+                intent.putExtra(END_GAME, 1)
+            } else {
+                // PERDER PUNTUACION
+                intent.putExtra(END_GAME, 0)
+            }
+        }
+        lbm.sendBroadcast(intent)
     }
 
 }

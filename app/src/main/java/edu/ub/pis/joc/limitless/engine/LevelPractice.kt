@@ -4,6 +4,7 @@ import android.content.Context
 import edu.ub.pis.joc.limitless.model.Data.screenHeight
 import edu.ub.pis.joc.limitless.model.Data.screenWidth
 import edu.ub.pis.joc.limitless.model.game.*
+import edu.ub.pis.joc.limitless.view.end_game
 import java.util.ArrayList
 
 const val FONT_CRIME_SIX = "fonts/Crimes Times Six.ttf"
@@ -15,14 +16,13 @@ class LevelPractice(
 ) : Level(contextApp, listOfEnemyCharacters, listOfCoins) {
 
 
-    override fun buildEnemies(levelWorld: Int, time: Long) {
+    @Synchronized override fun buildEnemies(levelWorld: Int, time: Long) {
         //Log.d("TIME", (time).toInt().toString())
         //Log.d("CONTADOR ENEMIGOS", enemyCounter.toString())
         var listOfTmpEnemies = ArrayList<Enemy>()
         var tmp: Enemy
         when (levelWorld) {
             0 -> {
-                endOfLevel = false
                 if (time == 0L) {
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), 0, 150)
                     listOfTmpEnemies.add(tmp)
@@ -43,7 +43,7 @@ class LevelPractice(
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.6).toInt(), (screenHeight * 0.5).toInt(), 0, 150)
                     listOfTmpEnemies.add(tmp)
                 } else if (time == 300L) {
-                    endOfLevel = true
+                    end_game = true
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
@@ -55,7 +55,6 @@ class LevelPractice(
                 }
             }
             1 -> {
-                endOfLevel = false
                 if (time == 0L) {
                     tmp = createEnemy(GHOST_CHAR, (screenWidth * 0), (screenHeight * 0.3).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
@@ -71,7 +70,7 @@ class LevelPractice(
                     tmp=createEnemy(GHOST_CHAR, (screenWidth * 0), (screenHeight * 0.2).toInt(),0,150)
                     listOfTmpEnemies.add(tmp)
                 }else if(time == 350L){
-                    endOfLevel=true
+                    end_game=true
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
@@ -83,7 +82,6 @@ class LevelPractice(
                 }
             }
             2 -> {
-                endOfLevel = false
                 if (time == 0L) {
                     tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.1).toInt(),1,150)
                     listOfTmpEnemies.add(tmp)
@@ -120,7 +118,7 @@ class LevelPractice(
 
                 }else if(time == 400L){
                     listOfEnemyCharacters.clear()
-                    endOfLevel=true
+                    end_game=true
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
@@ -135,7 +133,6 @@ class LevelPractice(
 
             }
             3 -> {
-                endOfLevel = false
                 var tmpEye:Eye
                 if (time == 0L) {
                     tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 150,0)
@@ -162,7 +159,7 @@ class LevelPractice(
                     listOfEnemyCharacters.clear()
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.5).toInt(), 1, 150,1)
                     listOfTmpEnemies.add(tmp)
-                    //endOfLevel=true
+                    //end_game=true
                 }else if(time == 175L) {
                     tmpEye = listOfEnemyCharacters[0] as Eye
                     tmpEye.drawChild = true
@@ -183,7 +180,7 @@ class LevelPractice(
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 275L){
                     listOfEnemyCharacters.clear()
-                    endOfLevel=true
+                    end_game=true
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
@@ -196,7 +193,6 @@ class LevelPractice(
             }
             4 -> {
                 var tmpEye : Eye
-                endOfLevel = false
                 if (time == 0L) {
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 150,2)
                     listOfTmpEnemies.add(tmp)
@@ -222,7 +218,7 @@ class LevelPractice(
                     listOfEnemyCharacters.clear()
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), (screenWidth * 2), 3, 150,3)
                     listOfTmpEnemies.add(tmp)
-                    //endOfLevel=true
+                    //end_game=true
                 }else if(time == 175L) {
                     tmpEye = listOfEnemyCharacters[0] as Eye
                     tmpEye.drawChild = true
@@ -243,7 +239,7 @@ class LevelPractice(
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 275L){
                     listOfEnemyCharacters.clear()
-                    endOfLevel=true
+                    end_game=true
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
@@ -256,7 +252,6 @@ class LevelPractice(
             }
             5 -> {
                 var tmpEye : Eye
-                endOfLevel = false
                 if (time == 0L) {
                     tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 150,4)
                     listOfTmpEnemies.add(tmp)
@@ -337,7 +332,7 @@ class LevelPractice(
                     listOfEnemyCharacters[1] = tmpEye
                 }else if(time == 500L){
                     listOfEnemyCharacters.clear()
-                    endOfLevel=true
+                    end_game=true
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
@@ -349,13 +344,12 @@ class LevelPractice(
                 }
             }
             6 -> {
-                endOfLevel = false
                 if (time == 0L) {
                     tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 8, 300,0)
                     listOfTmpEnemies.add(tmp)
                 }else if(time == 300L) {
                     listOfEnemyCharacters.clear()
-                    endOfLevel=true
+                    end_game=true
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
@@ -367,13 +361,12 @@ class LevelPractice(
                 }
             }
             7 -> {
-                endOfLevel = false
                 if (time == 0L) {
                     tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 8, 300,1)
                     listOfTmpEnemies.add(tmp)
                 }else if(time == 300L) {
                     listOfEnemyCharacters.clear()
-                    endOfLevel=true
+                    end_game=true
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
@@ -385,13 +378,12 @@ class LevelPractice(
                 }
             }
             8 -> {
-                endOfLevel = false
                 if (time == 0L) {
                     tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 8, 300,2)
                     listOfTmpEnemies.add(tmp)
                 }else if(time == 300L) {
                     listOfEnemyCharacters.clear()
-                    endOfLevel=true
+                    end_game=true
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
@@ -403,31 +395,12 @@ class LevelPractice(
                 }
             }
             9 -> {
-                endOfLevel = false
                 if (time == 0L) {
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 0, 300,0)
+                    tmp = createComplexEnemy(DEMON_CHAR, screenWidth , (screenHeight * 0.5).toInt(), 1, 300,3)
                     listOfTmpEnemies.add(tmp)
-                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 1, 300,1)
-                    //listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 2, 300,2)
-                    listOfTmpEnemies.add(tmp)
-                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 3, 300,3)
-                    //listOfTmpEnemies.add(tmp)
-                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 4, 300,4)
-                    //listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 5, 300,5)
-                    listOfTmpEnemies.add(tmp)
-                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 6, 300,6)
-                    //listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 7, 300,7)
-                    listOfTmpEnemies.add(tmp)
-                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 8, 300,8)
-                    //listOfTmpEnemies.add(tmp)
-                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 9, 300,9)
-                    //listOfTmpEnemies.add(tmp)
                 }else if(time == 300L) {
                     listOfEnemyCharacters.clear()
-                    endOfLevel=true
+                    end_game=true
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
@@ -449,7 +422,7 @@ class LevelPractice(
         listOfEnemyCharacters.addAll(listOfTmpEnemies)
     }
 
-    override fun buildCoins(levelWorld: Int, time: Long) {
+    @Synchronized override fun buildCoins(levelWorld: Int, time: Long) {
         //Log.d("TIME", (time).toInt().toString())
         //Log.d("CONTADOR MONEDAS", coinCounter.toString())
 

@@ -3,6 +3,7 @@ package edu.ub.pis.joc.limitless.model.game
 import android.graphics.Bitmap
 import edu.ub.pis.joc.limitless.model.Data.screenHeight
 import edu.ub.pis.joc.limitless.model.Data.screenWidth
+import edu.ub.pis.joc.limitless.view.end_game
 import java.lang.Math.abs
 
 class PlayerCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), PlayerCharacterInterface {
@@ -34,6 +35,7 @@ class PlayerCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Characte
     //elimina totalment el bitmap de la surfaceview
     override fun die() {
         this.imageList[0].recycle()
+        end_game = true
     }
 
     fun moveNormal(_x: Int, _y: Int) {

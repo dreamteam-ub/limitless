@@ -15,8 +15,7 @@ class GameDeadActivity : FullScreenActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_dead)
 
-        val setMode: Intent = intent
-        val modo = setMode.extras!!.getBoolean(MODE_INFINITY)
+        val modo = intent.extras!!.getBoolean(MODE_INFINITY)
         val retryButton: ImageButton = findViewById(R.id.retryButton_normal)
         retryButton.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)

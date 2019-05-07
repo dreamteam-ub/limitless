@@ -1,6 +1,7 @@
 package edu.ub.pis.joc.limitless.engine
 
 import android.util.Log
+import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
 import kotlin.random.Random
 
@@ -74,9 +75,24 @@ class ArtificialIntelligence {
 
     }
 
-    fun getList(chr : String) : Array<Int>{
+    fun getBehaviour(chr: String): Int { //ONLY FOR COMPLEX ENEMIES
+        var num = 0
+        when (chr) {
+            EYE_CHAR -> {
+                num = AIData.bEye
+            }
+            DEMON_CHAR -> {
+                num = AIData.bDemon
+            }
+            //skull
+
+        }
+        return num
+    }
+
+    fun getList(chr: String): Array<Int> {
         var lista = emptyArray<Int>()
-        when(chr){
+        when (chr) {
 
             EYE_CHAR -> return AIData.behaviourEye
             DEMON_CHAR -> return AIData.behaviourDemon
@@ -87,33 +103,134 @@ class ArtificialIntelligence {
         return lista
     }
 
-    fun pickABehaviour(str : String) : Int{
+    fun pickABehaviour(str: String): Int {
         Log.d("STR", str)
         var list = getList(str)
-        var long = list.size-1
-        var behaviour : Int? = null
+        var long = list.size - 1
+        var behaviour = 0
 
-        var probability = Random.nextInt(1,101)
+        var probability = Random.nextInt(1, 101)
         Log.d("PROB", probability.toString())
         var accumulateInList = 0
 
-        for (i in 0 until long){
-            if(probability > accumulateInList){
+        for (i in 0 until long) {
+            if (probability > accumulateInList) {
                 accumulateInList += list[i]
                 Log.d("ACC", accumulateInList.toString())
             }
-            if (probability <= accumulateInList){
+            if (probability <= accumulateInList) {
                 behaviour = i
                 return behaviour
             }
 
         }
         Log.d("BEHAVIOUR", behaviour.toString())
-        return behaviour!!
+        return behaviour
 
+    }
+
+    fun generatePositionsForBehaviour(str: String): ArrayList<Int> {
+        var arrayCord = ArrayList<Int>()
+        var behaviourSimple = pickABehaviour(str)
+        var behaviourComplex = getBehaviour(str)
+
+        when (str) {
+            GHOST_CHAR -> {
+                if (behaviourSimple == 0) {
+                    var randomXlow = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
+                    var randomXhigh = Random.nextInt((Data.screenHeight * 0.85).toInt(), (Data.screenHeight * 0.95).toInt())
+                    var randX = arrayOf(randomXlow, randomXhigh)
+                    arrayCord.add(randX[(0 until 2).random()])
+
+                    var randomYlow = Random.nextInt((Data.screenHeight * 0.05).toInt(), (Data.screenHeight * 0.2).toInt())
+                    var randomYhigh = Random.nextInt((Data.screenHeight * 0.85).toInt(), (Data.screenHeight * 0.95).toInt())
+                    var randY = arrayOf(randomYlow, randomYhigh)
+                    arrayCord.add(randY[(0 until 2).random()])
+                    arrayCord.add(behaviourSimple) //añadimos el behaviour directamente desde esta lista
+
+                } else if (behaviourSimple == 1 || behaviourSimple == 2) {
+                    var randomX = Random.nextInt((Data.screenWidth * 0.20).toInt(), (Data.screenWidth * 0.80).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.20).toInt(), (Data.screenHeight * 0.80).toInt())
+                    Log.d("RANDOM X",randomX.toString())
+                    Log.d("RANDOM Y",randomY.toString())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    if (behaviourSimple == 1) {
+                        arrayCord.add(behaviourSimple)
+
+                    } else if (behaviourSimple == 2) {
+                        arrayCord.add(behaviourSimple)
+
+                    }
+                }
+            }
+            DEMON_CHAR -> {
+                if (behaviourComplex == 0){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }else if(behaviourComplex == 1){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.8).toInt(), (Data.screenWidth * 0.95).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }else if(behaviourComplex == 2){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.20).toInt(), (Data.screenWidth * 0.8).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.05).toInt(), (Data.screenHeight * 0.2).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }else if (behaviourComplex == 3){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.20).toInt(), (Data.screenWidth * 0.8).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.8).toInt(), (Data.screenHeight * 0.95).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }
+
+            }
+            EYE_CHAR -> {
+                if (behaviourComplex == 0){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }else if(behaviourComplex == 1){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.8).toInt(), (Data.screenWidth * 0.95).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }else if(behaviourComplex == 2){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.20).toInt(), (Data.screenWidth * 0.8).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.05).toInt(), (Data.screenHeight * 0.2).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }else if (behaviourComplex == 3){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.20).toInt(), (Data.screenWidth * 0.8).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.8).toInt(), (Data.screenHeight * 0.95).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }
+
+
+            }
+
+        }
+
+        return arrayCord
     }
 
 
 
-
 }
+
+
+
+

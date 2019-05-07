@@ -8,46 +8,32 @@ import kotlin.random.Random
 
 class AutoLevelGenerate {
 
-    var time = 1000L //ponemos que de 1000L en 1000L se genera un nuevo nivel
+    var time = 1500L //ponemos que de 1000L en 1000L se genera un nuevo nivel
     var spawnEnemyFreq = 2 //frecuencia inicial de spàwn de enemigos : 2
     var spawnCoinFreq = 5 //frecuencia inicial de spawn de monedas
     var limitLow = 5
     var limitHigh = 10
-    var listOfEnemies = arrayListOf(GHOST_CHAR, BOMB_CHAR) //blackhole no aparecer
-    var listOfComplexEnemies = arrayListOf(EYE_CHAR, DEMON_CHAR, SKULL_CHAR)
+    var listOfEnemies = arrayListOf(GHOST_CHAR) //blackhole no aparecer //bomb
+    var listOfComplexEnemies = arrayListOf(EYE_CHAR, DEMON_CHAR)
     var minTimeInGame = 200L //tiempo minimo que deberan estar los personajes en partida
+    var maxTimeInGame = 500L
     var ai = ArtificialIntelligence()
 
-    /*funcion que generará un enemigo de forma aleatoria pero controlada
-    @param 1 : caracter
-    @param2 : posicion x
-    @param 3 : posicion Y
-    @param 4 : comportamiento
-    @param 5 : tiempo de desaparicion
-    */
+
     fun generateEnemies() : ArrayList<String>{
 
         var listOfEnemyParams = ArrayList<String>()
 
-        var randomXlow = Random.nextInt((Data.screenWidth*0.05).toInt(), (Data.screenWidth*0.2).toInt())
-        var randomXhigh = Random.nextInt((Data.screenWidth*0.85).toInt(), (Data.screenWidth*0.95).toInt())
-        var randX = arrayOf(randomXlow,randomXhigh)
-
-        var randomYlow = Random.nextInt((Data.screenHeight*0.05).toInt(), (Data.screenHeight*0.2).toInt())
-        var randomYhigh = Random.nextInt((Data.screenHeight*0.85).toInt(), (Data.screenHeight*0.95).toInt())
-        var randY = arrayOf(randomYlow,randomYhigh)
 
 
 
-        listOfEnemyParams.add(listOfEnemies[(0 until 2).random()])
-        listOfEnemyParams.add(randX[(0 until 2).random()].toString())
-        listOfEnemyParams.add(randY[(0 until 2).random()].toString())
-        listOfEnemyParams.add(Random.nextInt((minTimeInGame).toInt(), (time).toInt()).toString())
-        if (listOfEnemyParams[0]!= BOMB_CHAR) {
-            listOfEnemyParams.add(ai.pickABehaviour(listOfEnemyParams[0]).toString())
-        }else{
-            listOfEnemyParams.add(0.toString())
-        }
+        listOfEnemyParams.add(listOfEnemies[(0 until 1).random()])
+
+        listOfEnemyParams.add(ai.generatePositionsForBehaviour(listOfEnemyParams[0])[0].toString())
+        listOfEnemyParams.add(ai.generatePositionsForBehaviour(listOfEnemyParams[0])[1].toString())
+        listOfEnemyParams.add(Random.nextInt((minTimeInGame).toInt(), (maxTimeInGame).toInt()).toString())
+        listOfEnemyParams.add(ai.generatePositionsForBehaviour(listOfEnemyParams[0])[2].toString())
+
 
 
 
@@ -58,20 +44,14 @@ class AutoLevelGenerate {
     fun generateComplexEnemy() : ArrayList<String>{
 
         var listOfComplexEnemyParams = ArrayList<String>()
-        var randomXlow = Random.nextInt((Data.screenWidth*0.05).toInt(), (Data.screenWidth*0.2).toInt())
-        var randomXhigh = Random.nextInt((Data.screenWidth*0.85).toInt(), (Data.screenWidth*0.95).toInt())
-        var randX = arrayOf(randomXlow,randomXhigh)
 
-        var randomYlow = Random.nextInt((Data.screenHeight*0.05).toInt(), (Data.screenHeight*0.2).toInt())
-        var randomYhigh = Random.nextInt((Data.screenHeight*0.85).toInt(), (Data.screenHeight*0.95).toInt())
-        var randY = arrayOf(randomYlow,randomYhigh)
-
-
-        listOfComplexEnemyParams.add(listOfComplexEnemies[(0 until 3).random()])
-        listOfComplexEnemyParams.add(randX[(0 until 2).random()].toString())
-        listOfComplexEnemyParams.add(randY[(0 until 2).random()].toString())
-        listOfComplexEnemyParams.add(Random.nextInt((minTimeInGame).toInt(), (time).toInt()).toString())
+        listOfComplexEnemyParams.add(listOfComplexEnemies[(0 until 2).random()])
+        listOfComplexEnemyParams.add(ai.generatePositionsForBehaviour(listOfComplexEnemyParams[0])[0].toString())
+        listOfComplexEnemyParams.add(ai.generatePositionsForBehaviour(listOfComplexEnemyParams[0])[1].toString())
+        listOfComplexEnemyParams.add(Random.nextInt((minTimeInGame).toInt(), (maxTimeInGame).toInt()).toString())
         listOfComplexEnemyParams.add(ai.pickABehaviour(listOfComplexEnemyParams[0]).toString())
+        listOfComplexEnemyParams.add(ai.generatePositionsForBehaviour(listOfComplexEnemyParams[0])[2].toString())
+
 
 
 
@@ -106,9 +86,8 @@ class AutoLevelGenerate {
         listOfCoinParams.add(Random.nextInt((Data.screenWidth*0.19).toInt(),(Data.screenWidth*0.81).toInt()).toString())
         listOfCoinParams.add(Random.nextInt((Data.screenHeight*0.19).toInt(),(Data.screenHeight*0.81).toInt()).toString())
         listOfCoinParams.add(Random.nextInt(-generateLimits()[0],generateLimits()[1]).toString())
-        listOfCoinParams.add(Random.nextInt((minTimeInGame).toInt(), (time).toInt()).toString())
-        Log.d("RANDOM X",listOfCoinParams[1])
-        Log.d("RANDOM Y",listOfCoinParams[2])
+        listOfCoinParams.add(Random.nextInt((minTimeInGame).toInt(), (maxTimeInGame).toInt()).toString())
+
         Log.d("VALUE",listOfCoinParams[3])
 
         return listOfCoinParams
@@ -133,7 +112,6 @@ class AutoLevelGenerate {
 
 
     }
-
 
 
 

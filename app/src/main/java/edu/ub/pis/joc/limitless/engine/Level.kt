@@ -22,8 +22,6 @@ abstract class Level(
     var characterFactory: CharacterFactory =
         CharacterFactory(contextApp)
 
-    var endOfLevel: Boolean = false
-
     fun createCoin(
         character: String,
         posX: Int ,
@@ -48,7 +46,7 @@ abstract class Level(
         dissapearTimer: Int
     ): Enemy {
         Log.d("AÑADE ENEMY", character)
-        val enemy = characterFactory.createCharacter(character, posX, posY,behaviour) as Enemy
+        val enemy = characterFactory.createCharacter(character, posX, posY, behaviour) as Enemy
         enemy.dissapearTimer = dissapearTimer
         return enemy
     }
@@ -62,7 +60,7 @@ abstract class Level(
         childList : Int
     ): Enemy {
         Log.d("AÑADE COMPLEX ENEMY", character)
-        val enemy = characterFactory.createComplexCharacter(character, posX, posY,childList,contextApp,behaviour) as Enemy
+        val enemy = characterFactory.createComplexCharacter(character, posX, posY,childList, contextApp, behaviour) as Enemy
         enemy.dissapearTimer = dissapearTimer
         return enemy
     }
