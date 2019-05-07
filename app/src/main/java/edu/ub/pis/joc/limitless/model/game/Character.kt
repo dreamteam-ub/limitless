@@ -22,10 +22,13 @@ abstract class Character(image: ArrayList<Bitmap>, posX: Int, posY: Int) {
 
     var rect: Rect = Rect() //hitbox
 
-    fun rotate(img : Bitmap, degrees : Float) : Bitmap {
+    open fun rotate(degrees : Float) {
         val matrix = Matrix()
         matrix.postRotate(degrees)
-        return Bitmap.createBitmap(img, 0, 0, img.width, img.height, matrix, true)
+
+        for ((i, img) in imageList.withIndex()) {
+            imageList[i] = Bitmap.createBitmap(img, 0, 0, img.width, img.height, matrix, true)
+        }
     }
 
     /**

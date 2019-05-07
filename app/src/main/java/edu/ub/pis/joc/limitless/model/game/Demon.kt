@@ -8,7 +8,7 @@ import android.util.Log
 import kotlin.math.PI
 import kotlin.math.sin
 
-class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context: Context) : ComplexEnemy(image, posX, posY,childList,context) {
+class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context: Context, behaviour:Int) : ComplexEnemy(image, posX, posY,childList,context,behaviour) {
 
     override var xVelocity: Int = 10
     override var yVelocity: Int = 10
@@ -16,19 +16,16 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
     override var h = image[0].height / 8
     override var w = image[0].width / 8
 
+    override var concreteBehaviour = behaviour
+
     var yOriginal = posY
     var xOriginal = posX
-
-    var xChange : Int = 0
-    var yChange :Int = 0
-
-    var contador : Int = 0
 
     var projectileWavesList : ArrayList<DemonFireColumn> = generateChildList()
 
     override fun update() {
         dissapearTimer--
-        when (concreteBehavior) {
+        when (concreteBehaviour) {
             0 -> {
                 //Sinusoidal esquerra a dreta
                 var altura = Data.screenHeight*0.05 //Subir el multiplicador para mas altura
@@ -100,8 +97,6 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
         canvas.drawBitmap(imageList[0], null, rect, null)
 
 
-
-
     }
 
     fun generateChildList(): ArrayList<DemonFireColumn>{
@@ -110,111 +105,73 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
         var enemy : Enemy
         when(childListConditional){
             0->{
-                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x,this.y-150) as DemonFireColumn
-                enemy.concreteBehavior = 8
+                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x,this.y-150,w,h) as DemonFireColumn
                 enemy.dissapearTimer = 200
-                enemy.wDemon = this.w
-                enemy.hDemon = this.h
                 enemy.xDemon = x
                 enemy.yDemon = y
                 tmp.add(enemy)
                 return tmp
             }
             1->{
-                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x,this.y-150) as DemonFireColumn
-                enemy.concreteBehavior = 8
+                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x,this.y-150,w,h) as DemonFireColumn
                 enemy.dissapearTimer = 200
-                enemy.wDemon = this.w
-                enemy.hDemon = this.h
                 enemy.xDemon = x
                 enemy.yDemon = y
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x,this.y+150) as DemonFireColumn
-                enemy.concreteBehavior = 8
+                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x,this.y+150,w,h) as DemonFireColumn
                 enemy.dissapearTimer = 200
                 enemy.contador = 55
-                enemy.wDemon = this.w
-                enemy.hDemon = this.h
                 enemy.xDemon = x
                 enemy.yDemon = y
                 tmp.add(enemy)
                 return tmp
             }
             2->{
-                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x,this.y-150) as DemonFireColumn
-                enemy.concreteBehavior = 8
+                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x,this.y-150,w,h) as DemonFireColumn
                 enemy.dissapearTimer = 200
-                enemy.wDemon = this.w
-                enemy.hDemon = this.h
                 enemy.xDemon = x
                 enemy.yDemon = y
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x+75,this.y+75) as DemonFireColumn
-                enemy.concreteBehavior = 8
+                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x+75,this.y+75,w,h) as DemonFireColumn
                 enemy.dissapearTimer = 200
                 enemy.contador = 41
-                enemy.wDemon = this.w
-                enemy.hDemon = this.h
                 enemy.xDemon = x
                 enemy.yDemon = y
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x-75,this.y+75) as DemonFireColumn
-                enemy.concreteBehavior = 8
+                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x-75,this.y+75,w,h) as DemonFireColumn
                 enemy.dissapearTimer = 200
                 enemy.contador = 68
-                enemy.wDemon = this.w
-                enemy.hDemon = this.h
                 enemy.xDemon = x
                 enemy.yDemon = y
                 tmp.add(enemy)
                 return tmp
             }
             3->{
-                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x,this.y-150) as DemonFireColumn
-                enemy.concreteBehavior = 8
+                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x,this.y-150,w,h) as DemonFireColumn
                 enemy.dissapearTimer = 200
-                enemy.wDemon = this.w
-                enemy.hDemon = this.h
                 enemy.xDemon = x
                 enemy.yDemon = y
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x,this.y+150) as DemonFireColumn
-                enemy.concreteBehavior = 8
+                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x,this.y+150,w,h) as DemonFireColumn
                 enemy.dissapearTimer = 200
                 enemy.contador = 55
-                enemy.wDemon = this.w
-                enemy.hDemon = this.h
                 enemy.xDemon = x
                 enemy.yDemon = y
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x+150,this.y) as DemonFireColumn
-                enemy.concreteBehavior = 8
+                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x+150,this.y,w,h) as DemonFireColumn
                 enemy.dissapearTimer = 200
                 enemy.contador = 28
-                enemy.wDemon = this.w
-                enemy.hDemon = this.h
                 enemy.xDemon = x
                 enemy.yDemon = y
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x-150,this.y) as DemonFireColumn
-                enemy.concreteBehavior = 8
+                enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x-150,this.y,w,h) as DemonFireColumn
                 enemy.dissapearTimer = 200
                 enemy.contador = 82
-                enemy.wDemon = this.w
-                enemy.hDemon = this.h
                 enemy.xDemon = x
                 enemy.yDemon = y
                 tmp.add(enemy)
                 return tmp
             }
-        }
-        return tmp
-    }
-
-    fun generateBooleans(): ArrayList<Boolean>{
-        var tmp : ArrayList<Boolean> = ArrayList()
-        for (i in 0 until projectileWavesList.size){
-            tmp.add(false)
         }
         return tmp
     }

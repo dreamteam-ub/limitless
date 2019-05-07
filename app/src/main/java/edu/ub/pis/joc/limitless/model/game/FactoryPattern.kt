@@ -6,7 +6,10 @@ interface FactoryPattern {
     fun createCharacter(
         character: String,
         posX: Int,
-        posY: Int
+        posY: Int,
+        behaviour: Int = 0,
+        wParent : Int = 0,
+        hParent : Int = 0
         ): Character?
 
     fun createComplexCharacter(
@@ -14,6 +17,7 @@ interface FactoryPattern {
         posX: Int,
         posY: Int,
         childList:Int,
-        context: Context
+        context: Context,
+        behaviour : Int = 0
     ): Character?
 }

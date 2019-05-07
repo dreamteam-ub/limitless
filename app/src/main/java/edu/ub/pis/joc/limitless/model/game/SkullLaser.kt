@@ -2,23 +2,156 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.util.Log
+import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.Data.screenHeight
 
-class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, posY) {
+class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,wSkull: Int,hSkull:Int) : Enemy(image, posX, posY,behaviour) {
 
     override var h = image[0].height /4
     override var w = image[0].width /4
 
     var contador : Int = 0
 
+    override var activeEnemy = false
+
+    override var concreteBehaviour = behaviour
+
+    var left: Int
+    var top: Int
+    var right: Int
+    var bottom : Int
+
+
+    init {
+        var degrees : Float
+        when(concreteBehaviour){
+            0->{
+                degrees = 0f
+                x= (Data.screenWidth*0.34).toInt()
+                y= 0
+                left = x-(w/2)
+                top = y+(hSkull/2)
+                right = x+(w/2)
+                bottom = Data.screenHeight
+            }
+            1->{
+                degrees = 0f
+                x= (Data.screenWidth*0.67).toInt()
+                y= 0
+                left = x-(w/2)
+                top = y+(hSkull/2)
+                right = x+(w/2)
+                bottom = Data.screenHeight
+            }
+            2->{
+                degrees = 90f
+                x= Data.screenWidth
+                y= (Data.screenHeight*0.25).toInt()
+                w = image[0].height/4
+                h = image[0].width/4
+                left = 0
+                top = y-(h/2)
+                right = x-(wSkull/2)
+                bottom = y+(h/2)
+                Log.d("X LASER",x.toString())
+                Log.d("W SKULL",wSkull.toString())
+                Log.d("RIGHT",right.toString())
+            }
+            3->{
+                degrees = 90f
+                x= Data.screenWidth
+                y= (Data.screenHeight*0.5).toInt()
+                w = image[0].height/4
+                h = image[0].width/4
+                left = 0
+                top = y-(h/2)
+                right = x-(wSkull/2)
+                bottom = y+(h/2)
+            }
+            4->{
+                degrees = 90f
+                x= Data.screenWidth
+                y= (Data.screenHeight*0.75).toInt()
+                w = image[0].height/4
+                h = image[0].width/4
+                left = 0
+                top = y-(h/2)
+                right = x-(wSkull/2)
+                bottom = y+(h/2)
+            }
+            5->{
+                degrees = 180f
+                x= (Data.screenWidth*0.67).toInt()
+                y= Data.screenHeight
+                left = x-(w/2)
+                top = 0
+                right = x+(w/2)
+                bottom = y-(hSkull/2)
+            }
+            6->{
+                degrees = 180f
+                x= (Data.screenWidth*0.34).toInt()
+                y= Data.screenHeight
+                left = x-(w/2)
+                top = 0
+                right = x+(w/2)
+                bottom = y-(hSkull/2)
+            }
+            7->{
+                degrees = 270f
+                x= 0
+                y= (Data.screenHeight*0.75).toInt()
+                w = image[0].height/4
+                h = image[0].width/4
+                left = x+(wSkull/2)
+                top = y-(h/2)
+                right = Data.screenWidth
+                bottom = y+(h/2)
+            }
+            8->{
+                degrees = 270f
+                x= 0
+                y= (Data.screenHeight*0.5).toInt()
+                w = image[0].height/4
+                h = image[0].width/4
+                left = x+(wSkull/2)
+                top = y-(h/2)
+                right = Data.screenWidth
+                bottom = y+(h/2)
+            }
+            9->{
+                degrees = 270f
+                x= 0
+                y= (Data.screenHeight*0.25).toInt()
+                w = image[0].height/4
+                h = image[0].width/4
+                left = x+(wSkull/2)
+                top = y-(h/2)
+                right = Data.screenWidth
+                bottom = y+(h/2)
+            }
+            else->{
+                degrees = 0f
+                x= 0
+                y= 0
+                left = 0
+                top = 0
+                right = 0
+                bottom = 0
+            }
+        }
+
+        rect.set(left, top,right, bottom)
+        rotate(degrees)
+
+    }
+
     override fun update() {
 
     }
 
     override fun draw(canvas: Canvas){
-        val halfW: Int = w / 2
-        val appropiateH: Int = (((h/3.36).toInt())/2)-10
-        rect.set(x - halfW, y+appropiateH,x + halfW, screenHeight)
         if (contador in 13..15){
             //Beam 1 - Corresponde a Skull 4
             canvas.drawBitmap(imageList[0], null, rect, null)
@@ -106,10 +239,11 @@ class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, 
             canvas.drawBitmap(imageList[9], null, rect, null)
         }
 
-        contador = (contador+1) % 57
-
-        if(contador == 0) {
-            activeEnemy = false
+        if(contador == 56){
+            dissapearTimer = 0
         }
+
+        contador = (contador+1) % 57
+        
     }
 }

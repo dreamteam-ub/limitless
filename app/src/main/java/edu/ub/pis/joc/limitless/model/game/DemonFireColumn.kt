@@ -6,15 +6,16 @@ import android.graphics.Paint
 import android.util.Log
 import java.lang.Math.*
 
-class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, posY) {
+class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,wDemon:Int,hDemon:Int) : Enemy(image, posX, posY, behaviour) {
     override var xVelocity: Int = 26
     override var yVelocity: Int = 26
 
     override var w = image[0].width/8
     override var h = image[0].height/8
 
-    var wDemon = 0
-    var hDemon = 0
+    override var concreteBehaviour = behaviour
+
+    var hDemon = hDemon
     var xDemon = 0
     var yDemon = 0
 

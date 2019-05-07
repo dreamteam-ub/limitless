@@ -48,8 +48,7 @@ abstract class Level(
         dissapearTimer: Int
     ): Enemy {
         Log.d("AÑADE ENEMY", character)
-        val enemy = characterFactory.createCharacter(character, posX, posY) as Enemy
-        enemy.concreteBehavior = behaviour
+        val enemy = characterFactory.createCharacter(character, posX, posY,behaviour) as Enemy
         enemy.dissapearTimer = dissapearTimer
         return enemy
     }
@@ -63,8 +62,7 @@ abstract class Level(
         childList : Int
     ): Enemy {
         Log.d("AÑADE COMPLEX ENEMY", character)
-        val enemy = characterFactory.createComplexCharacter(character, posX, posY,childList,contextApp) as Enemy
-        enemy.concreteBehavior = behaviour
+        val enemy = characterFactory.createComplexCharacter(character, posX, posY,childList,contextApp,behaviour) as Enemy
         enemy.dissapearTimer = dissapearTimer
         return enemy
     }

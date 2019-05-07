@@ -21,13 +21,13 @@ class ArtificialIntelligence {
 
             is Demon -> {
                 allLists.remove(AIData.behaviourDemon)
-                calculateProbabilities(AIData.behaviourDemon,enemy.concreteBehavior)
+                calculateProbabilities(AIData.behaviourDemon,enemy.concreteBehaviour)
                 allLists.add(0,AIData.behaviourDemon)
 
             }
             is Ghost -> {
                 allLists.remove(AIData.behaviourGhost)
-                AIData.behaviourGhost=calculateProbabilities(AIData.behaviourGhost,enemy.concreteBehavior)
+                AIData.behaviourGhost=calculateProbabilities(AIData.behaviourGhost,enemy.concreteBehaviour)
                 allLists.add(1,AIData.behaviourGhost)
 
             }
@@ -35,13 +35,13 @@ class ArtificialIntelligence {
 
             is Skull -> {
                 allLists.remove(AIData.behaviourSkull)
-                calculateProbabilities(AIData.behaviourSkull,enemy.concreteBehavior)
+                calculateProbabilities(AIData.behaviourSkull,enemy.concreteBehaviour)
                 allLists.add(2,AIData.behaviourSkull)
 
             }
             is Eye -> {
                 allLists.remove(AIData.behaviourEye)
-                calculateProbabilities(AIData.behaviourEye,enemy.concreteBehavior)
+                calculateProbabilities(AIData.behaviourEye,enemy.concreteBehaviour)
                 allLists.add(3,AIData.behaviourEye)
 
             }

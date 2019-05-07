@@ -4,14 +4,14 @@ import android.graphics.Bitmap
 import edu.ub.pis.joc.limitless.model.Data.screenHeight
 import edu.ub.pis.joc.limitless.model.Data.screenWidth
 
-open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), EnemyInterface {
+open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) : Character(image, posX, posY), EnemyInterface {
 
     override var xVelocity: Int = 20
     override var yVelocity: Int = 20
 
     open var activeEnemy: Boolean = false
 
-    var concreteBehavior : Int = 0
+    open var concreteBehaviour : Int = behaviour
 
     override var dissapearTimer : Int = 0
 
@@ -19,7 +19,7 @@ open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(ima
     //al update de la clase Enemy. De esta forma facilitamos la creación de objetos con el
     //patron Factory
     override fun update() {
-        when (concreteBehavior) {
+        when (concreteBehaviour) {
         0 -> {
             if (x > screenWidth - w || x < w) {
                 xVelocity *= -1

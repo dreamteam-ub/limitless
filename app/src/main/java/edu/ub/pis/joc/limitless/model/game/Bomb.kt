@@ -5,7 +5,7 @@ import android.graphics.Canvas
 import android.util.Log
 
 class Bomb(
-    image: ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, posY) {
+    image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) : Enemy(image, posX, posY, behaviour) {
 
     override var xVelocity: Int = 0
     override var yVelocity: Int = 0
@@ -13,8 +13,10 @@ class Bomb(
     override var w = image[0].width/16
     override var h = image[0].height/16
 
-    override var activeEnemy: Boolean = true
+    override var activeEnemy: Boolean = false
     private var firstDraw : Boolean = true
+
+    override var concreteBehaviour = behaviour
 
     var contador: Int = 0
 
@@ -33,42 +35,82 @@ class Bomb(
 
         if(firstDraw){
             if (contador <= 3) {
+                w = imageList[10].width/16
+                h = imageList[10].height/16
+                //Aparicion 1
+                canvas.drawBitmap(imageList[10], null, rect, null)
+            } else if (contador <= 6) {
+                //Aparicion 2
+                canvas.drawBitmap(imageList[11], null, rect, null)
+            } else if (contador <= 9) {
+                //Aparicion 3
+                canvas.drawBitmap(imageList[12], null, rect, null)
+            } else if (contador <= 12) {
+                //Aparicion 4
+                canvas.drawBitmap(imageList[13], null, rect, null)
+            } else if (contador <= 15) {
+                //Aparicion 2
+                canvas.drawBitmap(imageList[10], null, rect, null)
+            } else if (contador <= 18) {
+                //Aparicion 3
+                canvas.drawBitmap(imageList[11], null, rect, null)
+            } else if (contador <= 21) {
+                //Aparicion 4
+                canvas.drawBitmap(imageList[12], null, rect, null)
+            } else if (contador <= 24) {
+                //Aparicion 5
+                canvas.drawBitmap(imageList[13], null, rect, null)
+            } else if (contador <= 27) {
+                //Aparicion 2
+                canvas.drawBitmap(imageList[10], null, rect, null)
+            } else if (contador <= 30) {
+                //Aparicion 3
+                canvas.drawBitmap(imageList[11], null, rect, null)
+            } else if (contador <= 33) {
+                //Aparicion 4
+                canvas.drawBitmap(imageList[12], null, rect, null)
+            } else if (contador <= 36) {
+                //Aparicion 5
+                canvas.drawBitmap(imageList[13], null, rect, null)
+            } else if (contador <= 39) {
                 w = imageList[0].width/16
                 h = imageList[0].height/16
-                //Aparicion 1
+                rect.set(x - w/2, y - h/2, x + w/2, y + h/2)
+                //Aparicion 5
                 canvas.drawBitmap(imageList[0], null, rect, null)
-            } else if (contador <= 6) {
+            } else if (contador <= 42) {
                 w = imageList[1].width/16
                 h = imageList[1].height/16
-                //Aparicion 2
+                //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[1], null, rect, null)
-            } else if (contador <= 9) {
+            }else if (contador <= 45) {
                 w = imageList[2].width/16
                 h = imageList[2].height/16
-                //Aparicion 3
+                //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[2], null, rect, null)
-            } else if (contador <= 12) {
+            }else if (contador <= 48) {
                 w = imageList[3].width/16
                 h = imageList[3].height/16
-                //Aparicion 4
+                //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[3], null, rect, null)
-            } else if (contador <= 15) {
+            }else if (contador <= 51) {
                 w = imageList[4].width/16
                 h = imageList[4].height/16
-                //Aparicion 5
+                //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[4], null, rect, null)
-            } else if (contador <= 18) {
+            }else if (contador <= 54) {
                 w = imageList[5].width/16
                 h = imageList[5].height/16
                 //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[5], null, rect, null)
             }
             contador = (contador+1)
-            if(contador == 19){
+            if(contador == 55){
                 firstDraw = false
                 contador = 0
                 w = imageList[6].width/16
                 h = imageList[6].height/16
+                activeEnemy=true
             }
         } else {
             if(dissapearTimer<=15){

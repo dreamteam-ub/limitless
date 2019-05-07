@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import edu.ub.pis.joc.limitless.R
 import android.graphics.BitmapFactory
+import android.support.design.widget.CoordinatorLayout
 
 const val BLACKHOLE_CHAR = "BlackHole"
 const val BOMB_CHAR = "Bomb"
@@ -21,13 +22,13 @@ const val NUMBER_COIN = "Coin"
 class CharacterFactory(context: Context) : FactoryPattern {
     var contextApp = context
 
-    override fun createCharacter(character: String, posX: Int, posY: Int): Character? {
+    override fun createCharacter(character: String, posX: Int, posY: Int, behaviour : Int, wParent:Int, hParent:Int): Character? {
         return when (character) {
             BLACKHOLE_CHAR -> {
                 val arrayImatges: ArrayList<Bitmap> = arrayListOf(
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.hole)
                 )
-                BlackHole(arrayImatges, posX, posY)
+                BlackHole(arrayImatges, posX, posY, behaviour)
             }
 
             BOMB_CHAR -> {
@@ -41,16 +42,20 @@ class CharacterFactory(context: Context) : FactoryPattern {
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb1),
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb2),
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb3),
-                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb4)
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb4),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb_spawn1),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb_spawn2),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb_spawn3),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb_spawn4)
                 )
-                Bomb(arrayImatges, posX, posY)
+                Bomb(arrayImatges, posX, posY, behaviour)
             }
 
             GHOST_CHAR -> {
                 val arrayImatges: ArrayList<Bitmap> = arrayListOf(
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.ghost)
                 )
-                Ghost(arrayImatges, posX, posY)
+                Ghost(arrayImatges, posX, posY, behaviour)
             }
 
             PLAYER_CHARACTER -> {
@@ -80,7 +85,7 @@ class CharacterFactory(context: Context) : FactoryPattern {
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.beam5),
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.beam5_light)
                 )
-                SkullLaser(arrayImatges, posX, posY)
+                SkullLaser(arrayImatges, posX, posY,behaviour,wParent,hParent)
             }
             EYE_PROJECTILE -> {
                 val arrayImatges: ArrayList<Bitmap> = arrayListOf(
@@ -93,7 +98,7 @@ class CharacterFactory(context: Context) : FactoryPattern {
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye_projectile_7),
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye_projectile_8)
                 )
-                EyeProjectile(arrayImatges, posX, posY)
+                EyeProjectile(arrayImatges, posX, posY, behaviour)
             }
             DEMON_FIRE_COLUMN -> {
                 val arrayImatges: ArrayList<Bitmap> = arrayListOf(
@@ -134,7 +139,7 @@ class CharacterFactory(context: Context) : FactoryPattern {
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego35),
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego36)
                 )
-                DemonFireColumn(arrayImatges, posX, posY)
+                DemonFireColumn(arrayImatges, posX, posY, behaviour,wDemon = 0,hDemon = hParent)
             }
             else -> {
                 null
@@ -142,14 +147,14 @@ class CharacterFactory(context: Context) : FactoryPattern {
         }
     }
 
-    override fun createComplexCharacter(character: String, posX: Int, posY: Int, childList:Int, context: Context): Character? {
+    override fun createComplexCharacter(character: String, posX: Int, posY: Int, childList:Int, context: Context, behaviour: Int): Character? {
         return when (character) {
 
             DEMON_CHAR -> {
                 val arrayImatges: ArrayList<Bitmap> = arrayListOf(
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.demon)
                 )
-                Demon(arrayImatges, posX, posY,childList,context)
+                Demon(arrayImatges, posX, posY,childList,context, behaviour)
             }
 
             EYE_CHAR -> {
@@ -161,7 +166,7 @@ class CharacterFactory(context: Context) : FactoryPattern {
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye5_test),
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye6_test)
                 )
-                Eye(arrayImatges, posX, posY,childList,context)
+                Eye(arrayImatges, posX, posY,childList,context, behaviour)
             }
 
             SKULL_CHAR -> {
@@ -181,7 +186,7 @@ class CharacterFactory(context: Context) : FactoryPattern {
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull8),
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull8_light)
                 )
-                Skull(arrayImatges, posX, posY,childList,context)
+                Skull(arrayImatges, posX, posY,childList,context,behaviour)
             }
 
             else -> {

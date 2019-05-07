@@ -5,17 +5,19 @@ import android.graphics.Canvas
 import android.graphics.Matrix
 
 
-class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(image, posX, posY) {
+class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour : Int) : Enemy(image, posX, posY,behaviour) {
 
     override var xVelocity: Int = 26
     override var yVelocity: Int = 26
 
     var chosenWAndH = false
 
+    override var concreteBehaviour = behaviour
+
     override var activeEnemy = true
 
     fun chooseWidhtAndHeight(){
-        when (concreteBehavior) {
+        when (concreteBehaviour) {
             0 -> {
                 w = imageList[0].width/8
                 h = imageList[0].height/8
@@ -43,7 +45,7 @@ class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(imag
     override fun update() {
         dissapearTimer--
 
-        when (concreteBehavior) {
+        when (concreteBehaviour) {
             0 -> {
                 //Abajo
                 y += yVelocity
@@ -91,7 +93,7 @@ class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int) : Enemy(imag
         val halfW: Int = w / 2
         val halfH: Int = h / 2
         rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
-        when (concreteBehavior) {
+        when (concreteBehaviour) {
             0 -> {
                 //Abajo
                 canvas.drawBitmap(imageList[0], null, rect, null)

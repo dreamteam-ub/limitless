@@ -3,14 +3,98 @@ package edu.ub.pis.joc.limitless.model.game
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.support.design.widget.CoordinatorLayout
+import android.util.Log
+import edu.ub.pis.joc.limitless.model.Data
 
-class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context: Context) : ComplexEnemy(image, posX, posY,childList,context) {
+class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context: Context, behaviour: Int) : ComplexEnemy(image, posX, posY,childList,context,behaviour) {
 
     override var h = image[0].height / 4
     override var w = image[0].width / 4
 
     var contador: Int = 0
+
+    var projectileWavesList : ArrayList<SkullLaser>
+
+    override var concreteBehaviour = behaviour
+
+    init {
+        var degrees : Float
+        Log.d("SKULL WITH BEHAVIOUR", behaviour.toString())
+        when(concreteBehaviour){
+            0->{
+                degrees = 0f
+                x= (Data.screenWidth*0.34).toInt()
+                y= 0
+            }
+            1->{
+                degrees = 0f
+                x= (Data.screenWidth*0.67).toInt()
+                y= 0
+            }
+            2->{
+                degrees = 90f
+                x= Data.screenWidth
+                y= (Data.screenHeight*0.25).toInt()
+                w = image[0].height/4
+                h = image[0].width/4
+            }
+            3->{
+                degrees = 90f
+                x= Data.screenWidth
+                y= (Data.screenHeight*0.5).toInt()
+                w = image[0].height/4
+                h = image[0].width/4
+            }
+            4->{
+                degrees = 90f
+                x= Data.screenWidth
+                y= (Data.screenHeight*0.75).toInt()
+                w = image[0].height/4
+                h = image[0].width/4
+            }
+            5->{
+                degrees = 180f
+                x= (Data.screenWidth*0.67).toInt()
+                y= Data.screenHeight
+            }
+            6->{
+                degrees = 180f
+                x= (Data.screenWidth*0.34).toInt()
+                y= Data.screenHeight
+            }
+            7->{
+                degrees = 270f
+                x= 0
+                y= (Data.screenHeight*0.75).toInt()
+                w = image[0].height/4
+                h = image[0].width/4
+            }
+            8->{
+                degrees = 270f
+                x= 0
+                y= (Data.screenHeight*0.5).toInt()
+                w = image[0].height/4
+                h = image[0].width/4
+            }
+            9->{
+                degrees = 270f
+                x= 0
+                y= (Data.screenHeight*0.25).toInt()
+                w = image[0].height/4
+                h = image[0].width/4
+            }
+            else->{
+                degrees = 0f
+                x= 0
+                y= 0
+            }
+        }
+
+        rotate(degrees)
+
+        projectileWavesList = generateChildList()
+
+    }
 
     override fun update() {
 
@@ -118,6 +202,34 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
             canvas.drawBitmap(imageList[13], null, rect, null)
         }
 
+        for (i in 0 until projectileWavesList.size){
+            projectileWavesList[i].draw(canvas)
+        }
+
+        if(contador ==56){
+            dissapearTimer = 0
+        }
         contador = (contador + 1) % 57
     }
+
+    fun generateChildList(): ArrayList<SkullLaser>{
+
+        var tmp : ArrayList<SkullLaser> = ArrayList()
+        var enemy : SkullLaser = characterFactory.createCharacter(SKULL_LASER,this.x,this.y, concreteBehaviour,w,h) as SkullLaser
+        tmp.add(enemy)
+
+        return tmp
+    }
+
+    override fun characterHitsPlayer(playerCharacter: PlayerCharacter): Boolean {
+        var hit = false
+        for (i in 0 until projectileWavesList.size){
+            if (projectileWavesList[i].rect.intersect(playerCharacter.rect) && projectileWavesList[i].activeEnemy ) {
+                playerCharacter.die()
+                hit = true
+            }
+        }
+        return hit
+    }
+
 }
