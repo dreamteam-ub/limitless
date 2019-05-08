@@ -13,7 +13,7 @@ import edu.ub.pis.joc.limitless.model.Data
 
 const val TIME_SURVIVED = "survived_time"
 
-class GameView(appContext: Context, private val dialog: Dialog, var mode : Boolean) : SurfaceView(appContext), SurfaceHolder.Callback {
+class GameView(appContext: Context, private val dialog: Dialog, mode : Boolean, versus : Boolean) : SurfaceView(appContext), SurfaceHolder.Callback {
     private var thread: GameThread
     private val gameEngine: GameEngine
 
@@ -22,7 +22,7 @@ class GameView(appContext: Context, private val dialog: Dialog, var mode : Boole
     init {
         // add callback
         holder.addCallback(this)
-        gameEngine = GameEngine(appContext, mode)
+        gameEngine = GameEngine(appContext, mode, versus)
         // instantiate the game thread
         thread = GameThread(holder, this, gameEngine)
     }

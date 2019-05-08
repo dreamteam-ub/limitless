@@ -13,7 +13,7 @@ import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
 import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
 import java.util.*
 
-class GameEngine(private var contextEngine: Context, var mode: Boolean) {
+class GameEngine(private var contextEngine: Context, var mode: Boolean, var versus: Boolean) {
 
     var touched_x = 0
     var touched_y = 0
@@ -142,7 +142,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean) {
 
     fun endThisGame() {
         val time = gameTime/30
-        var infinity = true
+        var infinity = mode
         var type_end = 0
         if (player.imageList[0].isRecycled) {
             // PERDER POR MUERTE
@@ -150,7 +150,9 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean) {
                 if (time > Data.user.survived!!) {
                     Data.user.survived = time
                 } else {
-                    infinity = false
+                    if (!versus) {
+                        infinity = false
+                    }
                 }
             }
         } else {
