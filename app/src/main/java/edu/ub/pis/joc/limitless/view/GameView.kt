@@ -106,33 +106,5 @@ class GameView(appContext: Context, private val dialog: Dialog, var mode : Boole
         pause = true
     }
 
-    fun endThisGame() {
-        val lbm = LocalBroadcastManager.getInstance(context)
-        val intent = Intent(END_GAME)
-        intent.putExtra(MODE_INFINITY, mode)
-        val time = gameEngine.gameTime/30
-        intent.putExtra(TIME_SURVIVED, time)
-        if (gameEngine.player.imageList[0].isRecycled) {
-            // PERDER POR MUERTE
-            intent.putExtra(END_GAME, 0)
-            if (mode) {
-                if (time > Data.user.survived!!) {
-                    Data.user.survived = time
-                } else {
-                    intent.putExtra(MODE_INFINITY, false)
-                }
-            }
-        } else {
-            if (gameEngine.player.accumulate > gameEngine.scoreLimits[0] && gameEngine.player.accumulate < gameEngine.scoreLimits[1]) {
-                // GANAR PUNTUACION
-                intent.putExtra(END_GAME, 1)
-            } else {
-                // PERDER PUNTUACION
-                intent.putExtra(END_GAME, 0)
-            }
-        }
-        lbm.sendBroadcast(intent)
-    }
-
 }
 

@@ -2,13 +2,13 @@ package edu.ub.pis.joc.limitless.engine
 
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.*
 import android.os.AsyncTask
 import android.util.Log
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
+import edu.ub.pis.joc.limitless.view.GameActivity
 import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
 import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
 import java.util.*
@@ -138,5 +138,30 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean) {
         override fun onPostExecute(result: Boolean?) {
             super.onPostExecute(result)
         }
+    }
+
+    fun endThisGame() {
+        val time = gameTime/30
+        var infinity = true
+        var type_end = 0
+        if (player.imageList[0].isRecycled) {
+            // PERDER POR MUERTE
+            if (mode) {
+                if (time > Data.user.survived!!) {
+                    Data.user.survived = time
+                } else {
+                    infinity = false
+                }
+            }
+        } else {
+            if (player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1]) {
+                // GANAR PUNTUACION
+                type_end = 1
+            } else {
+                // PERDER PUNTUACION
+                type_end = 2
+            }
+        }
+        (contextEngine as GameActivity).endGame(contextEngine, infinity, time, type_end)
     }
 }

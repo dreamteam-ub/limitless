@@ -75,7 +75,7 @@ class GameThread(
 
         if (changeScreen) {
             Log.d("ENDGAME", "FINALIZANDO JUEGO")
-            gameView.endThisGame()
+            gameEngine.endThisGame()
         }
     }
 
