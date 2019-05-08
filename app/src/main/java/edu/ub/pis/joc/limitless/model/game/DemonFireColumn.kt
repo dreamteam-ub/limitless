@@ -26,6 +26,7 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
     var contador: Int = 0
 
     override fun update() {
+        Log.d("H DEMON",hDemon.toString())
         dissapearTimer--
         x = (xDemon + ((hDemon/2)*sin(((degrees)*PI)/180))*1.5).toInt()
         y = (yDemon - ((hDemon/2)*cos(((degrees)*PI)/180))*1.5).toInt()

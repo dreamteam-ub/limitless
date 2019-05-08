@@ -36,7 +36,7 @@ open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) 
 
     open fun characterHitsPlayer(playerCharacter: PlayerCharacter) : Boolean {
         var hit = false
-        if (this.rect.intersect(playerCharacter.rect) && this.activeEnemy) {
+        if (this.rect.intersects(playerCharacter.rect.left,playerCharacter.rect.top,playerCharacter.rect.right,playerCharacter.rect.bottom) && this.activeEnemy) {
             playerCharacter.die()
             hit = true
         }

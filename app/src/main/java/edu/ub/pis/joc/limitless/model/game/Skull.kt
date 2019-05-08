@@ -200,15 +200,13 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
         } else if (contador == 56) {
             //Skull 8 Light
             canvas.drawBitmap(imageList[13], null, rect, null)
+            dissapearTimer = 0
         }
 
         for (i in 0 until projectileWavesList.size){
             projectileWavesList[i].draw(canvas)
         }
 
-        if(contador ==56){
-            dissapearTimer = 0
-        }
         contador = (contador + 1) % 57
     }
 
@@ -224,7 +222,7 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
     override fun characterHitsPlayer(playerCharacter: PlayerCharacter): Boolean {
         var hit = false
         for (i in 0 until projectileWavesList.size){
-            if (projectileWavesList[i].rect.intersect(playerCharacter.rect) && projectileWavesList[i].activeEnemy ) {
+            if (projectileWavesList[i].rect.intersects(playerCharacter.rect.left,playerCharacter.rect.top,playerCharacter.rect.right,playerCharacter.rect.bottom) && projectileWavesList[i].activeEnemy ) {
                 playerCharacter.die()
                 hit = true
             }

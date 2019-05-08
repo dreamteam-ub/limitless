@@ -536,7 +536,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, contex
         var hit = false
         for (i in 0 until projectileWavesList.size) {
             for (j in 0 until projectileWavesList[i].size) {
-                if (projectileWavesList[i][j].rect.intersect(playerCharacter.rect)) {
+                if (projectileWavesList[i][j].rect.intersects(playerCharacter.rect.left,playerCharacter.rect.top,playerCharacter.rect.right,playerCharacter.rect.bottom)) {
                     playerCharacter.die()
                     hit = true
                 }

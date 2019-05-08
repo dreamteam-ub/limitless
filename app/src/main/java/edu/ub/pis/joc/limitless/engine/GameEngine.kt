@@ -110,7 +110,6 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean) {
 
         for (i in 0 until listOfEnemyCharacters.size) {
             listOfEnemyCharacters[i].draw(canvas)
-
         }
         for (i in 0 until listOfCoins.size) {
             if (listOfCoins[i].imageList[0].isRecycled) {

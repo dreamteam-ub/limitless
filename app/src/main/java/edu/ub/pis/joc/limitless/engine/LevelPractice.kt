@@ -396,8 +396,26 @@ class LevelPractice(
             }
             9 -> {
                 if (time == 0L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, screenWidth , (screenHeight * 0.5).toInt(), 1, 300,3)
+                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 0, 300,0)
+                    //listOfTmpEnemies.add(tmp)
+                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 1, 300,1)
+                    //listOfTmpEnemies.add(tmp)
+                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 2, 300,2)
+                    //listOfTmpEnemies.add(tmp)
+                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 3, 300,3)
+                    //listOfTmpEnemies.add(tmp)
+                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 4, 300,4)
+                    //listOfTmpEnemies.add(tmp)
+                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 5, 300,5)
+                    //listOfTmpEnemies.add(tmp)
+                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 6, 300,6)
+                    //listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 7, 300,7)
                     listOfTmpEnemies.add(tmp)
+                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 8, 300,8)
+                    //listOfTmpEnemies.add(tmp)
+                    //tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 9, 300,9)
+                    //listOfTmpEnemies.add(tmp)
                 }else if(time == 300L) {
                     listOfEnemyCharacters.clear()
                     end_game=true

@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import edu.ub.pis.joc.limitless.R
 import android.graphics.BitmapFactory
 import android.support.design.widget.CoordinatorLayout
+import android.util.Log
 
 const val BLACKHOLE_CHAR = "BlackHole"
 const val BOMB_CHAR = "Bomb"
@@ -139,7 +140,8 @@ class CharacterFactory(context: Context) : FactoryPattern {
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego35),
                     BitmapFactory.decodeResource(contextApp.resources, R.drawable.fuego36)
                 )
-                DemonFireColumn(arrayImatges, posX, posY, behaviour,wDemon = 0,hDemon = hParent)
+                Log.d("HPARENT",hParent.toString())
+                DemonFireColumn(arrayImatges, posX, posY, behaviour,wParent,hParent)
             }
             else -> {
                 null
