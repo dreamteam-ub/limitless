@@ -34,5 +34,6 @@ object Data  {
     val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
+    var versus_survived : Array <Long> = arrayOf(0L,0L)
 
 }

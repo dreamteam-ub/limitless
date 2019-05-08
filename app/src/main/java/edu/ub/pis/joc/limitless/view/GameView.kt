@@ -11,6 +11,7 @@ import android.support.v4.content.LocalBroadcastManager
 import android.content.Intent
 import edu.ub.pis.joc.limitless.model.Data
 
+const val TIME_SURVIVED = "survived_time"
 
 class GameView(appContext: Context, private val dialog: Dialog, var mode : Boolean) : SurfaceView(appContext), SurfaceHolder.Callback {
     private var thread: GameThread
@@ -109,11 +110,12 @@ class GameView(appContext: Context, private val dialog: Dialog, var mode : Boole
         val lbm = LocalBroadcastManager.getInstance(context)
         val intent = Intent(END_GAME)
         intent.putExtra(MODE_INFINITY, mode)
+        val time = gameEngine.gameTime/30
+        intent.putExtra(TIME_SURVIVED, time)
         if (gameEngine.player.imageList[0].isRecycled) {
             // PERDER POR MUERTE
             intent.putExtra(END_GAME, 0)
             if (mode) {
-                val time = gameEngine.gameTime/30
                 if (time > Data.user.survived!!) {
                     Data.user.survived = time
                 } else {

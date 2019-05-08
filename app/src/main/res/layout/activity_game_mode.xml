@@ -45,6 +45,15 @@
             android:layout_height="wrap_content" app:srcCompat="@drawable/infinite_mode"
             android:id="@+id/infiniteModeButton"
             android:layout_marginBottom="20dp" android:layout_gravity="center_horizontal"/>
+    <ImageButton
+            android:layout_width="250dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/inf_button"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/infinite_mode"
+            android:id="@+id/infiniteModeVersusButton"
+            android:layout_marginBottom="20dp" android:layout_gravity="center_horizontal"/>
     <TextView
             android:text="@string/text_infinite"
             tools:text="@string/text_infinite"

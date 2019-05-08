@@ -13,9 +13,12 @@ import android.view.View
 import android.widget.ImageButton
 import edu.ub.pis.joc.limitless.R
 import android.content.IntentFilter
+import android.view.Gravity
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.Data.versus_survived
 import edu.ub.pis.joc.limitless.model.SURVIVED
 
 
@@ -35,6 +38,9 @@ class GameActivity : FullScreenActivity() {
 
     var mode: Boolean = false
 
+    private var modeVersus : Boolean = false
+    private var round : Int = 0
+
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
@@ -42,14 +48,33 @@ class GameActivity : FullScreenActivity() {
         override fun onReceive(context: Context, intent: Intent) {
             val endGameType = intent.extras!!.getInt(END_GAME)
             val modeType = intent.extras!!.getBoolean(MODE_INFINITY)
+            val timeSurvived = intent.extras!!.getLong(TIME_SURVIVED)
             if (endGameType == 0) {
-                if (modeType) {
-                    db.collection(USERS).document(mAuth.currentUser!!.uid).update(SURVIVED, Data.user.survived!!)
+                if(modeVersus) {
+                    if (round == 1) {
+                        val intent = Intent(context, InfoActivity::class.java)
+                        intent.putExtra(MODE_INFINITY, mode)
+                        versus_survived[1] = timeSurvived
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        val intent = Intent(context, GameActivity::class.java)
+                        intent.putExtra(MODE_INFINITY, mode)
+                        intent.putExtra(MODE_INFINITY_VERSUS, modeVersus)
+                        intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 1)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        versus_survived[0] = timeSurvived
+                        startActivity(intent)
+                    }
+                } else {
+                    if (modeType) {
+                        db.collection(USERS).document(mAuth.currentUser!!.uid).update(SURVIVED, Data.user.survived!!)
+                    }
+                    val intent = Intent(context, GameDeadActivity::class.java)
+                    intent.putExtra(MODE_INFINITY, mode)
+                    startActivity(intent)
+                    finish()
                 }
-                val intent = Intent(context, GameDeadActivity::class.java)
-                intent.putExtra(MODE_INFINITY, mode)
-                startActivity(intent)
-                finish()
             } else if (endGameType == 1) {
                 val intent = Intent(context, GameWonActivity::class.java)
                 intent.putExtra(MODE_INFINITY, mode)
@@ -69,7 +94,34 @@ class GameActivity : FullScreenActivity() {
 
         end_game = false
 
-        mode = intent.extras!!.getBoolean(MODE_INFINITY)
+        val intentExtras = intent.extras!!
+
+        mode = intentExtras.getBoolean(MODE_INFINITY)
+
+        val tmpVersus : Boolean? = intentExtras.getBoolean(MODE_INFINITY_VERSUS)
+
+        if (tmpVersus == null || !tmpVersus) {
+            modeVersus = false
+        } else {
+            modeVersus = true
+            round = intentExtras.getInt(MODE_INFINITY_VERSUS_COUNT)
+
+            val icon : Int
+            val player : String
+            if (round == 0) {
+                icon = R.drawable.world1_select
+                player = "1"
+            } else {
+                icon = R.drawable.world2_select
+                player = "2"
+            }
+
+            customImageToast(icon,getString(R.string.player) + player,
+                Toast.LENGTH_SHORT, Gravity.TOP or
+                        Gravity.FILL_HORIZONTAL,0,200).show()
+
+        }
+
         dialog = Dialog(this)
 
         surface = GameView(this, dialog, mode)

@@ -7,6 +7,8 @@ import android.widget.TextView
 import edu.ub.pis.joc.limitless.R
 
 const val MODE_INFINITY = "infinity"
+const val MODE_INFINITY_VERSUS = "infinity_versus"
+const val MODE_INFINITY_VERSUS_COUNT = "infinity_versus_count"
 
 class GameModeActivity : FullScreenActivity() {
     private val TAG = "GameModeActivity"
@@ -32,6 +34,16 @@ class GameModeActivity : FullScreenActivity() {
         infiniteMode.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra(MODE_INFINITY, true)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+        }
+
+        val infiniteModeVersus: ImageButton = findViewById(R.id.infiniteModeVersusButton)
+        infiniteModeVersus.setOnClickListener {
+            val intent = Intent(this, GameActivity::class.java)
+            intent.putExtra(MODE_INFINITY, true)
+            intent.putExtra(MODE_INFINITY_VERSUS, true)
+            intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 0)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
