@@ -56,24 +56,49 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
             }
             4 -> {
                 //Abajo Izquierda
-                x -= xVelocity
+                if (x >= Data.screenWidth || ((x <= 0)&& xVelocity<0) ) {
+                    xVelocity *= -1
+                }
+                if (y >= Data.screenHeight || ((y <= 0)&& yVelocity<0)) {
+                    yVelocity *= -1
+                }
+                x += xVelocity
                 y += yVelocity
             }
             5 -> {
                 //Arriba Izquierda
-                x -= xVelocity+5
-                y -= yVelocity+5
+                if (x >= Data.screenWidth || ((x <= 0)&& xVelocity<0) ) {
+                    xVelocity *= -1
+                }
+                if (y >= Data.screenHeight || ((y <= 0)&& yVelocity<0)) {
+                    yVelocity *= -1
+                }
+                x -= xVelocity
+                y -= yVelocity
             }
             6 -> {
                 //Arriba Derecha
-                x += xVelocity+5
-                y -= yVelocity+5
+                if (x >= Data.screenWidth || ((x <= 0)&& xVelocity<0) ) {
+                    xVelocity *= -1
+                }
+                if (y >= Data.screenHeight || ((y <= 0)&& yVelocity<0)) {
+                    yVelocity *= -1
+                }
+                x += xVelocity*2
+                y += yVelocity
             }
             7 -> {
                 //Abajo Derecha
-                x += xVelocity+5
-                y += yVelocity+5
+                if (x >= Data.screenWidth || ((x <= 0)&& xVelocity<0) ) {
+                    xVelocity *= -1
+                }
+                if (y >= Data.screenHeight || ((y <= 0)&& yVelocity<0)) {
+                    yVelocity *= -1
+                }
+                x += xVelocity
+                y += yVelocity*2
             }
+
 
 
         }

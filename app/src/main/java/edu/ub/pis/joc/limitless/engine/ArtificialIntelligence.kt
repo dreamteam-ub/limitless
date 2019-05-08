@@ -84,7 +84,9 @@ class ArtificialIntelligence {
             DEMON_CHAR -> {
                 num = AIData.bDemon
             }
-            //skull
+            SKULL_CHAR -> {
+                num = AIData.bSkull
+            }
 
         }
         return num
@@ -132,7 +134,7 @@ class ArtificialIntelligence {
     fun generatePositionsForBehaviour(str: String): ArrayList<Int> {
         var arrayCord = ArrayList<Int>()
         var behaviourSimple = pickABehaviour(str)
-        var behaviourComplex = getBehaviour(str)
+        var numBehaviourComplex = getBehaviour(str)
 
         when (str) {
             GHOST_CHAR -> {
@@ -149,22 +151,20 @@ class ArtificialIntelligence {
                     arrayCord.add(behaviourSimple) //añadimos el behaviour directamente desde esta lista
 
                 } else if (behaviourSimple == 1 || behaviourSimple == 2) {
-                    var randomX = Random.nextInt((Data.screenWidth * 0.20).toInt(), (Data.screenWidth * 0.80).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.20).toInt(), (Data.screenHeight * 0.80).toInt())
-                    Log.d("RANDOM X",randomX.toString())
-                    Log.d("RANDOM Y",randomY.toString())
-                    arrayCord.add(randomX)
+                    var randomXlow = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
+                    var randomXhigh = Random.nextInt((Data.screenHeight * 0.85).toInt(), (Data.screenHeight * 0.95).toInt())
+                    var randX = arrayOf(randomXlow, randomXhigh)
+                    arrayCord.add(randX[(0 until 2).random()])
+
+                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.81).toInt())
                     arrayCord.add(randomY)
-                    if (behaviourSimple == 1) {
-                        arrayCord.add(behaviourSimple)
+                    arrayCord.add(behaviourSimple)
 
-                    } else if (behaviourSimple == 2) {
-                        arrayCord.add(behaviourSimple)
-
-                    }
                 }
             }
             DEMON_CHAR -> {
+                var behaviourComplex = Random.nextInt(0,numBehaviourComplex)
+
                 if (behaviourComplex == 0){
                     var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
                     var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
@@ -186,6 +186,31 @@ class ArtificialIntelligence {
                 }else if (behaviourComplex == 3){
                     var randomX = Random.nextInt((Data.screenWidth * 0.20).toInt(), (Data.screenWidth * 0.8).toInt())
                     var randomY = Random.nextInt((Data.screenHeight * 0.8).toInt(), (Data.screenHeight * 0.95).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }else if (behaviourComplex == 4){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.2).toInt(), (Data.screenWidth * 0.8).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }else if (behaviourComplex == 5){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.8).toInt(), (Data.screenWidth * 0.95).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.8).toInt(), (Data.screenHeight * 0.95).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+
+                }else if(behaviourComplex == 6){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.8).toInt(), (Data.screenHeight * 0.95).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }else if (behaviourComplex == 7){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
                     arrayCord.add(randomX)
                     arrayCord.add(randomY)
                     arrayCord.add(behaviourComplex)
@@ -193,6 +218,8 @@ class ArtificialIntelligence {
 
             }
             EYE_CHAR -> {
+                var behaviourComplex = Random.nextInt(0,numBehaviourComplex)
+
                 if (behaviourComplex == 0){
                     var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
                     var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
@@ -217,7 +244,39 @@ class ArtificialIntelligence {
                     arrayCord.add(randomX)
                     arrayCord.add(randomY)
                     arrayCord.add(behaviourComplex)
+                }else if (behaviourComplex == 4){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.2).toInt(), (Data.screenWidth * 0.8).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }else if (behaviourComplex == 5){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.8).toInt(), (Data.screenWidth * 0.95).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.8).toInt(), (Data.screenHeight * 0.95).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }else if(behaviourComplex == 6){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.8).toInt(), (Data.screenHeight * 0.95).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
+                }else if (behaviourComplex == 7){
+                    var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
+                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
+                    arrayCord.add(randomX)
+                    arrayCord.add(randomY)
+                    arrayCord.add(behaviourComplex)
                 }
+
+            }
+
+            SKULL_CHAR -> {
+
+                var behaviourComplex = Random.nextInt(0,numBehaviourComplex)
+
+                arrayCord.add(behaviourComplex)
 
 
             }

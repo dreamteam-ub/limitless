@@ -26,7 +26,6 @@ class Ghost(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) : Ene
                     xVelocity *= -1
                 }
                 if (y >= Data.screenHeight || ((y <= 0)&& yVelocity<0)) {
-                    Log.d("Y CHANGE","oof")
                     yVelocity *= -1
                 }
 
@@ -34,7 +33,7 @@ class Ghost(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) : Ene
                 y += (yVelocity)
             }
             1 -> {
-                if (y > Data.screenHeight - h || y < h) {
+                if (y >= Data.screenHeight || ((y <= 0)&& yVelocity<0)) {
                     yVelocity *= -1
                 }
                 y += (yVelocity)
@@ -43,7 +42,7 @@ class Ghost(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) : Ene
 
             }
             2-> {
-                if (x > Data.screenWidth - w || x < w){
+                if (x >= Data.screenWidth || ((x <= 0)&& xVelocity<0) ) {
                     xVelocity *= -1
                 }
                 x += (xVelocity)

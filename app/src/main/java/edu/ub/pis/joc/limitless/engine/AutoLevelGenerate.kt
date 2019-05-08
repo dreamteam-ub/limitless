@@ -8,7 +8,7 @@ import kotlin.random.Random
 
 class AutoLevelGenerate {
 
-    var time = 1500L //ponemos que de 1000L en 1000L se genera un nuevo nivel
+    var time = 1000L //ponemos que de 1000L en 1000L se genera un nuevo nivel
     var spawnEnemyFreq = 2 //frecuencia inicial de spàwn de enemigos : 2
     var spawnCoinFreq = 5 //frecuencia inicial de spawn de monedas
     var limitLow = 5
@@ -24,16 +24,19 @@ class AutoLevelGenerate {
 
         var listOfEnemyParams = ArrayList<String>()
 
-
-
-
         listOfEnemyParams.add(listOfEnemies[(0 until 1).random()])
+        if (listOfEnemyParams[0].equals(BOMB_CHAR)){
+            listOfEnemyParams.add(Random.nextInt((Data.screenWidth*0.2).toInt(), (Data.screenWidth*0.8).toInt()).toString())
+            listOfEnemyParams.add(Random.nextInt((Data.screenHeight*0.2).toInt(), (Data.screenHeight*0.8).toInt()).toString())
+            listOfEnemyParams.add(Random.nextInt((minTimeInGame).toInt(), (maxTimeInGame).toInt()).toString())
 
-        listOfEnemyParams.add(ai.generatePositionsForBehaviour(listOfEnemyParams[0])[0].toString())
-        listOfEnemyParams.add(ai.generatePositionsForBehaviour(listOfEnemyParams[0])[1].toString())
-        listOfEnemyParams.add(Random.nextInt((minTimeInGame).toInt(), (maxTimeInGame).toInt()).toString())
-        listOfEnemyParams.add(ai.generatePositionsForBehaviour(listOfEnemyParams[0])[2].toString())
+        }else {
 
+            listOfEnemyParams.add(ai.generatePositionsForBehaviour(listOfEnemyParams[0])[0].toString())
+            listOfEnemyParams.add(ai.generatePositionsForBehaviour(listOfEnemyParams[0])[1].toString())
+            listOfEnemyParams.add(Random.nextInt((minTimeInGame).toInt(), (maxTimeInGame).toInt()).toString())
+            listOfEnemyParams.add(ai.generatePositionsForBehaviour(listOfEnemyParams[0])[2].toString())
+        }
 
 
 

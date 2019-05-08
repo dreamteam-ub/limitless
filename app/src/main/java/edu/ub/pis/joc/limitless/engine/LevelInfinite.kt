@@ -18,9 +18,7 @@ class LevelInfinite(contextApp: Context,
     //el tiempo, no será preciso porque la llamada del método de generar monedas se llama despues del de enemigos
     // en el gamEngine
     var limitsChange = false
-    var waitTimeCoins = 0L
-    var waitTimeEnemies = 0L
-    var plusTime = 60L //time to make smoth spawn
+    var timeCoinSpawn = 50L
     @Synchronized
     override fun buildEnemies(levelWorld: Int, time: Long) {
         var listOfTmpEnemies = ArrayList<Enemy>()
@@ -29,7 +27,7 @@ class LevelInfinite(contextApp: Context,
             -1 -> {
 
                 if (time == 0L) {
-
+                    coinSpawnInf = true
                     //primera oleada de bombas
                     for (i in 0 until autoLvl.spawnEnemyFreq) {
                         //var parameters = autoLvl.generateEnemies()
@@ -41,7 +39,7 @@ class LevelInfinite(contextApp: Context,
                             0,
                            150
                         )
-                        waitTimeEnemies += plusTime
+
                         listOfTmpEnemies.add(tmp)
                     }
 
@@ -65,7 +63,7 @@ class LevelInfinite(contextApp: Context,
                         listOfTmpEnemies.add(tmp)
 
                     }
-                }else if (time == 300L) {
+                }else if (time == 200L) {
 
                     coinSpawnInf = true
                     // tercera oleada Eyes
@@ -80,7 +78,6 @@ class LevelInfinite(contextApp: Context,
                              (Random.nextInt((autoLvl.minTimeInGame).toInt(), (autoLvl.maxTimeInGame).toInt())),
                             autoLvl.ai.pickABehaviour(EYE_CHAR)
                         ) as Eye
-
                         listOfTmpEnemies.add(tmpEye)
                         tmpEye.drawChild = true
                         tmpEye.projectileDraw[0] = true
@@ -88,7 +85,7 @@ class LevelInfinite(contextApp: Context,
 
                     }
 
-                }else if (time == 500L) {
+                }else if (time == 400L) {
                     coinSpawnInf = true
                     // cuarta oleada de Demons
                         for (i in 0 until autoLvl.spawnEnemyFreq) {
@@ -107,7 +104,7 @@ class LevelInfinite(contextApp: Context,
 
                         }
 
-                }else if (time == 1200L) {
+                }else if (time == 600L) {
                     coinSpawnInf = true
                     // quinta y ultima oleada de Skull
                     for (i in 0 until autoLvl.spawnEnemyFreq) {
@@ -117,9 +114,9 @@ class LevelInfinite(contextApp: Context,
                             SKULL_CHAR,
                             parameters[1].toInt(),
                             parameters[2].toInt(),
-                            parameters[5].toInt(),
+                            autoLvl.ai.generatePositionsForBehaviour(SKULL_CHAR)[0],
                             parameters[3].toInt(),
-                            0
+                            autoLvl.ai.pickABehaviour(SKULL_CHAR)
                         )
 
                         listOfTmpEnemies.add(tmp)
@@ -169,10 +166,22 @@ class LevelInfinite(contextApp: Context,
                                     listOfTmpEnemies.add(tmp)
                                 }
 
+                                SKULL_CHAR -> {
+
+                                    tmp = createComplexEnemy(
+                                        parameters[0],
+                                        parameters[1].toInt(),
+                                        parameters[2].toInt(),
+                                        parameters[5].toInt(),
+                                        parameters[3].toInt(),
+                                        parameters[4].toInt()
+                                    )
+
+                                    listOfTmpEnemies.add(tmp)
+
+                                }
+
                             }
-
-
-
 
                         }else {
                             tmp = createEnemy(
@@ -213,23 +222,7 @@ class LevelInfinite(contextApp: Context,
         when (levelWorld) {
             -1 -> {
 
-                if (time == 0L) {
-                        for (j in 0 until autoLvl.spawnCoinFreq) {
-                            var parameters = autoLvl.generateCoins()
-                            coin = createCoin(
-                                parameters[0],
-                                parameters[1].toInt(),
-                                parameters[2].toInt(),
-                                parameters[3].toInt(),
-                                Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX),
-                                parameters[4].toInt()
-                            )
-                            tmpListOfCoins.add(coin)
-
-
-                        }
-                }
-                else if (time!= 0L && coinSpawnInf ) {
+                if (time!= 0L && coinSpawnInf ) {
                     listOfCoins.clear()
                     for (j in 0 until autoLvl.spawnCoinFreq) {
                         var parameters = autoLvl.generateCoins()
@@ -249,6 +242,7 @@ class LevelInfinite(contextApp: Context,
 
                 }
 
+
                 var contador: Int = 0
                 while (contador < listOfCoins.size) {
                     if (listOfCoins[contador].dissapearTimer == 0) {
@@ -260,6 +254,7 @@ class LevelInfinite(contextApp: Context,
             }
 
         }
+
         listOfCoins.addAll(tmpListOfCoins)
     }
 

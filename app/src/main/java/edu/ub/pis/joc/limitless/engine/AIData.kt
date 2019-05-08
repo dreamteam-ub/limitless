@@ -8,12 +8,12 @@ object AIData {
     // i l'últim index representa el valor límit que pot adquirir cada index de probabilitat
     var behaviourDemon = arrayOf(25,25,25,25,40)
     var behaviourGhost = arrayOf(33,33,34,50)
-    var behaviourSkull = behaviourProbabilities
+    var behaviourSkull = arrayOf(10,10,10,10,10,10,10,10,10,10, 30 )
     var behaviourEye = arrayOf(25,25,25,25,40)
 
     var bDemon = 8
     var bEye = 8
-    var bSkull = 0
+    var bSkull = 10
 
 
 }
