@@ -69,8 +69,8 @@ abstract class Level(
     fun buildPlayer(): PlayerCharacter {
         return characterFactory.createCharacter(
             "PlayerCharacter",
-            (Data.screenWidth * 0.75).toInt(),
-            (Data.screenHeight * 0.75).toInt()
+            (Data.screenWidth * 0.5).toInt(),
+            (Data.screenHeight * 0.5).toInt()
         ) as PlayerCharacter
     }
 

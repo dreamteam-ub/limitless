@@ -36,77 +36,64 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, contex
         when (concreteBehaviour) {
             0 -> {
                 //Sinusoidal esquerra a dreta
-                var altura = Data.screenHeight * 0.05 //Subir el multiplicador para mas altura
-                var movimientos = 2 //Se haran tantos movimientos sinusoidales
+                val altura = Data.screenHeight * 0.05 //Subir el multiplicador para mas altura
+                val movimientos = 2 //Se haran tantos movimientos sinusoidales
                 x += xVelocity
                 y = yOriginal - (sin(((x.toDouble() / Data.screenWidth) * movimientos * 2 * PI)) * altura).toInt()
             }
             1 -> {
                 //Sinusoidal dreta a esquerra
-                var altura = Data.screenHeight * 0.05 //Subir el multiplicador para mas altura
-                var movimientos = 2 //Se haran tantos movimientos sinusoidales
+                val altura = Data.screenHeight * 0.05 //Subir el multiplicador para mas altura
+                val movimientos = 2 //Se haran tantos movimientos sinusoidales
                 x -= xVelocity
                 y = yOriginal - (sin(((x.toDouble() / Data.screenWidth) * movimientos * 2 * PI)) * altura).toInt()
             }
             2 -> {
                 //Sinusoidal dalt a baix
-                var altura = Data.screenWidth * 0.1 //Subir el multiplicador para mas altura
-                var movimientos = 6 //Se haran tantos movimientos sinusoidales
+                val altura = Data.screenWidth * 0.1 //Subir el multiplicador para mas altura
+                val movimientos = 6 //Se haran tantos movimientos sinusoidales
                 x = xOriginal - (sin(((y.toDouble() / Data.screenHeight) * movimientos * 2 * PI)) * altura).toInt()
                 y += (1.3 * yVelocity).toInt() //A mas multiplicador mas rapido ira
             }
             3 -> {
                 //Sinusoidal baix a dalt
-                var altura = Data.screenWidth * 0.1 //Subir el multiplicador para mas altura
-                var movimientos = 6 //Se haran tantos movimientos sinusoidales
+                val altura = Data.screenWidth * 0.1 //Subir el multiplicador para mas altura
+                val movimientos = 6 //Se haran tantos movimientos sinusoidales
                 x = xOriginal - (sin(((y.toDouble() / Data.screenHeight) * movimientos * 2 * PI)) * altura).toInt()
                 y -= (1.3 * yVelocity).toInt() //A mas multiplicador mas rapido ira
             }
             4 -> {
                 //Abajo Izquierda
-                if (x >= Data.screenWidth || ((x <= 0)&& xVelocity<0) ) {
+                if ((x >= Data.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
                     xVelocity *= -1
                 }
-                if (y >= Data.screenHeight || ((y <= 0)&& yVelocity<0)) {
-                    yVelocity *= -1
-                }
-                x += xVelocity
+                x += (xVelocity*1.5).toInt()
                 y += yVelocity
             }
             5 -> {
                 //Arriba Izquierda
-                if (x >= Data.screenWidth || ((x <= 0)&& xVelocity<0) ) {
-                    xVelocity *= -1
+                if ((x >= Data.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
+                        xVelocity *= -1
                 }
-                if (y >= Data.screenHeight || ((y <= 0)&& yVelocity<0)) {
-                    yVelocity *= -1
-                }
-                x -= xVelocity
+                x += (xVelocity*1.5).toInt()
                 y -= yVelocity
             }
             6 -> {
                 //Arriba Derecha
-                if (x >= Data.screenWidth || ((x <= 0)&& xVelocity<0) ) {
+                if ((x >= Data.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
                     xVelocity *= -1
                 }
-                if (y >= Data.screenHeight || ((y <= 0)&& yVelocity<0)) {
-                    yVelocity *= -1
-                }
-                x += xVelocity*2
-                y += yVelocity
+                x += (xVelocity*1.5).toInt()
+                y -= yVelocity
             }
             7 -> {
                 //Abajo Derecha
-                if (x >= Data.screenWidth || ((x <= 0)&& xVelocity<0) ) {
+                if ((x >= Data.screenWidth && xVelocity>0)|| ((x <= 0)&& xVelocity<0) ) {
                     xVelocity *= -1
                 }
-                if (y >= Data.screenHeight || ((y <= 0)&& yVelocity<0)) {
-                    yVelocity *= -1
-                }
-                x += xVelocity
-                y += yVelocity*2
+                x += (xVelocity*1.5).toInt()
+                y += yVelocity
             }
-
         }
 
         if (drawChild) {
@@ -171,8 +158,8 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, contex
 
     fun generateChildList(): ArrayList<ArrayList<EyeProjectile>> {
 
-        var tmpFinal: ArrayList<ArrayList<EyeProjectile>> = ArrayList()
-        var tmp: ArrayList<EyeProjectile> = ArrayList()
+        val tmpFinal: ArrayList<ArrayList<EyeProjectile>> = ArrayList()
+        val tmp: ArrayList<EyeProjectile> = ArrayList()
         var enemy: Enemy
         when (childListConditional) {
             0 -> {
@@ -550,7 +537,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, contex
     }
 
     fun generateBooleans(): ArrayList<Boolean> {
-        var tmp: ArrayList<Boolean> = ArrayList()
+        val tmp: ArrayList<Boolean> = ArrayList()
         for (i in 0 until projectileWavesList.size) {
             tmp.add(false)
         }
