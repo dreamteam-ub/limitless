@@ -7,11 +7,6 @@ import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import edu.ub.pis.joc.limitless.engine.GameEngine
-import android.support.v4.content.LocalBroadcastManager
-import android.content.Intent
-import edu.ub.pis.joc.limitless.model.Data
-
-const val TIME_SURVIVED = "survived_time"
 
 class GameView(appContext: Context, private val dialog: Dialog, mode : Boolean, versus : Boolean) : SurfaceView(appContext), SurfaceHolder.Callback {
     private var thread: GameThread
@@ -32,7 +27,7 @@ class GameView(appContext: Context, private val dialog: Dialog, mode : Boolean, 
         if (thread.state == Thread.State.TERMINATED) {
             thread = GameThread(holder, this, gameEngine)
         }
-        thread.setRunning(true)
+        thread.running = true
         thread.start()
     }
 
@@ -43,7 +38,7 @@ class GameView(appContext: Context, private val dialog: Dialog, mode : Boolean, 
     override fun surfaceDestroyed(surfaceHolder: SurfaceHolder) {
         while (thread.isAlive) {
             try {
-                thread.setRunning(false)
+                thread.running = false
                 thread.join()
             } catch (e: Exception) {
                 e.printStackTrace()

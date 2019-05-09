@@ -3,7 +3,6 @@ package edu.ub.pis.joc.limitless.engine
 
 import android.content.Context
 import android.graphics.*
-import android.os.AsyncTask
 import android.util.Log
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
@@ -11,7 +10,6 @@ import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.GameActivity
 import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
 import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
-import java.lang.Math.log
 import java.util.*
 
 class GameEngine(private var contextEngine: Context, var mode: Boolean, var versus: Boolean) {
@@ -97,7 +95,6 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             }
         level.buildEnemies(currentLevelWorld, gameTime)
         level.buildCoins(currentLevelWorld, gameTime)
-        //BuildTask(level, currentLevelWorld, gameTime).execute()
         gameTime++
     }
 
@@ -125,54 +122,22 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         }
     }
 
-    /*
-    class BuildTask(
-        private var level: Level,
-        private var currentLevelWorld: Int,
-        private var gameTime: Long
-    ) : AsyncTask<Void, Void, Boolean>() {
-        override fun doInBackground(vararg params: Void?): Boolean? {
-            level.buildEnemies(currentLevelWorld, gameTime)
-            level.buildCoins(currentLevelWorld, gameTime)
-            return true
-        }
-
-
-        override fun onPreExecute() {
-            super.onPreExecute()
-        }
-
-        override fun onPostExecute(result: Boolean?) {
-            super.onPostExecute(result)
-        }
-    }
-    */
-
-
-    fun endThisGame() {
+    fun endGame() {
+        val activity = (contextEngine as GameActivity)
         val time = gameTime/30
-        var infinity = mode
-        var type_end = 0
-        if (player.imageList[0].isRecycled) {
-            // PERDER POR MUERTE
+        var updateDb = false
+        val dead = player.imageList[0].isRecycled
+        val gOverPoints = player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1]
+        if (dead) {
             if (mode) {
-                if (time > Data.user.survived!!) {
-                    Data.user.survived = time
-                } else {
-                    if (!versus) {
-                        infinity = false
+                if (!versus) {
+                    if (time > Data.user.survived!!) {
+                        Data.user.survived = time
+                        updateDb = true
                     }
                 }
             }
-        } else {
-            if (player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1]) {
-                // GANAR PUNTUACION
-                type_end = 1
-            } else {
-                // PERDER PUNTUACION
-                type_end = 2
-            }
         }
-        (contextEngine as GameActivity).endGame(contextEngine, infinity, time, type_end)
+        activity.onEndGame(contextEngine, updateDb, time, dead, gOverPoints)
     }
 }

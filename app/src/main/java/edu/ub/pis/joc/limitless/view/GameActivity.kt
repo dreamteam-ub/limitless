@@ -24,7 +24,7 @@ class GameActivity : FullScreenActivity() {
 
     private val TAG = "GameActivity"
 
-    private var surface: GameView? = null
+    private lateinit var surface: GameView
 
     private var exit: Boolean = false
 
@@ -32,8 +32,8 @@ class GameActivity : FullScreenActivity() {
 
     var mode: Boolean = false
 
-    private var modeVersus : Boolean = false
-    private var round : Int = 0
+    private var modeVersus: Boolean = false
+    private var round: Int = 0
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
@@ -50,7 +50,7 @@ class GameActivity : FullScreenActivity() {
 
         mode = intentExtras.getBoolean(MODE_INFINITY)
 
-        val tmpVersus : Boolean? = intentExtras.getBoolean(MODE_INFINITY_VERSUS)
+        val tmpVersus: Boolean? = intentExtras.getBoolean(MODE_INFINITY_VERSUS)
 
         if (tmpVersus == null || !tmpVersus) {
             modeVersus = false
@@ -58,8 +58,8 @@ class GameActivity : FullScreenActivity() {
             modeVersus = true
             round = intentExtras.getInt(MODE_INFINITY_VERSUS_COUNT)
 
-            val icon : Int
-            val player : String
+            val icon: Int
+            val player: String
             if (round == 0) {
                 icon = R.drawable.world1_select
                 player = "1"
@@ -68,9 +68,11 @@ class GameActivity : FullScreenActivity() {
                 player = "2"
             }
 
-            customImageToast(icon,getString(R.string.player) + player,
+            customImageToast(
+                icon, getString(R.string.player) + " " + player,
                 Toast.LENGTH_SHORT, Gravity.TOP or
-                        Gravity.FILL_HORIZONTAL,0,200).show()
+                        Gravity.FILL_HORIZONTAL, 0, 200
+            ).show()
 
         }
 
@@ -95,16 +97,16 @@ class GameActivity : FullScreenActivity() {
         }
 
         resumeDiag.setOnClickListener {
-            surface!!.resumeThread()
+            surface.resumeThread()
             dialog.dismiss()
-                resumeDiag.isClickable = false
+            resumeDiag.isClickable = false
         }
 
         dialog.setOnDismissListener { resumeDiag.isClickable = true }
 
         worldsDiag.setOnClickListener {
             exit = true
-            surface!!.surfaceDestroyed(surface!!.holder)
+            surface.surfaceDestroyed(surface.holder)
             dialog.dismiss()
 
             val intent = Intent().setClass(this, WorldSelectorActivity::class.java)
@@ -116,7 +118,7 @@ class GameActivity : FullScreenActivity() {
 
         menuDiag.setOnClickListener {
             exit = true
-            surface!!.surfaceDestroyed(surface!!.holder)
+            surface.surfaceDestroyed(surface.holder)
             dialog.dismiss()
 
             val intent = Intent().setClass(this, MenuActivity::class.java)
@@ -127,7 +129,7 @@ class GameActivity : FullScreenActivity() {
         }
 
         dialog.setOnCancelListener { resumeDiag.performClick() }
-        dialog.setOnShowListener { surface!!.pauseThread() }
+        dialog.setOnShowListener { surface.pauseThread() }
     }
 
     // DESACTIVAMOS EL BACK DENTRO DEL JUEGO
@@ -138,10 +140,8 @@ class GameActivity : FullScreenActivity() {
     override fun onPause() {
         super.onPause()
         if (!end_game) {
-            if (surface != null) {
-                if (!dialog.isShowing and !exit) {
-                    dialog.show()
-                }
+            if (!dialog.isShowing and !exit) {
+                dialog.show()
             }
         }
     }
@@ -165,36 +165,40 @@ class GameActivity : FullScreenActivity() {
         super.onWindowFocusChanged(hasFocus)
     }
 
-    fun endGame(context: Context, infinity: Boolean, time: Long, type_end: Int) {
-        if (type_end == 0 || type_end == 2) {
-            if(modeVersus) {
+    fun onEndGame(context: Context, updateDb: Boolean, time: Long, dead: Boolean, gOverPoints : Boolean) {
+        if (dead) {
+            if (modeVersus) {
                 if (round == 1) {
                     val intent = Intent(context, VersusActivityEnd::class.java)
-                    intent.putExtra(MODE_INFINITY, infinity)
+                    intent.putExtra(MODE_INFINITY, mode)
                     versus_survived[1] = time
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
                     finish()
                 } else {
                     val intent = Intent(context, GameActivity::class.java)
-                    intent.putExtra(MODE_INFINITY, infinity)
+                    intent.putExtra(MODE_INFINITY, mode)
                     intent.putExtra(MODE_INFINITY_VERSUS, modeVersus)
                     intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 1)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     versus_survived[0] = time
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
+                    finish()
                 }
             } else {
-                if (infinity) {
+                if (updateDb) {
                     db.collection(USERS).document(mAuth.currentUser!!.uid).update(SURVIVED, Data.user.survived!!)
                 }
                 val intent = Intent(context, GameDeadActivity::class.java)
-                intent.putExtra(MODE_INFINITY, infinity)
+                intent.putExtra(MODE_INFINITY, mode)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
                 finish()
             }
-        } else if (type_end == 1) {
+        } else {
             val intent = Intent(context, GameWonActivity::class.java)
-            intent.putExtra(MODE_INFINITY, infinity)
+            intent.putExtra(MODE_INFINITY, mode)
             startActivity(intent)
             finish()
         }

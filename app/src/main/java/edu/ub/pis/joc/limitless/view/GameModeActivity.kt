@@ -36,6 +36,7 @@ class GameModeActivity : FullScreenActivity() {
             intent.putExtra(MODE_INFINITY, true)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            finish()
         }
 
         val infiniteModeVersus: ImageButton = findViewById(R.id.infiniteModeVersusButton)
@@ -46,6 +47,7 @@ class GameModeActivity : FullScreenActivity() {
             intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 0)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            finish()
         }
 
         val textMyMap: TextView = findViewById(R.id.MyMapText)
