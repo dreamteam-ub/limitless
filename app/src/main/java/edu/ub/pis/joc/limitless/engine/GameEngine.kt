@@ -11,6 +11,7 @@ import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.GameActivity
 import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
 import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
+import java.lang.Math.log
 import java.util.*
 
 class GameEngine(private var contextEngine: Context, var mode: Boolean, var versus: Boolean) {
@@ -30,6 +31,8 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
 
     var ai = ArtificialIntelligence()
 
+    var optionsGameBorder : BitmapFactory.Options = BitmapFactory.Options()
+
     init {
         if (mode) {
             currentLevelWorld = NIVEL_INFINITO
@@ -41,13 +44,14 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
 
         Log.d("CURRENT LEVEL", currentLevelWorld.toString())
 
+
+        optionsGameBorder.inSampleSize = 2
+
+
     }
 
     private var inGameBorder: InGameBorder = InGameBorder(
-        BitmapFactory.decodeResource(
-            contextEngine.resources,
-            R.drawable.in_game_border
-        )
+        BitmapFactory.decodeResource(contextEngine.resources, R.drawable.in_game_border,optionsGameBorder)
     )
 
     var pauseButton: PauseButton =
@@ -120,6 +124,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             }
         }
     }
+
     /*
     class BuildTask(
         private var level: Level,
@@ -142,6 +147,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         }
     }
     */
+
 
     fun endThisGame() {
         val time = gameTime/30
