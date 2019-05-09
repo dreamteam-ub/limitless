@@ -51,7 +51,7 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:contentDescription="@string/inf_button"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/infinite_mode"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/versus_mode"
             android:id="@+id/infiniteModeVersusButton"
             android:layout_marginBottom="20dp" android:layout_gravity="center_horizontal"/>
     <TextView

@@ -9,6 +9,7 @@ import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.GameActivity
 import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
+import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
 import java.util.*
 
@@ -31,6 +32,8 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
 
     var optionsGameBorder : BitmapFactory.Options = BitmapFactory.Options()
 
+    var limits: Limits? = null
+
     init {
         if (mode) {
             currentLevelWorld = NIVEL_INFINITO
@@ -38,6 +41,8 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         } else {
             currentLevelWorld = Data.getCurrenLevel()
             level = LevelPractice(contextEngine, listOfEnemyCharacters, listOfCoins)
+
+            limits = Limits(level.createLimits(currentLevelWorld)[0],level.createLimits(currentLevelWorld)[1])
         }
 
         Log.d("CURRENT LEVEL", currentLevelWorld.toString())
@@ -105,6 +110,10 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
     fun draw(canvas: Canvas) {
         inGameBorder.draw(canvas)
         pauseButton.draw(canvas)
+
+        if(limits != null){
+            limits!!.draw(canvas)
+        }
 
         if (!player.imageList[0].isRecycled) {
             player.draw(canvas)

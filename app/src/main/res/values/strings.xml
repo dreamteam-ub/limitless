@@ -70,4 +70,9 @@
     <string name="no_ranking">No records yet</string>
     <string name="no_records">No Records</string>
     <string name="player">Player</string>
+    <string name="p1_wins">P1 WINS</string>
+    <string name="p1">P1</string>
+    <string name="p2">P2</string>
+    <string name="puntuation">X</string>
+
 </resources>
