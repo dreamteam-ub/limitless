@@ -13,8 +13,8 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
     override var xVelocity: Int = 10
     override var yVelocity: Int = 10
 
-    override var h = image[0].height / 8
-    override var w = image[0].width / 8
+    override var h = image[0].height
+    override var w = image[0].width
 
     override var concreteBehaviour = behaviour
 

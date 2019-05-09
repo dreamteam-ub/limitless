@@ -19,25 +19,25 @@ class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour : 
     fun chooseWidhtAndHeight(){
         when (concreteBehaviour) {
             0 -> {
-                w = imageList[0].width/8
-                h = imageList[0].height/8
+                w = imageList[0].width
+                h = imageList[0].height
             }
             4 -> {
-                w = imageList[0].width/8
-                h = imageList[0].height/8
+                w = imageList[0].width
+                h = imageList[0].height
             }
             2 -> {
-                w = imageList[2].width/8
-                h = imageList[2].height/8
+                w = imageList[2].width
+                h = imageList[2].height
             }
             6 -> {
-                w = imageList[2].width/8
-                h = imageList[2].height/8
+                w = imageList[2].width
+                h = imageList[2].height
             }
             else -> {
                 //Arriba
-                w = imageList[3].width/8
-                h = imageList[3].height/8
+                w = imageList[3].width
+                h = imageList[3].height
             }
         }
     }

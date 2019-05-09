@@ -91,8 +91,9 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             for (i in 0 until listOfCoins.size) {
                 listOfCoins[i].update()
             }
-
-        BuildTask(level, currentLevelWorld, gameTime).execute()
+        level.buildEnemies(currentLevelWorld, gameTime)
+        level.buildCoins(currentLevelWorld, gameTime)
+        //BuildTask(level, currentLevelWorld, gameTime).execute()
         gameTime++
     }
 
@@ -119,7 +120,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             }
         }
     }
-
+    /*
     class BuildTask(
         private var level: Level,
         private var currentLevelWorld: Int,
@@ -131,6 +132,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             return true
         }
 
+
         override fun onPreExecute() {
             super.onPreExecute()
         }
@@ -139,6 +141,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             super.onPostExecute(result)
         }
     }
+    */
 
     fun endThisGame() {
         val time = gameTime/30

@@ -12,8 +12,8 @@ abstract class Character(image: ArrayList<Bitmap>, posX: Int, posY: Int) {
     open var y: Int = posY
 
     //medida imagen
-    open var w: Int = image[0].width / 2
-    open var h: Int = image[0].height / 2
+    open var w: Int = image[0].width
+    open var h: Int = image[0].height
 
     open val imageList: ArrayList<Bitmap> = image
 
@@ -41,6 +41,12 @@ abstract class Character(image: ArrayList<Bitmap>, posX: Int, posY: Int) {
         val halfH: Int = h / 2
         rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
         canvas.drawBitmap(imageList[0], null, rect, null)
+    }
+
+    fun recycleBitmapArray(image : ArrayList<Bitmap>){
+        for (i in 0 until image.size){
+            image[i].recycle()
+        }
     }
 
 }

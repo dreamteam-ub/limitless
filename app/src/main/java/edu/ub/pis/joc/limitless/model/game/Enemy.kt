@@ -42,4 +42,5 @@ open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) 
         }
         return hit
     }
+
 }

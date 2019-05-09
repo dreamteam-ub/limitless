@@ -15,8 +15,8 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, contex
     override var xVelocity: Int = 10
     override var yVelocity: Int = 9
 
-    override var h = image[0].height / 10
-    override var w = image[0].width / 10
+    override var h = image[0].height
+    override var w = image[0].width
 
     var yOriginal = posY
     var xOriginal = posX

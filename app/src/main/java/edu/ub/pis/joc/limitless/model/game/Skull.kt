@@ -8,8 +8,8 @@ import edu.ub.pis.joc.limitless.model.Data
 
 class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context: Context, behaviour: Int) : ComplexEnemy(image, posX, posY,childList,context,behaviour) {
 
-    override var h = image[0].height / 4
-    override var w = image[0].width / 4
+    override var h = image[0].height
+    override var w = image[0].width
 
     var contador: Int = 0
 
@@ -35,22 +35,22 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
                 degrees = 90f
                 x= Data.screenWidth
                 y= (Data.screenHeight*0.25).toInt()
-                w = image[0].height/4
-                h = image[0].width/4
+                w = image[0].height
+                h = image[0].width
             }
             3->{
                 degrees = 90f
                 x= Data.screenWidth
                 y= (Data.screenHeight*0.5).toInt()
-                w = image[0].height/4
-                h = image[0].width/4
+                w = image[0].height
+                h = image[0].width
             }
             4->{
                 degrees = 90f
                 x= Data.screenWidth
                 y= (Data.screenHeight*0.75).toInt()
-                w = image[0].height/4
-                h = image[0].width/4
+                w = image[0].height
+                h = image[0].width
             }
             5->{
                 degrees = 180f
@@ -66,22 +66,22 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
                 degrees = 270f
                 x= 0
                 y= (Data.screenHeight*0.75).toInt()
-                w = image[0].height/4
-                h = image[0].width/4
+                w = image[0].height
+                h = image[0].width
             }
             8->{
                 degrees = 270f
                 x= 0
                 y= (Data.screenHeight*0.5).toInt()
-                w = image[0].height/4
-                h = image[0].width/4
+                w = image[0].height
+                h = image[0].width
             }
             9->{
                 degrees = 270f
                 x= 0
                 y= (Data.screenHeight*0.25).toInt()
-                w = image[0].height/4
-                h = image[0].width/4
+                w = image[0].height
+                h = image[0].width
             }
             else->{
                 degrees = 0f

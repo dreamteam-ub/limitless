@@ -10,8 +10,8 @@ class Bomb(
     override var xVelocity: Int = 0
     override var yVelocity: Int = 0
 
-    override var w = image[0].width/16
-    override var h = image[0].height/16
+    override var w = image[0].width
+    override var h = image[0].height
 
     override var activeEnemy: Boolean = false
     private var firstDraw : Boolean = true
@@ -35,8 +35,8 @@ class Bomb(
 
         if(firstDraw){
             if (contador <= 3) {
-                w = imageList[10].width/16
-                h = imageList[10].height/16
+                w = imageList[10].width
+                h = imageList[10].height
                 //Aparicion 1
                 canvas.drawBitmap(imageList[10], null, rect, null)
             } else if (contador <= 6) {
@@ -79,28 +79,28 @@ class Bomb(
                 //Aparicion 5
                 canvas.drawBitmap(imageList[0], null, rect, null)
             } else if (contador <= 42) {
-                w = imageList[1].width/16
-                h = imageList[1].height/16
+                w = imageList[1].width
+                h = imageList[1].height
                 //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[1], null, rect, null)
             }else if (contador <= 45) {
-                w = imageList[2].width/16
-                h = imageList[2].height/16
+                w = imageList[2].width
+                h = imageList[2].height
                 //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[2], null, rect, null)
             }else if (contador <= 48) {
-                w = imageList[3].width/16
-                h = imageList[3].height/16
+                w = imageList[3].width
+                h = imageList[3].height
                 //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[3], null, rect, null)
             }else if (contador <= 51) {
-                w = imageList[4].width/16
-                h = imageList[4].height/16
+                w = imageList[4].width
+                h = imageList[4].height
                 //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[4], null, rect, null)
             }else if (contador <= 54) {
-                w = imageList[5].width/16
-                h = imageList[5].height/16
+                w = imageList[5].width
+                h = imageList[5].height
                 //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[5], null, rect, null)
             }
@@ -108,41 +108,41 @@ class Bomb(
             if(contador == 55){
                 firstDraw = false
                 contador = 0
-                w = imageList[6].width/16
-                h = imageList[6].height/16
+                w = imageList[6].width
+                h = imageList[6].height
                 activeEnemy=true
             }
         } else {
             if(dissapearTimer<=15){
                 if (dissapearTimer >= 15) {
-                    w = imageList[5].width/16
-                    h = imageList[5].height/16
+                    w = imageList[5].width
+                    h = imageList[5].height
                     //Desparicion 1
                     canvas.drawBitmap(imageList[5], null, rect, null)
                 } else if (dissapearTimer >= 12) {
-                    w = imageList[4].width/16
-                    h = imageList[4].height/16
+                    w = imageList[4].width
+                    h = imageList[4].height
                     //Desparicion 2
                     canvas.drawBitmap(imageList[4], null, rect, null)
                 } else if (dissapearTimer >= 9) {
-                    w = imageList[3].width/16
-                    h = imageList[3].height/16
+                    w = imageList[3].width
+                    h = imageList[3].height
                     //Desparicion 3
                     canvas.drawBitmap(imageList[3], null, rect, null)
                 } else if (dissapearTimer >= 6) {
-                    w = imageList[2].width/16
-                    h = imageList[2].height/16
+                    w = imageList[2].width
+                    h = imageList[2].height
                     //Desparicion 4
                     canvas.drawBitmap(imageList[2], null, rect, null)
                 } else if (dissapearTimer >= 3) {
-                    w = imageList[1].width/16
-                    h = imageList[1].height/16
+                    w = imageList[1].width
+                    h = imageList[1].height
                     //Desparicion 4
                     canvas.drawBitmap(imageList[1], null, rect, null)
                 }
                 else if (dissapearTimer >= 0) {
-                    w = imageList[0].width/16
-                    h = imageList[0].height/16
+                    w = imageList[0].width
+                    h = imageList[0].height
                     //Desparicion 4
                     canvas.drawBitmap(imageList[0], null, rect, null)
                 }
