@@ -44,6 +44,7 @@ class LevelInfinite(contextApp: Context,
                     }
 
                 }else if (time == 100L) {
+                    listOfEnemyCharacters.clear()
 
                     //segunda oleada fantasmas
                     coinSpawnInf = true
@@ -64,7 +65,7 @@ class LevelInfinite(contextApp: Context,
 
                     }
                 }else if (time == 200L) {
-
+                    listOfEnemyCharacters.clear()
                     coinSpawnInf = true
                     // tercera oleada Eyes
                     for (i in 0 until autoLvl.spawnEnemyFreq) {
@@ -86,6 +87,8 @@ class LevelInfinite(contextApp: Context,
                     }
 
                 }else if (time == 400L) {
+                    listOfEnemyCharacters.clear()
+
                     coinSpawnInf = true
                     // cuarta oleada de Demons
                         for (i in 0 until autoLvl.spawnEnemyFreq) {
@@ -105,6 +108,8 @@ class LevelInfinite(contextApp: Context,
                         }
 
                 }else if (time == 600L) {
+                    listOfEnemyCharacters.clear()
+
                     coinSpawnInf = true
                     // quinta y ultima oleada de Skull
                     for (i in 0 until autoLvl.spawnEnemyFreq) {
@@ -206,6 +211,7 @@ class LevelInfinite(contextApp: Context,
                         listOfEnemyCharacters.removeAt(contador)
                         contador--
                     }
+                    listOfTmpEnemies.clear()
                     contador++
                 }
             }

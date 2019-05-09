@@ -1,6 +1,7 @@
 package edu.ub.pis.joc.limitless.engine
 
 import android.content.Context
+import android.util.Log
 import edu.ub.pis.joc.limitless.model.Data.screenHeight
 import edu.ub.pis.joc.limitless.model.Data.screenWidth
 import edu.ub.pis.joc.limitless.model.game.*
