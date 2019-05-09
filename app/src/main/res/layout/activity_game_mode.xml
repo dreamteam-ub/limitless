@@ -45,6 +45,15 @@
             android:layout_height="wrap_content" app:srcCompat="@drawable/infinite_mode"
             android:id="@+id/infiniteModeButton"
             android:layout_marginBottom="20dp" android:layout_gravity="center_horizontal"/>
+    <TextView
+            android:text="@string/text_infinite"
+            tools:text="@string/text_infinite"
+            android:layout_width="250dp"
+            android:singleLine="false"
+            style="@style/cts_limitless_purple"
+            android:textSize="24sp"
+            android:layout_height="wrap_content" android:id="@+id/infiniteText"
+            android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"/>
     <ImageButton
             android:layout_width="250dp"
             android:background="@android:color/transparent"
@@ -54,15 +63,15 @@
             android:layout_height="wrap_content" app:srcCompat="@drawable/versus_mode"
             android:id="@+id/infiniteModeVersusButton"
             android:layout_marginBottom="20dp" android:layout_gravity="center_horizontal"/>
+
     <TextView
-            android:text="@string/text_infinite"
-            tools:text="@string/text_infinite"
+            android:text="@string/text_versus"
+            tools:text="@string/text_versus"
             android:layout_width="250dp"
             android:singleLine="false"
             style="@style/cts_limitless_purple"
             android:textSize="24sp"
-            android:layout_height="wrap_content" android:id="@+id/infiniteText"
-            android:layout_gravity="center_horizontal"/>
-
+            android:layout_height="wrap_content" android:id="@+id/versus_text"
+            android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"/>
 
 </LinearLayout>

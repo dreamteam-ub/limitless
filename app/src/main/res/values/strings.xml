@@ -37,8 +37,9 @@
     <string name="music_rights">MUSIC RIGHTS</string>
     <string name="volume">VOLUME</string>
     <string name="detail_music_rights">Cepeda Calvísimo</string>
-    <string name="text_mymap">- Learn step by step\n- One boss at a time\n- Short stages</string>
-    <string name="text_infinite">- Hardcore mode\n- Any number of bosses\n- Go until you die</string>
+    <string name="text_mymap">- Learn step by step\n- Short stages</string>
+    <string name="text_infinite">- Any number of bosses\n- Go until you die</string>
+    <string name="text_versus">- Play against a friend\n- Who lasts longer wins</string>
     <string name="music">MUSIC</string>
     <string name="sfx">SFX</string>
     <string name="youDiedheart">BROKEN HEART</string>

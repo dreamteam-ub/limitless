@@ -13,7 +13,7 @@ class AutoLevelGenerate {
     var spawnCoinFreq = 5 //frecuencia inicial de spawn de monedas
     var limitLow = 5
     var limitHigh = 10
-    var listOfEnemies = arrayListOf(GHOST_CHAR) //blackhole no aparecer //bomb
+    var listOfEnemies = arrayListOf(GHOST_CHAR, BOMB_CHAR) //blackhole no aparecer //bomb
     var listOfComplexEnemies = arrayListOf(EYE_CHAR, DEMON_CHAR)
     var minTimeInGame = 200L //tiempo minimo que deberan estar los personajes en partida
     var maxTimeInGame = 500L
@@ -24,7 +24,7 @@ class AutoLevelGenerate {
 
         var listOfEnemyParams = ArrayList<String>()
 
-        listOfEnemyParams.add(listOfEnemies[(0 until 1).random()])
+        listOfEnemyParams.add(listOfEnemies[(0 until listOfEnemies.size).random()])
         if (listOfEnemyParams[0].equals(BOMB_CHAR)){
             listOfEnemyParams.add(Random.nextInt((Data.screenWidth*0.2).toInt(), (Data.screenWidth*0.8).toInt()).toString())
             listOfEnemyParams.add(Random.nextInt((Data.screenHeight*0.2).toInt(), (Data.screenHeight*0.8).toInt()).toString())

@@ -76,20 +76,18 @@ class ArtificialIntelligence {
     }
 
     fun getBehaviour(chr: String): Int { //ONLY FOR COMPLEX ENEMIES
-        var num = 0
         when (chr) {
             EYE_CHAR -> {
-                num = AIData.bEye
+                return AIData.bEye
             }
             DEMON_CHAR -> {
-                num = AIData.bDemon
+                return AIData.bDemon
             }
             SKULL_CHAR -> {
-                num = AIData.bSkull
+                return AIData.bSkull
             }
-
         }
-        return num
+        return 0
     }
 
     fun getList(chr: String): Array<Int> {
