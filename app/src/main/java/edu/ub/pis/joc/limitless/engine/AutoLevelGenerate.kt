@@ -5,121 +5,70 @@ import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
 import java.util.ArrayList
 import kotlin.random.Random
+import kotlin.random.nextInt
 
 class AutoLevelGenerate {
 
     var time = 1000L //ponemos que de 1000L en 1000L se genera un nuevo nivel
     var spawnEnemyFreq = 2 //frecuencia inicial de spàwn de enemigos : 2
     var spawnCoinFreq = 5 //frecuencia inicial de spawn de monedas
-    var limitLow = 5
+    var limitLow = -10
     var limitHigh = 10
-    var listOfEnemies = arrayListOf(GHOST_CHAR, BOMB_CHAR) //blackhole no aparecer //bomb
-    var listOfComplexEnemies = arrayListOf(EYE_CHAR, DEMON_CHAR)
+    var listOfEnemies = arrayListOf(BOMB_CHAR,GHOST_CHAR,EYE_CHAR, DEMON_CHAR, SKULL_CHAR) //blackhole no aparecer //bomb
     var minTimeInGame = 200L //tiempo minimo que deberan estar los personajes en partida
     var maxTimeInGame = 500L
     var ai = ArtificialIntelligence()
 
 
-    fun generateEnemies() : ArrayList<String>{
+    fun generateEnemy() : ArrayList<Any>{
 
-        var listOfEnemyParams = ArrayList<String>()
+        var listOfEnemyParams :  ArrayList<Any> = ArrayList()
 
-        listOfEnemyParams.add(listOfEnemies[(0 until listOfEnemies.size).random()])
-        if (listOfEnemyParams[0].equals(BOMB_CHAR)){
-            listOfEnemyParams.add(Random.nextInt((Data.screenWidth*0.2).toInt(), (Data.screenWidth*0.8).toInt()).toString())
-            listOfEnemyParams.add(Random.nextInt((Data.screenHeight*0.2).toInt(), (Data.screenHeight*0.8).toInt()).toString())
-            listOfEnemyParams.add(Random.nextInt((minTimeInGame).toInt(), (maxTimeInGame).toInt()).toString())
+        val enemyString = listOfEnemies[(0 until listOfEnemies.size).random()]
 
-        }else {
+        val behaviour = ai.pickABehaviour(enemyString)
 
-            listOfEnemyParams.add(ai.generatePositionsForBehaviour(listOfEnemyParams[0])[0].toString())
-            listOfEnemyParams.add(ai.generatePositionsForBehaviour(listOfEnemyParams[0])[1].toString())
-            listOfEnemyParams.add(Random.nextInt((minTimeInGame).toInt(), (maxTimeInGame).toInt()).toString())
-            listOfEnemyParams.add(ai.generatePositionsForBehaviour(listOfEnemyParams[0])[2].toString())
+        val coords = ai.generatePositionsForBehaviour(enemyString,behaviour)
+
+        listOfEnemyParams.add(enemyString)
+        listOfEnemyParams.add(coords[0])
+        listOfEnemyParams.add(coords[1])
+        listOfEnemyParams.add(behaviour)
+        listOfEnemyParams.add((Random.nextLong(minTimeInGame,maxTimeInGame)))
+
+        if(enemyString == EYE_CHAR){
+            listOfEnemyParams.add(ai.pickABehaviour(EYE_PROJECTILE))
+        } else if(enemyString == DEMON_CHAR){
+            listOfEnemyParams.add(ai.pickABehaviour(DEMON_FIRE_COLUMN))
+        } else if (enemyString == SKULL_CHAR){
+            listOfEnemyParams.add(behaviour)
         }
-
-
 
         return listOfEnemyParams
     }
 
-
-    fun generateComplexEnemy() : ArrayList<String>{
-
-        var listOfComplexEnemyParams = ArrayList<String>()
-
-        listOfComplexEnemyParams.add(listOfComplexEnemies[(0 until 2).random()])
-        listOfComplexEnemyParams.add(ai.generatePositionsForBehaviour(listOfComplexEnemyParams[0])[0].toString())
-        listOfComplexEnemyParams.add(ai.generatePositionsForBehaviour(listOfComplexEnemyParams[0])[1].toString())
-        listOfComplexEnemyParams.add(Random.nextInt((minTimeInGame).toInt(), (maxTimeInGame).toInt()).toString())
-        listOfComplexEnemyParams.add(ai.pickABehaviour(listOfComplexEnemyParams[0]).toString())
-        listOfComplexEnemyParams.add(ai.generatePositionsForBehaviour(listOfComplexEnemyParams[0])[2].toString())
-
-
-
-
-        return listOfComplexEnemyParams
-
-    }
-
-    fun generateRandomTypeEnemy() : ArrayList<String>{
-
-        var listParams = ArrayList<String>()
-
-        var number = Random.nextInt(0,2)
-        when(number){
-
-            0 -> {
-                listParams = generateEnemies()
-            }
-
-            1 -> {
-                listParams = generateComplexEnemy()
-            }
-        }
-        return listParams
-    }
-
     //hacemos lo mismo con las monedas
-    fun generateCoins() : ArrayList<String>{
+    fun generateCoins() : ArrayList<Any>{
 
-        var listOfCoinParams = ArrayList<String>()
+        val listOfCoinParams = ArrayList<Any>()
 
-        listOfCoinParams.add(NUMBER_COIN)
-        listOfCoinParams.add(Random.nextInt((Data.screenWidth*0.19).toInt(),(Data.screenWidth*0.81).toInt()).toString())
-        listOfCoinParams.add(Random.nextInt((Data.screenHeight*0.19).toInt(),(Data.screenHeight*0.81).toInt()).toString())
-        listOfCoinParams.add(Random.nextInt(-generateLimits()[0],generateLimits()[1]).toString())
-        listOfCoinParams.add(Random.nextInt((minTimeInGame).toInt(), (maxTimeInGame).toInt()).toString())
+        val entity = NUMBER_COIN
 
-        Log.d("VALUE",listOfCoinParams[3])
+        val coords = ai.generatePositionsForBehaviour(entity,0)
+
+        listOfCoinParams.add(entity)
+        listOfCoinParams.add(coords[0])
+        listOfCoinParams.add(coords[1])
+        listOfCoinParams.add(Random.nextInt(limitLow,limitHigh))
+        listOfCoinParams.add(Random.nextLong(minTimeInGame, maxTimeInGame))
 
         return listOfCoinParams
 
     }
 
-    fun generateLimits() : ArrayList<Int>{
-
-        var listOfLimits = ArrayList<Int>()
-
-        listOfLimits.add(limitLow)
-        listOfLimits.add(limitHigh)
-        
-
-        return listOfLimits
-
-    }
-
-    fun modifyLimits(){
-        var valueToModifyLow = 6
-        var valueToModifyHigh = 6
-    }
-
-
-
     //funcion que hará que a cada time se llame al generate para que nunca acabe la partida
     fun increaseTime(){
         time += time
         spawnEnemyFreq += 1
-
     }
 }

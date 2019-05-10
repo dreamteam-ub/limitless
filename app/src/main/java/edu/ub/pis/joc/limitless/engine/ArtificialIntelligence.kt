@@ -1,5 +1,6 @@
 package edu.ub.pis.joc.limitless.engine
 
+import android.util.Log
 import edu.ub.pis.joc.limitless.model.game.*
 import kotlin.random.Random
 
@@ -86,21 +87,22 @@ class ArtificialIntelligence {
 
     fun getList(chr: String): Array<Int> {
         val lista = emptyArray<Int>()
-        when (chr) {
-
-            EYE_CHAR -> return AIData.behaviourEye
-            DEMON_CHAR -> return AIData.behaviourDemon
-            SKULL_CHAR -> return AIData.behaviourSkull
-            GHOST_CHAR -> return AIData.behaviourGhost
-            DEMON_FIRE_COLUMN -> return AIData.childDemon
-            EYE_PROJECTILE -> return AIData.childEye
-
+        return when (chr) {
+            EYE_CHAR -> AIData.behaviourEye
+            DEMON_CHAR -> AIData.behaviourDemon
+            SKULL_CHAR -> AIData.behaviourSkull
+            GHOST_CHAR -> AIData.behaviourGhost
+            DEMON_FIRE_COLUMN -> AIData.childDemon
+            EYE_PROJECTILE -> AIData.childEye
+            else -> lista
         }
-        return lista
     }
 
     fun pickABehaviour(str: String): Int {
         val list = getList(str)
+        if(list.isEmpty()){
+            return 0
+        }
         var behaviour = 0
         var accumulateInList = 0
         val probability = Random.nextInt(1, 101)
@@ -115,10 +117,19 @@ class ArtificialIntelligence {
         return behaviour
     }
 
-    fun generatePositionsForBehaviour(str: String): ArrayList<Int> {
+    fun generatePositionsForBehaviour(str: String, behaviour: Int): ArrayList<Int> {
 
-        val behaviour = pickABehaviour(str)
         when (str) {
+            BOMB_CHAR->{
+                val x = AIData.spawnCoinAndBombsX[Random.nextInt(0,AIData.spawnCoinAndBombsX.size)]
+                val y = AIData.spawnCoinAndBombsY[Random.nextInt(0,AIData.spawnCoinAndBombsY.size)]
+                return arrayListOf(x,y)
+            }
+            NUMBER_COIN->{
+                val x = AIData.spawnCoinAndBombsX[Random.nextInt(0,AIData.spawnCoinAndBombsX.size)]
+                val y = AIData.spawnCoinAndBombsY[Random.nextInt(0,AIData.spawnCoinAndBombsY.size)]
+                return arrayListOf(x,y)
+            }
             GHOST_CHAR -> {
                 when(behaviour){
                     0->{
@@ -226,6 +237,9 @@ class ArtificialIntelligence {
                         return arrayListOf(topLeft[0],topLeft[1])
                     }
                 }
+            }
+            SKULL_CHAR ->{
+                arrayListOf(0,0)
             }
         }
         return arrayListOf(0,0)

@@ -43,10 +43,4 @@ abstract class Character(image: ArrayList<Bitmap>, posX: Int, posY: Int) {
         canvas.drawBitmap(imageList[0], null, rect, null)
     }
 
-    fun recycleBitmapArray(image : ArrayList<Bitmap>){
-        for (i in 0 until image.size){
-            image[i].recycle()
-        }
-    }
-
 }

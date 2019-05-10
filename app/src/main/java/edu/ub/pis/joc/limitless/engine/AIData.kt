@@ -1,6 +1,7 @@
 package edu.ub.pis.joc.limitless.engine
 
 import edu.ub.pis.joc.limitless.model.Data
+import kotlin.random.Random
 
 object AIData {
 
@@ -58,6 +59,26 @@ object AIData {
     val topRightSpawns : Array<Array<Int>> = arrayOf(
         arrayOf((Data.screenWidth*0.7).toInt(),0),
         arrayOf((Data.screenWidth*0.8).toInt(),0)
+    )
+
+    val spawnCoinAndBombsX : Array<Int> = arrayOf(
+        (Data.screenWidth*0.2).toInt(),
+        (Data.screenWidth*0.3).toInt(),
+        (Data.screenWidth*0.4).toInt(),
+        (Data.screenWidth*0.5).toInt(),
+        (Data.screenWidth*0.6).toInt(),
+        (Data.screenWidth*0.7).toInt(),
+        (Data.screenWidth*0.8).toInt()
+    )
+
+    val spawnCoinAndBombsY : Array<Int> = arrayOf(
+        (Data.screenHeight*0.2).toInt(),
+        (Data.screenHeight*0.3).toInt(),
+        (Data.screenHeight*0.4).toInt(),
+        (Data.screenHeight*0.5).toInt(),
+        (Data.screenHeight*0.6).toInt(),
+        (Data.screenHeight*0.7).toInt(),
+        (Data.screenHeight*0.8).toInt()
     )
 
 }

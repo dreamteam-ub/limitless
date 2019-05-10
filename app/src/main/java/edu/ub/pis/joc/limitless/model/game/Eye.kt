@@ -31,8 +31,9 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, contex
 
     var drawChild: Boolean = false
 
+    var tempsTotal = dissapearTimer
+
     override fun update() {
-        dissapearTimer--
         when (concreteBehaviour) {
             0 -> {
                 //Sinusoidal esquerra a dreta
@@ -96,6 +97,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, contex
             }
         }
 
+
         if (drawChild) {
             for (i in 0 until projectileRelocate.size) {
                 if (projectileRelocate[i]) {
@@ -116,6 +118,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, contex
             }
         }
 
+        dissapearTimer--
     }
 
     override fun draw(canvas: Canvas) {

@@ -5,6 +5,8 @@ import android.graphics.Typeface
 import android.util.Log
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
+import java.lang.Math.abs
+import java.sql.DataTruncation
 import java.util.ArrayList
 import kotlin.random.Random
 
@@ -27,185 +29,71 @@ class LevelInfinite(contextApp: Context,
             -1 -> {
 
                 if (time == 0L) {
+                    listOfEnemyCharacters.clear()
                     coinSpawnInf = true
-                    //primera oleada de bombas
-                    for (i in 0 until autoLvl.spawnEnemyFreq) {
-                        //var parameters = autoLvl.generateEnemies()
-
-                        tmp = createEnemy(
-                            BOMB_CHAR,
-                            Random.nextInt((Data.screenWidth*0.2).toInt(), (Data.screenWidth*0.8).toInt()),
-                            Random.nextInt((Data.screenHeight*0.2).toInt(), (Data.screenHeight*0.8).toInt()),
-                            0,
-                           150
-                        )
-
-                        listOfTmpEnemies.add(tmp)
-                    }
-
+                    //HARDCODEAR
+                    //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }else if (time == 100L) {
                     listOfEnemyCharacters.clear()
-
-                    //segunda oleada fantasmas
                     coinSpawnInf = true
-
-                    for (i in 0 until autoLvl.spawnEnemyFreq) {
-                        var parameters = autoLvl.generateEnemies()
-
-                            tmp = createEnemy(
-                            GHOST_CHAR,
-                            parameters[1].toInt(),
-                            parameters[2].toInt(),
-                            autoLvl.ai.pickABehaviour(GHOST_CHAR),
-                            parameters[3].toInt()
-                        )
-
-
-                        listOfTmpEnemies.add(tmp)
-
-                    }
+                    //HARDCODEAR
+                    //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }else if (time == 200L) {
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
-                    // tercera oleada Eyes
-                    for (i in 0 until autoLvl.spawnEnemyFreq) {
-                        //var parameters = autoLvl.generateComplexEnemy()
-                        var tmpEye:Eye
-                         tmpEye = createComplexEnemy(
-                            EYE_CHAR,
-                            autoLvl.ai.generatePositionsForBehaviour(EYE_CHAR)[0],
-                             autoLvl.ai.generatePositionsForBehaviour(EYE_CHAR)[1],
-                             autoLvl.ai.generatePositionsForBehaviour(EYE_CHAR)[2],
-                             (Random.nextInt((autoLvl.minTimeInGame).toInt(), (autoLvl.maxTimeInGame).toInt())),
-                            autoLvl.ai.pickABehaviour(EYE_CHAR)
-                        ) as Eye
-                        listOfTmpEnemies.add(tmpEye)
-                        tmpEye.drawChild = true
-                        tmpEye.projectileDraw[0] = true
-                        tmpEye.projectileRelocate[0] = true
-
-                    }
-
+                    //HARDCODEAR
+                    //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }else if (time == 400L) {
                     listOfEnemyCharacters.clear()
-
                     coinSpawnInf = true
-                    // cuarta oleada de Demons
-                        for (i in 0 until autoLvl.spawnEnemyFreq) {
-                            var parameters = autoLvl.generateComplexEnemy()
-
-                            tmp = createComplexEnemy(
-                                DEMON_CHAR,
-                                autoLvl.ai.generatePositionsForBehaviour(DEMON_CHAR)[0],
-                                autoLvl.ai.generatePositionsForBehaviour(DEMON_CHAR)[1],
-                                autoLvl.ai.generatePositionsForBehaviour(DEMON_CHAR)[2],
-                                (Random.nextInt((autoLvl.minTimeInGame).toInt(), (autoLvl.maxTimeInGame).toInt())),
-                                autoLvl.ai.pickABehaviour(DEMON_CHAR)
-                            )
-
-                            listOfTmpEnemies.add(tmp)
-
-                        }
-
+                    //HARDCODEAR
+                    //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }else if (time == 600L) {
                     listOfEnemyCharacters.clear()
-
                     coinSpawnInf = true
-                    // quinta y ultima oleada de Skull
-                    for (i in 0 until autoLvl.spawnEnemyFreq) {
-                        var parameters = autoLvl.generateComplexEnemy()
-
-                        tmp = createComplexEnemy(
-                            SKULL_CHAR,
-                            parameters[1].toInt(),
-                            parameters[2].toInt(),
-                            autoLvl.ai.generatePositionsForBehaviour(SKULL_CHAR)[0],
-                            parameters[3].toInt(),
-                            autoLvl.ai.pickABehaviour(SKULL_CHAR)
-                        )
-
-                        listOfTmpEnemies.add(tmp)
-
-                    }
-
+                    //HARDCODEAR ENEMIGOS
+                    //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 } else if (time%autoLvl.time == 0L){
                     listOfEnemyCharacters.clear()
                     autoLvl.increaseTime()
                     coinSpawnInf = true
+                    var parameters : ArrayList<Any>
                     for (i in 0 until autoLvl.spawnEnemyFreq) {
-                        var parameters = autoLvl.generateRandomTypeEnemy()
-
-                        if (parameters[0].equals(EYE_CHAR) || parameters[0].equals(SKULL_CHAR) || parameters[0].equals(
-                                DEMON_CHAR)){
-
-                            when(parameters[0]){
-
-                                EYE_CHAR -> {
-                                    var tmpEye : Eye
-                                    tmpEye = createComplexEnemy(
-                                        parameters[0],
-                                        parameters[1].toInt(),
-                                        parameters[2].toInt(),
-                                        parameters[5].toInt(),
-                                        parameters[3].toInt(),
-                                        parameters[4].toInt()
-                                    ) as Eye
-
-                                    tmpEye.drawChild = true
-                                    listOfTmpEnemies.add(tmpEye)
-                                    tmpEye.drawChild = true
-                                    tmpEye.projectileDraw[0] = true
-                                    tmpEye.projectileRelocate[0] = true
-                                }
-
-                                DEMON_CHAR -> {
-                                    tmp = createComplexEnemy(
-                                        parameters[0],
-                                        parameters[1].toInt(),
-                                        parameters[2].toInt(),
-                                        parameters[5].toInt(),
-                                        parameters[3].toInt(),
-                                        parameters[4].toInt()
-                                    )
-
-                                    listOfTmpEnemies.add(tmp)
-                                }
-
-                                SKULL_CHAR -> {
-
-                                    tmp = createComplexEnemy(
-                                        parameters[0],
-                                        parameters[1].toInt(),
-                                        parameters[2].toInt(),
-                                        parameters[5].toInt(),
-                                        parameters[3].toInt(),
-                                        parameters[4].toInt()
-                                    )
-
-                                    listOfTmpEnemies.add(tmp)
-
-                                }
-
-                            }
-
-                        }else {
-                            tmp = createEnemy(
-                                parameters[0],
-                                parameters[1].toInt(),
-                                parameters[2].toInt(),
-                                parameters[4].toInt(),
-                                parameters[3].toInt()
-                            )
-                            listOfTmpEnemies.add(tmp)
-
+                        parameters = autoLvl.generateEnemy()
+                        if(parameters.size == 5){
+                            listOfTmpEnemies.add(createEnemy(
+                                parameters[0].toString(),
+                                parameters[1].toString().toInt(),
+                                parameters[2].toString().toInt(),
+                                parameters[3].toString().toInt(),
+                                parameters[4].toString().toInt()
+                            ))
+                        } else if(parameters[0].toString()== EYE_CHAR) {
+                            var eye : Eye = (createComplexEnemy(
+                                parameters[0].toString(),
+                                parameters[1].toString().toInt(),
+                                parameters[2].toString().toInt(),
+                                parameters[3].toString().toInt(),
+                                parameters[4].toString().toInt(),
+                                parameters[5].toString().toInt()
+                            )) as Eye
+                            eye.drawChild = true
+                        }else{
+                            listOfTmpEnemies.add(createComplexEnemy(
+                                parameters[0].toString(),
+                                parameters[1].toString().toInt(),
+                                parameters[2].toString().toInt(),
+                                parameters[3].toString().toInt(),
+                                parameters[4].toString().toInt(),
+                                parameters[5].toString().toInt()
+                            ))
                         }
-
                     }
-
+                    //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }
 
 
-                var contador: Int = 0
+                var contador = 0
                 while (contador < listOfEnemyCharacters.size) {
                     if (listOfEnemyCharacters.get(contador).dissapearTimer == 0) {
                         listOfEnemyCharacters.removeAt(contador)
@@ -227,28 +115,24 @@ class LevelInfinite(contextApp: Context,
         var coin : Coin
         when (levelWorld) {
             -1 -> {
-
                 if (time!= 0L && coinSpawnInf ) {
                     listOfCoins.clear()
                     for (j in 0 until autoLvl.spawnCoinFreq) {
                         var parameters = autoLvl.generateCoins()
 
                         coin = createCoin(
-                            parameters[0],
-                            parameters[1].toInt(),
-                            parameters[2].toInt(),
-                            parameters[3].toInt(),
+                            parameters[0].toString(),
+                            parameters[1].toString().toInt(),
+                            parameters[2].toString().toInt(),
+                            parameters[3].toString().toInt(),
                             Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX),
-                            parameters[4].toInt()
+                            parameters[4].toString().toInt()
                         )
-                        Log.d("COINS CREATED", parameters[3])
+                        //Log.d("COINS CREATED", parameters[3].toString())
                         tmpListOfCoins.add(coin)
                     }
                     coinSpawnInf = false
-
                 }
-
-
                 var contador: Int = 0
                 while (contador < listOfCoins.size) {
                     if (listOfCoins[contador].dissapearTimer == 0) {
@@ -258,26 +142,11 @@ class LevelInfinite(contextApp: Context,
                     contador++
                 }
             }
-
         }
-
         listOfCoins.addAll(tmpListOfCoins)
     }
 
     override fun createLimits(levelWorld: Int): ArrayList<Int> {
-
-        var listOfLimits: ArrayList<Int> = ArrayList()
-
-        when (levelWorld) {
-            -1 -> {
-
-                listOfLimits.add(autoLvl.generateLimits()[0])
-                listOfLimits.add(autoLvl.generateLimits()[1])
-
-            }
-
-
-        }
-        return listOfLimits
+        return arrayListOf(0,100)
     }
 }

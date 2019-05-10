@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.ImageButton
 import edu.ub.pis.joc.limitless.R
 import android.view.Gravity
+import android.view.WindowManager
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -87,6 +88,9 @@ class GameActivity : FullScreenActivity() {
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCanceledOnTouchOutside(false)
 
+        dialog.window!!.setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+        dialog.window!!.decorView.systemUiVisibility = window.decorView.systemUiVisibility
+
         val resumeDiag: ImageButton = vista.findViewById(R.id.resumeButtonDiag)
         val worldsDiag: ImageButton = vista.findViewById(R.id.worldsButtonPauseDiag)
         val menuDiag: ImageButton = vista.findViewById(R.id.menuButtonPauseDiag)
@@ -146,8 +150,8 @@ class GameActivity : FullScreenActivity() {
         }
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroy() {
+        super.onDestroy()
 
         if (dialog.isShowing) {
             dialog.dismiss()
