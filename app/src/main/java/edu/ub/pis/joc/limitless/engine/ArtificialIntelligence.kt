@@ -1,7 +1,5 @@
 package edu.ub.pis.joc.limitless.engine
 
-import android.util.Log
-import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
 import kotlin.random.Random
 
@@ -10,8 +8,10 @@ class ArtificialIntelligence {
 
 
 
-    var allLists = arrayListOf<Array<Int>>(AIData.behaviourDemon,AIData.behaviourGhost,AIData.behaviourSkull,
+    var allBehavioursList = arrayListOf(AIData.behaviourDemon,AIData.behaviourGhost,AIData.behaviourSkull,
         AIData.behaviourEye)
+
+    var allChildList = arrayListOf(AIData.childEye,AIData.childDemon)
 
     var calls = 0
 
@@ -19,272 +19,217 @@ class ArtificialIntelligence {
     fun updateBestBehaviour(enemy : Enemy){
 
         when(enemy){
-
             is Demon -> {
-                allLists.remove(AIData.behaviourDemon)
+                allBehavioursList.remove(AIData.behaviourDemon)
                 calculateProbabilities(AIData.behaviourDemon,enemy.concreteBehaviour)
-                allLists.add(0,AIData.behaviourDemon)
-
+                allBehavioursList.add(0,AIData.behaviourDemon)
             }
             is Ghost -> {
-                allLists.remove(AIData.behaviourGhost)
+                allBehavioursList.remove(AIData.behaviourGhost)
                 AIData.behaviourGhost=calculateProbabilities(AIData.behaviourGhost,enemy.concreteBehaviour)
-                allLists.add(1,AIData.behaviourGhost)
-
+                allBehavioursList.add(1,AIData.behaviourGhost)
             }
-
-
             is Skull -> {
-                allLists.remove(AIData.behaviourSkull)
+                allBehavioursList.remove(AIData.behaviourSkull)
                 calculateProbabilities(AIData.behaviourSkull,enemy.concreteBehaviour)
-                allLists.add(2,AIData.behaviourSkull)
-
+                allBehavioursList.add(2,AIData.behaviourSkull)
             }
             is Eye -> {
-                allLists.remove(AIData.behaviourEye)
+                allBehavioursList.remove(AIData.behaviourEye)
                 calculateProbabilities(AIData.behaviourEye,enemy.concreteBehaviour)
-                allLists.add(3,AIData.behaviourEye)
-
+                allBehavioursList.add(3,AIData.behaviourEye)
             }
-
-
         }
 
+    }
 
+    fun updateBestChild(enemy : Enemy){
 
-
+        when(enemy){
+            is Demon -> {
+                allChildList.remove(AIData.childDemon)
+                calculateProbabilities(AIData.childDemon,enemy.childListConditional)
+                allChildList.add(0,AIData.childDemon)
+            }
+            is Eye -> {
+                allChildList.remove(AIData.childEye)
+                calculateProbabilities(AIData.childEye,enemy.childListConditional)
+                allChildList.add(1,AIData.childEye)
+            }
+        }
 
     }
-    fun calculateProbabilities(listProb : Array<Int>, behaviour : Int) : Array<Int>{
 
-        Log.d("BEFORE CALCULATE",listProb[behaviour].toString())
-            if (listProb[behaviour] < listProb[listProb.size-1]) {
-                Log.d("calculate min 1",listProb[listProb.size-1].toString())
-                listProb[behaviour] += listProb.size - 1
-                for (i in 0 until listProb.size - 1) {
-                    if (i != behaviour) {
-                        listProb[i] -= (listProb.size - 1 / listProb.size - 1)
+    fun calculateProbabilities(listProb : Array<Int>, winCondition : Int) : Array<Int>{
 
-                    }
+        val maxValue = listProb[listProb.size-1]
+
+        var percentageDifference = ((maxValue-listProb[winCondition])*0.3).toInt()
+
+        var divCounter = listProb.size-2
+
+        if (listProb[winCondition] < maxValue) {
+            listProb[winCondition] += percentageDifference
+            for (i in 0 until listProb.size - 1) {
+                if (i != winCondition) {
+                    listProb[i] -= (percentageDifference/divCounter)
+                    percentageDifference -= (percentageDifference/divCounter)
+                    divCounter--
                 }
             }
+        }
 
-        Log.d("calculate",listProb[behaviour].toString())
         calls += 1
         return listProb
 
     }
 
-    fun getBehaviour(chr: String): Int { //ONLY FOR COMPLEX ENEMIES
-        when (chr) {
-            EYE_CHAR -> {
-                return AIData.bEye
-            }
-            DEMON_CHAR -> {
-                return AIData.bDemon
-            }
-            SKULL_CHAR -> {
-                return AIData.bSkull
-            }
-        }
-        return 0
-    }
-
     fun getList(chr: String): Array<Int> {
-        var lista = emptyArray<Int>()
+        val lista = emptyArray<Int>()
         when (chr) {
 
             EYE_CHAR -> return AIData.behaviourEye
             DEMON_CHAR -> return AIData.behaviourDemon
             SKULL_CHAR -> return AIData.behaviourSkull
             GHOST_CHAR -> return AIData.behaviourGhost
+            DEMON_FIRE_COLUMN -> return AIData.childDemon
+            EYE_PROJECTILE -> return AIData.childEye
 
         }
         return lista
     }
 
     fun pickABehaviour(str: String): Int {
-        Log.d("STR", str)
-        var list = getList(str)
-        var long = list.size - 1
+        val list = getList(str)
         var behaviour = 0
-
-        var probability = Random.nextInt(1, 101)
-        Log.d("PROB", probability.toString())
         var accumulateInList = 0
+        val probability = Random.nextInt(1, 101)
 
-        for (i in 0 until long) {
-            if (probability > accumulateInList) {
+
+        for (i in 0 until (list.size - 1)) {
+            if(accumulateInList < probability){
                 accumulateInList += list[i]
-                Log.d("ACC", accumulateInList.toString())
-            }
-            if (probability <= accumulateInList) {
                 behaviour = i
-                return behaviour
             }
-
         }
-        Log.d("BEHAVIOUR", behaviour.toString())
         return behaviour
-
     }
 
     fun generatePositionsForBehaviour(str: String): ArrayList<Int> {
-        var arrayCord = ArrayList<Int>()
-        var behaviourSimple = pickABehaviour(str)
-        var numBehaviourComplex = getBehaviour(str)
 
+        val behaviour = pickABehaviour(str)
         when (str) {
             GHOST_CHAR -> {
-                if (behaviourSimple == 0) {
-                    var randomXlow = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
-                    var randomXhigh = Random.nextInt((Data.screenHeight * 0.85).toInt(), (Data.screenHeight * 0.95).toInt())
-                    var randX = arrayOf(randomXlow, randomXhigh)
-                    arrayCord.add(randX[(0 until 2).random()])
+                when(behaviour){
+                    0->{
+                        val left = AIData.leftSpawns[Random.nextInt(0,AIData.leftSpawns.size)]
+                        val right = AIData.rightSpawns[Random.nextInt(0,AIData.rightSpawns.size)]
+                        return if (Random.nextInt(0,2)==0) arrayListOf(left[0],left[1]) else arrayListOf(right[0],right[1])
+                    }
+                    1->{
+                        val top = AIData.topSpawns[Random.nextInt(0,AIData.topSpawns.size)]
+                        val bottom = AIData.bottomSpawns[Random.nextInt(0,AIData.bottomSpawns.size)]
+                        return if (Random.nextInt(0,2)==0) arrayListOf(top[0],top[1]) else arrayListOf(bottom[0],bottom[1])
 
-                    var randomYlow = Random.nextInt((Data.screenHeight * 0.05).toInt(), (Data.screenHeight * 0.2).toInt())
-                    var randomYhigh = Random.nextInt((Data.screenHeight * 0.85).toInt(), (Data.screenHeight * 0.95).toInt())
-                    var randY = arrayOf(randomYlow, randomYhigh)
-                    arrayCord.add(randY[(0 until 2).random()])
-                    arrayCord.add(behaviourSimple) //añadimos el behaviour directamente desde esta lista
+                    }
+                    2->{
+                        val left = AIData.leftSpawns[Random.nextInt(0,AIData.leftSpawns.size)]
+                        val right = AIData.rightSpawns[Random.nextInt(0,AIData.rightSpawns.size)]
+                        return if (Random.nextInt(0,2)==0) arrayListOf(left[0],left[1]) else arrayListOf(right[0],right[1])
 
-                } else if (behaviourSimple == 1 || behaviourSimple == 2) {
-                    var randomXlow = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
-                    var randomXhigh = Random.nextInt((Data.screenHeight * 0.85).toInt(), (Data.screenHeight * 0.95).toInt())
-                    var randX = arrayOf(randomXlow, randomXhigh)
-                    arrayCord.add(randX[(0 until 2).random()])
-
-                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.81).toInt())
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourSimple)
-
+                    }
+                    3->{
+                        val left = AIData.leftSpawns[Random.nextInt(0,AIData.leftSpawns.size)]
+                        return arrayListOf(left[0],left[1])
+                    }
+                    4->{
+                        val right = AIData.rightSpawns[Random.nextInt(0,AIData.rightSpawns.size)]
+                        return arrayListOf(right[0],right[1])
+                    }
                 }
             }
+
             DEMON_CHAR -> {
-                var behaviourComplex = Random.nextInt(0,numBehaviourComplex)
-
-                if (behaviourComplex == 0){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-                }else if(behaviourComplex == 1){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.8).toInt(), (Data.screenWidth * 0.95).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-                }else if(behaviourComplex == 2){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.20).toInt(), (Data.screenWidth * 0.8).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.05).toInt(), (Data.screenHeight * 0.2).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-                }else if (behaviourComplex == 3){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.20).toInt(), (Data.screenWidth * 0.8).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.8).toInt(), (Data.screenHeight * 0.95).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-                }else if (behaviourComplex == 4){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.2).toInt(), (Data.screenWidth * 0.8).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-                }else if (behaviourComplex == 5){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.8).toInt(), (Data.screenWidth * 0.95).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.8).toInt(), (Data.screenHeight * 0.95).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-
-                }else if(behaviourComplex == 6){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.8).toInt(), (Data.screenHeight * 0.95).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-                }else if (behaviourComplex == 7){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
+                when(behaviour){
+                    0->{
+                        val left = AIData.leftSpawns[Random.nextInt(0,AIData.leftSpawns.size)]
+                        return arrayListOf(left[0],left[1])
+                    }
+                    1->{
+                        val right = AIData.rightSpawns[Random.nextInt(0,AIData.rightSpawns.size)]
+                        return arrayListOf(right[0],right[1])
+                    }
+                    2->{
+                        val top = AIData.topSpawns[Random.nextInt(0,AIData.topSpawns.size)]
+                        return arrayListOf(top[0],top[1])
+                    }
+                    3->{
+                        val bottom = AIData.bottomSpawns[Random.nextInt(0,AIData.bottomSpawns.size)]
+                        return arrayListOf(bottom[0],bottom[1])
+                    }
+                    4->{
+                        val topRight = AIData.topRightSpawns[Random.nextInt(0,AIData.topRightSpawns.size)]
+                        return arrayListOf(topRight[0],topRight[1])
+                    }
+                    5->{
+                        val bottomRight = AIData.bottomRightSpawns[Random.nextInt(0,AIData.bottomRightSpawns.size)]
+                        return arrayListOf(bottomRight[0],bottomRight[1])
+                    }
+                    6->{
+                        val bottomLeft = AIData.bottomLeftSpawns[Random.nextInt(0,AIData.bottomLeftSpawns.size)]
+                        return arrayListOf(bottomLeft[0],bottomLeft[1])
+                    }
+                    7->{
+                        val topLeft = AIData.topLeftSpawns[Random.nextInt(0,AIData.topLeftSpawns.size)]
+                        return arrayListOf(topLeft[0],topLeft[1])
+                    }
+                    8->{
+                        val left = AIData.leftSpawns[Random.nextInt(0,AIData.leftSpawns.size)]
+                        val right = AIData.rightSpawns[Random.nextInt(0,AIData.rightSpawns.size)]
+                        return if (Random.nextInt(0,2)==0) arrayListOf(left[0],left[1]) else arrayListOf(right[0],right[1])
+                    }
                 }
-
             }
+
             EYE_CHAR -> {
-                var behaviourComplex = Random.nextInt(0,numBehaviourComplex)
-
-                if (behaviourComplex == 0){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-                }else if(behaviourComplex == 1){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.8).toInt(), (Data.screenWidth * 0.95).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-                }else if(behaviourComplex == 2){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.20).toInt(), (Data.screenWidth * 0.8).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.05).toInt(), (Data.screenHeight * 0.2).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-                }else if (behaviourComplex == 3){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.20).toInt(), (Data.screenWidth * 0.8).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.8).toInt(), (Data.screenHeight * 0.95).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-                }else if (behaviourComplex == 4){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.2).toInt(), (Data.screenWidth * 0.8).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-                }else if (behaviourComplex == 5){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.8).toInt(), (Data.screenWidth * 0.95).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.8).toInt(), (Data.screenHeight * 0.95).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-                }else if(behaviourComplex == 6){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.8).toInt(), (Data.screenHeight * 0.95).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
-                }else if (behaviourComplex == 7){
-                    var randomX = Random.nextInt((Data.screenWidth * 0.05).toInt(), (Data.screenWidth * 0.2).toInt())
-                    var randomY = Random.nextInt((Data.screenHeight * 0.2).toInt(), (Data.screenHeight * 0.8).toInt())
-                    arrayCord.add(randomX)
-                    arrayCord.add(randomY)
-                    arrayCord.add(behaviourComplex)
+                when(behaviour){
+                    0->{
+                        val left = AIData.leftSpawns[Random.nextInt(0,AIData.leftSpawns.size)]
+                        return arrayListOf(left[0],left[1])
+                    }
+                    1->{
+                        val right = AIData.rightSpawns[Random.nextInt(0,AIData.rightSpawns.size)]
+                        return arrayListOf(right[0],right[1])
+                    }
+                    2->{
+                        val top = AIData.topSpawns[Random.nextInt(0,AIData.topSpawns.size)]
+                        return arrayListOf(top[0],top[1])
+                    }
+                    3->{
+                        val bottom = AIData.bottomSpawns[Random.nextInt(0,AIData.bottomSpawns.size)]
+                        return arrayListOf(bottom[0],bottom[1])
+                    }
+                    4->{
+                        val topRight = AIData.topRightSpawns[Random.nextInt(0,AIData.topRightSpawns.size)]
+                        return arrayListOf(topRight[0],topRight[1])
+                    }
+                    5->{
+                        val bottomRight = AIData.bottomRightSpawns[Random.nextInt(0,AIData.bottomRightSpawns.size)]
+                        return arrayListOf(bottomRight[0],bottomRight[1])
+                    }
+                    6->{
+                        val bottomLeft = AIData.bottomLeftSpawns[Random.nextInt(0,AIData.bottomLeftSpawns.size)]
+                        return arrayListOf(bottomLeft[0],bottomLeft[1])
+                    }
+                    7->{
+                        val topLeft = AIData.topLeftSpawns[Random.nextInt(0,AIData.topLeftSpawns.size)]
+                        return arrayListOf(topLeft[0],topLeft[1])
+                    }
                 }
-
             }
-
-            SKULL_CHAR -> {
-
-                var behaviourComplex = Random.nextInt(0,numBehaviourComplex)
-
-                arrayCord.add(behaviourComplex)
-
-
-            }
-
         }
-
-        return arrayCord
+        return arrayListOf(0,0)
     }
-
-
 
 }
 

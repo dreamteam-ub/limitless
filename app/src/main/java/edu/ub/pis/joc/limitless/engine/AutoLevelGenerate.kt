@@ -112,8 +112,6 @@ class AutoLevelGenerate {
     fun modifyLimits(){
         var valueToModifyLow = 6
         var valueToModifyHigh = 6
-
-
     }
 
 
