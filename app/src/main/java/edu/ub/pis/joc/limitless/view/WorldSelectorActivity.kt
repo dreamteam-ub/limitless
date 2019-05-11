@@ -40,6 +40,7 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
     private lateinit var rightArrow: ImageButton
     private lateinit var downArrow: ImageButton
     private lateinit var upArrow: ImageButton
+    private lateinit var playWorlds : ImageButton
 
     private lateinit var imgWorld: Array<Int>
     private lateinit var strWorld: Array<Int>
@@ -62,6 +63,7 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         rightArrow = findViewById(R.id.change_right_arrow)
         downArrow = findViewById(R.id.change_down_arrow)
         upArrow = findViewById(R.id.change_up_arrow)
+        playWorlds = findViewById(R.id.playButtonWorlds)
 
         userListener =
             db.collection(USERS).document(mAuth.currentUser!!.uid).addSnapshotListener { docSnapshot, exception ->
@@ -123,11 +125,12 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
             presenter.updateLevel()
         }
 
-        worldPhoto.setOnClickListener {
+        playWorlds.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra(MODE_INFINITY, false)
             startActivity(intent)
             finish()
+            playWorlds.isClickable = false
         }
 
     }

@@ -101,5 +101,11 @@
             android:fontFamily="@font/crimes_times_six"
             style="@style/cts_limitless_white_worlds" android:layout_marginTop="20dp" android:textAlignment="center"
             android:textSize="24sp"/>
+    <ImageButton
+            android:layout_width="match_parent"
+            android:contentDescription="@string/playWorlds"
+            android:background="@android:color/transparent"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/play" android:id="@+id/playButtonWorlds"
+            android:layout_marginTop="20dp" android:textAlignment="center"/>
 
 </LinearLayout>

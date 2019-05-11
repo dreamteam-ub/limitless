@@ -75,5 +75,6 @@
     <string name="p1">P1</string>
     <string name="p2">P2</string>
     <string name="puntuation">X</string>
+    <string name="playWorlds">PLAY</string>
 
 </resources>

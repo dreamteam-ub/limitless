@@ -39,9 +39,6 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
         }
     }
 
-    override fun isTaken() {
-        imageList[0].recycle()
-    }
 
     override fun draw(canvas: Canvas) {
 
