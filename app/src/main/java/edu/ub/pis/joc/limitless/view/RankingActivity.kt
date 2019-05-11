@@ -13,6 +13,7 @@ import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Query
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.Data.numberToMMSS
 import edu.ub.pis.joc.limitless.model.Ranking
 import edu.ub.pis.joc.limitless.model.SURVIVED
 import edu.ub.pis.joc.limitless.model.User
@@ -36,6 +37,8 @@ class RankingActivity : FullScreenActivity(), RankingPresenter.View {
     private lateinit var userTime: TextView
 
     private lateinit var recyclerView: RecyclerView
+
+    private lateinit var rankingBackArrow: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,7 +95,7 @@ class RankingActivity : FullScreenActivity(), RankingPresenter.View {
         }
         // SYNC DB END
 
-        val rankingBackArrow: ImageButton = findViewById(R.id.ranking_back_button)
+        rankingBackArrow = findViewById(R.id.ranking_back_button)
         rankingBackArrow.setOnClickListener {
             finish()
             rankingBackArrow.isClickable = false
@@ -103,10 +106,6 @@ class RankingActivity : FullScreenActivity(), RankingPresenter.View {
         super.onDestroy()
         rankListener.remove() // IMPORTANTE
         userListener.remove() // IMPORTANTE
-    }
-
-    private fun numberToMMSS(num: Long): String {
-        return String.format("%02d:%02d", num / 60, num % 60)
     }
 
     override fun updateUserInfo(user: User) {
@@ -121,5 +120,10 @@ class RankingActivity : FullScreenActivity(), RankingPresenter.View {
 
     override fun updateRankInfo(ranks: ArrayList<Ranking>) {
         recyclerView.adapter = RankingRecyclerAdapter(ranks)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        rankingBackArrow.isClickable = true
     }
 }

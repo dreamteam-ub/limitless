@@ -21,6 +21,8 @@ const val MIN_LVL_WORLD = 0
 const val LEVEL = "level"
 const val WORLD = "world"
 
+const val MANUAL_TUTORIAL = "manual_tutorial"
+
 class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View {
 
     private val TAG = "WorldSelectorActivity"
@@ -41,6 +43,7 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
     private lateinit var downArrow: ImageButton
     private lateinit var upArrow: ImageButton
     private lateinit var playWorlds : ImageButton
+    private lateinit var tutorialBtn : ImageButton
 
     private lateinit var imgWorld: Array<Int>
     private lateinit var strWorld: Array<Int>
@@ -64,6 +67,7 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         downArrow = findViewById(R.id.change_down_arrow)
         upArrow = findViewById(R.id.change_up_arrow)
         playWorlds = findViewById(R.id.playButtonWorlds)
+        tutorialBtn = findViewById(R.id.tutorialButton)
 
         userListener =
             db.collection(USERS).document(mAuth.currentUser!!.uid).addSnapshotListener { docSnapshot, exception ->
@@ -143,6 +147,13 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
             playWorlds.isClickable = false
         }
 
+        tutorialBtn.setOnClickListener {
+            val intent = Intent(this, TutorialActivity::class.java)
+            intent.putExtra(MANUAL_TUTORIAL,true)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
     override fun onDestroy() {
@@ -182,6 +193,13 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
 
         lvlTitle.text = resources.getString(strLvl[level])
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        arrowBack.isClickable = true
+        playWorlds.isClickable = true
+        tutorialBtn.isClickable = true
     }
 
 }

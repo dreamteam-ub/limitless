@@ -16,38 +16,50 @@ import edu.ub.pis.joc.limitless.model.Page
 
 const val TUTORIAL = "tutorial"
 
-class TutorialViewPagerAdapter(private val context: Context, private val pages : Array<Page>, private val level : Int, private val world : Int) : PagerAdapter() {
+class TutorialViewPagerAdapter(
+    private val context: Context,
+    private val pages: Array<Page>,
+    private val level: Int,
+    private val world: Int,
+    private val manual: Boolean = false
+) : PagerAdapter() {
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val tutorialPage : Page = pages[position]
+        val tutorialPage: Page = pages[position]
         val inflater = LayoutInflater.from(context)
 
-        val layout : ViewGroup
+        val layout: ViewGroup
         if (!tutorialPage.end_layout) {
             layout = inflater.inflate(R.layout.tutorial_item, container, false) as ViewGroup
         } else {
             layout = inflater.inflate(R.layout.finish_tutorial_item, container, false) as ViewGroup
-            val button_exit_tutorial : ImageButton = layout.findViewById(R.id.finish_tutorial)
+            val button_exit_tutorial: ImageButton = layout.findViewById(R.id.finish_tutorial)
             button_exit_tutorial.setOnClickListener {
-                Data.currentLvl = level
-                Data.currentWorld = world
-                val intent = Intent(context, GameActivity::class.java)
-                intent.putExtra(MODE_INFINITY, false)
-                context.startActivity(intent)
-                (context as TutorialActivity).finish()
-                button_exit_tutorial.isClickable = false
-                if (Data.user.tutorial == null) {
-                    Data.user.tutorial = 0
-                }
-                if (Data.user.tutorial!! < 3) {
-                    Data.user.tutorial = Data.user.tutorial!! + 1
-                    FirebaseFirestore.getInstance().collection(USERS)
-                        .document(FirebaseAuth.getInstance().currentUser!!.uid)
-                        .update(TUTORIAL, Data.user.tutorial!!)
+                if (!manual) {
+                    Data.currentLvl = level
+                    Data.currentWorld = world
+                    val intent = Intent(context, GameActivity::class.java)
+                    intent.putExtra(MODE_INFINITY, false)
+                    context.startActivity(intent)
+                    (context as TutorialActivity).finish()
+                    button_exit_tutorial.isClickable = false
+                    if (Data.user.tutorial == null) {
+                        Data.user.tutorial = 0
+                    }
+                    if (Data.user.tutorial!! < 3) {
+                        Data.user.tutorial = Data.user.tutorial!! + 1
+                        FirebaseFirestore.getInstance().collection(USERS)
+                            .document(FirebaseAuth.getInstance().currentUser!!.uid)
+                            .update(TUTORIAL, Data.user.tutorial!!)
+                    }
+                } else {
+                    val intent = Intent(context, WorldSelectorActivity::class.java)
+                    context.startActivity(intent)
+                    (context as TutorialActivity).finish()
                 }
             }
         }
 
-        val image : ImageView = layout.findViewById(R.id.image)
+        val image: ImageView = layout.findViewById(R.id.image)
         image.setImageResource(tutorialPage.id_image)
 
         container.addView(layout)

@@ -36,4 +36,8 @@ object Data  {
 
     var versus_survived : Array <Long> = arrayOf(0L,0L)
 
+    fun numberToMMSS(num: Long): String {
+        return String.format("%02d:%02d", num / 60, num % 60)
+    }
+
 }

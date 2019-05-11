@@ -10,6 +10,8 @@ class InfoActivity : FullScreenActivity() {
 
     private val TAG = "InfoActivity"
 
+    private lateinit var infoBackArrow: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
@@ -17,10 +19,15 @@ class InfoActivity : FullScreenActivity() {
         val versionView: TextView = findViewById(R.id.version_details)
         versionView.text = BuildConfig.VERSION_NAME
 
-        val infoBackArrow: ImageButton = findViewById(R.id.info_back_button)
+        infoBackArrow = findViewById(R.id.info_back_button)
         infoBackArrow.setOnClickListener {
             finish()
             infoBackArrow.isClickable = false
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        infoBackArrow.isClickable = true
     }
 }

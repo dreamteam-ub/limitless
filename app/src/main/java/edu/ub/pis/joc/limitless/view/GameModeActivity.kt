@@ -13,18 +13,23 @@ const val MODE_INFINITY_VERSUS_COUNT = "infinity_versus_count"
 class GameModeActivity : FullScreenActivity() {
     private val TAG = "GameModeActivity"
 
+    private lateinit var backArrow: ImageButton
+    private lateinit var myMap: ImageButton
+    private lateinit var infiniteMode: ImageButton
+    private lateinit var infiniteModeVersus: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_mode)
 
 
-        val backArrow: ImageButton = findViewById(R.id.blackArrowButton)
+        backArrow = findViewById(R.id.blackArrowButton)
         backArrow.setOnClickListener {
             finish()
             backArrow.isClickable = false
         }
 
-        val myMap: ImageButton = findViewById(R.id.myMapButton)
+        myMap = findViewById(R.id.myMapButton)
         myMap.setOnClickListener {
             val intent = Intent(this, WorldSelectorActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -32,7 +37,7 @@ class GameModeActivity : FullScreenActivity() {
             myMap.isClickable = false
         }
 
-        val infiniteMode: ImageButton = findViewById(R.id.infiniteModeButton)
+        infiniteMode = findViewById(R.id.infiniteModeButton)
         infiniteMode.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra(MODE_INFINITY, true)
@@ -42,7 +47,7 @@ class GameModeActivity : FullScreenActivity() {
             infiniteMode.isClickable = false
         }
 
-        val infiniteModeVersus: ImageButton = findViewById(R.id.infiniteModeVersusButton)
+        infiniteModeVersus = findViewById(R.id.infiniteModeVersusButton)
         infiniteModeVersus.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra(MODE_INFINITY, true)
@@ -59,6 +64,13 @@ class GameModeActivity : FullScreenActivity() {
 
         val textInf: TextView = findViewById(R.id.infiniteText)
         textInf.text = getString(R.string.text_infinite)
+    }
 
+    override fun onStart() {
+        super.onStart()
+        backArrow.isClickable = true
+        myMap.isClickable = true
+        infiniteMode.isClickable = true
+        infiniteModeVersus.isClickable = true
     }
 }

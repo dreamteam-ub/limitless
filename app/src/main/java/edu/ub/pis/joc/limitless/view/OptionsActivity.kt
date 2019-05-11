@@ -38,6 +38,8 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
     private lateinit var sfxSeekBar: SeekBar
     private lateinit var musicSeekBar: SeekBar
 
+    private lateinit var optionsBackArrow: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_options)
@@ -54,7 +56,7 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         sfxSeekBar.progress = if (Data.user.sfx != null) Data.user.sfx!! else 100
         musicSeekBar.progress = if (Data.user.music != null) Data.user.music!! else 100
 
-        val optionsBackArrow: ImageButton = findViewById(R.id.ranking_back_button)
+        optionsBackArrow = findViewById(R.id.ranking_back_button)
         optionsBackArrow.setOnClickListener {
             finish()
             optionsBackArrow.isClickable = false
@@ -118,5 +120,10 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
 
     override fun updateUserInfo(user: User) {
         userName.text = user.userName
+    }
+
+    override fun onStart() {
+        super.onStart()
+        optionsBackArrow.isClickable = true
     }
 }
