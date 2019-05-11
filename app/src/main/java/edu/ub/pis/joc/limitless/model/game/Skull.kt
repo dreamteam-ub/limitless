@@ -20,6 +20,7 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
     init {
         var degrees : Float
         Log.d("SKULL WITH BEHAVIOUR", behaviour.toString())
+        Log.d("SKULL WITH BEHAVIOUR", concreteBehaviour.toString())
         when(concreteBehaviour){
             0->{
                 degrees = 0f

@@ -31,9 +31,20 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, contex
 
     var drawChild: Boolean = false
 
-    var tempsTotal = dissapearTimer
+    var timeByProjectileSet = false
+
+    var  timeByProjectile = 0
+
+    var indicador = 0
+
+    var indexProjectileCount = 0
 
     override fun update() {
+        if(!timeByProjectileSet){
+            timeByProjectile = dissapearTimer/(projectileWavesList.size+1)
+            timeByProjectileSet = true
+        }
+        Log.d("TIME BY PROJECTILE",timeByProjectile.toString())
         when (concreteBehaviour) {
             0 -> {
                 //Sinusoidal esquerra a dreta
@@ -97,6 +108,24 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, contex
             }
         }
 
+        indicador++
+        if(indicador == timeByProjectile){
+            if(indexProjectileCount == 0){
+                indicador = 0
+                projectileRelocate[0] = true
+                projectileDraw[0] = true
+            } else if (indexProjectileCount == 1) {
+                indicador = 0
+                projectileRelocate[1] = true
+                projectileDraw[1] = true
+            } else{
+                indicador = 0
+                projectileRelocate[indexProjectileCount] = true
+                projectileDraw[indexProjectileCount] = true
+                projectileDraw[indexProjectileCount-2] = false
+            }
+            indexProjectileCount++
+        }
 
         if (drawChild) {
             for (i in 0 until projectileRelocate.size) {
@@ -147,6 +176,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, contex
             canvas.drawBitmap(imageList[1], null, rect, null)
         }
         contador = (contador + 1) % 31
+
 
         if (drawChild) {
             for (i in 0 until projectileDraw.size) {

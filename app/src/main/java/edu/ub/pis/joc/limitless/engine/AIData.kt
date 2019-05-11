@@ -13,7 +13,7 @@ object AIData {
     var behaviourEye = arrayOf(12,12,12,12,13,13,13,13,30)
 
     var childDemon = arrayOf(25,25,25,25,40)
-    var childEye = arrayOf(10,10,10,10,10,10,10,10,10,10,30)
+    var childEye = arrayOf(6,6,6,7,6,6,6,7,6,6,6,7,6,6,6,7,20)
 
     val leftSpawns : Array<Array<Int>> = arrayOf(
         arrayOf(0,(Data.screenHeight*0.2).toInt()),

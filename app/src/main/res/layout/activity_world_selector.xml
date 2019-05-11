@@ -113,7 +113,7 @@
             android:layout_width="150dp"
             android:contentDescription="@string/tutorial"
             android:background="@android:color/transparent"
-            android:layout_height="50dp" app:srcCompat="@drawable/play" android:id="@+id/tutorialButton"
+            android:layout_height="50dp" app:srcCompat="@drawable/tutorial" android:id="@+id/tutorialButton"
             android:layout_marginTop="20dp" android:textAlignment="center" android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"/>
 

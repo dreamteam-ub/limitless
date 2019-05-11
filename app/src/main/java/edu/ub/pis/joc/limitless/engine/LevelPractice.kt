@@ -210,20 +210,6 @@ class LevelPractice(
                 } else if(time == 25L){
                     tmpEye = listOfEnemyCharacters[0] as Eye
                     tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
-                    listOfEnemyCharacters[0] = tmpEye
-                } else if(time == 50L){
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileRelocate[1] = true
-                    listOfEnemyCharacters[0] = tmpEye
-                }else if(time == 75L) {
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[2] = true
-                    tmpEye.projectileRelocate[2] = true
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 150L){
                     listOfEnemyCharacters.clear()
@@ -233,20 +219,6 @@ class LevelPractice(
                 }else if(time == 175L) {
                     tmpEye = listOfEnemyCharacters[0] as Eye
                     tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
-                    listOfEnemyCharacters[0] = tmpEye
-                }else if(time == 200L) {
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileRelocate[1] = true
-                    listOfEnemyCharacters[0] = tmpEye
-                }else if(time == 225L) {
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[2] = true
-                    tmpEye.projectileRelocate[2] = true
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 275L){
                     listOfEnemyCharacters.clear()
