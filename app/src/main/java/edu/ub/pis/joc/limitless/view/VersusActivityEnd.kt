@@ -72,5 +72,7 @@ class VersusActivityEnd : FullScreenActivity() {
 
     override fun onStart() {
         super.onStart()
+        retry_p2m.isClickable = true
+        menu_p2m.isClickable=true
     }
 }

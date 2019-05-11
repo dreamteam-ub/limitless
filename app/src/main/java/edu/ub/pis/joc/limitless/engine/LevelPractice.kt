@@ -6,6 +6,7 @@ import edu.ub.pis.joc.limitless.model.Data.screenHeight
 import edu.ub.pis.joc.limitless.model.Data.screenWidth
 import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.end_game
+import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import java.util.ArrayList
 
 const val FONT_CRIME_SIX = "fonts/Crimes Times Six.ttf"
@@ -25,30 +26,30 @@ class LevelPractice(
         when (levelWorld) {
             0 -> {
                 if (time == 0L) {
-                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(), 0, 100)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(), 0, 150)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.45).toInt(), 0, 100)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.45).toInt(), 0, 150)
                     listOfTmpEnemies.add(tmp)
 
                 } else if (time == 150L) {
 
-                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.8).toInt(), 0, 100)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.8).toInt(), 0, 150)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), 0, 100)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), 0, 150)
                     listOfTmpEnemies.add(tmp)
 
                 } else if (time == 300L) {
 
-                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.6).toInt(), (screenHeight * 0.2).toInt(), 0, 100)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.6).toInt(), (screenHeight * 0.2).toInt(), 0, 150)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.8).toInt(), (screenHeight * 0.4).toInt(), 0, 100)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.8).toInt(), (screenHeight * 0.4).toInt(), 0, 150)
                     listOfTmpEnemies.add(tmp)
 
                 } else if (time == 450L) {
 
-                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(), 0, 100)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(), 0, 150)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.8).toInt(), 0, 100)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.8).toInt(), 0, 150)
                     listOfTmpEnemies.add(tmp)
 
                 }else if (time == 600L) {
@@ -67,7 +68,7 @@ class LevelPractice(
             }
             1 -> {
                 if (time == 0L) {
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0), (screenHeight * 0.6).toInt(),0,90)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0), (screenHeight * 0.6).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
                 } else if (time == 100L) {
                     tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt(),1,100)
@@ -109,9 +110,9 @@ class LevelPractice(
             }
             2 -> {
                 if (time == 0L) {
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.1).toInt(),1,150)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.1).toInt(),1,100)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.1).toInt(),1,150)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.1).toInt(),1,100)
                     listOfTmpEnemies.add(tmp)
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(),0,150)
                     listOfTmpEnemies.add(tmp)
@@ -798,9 +799,15 @@ class LevelPractice(
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
                     createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 3,dissapearTimer = 100))
-                } else if (time == 300L){
+                } else if (time == 200L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.7).toInt(), 4,dissapearTimer = 100))
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.7).toInt(), -4,dissapearTimer = 100))
+                }else if (time == 350L){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.2).toInt(), 5,dissapearTimer = 100))
+                }else if (time == 500L){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.7).toInt(), -8,dissapearTimer = 100))
                 }
                 var contador : Int = 0
                 while(contador < listOfCoins.size){
@@ -812,16 +819,24 @@ class LevelPractice(
                 }
             }
             1 -> {
-                if (time == 50L) {
+                if (time == 0L) {
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 5,dissapearTimer = 120))
-                } else if (time == 220L){
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(), 5,dissapearTimer = 120),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.6).toInt(), -6,dissapearTimer = 120))
+                } else if (time == 150L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), 1,dissapearTimer = 120))
-                } else if (time == 275L){
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(), -4,dissapearTimer = 120),
+                        createCoin("Coin", (screenWidth * 0.8).toInt(), (screenHeight * 0.5).toInt(), 6,dissapearTimer = 120))
+                } else if (time == 250L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), 1,dissapearTimer = 120))
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 5,dissapearTimer = 120),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), -6,dissapearTimer = 120),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.7).toInt(), -3,dissapearTimer = 120))
+                } else if (time == 350L){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.2).toInt(),7 ,dissapearTimer = 120),
+                        createCoin("Coin", (screenWidth * 0.8).toInt(), (screenHeight * 0.65).toInt(), -4,dissapearTimer = 120))
                 }
                 var contador : Int = 0
                 while(contador < listOfCoins.size){
@@ -838,19 +853,51 @@ class LevelPractice(
                 if (time == 50L) {
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 3,dissapearTimer = 150))
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), -4,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(), 3,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.7).toInt(), 6,dissapearTimer = 150))
 
-                } else if (time == 100L){
+                } else if (time == 150L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(), 2,dissapearTimer = 150))
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 2,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.7).toInt(), -6,dissapearTimer = 150))
 
-                } else if (time == 300L){
+                } else if (time == 250L){
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(), 5,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(), -5,dissapearTimer = 150),
                         createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), 3,dissapearTimer = 150),
-                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.4).toInt(), 2,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.4).toInt(), -2,dissapearTimer = 150),
                         createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.6).toInt(), 4,dissapearTimer = 150))
+                }else if (time == 400L){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.2).toInt(), -5,dissapearTimer = 300),
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.8).toInt(), 3,dissapearTimer = 300),
+                        createCoin("Coin", (screenWidth * 0.8).toInt(), (screenHeight * 0.2).toInt(), -2,dissapearTimer = 300),
+                        createCoin("Coin", (screenWidth * 0.8).toInt(), (screenHeight * 0.8).toInt(), 4,dissapearTimer = 300))
+                }else if (time == 750L){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.8).toInt(), (screenHeight * 0.5).toInt(), 5,dissapearTimer = 150))
+                }else if (time == 850L){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.85).toInt(), 2,dissapearTimer = 150))
+                }else if (time == 950L){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 6,dissapearTimer = 150))
+                }else if (time == 1050L){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.25).toInt(), 2,dissapearTimer = 150))
+                }else if (time == 1150L){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.45).toInt(), -4,dissapearTimer = 150))
+                }else if (time == 1250L){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.8).toInt(), 8,dissapearTimer = 150))
+                }else if (time == 1450L){
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(), 2,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.8).toInt(), 2,dissapearTimer = 150))
                 }
+
                 var contador : Int = 0
                 while(contador < listOfCoins.size){
                     if(listOfCoins.get(contador).dissapearTimer == 0){
@@ -884,18 +931,33 @@ class LevelPractice(
 
             }
             4 -> {
-                if (time == 20L) {
+                if (time == 0L) {
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.4).toInt(), 3,dissapearTimer = 100))
-                }else if (time == 70L){
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 3,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), -6,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.8).toInt(), 4,dissapearTimer = 150))
+                }else if (time == 150L){
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.4).toInt(), 8,dissapearTimer = 100))
-                }else if (time == 200L){
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.3).toInt(), 8,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(), -9,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.8).toInt(), -3,dissapearTimer = 150))
+                }else if (time == 300L){
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
-                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(), 4,dissapearTimer = 100))
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(), 6,dissapearTimer = 300),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), -6,dissapearTimer = 300))
+                }else if (time == 600L){
+                    listOfCoins.clear()
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.2).toInt(), -4,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.8).toInt(), 6,dissapearTimer = 150))
+                }else if (time == 750L){
+                    listOfCoins.clear()
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(), 4,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), -6,dissapearTimer = 150))
                 }
                 var contador : Int = 0
                 while(contador < listOfCoins.size){
@@ -962,6 +1024,7 @@ class LevelPractice(
             0 -> {
                 listOfLimits.add(2)
                 listOfLimits.add(10)
+
             }
             1 -> {
                 listOfLimits.add(10)
@@ -973,15 +1036,15 @@ class LevelPractice(
             }
             3 -> {
                 listOfLimits.add(10)
-                listOfLimits.add(100)
+                listOfLimits.add(30)
             }
             4 -> {
                 listOfLimits.add(12)
-                listOfLimits.add(100)
+                listOfLimits.add(25)
             }
             5 -> {
                 listOfLimits.add(12)
-                listOfLimits.add(100)
+                listOfLimits.add(40)
             }
             6 -> {
                 listOfLimits.add(50)
@@ -1014,6 +1077,8 @@ class LevelPractice(
                 listOfLimits.add(100)
             }
         }
+
+        limits = Limits(listOfLimits[0],listOfLimits[1])
         return listOfLimits
     }
 
