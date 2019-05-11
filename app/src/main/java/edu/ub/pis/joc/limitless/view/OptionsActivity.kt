@@ -57,6 +57,7 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         val optionsBackArrow: ImageButton = findViewById(R.id.ranking_back_button)
         optionsBackArrow.setOnClickListener {
             finish()
+            optionsBackArrow.isClickable = false
         }
 
         userName = findViewById(R.id.userNameTv)
@@ -80,6 +81,7 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
             mAuth.signOut()
             mGoogleSignInClient.signOut()
             startActivity(intent)
+            logoutButton.isClickable = false
         }
 
         sfxSeekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {

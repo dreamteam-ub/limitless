@@ -21,6 +21,7 @@ class GameModeActivity : FullScreenActivity() {
         val backArrow: ImageButton = findViewById(R.id.blackArrowButton)
         backArrow.setOnClickListener {
             finish()
+            backArrow.isClickable = false
         }
 
         val myMap: ImageButton = findViewById(R.id.myMapButton)
@@ -28,6 +29,7 @@ class GameModeActivity : FullScreenActivity() {
             val intent = Intent(this, WorldSelectorActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            myMap.isClickable = false
         }
 
         val infiniteMode: ImageButton = findViewById(R.id.infiniteModeButton)
@@ -37,6 +39,7 @@ class GameModeActivity : FullScreenActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()
+            infiniteMode.isClickable = false
         }
 
         val infiniteModeVersus: ImageButton = findViewById(R.id.infiniteModeVersusButton)
@@ -48,6 +51,7 @@ class GameModeActivity : FullScreenActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()
+            infiniteModeVersus.isClickable = false
         }
 
         val textMyMap: TextView = findViewById(R.id.MyMapText)

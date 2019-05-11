@@ -103,6 +103,7 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
 
         arrowBack.setOnClickListener {
             finish()
+            arrowBack.isClickable = false
         }
 
         leftArrow.setOnClickListener {

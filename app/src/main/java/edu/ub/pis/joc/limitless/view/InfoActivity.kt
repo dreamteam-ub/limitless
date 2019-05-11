@@ -20,6 +20,7 @@ class InfoActivity : FullScreenActivity() {
         val infoBackArrow: ImageButton = findViewById(R.id.info_back_button)
         infoBackArrow.setOnClickListener {
             finish()
+            infoBackArrow.isClickable = false
         }
     }
 }

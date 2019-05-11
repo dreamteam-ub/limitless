@@ -17,24 +17,28 @@ class MenuActivity : FullScreenActivity() {
         playButton.setOnClickListener {
             val gameModeInt = Intent(this, GameModeActivity::class.java)
             startActivity(gameModeInt)
+            playButton.isClickable = false
         }
 
         val rankButton: ImageButton = findViewById(R.id.rankings_btn)
         rankButton.setOnClickListener {
             val gameModeInt = Intent(this, RankingActivity::class.java)
             startActivity(gameModeInt)
+            rankButton.isClickable = false
         }
 
         val optButton: ImageButton = findViewById(R.id.option_btn)
         optButton.setOnClickListener {
             val gameModeInt = Intent(this, OptionsActivity::class.java)
             startActivity(gameModeInt)
+            optButton.isClickable = false
         }
 
         val infoButton: ImageButton = findViewById(R.id.info_btn)
         infoButton.setOnClickListener {
             val gameModeInt = Intent(this, InfoActivity::class.java)
             startActivity(gameModeInt)
+            infoButton.isClickable = false
         }
 
     }

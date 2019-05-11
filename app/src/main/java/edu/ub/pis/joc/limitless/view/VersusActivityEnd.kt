@@ -64,6 +64,7 @@ class VersusActivityEnd : FullScreenActivity() {
             intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 0)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            retry_p2m.isClickable = false
         }
 
 

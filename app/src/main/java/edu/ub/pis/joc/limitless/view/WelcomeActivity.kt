@@ -16,7 +16,7 @@ import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.USER_NAME
 import edu.ub.pis.joc.limitless.model.User
-
+import kotlinx.android.synthetic.main.activity_welcome.*
 
 
 class WelcomeActivity : FullScreenActivity() {
@@ -26,6 +26,8 @@ class WelcomeActivity : FullScreenActivity() {
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db : FirebaseFirestore
+
+    private lateinit var setnameButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +47,7 @@ class WelcomeActivity : FullScreenActivity() {
 
         val nameField: EditText = findViewById(R.id.input_name_et)
 
-        val setnameButton: ImageButton = findViewById(R.id.setname_btn)
+        setnameButton = findViewById(R.id.setname_btn)
         setnameButton.setOnClickListener {
             if (nameField.text.isNotBlank()) {
                 db.collection(USERS).whereEqualTo(USER_NAME, nameField.text.toString()).get().addOnCompleteListener { task ->
@@ -79,6 +81,7 @@ class WelcomeActivity : FullScreenActivity() {
                 Data.user = user
                 startActivity(intent)
                 finish()
+                setnameButton.isClickable = false
             } else {
                 customToast(getString(R.string.fail_create_user),
                     Toast.LENGTH_SHORT, Gravity.TOP or

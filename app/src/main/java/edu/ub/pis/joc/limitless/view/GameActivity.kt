@@ -97,13 +97,11 @@ class GameActivity : FullScreenActivity() {
 
         if (mode) {
             worldsDiag.visibility = View.GONE
-            worldsDiag.isClickable = false
         }
 
         resumeDiag.setOnClickListener {
             surface.resumeThread()
             dialog.dismiss()
-            resumeDiag.isClickable = false
         }
 
         dialog.setOnDismissListener { resumeDiag.isClickable = true }
@@ -180,7 +178,7 @@ class GameActivity : FullScreenActivity() {
                     startActivity(intent)
                     finish()
                 } else {
-                    val intent = Intent(context, GameActivity::class.java)
+                    val intent = Intent(context, SecondPlayerVsActivity::class.java)
                     intent.putExtra(MODE_INFINITY, mode)
                     intent.putExtra(MODE_INFINITY_VERSUS, modeVersus)
                     intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 1)

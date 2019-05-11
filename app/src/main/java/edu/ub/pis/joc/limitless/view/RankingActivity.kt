@@ -95,6 +95,7 @@ class RankingActivity : FullScreenActivity(), RankingPresenter.View {
         val rankingBackArrow: ImageButton = findViewById(R.id.ranking_back_button)
         rankingBackArrow.setOnClickListener {
             finish()
+            rankingBackArrow.isClickable = false
         }
     }
 
