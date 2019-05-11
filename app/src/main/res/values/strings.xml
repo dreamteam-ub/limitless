@@ -76,5 +76,7 @@
     <string name="p2">P2</string>
     <string name="puntuation">X</string>
     <string name="player1_dead">Player 1 is Dead</string>
+    <string name="next_player">Continue Player 2</string>
+    <string name="end_tutorial">End Tutorial</string>
 
 </resources>

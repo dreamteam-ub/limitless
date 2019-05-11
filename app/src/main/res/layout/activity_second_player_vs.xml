@@ -20,7 +20,7 @@
     <ImageButton
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/menu_button"
+            android:contentDescription="@string/next_player"
             android:layout_gravity="center_horizontal"
             android:layout_width="220dp"
             android:background="@android:color/transparent"

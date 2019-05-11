@@ -127,10 +127,19 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         }
 
         playWorlds.setOnClickListener {
-            val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra(MODE_INFINITY, false)
-            startActivity(intent)
-            finish()
+            if (((Data.user.tutorial == null || Data.user.tutorial == 0) && Data.currentLvl == 0 && Data.currentWorld == 0)
+                || (Data.user.tutorial == 1 && Data.currentLvl == 0 && Data.currentWorld == 1)
+                || (Data.user.tutorial == 2 && Data.currentLvl == 0 && Data.currentWorld == 2)
+            ) {
+                val intent = Intent(this, TutorialActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                val intent = Intent(this, GameActivity::class.java)
+                intent.putExtra(MODE_INFINITY, false)
+                startActivity(intent)
+                finish()
+            }
             playWorlds.isClickable = false
         }
 
