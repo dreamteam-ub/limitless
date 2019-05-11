@@ -29,4 +29,8 @@ class SecondPlayerVsActivity : FullScreenActivity() {
         }
 
     }
+    
+    override fun onBackPressed() {
+        //does nothing
+    }
 }
