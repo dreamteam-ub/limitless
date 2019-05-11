@@ -31,8 +31,8 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
     var ai = ArtificialIntelligence()
 
     var optionsGameBorder : BitmapFactory.Options = BitmapFactory.Options()
+    var optionsPauseButton : BitmapFactory.Options = BitmapFactory.Options()
 
-    var limits: Limits? = null
 
     init {
         if (mode) {
@@ -41,14 +41,13 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         } else {
             currentLevelWorld = Data.getCurrenLevel()
             level = LevelPractice(contextEngine, listOfEnemyCharacters, listOfCoins)
-
-            limits = Limits(level.createLimits(currentLevelWorld)[0],level.createLimits(currentLevelWorld)[1])
         }
 
         Log.d("CURRENT LEVEL", currentLevelWorld.toString())
 
 
         optionsGameBorder.inSampleSize = 2
+        optionsPauseButton.inSampleSize = 2
 
 
     }
@@ -58,7 +57,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
     )
 
     var pauseButton: PauseButton =
-        PauseButton(BitmapFactory.decodeResource(contextEngine.resources, R.drawable.pause_button))
+        PauseButton(BitmapFactory.decodeResource(contextEngine.resources, R.drawable.pause_button, optionsPauseButton))
 
 
     var player: PlayerCharacter = level.buildPlayer()
@@ -67,7 +66,9 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
 
     fun update() {
             for (i in 0 until listOfEnemyCharacters.size) {
-                listOfEnemyCharacters[i].update()
+                if(listOfEnemyCharacters[i].appearTime<=gameTime) {
+                    listOfEnemyCharacters[i].update()
+                }
                 (listOfEnemyCharacters[i].characterHitsPlayer(player))
                 if (mode && (listOfEnemyCharacters[i].characterHitsPlayer(player))) {
                     if (ai.calls < 1) {
@@ -96,8 +97,14 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             }
 
             for (i in 0 until listOfCoins.size) {
-                listOfCoins[i].update()
+                if (listOfCoins[i].appearTime <= gameTime) {
+                    listOfCoins[i].update()
+                }
             }
+
+        if (mode){
+            scoreLimits = level.createLimits(-1)
+        }
         level.buildEnemies(currentLevelWorld, gameTime)
         level.buildCoins(currentLevelWorld, gameTime)
         gameTime++
@@ -111,22 +118,24 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         inGameBorder.draw(canvas)
         pauseButton.draw(canvas)
 
-        if(limits != null){
-            limits!!.draw(canvas)
-        }
+        level.limits.draw(canvas)
 
         if (!player.imageList[0].isRecycled) {
             player.draw(canvas)
         }
 
         for (i in 0 until listOfEnemyCharacters.size) {
-            listOfEnemyCharacters[i].draw(canvas)
+            if(listOfEnemyCharacters[i].appearTime <= gameTime) {
+                listOfEnemyCharacters[i].draw(canvas)
+            }
         }
         for (i in 0 until listOfCoins.size) {
             if (listOfCoins[i].imageList[0].isRecycled) {
                 listOfCoins.remove(listOfCoins[i])
             } else {
-                listOfCoins[i].draw(canvas)
+                if (listOfCoins[i].appearTime <= gameTime) {
+                    listOfCoins[i].draw(canvas)
+                }
             }
         }
     }

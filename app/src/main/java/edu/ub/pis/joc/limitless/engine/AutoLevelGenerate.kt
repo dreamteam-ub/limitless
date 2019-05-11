@@ -1,22 +1,21 @@
 package edu.ub.pis.joc.limitless.engine
 
-import android.util.Log
-import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
+import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import java.util.ArrayList
 import kotlin.random.Random
-import kotlin.random.nextInt
 
 class AutoLevelGenerate {
 
     var time = 1000L //ponemos que de 1000L en 1000L se genera un nuevo nivel
     var spawnEnemyFreq = 2 //frecuencia inicial de spàwn de enemigos : 2
     var spawnCoinFreq = 5 //frecuencia inicial de spawn de monedas
-    var limitLow = -10
-    var limitHigh = 10
     var listOfEnemies = arrayListOf(BOMB_CHAR,GHOST_CHAR,EYE_CHAR, DEMON_CHAR, SKULL_CHAR) //blackhole no aparecer //bomb
     var minTimeInGame = 200L //tiempo minimo que deberan estar los personajes en partida
     var maxTimeInGame = 500L
+    var limitLow = 50
+    var limitHigh = 100
+    var firstCall = true
     var ai = ArtificialIntelligence()
 
 
@@ -47,6 +46,37 @@ class AutoLevelGenerate {
         return listOfEnemyParams
     }
 
+    //AMb aquesta funcio podrem crear facilment els enemics de les stages preeliminars del mode infinit
+    //que faran que sigui un joc més progressiu i no tant agressiu al començament.
+
+    fun generateEnemiesInPreviousStages(str : String) : ArrayList<Any>{
+
+        var listOfEnemyParamsStage :  ArrayList<Any> = ArrayList()
+
+        val enemyString = str
+
+        val behaviour = ai.pickABehaviour(enemyString)
+
+        val coords = ai.generatePositionsForBehaviour(enemyString,behaviour)
+
+        listOfEnemyParamsStage.add(enemyString)
+        listOfEnemyParamsStage.add(coords[0])
+        listOfEnemyParamsStage.add(coords[1])
+        listOfEnemyParamsStage.add(behaviour)
+        listOfEnemyParamsStage.add((Random.nextLong(minTimeInGame,maxTimeInGame)))
+
+        if(enemyString == EYE_CHAR){
+            listOfEnemyParamsStage.add(ai.pickABehaviour(EYE_PROJECTILE))
+        } else if(enemyString == DEMON_CHAR){
+            listOfEnemyParamsStage.add(ai.pickABehaviour(DEMON_FIRE_COLUMN))
+        } else if (enemyString == SKULL_CHAR){
+            listOfEnemyParamsStage.add(behaviour)
+        }
+
+        return listOfEnemyParamsStage
+
+    }
+
     //hacemos lo mismo con las monedas
     fun generateCoins() : ArrayList<Any>{
 
@@ -64,6 +94,18 @@ class AutoLevelGenerate {
 
         return listOfCoinParams
 
+    }
+
+    fun generateAutoLimits() : ArrayList<Int>{
+        if (firstCall){
+            firstCall = false
+            return arrayListOf(limitLow,limitHigh)
+        }else{
+            limitLow -= Random.nextInt(0,6)
+            limitHigh -= Random.nextInt(0,6)
+            var lims = arrayListOf(limitLow,limitHigh)
+            return lims
+        }
     }
 
     //funcion que hará que a cada time se llame al generate para que nunca acabe la partida

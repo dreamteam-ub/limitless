@@ -10,6 +10,7 @@ import edu.ub.pis.joc.limitless.model.game.Coin
 import edu.ub.pis.joc.limitless.model.game.Enemy
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 import edu.ub.pis.joc.limitless.view.FullScreenActivity
+import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import java.util.ArrayList
 const val NIVEL_INFINITO = -1
 abstract class Level(
@@ -18,6 +19,7 @@ abstract class Level(
     var listOfCoins: ArrayList<Coin>
 ) {
 
+    lateinit var limits: Limits
 
     var characterFactory: CharacterFactory =
         CharacterFactory(contextApp)
