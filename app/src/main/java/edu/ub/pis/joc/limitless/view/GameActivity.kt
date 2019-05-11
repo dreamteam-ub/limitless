@@ -202,6 +202,37 @@ class GameActivity : FullScreenActivity() {
                 startActivity(intent)
                 finish()
             }
+        }else if(!gOverPoints){
+            if (modeVersus) {
+                if (round == 1) {
+                    val intent = Intent(context, VersusActivityEnd::class.java)
+                    intent.putExtra(MODE_INFINITY, mode)
+                    versus_survived[1] = time
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    val intent = Intent(context, SecondPlayerVsActivity::class.java)
+                    intent.putExtra(MODE_INFINITY, mode)
+                    intent.putExtra(MODE_INFINITY_VERSUS, modeVersus)
+                    intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 1)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    versus_survived[0] = time
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+                }
+            } else {
+                if (updateDb) {
+                    db.collection(USERS).document(mAuth.currentUser!!.uid).update(SURVIVED, Data.user.survived!!)
+                }
+                val intent = Intent(context, GameDeadActivity::class.java)
+                intent.putExtra(MODE_INFINITY, mode)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                startActivity(intent)
+                finish()
+            }
+
         } else {
             val intent = Intent(context, GameWonActivity::class.java)
             intent.putExtra(MODE_INFINITY, mode)

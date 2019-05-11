@@ -11,8 +11,8 @@ class Ghost(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) : Ene
     override var xVelocity: Int = 20
     override var yVelocity: Int = 20
 
-    override var h = image[0].height /8
-    override var w = image[0].width /8
+    override var h = image[0].height
+    override var w = image[0].width
 
     override var activeEnemy: Boolean = true
 

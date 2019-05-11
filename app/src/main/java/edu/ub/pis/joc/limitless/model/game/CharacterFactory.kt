@@ -28,6 +28,9 @@ class CharacterFactory(context: Context) : FactoryPattern {
     var optionsDemonFire : BitmapFactory.Options
     var optionsEyeProyec : BitmapFactory.Options
     var optionsSkullLaser : BitmapFactory.Options
+    var optionsGhost : BitmapFactory.Options
+    var optionsCharacter : BitmapFactory.Options
+    var optionsCoin : BitmapFactory.Options
 
     init {
         optionsBombs  = BitmapFactory.Options()
@@ -50,6 +53,16 @@ class CharacterFactory(context: Context) : FactoryPattern {
 
         optionsSkullLaser = BitmapFactory.Options()
         optionsSkullLaser.inSampleSize = 4
+
+        optionsGhost = BitmapFactory.Options()
+        optionsGhost.inSampleSize = 8
+
+        optionsCoin = BitmapFactory.Options()
+        optionsCoin.inSampleSize = 1
+
+        optionsCharacter = BitmapFactory.Options()
+        optionsCharacter.inSampleSize = 1
+
     }
 
 
@@ -71,15 +84,15 @@ class CharacterFactory(context: Context) : FactoryPattern {
         BitmapFactory.decodeResource(contextApp.resources, R.drawable.bomb_spawn4, optionsBombs)
     )
     val arrayImatgesGhost : ArrayList<Bitmap> = arrayListOf(
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.ghost)
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.ghost, optionsGhost)
     )
 
     val arrayImatgesPlayer : ArrayList<Bitmap> =  arrayListOf(
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.main_character)
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.main_character,optionsCharacter)
     )
 
     val arrayImatgesCoin : ArrayList<Bitmap> = arrayListOf(
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin)
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin, optionsCoin)
     )
     val arrayImatgesSkullLaser : ArrayList<Bitmap> = arrayListOf(
     BitmapFactory.decodeResource(contextApp.resources, R.drawable.beam1, optionsSkullLaser),

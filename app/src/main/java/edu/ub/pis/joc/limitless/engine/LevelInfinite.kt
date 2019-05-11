@@ -3,6 +3,7 @@ package edu.ub.pis.joc.limitless.engine
 import android.content.Context
 import android.graphics.Typeface
 import edu.ub.pis.joc.limitless.model.game.*
+import edu.ub.pis.joc.limitless.view.end_game
 import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import java.util.ArrayList
 import kotlin.random.Random
@@ -235,6 +236,7 @@ class LevelInfinite(contextApp: Context,
         listOfCoins.addAll(tmpListOfCoins)
     }
 
+
     override fun createLimits(levelWorld: Int): ArrayList<Int> {
         var limit = ArrayList<Int>()
 
@@ -243,30 +245,40 @@ class LevelInfinite(contextApp: Context,
                 0 -> {
                     limits.min = 15
                     limits.max = 50
+                    autoLvl.limitLow=15
+                    autoLvl.limitHigh=50
                     limit.add(limits.min)
                     limit.add(limits.max)
                 }
                 1 -> {
                     limits.min = 20
-                    limits.min = 65
+                    limits.max = 65
+                    autoLvl.limitLow=20
+                    autoLvl.limitHigh=65
                     limit.add(limits.min)
                     limit.add(limits.max)
                 }
                 2 -> {
                     limits.min = 10
                     limits.max = 36
+                    autoLvl.limitLow=10
+                    autoLvl.limitHigh=36
                     limit.add(limits.min)
                     limit.add(limits.max)
                 }
                 3 -> {
                     limits.min = 50
                     limits.max = 90
+                    autoLvl.limitLow=50
+                    autoLvl.limitHigh=90
                     limit.add(limits.min)
                     limit.add(limits.max)
                 }
                 4 -> {
                     limits.min = 45
                     limits.max = 90
+                    autoLvl.limitLow=45
+                    autoLvl.limitHigh=90
                     limit.add(limits.min)
                     limit.add(limits.max)
                 }
