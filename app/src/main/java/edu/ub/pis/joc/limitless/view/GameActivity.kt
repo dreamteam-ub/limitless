@@ -39,6 +39,10 @@ class GameActivity : FullScreenActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
+    private lateinit var resumeDiag: ImageButton
+    private lateinit var worldsDiag: ImageButton
+    private lateinit var menuDiag: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -91,9 +95,9 @@ class GameActivity : FullScreenActivity() {
         dialog.window!!.setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
         dialog.window!!.decorView.systemUiVisibility = window.decorView.systemUiVisibility
 
-        val resumeDiag: ImageButton = vista.findViewById(R.id.resumeButtonDiag)
-        val worldsDiag: ImageButton = vista.findViewById(R.id.worldsButtonPauseDiag)
-        val menuDiag: ImageButton = vista.findViewById(R.id.menuButtonPauseDiag)
+        resumeDiag = vista.findViewById(R.id.resumeButtonDiag)
+        worldsDiag = vista.findViewById(R.id.worldsButtonPauseDiag)
+        menuDiag = vista.findViewById(R.id.menuButtonPauseDiag)
 
         if (mode) {
             worldsDiag.visibility = View.GONE
@@ -204,5 +208,12 @@ class GameActivity : FullScreenActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        resumeDiag.isClickable = true
+        worldsDiag.isClickable = true
+        menuDiag.isClickable = true
     }
 }

@@ -17,13 +17,17 @@ class GameWonActivity : FullScreenActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
+    private lateinit var nextLevel: ImageButton
+    private lateinit var worlds: ImageButton
+    private lateinit var backToMenu: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_won)
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        val nextLevel: ImageButton = findViewById(R.id.nextlvlButton)
+        nextLevel = findViewById(R.id.nextlvlButton)
         nextLevel.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra(MODE_INFINITY,false)
@@ -59,7 +63,7 @@ class GameWonActivity : FullScreenActivity() {
             nextLevel.visibility = View.GONE
         }
 
-        val worlds: ImageButton = findViewById(R.id.worldsButton)
+        worlds = findViewById(R.id.worldsButton)
         worlds.setOnClickListener {
             val intent = Intent(this, WorldSelectorActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -68,7 +72,7 @@ class GameWonActivity : FullScreenActivity() {
             worlds.isClickable = false
         }
 
-        val backToMenu: ImageButton = findViewById(R.id.menuButton)
+        backToMenu = findViewById(R.id.menuButton)
         backToMenu.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -80,6 +84,12 @@ class GameWonActivity : FullScreenActivity() {
 
     // DESACTIVAMOS EL BACK DENTRO DEL JUEGO
     override fun onBackPressed() {
+    }
 
+    override fun onStart() {
+        super.onStart()
+        nextLevel.isClickable = true
+        worlds.isClickable = true
+        backToMenu.isClickable = true
     }
 }

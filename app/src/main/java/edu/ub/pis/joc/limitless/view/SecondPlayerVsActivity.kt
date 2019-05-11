@@ -7,6 +7,8 @@ import edu.ub.pis.joc.limitless.R
 
 class SecondPlayerVsActivity : FullScreenActivity() {
 
+    private lateinit var start_player2_btn : ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second_player_vs)
@@ -15,7 +17,7 @@ class SecondPlayerVsActivity : FullScreenActivity() {
         val versus = intent.extras!!.getBoolean(MODE_INFINITY_VERSUS)
         val round = intent.extras!!.getInt(MODE_INFINITY_VERSUS_COUNT)
 
-        val start_player2_btn : ImageButton = findViewById(R.id.player2_start_button)
+        start_player2_btn = findViewById(R.id.player2_start_button)
 
         start_player2_btn.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
@@ -32,5 +34,10 @@ class SecondPlayerVsActivity : FullScreenActivity() {
 
     override fun onBackPressed() {
         //does nothing
+    }
+
+    override fun onStart() {
+        super.onStart()
+        start_player2_btn.isClickable = false
     }
 }

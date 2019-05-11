@@ -10,13 +10,16 @@ class GameDeadActivity : FullScreenActivity() {
 
     private val TAG = "GameDeadActivity"
 
+    private lateinit var retryButton: ImageButton
+    private lateinit var worldsButton: ImageButton
+    private lateinit var menuButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_dead)
 
         val modo = intent.extras!!.getBoolean(MODE_INFINITY)
-        val retryButton: ImageButton = findViewById(R.id.retryButton_normal)
+        retryButton = findViewById(R.id.retryButton_normal)
         retryButton.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             if (modo) {
@@ -30,14 +33,12 @@ class GameDeadActivity : FullScreenActivity() {
             retryButton.isClickable = false
         }
 
-        val worldsButton: ImageButton = findViewById(R.id.dead_worldsButton)
+        worldsButton = findViewById(R.id.dead_worldsButton)
         if (modo) {
             worldsButton.visibility = View.GONE
-            worldsButton.isClickable = false
 
         } else if (!modo) {
             worldsButton.visibility = View.VISIBLE
-            worldsButton.isClickable = true
         }
 
         worldsButton.setOnClickListener {
@@ -48,7 +49,7 @@ class GameDeadActivity : FullScreenActivity() {
             worldsButton.isClickable = false
         }
 
-        val menuButton: ImageButton = findViewById(R.id.dead_menuButton)
+        menuButton = findViewById(R.id.dead_menuButton)
         menuButton.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -60,7 +61,13 @@ class GameDeadActivity : FullScreenActivity() {
 
     // DESACTIVAMOS EL BACK DENTRO DEL JUEGO
     override fun onBackPressed() {
+    }
 
+    override fun onStart() {
+        super.onStart()
+        retryButton.isClickable = true
+        worldsButton.isClickable = true
+        menuButton.isClickable = true
     }
 
 }

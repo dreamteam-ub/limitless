@@ -99,4 +99,9 @@ class WelcomeActivity : FullScreenActivity() {
         startActivity(intent)
         finish()
     }
+
+    override fun onStart() {
+        super.onStart()
+        setnameButton.isClickable = true
+    }
 }

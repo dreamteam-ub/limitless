@@ -17,6 +17,7 @@ import edu.ub.pis.joc.limitless.presenter.OptionsPresenter
 import android.widget.SeekBar
 import edu.ub.pis.joc.limitless.model.Data
 import android.widget.SeekBar.OnSeekBarChangeListener
+import kotlinx.android.synthetic.main.activity_options.*
 
 const val SFX = "sfx"
 const val MUSIC = "music"
@@ -125,5 +126,6 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
     override fun onStart() {
         super.onStart()
         optionsBackArrow.isClickable = true
+        logout_button.isClickable = true
     }
 }
