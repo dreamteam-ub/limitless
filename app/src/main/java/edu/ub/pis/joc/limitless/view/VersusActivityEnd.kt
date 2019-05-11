@@ -36,17 +36,17 @@ class VersusActivityEnd : FullScreenActivity() {
 
 
         if(puntuacio1 < puntuacio2){
-            title.text = "P2 WINS"
+            title.text = R.string.p2_wins.toString()
 
-            first_pos.text = "P2."
-            second_pos.text = "P1."
-            first_punt.text = puntuacio2.toString()
-            second_punt.text = puntuacio1.toString()
+            first_pos.text = R.string.p2.toString()
+            second_pos.text = R.string.p1.toString()
+            first_punt.text = Data.numberToMMSS(puntuacio2)
+            second_punt.text = Data.numberToMMSS(puntuacio1)
 
         }else {
 
-            first_punt.text = puntuacio1.toString()
-            second_punt.text = puntuacio2.toString()
+            first_punt.text = Data.numberToMMSS(puntuacio1)
+            second_punt.text = Data.numberToMMSS(puntuacio2)
         }
 
         menu_p2m.setOnClickListener {
@@ -68,5 +68,9 @@ class VersusActivityEnd : FullScreenActivity() {
         }
 
 
+    }
+
+    override fun onStart() {
+        super.onStart()
     }
 }
