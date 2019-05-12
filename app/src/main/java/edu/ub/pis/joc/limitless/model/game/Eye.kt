@@ -189,6 +189,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, contex
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     fun generateChildList(): ArrayList<ArrayList<EyeProjectile>> {
 
         val tmpFinal: ArrayList<ArrayList<EyeProjectile>> = ArrayList()
