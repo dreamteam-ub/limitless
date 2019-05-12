@@ -34,24 +34,31 @@ class TutorialActivity : FullScreenActivity() {
 
     fun getTutorial(world : Int) : Array<Page> {
         return when(world) {
-            0 -> {
+            WORLD1 -> {
                 arrayOf(
-                    Page(false, R.drawable.world4_select,"0"),
-                    Page(false, R.drawable.world3_select,"1"),
-                    Page(true, R.drawable.skull,"3")
+                    Page(false, R.drawable.world1_select,"0"),
+                    Page(false, R.drawable.world1_select,"1"),
+                    Page(true, R.drawable.ghost,"3")
                 )
             }
-            1 -> {
+            WORLD2 -> {
                 arrayOf(
-                    Page(false, R.drawable.world4_select,"0"),
-                    Page(false, R.drawable.world3_select,"1"),
-                    Page(true, R.drawable.skull,"3")
+                    Page(false, R.drawable.world2_select,"0"),
+                    Page(false, R.drawable.world2_select,"1"),
+                    Page(true, R.drawable.eye1,"3")
                 )
             }
-            2 -> {
+            WORLD3 -> {
+                arrayOf(
+                    Page(false, R.drawable.world3_select,"0"),
+                    Page(false, R.drawable.world3_select,"1"),
+                    Page(true, R.drawable.demon,"3")
+                )
+            }
+            WORLD4 -> {
                 arrayOf(
                     Page(false, R.drawable.world4_select,"0"),
-                    Page(false, R.drawable.world3_select,"1"),
+                    Page(false, R.drawable.world4_select,"1"),
                     Page(true, R.drawable.skull,"3")
                 )
             }
