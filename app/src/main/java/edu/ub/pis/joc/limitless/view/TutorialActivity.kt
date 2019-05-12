@@ -36,9 +36,13 @@ class TutorialActivity : FullScreenActivity() {
         return when(world) {
             WORLD1 -> {
                 arrayOf(
-                    Page(false, R.drawable.world1_select,"0"),
-                    Page(false, R.drawable.world1_select,"1"),
-                    Page(true, R.drawable.ghost,"3")
+                    Page(false, R.drawable.tutorial_w1_1,"0"),
+                    Page(false, R.drawable.tutorial_w1_2,"1"),
+                    Page(false, R.drawable.tutorial_w1_3,"2"),
+                    Page(false, R.drawable.tutorial_w1_4,"3"),
+                    Page(false, R.drawable.tutorial_w1_5,"4"),
+                    Page(false, R.drawable.tutorial_w1_6,"5"),
+                    Page(true, R.drawable.tutorial_w1_7,"6")
                 )
             }
             WORLD2 -> {

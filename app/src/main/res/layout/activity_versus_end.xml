@@ -42,12 +42,11 @@
                 android:layout_marginEnd="30dp" android:id="@+id/first_pos"/>
 
         <TextView
-                android:text="@string/puntuation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/crimes_times_six"
                 style="@style/cts_limitless_yellow" android:textSize="40sp"
-                android:textAlignment="textEnd" android:id="@+id/first_punt"/>
+                android:textAlignment="textEnd" android:id="@+id/first_punt" tools:text="X"/>
 
     </LinearLayout>
 
@@ -68,12 +67,11 @@
                 android:layout_marginEnd="30dp" android:id="@+id/second_pos"/>
 
         <TextView
-                android:text="@string/puntuation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/crimes_times_six"
                 style="@style/cts_limitless_yellow" android:textSize="40sp"
-                android:textAlignment="textEnd" android:id="@+id/second_punt"/>
+                android:textAlignment="textEnd" android:id="@+id/second_punt" tools:text="X"/>
 
     </LinearLayout>
 

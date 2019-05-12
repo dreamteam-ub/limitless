@@ -3,6 +3,7 @@ package edu.ub.pis.joc.limitless.view
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.TextView
 import edu.ub.pis.joc.limitless.R
 
 class SecondPlayerVsActivity : FullScreenActivity() {
@@ -16,6 +17,11 @@ class SecondPlayerVsActivity : FullScreenActivity() {
         val infinity = intent.extras!!.getBoolean(MODE_INFINITY)
         val versus = intent.extras!!.getBoolean(MODE_INFINITY_VERSUS)
         val round = intent.extras!!.getInt(MODE_INFINITY_VERSUS_COUNT)
+
+        if (intent.extras!!.getBoolean(LOST_GAME_NOT_DEAD)) {
+            val textLose : TextView = findViewById(R.id.player1_dead)
+            textLose.text = getString(R.string.player1_lost)
+        }
 
         start_player2_btn = findViewById(R.id.player2_start_button)
 

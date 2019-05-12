@@ -11,19 +11,20 @@
             android:cropToPadding="true"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            android:contentDescription="@string/end_tutorial" android:layout_width="200dp"
+            android:contentDescription="@string/end_tutorial" android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"
-            app:srcCompat="@color/colorBlack"/>
+            tools:srcCompat="@drawable/tutorial_w1_7"/>
 
     <ImageButton
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:contentDescription="@string/end_tutorial"
             android:layout_gravity="center_horizontal"
-            android:layout_width="220dp"
+            android:layout_width="180dp"
             android:background="@android:color/transparent"
-            android:layout_height="60dp" app:srcCompat="@drawable/menu" android:id="@+id/finish_tutorial"/>
+            android:layout_height="wrap_content" app:srcCompat="@drawable/finish_tutorial"
+            android:id="@+id/finish_tutorial"/>
 
 
 </LinearLayout>

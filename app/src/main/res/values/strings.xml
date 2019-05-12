@@ -68,15 +68,14 @@
     <string name="user_name_exist">User name already exist</string>
     <string name="fail_google_auth">Google sign in failed</string>
     <string name="survived_rank">Survived</string>
-    <string name="no_ranking">No records yet</string>
     <string name="no_records">No Records</string>
     <string name="player">Player</string>
     <string name="p1_wins">P1 WINS</string>
     <string name="p2_wins">P2 WINS</string>
     <string name="p1">P1.</string>
     <string name="p2">P2.</string>
-    <string name="puntuation">X</string>
     <string name="player1_dead">Player 1 is Dead</string>
+    <string name="player1_lost">Player 1 has lost</string>
     <string name="next_player">Continue Player 2</string>
     <string name="end_tutorial">End Tutorial</string>
     <string name="tutorial">Tutorial</string>

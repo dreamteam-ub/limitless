@@ -217,6 +217,7 @@ class GameActivity : FullScreenActivity() {
                     intent.putExtra(MODE_INFINITY, mode)
                     intent.putExtra(MODE_INFINITY_VERSUS, modeVersus)
                     intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 1)
+                    intent.putExtra(LOST_GAME_NOT_DEAD, gOverPoints)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     versus_survived[0] = time
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
