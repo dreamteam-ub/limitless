@@ -38,6 +38,6 @@ class SecondPlayerVsActivity : FullScreenActivity() {
 
     override fun onStart() {
         super.onStart()
-        start_player2_btn.isClickable = false
+        start_player2_btn.isClickable = true
     }
 }
