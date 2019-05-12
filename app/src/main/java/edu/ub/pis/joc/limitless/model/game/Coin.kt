@@ -16,7 +16,7 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
     init {
         paint.color = Color.WHITE
         paint.style = Paint.Style.FILL
-        paint.textSize = 40.0f
+        paint.textSize = 80.0f
         paint.typeface = Typeface.DEFAULT
     }
 
