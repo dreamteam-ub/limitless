@@ -161,22 +161,7 @@ class CharacterFactory(context: Context) : FactoryPattern {
         BitmapFactory.decodeResource(contextApp.resources, R.drawable.demon, optionsDemon)
     )
 
-    val arrayImatgesSkull : ArrayList<Bitmap> = arrayListOf(
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull1, optionsSkull),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull2, optionsSkull),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull3, optionsSkull),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull3_light, optionsSkull),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull4, optionsSkull),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull4_light, optionsSkull),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull5, optionsSkull),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull5_light, optionsSkull),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull6, optionsSkull),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull6_light, optionsSkull),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull7, optionsSkull),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull7_light, optionsSkull),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull8, optionsSkull),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull8_light, optionsSkull)
-    )
+
 
     val arrayImatgesEye : ArrayList<Bitmap> = arrayListOf(
         BitmapFactory.decodeResource(contextApp.resources, R.drawable.eye1, optionsEye),
@@ -243,6 +228,23 @@ class CharacterFactory(context: Context) : FactoryPattern {
             }
 
             SKULL_CHAR -> {
+
+                val arrayImatgesSkull : ArrayList<Bitmap> = arrayListOf(
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull1, optionsSkull),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull2, optionsSkull),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull3, optionsSkull),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull3_light, optionsSkull),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull4, optionsSkull),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull4_light, optionsSkull),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull5, optionsSkull),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull5_light, optionsSkull),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull6, optionsSkull),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull6_light, optionsSkull),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull7, optionsSkull),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull7_light, optionsSkull),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull8, optionsSkull),
+                    BitmapFactory.decodeResource(contextApp.resources, R.drawable.skull8_light, optionsSkull)
+                )
 
                 Skull(arrayImatgesSkull, posX, posY,childList,context,behaviour)
             }

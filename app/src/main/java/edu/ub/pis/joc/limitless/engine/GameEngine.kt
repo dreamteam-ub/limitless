@@ -107,6 +107,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             if(!(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])){
                 end_game = true
             }
+            player.accumulate = 0
             scoreLimits = level.createLimits(-1)
             Log.d("scoreLIM1", scoreLimits[0].toString())
             Log.d("scoreLIM2", scoreLimits[1].toString())
@@ -115,6 +116,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             if(!(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])){
                 end_game = true
             }
+            player.accumulate = 0
             level.newStage = false
 
 
