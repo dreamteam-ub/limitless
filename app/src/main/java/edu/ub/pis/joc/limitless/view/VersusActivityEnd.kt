@@ -36,10 +36,10 @@ class VersusActivityEnd : FullScreenActivity() {
 
 
         if(puntuacio1 < puntuacio2){
-            title.text = R.string.p2_wins.toString()
+            title.text = getString(R.string.p2_wins)
 
-            first_pos.text = R.string.p2.toString()
-            second_pos.text = R.string.p1.toString()
+            first_pos.text = getString(R.string.p2)
+            second_pos.text = getString(R.string.p1)
             first_punt.text = Data.numberToMMSS(puntuacio2)
             second_punt.text = Data.numberToMMSS(puntuacio1)
 
