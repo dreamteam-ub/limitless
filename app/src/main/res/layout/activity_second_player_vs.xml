@@ -15,7 +15,7 @@
             android:layout_gravity="center"
             android:id="@+id/player1_dead" style="@style/cts_limitless_yellow" android:textSize="40sp"
             android:maxLines="1" android:gravity="center_horizontal" android:layout_marginBottom="30dp"
-            android:text="@string/player1_dead"/>
+            android:text="@string/player1_dead" android:layout_marginTop="100dp"/>
 
     <ImageButton
             android:scaleType="fitXY"
