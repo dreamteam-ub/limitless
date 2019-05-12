@@ -166,6 +166,8 @@ class LevelPractice(
                 }else if(time == 700L){
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(),0,200)
                     listOfTmpEnemies.add(tmp)
+                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(),1,600)
+                    listOfTmpEnemies.add(tmp)
                 }else if(time == 800L){
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(),0,200)
                     listOfTmpEnemies.add(tmp)
@@ -185,6 +187,10 @@ class LevelPractice(
                     tmp=createEnemy(GHOST_CHAR, (screenWidth * 1), (screenHeight * 0.2).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
                     tmp=createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.8).toInt(),0,100)
+                    listOfTmpEnemies.add(tmp)
+                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.2).toInt(),0,100)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(),0,200)
                     listOfTmpEnemies.add(tmp)
                 }else if(time == 1500L){
                     listOfEnemyCharacters.clear()
@@ -242,27 +248,16 @@ class LevelPractice(
                 } else if(time == 25L){
                     tmpEye = listOfEnemyCharacters[0] as Eye
                     tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
                     listOfEnemyCharacters[0] = tmpEye
                 } else if(time == 50L){
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileRelocate[1] = true
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 75L) {
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[2] = true
-                    tmpEye.projectileRelocate[2] = true
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 100L) {
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[3] = true
-                    tmpEye.projectileRelocate[3] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                 }else if(time == 150L){
@@ -273,27 +268,17 @@ class LevelPractice(
                 }else if(time == 175L) {
                     tmpEye = listOfEnemyCharacters[0] as Eye
                     tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
+
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 200L) {
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileRelocate[1] = true
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 225L) {
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[2] = true
-                    tmpEye.projectileRelocate[2] = true
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 250L){
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[3] = true
-                    tmpEye.projectileRelocate[3] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                 }else if(time == 300L){
@@ -308,54 +293,32 @@ class LevelPractice(
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
                     tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
                     tmpEye2.drawChild = true
-                    tmpEye2.projectileDraw[0] = true
-                    tmpEye2.projectileRelocate[0] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 350L){
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileRelocate[1] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileRelocate[1] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 375L){
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[2] = true
-                    tmpEye.projectileRelocate[2] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileDraw[2] = true
-                    tmpEye2.projectileRelocate[2] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 400L){
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[3] = true
-                    tmpEye.projectileRelocate[3] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileDraw[3] = true
-                    tmpEye2.projectileRelocate[3] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 450L){
@@ -371,56 +334,34 @@ class LevelPractice(
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
                     tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
                     tmpEye2.drawChild = true
-                    tmpEye2.projectileDraw[0] = true
-                    tmpEye2.projectileRelocate[0] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 500L){
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileRelocate[1] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileRelocate[1] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 525L){
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[2] = true
-                    tmpEye.projectileRelocate[2] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileDraw[2] = true
-                    tmpEye2.projectileRelocate[2] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 550L){
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[3] = true
-                    tmpEye.projectileRelocate[3] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileDraw[3] = true
-                    tmpEye2.projectileRelocate[3] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 600L){
@@ -436,56 +377,34 @@ class LevelPractice(
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
                     tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
                     tmpEye2.drawChild = true
-                    tmpEye2.projectileDraw[0] = true
-                    tmpEye2.projectileRelocate[0] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 650L){
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileRelocate[1] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileRelocate[1] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 675L){
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[2] = true
-                    tmpEye.projectileRelocate[2] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileDraw[2] = true
-                    tmpEye2.projectileRelocate[2] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 700L){
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[3] = true
-                    tmpEye.projectileRelocate[3] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileDraw[3] = true
-                    tmpEye2.projectileRelocate[3] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 750L){
@@ -501,57 +420,35 @@ class LevelPractice(
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
                     tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
                     tmpEye2.drawChild = true
-                    tmpEye2.projectileDraw[0] = true
-                    tmpEye2.projectileRelocate[0] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 800L){
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileRelocate[1] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileRelocate[1] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
 
                 }else if(time == 825L){
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[2] = true
-                    tmpEye.projectileRelocate[2] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileDraw[2] = true
-                    tmpEye2.projectileRelocate[2] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 850L){
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[3] = true
-                    tmpEye.projectileRelocate[3] = true
                     listOfEnemyCharacters[0] = tmpEye
 
                     tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.projectileDraw[1] = true
-                    tmpEye2.projectileDraw[3] = true
-                    tmpEye2.projectileRelocate[3] = true
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 900L){
