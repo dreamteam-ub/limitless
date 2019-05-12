@@ -12,6 +12,7 @@ import android.widget.ImageButton
 import edu.ub.pis.joc.limitless.R
 import android.view.Gravity
 import android.view.WindowManager
+import android.widget.ImageView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -202,7 +203,7 @@ class GameActivity : FullScreenActivity() {
                 startActivity(intent)
                 finish()
             }
-        }else if(!gOverPoints){
+        } else if(gOverPoints) {
             if (modeVersus) {
                 if (round == 1) {
                     val intent = Intent(context, VersusActivityEnd::class.java)
@@ -228,6 +229,7 @@ class GameActivity : FullScreenActivity() {
                 }
                 val intent = Intent(context, GameDeadActivity::class.java)
                 intent.putExtra(MODE_INFINITY, mode)
+                intent.putExtra(LOST_GAME_NOT_DEAD, gOverPoints)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
                 finish()

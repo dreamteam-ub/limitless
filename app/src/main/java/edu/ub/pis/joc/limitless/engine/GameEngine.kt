@@ -162,7 +162,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             val time = gameTime / 30
             var updateDb = false
             val dead = player.imageList[0].isRecycled
-            val gOverPoints = player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1]
+            val gOverPoints = !(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])
             if (dead) {
                 if (mode) {
                     if (!versus) {

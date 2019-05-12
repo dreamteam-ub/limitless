@@ -4,7 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
 import edu.ub.pis.joc.limitless.R
+
+const val LOST_GAME_NOT_DEAD = "lost_game"
 
 class GameDeadActivity : FullScreenActivity() {
 
@@ -19,6 +22,12 @@ class GameDeadActivity : FullScreenActivity() {
         setContentView(R.layout.activity_game_dead)
 
         val modo = intent.extras!!.getBoolean(MODE_INFINITY)
+
+        if (intent.extras!!.getBoolean(LOST_GAME_NOT_DEAD)) {
+            val textLose : ImageView = findViewById(R.id.youDiedImg)
+            textLose.setImageDrawable(getDrawable(R.drawable.you_lost))
+        }
+
         retryButton = findViewById(R.id.retryButton_normal)
         retryButton.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
