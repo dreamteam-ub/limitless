@@ -21,7 +21,7 @@ class LevelInfinite(contextApp: Context,
 
     var infiniteStage = 0
     init {
-        limits = Limits(autoLvl.limitLow,autoLvl.limitHigh)
+        limits = Limits(autoLvl.limitLow,autoLvl.limitHigh, contextApp)
     }
     @Synchronized
     override fun buildEnemies(levelWorld: Int, time: Long) {

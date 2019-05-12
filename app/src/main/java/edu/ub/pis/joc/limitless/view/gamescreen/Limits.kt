@@ -1,11 +1,13 @@
 package edu.ub.pis.joc.limitless.view.gamescreen
 
 
+import android.content.Context
 import android.graphics.*
+import edu.ub.pis.joc.limitless.engine.FONT_CRIME_SIX
 import edu.ub.pis.joc.limitless.model.Data.screenWidth
 import edu.ub.pis.joc.limitless.model.Data.screenHeight
 
-class Limits (var min: Int, var max: Int ) {
+class Limits (var min: Int, var max: Int, context : Context) {
 
     val paint = Paint()
 
@@ -20,8 +22,8 @@ class Limits (var min: Int, var max: Int ) {
     init {
         paint.color = Color.WHITE
         paint.style = Paint.Style.FILL
-        paint.textSize = 40.0f
-        paint.typeface = Typeface.SERIF
+        paint.textSize = 100.0f
+        paint.typeface = Typeface.createFromAsset(context.assets, FONT_CRIME_SIX)
     }
 
 

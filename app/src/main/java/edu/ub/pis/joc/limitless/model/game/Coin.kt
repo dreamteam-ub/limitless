@@ -14,7 +14,7 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
     override var dissapearTimer : Int = 0
 
     init {
-        paint.color = Color.WHITE
+        paint.color = Color.YELLOW
         paint.style = Paint.Style.FILL
         paint.textSize = 80.0f
         paint.typeface = Typeface.DEFAULT
@@ -47,7 +47,9 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
         rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
 
         canvas.drawBitmap(imageList[0], null, rect, null)
-        if (value.toString().length == 1) {
+        if (value.toString().length == 1 && value > 0) {
+            canvas.drawText(value.toString(), x.toFloat() - 10f, y.toFloat() + 10f, paint)
+        }else if(value.toString().length == 1 && value < 0){
             canvas.drawText(value.toString(), x.toFloat() - 15f, y.toFloat() + 10f, paint)
         }else if (value.toString().length == 2){
             canvas.drawText(value.toString(), x.toFloat() - 20f, y.toFloat() + 10f, paint)
