@@ -25,7 +25,6 @@ class GameThread(
         val targetTime = (1000 / targetFPS).toLong()
         while (running) {
             startTime = System.nanoTime()
-            canvas = null
 
             try {
                 // locking the canvas allows us to draw on to it
@@ -41,19 +40,15 @@ class GameThread(
                         running = false
                     }
                     gameEngine.update()
-                    if (canvas != null) {
-                        gameView.draw(canvas!!)
-                    }
+                    gameView.draw(canvas)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {
-                if (canvas != null) {
-                    try {
-                        surfaceHolder.unlockCanvasAndPost(canvas)
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
+                try {
+                    surfaceHolder.unlockCanvasAndPost(canvas)
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
 
@@ -67,6 +62,6 @@ class GameThread(
     }
 
     companion object {
-        private var canvas: Canvas? = null
+        private lateinit var canvas: Canvas
     }
 }

@@ -45,7 +45,7 @@ class TutorialViewPagerAdapter(
                     if (Data.user.tutorial == null) {
                         Data.user.tutorial = 0
                     }
-                    if (Data.user.tutorial!! < 3) {
+                    if (Data.user.tutorial!! <= MAX_WORLD) {
                         Data.user.tutorial = Data.user.tutorial!! + 1
                         FirebaseFirestore.getInstance().collection(USERS)
                             .document(FirebaseAuth.getInstance().currentUser!!.uid)

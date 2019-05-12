@@ -11,9 +11,10 @@
             android:cropToPadding="true"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            android:contentDescription="@string/app_name" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/bomb_size3"
-            android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"/>
+            android:contentDescription="@string/end_tutorial" android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"
+            app:srcCompat="@color/colorBlack"/>
 
     <ImageButton
             android:scaleType="fitXY"

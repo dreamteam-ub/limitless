@@ -21,6 +21,12 @@ const val MIN_LVL_WORLD = 0
 const val LEVEL = "level"
 const val WORLD = "world"
 
+const val WORLD1 = 0
+const val WORLD2 = 1
+const val WORLD3 = 2
+const val WORLD4 = 3
+
+
 const val MANUAL_TUTORIAL = "manual_tutorial"
 
 class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View {
@@ -131,9 +137,11 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         }
 
         playWorlds.setOnClickListener {
-            if (((Data.user.tutorial == null || Data.user.tutorial == 0) && Data.currentLvl == 0 && Data.currentWorld == 0)
-                || (Data.user.tutorial == 1 && Data.currentLvl == 0 && Data.currentWorld == 1)
-                || (Data.user.tutorial == 2 && Data.currentLvl == 0 && Data.currentWorld == 2)
+            if (
+                ((Data.user.tutorial == null || Data.user.tutorial == WORLD1) && Data.currentLvl == 0 && Data.currentWorld == WORLD1)
+                || (Data.user.tutorial == WORLD2 && Data.currentLvl == 0 && Data.currentWorld == WORLD2)
+                || (Data.user.tutorial == WORLD3 && Data.currentLvl == 0 && Data.currentWorld == WORLD3)
+                || (Data.user.tutorial == WORLD4 && Data.currentLvl == 0 && Data.currentWorld == WORLD4)
             ) {
                 val intent = Intent(this, TutorialActivity::class.java)
                 startActivity(intent)
