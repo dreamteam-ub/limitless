@@ -1,6 +1,5 @@
 package edu.ub.pis.joc.limitless.engine
 
-import android.app.backup.FullBackupDataOutput
 import android.content.Context
 import android.graphics.Typeface
 import android.util.Log
@@ -9,10 +8,12 @@ import edu.ub.pis.joc.limitless.model.game.CharacterFactory
 import edu.ub.pis.joc.limitless.model.game.Coin
 import edu.ub.pis.joc.limitless.model.game.Enemy
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
-import edu.ub.pis.joc.limitless.view.FullScreenActivity
 import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import java.util.ArrayList
+
 const val NIVEL_INFINITO = -1
+const val FONT_CRIME_SIX = "fonts/Crimes Times Six.ttf"
+
 abstract class Level(
     var contextApp: Context,
     var listOfEnemyCharacters: ArrayList<Enemy>,

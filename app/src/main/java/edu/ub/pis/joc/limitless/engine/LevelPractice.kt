@@ -9,7 +9,6 @@ import edu.ub.pis.joc.limitless.view.end_game
 import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import java.util.ArrayList
 
-const val FONT_CRIME_SIX = "fonts/Crimes Times Six.ttf"
 
 class LevelPractice(
     contextApp: Context,
