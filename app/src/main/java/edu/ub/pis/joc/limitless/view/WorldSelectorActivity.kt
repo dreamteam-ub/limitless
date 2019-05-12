@@ -145,7 +145,6 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
             ) {
                 val intent = Intent(this, TutorialActivity::class.java)
                 startActivity(intent)
-                finish()
             } else {
                 val intent = Intent(this, GameActivity::class.java)
                 intent.putExtra(MODE_INFINITY, false)
@@ -159,7 +158,6 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
             val intent = Intent(this, TutorialActivity::class.java)
             intent.putExtra(MANUAL_TUTORIAL,true)
             startActivity(intent)
-            finish()
         }
 
     }
