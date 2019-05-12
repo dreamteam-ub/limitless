@@ -20,7 +20,9 @@ abstract class Level(
 ) {
 
     lateinit var limits: Limits
-
+    var newStage = false
+    var infiniteMode = false //usamos este booleano para saber si estamos en los preeliminares del Infinito
+    //o en el modo de generación automática
     var characterFactory: CharacterFactory =
         CharacterFactory(contextApp)
 

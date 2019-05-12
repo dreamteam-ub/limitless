@@ -2,6 +2,7 @@ package edu.ub.pis.joc.limitless.engine
 
 import android.content.Context
 import android.graphics.Typeface
+import android.util.Log
 import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.end_game
 import edu.ub.pis.joc.limitless.view.gamescreen.Limits
@@ -17,8 +18,7 @@ class LevelInfinite(contextApp: Context,
     var coinSpawnInf = false //con esto controlaremos cuando debe haber spawn de monedas, ya que si usamos
     //el tiempo, no será preciso porque la llamada del método de generar monedas se llama despues del de enemigos
     // en el gamEngine
-    var infiniteMode = false //usamos este booleano para saber si estamos en los preeliminares del Infinito
-                            //o en el modo de generación automática
+
     var infiniteStage = 0
     init {
         limits = Limits(autoLvl.limitLow,autoLvl.limitHigh)
@@ -47,6 +47,7 @@ class LevelInfinite(contextApp: Context,
                     }
 
                 }else if (time == 200L) { //segona stage ghosts
+                    newStage = true
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
                     infiniteStage = 1
@@ -68,6 +69,7 @@ class LevelInfinite(contextApp: Context,
 
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }else if (time == 400L) {   // Tercera stage eyes
+                    newStage = true
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
                     infiniteStage = 2
@@ -90,6 +92,7 @@ class LevelInfinite(contextApp: Context,
                     }
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }else if (time == 600L) {   // quarta stage demons
+                    newStage = true
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
                     infiniteStage = 3
@@ -112,6 +115,7 @@ class LevelInfinite(contextApp: Context,
                     }
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }else if (time == 800L) { //cinquena stage skulls
+                    newStage = true
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
                     infiniteStage = 4
@@ -132,13 +136,13 @@ class LevelInfinite(contextApp: Context,
                         listOfTmpEnemies[i].appearTime = Random.nextLong(800L, 950L)
 
                     }
+                    infiniteMode = true
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 } else if (time%autoLvl.time == 0L){
                     listOfEnemyCharacters.clear()
                     autoLvl.increaseTime()
-                    createLimits(-1)
+                    newStage = true
                     coinSpawnInf = true
-                    infiniteMode = true
                     var parameters : ArrayList<Any>
                     for (i in 0 until autoLvl.spawnEnemyFreq) {
                         parameters = autoLvl.generateEnemy()
@@ -288,6 +292,8 @@ class LevelInfinite(contextApp: Context,
             var lims = (autoLvl.generateAutoLimits())
             limits.min = lims[0]
             limits.max = lims[1]
+            Log.d("limits", lims[0].toString())
+            Log.d("limits2", lims[1].toString())
 
             return lims
         }

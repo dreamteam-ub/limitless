@@ -1,5 +1,6 @@
 package edu.ub.pis.joc.limitless.engine
 
+import android.util.Log
 import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import java.util.ArrayList
@@ -8,6 +9,7 @@ import kotlin.random.Random
 class AutoLevelGenerate {
 
     var time = 1000L //ponemos que de 1000L en 1000L se genera un nuevo nivel
+    val timeStage = 500L
     var spawnEnemyFreq = 2 //frecuencia inicial de spàwn de enemigos : 2
     var spawnCoinFreq = 5 //frecuencia inicial de spawn de monedas
     var listOfEnemies = arrayListOf(BOMB_CHAR,GHOST_CHAR,EYE_CHAR, DEMON_CHAR, SKULL_CHAR) //blackhole no aparecer //bomb
@@ -99,6 +101,8 @@ class AutoLevelGenerate {
     fun generateAutoLimits() : ArrayList<Int>{
         if (firstCall){
             firstCall = false
+            limitLow = 50
+            limitHigh = 100
             return arrayListOf(limitLow,limitHigh)
         }else{
             limitLow -= Random.nextInt(0,6)
@@ -110,7 +114,10 @@ class AutoLevelGenerate {
 
     //funcion que hará que a cada time se llame al generate para que nunca acabe la partida
     fun increaseTime(){
-        time += time
+        time += timeStage
         spawnEnemyFreq += 1
+        if(time>1000 && spawnEnemyFreq<6){
+            spawnEnemyFreq += 1
+        }
     }
 }

@@ -103,10 +103,21 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             }
         }
 
-        if (mode) {
+        if (mode && level.newStage && level.infiniteMode) {
+            if(!(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])){
+                end_game = true
+            }
             scoreLimits = level.createLimits(-1)
             Log.d("scoreLIM1", scoreLimits[0].toString())
             Log.d("scoreLIM2", scoreLimits[1].toString())
+            level.newStage = false
+        }else if(mode && level.newStage && !level.infiniteMode){
+            if(!(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])){
+                end_game = true
+            }
+            level.newStage = false
+
+
         }
             level.buildEnemies(currentLevelWorld, gameTime)
             level.buildCoins(currentLevelWorld, gameTime)
