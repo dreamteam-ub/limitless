@@ -108,28 +108,28 @@ class LevelPractice(
             }
             2 -> {
                 if (time == 0L) {
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.1).toInt(),1,100)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), 0,1,105)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.1).toInt(),1,100)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(), 0,1,105)
                     listOfTmpEnemies.add(tmp)
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(),0,150)
                     listOfTmpEnemies.add(tmp)
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.6).toInt(),0,150)
                     listOfTmpEnemies.add(tmp)
                 } else if (time == 100L) {
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt(),1,150)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), 0,1,150)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.2).toInt(),2,150)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.2).toInt(),2,160)
                     listOfTmpEnemies.add(tmp)
                 } else if (time == 200L) {
                     listOfEnemyCharacters.clear()
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.1).toInt(), 1, 150)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), 0, 1, 205)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.1).toInt(), 1, 150)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(),0, 1, 205)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.3).toInt(), 2, 150)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.3).toInt(), 2, 160)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.7).toInt(), 2, 150)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.7).toInt(), 2, 160)
                     listOfTmpEnemies.add(tmp)
 
                 }else if(time == 350L){
@@ -137,9 +137,9 @@ class LevelPractice(
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(),0,150)
                     listOfTmpEnemies.add(tmp)
 
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.4).toInt(),2,150)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.4).toInt(),2,205)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.6).toInt(),2,150)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.6).toInt(),2,205)
                     listOfTmpEnemies.add(tmp)
 
                 }else if(time == 500L){
@@ -147,28 +147,28 @@ class LevelPractice(
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(),0,150)
                     listOfTmpEnemies.add(tmp)
 
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.1).toInt(),1,150)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(), 0,1,150)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.1).toInt(),1,150)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), 0,1,150)
                     listOfTmpEnemies.add(tmp)
 
                 }else if(time == 600L){
-                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 1), (screenHeight * 0.2).toInt(),0,110)
+                    tmp=createEnemy(GHOST_CHAR, screenWidth, (screenHeight * 0.2).toInt(),0,110)
                     listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 1), (screenHeight * 0.8).toInt(),0,110)
+                    tmp=createEnemy(GHOST_CHAR, screenWidth , screenHeight,0,110)
                     listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.2).toInt(),0,110)
+                    tmp=createEnemy(GHOST_CHAR, 0, (screenHeight * 0.2).toInt(),0,110)
                     listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.8).toInt(),0,110)
+                    tmp=createEnemy(GHOST_CHAR, 0, screenHeight,0,110)
                     listOfTmpEnemies.add(tmp)
                 }else if(time == 700L){
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(),0,200)
                     listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt(),1,600)
+                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), 0,1,600)
                     listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.4).toInt(),2,600)
+                    tmp=createEnemy(GHOST_CHAR, 0, (screenHeight * 0.4).toInt(),2,600)
                     listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.6).toInt(),2,600)
+                    tmp=createEnemy(GHOST_CHAR, 0, (screenHeight * 0.6).toInt(),2,600)
                     listOfTmpEnemies.add(tmp)
                 }else if(time == 800L){
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(),0,200)
@@ -197,9 +197,6 @@ class LevelPractice(
                     }
                     contador++
                 }
-
-
-
             }
             3 -> {
                 var tmpEye:Eye
