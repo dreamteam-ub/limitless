@@ -3,7 +3,7 @@ package edu.ub.pis.joc.limitless.view.gamescreen
 
 import android.content.Context
 import android.graphics.*
-import edu.ub.pis.joc.limitless.engine.FONT_CRIME_SIX
+import edu.ub.pis.joc.limitless.engine.FONT_LIMITS
 import edu.ub.pis.joc.limitless.model.Data.screenWidth
 import edu.ub.pis.joc.limitless.model.Data.screenHeight
 
@@ -23,7 +23,7 @@ class Limits (var min: Int, var max: Int, context : Context) {
         paint.color = Color.WHITE
         paint.style = Paint.Style.FILL
         paint.textSize = 100.0f
-        paint.typeface = Typeface.createFromAsset(context.assets, FONT_CRIME_SIX)
+        paint.typeface = Typeface.createFromAsset(context.assets, FONT_LIMITS)
     }
 
 

@@ -13,6 +13,8 @@ import java.util.ArrayList
 
 const val NIVEL_INFINITO = -1
 const val FONT_CRIME_SIX = "fonts/Crimes Times Six.ttf"
+const val FONT_LIMITS = "fonts/test5.ttf"
+const val FONT_COINS = "fonts/test4.ttf"
 
 abstract class Level(
     var contextApp: Context,
@@ -32,7 +34,7 @@ abstract class Level(
         posX: Int ,
         posY: Int ,
         value: Int,
-        font: Typeface = Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX),
+        font: Typeface = Typeface.createFromAsset(contextApp.assets, FONT_COINS),
         dissapearTimer: Int
     ): Coin {
         Log.d("AÑADE MONEDA", character)

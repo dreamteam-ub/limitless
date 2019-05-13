@@ -207,7 +207,7 @@ class LevelInfinite(contextApp: Context,
                             parameters[1].toString().toInt(),
                             parameters[2].toString().toInt(),
                             Random.nextInt(createLimits(-1)[0],createLimits(-1)[1]),
-                            Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX),
+                            Typeface.createFromAsset(contextApp.assets, FONT_COINS),
                             parameters[4].toString().toInt()
                         )
 
@@ -232,7 +232,7 @@ class LevelInfinite(contextApp: Context,
                             parameters[1].toString().toInt(),
                             parameters[2].toString().toInt(),
                             parameters[3].toString().toInt(),
-                            Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX),
+                            Typeface.createFromAsset(contextApp.assets, FONT_COINS),
                             parameters[4].toString().toInt()
                         )
                         //Log.d("COINS CREATED", parameters[3].toString())
