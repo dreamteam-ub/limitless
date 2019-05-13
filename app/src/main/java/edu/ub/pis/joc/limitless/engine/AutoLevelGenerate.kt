@@ -2,7 +2,6 @@ package edu.ub.pis.joc.limitless.engine
 
 import android.util.Log
 import edu.ub.pis.joc.limitless.model.game.*
-import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import java.util.ArrayList
 import kotlin.random.Random
 
@@ -15,8 +14,8 @@ class AutoLevelGenerate {
     var listOfEnemies = arrayListOf(BOMB_CHAR,GHOST_CHAR,EYE_CHAR, DEMON_CHAR, SKULL_CHAR) //blackhole no aparecer //bomb
     var minTimeInGame = 200L //tiempo minimo que deberan estar los personajes en partida
     var maxTimeInGame = 500L
-    var limitLow = 50
-    var limitHigh = 100
+    var limitLow = -20
+    var limitHigh = 20
     var firstCall = true
     var ai = ArtificialIntelligence()
 
@@ -93,6 +92,8 @@ class AutoLevelGenerate {
         listOfCoinParams.add(coords[1])
         listOfCoinParams.add(Random.nextInt(limitLow,limitHigh))
         listOfCoinParams.add(Random.nextLong(minTimeInGame, maxTimeInGame))
+        Log.d("LIMITLOW",limitLow.toString())
+        Log.d("LIMITHIGH",limitHigh.toString())
 
         return listOfCoinParams
 
@@ -101,12 +102,12 @@ class AutoLevelGenerate {
     fun generateAutoLimits() : ArrayList<Int>{
         if (firstCall){
             firstCall = false
-            limitLow = 50
-            limitHigh = 100
+            limitLow = -20
+            limitHigh = 20
             return arrayListOf(limitLow,limitHigh)
         }else{
-            limitLow -= Random.nextInt(0,6)
-            limitHigh -= Random.nextInt(0,6)
+            limitLow += Random.nextInt(-6,6)
+            limitHigh += Random.nextInt(-6,6)
             var lims = arrayListOf(limitLow,limitHigh)
             return lims
         }
@@ -119,5 +120,6 @@ class AutoLevelGenerate {
         if(time>1000 && spawnEnemyFreq<6){
             spawnEnemyFreq += 1
         }
+        Log.d("TIME",time.toString())
     }
 }

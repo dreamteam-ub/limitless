@@ -224,7 +224,7 @@ class GameActivity : FullScreenActivity() {
                     startActivity(intent)
                     finish()
                 }
-            } else {
+            } else if (mode && !modeVersus) {
                 if (updateDb) {
                     db.collection(USERS).document(mAuth.currentUser!!.uid).update(SURVIVED, Data.user.survived!!)
                 }

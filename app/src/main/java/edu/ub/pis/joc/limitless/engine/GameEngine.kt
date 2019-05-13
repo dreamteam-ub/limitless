@@ -3,6 +3,8 @@ package edu.ub.pis.joc.limitless.engine
 
 import android.content.Context
 import android.graphics.*
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.Log
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
@@ -30,7 +32,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
     private var currentLevelWorld: Int
 
     var ai = ArtificialIntelligence()
-
+    var vibrator = contextEngine.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
     var optionsGameBorder: BitmapFactory.Options = BitmapFactory.Options()
     var optionsPauseButton: BitmapFactory.Options = BitmapFactory.Options()
 
@@ -91,6 +93,11 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         while (coinIterator < listOfCoins.size) {
             val taken: Boolean = player.takesCoin(listOfCoins[coinIterator])
             if (taken) {
+                if (android.os.Build.VERSION.SDK_INT >= 26) {
+                    vibrator.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
+                }else{
+                    vibrator.vibrate(30)
+                }
                 listOfCoins.removeAt(coinIterator)
                 coinIterator--
             }
@@ -114,10 +121,16 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             level.newStage = false
         }else if(mode && level.newStage && !level.infiniteMode){
             if(!(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])){
+                Log.d("playerACC", player.accumulate.toString())
+                Log.d("scoreLIM1", scoreLimits[0].toString())
+                Log.d("scoreLIM2", scoreLimits[1].toString())
                 end_game = true
+
+            }else {
+                player.accumulate = 0
+                scoreLimits = level.createLimits(-1)
+                level.newStage = false
             }
-            player.accumulate = 0
-            level.newStage = false
 
 
         }
@@ -173,7 +186,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
                     }
                 }
 
-            } else if (!gOverPoints && mode) {
+            } else if (gOverPoints && mode) {
                 if (time > Data.user.survived!!) {
                     Data.user.survived = time
                     updateDb = true

@@ -32,7 +32,6 @@ class LevelInfinite(contextApp: Context,
                 if (time == 0L) {   //primera stage de bombes per començar
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
-                    createLimits(-1)
                     var parameters : ArrayList<Any>
                     for (i in 0 until autoLvl.spawnEnemyFreq){
                         parameters = autoLvl.generateEnemiesInPreviousStages(BOMB_CHAR)
@@ -47,11 +46,10 @@ class LevelInfinite(contextApp: Context,
                     }
 
                 }else if (time == 200L) { //segona stage ghosts
+                    infiniteStage = 1
                     newStage = true
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
-                    infiniteStage = 1
-                    createLimits(-1)
                     var parameters : ArrayList<Any>
                     for (i in 0 until autoLvl.spawnEnemyFreq){
                         parameters = autoLvl.generateEnemiesInPreviousStages(GHOST_CHAR)
@@ -66,14 +64,12 @@ class LevelInfinite(contextApp: Context,
 
                     }
 
-
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }else if (time == 400L) {   // Tercera stage eyes
+                    infiniteStage = 2
                     newStage = true
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
-                    infiniteStage = 2
-                    createLimits(-1)
                     var parameters : ArrayList<Any>
                     for (i in 0 until autoLvl.spawnEnemyFreq){
                         parameters = autoLvl.generateEnemiesInPreviousStages(EYE_CHAR)
@@ -92,11 +88,10 @@ class LevelInfinite(contextApp: Context,
                     }
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }else if (time == 600L) {   // quarta stage demons
+                    infiniteStage = 3
                     newStage = true
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
-                    infiniteStage = 3
-                    createLimits(-1)
                     var parameters : ArrayList<Any>
                     for (i in 0 until autoLvl.spawnEnemyFreq) {
                         parameters = autoLvl.generateEnemiesInPreviousStages(DEMON_CHAR)
@@ -115,11 +110,10 @@ class LevelInfinite(contextApp: Context,
                     }
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }else if (time == 800L) { //cinquena stage skulls
+                    infiniteStage = 4
                     newStage = true
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
-                    infiniteStage = 4
-                    createLimits(-1)
                     var parameters : ArrayList<Any>
                     for (i in 0 until autoLvl.spawnEnemyFreq) {
                         parameters = autoLvl.generateEnemiesInPreviousStages(SKULL_CHAR)
@@ -136,9 +130,9 @@ class LevelInfinite(contextApp: Context,
                         listOfTmpEnemies[i].appearTime = Random.nextLong(800L, 950L)
 
                     }
-                    infiniteMode = true
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 } else if (time%autoLvl.time == 0L){
+                    infiniteMode = true
                     listOfEnemyCharacters.clear()
                     autoLvl.increaseTime()
                     newStage = true
@@ -203,7 +197,32 @@ class LevelInfinite(contextApp: Context,
         var coin : Coin
         when (levelWorld) {
             -1 -> {
-                if (time!= 0L && coinSpawnInf ) {
+                if (!infiniteMode && coinSpawnInf){
+                    listOfCoins.clear()
+                    for (j in 0 until autoLvl.spawnCoinFreq) {
+                        var parameters = autoLvl.generateCoins()
+
+                        coin = createCoin(
+                            parameters[0].toString(),
+                            parameters[1].toString().toInt(),
+                            parameters[2].toString().toInt(),
+                            Random.nextInt(createLimits(-1)[0],createLimits(-1)[1]),
+                            Typeface.createFromAsset(contextApp.assets, FONT_CRIME_SIX),
+                            parameters[4].toString().toInt()
+                        )
+
+                        //Log.d("COINS CREATED", parameters[3].toString())
+                        tmpListOfCoins.add(coin)
+                        if (time<1000) {
+                            tmpListOfCoins[j].appearTime = Random.nextLong(time, time + 200L)
+                        }
+
+                    }
+                    coinSpawnInf = false
+
+                }
+
+                else if (time!= 0L && coinSpawnInf && infiniteMode) {
                     listOfCoins.clear()
                     for (j in 0 until autoLvl.spawnCoinFreq) {
                         var parameters = autoLvl.generateCoins()
@@ -218,11 +237,8 @@ class LevelInfinite(contextApp: Context,
                         )
                         //Log.d("COINS CREATED", parameters[3].toString())
                         tmpListOfCoins.add(coin)
-                        if (time<1000) {
-                            tmpListOfCoins[j].appearTime = Random.nextLong(time, time + 200L)
-                        }else{
-                            tmpListOfCoins[j].appearTime = Random.nextLong(time, autoLvl.time-100)
-                        }
+                        tmpListOfCoins[j].appearTime = Random.nextLong(time, autoLvl.time-100)
+
 
                     }
                     coinSpawnInf = false
@@ -297,6 +313,7 @@ class LevelInfinite(contextApp: Context,
 
             return lims
         }
+        Log.d("INFstage", infiniteStage.toString())
         return limit
     }
 }
