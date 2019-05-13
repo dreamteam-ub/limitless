@@ -53,6 +53,7 @@ class TutorialViewPagerAdapter(
                     }
                 } else {
                     val intent = Intent(context, WorldSelectorActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     context.startActivity(intent)
                     (context as TutorialActivity).finish()
                 }
