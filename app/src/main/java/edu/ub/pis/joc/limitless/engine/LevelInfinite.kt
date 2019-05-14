@@ -42,10 +42,10 @@ class LevelInfinite(contextApp: Context,
                             parameters[3].toString().toInt(),
                             parameters[4].toString().toInt()
                         ))
-                        listOfTmpEnemies[i].appearTime = Random.nextLong(0L, 150L)
+                        listOfTmpEnemies[i].appearTime = Random.nextLong(0L, 250L)
                     }
 
-                }else if (time == 200L) { //segona stage ghosts
+                }else if (time == 300L) { //segona stage ghosts
                     infiniteStage = 1
                     newStage = true
                     listOfEnemyCharacters.clear()
@@ -60,12 +60,12 @@ class LevelInfinite(contextApp: Context,
                             parameters[3].toString().toInt(),
                             parameters[4].toString().toInt()
                         ))
-                        listOfTmpEnemies[i].appearTime = Random.nextLong(200L, 350L)
+                        listOfTmpEnemies[i].appearTime = Random.nextLong(300L, 450L)
 
                     }
 
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
-                }else if (time == 400L) {   // Tercera stage eyes
+                }else if (time == 500L) {   // Tercera stage eyes
                     infiniteStage = 2
                     newStage = true
                     listOfEnemyCharacters.clear()
@@ -83,11 +83,11 @@ class LevelInfinite(contextApp: Context,
                         )) as Eye
                         eye.drawChild = true
                         listOfTmpEnemies.add(eye)
-                        listOfTmpEnemies[i].appearTime = Random.nextLong(400L, 550L)
+                        listOfTmpEnemies[i].appearTime = Random.nextLong(500L, 650L)
 
                     }
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
-                }else if (time == 600L) {   // quarta stage demons
+                }else if (time == 700L) {   // quarta stage demons
                     infiniteStage = 3
                     newStage = true
                     listOfEnemyCharacters.clear()
@@ -105,11 +105,11 @@ class LevelInfinite(contextApp: Context,
                                 parameters[5].toString().toInt()
                             )
                         )
-                        listOfTmpEnemies[i].appearTime = Random.nextLong(600L, 750L)
+                        listOfTmpEnemies[i].appearTime = Random.nextLong(700L, 850L)
 
                     }
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
-                }else if (time == 800L) { //cinquena stage skulls
+                }else if (time == 900L) { //cinquena stage skulls
                     infiniteStage = 4
                     newStage = true
                     listOfEnemyCharacters.clear()
@@ -127,7 +127,7 @@ class LevelInfinite(contextApp: Context,
                                 parameters[5].toString().toInt()
                             )
                         )
-                        listOfTmpEnemies[i].appearTime = Random.nextLong(800L, 950L)
+                        listOfTmpEnemies[i].appearTime = Random.nextLong(900L, 1050L)
 
                     }
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
@@ -206,7 +206,7 @@ class LevelInfinite(contextApp: Context,
                             parameters[0].toString(),
                             parameters[1].toString().toInt(),
                             parameters[2].toString().toInt(),
-                            Random.nextInt(createLimits(-1)[0],createLimits(-1)[1]),
+                            Random.nextInt(createLimits(-1)[0]/5,createLimits(-1)[1]/5),
                             Typeface.createFromAsset(contextApp.assets, FONT_COINS),
                             parameters[4].toString().toInt()
                         )
@@ -214,7 +214,7 @@ class LevelInfinite(contextApp: Context,
                         //Log.d("COINS CREATED", parameters[3].toString())
                         tmpListOfCoins.add(coin)
                         if (time<1000) {
-                            tmpListOfCoins[j].appearTime = Random.nextLong(time, time + 200L)
+                            tmpListOfCoins[j].appearTime = Random.nextLong(time, time + 300L)
                         }
 
                     }

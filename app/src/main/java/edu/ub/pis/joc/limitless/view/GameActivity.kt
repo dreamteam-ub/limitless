@@ -234,6 +234,12 @@ class GameActivity : FullScreenActivity() {
                 if (updateDb) {
                     db.collection(USERS).document(mAuth.currentUser!!.uid).update(SURVIVED, Data.user.survived!!)
                 }
+                val intent = Intent(context, GameDeadActivity::class.java)
+                intent.putExtra(MODE_INFINITY, mode)
+                intent.putExtra(LOST_GAME_NOT_DEAD, gOverPoints)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                startActivity(intent)
+                finish()
             }else{
                 val intent = Intent(context, GameDeadActivity::class.java)
                 intent.putExtra(MODE_INFINITY, mode)

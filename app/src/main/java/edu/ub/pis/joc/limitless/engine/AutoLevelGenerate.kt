@@ -7,7 +7,7 @@ import kotlin.random.Random
 
 class AutoLevelGenerate {
 
-    var time = 1000L //ponemos que de 1000L en 1000L se genera un nuevo nivel
+    var time = 1100L //ponemos que de 1000L en 1000L se genera un nuevo nivel
     val timeStage = 500L
     var spawnEnemyFreq = 2 //frecuencia inicial de spàwn de enemigos : 2
     var spawnCoinFreq = 5 //frecuencia inicial de spawn de monedas
@@ -90,7 +90,7 @@ class AutoLevelGenerate {
         listOfCoinParams.add(entity)
         listOfCoinParams.add(coords[0])
         listOfCoinParams.add(coords[1])
-        listOfCoinParams.add(Random.nextInt(limitLow,limitHigh))
+        listOfCoinParams.add(Random.nextInt(limitLow/5,limitHigh/5))
         listOfCoinParams.add(Random.nextLong(minTimeInGame, maxTimeInGame))
         Log.d("LIMITLOW",limitLow.toString())
         Log.d("LIMITHIGH",limitHigh.toString())
