@@ -22,7 +22,7 @@ class Limits (var min: Int, var max: Int, context : Context) {
     init {
         paint.color = Color.WHITE
         paint.style = Paint.Style.FILL
-        paint.textSize = 100.0f
+        paint.textSize = 60.0f
         paint.typeface = Typeface.createFromAsset(context.assets, FONT_LIMITS)
     }
 
