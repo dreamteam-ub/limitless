@@ -30,11 +30,13 @@ class TutorialActivity : FullScreenActivity() {
             viewPager.adapter = TutorialViewPagerAdapter(this, getTutorial(Data.currentWorld), 0, Data.currentWorld, manual)
         } else {
             if (Data.user.tutorial == null || Data.user.tutorial == 0) { // tutorial mundo 1
-                viewPager.adapter = TutorialViewPagerAdapter(this, getTutorial(0), 0, 0)
+                viewPager.adapter = TutorialViewPagerAdapter(this, getTutorial(WORLD1), 0, 0)
             } else if (Data.user.tutorial == 1) { // tutorial mundo 2
-                viewPager.adapter = TutorialViewPagerAdapter(this, getTutorial(1), 0, 1)
+                viewPager.adapter = TutorialViewPagerAdapter(this, getTutorial(WORLD2), 0, 1)
             } else if (Data.user.tutorial == 2) {  // tutorial mundo 3
-                viewPager.adapter = TutorialViewPagerAdapter(this, getTutorial(2), 0, 2)
+                viewPager.adapter = TutorialViewPagerAdapter(this, getTutorial(WORLD3), 0, 2)
+            } else if(Data.user.tutorial == 3){
+                viewPager.adapter = TutorialViewPagerAdapter(this, getTutorial(WORLD4), 0, 3)
             }
         }
     }
