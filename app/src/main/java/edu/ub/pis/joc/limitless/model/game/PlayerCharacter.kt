@@ -22,7 +22,7 @@ class PlayerCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Characte
     }
 
     override fun takesCoin(coin: Coin) : Boolean {
-        if (this.rect.intersect(coin.rect)) {
+        if (this.rect.intersect(coin.rect) && coin.activeCoin) {
             accumulate += coin.value
             return true
         }

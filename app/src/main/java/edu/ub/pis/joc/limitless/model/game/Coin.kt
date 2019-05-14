@@ -55,31 +55,31 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
                 w = imageList[10].width
                 h = imageList[10].height
                 //Aparicion 1
-                canvas.drawBitmap(imageList[7], null, rect, null)
+                canvas.drawBitmap(imageList[8], null, rect, null)
             } else if (contador <= 6) {
                 //Aparicion 2
-                canvas.drawBitmap(imageList[8], null, rect, null)
+                canvas.drawBitmap(imageList[9], null, rect, null)
             } else if (contador <= 9) {
                 //Aparicion 3
-                canvas.drawBitmap(imageList[9], null, rect, null)
+                canvas.drawBitmap(imageList[10], null, rect, null)
             } else if (contador <= 12) {
                 //Aparicion 4
-                canvas.drawBitmap(imageList[10], null, rect, null)
+                canvas.drawBitmap(imageList[8], null, rect, null)
             } else if (contador <= 15) {
                 //Aparicion 2
-                canvas.drawBitmap(imageList[7], null, rect, null)
+                canvas.drawBitmap(imageList[9], null, rect, null)
             } else if (contador <= 18) {
                 //Aparicion 3
-                canvas.drawBitmap(imageList[8], null, rect, null)
+                canvas.drawBitmap(imageList[10], null, rect, null)
             } else if (contador <= 21) {
                 //Aparicion 4
-                canvas.drawBitmap(imageList[9], null, rect, null)
+                canvas.drawBitmap(imageList[8], null, rect, null)
             } else if (contador <= 24) {
                 //Aparicion 5
-                canvas.drawBitmap(imageList[10], null, rect, null)
+                canvas.drawBitmap(imageList[9], null, rect, null)
             } else if (contador <= 27) {
                 //Aparicion 2
-                canvas.drawBitmap(imageList[7], null, rect, null)
+                canvas.drawBitmap(imageList[10], null, rect, null)
             } else if (contador <= 30) {
                 //Aparicion 3
                 canvas.drawBitmap(imageList[8], null, rect, null)
