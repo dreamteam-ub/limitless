@@ -12,9 +12,8 @@ import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import java.util.ArrayList
 
 const val NIVEL_INFINITO = -1
-const val FONT_CRIME_SIX = "fonts/Crimes Times Six.ttf"
-const val FONT_LIMITS = "fonts/test5.ttf"
-const val FONT_COINS = "fonts/test4.ttf"
+const val FONT_LIMITS = "fonts/Road_Rage.otf"
+const val FONT_COINS = "fonts/Crimes_Times_Six4.ttf"
 
 abstract class Level(
     var contextApp: Context,

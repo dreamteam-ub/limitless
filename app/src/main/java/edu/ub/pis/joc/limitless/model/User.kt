@@ -4,6 +4,8 @@ import java.io.Serializable
 
 const val USER_NAME = "userName"
 const val SURVIVED = "survived"
+const val VIBRATION = "vibration"
+const val MUSIC = "music"
 
 class User : Serializable {
     var userName: String? = null
@@ -13,16 +15,16 @@ class User : Serializable {
 
     var tutorial: Int? = null
 
-    var sfx : Int? = null
+    var vibration : Boolean? = null
     var music : Int? = null
 
     constructor() {
     }
 
-    constructor(userName: String, survived: Long = 0, world: Int = 0, level : Int = 0, sfx : Int = 100, music : Int = 100, tutorial : Int = 0) {
+    constructor(userName: String, survived: Long = 0, world: Int = 0, level : Int = 0, vibration : Boolean = true, music : Int = 100, tutorial : Int = 0) {
         this.userName = userName
         this.survived = survived
-        this.sfx = sfx
+        this.vibration = vibration
         this.music = music
         this.world = world
         this.level = level

@@ -3,7 +3,9 @@ package edu.ub.pis.joc.limitless.presenter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.MUSIC
 import edu.ub.pis.joc.limitless.model.User
+import edu.ub.pis.joc.limitless.model.VIBRATION
 import edu.ub.pis.joc.limitless.view.*
 
 class OptionsPresenter(var view : OptionsPresenter.View) {
@@ -13,11 +15,14 @@ class OptionsPresenter(var view : OptionsPresenter.View) {
         view.updateUserInfo(user)
     }
 
-    fun updateSFX(value: Int) {
+    fun updateVibrate(value: Boolean) {
         val mAuth = FirebaseAuth.getInstance()
         val db = FirebaseFirestore.getInstance()
 
-        db.collection(USERS).document(mAuth.currentUser!!.uid).update(SFX, value)
+        val newVibrate = !value
+
+        db.collection(USERS).document(mAuth.currentUser!!.uid).update(VIBRATION, newVibrate)
+        view.updateVibrateButton(newVibrate)
     }
 
     fun updateMusic(value: Int) {
@@ -29,5 +34,6 @@ class OptionsPresenter(var view : OptionsPresenter.View) {
 
     interface View {
         fun updateUserInfo(user: User)
+        fun updateVibrateButton(value : Boolean)
     }
 }

@@ -34,33 +34,31 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/crimes_times_six"
             style="@style/cts_limitless_pink" android:textSize="40sp"
-            android:layout_marginBottom="20dp"/>
-    <TextView
-            android:text="@string/music"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/music_options" style="@style/cts_limitless_pink"
-            android:layout_marginStart="20dp" android:textSize="30sp"/>
+    />
     <SeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/music_seekbar"
             android:progress="100"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"/>
     <TextView
-            android:text="@string/sfx"
+            android:text="@string/vibration"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/sfx_options" style="@style/cts_limitless_pink"
-            android:layout_marginStart="20dp" android:textSize="30sp"/>
-    <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:progress="100"
-            android:id="@+id/sfx_seekbar"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="40dp"/>
+            android:layout_height="wrap_content" android:id="@+id/vibrate_options" style="@style/cts_limitless_pink"
+            android:textSize="40sp"/>
+
+    <ImageButton
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/vibration"
+            android:layout_width="110dp"
+            android:background="@android:color/transparent"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/active_vibration"
+            android:id="@+id/vibrationButton"
+            android:layout_marginTop="20dp" android:layout_marginBottom="40dp"
+            android:layout_gravity="center_horizontal"/>
+
     <ImageButton
             android:scaleType="fitXY"
             android:background="@android:color/transparent"

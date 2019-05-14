@@ -12,10 +12,10 @@ import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.GameActivity
 import edu.ub.pis.joc.limitless.view.end_game
 import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
-import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
 import java.util.*
 
+@Suppress("DEPRECATION")
 class GameEngine(private var contextEngine: Context, var mode: Boolean, var versus: Boolean) {
 
     var touched_x = 0
@@ -93,10 +93,12 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         while (coinIterator < listOfCoins.size) {
             val taken: Boolean = player.takesCoin(listOfCoins[coinIterator])
             if (taken) {
-                if (android.os.Build.VERSION.SDK_INT >= 26) {
-                    vibrator.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
-                }else{
-                    vibrator.vibrate(30)
+                if (Data.user.vibration!!) {
+                    if (android.os.Build.VERSION.SDK_INT >= 26) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
+                    } else {
+                        vibrator.vibrate(30)
+                    }
                 }
                 listOfCoins.removeAt(coinIterator)
                 coinIterator--
@@ -111,7 +113,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         }
 
         if (mode && level.newStage && level.infiniteMode) {
-            if(!(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])){
+            if (!(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])) {
                 end_game = true
             }
             player.accumulate = 0
@@ -119,14 +121,14 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             Log.d("scoreLIM1", scoreLimits[0].toString())
             Log.d("scoreLIM2", scoreLimits[1].toString())
             level.newStage = false
-        }else if(mode && level.newStage && !level.infiniteMode){
-            if(!(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])){
+        } else if (mode && level.newStage && !level.infiniteMode) {
+            if (!(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])) {
                 Log.d("playerACC", player.accumulate.toString())
                 Log.d("scoreLIM1", scoreLimits[0].toString())
                 Log.d("scoreLIM2", scoreLimits[1].toString())
                 end_game = true
 
-            }else {
+            } else {
                 player.accumulate = 0
                 scoreLimits = level.createLimits(-1)
                 level.newStage = false
@@ -134,65 +136,65 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
 
 
         }
-            level.buildEnemies(currentLevelWorld, gameTime)
-            level.buildCoins(currentLevelWorld, gameTime)
-            gameTime++
+        level.buildEnemies(currentLevelWorld, gameTime)
+        level.buildCoins(currentLevelWorld, gameTime)
+        gameTime++
 
     }
 
-        /**
-         * Everything that has to be drawn on Canvas
-         */
+    /**
+     * Everything that has to be drawn on Canvas
+     */
 
-        fun draw(canvas: Canvas) {
-            inGameBorder.draw(canvas)
-            pauseButton.draw(canvas)
+    fun draw(canvas: Canvas) {
+        inGameBorder.draw(canvas)
+        pauseButton.draw(canvas)
 
-            level.limits.draw(canvas)
+        level.limits.draw(canvas)
 
-            if (!player.imageList[0].isRecycled) {
-                player.draw(canvas)
-            }
-
-            for (i in 0 until listOfEnemyCharacters.size) {
-                if (listOfEnemyCharacters[i].appearTime <= gameTime) {
-                    listOfEnemyCharacters[i].draw(canvas)
-                }
-            }
-            for (i in 0 until listOfCoins.size) {
-                if (listOfCoins[i].imageList[0].isRecycled) {
-                    listOfCoins.remove(listOfCoins[i])
-                } else {
-                    if (listOfCoins[i].appearTime <= gameTime) {
-                        listOfCoins[i].draw(canvas)
-                    }
-                }
-            }
+        if (!player.imageList[0].isRecycled) {
+            player.draw(canvas)
         }
 
-        fun endGame() {
-            val activity = (contextEngine as GameActivity)
-            val time = gameTime / 30
-            var updateDb = false
-            val dead = player.imageList[0].isRecycled
-            val gOverPoints = !(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])
-            if (dead) {
-                if (mode) {
-                    if (!versus) {
-                        if (time > Data.user.survived!!) {
-                            Data.user.survived = time
-                            updateDb = true
-                        }
-                    }
-                }
-
-            } else if (gOverPoints && mode) {
-                if (time > Data.user.survived!!) {
-                    Data.user.survived = time
-                    updateDb = true
+        for (i in 0 until listOfEnemyCharacters.size) {
+            if (listOfEnemyCharacters[i].appearTime <= gameTime) {
+                listOfEnemyCharacters[i].draw(canvas)
+            }
+        }
+        for (i in 0 until listOfCoins.size) {
+            if (listOfCoins[i].imageList[0].isRecycled) {
+                listOfCoins.remove(listOfCoins[i])
+            } else {
+                if (listOfCoins[i].appearTime <= gameTime) {
+                    listOfCoins[i].draw(canvas)
                 }
             }
-            activity.onEndGame(contextEngine, updateDb, time, dead, gOverPoints)
-
         }
     }
+
+    fun endGame() {
+        val activity = (contextEngine as GameActivity)
+        val time = gameTime / 30
+        var updateDb = false
+        val dead = player.imageList[0].isRecycled
+        val gOverPoints = !(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])
+        if (dead) {
+            if (mode) {
+                if (!versus) {
+                    if (time > Data.user.survived!!) {
+                        Data.user.survived = time
+                        updateDb = true
+                    }
+                }
+            }
+
+        } else if (gOverPoints && mode) {
+            if (time > Data.user.survived!!) {
+                Data.user.survived = time
+                updateDb = true
+            }
+        }
+        activity.onEndGame(contextEngine, updateDb, time, dead, gOverPoints)
+
+    }
+}

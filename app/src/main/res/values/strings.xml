@@ -30,18 +30,16 @@
     <string name="ranking_lines">-----------------------</string>
     <string name="info_version">VERSION</string>
     <string name="developers">DEVELOPERS</string>
-    <string name="detail_developers1">Aaron Calvo</string>
-    <string name="detail_developers2">Pau Calvo</string>
-    <string name="detail_developers3">Arnau Calvo</string>
-    <string name="detail_developers4">Manu Calvo</string>
+    <string name="detail_developers1">Aaron Peruga</string>
+    <string name="detail_developers2">Pau Bernabe</string>
+    <string name="detail_developers3">Arnau Rovira</string>
+    <string name="detail_developers4">Manuel Martinez</string>
     <string name="music_rights">MUSIC RIGHTS</string>
-    <string name="volume">VOLUME</string>
-    <string name="detail_music_rights">Cepeda Calvísimo</string>
+    <string name="volume">MUSIC VOLUME</string>
+    <string name="detail_music_rights">TODO</string>
     <string name="text_mymap">- Learn step by step\n- Short stages</string>
     <string name="text_infinite">- Any number of bosses\n- Go until you die</string>
     <string name="text_versus">- Play against a friend\n- Who lasts longer wins</string>
-    <string name="music">MUSIC</string>
-    <string name="sfx">SFX</string>
     <string name="youDiedheart">BROKEN HEART</string>
     <string name="retry_level">RETRY</string>
     <string name="change_left">LEFT</string>
@@ -80,5 +78,7 @@
     <string name="end_tutorial">End Tutorial</string>
     <string name="tutorial">Tutorial</string>
     <string name="swipe_tutorial">Swipe to Continue</string>
+    <string name="vibration">VIBRATION</string>
+    <string name="easter_egg_menu">This ain\'t a button\nEres calvisimo</string>
 
 </resources>

@@ -66,9 +66,7 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
                 Log.w(TAG, "Google sign in failed", e)
                 customToast(
                     getString(R.string.fail_google_auth),
-                    Toast.LENGTH_SHORT, Gravity.TOP or
-                            Gravity.FILL_HORIZONTAL, 0, 200
-                ).show()
+                    Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL,0,100).show()
                 setAuth(null)
             }
         }
@@ -89,9 +87,7 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                     customToast(
                         getString(R.string.fail_auth),
-                        Toast.LENGTH_SHORT, Gravity.TOP or
-                                Gravity.FILL_HORIZONTAL, 0, 200
-                    ).show()
+                        Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL,0,100).show()
                     mGoogleSignInClient.revokeAccess().addOnCompleteListener {
                         setAuth(null)
                     }
@@ -118,9 +114,7 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
                         Log.d(TAG, "User document: " + doc.data!!)
                         customImageToast(
                             R.drawable.world4_select, getString(R.string.ok_auth) + "\n" + doc.data!![USER_NAME],
-                            Toast.LENGTH_SHORT, Gravity.TOP or
-                                    Gravity.FILL_HORIZONTAL, 0, 200
-                        ).show()
+                            Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL,0,100).show()
                         val myUser = doc.toObject(User::class.java)!!
                         Data.user = myUser
                     } else {
@@ -132,9 +126,7 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
                 } else {
                     customImageToast(
                         R.drawable.world4_select, getString(R.string.imp_create_user),
-                        Toast.LENGTH_SHORT, Gravity.TOP or
-                                Gravity.FILL_HORIZONTAL, 0, 200
-                    ).show()
+                        Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL,0,100).show()
                     supportFragmentManager.beginTransaction().replace(R.id.fragment_login, LoginSignFragment()).commit()
                 }
             }

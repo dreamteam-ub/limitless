@@ -76,16 +76,14 @@ class WelcomeActivity : FullScreenActivity() {
                 val intent = Intent(this, MenuActivity::class.java)
                 customImageToast(
                     R.drawable.world4_select, getString(R.string.user_created),
-                    Toast.LENGTH_SHORT, Gravity.TOP or
-                            Gravity.FILL_HORIZONTAL,0,200).show()
+                    Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL,0,100).show()
                 Data.user = user
                 startActivity(intent)
                 finish()
                 setnameButton.isClickable = false
             } else {
                 customToast(getString(R.string.fail_create_user),
-                    Toast.LENGTH_SHORT, Gravity.TOP or
-                            Gravity.FILL_HORIZONTAL,0,200).show()
+                    Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL,0,100).show()
             }
         }
     }

@@ -19,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.Data.versus_survived
 import edu.ub.pis.joc.limitless.model.SURVIVED
+import edu.ub.pis.joc.limitless.model.VIBRATION
 
 var end_game = false
 
@@ -49,6 +50,11 @@ class GameActivity : FullScreenActivity() {
 
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+
+        if (Data.user.vibration == null) {
+            Data.user.vibration = true
+            db.collection(USERS).document(mAuth.currentUser!!.uid).update(VIBRATION, Data.user.vibration)
+        }
 
         end_game = false
 

@@ -17,10 +17,8 @@ import edu.ub.pis.joc.limitless.presenter.OptionsPresenter
 import android.widget.SeekBar
 import edu.ub.pis.joc.limitless.model.Data
 import android.widget.SeekBar.OnSeekBarChangeListener
+import edu.ub.pis.joc.limitless.model.VIBRATION
 import kotlinx.android.synthetic.main.activity_options.*
-
-const val SFX = "sfx"
-const val MUSIC = "music"
 
 class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
 
@@ -36,7 +34,7 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
 
     private lateinit var userName : TextView
 
-    private lateinit var sfxSeekBar: SeekBar
+    private lateinit var vibrateButton: ImageButton
     private lateinit var musicSeekBar: SeekBar
 
     private lateinit var optionsBackArrow: ImageButton
@@ -51,10 +49,20 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        sfxSeekBar = findViewById(R.id.sfx_seekbar)
+        vibrateButton = findViewById(R.id.vibrationButton)
         musicSeekBar = findViewById(R.id.music_seekbar)
 
-        sfxSeekBar.progress = if (Data.user.sfx != null) Data.user.sfx!! else 100
+        if (Data.user.vibration == null) {
+            Data.user.vibration = true
+            db.collection(USERS).document(mAuth.currentUser!!.uid).update(VIBRATION, Data.user.vibration)
+        }
+
+        if (Data.user.vibration!!) {
+            vibrateButton.setImageResource(R.drawable.active_vibration)
+        } else {
+            vibrateButton.setImageResource(R.drawable.no_vibration)
+        }
+
         musicSeekBar.progress = if (Data.user.music != null) Data.user.music!! else 100
 
         optionsBackArrow = findViewById(R.id.ranking_back_button)
@@ -87,18 +95,9 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
             logoutButton.isClickable = false
         }
 
-        sfxSeekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
-
-            override fun onStopTrackingTouch(seekBar: SeekBar) {
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar) {
-            }
-
-            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                presenter.updateSFX(sfxSeekBar.progress)
-            }
-        })
+        vibrateButton.setOnClickListener {
+            presenter.updateVibrate(Data.user.vibration!!)
+        }
 
         musicSeekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
 
@@ -121,6 +120,14 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
 
     override fun updateUserInfo(user: User) {
         userName.text = user.userName
+    }
+
+    override fun updateVibrateButton(value: Boolean) {
+        if (value) {
+            vibrateButton.setImageResource(R.drawable.active_vibration)
+        } else {
+            vibrateButton.setImageResource(R.drawable.no_vibration)
+        }
     }
 
     override fun onStart() {
