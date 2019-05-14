@@ -14,7 +14,7 @@
             android:contentDescription="@string/end_tutorial" android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"
-            tools:srcCompat="@drawable/tutorial_w1_7"/>
+            tools:srcCompat="@drawable/tutorial_w1_4"/>
 
     <ImageButton
             android:scaleType="fitXY"

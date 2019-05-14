@@ -15,10 +15,11 @@ class Bomb(
 
     override var activeEnemy: Boolean = false
     private var firstDraw : Boolean = true
+    var contador: Int = 0
 
     override var concreteBehaviour = behaviour
 
-    var contador: Int = 0
+
 
 
 

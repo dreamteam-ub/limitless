@@ -92,8 +92,18 @@ class CharacterFactory(context: Context) : FactoryPattern {
     )
 
     val arrayImatgesCoin : ArrayList<Bitmap> = arrayListOf(
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin, optionsCoin)
-    )
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_size6, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_size5, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_size4, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_size3, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_size2, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_size1, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn1, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn2, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn3, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn4, optionsCoin)
+        )
     val arrayImatgesSkullLaser : ArrayList<Bitmap> = arrayListOf(
     BitmapFactory.decodeResource(contextApp.resources, R.drawable.beam1, optionsSkullLaser),
     BitmapFactory.decodeResource(contextApp.resources, R.drawable.beam1_light, optionsSkullLaser),
