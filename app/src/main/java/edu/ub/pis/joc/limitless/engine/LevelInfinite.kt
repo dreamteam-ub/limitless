@@ -34,14 +34,26 @@ class LevelInfinite(contextApp: Context,
                     coinSpawnInf = true
                     var parameters : ArrayList<Any>
                     for (i in 0 until autoLvl.spawnEnemyFreq){
+                        var enemy : Enemy
                         parameters = autoLvl.generateEnemiesInPreviousStages(BOMB_CHAR)
-                        listOfTmpEnemies.add(createEnemy(
+                        enemy = (createEnemy(
                             parameters[0].toString(),
                             parameters[1].toString().toInt(),
                             parameters[2].toString().toInt(),
                             parameters[3].toString().toInt(),
                             parameters[4].toString().toInt()
                         ))
+                        if (autoLvl.reallocateBombs(listOfTmpEnemies,enemy)){
+                            parameters = autoLvl.generateEnemiesInPreviousStages(BOMB_CHAR)
+                            enemy = (createEnemy(
+                                parameters[0].toString(),
+                                parameters[1].toString().toInt(),
+                                parameters[2].toString().toInt(),
+                                parameters[3].toString().toInt(),
+                                parameters[4].toString().toInt()
+                            ))
+                        }
+                        listOfTmpEnemies.add(enemy)
                         listOfTmpEnemies[i].appearTime = Random.nextLong(0L, 250L)
                     }
 
@@ -65,7 +77,7 @@ class LevelInfinite(contextApp: Context,
                     }
 
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
-                }else if (time == 500L) {   // Tercera stage eyes
+                }else if (time == 600L) {   // Tercera stage eyes
                     infiniteStage = 2
                     newStage = true
                     listOfEnemyCharacters.clear()
@@ -83,11 +95,11 @@ class LevelInfinite(contextApp: Context,
                         )) as Eye
                         eye.drawChild = true
                         listOfTmpEnemies.add(eye)
-                        listOfTmpEnemies[i].appearTime = Random.nextLong(500L, 650L)
+                        listOfTmpEnemies[i].appearTime = Random.nextLong(600L, 850L)
 
                     }
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
-                }else if (time == 700L) {   // quarta stage demons
+                }else if (time == 900L) {   // quarta stage demons
                     infiniteStage = 3
                     newStage = true
                     listOfEnemyCharacters.clear()
@@ -105,11 +117,11 @@ class LevelInfinite(contextApp: Context,
                                 parameters[5].toString().toInt()
                             )
                         )
-                        listOfTmpEnemies[i].appearTime = Random.nextLong(700L, 850L)
+                        listOfTmpEnemies[i].appearTime = Random.nextLong(900L, 1150L)
 
                     }
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
-                }else if (time == 900L) { //cinquena stage skulls
+                }else if (time == 1200L) { //cinquena stage skulls
                     infiniteStage = 4
                     newStage = true
                     listOfEnemyCharacters.clear()
@@ -127,7 +139,7 @@ class LevelInfinite(contextApp: Context,
                                 parameters[5].toString().toInt()
                             )
                         )
-                        listOfTmpEnemies[i].appearTime = Random.nextLong(900L, 1050L)
+                        listOfTmpEnemies[i].appearTime = Random.nextLong(1200L, 1450L)
 
                     }
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
@@ -141,13 +153,25 @@ class LevelInfinite(contextApp: Context,
                     for (i in 0 until autoLvl.spawnEnemyFreq) {
                         parameters = autoLvl.generateEnemy()
                         if(parameters.size == 5){
-                            listOfTmpEnemies.add(createEnemy(
+                            var enemy : Enemy
+                            enemy=(createEnemy(
                                 parameters[0].toString(),
                                 parameters[1].toString().toInt(),
                                 parameters[2].toString().toInt(),
                                 parameters[3].toString().toInt(),
                                 parameters[4].toString().toInt()
                             ))
+                            if (autoLvl.reallocateBombs(listOfTmpEnemies,enemy)){
+                                parameters = autoLvl.generateEnemiesInPreviousStages(BOMB_CHAR)
+                                enemy = (createEnemy(
+                                    parameters[0].toString(),
+                                    parameters[1].toString().toInt(),
+                                    parameters[2].toString().toInt(),
+                                    parameters[3].toString().toInt(),
+                                    parameters[4].toString().toInt()
+                                ))
+                            }
+                            listOfTmpEnemies.add(enemy)
                         } else if(parameters[0].toString()== EYE_CHAR) {
                             var eye : Eye = (createComplexEnemy(
                                 parameters[0].toString(),
@@ -206,15 +230,29 @@ class LevelInfinite(contextApp: Context,
                             parameters[0].toString(),
                             parameters[1].toString().toInt(),
                             parameters[2].toString().toInt(),
-                            Random.nextInt(createLimits(-1)[0]/5,createLimits(-1)[1]/5),
+                            Random.nextInt(-createLimits(-1)[0]/3,createLimits(-1)[1]/3),
                             Typeface.createFromAsset(contextApp.assets, FONT_COINS),
                             parameters[4].toString().toInt()
                         )
 
                         //Log.d("COINS CREATED", parameters[3].toString())
+                        if (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
+                            var parameters = autoLvl.generateCoins()
+                            coin = createCoin(
+                                parameters[0].toString(),
+                                parameters[1].toString().toInt(),
+                                parameters[2].toString().toInt(),
+                                Random.nextInt(-createLimits(-1)[0]/3,createLimits(-1)[1]/3),
+                                Typeface.createFromAsset(contextApp.assets, FONT_COINS),
+                                parameters[4].toString().toInt()
+                            )
+                            Log.d("REALLOCATE","REALLOCATION COIN")
+                        }
                         tmpListOfCoins.add(coin)
+
+
                         if (time<1000) {
-                            tmpListOfCoins[j].appearTime = Random.nextLong(time, time + 300L)
+                            tmpListOfCoins[j].appearTime = Random.nextLong(time, time +150L)
                         }
 
                     }
@@ -236,6 +274,18 @@ class LevelInfinite(contextApp: Context,
                             parameters[4].toString().toInt()
                         )
                         //Log.d("COINS CREATED", parameters[3].toString())
+                        if (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
+                            var parameters = autoLvl.generateCoins()
+                            coin = createCoin(
+                                parameters[0].toString(),
+                                parameters[1].toString().toInt(),
+                                parameters[2].toString().toInt(),
+                                parameters[3].toString().toInt(),
+                                Typeface.createFromAsset(contextApp.assets, FONT_COINS),
+                                parameters[4].toString().toInt()
+                            )
+                            Log.d("REALLOCATE","REALLOCATION COIN")
+                        }
                         tmpListOfCoins.add(coin)
                         tmpListOfCoins[j].appearTime = Random.nextLong(time, autoLvl.time-100)
 
