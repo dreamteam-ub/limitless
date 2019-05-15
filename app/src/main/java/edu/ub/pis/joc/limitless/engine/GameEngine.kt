@@ -114,9 +114,9 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
 
         if (mode && level.newStage && level.infiniteMode) {
             if (!(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])) {
+                Log.d("playerACC", player.accumulate.toString())
                 end_game = true
             }
-            player.accumulate = 0
             scoreLimits = level.createLimits(-1)
             Log.d("scoreLIM1", scoreLimits[0].toString())
             Log.d("scoreLIM2", scoreLimits[1].toString())
@@ -129,7 +129,6 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
                 end_game = true
 
             } else {
-                player.accumulate = 0
                 scoreLimits = level.createLimits(-1)
                 level.newStage = false
             }

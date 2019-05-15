@@ -4,8 +4,8 @@ import android.graphics.*
 
 class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), ObjectsInGameInterface {
 
-    override var h = image[0].height
-    override var w = image[0].width
+    override var h = image[0].height/9
+    override var w = image[0].width/9
 
     val paint = Paint()
 
@@ -20,7 +20,6 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
     init {
         paint.color = Color.YELLOW
         paint.style = Paint.Style.FILL
-        paint.textSize = 60.0f
         paint.typeface = Typeface.DEFAULT
     }
 
@@ -51,97 +50,126 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
         rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
 
         if(firstDraw){
-            if (contador <= 3) {
-                w = imageList[10].width
-                h = imageList[10].height
-                //Aparicion 1
-                canvas.drawBitmap(imageList[8], null, rect, null)
-            } else if (contador <= 6) {
-                //Aparicion 2
-                canvas.drawBitmap(imageList[9], null, rect, null)
-            } else if (contador <= 9) {
-                //Aparicion 3
-                canvas.drawBitmap(imageList[10], null, rect, null)
-            } else if (contador <= 12) {
-                //Aparicion 4
-                canvas.drawBitmap(imageList[8], null, rect, null)
-            } else if (contador <= 15) {
-                //Aparicion 2
-                canvas.drawBitmap(imageList[9], null, rect, null)
-            } else if (contador <= 18) {
-                //Aparicion 3
-                canvas.drawBitmap(imageList[10], null, rect, null)
-            } else if (contador <= 21) {
-                //Aparicion 4
-                canvas.drawBitmap(imageList[8], null, rect, null)
-            } else if (contador <= 24) {
-                //Aparicion 5
-                canvas.drawBitmap(imageList[9], null, rect, null)
-            } else if (contador <= 27) {
-                //Aparicion 2
-                canvas.drawBitmap(imageList[10], null, rect, null)
-            } else if (contador <= 30) {
-                //Aparicion 3
-                canvas.drawBitmap(imageList[8], null, rect, null)
-            } else if (contador <= 33) {
-                //Aparicion 4
-                canvas.drawBitmap(imageList[9], null, rect, null)
-            } else if (contador <= 36) {
-                //Aparicion 5
-                canvas.drawBitmap(imageList[10], null, rect, null)
-            } else if (contador <= 39) {
-                w = imageList[0].width/16
-                h = imageList[0].height/16
-                rect.set(x - w/2, y - h/2, x + w/2, y + h/2)
-                //Aparicion 5
+            if (contador <= 2) {
+                w = imageList[0].width/9
+                h = imageList[0].height/9
                 canvas.drawBitmap(imageList[0], null, rect, null)
-            } else if (contador <= 42) {
-                w = imageList[1].width
-                h = imageList[1].height
-                //Ultima animacion aparicion
+            } else if (contador <= 4) {
+                w = imageList[1].width/9
+                h = imageList[1].height/9
                 canvas.drawBitmap(imageList[1], null, rect, null)
-            }else if (contador <= 45) {
-                w = imageList[2].width
-                h = imageList[2].height
-                //Ultima animacion aparicion
+            }else if (contador <= 6) {
+                w = imageList[2].width/9
+                h = imageList[2].height/9
                 canvas.drawBitmap(imageList[2], null, rect, null)
-            }else if (contador <= 48) {
-                w = imageList[3].width
-                h = imageList[3].height
-                //Ultima animacion aparicion
+            }else if (contador <= 8) {
+                w = imageList[3].width/9
+                h = imageList[3].height/9
                 canvas.drawBitmap(imageList[3], null, rect, null)
-            }else if (contador <= 51) {
-                w = imageList[4].width
-                h = imageList[4].height
-                //Ultima animacion aparicion
+            }else if (contador <= 10) {
+                w = imageList[4].width/9
+                h = imageList[4].height/9
                 canvas.drawBitmap(imageList[4], null, rect, null)
-            }else if (contador <= 54) {
-                w = imageList[5].width
-                h = imageList[5].height
-                //Ultima animacion aparicion
+            }else if (contador <= 12) {
+                w = imageList[5].width/9
+                h = imageList[5].height/9
                 canvas.drawBitmap(imageList[5], null, rect, null)
+            } else if (contador <= 14) {
+                w = imageList[6].width/9
+                h = imageList[6].height/9
+                canvas.drawBitmap(imageList[6], null, rect, null)
+            } else if (contador <= 16) {
+                w = imageList[7].width/9
+                h = imageList[7].height/9
+                canvas.drawBitmap(imageList[7], null, rect, null)
+            } else if (contador <= 18) {
+                w = imageList[8].width/9
+                h = imageList[8].height/9
+                canvas.drawBitmap(imageList[8], null, rect, null)
+            } else if (contador <= 20) {
+                w = imageList[9].width/9
+                h = imageList[9].height/9
+                canvas.drawBitmap(imageList[9], null, rect, null)
+            } else if (contador <= 22) {
+                w = imageList[10].width/9
+                h = imageList[10].height/9
+                canvas.drawBitmap(imageList[10], null, rect, null)
+            } else if (contador <= 24) {
+                w = imageList[11].width/9
+                h = imageList[11].height/9
+                canvas.drawBitmap(imageList[11], null, rect, null)
+            } else if (contador <= 26) {
+                w = imageList[12].width/9
+                h = imageList[12].height/9
+                canvas.drawBitmap(imageList[12], null, rect, null)
+            } else if (contador <= 28) {
+                w = imageList[13].width/9
+                h = imageList[13].height/9
+                canvas.drawBitmap(imageList[13], null, rect, null)
+            } else if (contador <= 30) {
+                w = imageList[14].width/9
+                h = imageList[14].height/9
+                canvas.drawBitmap(imageList[14], null, rect, null)
+            } else if (contador <= 32) {
+                w = imageList[15].width/9
+                h = imageList[15].height/9
+                canvas.drawBitmap(imageList[15], null, rect, null)
+            } else if (contador <= 34) {
+                w = imageList[14].width/9
+                h = imageList[14].height/9
+                canvas.drawBitmap(imageList[14], null, rect, null)
+            } else if (contador <= 36) {
+                w = imageList[13].width/9
+                h = imageList[13].height/9
+                canvas.drawBitmap(imageList[13], null, rect, null)
+            }else if (contador <= 38) {
+                w = imageList[12].width/9
+                h = imageList[12].height/9
+                canvas.drawBitmap(imageList[12], null, rect, null)
+            } else if (contador <= 40) {
+                w = imageList[11].width/9
+                h = imageList[11].height/9
+                canvas.drawBitmap(imageList[11], null, rect, null)
+            } else if (contador <= 42) {
+                w = imageList[10].width/9
+                h = imageList[10].height/9
+                canvas.drawBitmap(imageList[10], null, rect, null)
+            } else if (contador <= 44) {
+                w = imageList[9].width/9
+                h = imageList[9].height/9
+                canvas.drawBitmap(imageList[9], null, rect, null)
+            } else if (contador <= 46) {
+                w = imageList[8].width/9
+                h = imageList[8].height/9
+                canvas.drawBitmap(imageList[8], null, rect, null)
+            }else if (contador <= 48) {
+                w = imageList[7].width/9
+                h = imageList[7].height/9
+                canvas.drawBitmap(imageList[7], null, rect, null)
             }
             contador = (contador+1)
-            if(contador == 55){
+            if(contador == 49){
                 firstDraw = false
                 contador = 0
-                w = imageList[6].width
-                h = imageList[6].height
                 activeCoin=true
             }
         } else {
             canvas.drawBitmap(imageList[6], null, rect, null)
 
             if (value.toString().length == 1 && value >= 0) { //positius 1 xifra
+                paint.textSize = 60.0f
                 canvas.drawText(value.toString(), x.toFloat() - 15f, y.toFloat() + 12f, paint)
             } else if (value.toString().length == 2 && value < 0) { //negatius 1 xifra
+                paint.textSize = 60.0f
                 paint.color = Color.WHITE
-                canvas.drawText(value.toString(), x.toFloat() - 30f, y.toFloat() + 12f, paint)
+                canvas.drawText(value.toString(), x.toFloat() - 25f, y.toFloat() + 12f, paint)
             } else if (value.toString().length == 2 && value > 0) { //positius 2 xifres
-                canvas.drawText(value.toString(), x.toFloat() - 18f, y.toFloat() + 12f, paint)
+                paint.textSize = 60.0f
+                canvas.drawText(value.toString(), x.toFloat() - 20f, y.toFloat() + 12f, paint)
             } else if (value.toString().length == 3 && value < 0) { //negatius 2 xifres
+                paint.textSize = 55.0f
                 paint.color = Color.WHITE
-                canvas.drawText(value.toString(), x.toFloat() - 30f, y.toFloat() + 12f, paint)
+                canvas.drawText(value.toString(), x.toFloat() - 33f, y.toFloat() + 12f, paint)
             }
         }
     }
