@@ -5,14 +5,15 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageButton
 import edu.ub.pis.joc.limitless.R
 import android.view.Gravity
 import android.view.WindowManager
-import android.widget.ImageView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -26,6 +27,13 @@ var end_game = false
 class GameActivity : FullScreenActivity() {
 
     private val TAG = "GameActivity"
+
+    private lateinit var musicPlayer: MediaPlayer
+    private lateinit var musicHandler : Handler
+
+    private var startTime = 0.0
+    private var finalTime = 0.0
+    private var length : Int = 0
 
     private lateinit var surface: GameView
 
@@ -45,11 +53,30 @@ class GameActivity : FullScreenActivity() {
     private lateinit var worldsDiag: ImageButton
     private lateinit var menuDiag: ImageButton
 
+    private val updateSongTime = object : Runnable {
+        override fun run() {
+            startTime = musicPlayer.currentPosition.toDouble()
+            musicHandler.postDelayed(this, 10)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+
+        val volume = if (Data.user.music != null) Data.user.music!!.toFloat()/100.0f else 0.0f
+
+        musicPlayer = MediaPlayer.create(this, R.raw.stage)
+        musicPlayer.setVolume(volume, volume)
+
+        musicHandler = Handler()
+        musicPlayer.start()
+        musicPlayer.seekTo(length)
+        finalTime = musicPlayer.duration.toDouble()
+        startTime = musicPlayer.currentPosition.toDouble()
+        musicHandler.postDelayed(updateSongTime, 10)
 
         if (Data.user.vibration == null) {
             Data.user.vibration = true
@@ -90,7 +117,7 @@ class GameActivity : FullScreenActivity() {
 
         dialog = Dialog(this)
 
-        surface = GameView(this, dialog, mode, modeVersus)
+        surface = GameView(this, this, mode, modeVersus)
         setContentView(surface)
 
         val layoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -112,6 +139,7 @@ class GameActivity : FullScreenActivity() {
 
         resumeDiag.setOnClickListener {
             surface.resumeThread()
+            onResume()
             dialog.dismiss()
         }
 
@@ -152,11 +180,20 @@ class GameActivity : FullScreenActivity() {
 
     override fun onPause() {
         super.onPause()
+        musicPlayer.pause()
+        length = musicPlayer.currentPosition
+
         if (!end_game) {
             if (!dialog.isShowing and !exit) {
                 dialog.show()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        musicPlayer.start()
+        musicPlayer.seekTo(length)
     }
 
     override fun onDestroy() {
@@ -263,4 +300,9 @@ class GameActivity : FullScreenActivity() {
         worldsDiag.isClickable = true
         menuDiag.isClickable = true
     }
+
+    fun pause() {
+        onPause()
+    }
+
 }

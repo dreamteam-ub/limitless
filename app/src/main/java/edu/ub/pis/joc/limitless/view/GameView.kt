@@ -8,7 +8,7 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import edu.ub.pis.joc.limitless.engine.GameEngine
 
-class GameView(appContext: Context, private val dialog: Dialog, mode : Boolean, versus : Boolean) : SurfaceView(appContext), SurfaceHolder.Callback {
+class GameView(appContext: Context, private val gameActivity: GameActivity, mode : Boolean, versus : Boolean) : SurfaceView(appContext), SurfaceHolder.Callback {
     private var thread: GameThread
     private val gameEngine: GameEngine
 
@@ -64,9 +64,7 @@ class GameView(appContext: Context, private val dialog: Dialog, mode : Boolean, 
                     && gameEngine.touched_y < (gameEngine.pauseButton.y + gameEngine.pauseButton.h)
                     && gameEngine.touched_y > (gameEngine.pauseButton.y - gameEngine.pauseButton.h)
                 ) {
-                    if (!dialog.isShowing) {
-                        dialog.show()
-                    }
+                    gameActivity.pause()
                 } else {
                     gameEngine.touched = 2
                 }
