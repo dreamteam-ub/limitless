@@ -58,7 +58,7 @@ class CharacterFactory(context: Context) : FactoryPattern {
         optionsGhost.inSampleSize = 8
 
         optionsCoin = BitmapFactory.Options()
-        optionsCoin.inSampleSize = 8
+        optionsCoin.inSampleSize = 1
 
         optionsCharacter = BitmapFactory.Options()
         optionsCharacter.inSampleSize = 1
@@ -102,7 +102,12 @@ class CharacterFactory(context: Context) : FactoryPattern {
         BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn1, optionsCoin),
         BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn2, optionsCoin),
         BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn3, optionsCoin),
-        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn4, optionsCoin)
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn4, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn5, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn6, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn7, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn8, optionsCoin),
+        BitmapFactory.decodeResource(contextApp.resources, R.drawable.coin_spawn9, optionsCoin)
         )
     val arrayImatgesSkullLaser : ArrayList<Bitmap> = arrayListOf(
     BitmapFactory.decodeResource(contextApp.resources, R.drawable.beam1, optionsSkullLaser),

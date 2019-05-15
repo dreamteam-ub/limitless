@@ -22,6 +22,8 @@ class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,w
     var right: Int
     var bottom : Int
 
+    var firstDraw = true
+
 
     init {
         var degrees : Float
@@ -145,105 +147,103 @@ class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,w
     }
 
     override fun update() {
-
+        dissapearTimer--
     }
 
     override fun draw(canvas: Canvas){
-        Log.d("LEFT",left.toString())
-        Log.d("TOP",top.toString())
-        Log.d("RIGHT",right.toString())
-        Log.d("BOTTOM", bottom.toString())
-        Log.d("W", w.toString())
-        Log.d("H", h.toString())
-        if (contador in 13..15){
-            //Beam 1 - Corresponde a Skull 4
-            canvas.drawBitmap(imageList[0], null, rect, null)
-        } else if (contador in 16..18){
-            //Beam 1 Light - Corresponde a Skull 4 Light
-            canvas.drawBitmap(imageList[1], null, rect, null)
-        } else if (contador in 19..21){
-            //Beam 1 - Corresponde a Skull 4
-            canvas.drawBitmap(imageList[0], null, rect, null)
-        } else if (contador in 22..24){
-            //Beam 1 Light - Corresponde a Skull 4 Light
-            canvas.drawBitmap(imageList[1], null, rect, null)
-        } else if (contador in 25..27){
-            //Beam 1 - Corresponde a Skull 4
-            canvas.drawBitmap(imageList[0], null, rect, null)
-        } else if (contador in 28..30){
-            //Beam 1 Light - Corresponde a Skull 4 Light
-            canvas.drawBitmap(imageList[1], null, rect, null)
-        } else if (contador in 31..33){
-            //Beam 1 - Corresponde a Skull 4
-            canvas.drawBitmap(imageList[0], null, rect, null)
-        } else if (contador in 34..36){
-            //Beam 1 Light - Corresponde a Skull 4 Light
-            canvas.drawBitmap(imageList[1], null, rect, null)
-        } else if (contador == 37){
-            //Beam 2 - Corresponde a Skull 5
-            canvas.drawBitmap(imageList[2], null, rect, null)
-        } else if (contador == 38){
-            //Beam 2 Light - Corresponde a Skull 5 Light
-            canvas.drawBitmap(imageList[3], null, rect, null)
-        } else if (contador == 39){
-            //Beam 3 - Corresponde a Skull 6
-            canvas.drawBitmap(imageList[4], null, rect, null)
-        } else if (contador == 40){
-            //Beam 3 Light - Corresponde a Skull 6 Light
-            canvas.drawBitmap(imageList[5], null, rect, null)
-        } else if (contador == 41){
-            //Beam 4 - Corresponde a Skull 7
-            activeEnemy = true
-            canvas.drawBitmap(imageList[6], null, rect, null)
-        } else if (contador == 42){
-            //Beam 4 Light - Corresponde a Skull 7 Light
-            canvas.drawBitmap(imageList[7], null, rect, null)
-        } else if (contador == 43){
-            //Beam 5 - Corresponde a Skull 8
-            canvas.drawBitmap(imageList[8], null, rect, null)
-        } else if (contador == 44){
-            //Beam 5 Light - Corresponde a Skull 8 Light
-            canvas.drawBitmap(imageList[9], null, rect, null)
-        } else if (contador == 45){
-            //Beam 5 - Corresponde a Skull 8
-            canvas.drawBitmap(imageList[8], null, rect, null)
-        } else if (contador == 46){
-            //Beam 5 Light - Corresponde a Skull 8 Light
-            canvas.drawBitmap(imageList[9], null, rect, null)
-        } else if (contador == 47){
-            //Beam 5 - Corresponde a Skull 8
-            canvas.drawBitmap(imageList[8], null, rect, null)
-        } else if (contador == 48){
-            //Beam 5 Light - Corresponde a Skull 8 Light
-            canvas.drawBitmap(imageList[9], null, rect, null)
-        } else if (contador == 49){
-            //Beam 5 - Corresponde a Skull 8
-            canvas.drawBitmap(imageList[8], null, rect, null)
-        } else if (contador == 50){
-            //Beam 5 Light - Corresponde a Skull 8 Light
-            canvas.drawBitmap(imageList[9], null, rect, null)
-        } else if (contador == 51){
-            //Beam 5 - Corresponde a Skull 8
-            canvas.drawBitmap(imageList[8], null, rect, null)
-        } else if (contador == 52){
-            //Beam 5 Light - Corresponde a Skull 8 Light
-            canvas.drawBitmap(imageList[9], null, rect, null)
-        } else if (contador == 53){
-            //Beam 5 - Corresponde a Skull 8
-            canvas.drawBitmap(imageList[8], null, rect, null)
-        } else if (contador == 54) {
-            //Beam 5 Light - Corresponde a Skull 8 Light
-            canvas.drawBitmap(imageList[9], null, rect, null)
-        } else if (contador == 55){
-            //Beam 5 - Corresponde a Skull 8
-            canvas.drawBitmap(imageList[8], null, rect, null)
-        } else if (contador == 56) {
-            //Beam 5 Light - Corresponde a Skull 8 Light
-            canvas.drawBitmap(imageList[9], null, rect, null)
-            dissapearTimer = 0
+
+        if(firstDraw) {
+            if (contador in 13..15){
+                //Beam 1 - Corresponde a Skull 4
+                canvas.drawBitmap(imageList[0], null, rect, null)
+            } else if (contador in 16..18){
+                //Beam 1 Light - Corresponde a Skull 4 Light
+                canvas.drawBitmap(imageList[1], null, rect, null)
+            } else if (contador in 19..21){
+                //Beam 1 - Corresponde a Skull 4
+                canvas.drawBitmap(imageList[0], null, rect, null)
+            } else if (contador in 22..24){
+                //Beam 1 Light - Corresponde a Skull 4 Light
+                canvas.drawBitmap(imageList[1], null, rect, null)
+            } else if (contador in 25..27){
+                //Beam 1 - Corresponde a Skull 4
+                canvas.drawBitmap(imageList[0], null, rect, null)
+            } else if (contador in 28..30){
+                //Beam 1 Light - Corresponde a Skull 4 Light
+                canvas.drawBitmap(imageList[1], null, rect, null)
+            } else if (contador in 31..33){
+                //Beam 1 - Corresponde a Skull 4
+                canvas.drawBitmap(imageList[0], null, rect, null)
+            } else if (contador in 34..36){
+                //Beam 1 Light - Corresponde a Skull 4 Light
+                canvas.drawBitmap(imageList[1], null, rect, null)
+            } else if (contador == 37){
+                //Beam 2 - Corresponde a Skull 5
+                canvas.drawBitmap(imageList[2], null, rect, null)
+            } else if (contador == 38){
+                //Beam 2 Light - Corresponde a Skull 5 Light
+                canvas.drawBitmap(imageList[3], null, rect, null)
+            } else if (contador == 39){
+                //Beam 3 - Corresponde a Skull 6
+                canvas.drawBitmap(imageList[4], null, rect, null)
+            } else if (contador == 40){
+                //Beam 3 Light - Corresponde a Skull 6 Light
+                canvas.drawBitmap(imageList[5], null, rect, null)
+            } else if (contador == 41){
+                //Beam 4 - Corresponde a Skull 7
+                activeEnemy = true
+                canvas.drawBitmap(imageList[6], null, rect, null)
+            } else if (contador == 42){
+                //Beam 4 Light - Corresponde a Skull 7 Light
+                canvas.drawBitmap(imageList[7], null, rect, null)
+            }
+            contador = (contador + 1)
+            if (contador == 43) {
+                firstDraw = false
+                contador = 0
+            }
+        } else {
+            if(dissapearTimer<=42){
+                if (dissapearTimer == 42) {
+                    canvas.drawBitmap(imageList[7], null, rect, null)
+                } else if (dissapearTimer == 41) {
+                    canvas.drawBitmap(imageList[6], null, rect, null)
+                } else if (dissapearTimer == 40) {
+                    activeEnemy = false
+                    canvas.drawBitmap(imageList[5], null, rect, null)
+                } else if (dissapearTimer == 39) {
+                    canvas.drawBitmap(imageList[4], null, rect, null)
+                } else if (dissapearTimer == 38) {
+                    canvas.drawBitmap(imageList[3], null, rect, null)
+                } else if (dissapearTimer == 37) {
+                    canvas.drawBitmap(imageList[2], null, rect, null)
+                }else if (dissapearTimer in 34..36) {
+                    canvas.drawBitmap(imageList[1], null, rect, null)
+                } else if (dissapearTimer in 31..33) {
+                    canvas.drawBitmap(imageList[0], null, rect, null)
+                } else if (dissapearTimer in 28..30) {
+                    canvas.drawBitmap(imageList[1], null, rect, null)
+                } else if (dissapearTimer in 25..27) {
+                    canvas.drawBitmap(imageList[0], null, rect, null)
+                }else if (dissapearTimer in 22..24) {
+                    canvas.drawBitmap(imageList[1], null, rect, null)
+                } else if (dissapearTimer in 19..21) {
+                    canvas.drawBitmap(imageList[0], null, rect, null)
+                } else if (dissapearTimer in 16..18) {
+                    canvas.drawBitmap(imageList[1], null, rect, null)
+                } else if (dissapearTimer in 13..15) {
+                    canvas.drawBitmap(imageList[0], null, rect, null)
+                }
+            } else {
+                if (contador == 0) {
+                    //Skull 8
+                    canvas.drawBitmap(imageList[8], null, rect, null)
+                } else if (contador == 1) {
+                    //Skull 8 Light
+                    canvas.drawBitmap(imageList[9], null, rect, null)
+                }
+                contador = (contador + 1) % 2
+            }
         }
-
-        contador = (contador+1) % 57
-
     }
 }
