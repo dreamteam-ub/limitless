@@ -32,7 +32,6 @@ class GameActivity : FullScreenActivity() {
     private lateinit var musicHandler : Handler
 
     private var startTime = 0.0
-    private var finalTime = 0.0
     private var length : Int = 0
 
     private lateinit var surface: GameView
@@ -56,7 +55,7 @@ class GameActivity : FullScreenActivity() {
     private val updateSongTime = object : Runnable {
         override fun run() {
             startTime = musicPlayer.currentPosition.toDouble()
-            musicHandler.postDelayed(this, 10)
+            musicHandler.postDelayed(this, 100)
         }
     }
 
@@ -74,9 +73,8 @@ class GameActivity : FullScreenActivity() {
         musicHandler = Handler()
         musicPlayer.start()
         musicPlayer.seekTo(length)
-        finalTime = musicPlayer.duration.toDouble()
         startTime = musicPlayer.currentPosition.toDouble()
-        musicHandler.postDelayed(updateSongTime, 10)
+        musicHandler.postDelayed(updateSongTime, 100)
 
         if (Data.user.vibration == null) {
             Data.user.vibration = true
