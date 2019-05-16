@@ -18,6 +18,7 @@ class AutoLevelGenerate {
     var maxTimeInGame = 500L
     var limitLow = -10
     var limitHigh = 20
+    var lastLow = 1
     var firstCall = true
     var ai = ArtificialIntelligence()
 
@@ -92,7 +93,7 @@ class AutoLevelGenerate {
         listOfCoinParams.add(entity)
         listOfCoinParams.add(coords[0])
         listOfCoinParams.add(coords[1])
-        listOfCoinParams.add(Random.nextInt(-limitLow / 3, limitHigh / 3))
+        listOfCoinParams.add(generateCoinValues(lastLow,limitLow))
         listOfCoinParams.add(Random.nextLong(minTimeInGame, maxTimeInGame))
         Log.d("LIMITLOW", limitLow.toString())
         Log.d("LIMITHIGH", limitHigh.toString())
@@ -104,15 +105,32 @@ class AutoLevelGenerate {
     fun generateAutoLimits(): ArrayList<Int> {
         if (firstCall) {
             firstCall = false
+            //first limits in infinite loop game
             limitLow = -10
             limitHigh = 20
             return arrayListOf(limitLow, limitHigh)
         } else {
+            lastLow = limitLow
             limitLow += Random.nextInt(-6, 6)
             limitHigh += Random.nextInt(-6, 6)
             var lims = arrayListOf(limitLow, limitHigh)
             return lims
         }
+    }
+
+    fun generateCoinValues(lastLow : Int, low : Int) : Int{
+        var valCoin = 0
+        if (lastLow > low){
+            //mas monedas negativas
+            valCoin = (Random.nextInt(-limitLow / 3,  2))
+
+        }
+        else if (lastLow <= low){
+            //mas monedas positivas
+            valCoin = (Random.nextInt((-limitLow+limitHigh/10) / 3, limitHigh / 3))
+
+        }
+        return valCoin
     }
 
     //funcion que hará que a cada time se llame al generate para que nunca acabe la partida

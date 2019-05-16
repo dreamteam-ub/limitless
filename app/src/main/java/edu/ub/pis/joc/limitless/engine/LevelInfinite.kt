@@ -230,7 +230,7 @@ class LevelInfinite(contextApp: Context,
                             parameters[0].toString(),
                             parameters[1].toString().toInt(),
                             parameters[2].toString().toInt(),
-                            Random.nextInt(-createLimits(-1)[0]/3,createLimits(-1)[1]/3),
+                            parameters[3].toString().toInt(),
                             Typeface.createFromAsset(contextApp.assets, FONT_COINS),
                             parameters[4].toString().toInt()
                         )
@@ -242,7 +242,7 @@ class LevelInfinite(contextApp: Context,
                                 parameters[0].toString(),
                                 parameters[1].toString().toInt(),
                                 parameters[2].toString().toInt(),
-                                Random.nextInt(-createLimits(-1)[0]/3,createLimits(-1)[1]/3),
+                                parameters[3].toString().toInt(),
                                 Typeface.createFromAsset(contextApp.assets, FONT_COINS),
                                 parameters[4].toString().toInt()
                             )
@@ -323,6 +323,7 @@ class LevelInfinite(contextApp: Context,
                 1 -> {
                     limits.min = 20
                     limits.max = 65
+                    autoLvl.lastLow = autoLvl.limitLow
                     autoLvl.limitLow=20
                     autoLvl.limitHigh=65
                     limit.add(limits.min)
@@ -331,6 +332,7 @@ class LevelInfinite(contextApp: Context,
                 2 -> {
                     limits.min = 10
                     limits.max = 36
+                    autoLvl.lastLow = autoLvl.limitLow
                     autoLvl.limitLow=10
                     autoLvl.limitHigh=36
                     limit.add(limits.min)
@@ -339,6 +341,7 @@ class LevelInfinite(contextApp: Context,
                 3 -> {
                     limits.min = 50
                     limits.max = 90
+                    autoLvl.lastLow = autoLvl.limitLow
                     autoLvl.limitLow=50
                     autoLvl.limitHigh=90
                     limit.add(limits.min)
@@ -347,6 +350,7 @@ class LevelInfinite(contextApp: Context,
                 4 -> {
                     limits.min = 45
                     limits.max = 90
+                    autoLvl.lastLow = autoLvl.limitLow
                     autoLvl.limitLow=45
                     autoLvl.limitHigh=90
                     limit.add(limits.min)

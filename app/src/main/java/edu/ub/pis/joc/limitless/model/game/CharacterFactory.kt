@@ -37,7 +37,7 @@ class CharacterFactory(context: Context) : FactoryPattern {
         optionsBombs.inSampleSize = 16
 
         optionsEye = BitmapFactory.Options()
-        optionsEye.inSampleSize = 8
+        optionsEye.inSampleSize = 10
 
         optionsDemon = BitmapFactory.Options()
         optionsDemon.inSampleSize = 8
@@ -58,10 +58,10 @@ class CharacterFactory(context: Context) : FactoryPattern {
         optionsGhost.inSampleSize = 8
 
         optionsCoin = BitmapFactory.Options()
-        optionsCoin.inSampleSize = 1
+        optionsCoin.inSampleSize = 9
 
         optionsCharacter = BitmapFactory.Options()
-        optionsCharacter.inSampleSize = 1
+        optionsCharacter.inSampleSize = 6
 
     }
 
