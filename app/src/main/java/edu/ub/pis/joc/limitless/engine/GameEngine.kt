@@ -10,13 +10,17 @@ import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.GameActivity
+import edu.ub.pis.joc.limitless.view.IMG_ASSETS
 import edu.ub.pis.joc.limitless.view.end_game
 import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
 import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
+import java.io.BufferedInputStream
 import java.util.*
 
 @Suppress("DEPRECATION")
 class GameEngine(private var contextEngine: Context, var mode: Boolean, var versus: Boolean) {
+
+    var assets = contextEngine.resources.assets
 
     var touched_x = 0
     var touched_y = 0
@@ -40,10 +44,10 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
     init {
         if (mode) {
             currentLevelWorld = NIVEL_INFINITO
-            level = LevelInfinite(contextEngine, listOfEnemyCharacters, listOfCoins)
+            level = LevelInfinite(assets, listOfEnemyCharacters, listOfCoins)
         } else {
             currentLevelWorld = Data.getCurrenLevel()
-            level = LevelPractice(contextEngine, listOfEnemyCharacters, listOfCoins)
+            level = LevelPractice(assets, listOfEnemyCharacters, listOfCoins)
         }
 
         Log.d("CURRENT LEVEL", currentLevelWorld.toString())
@@ -56,11 +60,14 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
     }
 
     private var inGameBorder: InGameBorder = InGameBorder(
-        BitmapFactory.decodeResource(contextEngine.resources, R.drawable.in_game_border, optionsGameBorder)
+        BitmapFactory.decodeStream(
+            BufferedInputStream(assets.open(IMG_ASSETS + "in_game_border.png")), null, optionsGameBorder)!!
     )
 
     var pauseButton: PauseButton =
-        PauseButton(BitmapFactory.decodeResource(contextEngine.resources, R.drawable.pause_button, optionsPauseButton))
+        PauseButton(
+            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + "pause_button.png")), null, optionsPauseButton)!!
+        )
 
 
     var player: PlayerCharacter = level.buildPlayer()

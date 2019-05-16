@@ -1,6 +1,7 @@
 package edu.ub.pis.joc.limitless.engine
 
 import android.content.Context
+import android.content.res.AssetManager
 import edu.ub.pis.joc.limitless.model.Data.screenHeight
 import edu.ub.pis.joc.limitless.model.Data.screenWidth
 import edu.ub.pis.joc.limitless.model.game.*
@@ -10,10 +11,10 @@ import java.util.ArrayList
 
 
 class LevelPractice(
-    contextApp: Context,
+    assets : AssetManager,
     listOfEnemyCharacters: ArrayList<Enemy>,
     listOfCoins: ArrayList<Coin>
-) : Level(contextApp, listOfEnemyCharacters, listOfCoins) {
+) : Level(assets, listOfEnemyCharacters, listOfCoins) {
 
 
     @Synchronized override fun buildEnemies(levelWorld: Int, time: Long) {
@@ -1122,7 +1123,7 @@ class LevelPractice(
             }
         }
 
-        limits = Limits(listOfLimits[0],listOfLimits[1], contextApp)
+        limits = Limits(listOfLimits[0],listOfLimits[1], assets)
         return listOfLimits
     }
 

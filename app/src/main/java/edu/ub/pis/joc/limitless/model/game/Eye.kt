@@ -1,6 +1,7 @@
 package edu.ub.pis.joc.limitless.model.game
 
 import android.content.Context
+import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.util.Log
@@ -9,8 +10,8 @@ import kotlin.math.PI
 import kotlin.math.sin
 import kotlin.math.abs
 
-class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, context: Context, behaviour:Int) :
-    ComplexEnemy(image, posX, posY, childList, context,behaviour) {
+class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets: AssetManager, behaviour:Int) :
+    ComplexEnemy(image, posX, posY, childList, assets,behaviour) {
 
     override var xVelocity: Int = 10
     override var yVelocity: Int = 9

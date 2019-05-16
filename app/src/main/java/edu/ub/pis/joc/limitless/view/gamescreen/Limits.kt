@@ -2,12 +2,13 @@ package edu.ub.pis.joc.limitless.view.gamescreen
 
 
 import android.content.Context
+import android.content.res.AssetManager
 import android.graphics.*
 import edu.ub.pis.joc.limitless.engine.FONT_LIMITS
 import edu.ub.pis.joc.limitless.model.Data.screenWidth
 import edu.ub.pis.joc.limitless.model.Data.screenHeight
 
-class Limits (var min: Int, var max: Int, context : Context) {
+class Limits (var min: Int, var max: Int, assets : AssetManager) {
 
     val paint = Paint()
 
@@ -23,7 +24,7 @@ class Limits (var min: Int, var max: Int, context : Context) {
         paint.color = Color.WHITE
         paint.style = Paint.Style.FILL
         paint.textSize = 60.0f
-        paint.typeface = Typeface.createFromAsset(context.assets, FONT_LIMITS)
+        paint.typeface = Typeface.createFromAsset(assets, FONT_LIMITS)
     }
 
 
@@ -32,6 +33,6 @@ class Limits (var min: Int, var max: Int, context : Context) {
         val halfW: Int = (w / 2).toInt()
         val halfH: Int = (h / 2).toInt()
         rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
-        canvas.drawText("MIN: " +  min.toString() + "  " + "MAX: " + max.toString(), rect.bottom.toFloat(),rect.top.toFloat()+15f,paint)
+        canvas.drawText("MIN: $min  MAX: $max", rect.bottom.toFloat(),rect.top.toFloat()+15f,paint)
     }
 }

@@ -1,6 +1,6 @@
 package edu.ub.pis.joc.limitless.model.game
 
-import android.content.Context
+import android.content.res.AssetManager
 
 interface FactoryPattern {
     fun createCharacter(
@@ -17,7 +17,7 @@ interface FactoryPattern {
         posX: Int,
         posY: Int,
         childList:Int,
-        context: Context,
+        assets: AssetManager,
         behaviour : Int = 0
     ): Character?
 }

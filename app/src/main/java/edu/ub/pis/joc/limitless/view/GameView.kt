@@ -1,12 +1,13 @@
 package edu.ub.pis.joc.limitless.view
 
-import android.app.Dialog
 import android.content.Context
 import android.graphics.Canvas
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import edu.ub.pis.joc.limitless.engine.GameEngine
+
+const val IMG_ASSETS = "images/"
 
 class GameView(appContext: Context, private val gameActivity: GameActivity, mode : Boolean, versus : Boolean) : SurfaceView(appContext), SurfaceHolder.Callback {
     private var thread: GameThread

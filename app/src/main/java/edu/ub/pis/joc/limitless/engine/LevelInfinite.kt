@@ -1,6 +1,7 @@
 package edu.ub.pis.joc.limitless.engine
 
 import android.content.Context
+import android.content.res.AssetManager
 import android.graphics.Typeface
 import android.util.Log
 import edu.ub.pis.joc.limitless.model.game.*
@@ -9,10 +10,10 @@ import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import java.util.ArrayList
 import kotlin.random.Random
 
-class LevelInfinite(contextApp: Context,
+class LevelInfinite(assets: AssetManager,
                     listOfEnemyCharacters: ArrayList<Enemy>,
                     listOfCoins: ArrayList<Coin>):
-                    Level(contextApp,listOfEnemyCharacters,listOfCoins) {
+                    Level(assets,listOfEnemyCharacters,listOfCoins) {
 
     var autoLvl = AutoLevelGenerate()
     var coinSpawnInf = false //con esto controlaremos cuando debe haber spawn de monedas, ya que si usamos
@@ -21,7 +22,7 @@ class LevelInfinite(contextApp: Context,
 
     var infiniteStage = 0
     init {
-        limits = Limits(autoLvl.limitLow,autoLvl.limitHigh, contextApp)
+        limits = Limits(autoLvl.limitLow,autoLvl.limitHigh, assets)
     }
     @Synchronized
     override fun buildEnemies(levelWorld: Int, time: Long) {
@@ -231,7 +232,7 @@ class LevelInfinite(contextApp: Context,
                             parameters[1].toString().toInt(),
                             parameters[2].toString().toInt(),
                             parameters[3].toString().toInt(),
-                            Typeface.createFromAsset(contextApp.assets, FONT_COINS),
+                            Typeface.createFromAsset(assets, FONT_COINS),
                             parameters[4].toString().toInt()
                         )
 
@@ -243,7 +244,7 @@ class LevelInfinite(contextApp: Context,
                                 parameters[1].toString().toInt(),
                                 parameters[2].toString().toInt(),
                                 parameters[3].toString().toInt(),
-                                Typeface.createFromAsset(contextApp.assets, FONT_COINS),
+                                Typeface.createFromAsset(assets, FONT_COINS),
                                 parameters[4].toString().toInt()
                             )
                             Log.d("REALLOCATE","REALLOCATION COIN")
@@ -270,7 +271,7 @@ class LevelInfinite(contextApp: Context,
                             parameters[1].toString().toInt(),
                             parameters[2].toString().toInt(),
                             parameters[3].toString().toInt(),
-                            Typeface.createFromAsset(contextApp.assets, FONT_COINS),
+                            Typeface.createFromAsset(assets, FONT_COINS),
                             parameters[4].toString().toInt()
                         )
                         //Log.d("COINS CREATED", parameters[3].toString())
@@ -281,7 +282,7 @@ class LevelInfinite(contextApp: Context,
                                 parameters[1].toString().toInt(),
                                 parameters[2].toString().toInt(),
                                 parameters[3].toString().toInt(),
-                                Typeface.createFromAsset(contextApp.assets, FONT_COINS),
+                                Typeface.createFromAsset(assets, FONT_COINS),
                                 parameters[4].toString().toInt()
                             )
                             Log.d("REALLOCATE","REALLOCATION COIN")

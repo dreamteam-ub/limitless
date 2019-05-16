@@ -1,6 +1,7 @@
 package edu.ub.pis.joc.limitless.engine
 
 import android.content.Context
+import android.content.res.AssetManager
 import android.graphics.Typeface
 import android.util.Log
 import edu.ub.pis.joc.limitless.model.Data
@@ -16,7 +17,7 @@ const val FONT_LIMITS = "fonts/Road_Rage.otf"
 const val FONT_COINS = "fonts/Crimes_Times_Six4.ttf"
 
 abstract class Level(
-    var contextApp: Context,
+    var assets: AssetManager,
     var listOfEnemyCharacters: ArrayList<Enemy>,
     var listOfCoins: ArrayList<Coin>
 ) {
@@ -26,14 +27,14 @@ abstract class Level(
     var infiniteMode = false //usamos este booleano para saber si estamos en los preeliminares del Infinito
     //o en el modo de generación automática
     var characterFactory: CharacterFactory =
-        CharacterFactory(contextApp)
+        CharacterFactory(assets)
 
     fun createCoin(
         character: String,
         posX: Int ,
         posY: Int ,
         value: Int,
-        font: Typeface = Typeface.createFromAsset(contextApp.assets, FONT_COINS),
+        font: Typeface = Typeface.createFromAsset(assets, FONT_COINS),
         dissapearTimer: Int
     ): Coin {
         Log.d("AÑADE MONEDA", character)
@@ -66,7 +67,7 @@ abstract class Level(
         childList : Int
     ): Enemy {
         Log.d("AÑADE COMPLEX ENEMY", character)
-        val enemy = characterFactory.createComplexCharacter(character, posX, posY,childList, contextApp, behaviour) as Enemy
+        val enemy = characterFactory.createComplexCharacter(character, posX, posY,childList, assets, behaviour) as Enemy
         enemy.dissapearTimer = dissapearTimer
         return enemy
     }

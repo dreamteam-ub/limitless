@@ -55,21 +55,21 @@ class TutorialActivity : FullScreenActivity() {
                 arrayOf(
                     Page(false, R.drawable.world2_select,"0"),
                     Page(false, R.drawable.world2_select,"1"),
-                    Page(true, R.drawable.eye1,"3")
+                    Page(true, R.drawable.world2_select,"3")
                 )
             }
             WORLD3 -> {
                 arrayOf(
                     Page(false, R.drawable.world3_select,"0"),
                     Page(false, R.drawable.world3_select,"1"),
-                    Page(true, R.drawable.demon,"3")
+                    Page(true, R.drawable.world2_select,"3")
                 )
             }
             WORLD4 -> {
                 arrayOf(
                     Page(false, R.drawable.world4_select,"0"),
                     Page(false, R.drawable.world4_select,"1"),
-                    Page(true, R.drawable.skull,"3")
+                    Page(true, R.drawable.world2_select,"3")
                 )
             }
             else -> {
