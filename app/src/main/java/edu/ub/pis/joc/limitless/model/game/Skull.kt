@@ -40,22 +40,22 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
                 degrees = 90f
                 x= Data.screenWidth
                 y= (Data.screenHeight*0.25).toInt()
-                w = image[0].height
-                h = image[0].width
+                w = imageList[0].height
+                h = imageList[0].width
             }
             3->{
                 degrees = 90f
                 x= Data.screenWidth
                 y= (Data.screenHeight*0.5).toInt()
-                w = image[0].height
-                h = image[0].width
+                w = imageList[0].height
+                h = imageList[0].width
             }
             4->{
                 degrees = 90f
                 x= Data.screenWidth
                 y= (Data.screenHeight*0.75).toInt()
-                w = image[0].height
-                h = image[0].width
+                w = imageList[0].height
+                h = imageList[0].width
             }
             5->{
                 degrees = 180f
@@ -71,22 +71,22 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
                 degrees = 270f
                 x= 0
                 y= (Data.screenHeight*0.75).toInt()
-                w = image[0].height
-                h = image[0].width
+                w = imageList[0].height
+                h = imageList[0].width
             }
             8->{
                 degrees = 270f
                 x= 0
                 y= (Data.screenHeight*0.5).toInt()
-                w = image[0].height
-                h = image[0].width
+                w = imageList[0].height
+                h = imageList[0].width
             }
             9->{
                 degrees = 270f
                 x= 0
                 y= (Data.screenHeight*0.25).toInt()
-                w = image[0].height
-                h = image[0].width
+                w = imageList[0].height
+                h = imageList[0].width
             }
             else->{
                 degrees = 0f
@@ -95,7 +95,9 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,context
             }
         }
 
-        rotate(degrees)
+        if (degrees > 0.0f) {
+            rotate(degrees)
+        }
 
         projectileWavesList = generateChildList()
 

@@ -142,7 +142,10 @@ class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,w
         }
 
         rect.set(left, top,right, bottom)
-        rotate(degrees)
+
+        if (degrees > 0.0f) {
+            rotate(degrees)
+        }
 
     }
 

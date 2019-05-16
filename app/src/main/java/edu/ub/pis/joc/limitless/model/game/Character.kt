@@ -15,7 +15,7 @@ abstract class Character(image: ArrayList<Bitmap>, posX: Int, posY: Int) {
     open var w: Int = image[0].width
     open var h: Int = image[0].height
 
-    open val imageList: ArrayList<Bitmap> = image
+    var imageList: ArrayList<Bitmap> = image
 
     open var dissapearTimer : Int = 0
     open var appearTime : Long = 0L
@@ -25,9 +25,11 @@ abstract class Character(image: ArrayList<Bitmap>, posX: Int, posY: Int) {
         val matrix = Matrix()
         matrix.postRotate(degrees)
 
+        val tmpImgList = ArrayList<Bitmap>(imageList.size)
         for ((i, img) in imageList.withIndex()) {
-            imageList[i] = Bitmap.createBitmap(img, 0, 0, img.width, img.height, matrix, true)
+            tmpImgList.add(Bitmap.createBitmap(img, 0, 0, img.width, img.height, matrix, false))
         }
+        imageList = tmpImgList
     }
 
     /**
