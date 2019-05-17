@@ -22,14 +22,14 @@ const val NUMBER_COIN = "Coin"
 
 class CharacterFactory(assets: AssetManager) : FactoryPattern {
 
-    var optionsBombs: BitmapFactory.Options = bmpOptHacks(8)
-    var optionsEye: BitmapFactory.Options = bmpOptHacks(4)
-    var optionsDemon: BitmapFactory.Options = bmpOptHacks(4)
+    var optionsBombs: BitmapFactory.Options = bmpOptHacks(6)
+    var optionsEye: BitmapFactory.Options = bmpOptHacks(3)
+    var optionsDemon: BitmapFactory.Options = bmpOptHacks(3)
     var optionsSkull: BitmapFactory.Options = bmpOptHacks(2)
-    var optionsDemonFire: BitmapFactory.Options = bmpOptHacks(4)
-    var optionsEyeProyec: BitmapFactory.Options = bmpOptHacks(4)
+    var optionsDemonFire: BitmapFactory.Options = bmpOptHacks(3)
+    var optionsEyeProyec: BitmapFactory.Options = bmpOptHacks(3)
     var optionsSkullLaser: BitmapFactory.Options = bmpOptHacks(2)
-    var optionsGhost: BitmapFactory.Options = bmpOptHacks(4)
+    var optionsGhost: BitmapFactory.Options = bmpOptHacks(3)
     var optionsCharacter: BitmapFactory.Options = bmpOptHacks(2)
     var optionsCoin: BitmapFactory.Options = bmpOptHacks(4)
 

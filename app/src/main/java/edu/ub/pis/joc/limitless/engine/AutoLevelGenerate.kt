@@ -16,7 +16,7 @@ class AutoLevelGenerate {
         arrayListOf(BOMB_CHAR, GHOST_CHAR, EYE_CHAR, DEMON_CHAR, SKULL_CHAR) //blackhole no aparecer //bomb
     val minTimeInGame = 200L //tiempo minimo que deberan estar los personajes en partida
     val minTimeInGameCoins = 150L
-    val maxTimeInGameCoins = 200L
+    val maxTimeInGameCoins = 250L
     val maxTimeInGame = 500L
     var limitLow = 15
     var limitHigh = 25
@@ -126,12 +126,14 @@ class AutoLevelGenerate {
         var valCoin = 0
         if (lastLow > low){
             //mas monedas negativas
-            valCoin = (Random.nextInt(-limitLow / 3,  limitHigh/3))
+
+            valCoin = (Random.nextInt(-limitLow / 3,  limitHigh / 3))
 
         }
         else if (lastLow <= low){
             //mas monedas positivas
-            valCoin = (Random.nextInt((-limitLow+limitHigh/10) / 3, limitHigh / 3))
+
+            valCoin = (Random.nextInt((-limitLow / 3), limitHigh / 3))
 
         }
 

@@ -248,6 +248,11 @@ class LevelInfinite(assets: AssetManager,
 
                         //Log.d("COINS CREATED", parameters[3].toString())
                         while (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
+                            if (coin.value > 0){
+                                autoLvl.positiveCoins--
+                            }else{
+                                autoLvl.negativeCoins--
+                            }
                             var parameters = autoLvl.generateCoins()
                             coin = createCoin(
                                 parameters[0].toString(),
@@ -286,6 +291,11 @@ class LevelInfinite(assets: AssetManager,
                         )
                         //Log.d("COINS CREATED", parameters[3].toString())
                         if (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
+                            if (coin.value > 0){
+                                autoLvl.positiveCoins--
+                            }else{
+                                autoLvl.negativeCoins--
+                            }
                             var parameters = autoLvl.generateCoins()
                             coin = createCoin(
                                 parameters[0].toString(),
