@@ -14,11 +14,15 @@ class AutoLevelGenerate {
     var spawnCoinFreq = 5 //frecuencia inicial de spawn de monedas
     var listOfEnemies =
         arrayListOf(BOMB_CHAR, GHOST_CHAR, EYE_CHAR, DEMON_CHAR, SKULL_CHAR) //blackhole no aparecer //bomb
-    var minTimeInGame = 200L //tiempo minimo que deberan estar los personajes en partida
-    var maxTimeInGame = 500L
-    var limitLow = -10
-    var limitHigh = 20
+    val minTimeInGame = 200L //tiempo minimo que deberan estar los personajes en partida
+    val minTimeInGameCoins = 150L
+    val maxTimeInGameCoins = 200L
+    val maxTimeInGame = 500L
+    var limitLow = 15
+    var limitHigh = 25
     var lastLow = 1
+    var positiveCoins = 0
+    var negativeCoins = 0
     var firstCall = true
     var ai = ArtificialIntelligence()
 
@@ -94,7 +98,7 @@ class AutoLevelGenerate {
         listOfCoinParams.add(coords[0])
         listOfCoinParams.add(coords[1])
         listOfCoinParams.add(generateCoinValues(lastLow,limitLow))
-        listOfCoinParams.add(Random.nextLong(minTimeInGame, maxTimeInGame))
+        listOfCoinParams.add(Random.nextLong(minTimeInGameCoins, maxTimeInGameCoins))
         Log.d("LIMITLOW", limitLow.toString())
         Log.d("LIMITHIGH", limitHigh.toString())
 
@@ -106,13 +110,13 @@ class AutoLevelGenerate {
         if (firstCall) {
             firstCall = false
             //first limits in infinite loop game
-            limitLow = -10
-            limitHigh = 20
+            limitLow = 15
+            limitHigh = 25
             return arrayListOf(limitLow, limitHigh)
         } else {
             lastLow = limitLow
-            limitLow += Random.nextInt(-6, 6)
-            limitHigh += Random.nextInt(-6, 6)
+            limitLow += Random.nextInt(-5, 5)
+            limitHigh += Random.nextInt(-5, 5)
             var lims = arrayListOf(limitLow, limitHigh)
             return lims
         }
@@ -122,7 +126,7 @@ class AutoLevelGenerate {
         var valCoin = 0
         if (lastLow > low){
             //mas monedas negativas
-            valCoin = (Random.nextInt(-limitLow / 3,  2))
+            valCoin = (Random.nextInt(-limitLow / 3,  limitHigh/3))
 
         }
         else if (lastLow <= low){
@@ -130,7 +134,26 @@ class AutoLevelGenerate {
             valCoin = (Random.nextInt((-limitLow+limitHigh/10) / 3, limitHigh / 3))
 
         }
-        return valCoin
+
+        if (valCoin == 0) {valCoin++}
+
+        if(valCoin > 0){
+            if(positiveCoins == Math.ceil(spawnCoinFreq/2.0).toInt() ){
+                return valCoin*-1
+                negativeCoins++
+            } else {
+                return valCoin
+                positiveCoins++
+            }
+        } else {
+            if(negativeCoins == Math.ceil(spawnCoinFreq/2.0).toInt()){
+                return valCoin*-1
+                positiveCoins++
+            } else {
+                return valCoin
+                negativeCoins++
+            }
+        }
     }
 
     //funcion que hará que a cada time se llame al generate para que nunca acabe la partida
@@ -156,6 +179,7 @@ class AutoLevelGenerate {
                 listCoin.remove(coin)
                 Log.d("REALTRUE", i.toString())
                 same = true
+                //nomes la x+w , x-w
             } else if (coin.x == tmpcoin.x && coin.y == tmpcoin.y) {
                 listCoin.remove(coin)
                 Log.d("REALTRUE2", i.toString())

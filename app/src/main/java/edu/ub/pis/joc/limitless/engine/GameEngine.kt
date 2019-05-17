@@ -120,7 +120,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         }
 
         if (mode && level.newStage && level.infiniteMode) {
-            if (!(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])) {
+            if (!(player.accumulate >= scoreLimits[0] && player.accumulate <= scoreLimits[1])) {
                 Log.d("playerACC", player.accumulate.toString())
                 end_game = true
             }
@@ -129,7 +129,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             Log.d("scoreLIM2", scoreLimits[1].toString())
             level.newStage = false
         } else if (mode && level.newStage && !level.infiniteMode) {
-            if (!(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])) {
+            if (!(player.accumulate >= scoreLimits[0] && player.accumulate <= scoreLimits[1])) {
                 Log.d("playerACC", player.accumulate.toString())
                 Log.d("scoreLIM1", scoreLimits[0].toString())
                 Log.d("scoreLIM2", scoreLimits[1].toString())
@@ -183,7 +183,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         val time = gameTime / 30
         var updateDb = false
         val dead = player.imageList[0].isRecycled
-        val gOverPoints = !(player.accumulate > scoreLimits[0] && player.accumulate < scoreLimits[1])
+        val gOverPoints = !(player.accumulate >= scoreLimits[0] && player.accumulate <= scoreLimits[1])
         if (dead) {
             if (mode) {
                 if (!versus) {

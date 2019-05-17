@@ -44,7 +44,7 @@ class LevelInfinite(assets: AssetManager,
                             parameters[3].toString().toInt(),
                             parameters[4].toString().toInt()
                         ))
-                        if (autoLvl.reallocateBombs(listOfTmpEnemies,enemy)){
+                        while (autoLvl.reallocateBombs(listOfTmpEnemies,enemy)){
                             parameters = autoLvl.generateEnemiesInPreviousStages(BOMB_CHAR)
                             enemy = (createEnemy(
                                 parameters[0].toString(),
@@ -61,6 +61,8 @@ class LevelInfinite(assets: AssetManager,
                 }else if (time == 300L) { //segona stage ghosts
                     infiniteStage = 1
                     newStage = true
+                    autoLvl.positiveCoins = 0
+                    autoLvl.negativeCoins = 0
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
                     var parameters : ArrayList<Any>
@@ -81,6 +83,8 @@ class LevelInfinite(assets: AssetManager,
                 }else if (time == 600L) {   // Tercera stage eyes
                     infiniteStage = 2
                     newStage = true
+                    autoLvl.positiveCoins = 0
+                    autoLvl.negativeCoins = 0
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
                     var parameters : ArrayList<Any>
@@ -103,6 +107,8 @@ class LevelInfinite(assets: AssetManager,
                 }else if (time == 900L) {   // quarta stage demons
                     infiniteStage = 3
                     newStage = true
+                    autoLvl.positiveCoins = 0
+                    autoLvl.negativeCoins = 0
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
                     var parameters : ArrayList<Any>
@@ -125,6 +131,8 @@ class LevelInfinite(assets: AssetManager,
                 }else if (time == 1200L) { //cinquena stage skulls
                     infiniteStage = 4
                     newStage = true
+                    autoLvl.positiveCoins = 0
+                    autoLvl.negativeCoins = 0
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
                     var parameters : ArrayList<Any>
@@ -146,6 +154,8 @@ class LevelInfinite(assets: AssetManager,
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 } else if (time%autoLvl.time == 0L){
                     infiniteMode = true
+                    autoLvl.positiveCoins = 0
+                    autoLvl.negativeCoins = 0
                     listOfEnemyCharacters.clear()
                     autoLvl.increaseTime()
                     newStage = true
@@ -162,7 +172,7 @@ class LevelInfinite(assets: AssetManager,
                                 parameters[3].toString().toInt(),
                                 parameters[4].toString().toInt()
                             ))
-                            if (autoLvl.reallocateBombs(listOfTmpEnemies,enemy)){
+                            while (autoLvl.reallocateBombs(listOfTmpEnemies,enemy)){
                                 parameters = autoLvl.generateEnemiesInPreviousStages(BOMB_CHAR)
                                 enemy = (createEnemy(
                                     parameters[0].toString(),
@@ -237,7 +247,7 @@ class LevelInfinite(assets: AssetManager,
                         )
 
                         //Log.d("COINS CREATED", parameters[3].toString())
-                        if (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
+                        while (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
                             var parameters = autoLvl.generateCoins()
                             coin = createCoin(
                                 parameters[0].toString(),
@@ -310,50 +320,49 @@ class LevelInfinite(assets: AssetManager,
 
     override fun createLimits(levelWorld: Int): ArrayList<Int> {
         var limit = ArrayList<Int>()
-
         if (!infiniteMode){
             when(infiniteStage){
                 0 -> {
                     limits.min = 15
-                    limits.max = 50
+                    limits.max = 40
                     autoLvl.limitLow=15
-                    autoLvl.limitHigh=50
+                    autoLvl.limitHigh=40
                     limit.add(limits.min)
                     limit.add(limits.max)
                 }
                 1 -> {
                     limits.min = 20
-                    limits.max = 65
+                    limits.max = 40
                     autoLvl.lastLow = autoLvl.limitLow
                     autoLvl.limitLow=20
-                    autoLvl.limitHigh=65
+                    autoLvl.limitHigh=40
                     limit.add(limits.min)
                     limit.add(limits.max)
                 }
                 2 -> {
-                    limits.min = 10
-                    limits.max = 36
+                    limits.min = 15
+                    limits.max = 35
                     autoLvl.lastLow = autoLvl.limitLow
-                    autoLvl.limitLow=10
-                    autoLvl.limitHigh=36
+                    autoLvl.limitLow=15
+                    autoLvl.limitHigh=35
                     limit.add(limits.min)
                     limit.add(limits.max)
                 }
                 3 -> {
-                    limits.min = 50
-                    limits.max = 90
+                    limits.min = 20
+                    limits.max = 35
                     autoLvl.lastLow = autoLvl.limitLow
-                    autoLvl.limitLow=50
-                    autoLvl.limitHigh=90
+                    autoLvl.limitLow=20
+                    autoLvl.limitHigh=35
                     limit.add(limits.min)
                     limit.add(limits.max)
                 }
                 4 -> {
-                    limits.min = 45
-                    limits.max = 90
+                    limits.min = 15
+                    limits.max = 25
                     autoLvl.lastLow = autoLvl.limitLow
-                    autoLvl.limitLow=45
-                    autoLvl.limitHigh=90
+                    autoLvl.limitLow=15
+                    autoLvl.limitHigh=25
                     limit.add(limits.min)
                     limit.add(limits.max)
                 }
