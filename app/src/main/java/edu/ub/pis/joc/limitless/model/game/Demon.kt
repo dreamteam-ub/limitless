@@ -25,7 +25,16 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList:Int, asset
     var projectileWavesList : ArrayList<DemonFireColumn> = generateChildList()
 
     override fun update() {
-        dissapearTimer--
+        if(dissapearTimer > 0){
+            dissapearTimer--
+        }
+
+        if(dissapearTimer == 0){
+            if(x<=0 || x>=Data.screenWidth || y<=0 || y>= Data.screenHeight){
+                dissapearTimer = -1
+            }
+        }
+
         when (concreteBehaviour) {
             0 -> {
                 //Sinusoidal esquerra a dreta

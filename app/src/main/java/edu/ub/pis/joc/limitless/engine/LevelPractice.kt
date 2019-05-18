@@ -58,7 +58,7 @@ class LevelPractice(
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
                         contador--
                     }
@@ -100,7 +100,7 @@ class LevelPractice(
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
                         contador--
                     }
@@ -192,7 +192,7 @@ class LevelPractice(
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
                         contador--
                     }
@@ -281,7 +281,7 @@ class LevelPractice(
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
                         contador--
                     }
@@ -393,7 +393,7 @@ class LevelPractice(
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
                         contador--
                     }
@@ -486,7 +486,7 @@ class LevelPractice(
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
                         contador--
                     }
@@ -553,7 +553,7 @@ class LevelPractice(
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
                         contador--
                     }
@@ -570,7 +570,7 @@ class LevelPractice(
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
                         contador--
                     }
@@ -587,7 +587,7 @@ class LevelPractice(
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
                         contador--
                     }
@@ -622,7 +622,7 @@ class LevelPractice(
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
                         contador--
                     }
@@ -706,7 +706,7 @@ class LevelPractice(
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == 0){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
                         contador--
                     }

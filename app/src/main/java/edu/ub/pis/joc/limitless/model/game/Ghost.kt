@@ -22,7 +22,15 @@ class Ghost(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) : Ene
 
     override fun update() {
 
-       this.dissapearTimer--
+        if(dissapearTimer > 0){
+            dissapearTimer--
+        }
+
+        if(dissapearTimer == 0){
+            if(x<=0 || x>=Data.screenWidth || y<=0 || y>= Data.screenHeight){
+                dissapearTimer = -1
+            }
+        }
 
         when (concreteBehaviour) {
             0 -> {

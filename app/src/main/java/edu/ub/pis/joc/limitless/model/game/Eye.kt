@@ -148,7 +148,15 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
             }
         }
 
-        dissapearTimer--
+        if(dissapearTimer > 0){
+            dissapearTimer--
+        }
+
+        if(dissapearTimer == 0){
+            if(x<=0 || x>=Data.screenWidth || y<=0 || y>= Data.screenHeight){
+                dissapearTimer = -1
+            }
+        }
     }
 
     override fun draw(canvas: Canvas) {

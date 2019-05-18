@@ -3,6 +3,7 @@ package edu.ub.pis.joc.limitless.model.game
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Matrix
+import edu.ub.pis.joc.limitless.model.Data
 
 
 class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour : Int) : Enemy(image, posX, posY,behaviour) {
@@ -43,7 +44,15 @@ class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour : 
     }
 
     override fun update() {
-        dissapearTimer--
+        if(dissapearTimer > 0){
+            dissapearTimer--
+        }
+
+        if(dissapearTimer == 0){
+            if(x<=0 || x>= Data.screenWidth || y<=0 || y>= Data.screenHeight){
+                dissapearTimer = -1
+            }
+        }
 
         when (concreteBehaviour) {
             0 -> {
