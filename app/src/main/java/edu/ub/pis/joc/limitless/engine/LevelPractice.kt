@@ -77,7 +77,7 @@ class LevelPractice(
                     tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.7).toInt(),2,100)
                     listOfTmpEnemies.add(tmp)
                 } else if (time == 200L) {
-                    listOfEnemyCharacters.clear()
+
                     tmp=createEnemy(GHOST_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
                     tmp=createEnemy(GHOST_CHAR, (screenWidth * 0), (screenHeight * 0.2).toInt(),0,100)
@@ -90,7 +90,7 @@ class LevelPractice(
                     tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.7).toInt(),2,100)
                     listOfTmpEnemies.add(tmp)
                 }else if(time == 400L){
-                    listOfEnemyCharacters.clear()
+
                     tmp=createEnemy(GHOST_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
                     tmp=createEnemy(GHOST_CHAR, (screenWidth * 0), (screenHeight * 0.2).toInt(),0,100)
@@ -109,41 +109,43 @@ class LevelPractice(
             }
             2 -> {
                 if (time == 0L) {
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), 0,1,105)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), 0,1,100)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(), 0,1,105)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(), 0,1,100)
                     listOfTmpEnemies.add(tmp)
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(),0,150)
                     listOfTmpEnemies.add(tmp)
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.6).toInt(),0,150)
                     listOfTmpEnemies.add(tmp)
-                } else if (time == 100L) {
+                } else if (time == 150L) {
+
                     tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), 0,1,150)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.2).toInt(),2,160)
-                    listOfTmpEnemies.add(tmp)
-                } else if (time == 200L) {
-                    listOfEnemyCharacters.clear()
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), 0, 1, 205)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(),0, 1, 205)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.3).toInt(), 2, 160)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.7).toInt(), 2, 160)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.2).toInt(),2,150)
                     listOfTmpEnemies.add(tmp)
 
-                }else if(time == 350L){
+                } else if (time == 300L) {
+
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), 0, 1, 150)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.7).toInt(),0, 1, 150)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.3).toInt(), 2, 150)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.7).toInt(), 2, 150)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 475L){
 
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(),0,150)
                     listOfTmpEnemies.add(tmp)
 
-                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.4).toInt(),2,205)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.4).toInt(),2,150)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.6).toInt(),2,205)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.6).toInt(),2,150)
                     listOfTmpEnemies.add(tmp)
 
-                }else if(time == 500L){
+                }else if(time == 625L){
 
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(),0,150)
                     listOfTmpEnemies.add(tmp)
@@ -153,40 +155,40 @@ class LevelPractice(
                     tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.3).toInt(), 0,1,150)
                     listOfTmpEnemies.add(tmp)
 
-                }else if(time == 600L){
-                    tmp=createEnemy(GHOST_CHAR, screenWidth, (screenHeight * 0.2).toInt(),0,110)
+                }else if(time == 775L){
+                    tmp=createEnemy(GHOST_CHAR, screenWidth, (screenHeight * 0.2).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, screenWidth , screenHeight,0,110)
+                    tmp=createEnemy(GHOST_CHAR, screenWidth , screenHeight,0,100)
                     listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, 0, (screenHeight * 0.2).toInt(),0,110)
+                    tmp=createEnemy(GHOST_CHAR, 0, (screenHeight * 0.2).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, 0, screenHeight,0,110)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 700L){
-                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(),0,200)
-                    listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), 0,1,600)
-                    listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, 0, (screenHeight * 0.4).toInt(),2,600)
-                    listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, 0, (screenHeight * 0.6).toInt(),2,600)
+                    tmp=createEnemy(GHOST_CHAR, 0, screenHeight,0,100)
                     listOfTmpEnemies.add(tmp)
                 }else if(time == 800L){
+                    tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(),0,150)
+                    listOfTmpEnemies.add(tmp)
+                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), 0,1,150)
+                    listOfTmpEnemies.add(tmp)
+                    tmp=createEnemy(GHOST_CHAR, 0, (screenHeight * 0.4).toInt(),2,150)
+                    listOfTmpEnemies.add(tmp)
+                    tmp=createEnemy(GHOST_CHAR, 0, (screenHeight * 0.6).toInt(),2,150)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 950L){
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(),0,200)
                     listOfTmpEnemies.add(tmp)
-                }else if(time == 900L){
+                }else if(time == 1150L){
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.8).toInt(),0,200)
                     listOfTmpEnemies.add(tmp)
-                }else if(time == 1000L) {
+                }else if(time == 1350L) {
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.3).toInt(),0,200)
                     listOfTmpEnemies.add(tmp)
-                }else if(time == 1100L){
+                }else if(time == 1550L){
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(),0,200)
                     listOfTmpEnemies.add(tmp)
-                }else if(time == 1200L){
+                }else if(time == 1750L){
                     tmp = createEnemy(BOMB_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 0.8).toInt(),0,200)
                     listOfTmpEnemies.add(tmp)
-                }else if(time == 1400L){
+                }else if(time == 1950L){
                     listOfEnemyCharacters.clear()
                     end_game=true
                 }
@@ -220,7 +222,6 @@ class LevelPractice(
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 300L){
 
-                    listOfEnemyCharacters.clear()
                     tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.3).toInt(), 0, 80,16)
                     listOfTmpEnemies.add(tmp)
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(), 1, 80,17)
@@ -238,7 +239,7 @@ class LevelPractice(
 
                 }else if(time == 450L){
 
-                    listOfEnemyCharacters.clear()
+
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.3).toInt(), 1, 80,16)
                     listOfTmpEnemies.add(tmp)
                     tmp = createComplexEnemy(EYE_CHAR, 0 , (screenHeight * 0.7).toInt(), 0, 80,17)
@@ -246,24 +247,6 @@ class LevelPractice(
 
 
                 }else if(time == 475L){
-
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-                    listOfEnemyCharacters[0] = tmpEye
-
-                    tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.drawChild = true
-                    listOfEnemyCharacters[1] = tmpEye2
-
-                }else if(time == 600L){
-
-                    listOfEnemyCharacters.clear()
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.3).toInt(), 1, 80,16)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(EYE_CHAR, 0 , (screenHeight * 0.7).toInt(), 0, 80,17)
-                    listOfTmpEnemies.add(tmp)
-
-                }else if(time == 725L){
 
                     tmpEye = listOfEnemyCharacters[0] as Eye
                     tmpEye.drawChild = true
@@ -300,7 +283,7 @@ class LevelPractice(
                     listOfEnemyCharacters[0] = tmpEye
 
                 }else if(time == 150L){
-                    listOfEnemyCharacters.clear()
+
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), (screenWidth * 2), 3, 135,3)
                     listOfTmpEnemies.add(tmp)
 
@@ -311,7 +294,6 @@ class LevelPractice(
                     listOfEnemyCharacters[0] = tmpEye
 
                 }else if(time == 300L){
-                    listOfEnemyCharacters.clear()
 
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 135,10)
                     listOfTmpEnemies.add(tmp)
@@ -349,7 +331,6 @@ class LevelPractice(
 
                 }else if(time == 600L){
 
-                    listOfEnemyCharacters.clear()
 
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 140,12)
                     listOfTmpEnemies.add(tmp)
@@ -367,8 +348,6 @@ class LevelPractice(
                     listOfEnemyCharacters[1] = tmpEye2
 
                 }else if(time == 750L){
-
-                    listOfEnemyCharacters.clear()
 
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), (screenWidth * 2), 3, 140,14)
                     listOfTmpEnemies.add(tmp)
@@ -424,7 +403,6 @@ class LevelPractice(
                     tmpEye.projectileRelocate[0] = true
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 125L) {
-                    listOfEnemyCharacters.clear()
 
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 150,5)
                     listOfTmpEnemies.add(tmp)
@@ -447,7 +425,7 @@ class LevelPractice(
                     tmpEye.projectileRelocate[2] = true
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time==300L){
-                    listOfEnemyCharacters.clear()
+
                     tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.3).toInt(), 0, 150,6)
                     listOfTmpEnemies.add(tmp)
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(), 1, 150,7)
@@ -464,7 +442,7 @@ class LevelPractice(
                     tmpEye.projectileRelocate[0] = true
                     listOfEnemyCharacters[1] = tmpEye
                 }else if (time == 400L){
-                    listOfEnemyCharacters.clear()
+
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 150,8)
                     listOfTmpEnemies.add(tmp)
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), (screenWidth * 2), 3, 150,9)
@@ -475,6 +453,7 @@ class LevelPractice(
                     tmpEye.projectileDraw[0] = true
                     tmpEye.projectileRelocate[0] = true
                     listOfEnemyCharacters[0] = tmpEye
+
                     tmpEye = listOfEnemyCharacters[1] as Eye
                     tmpEye.drawChild = true
                     tmpEye.projectileDraw[0] = true
@@ -516,10 +495,10 @@ class LevelPractice(
 
                 }else if(time == 650L) {
 
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 150,2)
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 150,1)
                     listOfTmpEnemies.add(tmp)
 
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.8).toInt(), 0, 2, 150,2)
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.8).toInt(), 0, 2, 150,1)
                     listOfTmpEnemies.add(tmp)
 
                 }else if(time == 800L) {
@@ -535,169 +514,27 @@ class LevelPractice(
 
                 }else if(time == 900L) {
 
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 8, 300,1)
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100,3)
                     listOfTmpEnemies.add(tmp)
 
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.2).toInt(), 8, 300,1)
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.1).toInt(), 0, 100,3)
                     listOfTmpEnemies.add(tmp)
 
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 8, 300,1)
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.4).toInt(), 0, 100,3)
                     listOfTmpEnemies.add(tmp)
 
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 8, 300,1)
-                    listOfTmpEnemies.add(tmp)
-
-                }else if(time == 1250L) {
-                    listOfEnemyCharacters.clear()
-                    end_game=true
-                }
-                var contador : Int = 0
-                while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
-                        listOfEnemyCharacters.removeAt(contador)
-                        contador--
-                    }
-                    contador++
-                }
-            }
-            7 -> {
-                if (time == 0L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 8, 300,1)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 300L) {
-                    listOfEnemyCharacters.clear()
-                    end_game=true
-                }
-                var contador : Int = 0
-                while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
-                        listOfEnemyCharacters.removeAt(contador)
-                        contador--
-                    }
-                    contador++
-                }
-            }
-            8 -> {
-                if (time == 0L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 8, 300,2)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 300L) {
-                    listOfEnemyCharacters.clear()
-                    end_game=true
-                }
-                var contador : Int = 0
-                while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
-                        listOfEnemyCharacters.removeAt(contador)
-                        contador--
-                    }
-                    contador++
-                }
-            }
-            9 -> {
-                if (time == 0L) {
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 0, 300,0)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 1, 300,1)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 2, 300,2)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 3, 300,3)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 4, 300,4)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 5, 300,5)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 6, 300,6)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 7, 300,7)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 8, 300,8)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 9, 300,9)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 300L) {
-                    listOfEnemyCharacters.clear()
-                    end_game=true
-                }
-                var contador : Int = 0
-                while(contador < listOfEnemyCharacters.size){
-                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
-                        listOfEnemyCharacters.removeAt(contador)
-                        contador--
-                    }
-                    contador++
-                }
-            }
-            10 -> {
-                if (time == 0L) {
-                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 0, 300, 0)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 100L){
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 1, 300,1)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 200L){
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 2, 300,2)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 300L){
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 3, 300,3)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 400L){
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 4, 300,4)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 500L){
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 5, 300,5)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 600L){
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 6, 300,6)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 700L){
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 7, 300,7)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 800L){
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 8, 300,8)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 900L){
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 9, 300,9)
-                    listOfTmpEnemies.add(tmp)
                 }else if(time == 1000L) {
 
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 9, 300,9)
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 8, 300,0)
                     listOfTmpEnemies.add(tmp)
 
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 8, 300,8)
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.2).toInt(), 8, 300,0)
                     listOfTmpEnemies.add(tmp)
 
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 7, 300,8)
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 8, 300,0)
                     listOfTmpEnemies.add(tmp)
 
-                }else if(time == 1100L) {
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 6, 300,7)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 5, 300,4)
-                    listOfTmpEnemies.add(tmp)
-                }else if(time == 1200L) {
-
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 0, 300,0)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 1, 300,1)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 2, 300,2)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 3, 300,3)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 4, 300,4)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 5, 300,5)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 6, 300,6)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 7, 300,7)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 8, 300,8)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 9, 300,9)
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 8, 300,0)
                     listOfTmpEnemies.add(tmp)
 
                 }else if(time == 1350L) {
@@ -713,10 +550,566 @@ class LevelPractice(
                     contador++
                 }
             }
+            7 -> {
+                if (time == 0L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 50L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 100L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), 0, 2, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 150L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 200L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 250L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 300L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), 0, 2, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 350L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 400L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), 0, 2, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 450L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 3, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 500L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 550L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 1), 3, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 600L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 1), 3, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 650L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 700L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 1), 3, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 750L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 1), 3, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 850L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 1), 3, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 900L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 1), 3, 100,1)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 1000L) {
+                    listOfEnemyCharacters.clear()
+                    end_game=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
+            }
+            8 -> {
+                if (time == 0L) {
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.3).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.3).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if (time == 100L) {
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1).toInt(), (screenWidth * 0.3).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1).toInt(), (screenWidth * 1.3).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if (time == 200L) {
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), 0, 2, 100,1)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if (time == 300L) {
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 1), 3, 100,1)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 400L) {
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.5).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 450L) {
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.1).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.4).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 500L) {
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.5).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 550L) {
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.1).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.4).toInt(), 0, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 650L) {
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 1.1).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 1.4).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 700L) {
+
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.2).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.5).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+
+                }else if(time == 750L) {
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 1.1).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 1.4).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 800L) {
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.2).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.5).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 1, 100,3)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 900L) {
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.2).toInt(), 8, 300,0)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 8, 300,0)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 8, 300,0)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 8, 300,0)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 1200L) {
+
+                    tmp = createComplexEnemy(DEMON_CHAR, 0, 0, 7, 100,0)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), 0, 7, 100,0)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt() , 0, 7, 100,0)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 1350L) {
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.1).toInt(), (screenHeight * 1), 6, 100,0)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 1), 6, 100,0)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.6).toInt(), (screenHeight * 1), 5, 100,0)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.8).toInt(), (screenHeight * 1), 5, 100,0)
+                    listOfTmpEnemies.add(tmp)
+
+
+                }else if(time == 1500L) {
+                    listOfEnemyCharacters.clear()
+                    end_game=true
+                }
+
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
+            }
+            9 -> {
+                if (time == 50L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 0, 150,0)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 1, 150,1)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 250L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 2, 150,2)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 4, 150,4)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 450L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 3, 150,3)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 5, 150,5)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 650L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 8, 150,8)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 0, 150,0)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 850L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 2, 150,2)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 4, 150,4)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 8, 150,8)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 1050L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 9, 150,9)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 7, 150,7)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 1, 150,1)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 1150L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 0, 150,0)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 2, 150,2)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 4, 150,4)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 5, 150,5)
+                    listOfTmpEnemies.add(tmp)
+
+
+                }else if(time == 1350L) {
+
+                    listOfEnemyCharacters.clear()
+                    end_game=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
+            }
+            10 -> {
+                if (time == 0L) {
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 0, 150, 0)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 100L){
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 2, 150,2)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 200L){
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 7, 150,7)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 300L){
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 9, 150,9)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 400L){
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 4, 150,4)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 500L){
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 8, 150,8)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 600L){
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 5, 150,5)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 700L){
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 0, 150,0)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 800L){
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 2, 150,2)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 4, 150,4)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 1000L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 9, 200,9)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 8, 200,8)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 7, 200,8)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 1200L) {
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 6, 200,7)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 5, 200,4)
+                    listOfTmpEnemies.add(tmp)
+                }else if(time == 1400L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 0, 300,0)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 1, 300,1)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 2, 300,2)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 3, 300,3)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 4, 300,4)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 5, 300,5)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 6, 300,6)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 7, 300,7)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 8, 300,8)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(SKULL_CHAR, 0 , 0, 9, 300,9)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 1700L) {
+                    listOfEnemyCharacters.clear()
+                    end_game=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
+            }
+
             11 -> {
+                if (time == 0L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 2, 400, 2)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 50L){
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 3, 100, 3)
+                    listOfTmpEnemies.add(tmp)
+
+
+                }else if(time == 150L){
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 5, 100, 5)
+                    listOfTmpEnemies.add(tmp)
+
+
+                }else if(time == 250L){
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 7, 100, 7)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 6, 100, 6)
+                    listOfTmpEnemies.add(tmp)
+
+
+                }else if(time == 350L){
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 6, 100, 6)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 5, 100, 5)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 4, 100, 4)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 450L){
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 7, 550, 7)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 500L){
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 6, 100, 6)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 1, 100, 1)
+                    listOfTmpEnemies.add(tmp)
+
+
+                }else if(time == 600L){
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 3, 200, 3)
+                    listOfTmpEnemies.add(tmp)
+
+
+                }else if(time == 700L){
+
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 9, 100, 9)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 800L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 0, 100, 0)
+                    listOfTmpEnemies.add(tmp)
+
+
+                }else if(time == 900L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 6, 100, 6)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 5, 100, 5)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 9, 100, 9)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 1000L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 1, 600, 1)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 1050L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 0, 100, 0)
+                    listOfTmpEnemies.add(tmp)
+
+
+                }else if(time == 1150L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 9, 100, 9)
+                    listOfTmpEnemies.add(tmp)
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 4, 100, 4)
+                    listOfTmpEnemies.add(tmp)
+
+
+                }else if(time == 1250L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 3, 200, 3)
+                    listOfTmpEnemies.add(tmp)
+
+
+                }else if(time == 1350L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 0, 100, 0)
+                    listOfTmpEnemies.add(tmp)
+
+                }else if(time == 1500L) {
+
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 0, 100, 0)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 2, 100, 2)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 3, 100, 3)
+                    listOfTmpEnemies.add(tmp)
+                    tmp = createComplexEnemy(SKULL_CHAR, 0, 0, 4, 100, 5)
+                    listOfTmpEnemies.add(tmp)
+
+
+                }else if(time == 1600L) {
+                    listOfEnemyCharacters.clear()
+                    end_game=true
+                }
+                var contador : Int = 0
+                while(contador < listOfEnemyCharacters.size){
+                    if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
+                        listOfEnemyCharacters.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
+
             }
-            12 -> {
-            }
+
+
         }
 
         listOfEnemyCharacters.addAll(listOfTmpEnemies)
@@ -966,15 +1359,225 @@ class LevelPractice(
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.35).toInt(), 10,dissapearTimer = 200),
-                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.35).toInt(), -5,dissapearTimer = 200))
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.35).toInt(), -5,dissapearTimer = 200),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.75).toInt(), -5,dissapearTimer = 200),
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.75).toInt(), 20,dissapearTimer = 200))
 
                 }else if(time == 900L) {
 
                     listOfCoins.clear()
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.3).toInt(), 6,dissapearTimer = 200),
-                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.4).toInt(), 6,dissapearTimer = 200),
-                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.6).toInt(), 6,dissapearTimer = 200))
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.4).toInt(), -5,dissapearTimer = 200),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.6).toInt(), 2,dissapearTimer = 200))
+
+                }
+
+                var contador : Int = 0
+                while(contador < listOfCoins.size){
+                    if(listOfCoins.get(contador).dissapearTimer == 0){
+                        listOfCoins.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
+            }
+            7 -> {
+                if (time == 50L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 10, dissapearTimer = 150))
+
+                } else if (time == 100L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.7).toInt(), -6,dissapearTimer = 150))
+
+                } else if (time == 150L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), 4,dissapearTimer = 150))
+
+                }else if (time == 200L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), 2,dissapearTimer = 150))
+
+                }else if (time == 250L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.75).toInt(), 10,dissapearTimer = 150))
+
+                }else if (time == 300L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), -5,dissapearTimer = 150))
+
+                }else if (time == 350L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.7).toInt(), 9,dissapearTimer = 150))
+
+                }else if (time == 400L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.7).toInt(), -12,dissapearTimer = 150))
+
+                }else if (time == 450L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.3).toInt(), 4,dissapearTimer = 150))
+
+                }else if (time == 500L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 5,dissapearTimer = 150))
+
+                }else if (time == 550L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.3).toInt(), -4,dissapearTimer = 150))
+
+                }else if (time == 600L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(), 8,dissapearTimer = 150))
+
+                }else if (time == 650L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), -15,dissapearTimer = 150))
+
+                }else if (time == 700L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), 10,dissapearTimer = 150))
+
+                }else if (time == 750L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(), -2,dissapearTimer = 150))
+
+                }else if (time == 800L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), -12,dissapearTimer = 150))
+
+                }else if (time == 850L) {
+
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), 6,dissapearTimer = 150))
+
+                }
+
+                var contador : Int = 0
+                while(contador < listOfCoins.size){
+                    if(listOfCoins.get(contador).dissapearTimer == 0){
+                        listOfCoins.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
+            }
+            8 -> {
+
+                if (time == 0L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 12,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.3).toInt(), -20,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.7).toInt(), -13,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.7).toInt(), 15,dissapearTimer = 150))
+
+
+                }else if (time == 200L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), -22,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.3).toInt(), 10,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.7).toInt(), 11,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.7).toInt(), -16,dissapearTimer = 150))
+
+                }else if(time == 400L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.4).toInt(), 15 ,dissapearTimer = 100))
+
+                }else if(time == 450L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.7).toInt(), 15 ,dissapearTimer = 100))
+
+                }else if(time == 500L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.3).toInt(), -18 ,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), 5 ,dissapearTimer = 100))
+
+                }else if(time == 550L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.7).toInt(), -18 ,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.7).toInt(), 5 ,dissapearTimer = 100))
+
+                }else if(time == 650L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.3).toInt(), -10 ,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.7).toInt(),  -5,dissapearTimer = 100))
+
+
+                }else if(time == 700L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.3).toInt(), 20 ,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.7).toInt(),  -14,dissapearTimer = 100))
+
+
+                }else if(time == 750L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 5 ,dissapearTimer = 100))
+
+
+                }else if(time == 800L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.4).toInt(), (screenHeight * 0.3).toInt(), -15 ,dissapearTimer = 100))
+
+
+                }else if(time == 900L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.7).toInt(), -10 ,dissapearTimer = 300),
+                        createCoin("Coin", (screenWidth * 0.4).toInt(), (screenHeight * 0.5).toInt(), 6 ,dissapearTimer = 300),
+                        createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.5).toInt(), -20 ,dissapearTimer = 300),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(), 5 ,dissapearTimer = 300))
+
+
+                }else if(time == 1200L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.65).toInt(), (screenHeight * 0.7).toInt(), -14 ,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.4).toInt(), (screenHeight * 0.3).toInt(), 10 ,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.3).toInt(), -28 ,dissapearTimer = 100))
 
                 }
                 var contador : Int = 0
@@ -986,63 +1589,120 @@ class LevelPractice(
                     contador++
                 }
             }
-            7 -> {
-            }
-            8 -> {
-            }
             9 -> {
+
+                if (time == 0L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.75).toInt(), 6 ,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.4).toInt(),  8,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.8).toInt(), (screenHeight * 0.4).toInt(),  -5,dissapearTimer = 150))
+
+                }else if(time == 230L){
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.8).toInt(), 5 ,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.8).toInt(),  3,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.25).toInt(),  -9,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.25).toInt(),  -2,dissapearTimer = 150))
+
+
+                }else if(time == 430L){
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.4).toInt(), -3,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.7).toInt(),  2,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.8).toInt(), (screenHeight * 0.8).toInt(),  -10,dissapearTimer = 150))
+
+
+                }else if(time == 630L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.7).toInt(), -3 ,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.35).toInt(),  4,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.8).toInt(),  -4,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.3).toInt(),  10,dissapearTimer = 150))
+
+
+                }else if(time == 830L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(), 10 ,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.4).toInt(),  -5,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.6).toInt(),  5,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.8).toInt(),  -10,dissapearTimer = 150))
+
+
+                }else if(time == 1030L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.8).toInt(), (screenHeight * 0.5).toInt(), -3 ,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(),  4,dissapearTimer = 150),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.8).toInt(),  -4,dissapearTimer = 150))
+
+                }
+                var contador : Int = 0
+                while(contador < listOfCoins.size){
+                    if(listOfCoins.get(contador).dissapearTimer == 0){
+                        listOfCoins.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
+
             }
             10 -> {
                 if (time == 50L) {
-                    listOfCoins.clear()
+
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.2).toInt(), 3,dissapearTimer = 200))
                 }else if (time == 150L){
-                    listOfCoins.clear()
+
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.8).toInt(), (screenHeight * 0.6).toInt(), 7,dissapearTimer = 200))
                 }else if (time == 250L){
-                    listOfCoins.clear()
+
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.2).toInt(), 11,dissapearTimer = 200))
                 }else if (time == 350L){
-                    listOfCoins.clear()
+
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.7).toInt(), -8,dissapearTimer = 200))
                 }else if (time == 450L){
-                    listOfCoins.clear()
+
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 5,dissapearTimer = 200))
                 }else if (time == 550L){
-                    listOfCoins.clear()
+
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.35).toInt(), -10,dissapearTimer = 200))
                 }else if (time == 650L){
-                    listOfCoins.clear()
+
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.75).toInt(), 8,dissapearTimer = 200))
                 }else if (time == 750L){
-                    listOfCoins.clear()
+
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(), 4,dissapearTimer = 200),
                         createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.7).toInt(), -13,dissapearTimer = 200))
                 }else if (time == 850L){
-                    listOfCoins.clear()
+
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.4).toInt(), (screenHeight * 0.6).toInt(), 1,dissapearTimer = 200))
                 }else if (time == 950L){
-                    listOfCoins.clear()
+
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 2,dissapearTimer = 200))
                 }else if (time == 1050L){
-                    listOfCoins.clear()
+
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(), 4,dissapearTimer = 200),
                         createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.7).toInt(), -6,dissapearTimer = 200))
                 }else if (time == 1150L){
-                    listOfCoins.clear()
+
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 10,dissapearTimer = 200))
+
                 }
                 var contador : Int = 0
                 while(contador < listOfCoins.size){
@@ -1054,9 +1714,82 @@ class LevelPractice(
                 }
             }
             11 -> {
+
+                if (time == 50L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.6).toInt(), -4,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.6).toInt(), 6,dissapearTimer = 100))
+
+                }else if(time == 150L){
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.35).toInt(), 1,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.8).toInt(), 5,dissapearTimer = 100))
+
+                }else if(time == 250L){
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), 10,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), -20,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.8).toInt(), 8,dissapearTimer = 100))
+
+                }else if(time == 500L){
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), 10,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), -20,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.8).toInt(), 8,dissapearTimer = 100))
+
+
+                }else if(time == 700L){
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.4).toInt(), 10,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.6).toInt(), -20,dissapearTimer = 100))
+
+                }else if(time == 800L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.8).toInt(), (screenHeight * 0.3).toInt(), 1,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 10,dissapearTimer = 100))
+
+
+                }else if(time == 1050L) {
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.3).toInt(), -5,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.3).toInt(), 7,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(), 3,dissapearTimer = 100),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), -11,dissapearTimer = 100))
+
+
+                }else if(time == 1150L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(), 5,dissapearTimer = 100))
+
+
+                }else if(time == 1250L) {
+
+                    tmpListOfCoins = arrayListOf(
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.35).toInt(), -15,dissapearTimer = 200),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.35).toInt(), 2,dissapearTimer = 200),
+                        createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.65).toInt(), 9,dissapearTimer = 200),
+                        createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.65).toInt(), -6,dissapearTimer = 200))
+
+
+                }
+                var contador : Int = 0
+                while(contador < listOfCoins.size){
+                    if(listOfCoins.get(contador).dissapearTimer == 0){
+                        listOfCoins.removeAt(contador)
+                        contador--
+                    }
+                    contador++
+                }
+
             }
-            12 -> {
-            }
+
         }
         listOfCoins.addAll(tmpListOfCoins)
     }
@@ -1113,13 +1846,9 @@ class LevelPractice(
 
             }
             11 -> {
-                listOfLimits.add(34)
-                listOfLimits.add(60)
+                listOfLimits.add(25)
+                listOfLimits.add(35)
 
-            }
-            12 -> {
-                listOfLimits.add(50)
-                listOfLimits.add(100)
             }
         }
 
