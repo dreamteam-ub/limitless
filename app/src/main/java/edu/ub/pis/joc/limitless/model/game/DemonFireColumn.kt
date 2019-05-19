@@ -10,9 +10,6 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
     override var xVelocity: Int = 26
     override var yVelocity: Int = 26
 
-    override var w = image[0].width
-    override var h = image[0].height
-
     override var concreteBehaviour = behaviour
 
     var hDemon = hDemon

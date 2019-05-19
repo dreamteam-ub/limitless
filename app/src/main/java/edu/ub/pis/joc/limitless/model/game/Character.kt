@@ -12,8 +12,8 @@ abstract class Character(image: ArrayList<Bitmap>, posX: Int, posY: Int) {
     open var y: Int = posY
 
     //medida imagen
-    open var w: Int = image[0].width
-    open var h: Int = image[0].height
+    var w: Int = image[0].width
+    var h: Int = image[0].height
 
     var imageList: ArrayList<Bitmap> = image
 

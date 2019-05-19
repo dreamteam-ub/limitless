@@ -4,9 +4,6 @@ import android.graphics.*
 
 class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), ObjectsInGameInterface {
 
-    override var h = image[0].height
-    override var w = image[0].width
-
     val paint = Paint()
 
     var value: Int = 0

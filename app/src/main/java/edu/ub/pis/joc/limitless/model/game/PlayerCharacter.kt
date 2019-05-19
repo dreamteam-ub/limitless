@@ -10,9 +10,6 @@ class PlayerCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Characte
 
     var accumulate: Int = 0
 
-    override var w = image[0].width
-    override var h = image[0].height
-
     override fun update(_x: Int, _y: Int, canFast: Boolean) {
         if (canFast) {
             moveFast(_x, _y)

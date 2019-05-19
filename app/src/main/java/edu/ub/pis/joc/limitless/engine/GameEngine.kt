@@ -55,18 +55,16 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
 
         optionsGameBorder.inSampleSize = 2
         optionsPauseButton.inSampleSize = 2
-
-
     }
 
     private var inGameBorder: InGameBorder = InGameBorder(
         BitmapFactory.decodeStream(
-            BufferedInputStream(assets.open(IMG_ASSETS + "in_game_border.png")), null, optionsGameBorder)!!
+            BufferedInputStream(assets.open(IMG_ASSETS + "in_game_border.png")), Rect(), optionsGameBorder)!!
     )
 
     var pauseButton: PauseButton =
         PauseButton(
-            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + "pause_button.png")), null, optionsPauseButton)!!
+            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + "pause_button.png")), Rect(), optionsPauseButton)!!
         )
 
 

@@ -34,6 +34,8 @@ object Data  {
     val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
+    val screenDpi = Resources.getSystem().displayMetrics.densityDpi
+
     var versus_survived : Array <Long> = arrayOf(0L,0L)
 
     fun numberToMMSS(num: Long): String {

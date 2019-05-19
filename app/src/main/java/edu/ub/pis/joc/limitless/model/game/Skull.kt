@@ -1,6 +1,5 @@
 package edu.ub.pis.joc.limitless.model.game
 
-import android.content.Context
 import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -8,9 +7,6 @@ import android.util.Log
 import edu.ub.pis.joc.limitless.model.Data
 
 class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,assets: AssetManager, behaviour: Int) : ComplexEnemy(image, posX, posY,childList,assets,behaviour) {
-
-    override var h = image[0].height
-    override var w = image[0].width
 
     var contador: Int = 0
 

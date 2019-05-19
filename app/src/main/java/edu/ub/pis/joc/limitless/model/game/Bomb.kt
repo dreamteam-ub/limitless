@@ -10,18 +10,11 @@ class Bomb(
     override var xVelocity: Int = 0
     override var yVelocity: Int = 0
 
-    override var w = image[0].width
-    override var h = image[0].height
-
     override var activeEnemy: Boolean = false
     private var firstDraw : Boolean = true
     var contador: Int = 0
 
     override var concreteBehaviour = behaviour
-
-
-
-
 
     override fun update() {
         this.dissapearTimer--

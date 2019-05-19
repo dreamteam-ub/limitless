@@ -8,9 +8,6 @@ import edu.ub.pis.joc.limitless.model.Data.screenHeight
 
 class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,wSkull: Int,hSkull:Int) : Enemy(image, posX, posY,behaviour) {
 
-    override var h = image[0].height
-    override var w = image[0].width
-
     var contador : Int = 0
 
     override var activeEnemy = false

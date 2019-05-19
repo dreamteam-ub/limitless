@@ -1,7 +1,6 @@
 package edu.ub.pis.joc.limitless.view.gamescreen
 
 
-import android.content.Context
 import android.content.res.AssetManager
 import android.graphics.*
 import edu.ub.pis.joc.limitless.engine.FONT_LIMITS
@@ -29,7 +28,6 @@ class Limits (var min: Int, var max: Int, assets : AssetManager) {
 
 
     fun draw(canvas: Canvas) {
-
         val halfW: Int = (w / 2).toInt()
         val halfH: Int = (h / 2).toInt()
         rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
