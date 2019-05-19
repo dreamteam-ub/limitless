@@ -21,8 +21,10 @@ class AutoLevelGenerate {
     var limitLow = 15
     var limitHigh = 25
     var lastLow = 1
+    var lastHigh = 1
     var positiveCoins = 0
     var negativeCoins = 0
+    var accumulate = 0
     var firstCall = true
     var ai = ArtificialIntelligence()
 
@@ -115,8 +117,15 @@ class AutoLevelGenerate {
             return arrayListOf(limitLow, limitHigh)
         } else {
             lastLow = limitLow
+            lastHigh = limitHigh
             limitLow += Random.nextInt(-5, 5)
             limitHigh += Random.nextInt(-5, 5)
+            while (limitLow >= limitHigh){
+                lastLow += Random.nextInt(-5, 5)
+                lastHigh += Random.nextInt(-5, 5)
+                limitLow = lastLow
+                limitHigh = lastHigh
+            }
             var lims = arrayListOf(limitLow, limitHigh)
             return lims
         }
@@ -124,36 +133,49 @@ class AutoLevelGenerate {
 
     fun generateCoinValues(lastLow : Int, low : Int) : Int{
         var valCoin = 0
-        if (lastLow > low){
-            //mas monedas negativas
 
-            valCoin = (Random.nextInt(-limitLow / 3,  limitHigh / 3))
+        if (lastLow > low){
+            //prioridad monedas negativas
+            valCoin = (Random.nextInt(-limitLow / 2,  limitHigh / 2))
 
         }
         else if (lastLow <= low){
-            //mas monedas positivas
-
-            valCoin = (Random.nextInt((-limitLow / 3), limitHigh / 3))
+            //prioridad monedas positivas
+            valCoin = (Random.nextInt(-limitLow / 2, limitHigh / 2))
 
         }
+        /*
+        if (positiveCoins + negativeCoins == spawnCoinFreq -1){
+            if(limitLow > 0 && limitLow < accumulate + valCoin){
+                valCoin = limitLow - accumulate
+                positiveCoins++
+                accumulate += valCoin
+                return valCoin
+            }
+        }
+        */
 
         if (valCoin == 0) {valCoin++}
 
         if(valCoin > 0){
             if(positiveCoins == Math.ceil(spawnCoinFreq/2.0).toInt() ){
-                return valCoin*-1
                 negativeCoins++
+                accumulate += (valCoin*-1)
+                return valCoin*-1
             } else {
-                return valCoin
                 positiveCoins++
+                accumulate+=valCoin
+                return valCoin
             }
         } else {
             if(negativeCoins == Math.ceil(spawnCoinFreq/2.0).toInt()){
-                return valCoin*-1
                 positiveCoins++
+                accumulate += (valCoin*-1)
+                return valCoin*-1
             } else {
-                return valCoin
                 negativeCoins++
+                accumulate+=valCoin
+                return valCoin
             }
         }
     }
@@ -177,11 +199,10 @@ class AutoLevelGenerate {
 
         for (i in 0 until listCoin.size) {
             var tmpcoin = listCoin[i]
-            if (Rect.intersects(coin.rect, tmpcoin.rect)) {
+            if (coin.rect.contains(tmpcoin.rect) || tmpcoin.rect.contains(coin.rect)) {
                 listCoin.remove(coin)
                 Log.d("REALTRUE", i.toString())
                 same = true
-                //nomes la x+w , x-w
             } else if (coin.x == tmpcoin.x && coin.y == tmpcoin.y) {
                 listCoin.remove(coin)
                 Log.d("REALTRUE2", i.toString())

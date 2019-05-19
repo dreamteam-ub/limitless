@@ -33,6 +33,8 @@ class LevelInfinite(assets: AssetManager,
                 if (time == 0L) {   //primera stage de bombes per començar
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
+                    autoLvl.positiveCoins = 0
+                    autoLvl.negativeCoins = 0
                     var parameters : ArrayList<Any>
                     for (i in 0 until autoLvl.spawnEnemyFreq){
                         var enemy : Enemy
@@ -249,8 +251,10 @@ class LevelInfinite(assets: AssetManager,
                         //Log.d("COINS CREATED", parameters[3].toString())
                         while (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
                             if (coin.value > 0){
+                                autoLvl.accumulate -= coin.value
                                 autoLvl.positiveCoins--
-                            }else{
+                            }else if (coin.value < 0){
+                                autoLvl.accumulate += coin.value
                                 autoLvl.negativeCoins--
                             }
                             var parameters = autoLvl.generateCoins()
@@ -262,8 +266,11 @@ class LevelInfinite(assets: AssetManager,
                                 Typeface.createFromAsset(assets, FONT_COINS),
                                 parameters[4].toString().toInt()
                             )
-                            Log.d("REALLOCATE","REALLOCATION COIN")
+                            Log.d("REALLOCATEPositive",autoLvl.positiveCoins.toString())
+                            Log.d("REALLOCATENegative",autoLvl.negativeCoins.toString())
+
                         }
+                        autoLvl.accumulate += coin.value
                         tmpListOfCoins.add(coin)
 
 
@@ -290,10 +297,12 @@ class LevelInfinite(assets: AssetManager,
                             parameters[4].toString().toInt()
                         )
                         //Log.d("COINS CREATED", parameters[3].toString())
-                        if (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
+                        while (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
                             if (coin.value > 0){
+                                autoLvl.accumulate -= coin.value
                                 autoLvl.positiveCoins--
-                            }else{
+                            }else if (coin.value < 0){
+                                autoLvl.accumulate += coin.value
                                 autoLvl.negativeCoins--
                             }
                             var parameters = autoLvl.generateCoins()
@@ -307,6 +316,7 @@ class LevelInfinite(assets: AssetManager,
                             )
                             Log.d("REALLOCATE","REALLOCATION COIN")
                         }
+                        autoLvl.accumulate += coin.value
                         tmpListOfCoins.add(coin)
                         tmpListOfCoins[j].appearTime = Random.nextLong(time, autoLvl.time-100)
 

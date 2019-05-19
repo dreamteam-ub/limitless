@@ -94,6 +94,14 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             } else if (touched == 2) {
                 player.update(touched_x, touched_y, true)
             }
+        }else if (player.imageList[0].isRecycled){
+            if (Data.user.vibration!!) {
+                if (android.os.Build.VERSION.SDK_INT >= 26) {
+                    vibrator.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
+                } else {
+                    vibrator.vibrate(30)
+                }
+            }
         }
 
         var coinIterator = 0
