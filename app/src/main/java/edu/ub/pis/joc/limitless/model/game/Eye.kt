@@ -32,20 +32,26 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
 
     var drawChild: Boolean = false
 
-    var timeByProjectileSet = false
+    var  projectileStep = 0
 
-    var  timeByProjectile = 0
-
-    var indicador = 0
+    var  currentRange = 0
 
     var indexProjectileCount = 0
 
-    override fun update() {
-        if(!timeByProjectileSet){
-            timeByProjectile = dissapearTimer/(projectileWavesList.size+1)
-            timeByProjectileSet = true
+    init {
+        when (concreteBehaviour) {
+            0,1 -> {
+                projectileStep = ((Data.screenWidth*0.8)/(projectileWavesList.size+1)).toInt()
+                currentRange = (Data.screenWidth*0.1).toInt()
+            }
+            2,3,4,5,6,7 -> {
+                projectileStep = ((Data.screenHeight*0.8)/(projectileWavesList.size+1)).toInt()
+                currentRange = (Data.screenHeight*0.1).toInt()
+            }
         }
-        Log.d("TIME BY PROJECTILE",timeByProjectile.toString())
+    }
+
+    override fun update() {
         when (concreteBehaviour) {
             0 -> {
                 //Sinusoidal esquerra a dreta
@@ -109,23 +115,43 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
             }
         }
 
-        indicador++
-        if(indicador == timeByProjectile){
-            if(indexProjectileCount == 0){
-                indicador = 0
-                projectileRelocate[0] = true
-                projectileDraw[0] = true
-            } else if (indexProjectileCount == 1) {
-                indicador = 0
-                projectileRelocate[1] = true
-                projectileDraw[1] = true
-            } else{
-                indicador = 0
-                projectileRelocate[indexProjectileCount] = true
-                projectileDraw[indexProjectileCount] = true
-                projectileDraw[indexProjectileCount-2] = false
+        when (concreteBehaviour) {
+            0 -> {
+                //Empieza izquierda
+                if(x>currentRange+projectileStep && !projectileDraw[indexProjectileCount]){
+                    projectileRelocate[indexProjectileCount] = true
+                    projectileDraw[indexProjectileCount] = true
+                    indexProjectileCount = (indexProjectileCount+1)%(projectileWavesList.size)
+                    currentRange += projectileStep
+                }
             }
-            indexProjectileCount++
+            1->{
+                //Empieza derecha
+                if(x<(Data.screenWidth-(currentRange+projectileStep)) && !projectileDraw[indexProjectileCount]){
+                    projectileRelocate[indexProjectileCount] = true
+                    projectileDraw[indexProjectileCount] = true
+                    indexProjectileCount = (indexProjectileCount+1)%(projectileWavesList.size)
+                    currentRange += projectileStep
+                }
+            }
+            2,5,6-> {
+                //Empiezan arriba
+                if(y>currentRange+projectileStep && !projectileDraw[indexProjectileCount]){
+                    projectileRelocate[indexProjectileCount] = true
+                    projectileDraw[indexProjectileCount] = true
+                    indexProjectileCount = (indexProjectileCount+1)%(projectileWavesList.size)
+                    currentRange += projectileStep
+                }
+            }
+            3,4,7-> {
+                //Empiezan abajo
+                if(y<(Data.screenHeight-(currentRange+projectileStep)) && !projectileDraw[indexProjectileCount]){
+                    projectileRelocate[indexProjectileCount] = true
+                    projectileDraw[indexProjectileCount] = true
+                    indexProjectileCount = (indexProjectileCount+1)%(projectileWavesList.size)
+                    currentRange += projectileStep
+                }
+            }
         }
 
         if (drawChild) {

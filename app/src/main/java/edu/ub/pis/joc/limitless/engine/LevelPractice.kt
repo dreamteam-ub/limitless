@@ -67,33 +67,33 @@ class LevelPractice(
             }
             1 -> {
                 if (time == 0L) {
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0), (screenHeight * 0.6).toInt(),0,100)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.6).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
                 } else if (time == 100L) {
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 0.1).toInt(),1,100)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.5).toInt(), 0,1,100)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.3).toInt(),2,100)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.3).toInt(),2,100)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.7).toInt(),2,100)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.7).toInt(),2,100)
                     listOfTmpEnemies.add(tmp)
                 } else if (time == 200L) {
 
-                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(),0,100)
+                    tmp=createEnemy(GHOST_CHAR, screenWidth , (screenHeight * 0.7).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0), (screenHeight * 0.2).toInt(),0,100)
+                    tmp=createEnemy(GHOST_CHAR, 0 , (screenHeight * 0.2).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
                 }else if(time == 300L){
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.2).toInt(),2,100)
+                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), 0,2,100)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.5).toInt(),2,100)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.5).toInt(),2,100)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createEnemy(GHOST_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 0.7).toInt(),2,100)
+                    tmp = createEnemy(GHOST_CHAR, 0, (screenHeight * 0.7).toInt(),2,100)
                     listOfTmpEnemies.add(tmp)
                 }else if(time == 400L){
 
-                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(),0,100)
+                    tmp=createEnemy(GHOST_CHAR, screenWidth, (screenHeight * 0.7).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
-                    tmp=createEnemy(GHOST_CHAR, (screenWidth * 0), (screenHeight * 0.2).toInt(),0,100)
+                    tmp=createEnemy(GHOST_CHAR, 0, (screenHeight * 0.2).toInt(),0,100)
                     listOfTmpEnemies.add(tmp)
                 }else if(time == 500L){
                     end_game=true
@@ -205,7 +205,7 @@ class LevelPractice(
                 var tmpEye:Eye
                 var tmpEye2:Eye
                 if (time == 0L) {
-                    tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 80,0)
+                    tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 20,0)
                     listOfTmpEnemies.add(tmp)
                 } else if(time == 25L){
                     tmpEye = listOfEnemyCharacters[0] as Eye
@@ -213,7 +213,7 @@ class LevelPractice(
 
                 }else if(time == 150L){
                     listOfEnemyCharacters.clear()
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.5).toInt(), 1, 80,1)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.5).toInt(), 1, 20,1)
                     listOfTmpEnemies.add(tmp)
                     //end_game=true
                 }else if(time == 175L) {
@@ -222,9 +222,9 @@ class LevelPractice(
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 300L){
 
-                    tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.3).toInt(), 0, 80,16)
+                    tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.3).toInt(), 0, 20,16)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(), 1, 80,17)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(), 1, 20,17)
                     listOfTmpEnemies.add(tmp)
 
                 }else if(time == 325L){
@@ -240,9 +240,9 @@ class LevelPractice(
                 }else if(time == 450L){
 
 
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.3).toInt(), 1, 80,16)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.3).toInt(), 1, 20,16)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(EYE_CHAR, 0 , (screenHeight * 0.7).toInt(), 0, 80,17)
+                    tmp = createComplexEnemy(EYE_CHAR, 0 , (screenHeight * 0.7).toInt(), 0, 20,17)
                     listOfTmpEnemies.add(tmp)
 
 
@@ -275,7 +275,7 @@ class LevelPractice(
                 var tmpEye : Eye
                 var tmpEye2 : Eye
                 if (time == 0L) {
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 135,2)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 20,2)
                     listOfTmpEnemies.add(tmp)
                 } else if(time == 25L){
                     tmpEye = listOfEnemyCharacters[0] as Eye
@@ -284,7 +284,7 @@ class LevelPractice(
 
                 }else if(time == 150L){
 
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), (screenWidth * 2), 3, 135,3)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), (screenWidth * 2), 3, 20,3)
                     listOfTmpEnemies.add(tmp)
 
                 }else if(time == 175L) {
@@ -295,9 +295,9 @@ class LevelPractice(
 
                 }else if(time == 300L){
 
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 135,10)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 20,10)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), 0, 2, 135,11)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), 0, 2, 20,11)
                     listOfTmpEnemies.add(tmp)
 
                 }else if(time == 325L){
@@ -314,9 +314,9 @@ class LevelPractice(
 
                     // listOfEnemyCharacters.clear()
 
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), (screenWidth * 2), 3, 135,10)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), (screenWidth * 2), 3, 20,10)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), (screenWidth * 2), 3, 135,11)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), (screenWidth * 2), 3, 20,11)
                     listOfTmpEnemies.add(tmp)
 
                 }else if(time == 475L){
@@ -332,9 +332,9 @@ class LevelPractice(
                 }else if(time == 600L){
 
 
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 140,12)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 20,12)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), (screenWidth * 2), 3, 140,13)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), (screenWidth * 2), 3, 20,13)
                     listOfTmpEnemies.add(tmp)
 
                 }else if(time == 625L){
@@ -349,9 +349,9 @@ class LevelPractice(
 
                 }else if(time == 750L){
 
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), (screenWidth * 2), 3, 140,14)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), (screenWidth * 2), 3, 20,14)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), 0, 2, 140,15)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), 0, 2, 20,15)
                     listOfTmpEnemies.add(tmp)
 
                 }else if(time == 775L) {
@@ -382,7 +382,7 @@ class LevelPractice(
             5 -> {
                 var tmpEye : Eye
                 if (time == 0L) {
-                    tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 150,4)
+                    tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 20,4)
                     listOfTmpEnemies.add(tmp)
                 } else if(time == 25L){
                     tmpEye = listOfEnemyCharacters[0] as Eye
@@ -404,7 +404,7 @@ class LevelPractice(
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 125L) {
 
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 150,5)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 20,5)
                     listOfTmpEnemies.add(tmp)
                 } else if(time == 150L){
                     tmpEye = listOfEnemyCharacters[0] as Eye
@@ -426,9 +426,9 @@ class LevelPractice(
                     listOfEnemyCharacters[0] = tmpEye
                 }else if(time==300L){
 
-                    tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.3).toInt(), 0, 150,6)
+                    tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.3).toInt(), 0, 20,6)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(), 1, 150,7)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(), 1, 20,7)
                     listOfTmpEnemies.add(tmp)
                 }else if (time == 350L){
                     tmpEye = listOfEnemyCharacters[0] as Eye
@@ -443,9 +443,9 @@ class LevelPractice(
                     listOfEnemyCharacters[1] = tmpEye
                 }else if (time == 400L){
 
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 150,8)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 20,8)
                     listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), (screenWidth * 2), 3, 150,9)
+                    tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), (screenWidth * 2), 3, 20,9)
                     listOfTmpEnemies.add(tmp)
                 }else if (time == 450L){
                     tmpEye = listOfEnemyCharacters[0] as Eye
