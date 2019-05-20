@@ -80,5 +80,6 @@
     <string name="swipe_tutorial">Swipe to Continue</string>
     <string name="vibration">VIBRATION</string>
     <string name="easter_egg_menu">Esto no es un boton\nEres calvisimo</string>
+    <string name="mustPassPractice">You must finish Practice Mode first</string>
 
 </resources>

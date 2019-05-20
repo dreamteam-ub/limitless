@@ -2,9 +2,12 @@ package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.Data
 
 const val MODE_INFINITY = "infinity"
 const val MODE_INFINITY_VERSUS = "infinity_versus"
@@ -39,24 +42,43 @@ class GameModeActivity : FullScreenActivity() {
 
         infiniteMode = findViewById(R.id.infiniteModeButton)
         infiniteMode.setOnClickListener {
-            val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra(MODE_INFINITY, true)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
-            finish()
-            infiniteMode.isClickable = false
+            if (Data.user.level == 2 && Data.user.world == 3) {
+                val intent = Intent(this, GameActivity::class.java)
+                intent.putExtra(MODE_INFINITY, true)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
+                infiniteMode.isClickable = false
+            }else{
+                customImageToast(
+                    R.drawable.world4_select, getString(R.string.mustPassPractice),
+                    Toast.LENGTH_SHORT, Gravity.TOP or
+                            Gravity.FILL_HORIZONTAL, 0, 200
+                ).show()
+
+            }
         }
 
         infiniteModeVersus = findViewById(R.id.infiniteModeVersusButton)
         infiniteModeVersus.setOnClickListener {
-            val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra(MODE_INFINITY, true)
-            intent.putExtra(MODE_INFINITY_VERSUS, true)
-            intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 0)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
-            finish()
-            infiniteModeVersus.isClickable = false
+            if (Data.user.level == 2 && Data.user.world == 3) {
+                val intent = Intent(this, GameActivity::class.java)
+                intent.putExtra(MODE_INFINITY, true)
+                intent.putExtra(MODE_INFINITY_VERSUS, true)
+                intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 0)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
+                infiniteModeVersus.isClickable = false
+            }else{
+
+                customImageToast(
+                    R.drawable.world4_select, getString(R.string.mustPassPractice),
+                    Toast.LENGTH_SHORT, Gravity.TOP or
+                            Gravity.FILL_HORIZONTAL, 0, 200
+                ).show()
+
+            }
         }
 
         val textMyMap: TextView = findViewById(R.id.MyMapText)

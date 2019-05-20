@@ -251,10 +251,8 @@ class LevelInfinite(assets: AssetManager,
                         //Log.d("COINS CREATED", parameters[3].toString())
                         while (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
                             if (coin.value > 0){
-                                autoLvl.accumulate -= coin.value
                                 autoLvl.positiveCoins--
                             }else if (coin.value < 0){
-                                autoLvl.accumulate += coin.value
                                 autoLvl.negativeCoins--
                             }
                             var parameters = autoLvl.generateCoins()
@@ -270,7 +268,6 @@ class LevelInfinite(assets: AssetManager,
                             Log.d("REALLOCATENegative",autoLvl.negativeCoins.toString())
 
                         }
-                        autoLvl.accumulate += coin.value
                         tmpListOfCoins.add(coin)
 
 
@@ -299,10 +296,8 @@ class LevelInfinite(assets: AssetManager,
                         //Log.d("COINS CREATED", parameters[3].toString())
                         while (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
                             if (coin.value > 0){
-                                autoLvl.accumulate -= coin.value
                                 autoLvl.positiveCoins--
                             }else if (coin.value < 0){
-                                autoLvl.accumulate += coin.value
                                 autoLvl.negativeCoins--
                             }
                             var parameters = autoLvl.generateCoins()
@@ -316,7 +311,6 @@ class LevelInfinite(assets: AssetManager,
                             )
                             Log.d("REALLOCATE","REALLOCATION COIN")
                         }
-                        autoLvl.accumulate += coin.value
                         tmpListOfCoins.add(coin)
                         tmpListOfCoins[j].appearTime = Random.nextLong(time, autoLvl.time-100)
 
