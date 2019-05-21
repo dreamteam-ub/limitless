@@ -28,11 +28,9 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
 
     var contador: Int = 0
 
-    var projectileWavesList: ArrayList<ArrayList<EyeProjectile>> = generateChildList()
-    override var projectileDraw: ArrayList<Boolean> = generateBooleans()
-    override var projectileRelocate: ArrayList<Boolean> = generateBooleans()
-
-    var drawChild: Boolean = false
+    var projectileWavesList: ArrayList<ArrayList<EyeProjectile>> = ArrayList()
+    override var projectileDraw: ArrayList<Boolean> = ArrayList()
+    override var projectileRelocate: ArrayList<Boolean> = ArrayList()
 
     var  projectileStep = 0
 
@@ -41,6 +39,9 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
     var indexProjectileCount = 0
 
     init {
+        projectileWavesList = generateChildList()
+        projectileDraw = generateBooleans()
+        projectileRelocate = generateBooleans()
         when (concreteBehaviour) {
             0,1 -> {
                 projectileStep = ((Data.screenWidth*0.8)/(projectileWavesList.size+1)).toInt()
@@ -156,25 +157,24 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
             }
         }
 
-        if (drawChild) {
-            for (i in 0 until projectileRelocate.size) {
-                if (projectileRelocate[i]) {
-                    for (j in 0 until projectileWavesList[i].size) {
-                        projectileWavesList[i][j].x = this.x
-                        projectileWavesList[i][j].y = this.y
-                    }
+        for (i in 0 until projectileRelocate.size) {
+            if (projectileRelocate[i]) {
+                for (j in 0 until projectileWavesList[i].size) {
+                    projectileWavesList[i][j].x = this.x
+                    projectileWavesList[i][j].y = this.y
                 }
-                projectileRelocate[i] = false
             }
+            projectileRelocate[i] = false
+        }
 
-            for (i in 0 until projectileDraw.size) {
-                if (projectileDraw[i]) {
-                    for (j in 0 until projectileWavesList[i].size) {
-                        projectileWavesList[i][j].update()
-                    }
+        for (i in 0 until projectileDraw.size) {
+            if (projectileDraw[i]) {
+                for (j in 0 until projectileWavesList[i].size) {
+                    projectileWavesList[i][j].update()
                 }
             }
         }
+
 
         if(dissapearTimer > 0){
             dissapearTimer--
@@ -215,15 +215,14 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
         contador = (contador + 1) % 31
 
 
-        if (drawChild) {
-            for (i in 0 until projectileDraw.size) {
-                if (projectileDraw[i]) {
-                    for (j in 0 until projectileWavesList[i].size) {
-                        projectileWavesList[i][j].draw(canvas)
-                    }
+        for (i in 0 until projectileDraw.size) {
+            if (projectileDraw[i]) {
+                for (j in 0 until projectileWavesList[i].size) {
+                    projectileWavesList[i][j].draw(canvas)
                 }
             }
         }
+
     }
 
     @Suppress("UNCHECKED_CAST")
