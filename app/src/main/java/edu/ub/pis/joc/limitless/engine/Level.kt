@@ -1,6 +1,5 @@
 package edu.ub.pis.joc.limitless.engine
 
-import android.content.Context
 import android.content.res.AssetManager
 import android.graphics.Typeface
 import android.util.Log
@@ -80,8 +79,6 @@ abstract class Level(
             (Data.screenHeight * 0.5).toInt()
         ) as PlayerCharacter
     }
-
-
 
     abstract fun buildEnemies(levelWorld: Int, time: Long)
     abstract fun buildCoins(levelWorld: Int, time: Long)

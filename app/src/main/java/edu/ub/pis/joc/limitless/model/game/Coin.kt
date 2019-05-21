@@ -15,10 +15,10 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
 
     var value: Int = 0
 
-    override var dissapearTimer : Int = 0
+    override var dissapearTimer: Int = 0
 
     var activeCoin: Boolean = false
-    private var firstDraw : Boolean = true
+    private var firstDraw: Boolean = true
     var contador: Int = 0
 
     init {
@@ -53,7 +53,7 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
         val halfH: Int = h / 2
         rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
 
-        if(firstDraw){
+        if (firstDraw) {
             if (contador <= 2) {
                 //Empieza a crecer
                 w = (screenWidth * 0.005555).toInt()
@@ -63,19 +63,19 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
                 w = (screenWidth * 0.011111).toInt()
                 h = (screenHeight * 0.0059171).toInt()
                 canvas.drawBitmap(imageList[1], null, rect, null)
-            }else if (contador <= 6) {
+            } else if (contador <= 6) {
                 w = (screenWidth * 0.023148).toInt()
                 h = (screenHeight * 0.012327).toInt()
                 canvas.drawBitmap(imageList[2], null, rect, null)
-            }else if (contador <= 8) {
+            } else if (contador <= 8) {
                 w = (screenWidth * 0.034259).toInt()
                 h = (screenHeight * 0.018244).toInt()
                 canvas.drawBitmap(imageList[3], null, rect, null)
-            }else if (contador <= 10) {
+            } else if (contador <= 10) {
                 w = (screenWidth * 0.046296).toInt()
                 h = (screenHeight * 0.027120).toInt()
                 canvas.drawBitmap(imageList[4], null, rect, null)
-            }else if (contador <= 12) {
+            } else if (contador <= 12) {
                 w = (screenWidth * 0.057407).toInt()
                 h = (screenHeight * 0.030571).toInt()
                 canvas.drawBitmap(imageList[5], null, rect, null)
@@ -129,7 +129,7 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
                 w = (screenWidth * 0.041666).toInt()
                 h = (screenHeight * 0.0369822).toInt()
                 canvas.drawBitmap(imageList[13], null, rect, null)
-            }else if (contador <= 38) {
+            } else if (contador <= 38) {
                 w = (screenWidth * 0.025925).toInt()
                 h = (screenHeight * 0.0369822).toInt()
                 canvas.drawBitmap(imageList[12], null, rect, null)
@@ -149,34 +149,54 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
                 w = (screenWidth * 0.050925).toInt()
                 h = (screenHeight * 0.0369822).toInt()
                 canvas.drawBitmap(imageList[8], null, rect, null)
-            }else if (contador <= 48) {
+            } else if (contador <= 48) {
                 w = (screenWidth * 0.065185).toInt()
                 h = (screenHeight * 0.0369822).toInt()
                 canvas.drawBitmap(imageList[7], null, rect, null)
             }
-            contador = (contador+1)
-            if(contador == 49){
+            contador = (contador + 1)
+            if (contador == 49) {
                 firstDraw = false
                 contador = 0
-                activeCoin=true
+                activeCoin = true
             }
         } else {
             canvas.drawBitmap(imageList[6], null, rect, null)
 
             if (value.toString().length == 1 && value >= 0) { //positius 1 xifra
-                paint.textSize = (Data.screenWidth*60.0f)/1080
-                canvas.drawText(value.toString(), x.toFloat() - 15f, y.toFloat() + 12f, paint)
+                paint.textSize = (Data.screenWidth * 60.0f) / 1080
+                canvas.drawText(
+                    value.toString(),
+                    x.toFloat() - (Data.screenWidth * 15f) / 1080,
+                    y.toFloat() + (Data.screenHeight * 12f) / 2028,
+                    paint
+                )
             } else if (value.toString().length == 2 && value < 0) { //negatius 1 xifra
-                paint.textSize = (Data.screenWidth*60.0f)/1080
+                paint.textSize = (Data.screenWidth * 60.0f) / 1080
                 paint.color = Color.WHITE
-                canvas.drawText(value.toString(), x.toFloat() - 25f, y.toFloat() + 12f, paint)
+                canvas.drawText(
+                    value.toString(),
+                    x.toFloat() - (Data.screenWidth * 25f) / 1080,
+                    y.toFloat() + (Data.screenHeight * 12f) / 2028,
+                    paint
+                )
             } else if (value.toString().length == 2 && value > 0) { //positius 2 xifres
-                paint.textSize = (Data.screenWidth*60.0f)/1080
-                canvas.drawText(value.toString(), x.toFloat() - 20f, y.toFloat() + 12f, paint)
+                paint.textSize = (Data.screenWidth * 60.0f) / 1080
+                canvas.drawText(
+                    value.toString(),
+                    x.toFloat() - (Data.screenWidth * 20f) / 1080,
+                    y.toFloat() + (Data.screenHeight * 12f) / 2028,
+                    paint
+                )
             } else if (value.toString().length == 3 && value < 0) { //negatius 2 xifres
-                paint.textSize = (Data.screenWidth*55.0f)/1080
+                paint.textSize = (Data.screenWidth * 55.0f) / 1080
                 paint.color = Color.WHITE
-                canvas.drawText(value.toString(), x.toFloat() - 33f, y.toFloat() + 12f, paint)
+                canvas.drawText(
+                    value.toString(),
+                    x.toFloat() - (Data.screenWidth * 33f) / 1080,
+                    y.toFloat() + (Data.screenHeight * 12f) / 2028,
+                    paint
+                )
             }
         }
     }

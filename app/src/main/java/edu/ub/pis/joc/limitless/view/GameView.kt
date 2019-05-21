@@ -7,7 +7,7 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import edu.ub.pis.joc.limitless.engine.GameEngine
 
-const val IMG_ASSETS = "images/"
+const val IMG_ASSETS = "images"
 
 class GameView(appContext: Context, private val gameActivity: GameActivity, mode : Boolean, versus : Boolean) : SurfaceView(appContext), SurfaceHolder.Callback {
     private var thread: GameThread

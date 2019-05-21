@@ -8,6 +8,7 @@ import android.util.Log
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.view.IMG_ASSETS
 import java.io.BufferedInputStream
+import java.io.File
 
 
 const val BOMB_CHAR = "Bomb"
@@ -61,549 +62,549 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
 
         arrayImatgesBombes = arrayListOf(
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb_size6.png")),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb_size6.png")),
+                null,
+                optionsBombs
+            )!!,
+            BitmapFactory.decodeStream(
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb_size5.png")),
                 Rect(),
                 optionsBombs
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb_size5.png")),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb_size4.png")),
                 Rect(),
                 optionsBombs
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb_size4.png")),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb_size3.png")),
                 Rect(),
                 optionsBombs
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb_size3.png")),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb_size2.png")),
                 Rect(),
                 optionsBombs
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb_size2.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb_size1.png")),
+                null,
                 optionsBombs
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb_size1.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb1.png")),
+                null,
                 optionsBombs
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb1.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb2.png")),
+                null,
                 optionsBombs
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb2.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb3.png")),
+                null,
                 optionsBombs
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb3.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb4.png")),
+                null,
                 optionsBombs
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb4.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb_spawn1.png")),
+                null,
                 optionsBombs
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb_spawn1.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb_spawn2.png")),
+                null,
                 optionsBombs
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb_spawn2.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb_spawn3.png")),
+                null,
                 optionsBombs
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb_spawn3.png")),
-                Rect(),
-                optionsBombs
-            )!!,
-            BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "bomb_spawn4.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "bomb_spawn4.png")),
+                null,
                 optionsBombs
             )!!
         )
 
         arrayImatgesGhost = arrayListOf(
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "ghost.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "ghost.png")),
+                null,
                 optionsGhost
             )!!
         )
 
         arrayImatgesPlayer = arrayListOf(
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "main_character.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "main_character.png")),
+                null,
                 optionsCharacter
             )!!
         )
 
         arrayImatgesCoin = arrayListOf(
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_size6.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_size6.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_size5.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_size5.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_size4.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_size4.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_size3.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_size3.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_size2.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_size2.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_size1.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_size1.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_spawn1.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_spawn1.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_spawn2.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_spawn2.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_spawn3.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_spawn3.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_spawn4.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_spawn4.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_spawn5.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_spawn5.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_spawn6.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_spawn6.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_spawn7.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_spawn7.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_spawn8.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_spawn8.png")),
+                null,
                 optionsCoin
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "coin_spawn9.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "coin_spawn9.png")),
+                null,
                 optionsCoin
             )!!
         )
 
         arrayImatgesSkullLaser = arrayListOf(
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "beam1.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "beam1.png")),
+                null,
                 optionsSkullLaser
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "beam1_light.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "beam1_light.png")),
+                null,
                 optionsSkullLaser
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "beam2.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "beam2.png")),
+                null,
                 optionsSkullLaser
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "beam2_light.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "beam2_light.png")),
+                null,
                 optionsSkullLaser
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "beam3.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "beam3.png")),
+                null,
                 optionsSkullLaser
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "beam3_light.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "beam3_light.png")),
+                null,
                 optionsSkullLaser
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "beam4.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "beam4.png")),
+                null,
                 optionsSkullLaser
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "beam4_light.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "beam4_light.png")),
+                null,
                 optionsSkullLaser
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "beam5.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "beam5.png")),
+                null,
                 optionsSkullLaser
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "beam5_light.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "beam5_light.png")),
+                null,
                 optionsSkullLaser
             )!!
         )
 
         arrayImatgesEyeProyectile = arrayListOf(
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "eye_projectile_1.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye_projectile_1.png")),
+                null,
                 optionsEyeProyec
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "eye_projectile_2.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye_projectile_2.png")),
+                null,
                 optionsEyeProyec
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "eye_projectile_3.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye_projectile_3.png")),
+                null,
                 optionsEyeProyec
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "eye_projectile_4.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye_projectile_4.png")),
+                null,
                 optionsEyeProyec
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "eye_projectile_5.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye_projectile_5.png")),
+                null,
                 optionsEyeProyec
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "eye_projectile_6.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye_projectile_6.png")),
+                null,
                 optionsEyeProyec
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "eye_projectile_7.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye_projectile_7.png")),
+                null,
                 optionsEyeProyec
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "eye_projectile_8.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye_projectile_8.png")),
+                null,
                 optionsEyeProyec
             )!!
         )
 
         arrayImatgesDemonColumn = arrayListOf(
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego1.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego1.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego2.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego2.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego3.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego3.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego4.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego4.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego5.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego5.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego6.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego6.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego7.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego7.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego8.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego8.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego9.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego9.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego10.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego10.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego11.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego11.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego12.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego12.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego13.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego13.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego14.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego14.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego15.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego15.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego16.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego16.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego17.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego17.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego18.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego18.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego19.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego19.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego20.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego20.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego21.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego21.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego22.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego22.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego23.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego23.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego24.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego24.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego25.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego25.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego26.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego26.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego27.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego27.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego28.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego28.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego29.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego29.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego30.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego30.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego31.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego31.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego32.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego32.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego33.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego33.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego34.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego34.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego35.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego35.png")),
+                null,
                 optionsDemonFire
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "fuego36.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "fuego36.png")),
+                null,
                 optionsDemonFire
             )!!
         )
 
         arrayImatgesDemon = arrayListOf(
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "demon.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "demon.png")),
+                null,
                 optionsDemon
             )!!
         )
 
         arrayImatgesSkull = arrayListOf(
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull1.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull1.png")),
+                null,
                 optionsSkull
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull2.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull2.png")),
+                null,
                 optionsSkull
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull3.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull3.png")),
+                null,
                 optionsSkull
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull3_light.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull3_light.png")),
+                null,
                 optionsSkull
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull4.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull4.png")),
+                null,
                 optionsSkull
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull4_light.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull4_light.png")),
+                null,
                 optionsSkull
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull5.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull5.png")),
+                null,
                 optionsSkull
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull5_light.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull5_light.png")),
+                null,
                 optionsSkull
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull6.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull6.png")),
+                null,
                 optionsSkull
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull6_light.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull6_light.png")),
+                null,
                 optionsSkull
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull7.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull7.png")),
+                null,
                 optionsSkull
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull7_light.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull7_light.png")),
+                null,
                 optionsSkull
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull8.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull8.png")),
+                null,
                 optionsSkull
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "skull8_light.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "skull8_light.png")),
+                null,
                 optionsSkull
             )!!
         )
 
         arrayImatgesEye = arrayListOf(
-            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + "eye1.png")), Rect(), optionsEye)!!,
-            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + "eye2.png")), Rect(), optionsEye)!!,
-            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + "eye3.png")), Rect(), optionsEye)!!,
-            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + "eye4.png")), Rect(), optionsEye)!!,
+            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye1.png")), null, optionsEye)!!,
+            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye2.png")), null, optionsEye)!!,
+            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye3.png")), null, optionsEye)!!,
+            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye4.png")), null, optionsEye)!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "eye5_test.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye5_test.png")),
+                null,
                 optionsEye
             )!!,
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + "eye6_test.png")),
-                Rect(),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye6_test.png")),
+                null,
                 optionsEye
             )!!
         )

@@ -15,6 +15,7 @@ import edu.ub.pis.joc.limitless.view.end_game
 import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
 import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
 import java.io.BufferedInputStream
+import java.io.File
 import java.util.*
 
 @Suppress("DEPRECATION")
@@ -59,12 +60,12 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
 
     private var inGameBorder: InGameBorder = InGameBorder(
         BitmapFactory.decodeStream(
-            BufferedInputStream(assets.open(IMG_ASSETS + "in_game_border.png")), Rect(), optionsGameBorder)!!
+            BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "in_game_border.png")), null, optionsGameBorder)!!
     )
 
     var pauseButton: PauseButton =
         PauseButton(
-            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + "pause_button.png")), Rect(), optionsPauseButton)!!
+            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "pause_button.png")), null, optionsPauseButton)!!
         )
 
 

@@ -21,6 +21,9 @@ import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.Data.versus_survived
 import edu.ub.pis.joc.limitless.model.SURVIVED
 import edu.ub.pis.joc.limitless.model.VIBRATION
+import java.io.File
+
+const val SOUND_ASSETS = "sound"
 
 var end_game = false
 
@@ -66,8 +69,13 @@ class GameActivity : FullScreenActivity() {
         db = FirebaseFirestore.getInstance()
 
         val volume = if (Data.user.music != null) Data.user.music!!.toFloat()/100.0f else 0.0f
+        musicPlayer = MediaPlayer()
 
-        musicPlayer = MediaPlayer.create(this, R.raw.stage)
+        val descriptor = assets.openFd(SOUND_ASSETS + File.separator + "stage.mp3")
+        musicPlayer.setDataSource(descriptor.fileDescriptor, descriptor.startOffset, descriptor.length)
+        descriptor.close()
+        musicPlayer.prepare()
+
         musicPlayer.setVolume(volume, volume)
 
         musicHandler = Handler()
