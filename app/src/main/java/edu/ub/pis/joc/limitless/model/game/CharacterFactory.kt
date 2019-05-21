@@ -47,16 +47,16 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
     var arrayImatgesEye: ArrayList<Bitmap>
 
     init {
-        optionsBombs.inSampleSize = 8
-        optionsEye.inSampleSize = 8
-        optionsDemon.inSampleSize = 8
-        optionsSkull.inSampleSize = 8
-        optionsDemonFire.inSampleSize = 8
-        optionsEyeProyec.inSampleSize = 8
-        optionsSkullLaser.inSampleSize = 8
-        optionsGhost.inSampleSize = 8
-        optionsCharacter.inSampleSize = 8
-        optionsCoin.inSampleSize = 8
+        optionsBombs.inSampleSize = 4
+        optionsEye.inSampleSize = 4
+        optionsDemon.inSampleSize = 4
+        optionsSkull.inSampleSize = 4
+        optionsDemonFire.inSampleSize = 4
+        optionsEyeProyec.inSampleSize = 4
+        optionsSkullLaser.inSampleSize = 2
+        optionsGhost.inSampleSize = 4
+        optionsCharacter.inSampleSize = 4
+        optionsCoin.inSampleSize = 4
 
 
         arrayImatgesBombes = arrayListOf(

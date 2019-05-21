@@ -15,8 +15,8 @@ import kotlin.math.abs
 class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets: AssetManager, behaviour:Int) :
     ComplexEnemy(image, posX, posY, childList, assets,behaviour) {
 
-    override var w: Int = (screenWidth * 0.05).toInt()
-    override var h: Int = (screenHeight * 0.025).toInt()
+    override var w: Int = (screenWidth * 0.162037).toInt()
+    override var h: Int = (screenHeight * 0.041913).toInt()
 
     override var xVelocity: Int = 10
     override var yVelocity: Int = 9
@@ -235,34 +235,27 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
         when (childListConditional) {
             //MOV HOR
             0 -> {
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
@@ -270,332 +263,262 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
             }
             //MOV HOR
             1 -> {
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 return tmpFinal
             }
             2 ->{
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 0
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,0) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 return tmpFinal
             }
             3 -> {
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 return tmpFinal
             }
             4 -> {
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 0
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,0) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 return tmpFinal
             }
             5 -> {
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 0
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,0) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 0
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,0) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 return tmpFinal
             }
             6 -> {
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 0
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,0) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 return tmpFinal
             }
             7 -> {
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 return tmpFinal
             }
             8 -> {
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 return tmpFinal
             }
             9 -> {
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
@@ -604,44 +527,35 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
             //MOV VERTICAL
 
             10->{
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 0
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,0) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
@@ -651,44 +565,35 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
             //MOV VERTICAL
 
             11->{
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 0
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,0) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
@@ -697,58 +602,46 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
 
             //MOV VERT
             12->{
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 0
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,0) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
@@ -757,54 +650,43 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
 
             //MOV VERT
             13->{
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0,0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
@@ -813,58 +695,46 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
 
             //MOV VERT
             14->{
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 6
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,6) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 0
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,0) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
@@ -873,58 +743,46 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
 
             //MOV VERT
             15->{
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 0
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,0) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 2
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,2) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
@@ -934,30 +792,24 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
             //MOV HOR
             16 -> {
 
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 0
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,0) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 0
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,0) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 1
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,1) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 7
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,7) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
@@ -967,30 +819,24 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
             //MOV HOR
             17->{
 
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)
                 tmp.clear()
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 5
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,5) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 4
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,4) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
-                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0) as EyeProjectile
-                enemy.concreteBehaviour = 3
+                enemy = characterFactory.createCharacter(EYE_PROJECTILE, 0, 0,3) as EyeProjectile
                 enemy.dissapearTimer = 40
                 tmp.add(enemy)
                 tmpFinal.add(tmp.clone() as ArrayList<EyeProjectile>)

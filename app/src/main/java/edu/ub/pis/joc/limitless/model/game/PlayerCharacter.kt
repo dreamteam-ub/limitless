@@ -8,8 +8,8 @@ import java.lang.Math.abs
 
 class PlayerCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), PlayerCharacterInterface {
 
-    override var w: Int = (screenWidth * 0.05).toInt()
-    override var h: Int = (screenHeight * 0.025).toInt()
+    override var w: Int = (screenWidth * 0.08981).toInt()
+    override var h: Int = (screenHeight * 0.044378).toInt()
 
     var accumulate: Int = 0
 

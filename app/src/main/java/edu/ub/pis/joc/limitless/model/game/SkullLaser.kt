@@ -9,8 +9,8 @@ import edu.ub.pis.joc.limitless.model.Data.screenWidth
 
 class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,wSkull: Int,hSkull:Int) : Enemy(image, posX, posY,behaviour) {
 
-    override var w: Int = (screenWidth * 0.05).toInt()
-    override var h: Int = (screenHeight * 0.025).toInt()
+    override var w: Int = (screenWidth * 0.103703).toInt()
+    override var h: Int = (screenHeight * 0.26923).toInt()
 
     var contador : Int = 0
 
@@ -51,8 +51,8 @@ class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,w
                 degrees = 90f
                 x= Data.screenWidth
                 y= (Data.screenHeight*0.25).toInt()
-                w = imageList[0].height
-                h = imageList[0].width
+                w = (screenHeight * 0.26923).toInt()
+                h = (screenWidth * 0.103703).toInt()
                 left = 0
                 top = y-(h/2)
                 right = x-(wSkull/2)
@@ -62,8 +62,8 @@ class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,w
                 degrees = 90f
                 x= Data.screenWidth
                 y= (Data.screenHeight*0.5).toInt()
-                w = imageList[0].height
-                h = imageList[0].width
+                w = (screenHeight * 0.26923).toInt()
+                h = (screenWidth * 0.103703).toInt()
                 left = 0
                 top = y-(h/2)
                 right = x-(wSkull/2)
@@ -73,8 +73,8 @@ class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,w
                 degrees = 90f
                 x= Data.screenWidth
                 y= (Data.screenHeight*0.75).toInt()
-                w = imageList[0].height
-                h = imageList[0].width
+                w = (screenHeight * 0.26923).toInt()
+                h = (screenWidth * 0.103703).toInt()
                 left = 0
                 top = y-(h/2)
                 right = x-(wSkull/2)
@@ -102,8 +102,8 @@ class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,w
                 degrees = 270f
                 x= 0
                 y= (Data.screenHeight*0.75).toInt()
-                w = imageList[0].height
-                h = imageList[0].width
+                w = (screenHeight * 0.26923).toInt()
+                h = (screenWidth * 0.103703).toInt()
                 left = x+(wSkull/2)
                 top = y-(h/2)
                 right = Data.screenWidth
@@ -113,8 +113,8 @@ class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,w
                 degrees = 270f
                 x= 0
                 y= (Data.screenHeight*0.5).toInt()
-                w = imageList[0].height
-                h = imageList[0].width
+                w = (screenHeight * 0.26923).toInt()
+                h = (screenWidth * 0.103703).toInt()
                 left = x+(wSkull/2)
                 top = y-(h/2)
                 right = Data.screenWidth
@@ -124,8 +124,8 @@ class SkullLaser(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,w
                 degrees = 270f
                 x= 0
                 y= (Data.screenHeight*0.25).toInt()
-                w = imageList[0].height
-                h = imageList[0].width
+                w = (screenHeight * 0.26923).toInt()
+                h = (screenWidth * 0.103703).toInt()
                 left = x+(wSkull/2)
                 top = y-(h/2)
                 right = Data.screenWidth

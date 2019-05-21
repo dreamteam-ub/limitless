@@ -9,40 +9,30 @@ import edu.ub.pis.joc.limitless.model.Data.screenWidth
 
 class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour : Int) : Enemy(image, posX, posY,behaviour) {
 
-    override var w: Int = (screenWidth * 0.05).toInt()
-    override var h: Int = (screenHeight * 0.025).toInt()
+    override var w: Int = 0
+    override var h: Int = 0
 
     override var xVelocity: Int = 26
     override var yVelocity: Int = 26
-
-    var chosenWAndH = false
 
     override var concreteBehaviour = behaviour
 
     override var activeEnemy = true
 
-    fun chooseWidhtAndHeight(){
-        when (concreteBehaviour) {
-            0 -> {
-                w = imageList[0].width
-                h = imageList[0].height
+    init{
+        when (behaviour) {
+            0,4 -> {
+                w = (screenWidth * 0.032407).toInt()
+                h = (screenHeight * 0.029585).toInt()
             }
-            4 -> {
-                w = imageList[0].width
-                h = imageList[0].height
-            }
-            2 -> {
-                w = imageList[2].width
-                h = imageList[2].height
-            }
-            6 -> {
-                w = imageList[2].width
-                h = imageList[2].height
+            2,6 -> {
+                w = (screenWidth * 0.055555).toInt()
+                h = (screenHeight * 0.017258).toInt()
             }
             else -> {
                 //Arriba
-                w = imageList[3].width
-                h = imageList[3].height
+                w = (screenWidth * 0.04537).toInt()
+                h = (screenHeight * 0.024654).toInt()
             }
         }
     }
@@ -99,10 +89,6 @@ class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour : 
     }
 
     override fun draw(canvas: Canvas) {
-        if(!chosenWAndH){
-            chooseWidhtAndHeight()
-            chosenWAndH=true
-        }
         val halfW: Int = w / 2
         val halfH: Int = h / 2
         rect.set(x - halfW, y - halfH, x + halfW, y + halfH)

@@ -13,8 +13,8 @@ import kotlin.math.sin
 
 class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList:Int, assets: AssetManager, behaviour:Int) : ComplexEnemy(image, posX, posY,childList,assets,behaviour) {
 
-    override var w: Int = (screenWidth * 0.05).toInt()
-    override var h: Int = (screenHeight * 0.025).toInt()
+    override var w: Int = (screenWidth * 0.106491).toInt()
+    override var h: Int = (screenHeight * 0.073964).toInt()
 
     override var xVelocity: Int = 10
     override var yVelocity: Int = 10
