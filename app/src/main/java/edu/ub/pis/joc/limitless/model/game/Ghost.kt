@@ -3,10 +3,15 @@ package edu.ub.pis.joc.limitless.model.game
 import android.graphics.Bitmap
 import android.util.Log
 import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.Data.screenHeight
+import edu.ub.pis.joc.limitless.model.Data.screenWidth
 import kotlin.math.PI
 import kotlin.math.sin
 
 class Ghost(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) : Enemy(image, posX, posY,behaviour) {
+
+    override var w: Int = (screenWidth * 0.05).toInt()
+    override var h: Int = (screenHeight * 0.025).toInt()
 
     override var xVelocity: Int = 20
     override var yVelocity: Int = 20

@@ -8,6 +8,9 @@ import java.lang.Math.abs
 
 class PlayerCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), PlayerCharacterInterface {
 
+    override var w: Int = (screenWidth * 0.05).toInt()
+    override var h: Int = (screenHeight * 0.025).toInt()
+
     var accumulate: Int = 0
 
     override fun update(_x: Int, _y: Int, canFast: Boolean) {
@@ -24,7 +27,6 @@ class PlayerCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Characte
             return true
         }
         return false
-
     }
 
 

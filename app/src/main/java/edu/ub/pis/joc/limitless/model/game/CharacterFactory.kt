@@ -24,16 +24,16 @@ const val NUMBER_COIN = "Coin"
 
 class CharacterFactory(assets: AssetManager) : FactoryPattern {
 
-    var optionsBombs: BitmapFactory.Options
-    var optionsEye: BitmapFactory.Options
-    var optionsDemon: BitmapFactory.Options
-    var optionsSkull: BitmapFactory.Options
-    var optionsDemonFire: BitmapFactory.Options
-    var optionsEyeProyec: BitmapFactory.Options
-    var optionsSkullLaser: BitmapFactory.Options
-    var optionsGhost: BitmapFactory.Options
-    var optionsCharacter: BitmapFactory.Options
-    var optionsCoin: BitmapFactory.Options
+    var optionsBombs: BitmapFactory.Options = BitmapFactory.Options()
+    var optionsEye: BitmapFactory.Options = BitmapFactory.Options()
+    var optionsDemon: BitmapFactory.Options = BitmapFactory.Options()
+    var optionsSkull: BitmapFactory.Options = BitmapFactory.Options()
+    var optionsDemonFire: BitmapFactory.Options = BitmapFactory.Options()
+    var optionsEyeProyec: BitmapFactory.Options = BitmapFactory.Options()
+    var optionsSkullLaser: BitmapFactory.Options = BitmapFactory.Options()
+    var optionsGhost: BitmapFactory.Options = BitmapFactory.Options()
+    var optionsCharacter: BitmapFactory.Options = BitmapFactory.Options()
+    var optionsCoin: BitmapFactory.Options = BitmapFactory.Options()
 
     var arrayImatgesBombes: ArrayList<Bitmap>
     var arrayImatgesGhost: ArrayList<Bitmap>
@@ -46,41 +46,17 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
     var arrayImatgesSkull: ArrayList<Bitmap>
     var arrayImatgesEye: ArrayList<Bitmap>
 
-    fun fixSample(nexus4Sample : Int) : Int {
-        val ratio = 320.toFloat() / Data.screenDpi.toFloat()
-        return (ratio * nexus4Sample).toInt()
-    }
-
     init {
-        optionsBombs = BitmapFactory.Options()
-        optionsBombs.inSampleSize = fixSample(8)
-
-        optionsEye = BitmapFactory.Options()
-        optionsEye.inSampleSize = fixSample(8)
-
-        optionsDemon = BitmapFactory.Options()
-        optionsDemon.inSampleSize = fixSample(4)
-
-        optionsSkull = BitmapFactory.Options()
-        optionsSkull.inSampleSize = fixSample(2)
-
-        optionsDemonFire = BitmapFactory.Options()
-        optionsDemonFire.inSampleSize = fixSample(8)
-
-        optionsEyeProyec = BitmapFactory.Options()
-        optionsEyeProyec.inSampleSize = fixSample(8)
-
-        optionsSkullLaser = BitmapFactory.Options()
-        optionsSkullLaser.inSampleSize = fixSample(2)
-
-        optionsGhost = BitmapFactory.Options()
-        optionsGhost.inSampleSize = fixSample(4)
-
-        optionsCharacter = BitmapFactory.Options()
-        optionsCharacter.inSampleSize = fixSample(4)
-
-        optionsCoin = BitmapFactory.Options()
-        optionsCoin.inSampleSize = fixSample(4)
+        optionsBombs.inSampleSize = 8
+        optionsEye.inSampleSize = 8
+        optionsDemon.inSampleSize = 8
+        optionsSkull.inSampleSize = 8
+        optionsDemonFire.inSampleSize = 8
+        optionsEyeProyec.inSampleSize = 8
+        optionsSkullLaser.inSampleSize = 8
+        optionsGhost.inSampleSize = 8
+        optionsCharacter.inSampleSize = 8
+        optionsCoin.inSampleSize = 8
 
 
         arrayImatgesBombes = arrayListOf(

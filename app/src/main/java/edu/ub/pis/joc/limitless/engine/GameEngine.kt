@@ -53,8 +53,8 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         Log.d("CURRENT LEVEL", currentLevelWorld.toString())
 
 
-        optionsGameBorder.inSampleSize = 2
-        optionsPauseButton.inSampleSize = 2
+        optionsGameBorder.inSampleSize = 16
+        optionsPauseButton.inSampleSize = 8
     }
 
     private var inGameBorder: InGameBorder = InGameBorder(

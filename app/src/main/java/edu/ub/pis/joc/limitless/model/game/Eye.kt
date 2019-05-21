@@ -6,12 +6,17 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.util.Log
 import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.Data.screenHeight
+import edu.ub.pis.joc.limitless.model.Data.screenWidth
 import kotlin.math.PI
 import kotlin.math.sin
 import kotlin.math.abs
 
 class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets: AssetManager, behaviour:Int) :
     ComplexEnemy(image, posX, posY, childList, assets,behaviour) {
+
+    override var w: Int = (screenWidth * 0.05).toInt()
+    override var h: Int = (screenHeight * 0.025).toInt()
 
     override var xVelocity: Int = 10
     override var yVelocity: Int = 9

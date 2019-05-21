@@ -8,6 +8,9 @@ import edu.ub.pis.joc.limitless.model.Data
 
 class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,assets: AssetManager, behaviour: Int) : ComplexEnemy(image, posX, posY,childList,assets,behaviour) {
 
+    override var w: Int = (Data.screenWidth * 0.05).toInt()
+    override var h: Int = (Data.screenHeight * 0.025).toInt()
+
     var contador: Int = 0
 
     var projectileWavesList : ArrayList<SkullLaser>

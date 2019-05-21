@@ -4,9 +4,16 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.Log
+import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.Data.screenHeight
+import edu.ub.pis.joc.limitless.model.Data.screenWidth
 import java.lang.Math.*
 
 class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,wDemon:Int,hDemon:Int) : Enemy(image, posX, posY, behaviour) {
+
+    override var w: Int = (screenWidth * 0.05).toInt()
+    override var h: Int = (screenHeight * 0.025).toInt()
+
     override var xVelocity: Int = 26
     override var yVelocity: Int = 26
 

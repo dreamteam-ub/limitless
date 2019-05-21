@@ -2,11 +2,15 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Matrix
 import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.Data.screenHeight
+import edu.ub.pis.joc.limitless.model.Data.screenWidth
 
 
 class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour : Int) : Enemy(image, posX, posY,behaviour) {
+
+    override var w: Int = (screenWidth * 0.05).toInt()
+    override var h: Int = (screenHeight * 0.025).toInt()
 
     override var xVelocity: Int = 26
     override var yVelocity: Int = 26

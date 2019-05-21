@@ -1,8 +1,14 @@
 package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.*
+import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.Data.screenHeight
+import edu.ub.pis.joc.limitless.model.Data.screenWidth
 
 class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), ObjectsInGameInterface {
+
+    override var w: Int = (screenWidth * 0.05).toInt()
+    override var h: Int = (screenHeight * 0.025).toInt()
 
     val paint = Paint()
 
