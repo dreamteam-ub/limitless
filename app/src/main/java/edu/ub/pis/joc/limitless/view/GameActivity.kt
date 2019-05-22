@@ -292,7 +292,7 @@ class GameActivity : FullScreenActivity() {
                 finish()
             }
 
-        } else {
+        } else if(!dead && !mode && !modeVersus){
             val intent = Intent(context, GameWonActivity::class.java)
             intent.putExtra(MODE_INFINITY, mode)
             startActivity(intent)

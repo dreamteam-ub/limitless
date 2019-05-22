@@ -19,7 +19,6 @@ class LevelInfinite(assets: AssetManager,
     var coinSpawnInf = false //con esto controlaremos cuando debe haber spawn de monedas, ya que si usamos
     //el tiempo, no será preciso porque la llamada del método de generar monedas se llama despues del de enemigos
     // en el gamEngine
-
     var infiniteStage = 0
     init {
         limits = Limits(autoLvl.limitLow,autoLvl.limitHigh, assets)
@@ -36,7 +35,7 @@ class LevelInfinite(assets: AssetManager,
                     autoLvl.positiveCoins = 0
                     autoLvl.negativeCoins = 0
                     var parameters : ArrayList<Any>
-                    for (i in 0 until autoLvl.spawnEnemyFreq){
+                    for (i in 0 until 5){
                         var enemy : Enemy
                         parameters = autoLvl.generateEnemiesInPreviousStages(BOMB_CHAR)
                         enemy = (createEnemy(
@@ -68,7 +67,7 @@ class LevelInfinite(assets: AssetManager,
                     listOfEnemyCharacters.clear()
                     coinSpawnInf = true
                     var parameters : ArrayList<Any>
-                    for (i in 0 until autoLvl.spawnEnemyFreq){
+                    for (i in 0 until 4){
                         parameters = autoLvl.generateEnemiesInPreviousStages(GHOST_CHAR)
                         listOfTmpEnemies.add(createEnemy(
                             parameters[0].toString(),
@@ -152,7 +151,6 @@ class LevelInfinite(assets: AssetManager,
                         listOfTmpEnemies[i].appearTime = Random.nextLong(1200L, 1450L)
 
                     }
-                    //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 } else if (time%autoLvl.time == 0L){
                     infiniteMode = true
                     autoLvl.positiveCoins = 0
@@ -193,6 +191,7 @@ class LevelInfinite(assets: AssetManager,
                                 parameters[4].toString().toInt(),
                                 parameters[5].toString().toInt()
                             )) as Eye
+                            listOfTmpEnemies.add(eye)
                         }else{
                             listOfTmpEnemies.add(createComplexEnemy(
                                 parameters[0].toString(),
@@ -203,10 +202,9 @@ class LevelInfinite(assets: AssetManager,
                                 parameters[5].toString().toInt()
                             ))
                         }
-                        listOfTmpEnemies[i].appearTime = Random.nextLong(time, autoLvl.time-100L)
+                        listOfTmpEnemies[i].appearTime = Random.nextLong(time,time+250L)
 
                     }
-                    //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }
 
 
@@ -310,7 +308,7 @@ class LevelInfinite(assets: AssetManager,
                             Log.d("REALLOCATE","REALLOCATION COIN")
                         }
                         tmpListOfCoins.add(coin)
-                        tmpListOfCoins[j].appearTime = Random.nextLong(time, autoLvl.time-100)
+                        tmpListOfCoins[j].appearTime = Random.nextLong(time, time+150)
 
 
                     }

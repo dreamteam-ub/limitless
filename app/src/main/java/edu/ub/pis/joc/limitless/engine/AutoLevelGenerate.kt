@@ -8,7 +8,7 @@ import kotlin.random.Random
 
 class AutoLevelGenerate {
 
-    var time = 1500L //ponemos que de 1000L en 1000L se genera un nuevo nivel
+    var time = 1500L
     val timeStage = 300L
     var spawnEnemyFreq = 2 //frecuencia inicial de spàwn de enemigos : 2
     var spawnCoinFreq = 5 //frecuencia inicial de spawn de monedas
@@ -25,6 +25,7 @@ class AutoLevelGenerate {
     var positiveCoins = 0
     var negativeCoins = 0
     var firstCall = true
+    var firstRound = true
     var ai = ArtificialIntelligence()
 
 
@@ -158,12 +159,16 @@ class AutoLevelGenerate {
 
     //funcion que hará que a cada time se llame al generate para que nunca acabe la partida
     fun increaseTime() {
-        time += timeStage
-        spawnEnemyFreq += 1
-        if (time > 1000 && spawnEnemyFreq < 6) {
-            spawnEnemyFreq += 1
+        if (!firstRound) {
+            time += timeStage
+            if (spawnEnemyFreq < 7) {
+                spawnEnemyFreq += 1
+            }
+            Log.d("INCREASETIME2", spawnEnemyFreq.toString())
+
         }
-        Log.d("TIME", time.toString())
+        firstRound = false
+        Log.d("INCREASETIME", time.toString())
     }
 
 
