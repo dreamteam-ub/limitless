@@ -13,8 +13,214 @@ import java.util.ArrayList
 class LevelPractice(
     assets : AssetManager,
     listOfEnemyCharacters: ArrayList<Enemy>,
-    listOfCoins: ArrayList<Coin>
+    listOfCoins: ArrayList<Coin>,
+    currentLevelWorld : Int
 ) : Level(assets, listOfEnemyCharacters, listOfCoins) {
+
+    var auxEnemies : ArrayList<Enemy> = ArrayList()
+
+    init {
+        var tmp: Enemy
+
+        when(currentLevelWorld){
+            1->{
+
+            }
+            2->{
+
+            }
+            3->{
+
+            }
+            4->{
+
+            }
+            5->{
+
+            }
+            6->{
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.1).toInt(), (screenHeight * 0.3).toInt(), 8, 350,0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.1).toInt(), (screenHeight * 0.7).toInt(), 8, 300,0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.1).toInt(), screenHeight, 5, 150,0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.8).toInt(), screenHeight, 6, 150,0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), screenHeight, 3, 150,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.8).toInt(), screenHeight, 3, 150,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 150,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.8).toInt(), 0, 2, 150,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 0, 100,3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.5).toInt(), 0, 100,3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100,3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100,3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.1).toInt(), 0, 100,3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.4).toInt(), 0, 100,3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 8, 300,0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, screenWidth, (screenWidth * 0.2).toInt(), 8, 300,0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, screenWidth, (screenWidth * 0.8).toInt(), 8, 300,0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 8, 300,0)
+                auxEnemies.add(tmp)
+            }
+            7->{
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), 0, 2, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), 0, 2, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), 0, 2, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 3, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 1), 3, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 1), 3, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 1), 3, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 1), 3, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 1), 3, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 1), 3, 100,1)
+                auxEnemies.add(tmp)
+            }
+            8-> {
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.3).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.3).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1).toInt(), (screenWidth * 0.3).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1).toInt(), (screenWidth * 1.3).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100, 1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), 0, 2, 100, 1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100, 1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 1), 3, 100, 1)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.5).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.1).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.4).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.5).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.1).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.4).toInt(), 0, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 1.1).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 1.4).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.2).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.5).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 1.1).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 1.4).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.2).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.5).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 1, 100, 3)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.2).toInt(), 8, 300, 0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 8, 300, 0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 8, 300, 0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 8, 300, 0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, 0, 0, 7, 100, 0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), 0, 7, 100, 0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 7, 100, 0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.1).toInt(), (screenHeight * 1), 6, 100, 0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 1), 6, 100, 0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.6).toInt(), (screenHeight * 1), 5, 100, 0)
+                auxEnemies.add(tmp)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.8).toInt(), (screenHeight * 1), 5, 100, 0)
+                auxEnemies.add(tmp)
+            }
+            9->{
+
+            }
+            10->{
+
+            }
+            11->{
+
+            }
+        }
+    }
 
 
     @Synchronized override fun buildEnemies(levelWorld: Int, time: Long) {
@@ -207,60 +413,24 @@ class LevelPractice(
                 if (time == 0L) {
                     tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 20,0)
                     listOfTmpEnemies.add(tmp)
-                } else if(time == 25L){
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-
                 }else if(time == 150L){
                     listOfEnemyCharacters.clear()
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.5).toInt(), 1, 20,1)
                     listOfTmpEnemies.add(tmp)
-                    //end_game=true
-                }else if(time == 175L) {
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 300L){
-
                     tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.3).toInt(), 0, 20,16)
                     listOfTmpEnemies.add(tmp)
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(), 1, 20,17)
                     listOfTmpEnemies.add(tmp)
-
-                }else if(time == 325L){
-
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-                    listOfEnemyCharacters[0] = tmpEye
-
-                    tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.drawChild = true
-                    listOfEnemyCharacters[1] = tmpEye2
-
                 }else if(time == 450L){
-
 
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.3).toInt(), 1, 20,16)
                     listOfTmpEnemies.add(tmp)
                     tmp = createComplexEnemy(EYE_CHAR, 0 , (screenHeight * 0.7).toInt(), 0, 20,17)
                     listOfTmpEnemies.add(tmp)
-
-
-                }else if(time == 475L){
-
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-                    listOfEnemyCharacters[0] = tmpEye
-
-                    tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.drawChild = true
-                    listOfEnemyCharacters[1] = tmpEye2
-
                 }else if(time == 825L){
-
                     listOfEnemyCharacters.clear()
                     end_game=true
-
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
@@ -277,98 +447,34 @@ class LevelPractice(
                 if (time == 0L) {
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 20,2)
                     listOfTmpEnemies.add(tmp)
-                } else if(time == 25L){
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-                    listOfEnemyCharacters[0] = tmpEye
-
                 }else if(time == 150L){
-
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), (screenWidth * 2), 3, 20,3)
                     listOfTmpEnemies.add(tmp)
-
-                }else if(time == 175L) {
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-
-                    listOfEnemyCharacters[0] = tmpEye
-
                 }else if(time == 300L){
-
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 20,10)
                     listOfTmpEnemies.add(tmp)
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), 0, 2, 20,11)
                     listOfTmpEnemies.add(tmp)
-
-                }else if(time == 325L){
-
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-                    listOfEnemyCharacters[0] = tmpEye
-
-                    tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.drawChild = true
-                    listOfEnemyCharacters[1] = tmpEye2
-
                 }else if(time == 450L){
-
-                    // listOfEnemyCharacters.clear()
 
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), (screenWidth * 2), 3, 20,10)
                     listOfTmpEnemies.add(tmp)
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), (screenWidth * 2), 3, 20,11)
                     listOfTmpEnemies.add(tmp)
-
-                }else if(time == 475L){
-
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-                    listOfEnemyCharacters[0] = tmpEye
-
-                    tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.drawChild = true
-                    listOfEnemyCharacters[1] = tmpEye2
-
                 }else if(time == 600L){
-
-
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 20,12)
                     listOfTmpEnemies.add(tmp)
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), (screenWidth * 2), 3, 20,13)
                     listOfTmpEnemies.add(tmp)
-
-                }else if(time == 625L){
-
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-                    listOfEnemyCharacters[0] = tmpEye
-
-                    tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.drawChild = true
-                    listOfEnemyCharacters[1] = tmpEye2
-
                 }else if(time == 750L){
-
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), (screenWidth * 2), 3, 20,14)
                     listOfTmpEnemies.add(tmp)
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), 0, 2, 20,15)
                     listOfTmpEnemies.add(tmp)
 
-                }else if(time == 775L) {
-
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-                    listOfEnemyCharacters[0] = tmpEye
-
-                    tmpEye2 = listOfEnemyCharacters[1] as Eye
-                    tmpEye2.drawChild = true
-                    listOfEnemyCharacters[1] = tmpEye2
-
                 }else if(time == 900L){
-
                     listOfEnemyCharacters.clear()
                     end_game=true
-
                 }
                 var contador : Int = 0
                 while(contador < listOfEnemyCharacters.size){
@@ -384,81 +490,19 @@ class LevelPractice(
                 if (time == 0L) {
                     tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 20,4)
                     listOfTmpEnemies.add(tmp)
-                } else if(time == 25L){
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
-                    listOfEnemyCharacters[0] = tmpEye
-                } else if(time == 50L){
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileRelocate[1] = true
-                    listOfEnemyCharacters[0] = tmpEye
-                }else if(time == 75L) {
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
-                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time == 125L) {
-
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 20,5)
                     listOfTmpEnemies.add(tmp)
-                } else if(time == 150L){
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
-                    listOfEnemyCharacters[0] = tmpEye
-                } else if(time == 175L){
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileRelocate[1] = true
-                    listOfEnemyCharacters[0] = tmpEye
-                }else if(time == 220L) {
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.projectileDraw[1] = true
-                    tmpEye.projectileDraw[2] = true
-                    tmpEye.projectileRelocate[2] = true
-                    listOfEnemyCharacters[0] = tmpEye
                 }else if(time==300L){
-
                     tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.3).toInt(), 0, 20,6)
                     listOfTmpEnemies.add(tmp)
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 1), (screenHeight * 0.7).toInt(), 1, 20,7)
                     listOfTmpEnemies.add(tmp)
-                }else if (time == 350L){
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
-                    listOfEnemyCharacters[0] = tmpEye
-                    tmpEye = listOfEnemyCharacters[1] as Eye
-                    tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
-                    listOfEnemyCharacters[1] = tmpEye
                 }else if (time == 400L){
-
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 20,8)
                     listOfTmpEnemies.add(tmp)
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.8).toInt(), (screenWidth * 2), 3, 20,9)
                     listOfTmpEnemies.add(tmp)
-                }else if (time == 450L){
-                    tmpEye = listOfEnemyCharacters[0] as Eye
-                    tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
-                    listOfEnemyCharacters[0] = tmpEye
-
-                    tmpEye = listOfEnemyCharacters[1] as Eye
-                    tmpEye.drawChild = true
-                    tmpEye.projectileDraw[0] = true
-                    tmpEye.projectileRelocate[0] = true
-                    listOfEnemyCharacters[1] = tmpEye
                 }else if(time == 500L){
                     listOfEnemyCharacters.clear()
                     end_game=true
@@ -474,68 +518,41 @@ class LevelPractice(
             }
             6 -> {
                 if (time == 0L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.1).toInt(), (screenHeight * 0.3).toInt(), 8, 350,0)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.1).toInt(), (screenHeight * 0.7).toInt(), 8, 300,0)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[0])
+                    listOfTmpEnemies.add(auxEnemies[1])
                 }else if(time == 350L) {
 
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.1).toInt(), (screenHeight * 1), 5, 150,0)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.8).toInt(), (screenHeight * 1), 6, 150,0)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[2])
+                    listOfTmpEnemies.add(auxEnemies[3])
 
                 }else if(time == 500L) {
 
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 150,1)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.8).toInt(), (screenHeight * 1), 3, 150,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[4])
+                    listOfTmpEnemies.add(auxEnemies[5])
 
                 }else if(time == 650L) {
 
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 150,1)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.8).toInt(), 0, 2, 150,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[6])
+                    listOfTmpEnemies.add(auxEnemies[7])
 
                 }else if(time == 800L) {
 
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.5).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[8])
+                    listOfTmpEnemies.add(auxEnemies[9])
+                    listOfTmpEnemies.add(auxEnemies[10])
 
                 }else if(time == 900L) {
 
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.1).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.4).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[11])
+                    listOfTmpEnemies.add(auxEnemies[12])
+                    listOfTmpEnemies.add(auxEnemies[13])
 
                 }else if(time == 1000L) {
 
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 8, 300,0)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.2).toInt(), 8, 300,0)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 8, 300,0)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 8, 300,0)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[14])
+                    listOfTmpEnemies.add(auxEnemies[15])
+                    listOfTmpEnemies.add(auxEnemies[16])
+                    listOfTmpEnemies.add(auxEnemies[17])
 
                 }else if(time == 1350L) {
                     listOfEnemyCharacters.clear()
@@ -552,67 +569,45 @@ class LevelPractice(
             }
             7 -> {
                 if (time == 0L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[0])
                 }else if(time == 50L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[1])
                 }else if(time == 100L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), 0, 2, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[2])
                 }else if(time == 150L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[3])
                 }else if(time == 200L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[4])
                 }else if(time == 250L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[5])
                 }else if(time == 300L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), 0, 2, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[6])
+                    listOfTmpEnemies.add(auxEnemies[7])
                 }else if(time == 350L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[8])
                 }else if(time == 400L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), 0, 2, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[9])
+                    listOfTmpEnemies.add(auxEnemies[10])
                 }else if(time == 450L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), 0, 3, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[11])
                 }else if(time == 500L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[12])
                 }else if(time == 550L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 1), 3, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[13])
                 }else if(time == 600L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 1), 3, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[14])
                 }else if(time == 650L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[15])
                 }else if(time == 700L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 1), 3, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[16])
                 }else if(time == 750L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 1), 3, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[17])
+                    listOfTmpEnemies.add(auxEnemies[18])
                 }else if(time == 850L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt(), (screenHeight * 1), 3, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[19])
                 }else if(time == 900L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
-                    listOfTmpEnemies.add(tmp)
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 1), 3, 100,1)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[20])
+                    listOfTmpEnemies.add(auxEnemies[21])
                 }else if(time == 1000L) {
                     listOfEnemyCharacters.clear()
                     end_game=true
@@ -628,165 +623,63 @@ class LevelPractice(
             }
             8 -> {
                 if (time == 0L) {
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.3).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.3).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
+                    listOfTmpEnemies.add(auxEnemies[0])
+                    listOfTmpEnemies.add(auxEnemies[1])
                 }else if (time == 100L) {
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1).toInt(), (screenWidth * 0.3).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1).toInt(), (screenWidth * 1.3).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
+                    listOfTmpEnemies.add(auxEnemies[2])
+                    listOfTmpEnemies.add(auxEnemies[3])
                 }else if (time == 200L) {
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100,1)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), 0, 2, 100,1)
-                    listOfTmpEnemies.add(tmp)
-
+                    listOfTmpEnemies.add(auxEnemies[4])
+                    listOfTmpEnemies.add(auxEnemies[5])
                 }else if (time == 300L) {
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), (screenHeight * 1), 3, 100,1)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.7).toInt(), (screenHeight * 1), 3, 100,1)
-                    listOfTmpEnemies.add(tmp)
-
+                    listOfTmpEnemies.add(auxEnemies[6])
+                    listOfTmpEnemies.add(auxEnemies[7])
                 }else if(time == 400L) {
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.5).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
+                    listOfTmpEnemies.add(auxEnemies[8])
+                    listOfTmpEnemies.add(auxEnemies[9])
+                    listOfTmpEnemies.add(auxEnemies[10])
                 }else if(time == 450L) {
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.1).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.4).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
+                    listOfTmpEnemies.add(auxEnemies[11])
+                    listOfTmpEnemies.add(auxEnemies[12])
+                    listOfTmpEnemies.add(auxEnemies[13])
                 }else if(time == 500L) {
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.5).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
+                    listOfTmpEnemies.add(auxEnemies[14])
+                    listOfTmpEnemies.add(auxEnemies[15])
+                    listOfTmpEnemies.add(auxEnemies[16])
                 }else if(time == 550L) {
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.1).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.4).toInt(), 0, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
+                    listOfTmpEnemies.add(auxEnemies[17])
+                    listOfTmpEnemies.add(auxEnemies[18])
+                    listOfTmpEnemies.add(auxEnemies[19])
                 }else if(time == 650L) {
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 1.1).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 1.4).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
+                    listOfTmpEnemies.add(auxEnemies[20])
+                    listOfTmpEnemies.add(auxEnemies[21])
+                    listOfTmpEnemies.add(auxEnemies[22])
                 }else if(time == 700L) {
-
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.2).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.5).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-
+                    listOfTmpEnemies.add(auxEnemies[23])
+                    listOfTmpEnemies.add(auxEnemies[24])
+                    listOfTmpEnemies.add(auxEnemies[25])
                 }else if(time == 750L) {
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 1.1).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 1.4).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
+                    listOfTmpEnemies.add(auxEnemies[26])
+                    listOfTmpEnemies.add(auxEnemies[27])
+                    listOfTmpEnemies.add(auxEnemies[28])
                 }else if(time == 800L) {
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.2).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.5).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 1, 100,3)
-                    listOfTmpEnemies.add(tmp)
-
+                    listOfTmpEnemies.add(auxEnemies[29])
+                    listOfTmpEnemies.add(auxEnemies[30])
+                    listOfTmpEnemies.add(auxEnemies[31])
                 }else if(time == 900L) {
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.2).toInt(), 8, 300,0)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.8).toInt(), 8, 300,0)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.8).toInt(), 8, 300,0)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 0.2).toInt(), 8, 300,0)
-                    listOfTmpEnemies.add(tmp)
-
+                    listOfTmpEnemies.add(auxEnemies[32])
+                    listOfTmpEnemies.add(auxEnemies[33])
+                    listOfTmpEnemies.add(auxEnemies[34])
+                    listOfTmpEnemies.add(auxEnemies[35])
                 }else if(time == 1200L) {
-
-                    tmp = createComplexEnemy(DEMON_CHAR, 0, 0, 7, 100,0)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), 0, 7, 100,0)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.5).toInt() , 0, 7, 100,0)
-                    listOfTmpEnemies.add(tmp)
-
+                    listOfTmpEnemies.add(auxEnemies[36])
+                    listOfTmpEnemies.add(auxEnemies[37])
+                    listOfTmpEnemies.add(auxEnemies[38])
                 }else if(time == 1350L) {
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.1).toInt(), (screenHeight * 1), 6, 100,0)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.3).toInt(), (screenHeight * 1), 6, 100,0)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.6).toInt(), (screenHeight * 1), 5, 100,0)
-                    listOfTmpEnemies.add(tmp)
-
-                    tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.8).toInt(), (screenHeight * 1), 5, 100,0)
-                    listOfTmpEnemies.add(tmp)
-
-
+                    listOfTmpEnemies.add(auxEnemies[39])
+                    listOfTmpEnemies.add(auxEnemies[40])
+                    listOfTmpEnemies.add(auxEnemies[41])
+                    listOfTmpEnemies.add(auxEnemies[42])
                 }else if(time == 1500L) {
                     listOfEnemyCharacters.clear()
                     end_game=true

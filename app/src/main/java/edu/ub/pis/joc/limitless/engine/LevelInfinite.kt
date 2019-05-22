@@ -100,7 +100,6 @@ class LevelInfinite(assets: AssetManager,
                             parameters[4].toString().toInt(),
                             parameters[5].toString().toInt()
                         )) as Eye
-                        eye.drawChild = true
                         listOfTmpEnemies.add(eye)
                         listOfTmpEnemies[i].appearTime = Random.nextLong(600L, 850L)
 
@@ -194,7 +193,6 @@ class LevelInfinite(assets: AssetManager,
                                 parameters[4].toString().toInt(),
                                 parameters[5].toString().toInt()
                             )) as Eye
-                            eye.drawChild = true
                         }else{
                             listOfTmpEnemies.add(createComplexEnemy(
                                 parameters[0].toString(),

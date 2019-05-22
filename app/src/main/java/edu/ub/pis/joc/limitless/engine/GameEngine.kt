@@ -48,7 +48,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             level = LevelInfinite(assets, listOfEnemyCharacters, listOfCoins)
         } else {
             currentLevelWorld = Data.getCurrenLevel()
-            level = LevelPractice(assets, listOfEnemyCharacters, listOfCoins)
+            level = LevelPractice(assets, listOfEnemyCharacters, listOfCoins, currentLevelWorld)
         }
 
         Log.d("CURRENT LEVEL", currentLevelWorld.toString())
