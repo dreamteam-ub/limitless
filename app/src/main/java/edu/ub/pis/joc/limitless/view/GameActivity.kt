@@ -18,6 +18,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.Data.versus_score
 import edu.ub.pis.joc.limitless.model.Data.versus_survived
 import edu.ub.pis.joc.limitless.model.SURVIVED
 import edu.ub.pis.joc.limitless.model.VIBRATION
@@ -221,13 +222,21 @@ class GameActivity : FullScreenActivity() {
         super.onWindowFocusChanged(hasFocus)
     }
 
-    fun onEndGame(context: Context, updateDb: Boolean, time: Long, dead: Boolean, gOverPoints : Boolean) {
+    fun onEndGame(
+        context: Context,
+        updateDb: Boolean,
+        time: Long,
+        dead: Boolean,
+        gOverPoints: Boolean,
+        score: Int
+    ) {
         if (dead) {
             if (modeVersus) {
                 if (round == 1) {
                     val intent = Intent(context, VersusActivityEnd::class.java)
                     intent.putExtra(MODE_INFINITY, mode)
                     versus_survived[1] = time
+                    versus_score[1]=score
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
                     finish()
@@ -238,6 +247,7 @@ class GameActivity : FullScreenActivity() {
                     intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 1)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     versus_survived[0] = time
+                    versus_score[0]=score
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
                     finish()
@@ -248,6 +258,8 @@ class GameActivity : FullScreenActivity() {
                 }
                 val intent = Intent(context, GameDeadActivity::class.java)
                 intent.putExtra(MODE_INFINITY, mode)
+                intent.putExtra(SCORE, score)
+                versus_survived[0] = time
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
                 finish()
@@ -280,6 +292,8 @@ class GameActivity : FullScreenActivity() {
                 val intent = Intent(context, GameDeadActivity::class.java)
                 intent.putExtra(MODE_INFINITY, mode)
                 intent.putExtra(LOST_GAME_NOT_DEAD, gOverPoints)
+                intent.putExtra(SCORE, score)
+                versus_survived[0] = time
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
                 finish()
@@ -287,6 +301,8 @@ class GameActivity : FullScreenActivity() {
                 val intent = Intent(context, GameDeadActivity::class.java)
                 intent.putExtra(MODE_INFINITY, mode)
                 intent.putExtra(LOST_GAME_NOT_DEAD, gOverPoints)
+                intent.putExtra(SCORE, score)
+                versus_survived[0] = time
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
                 finish()

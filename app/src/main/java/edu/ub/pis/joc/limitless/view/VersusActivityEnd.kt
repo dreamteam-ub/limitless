@@ -1,11 +1,13 @@
 package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.engine.FONT_LIMITS
 import edu.ub.pis.joc.limitless.model.Data
 
 class VersusActivityEnd : FullScreenActivity() {
@@ -13,10 +15,14 @@ class VersusActivityEnd : FullScreenActivity() {
     private lateinit var title : TextView
     private lateinit var first_pos : TextView
     private lateinit var second_pos : TextView
-    private lateinit var first_punt : TextView
-    private lateinit var second_punt : TextView
+    private lateinit var first_time : TextView
+    private lateinit var second_time : TextView
     private lateinit var retry_p2m: ImageView
     private lateinit var menu_p2m: ImageView
+    private lateinit var score1_punt : TextView
+    private lateinit var score2_punt : TextView
+    private lateinit var score2_text : TextView
+    private lateinit var score1_text : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,14 +31,33 @@ class VersusActivityEnd : FullScreenActivity() {
         var puntuacio1 : Long = Data.versus_survived[0]
         var puntuacio2: Long = Data.versus_survived[1]
 
+        val typeface = Typeface.createFromAsset(assets, FONT_LIMITS)
+
 
         title = findViewById(R.id.winners)
         first_pos = findViewById(R.id.first_pos)
         second_pos = findViewById(R.id.second_pos)
-        first_punt = findViewById(R.id.first_punt)
-        second_punt = findViewById(R.id.second_punt)
+        first_time = findViewById(R.id.first_punt)
+        second_time = findViewById(R.id.second_punt)
         retry_p2m = findViewById(R.id.retryButton_2PM)
         menu_p2m = findViewById(R.id.menuButton_2PM)
+        score1_punt = findViewById(R.id.score1_puntuation)
+        score2_punt = findViewById(R.id.score2_puntuation)
+        score1_text = findViewById(R.id.score1_text)
+        score2_text = findViewById(R.id.score2_text)
+
+        score2_punt.setTypeface(typeface)
+        score1_punt.setTypeface(typeface)
+        first_time.setTypeface(typeface)
+        second_time.setTypeface(typeface)
+        title.setTypeface(typeface)
+        first_pos.setTypeface(typeface)
+        second_pos.setTypeface(typeface)
+        score1_text.setTypeface(typeface)
+        score2_text.setTypeface(typeface)
+
+        score1_punt.text = Data.versus_score[0].toString()
+        score2_punt.text = Data.versus_score[1].toString()
 
 
         if(puntuacio1 < puntuacio2){
@@ -40,13 +65,13 @@ class VersusActivityEnd : FullScreenActivity() {
 
             first_pos.text = getString(R.string.p2)
             second_pos.text = getString(R.string.p1)
-            first_punt.text = Data.numberToMMSS(puntuacio2)
-            second_punt.text = Data.numberToMMSS(puntuacio1)
+            first_time.text = Data.numberToMMSS(puntuacio2)
+            second_time.text = Data.numberToMMSS(puntuacio1)
 
         }else {
 
-            first_punt.text = Data.numberToMMSS(puntuacio1)
-            second_punt.text = Data.numberToMMSS(puntuacio2)
+            first_time.text = Data.numberToMMSS(puntuacio1)
+            second_time.text = Data.numberToMMSS(puntuacio2)
         }
 
         menu_p2m.setOnClickListener {

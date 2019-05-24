@@ -81,5 +81,9 @@
     <string name="vibration">VIBRATION</string>
     <string name="easter_egg_menu">Esto no es un boton\nEres calvisimo</string>
     <string name="mustPassPractice">You must finish Practice Mode first</string>
+    <string name="score">SCORE:</string>
+    <string name="score1">SCORE P1:</string>
+    <string name="score2">SCORE P2:</string>
+    <string name="Time">Time:</string>
 
 </resources>

@@ -37,6 +37,7 @@ object Data  {
     val screenDpi = Resources.getSystem().displayMetrics.densityDpi
 
     var versus_survived : Array <Long> = arrayOf(0L,0L)
+    var versus_score : Array<Int> = arrayOf(0,0)
 
     fun numberToMMSS(num: Long): String {
         return String.format("%02d:%02d", num / 60, num % 60)

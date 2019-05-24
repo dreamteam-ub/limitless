@@ -29,7 +29,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp" android:paddingStart="30dp" android:paddingEnd="30dp">
+            android:paddingStart="30dp" android:paddingEnd="30dp" android:layout_marginBottom="5dp">
 
 
         <TextView
@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="40sp"
+                style="@style/cts_limitless_yellow" android:textSize="30sp"
                 android:textAlignment="center"
                 android:layout_marginEnd="30dp" android:id="@+id/first_pos"/>
 
@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="40sp"
+                style="@style/cts_limitless_yellow" android:textSize="30sp"
                 android:textAlignment="textEnd" android:id="@+id/first_punt" tools:text="X"/>
 
     </LinearLayout>
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="40sp"
+                style="@style/cts_limitless_yellow" android:textSize="30sp"
                 android:textAlignment="center"
                 android:layout_marginEnd="30dp" android:id="@+id/second_pos"/>
 
@@ -70,10 +70,61 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="40sp"
+                style="@style/cts_limitless_yellow" android:textSize="30sp"
                 android:textAlignment="textEnd" android:id="@+id/second_punt" tools:text="X"/>
 
     </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp" android:paddingStart="30dp" android:paddingEnd="30dp">
+
+
+        <TextView
+                android:text="@string/score1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/crimes_times_six"
+                style="@style/cts_limitless_yellow" android:textSize="30sp"
+                android:textAlignment="center"
+                android:layout_marginEnd="30dp" android:id="@+id/score1_text"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/crimes_times_six"
+                style="@style/cts_limitless_yellow" android:textSize="30sp"
+                android:textAlignment="textEnd" android:id="@+id/score1_puntuation" tools:text="X"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+            android:paddingStart="30dp" android:paddingEnd="30dp">
+
+
+        <TextView
+                android:text="@string/score2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/crimes_times_six"
+                style="@style/cts_limitless_yellow" android:textSize="30sp"
+                android:textAlignment="center"
+                android:layout_marginEnd="30dp" android:id="@+id/score2_text"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/crimes_times_six"
+                style="@style/cts_limitless_yellow" android:textSize="30sp"
+                android:textAlignment="textEnd" android:id="@+id/score2_puntuation" tools:text="X"/>
+
+    </LinearLayout>
+
 
     <TextView
             android:text="@string/ranking_lines"
@@ -91,7 +142,7 @@
             android:contentDescription="@string/retry_level"
             android:background="@android:color/transparent"
             android:layout_height="60dp" app:srcCompat="@drawable/retry_button" android:id="@+id/retryButton_2PM"
-            android:layout_marginBottom="30dp" android:layout_margin="40dp"/>
+            android:layout_marginBottom="30dp" android:layout_margin="30dp"/>
 
     <ImageButton
             android:scaleType="fitXY"

@@ -6,7 +6,6 @@ import android.graphics.*
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
-import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.GameActivity
@@ -191,6 +190,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         var updateDb = false
         val dead = player.imageList[0].isRecycled
         val gOverPoints = !(player.accumulate >= scoreLimits[0] && player.accumulate <= scoreLimits[1])
+        var score: Int = player.accumulate
         if (dead) {
             if (mode) {
                 if (!versus) {
@@ -207,7 +207,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
                 updateDb = true
             }
         }
-        activity.onEndGame(contextEngine, updateDb, time, dead, gOverPoints)
+        activity.onEndGame(contextEngine, updateDb, time, dead, gOverPoints,score)
 
     }
 }
