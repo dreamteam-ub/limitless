@@ -46,6 +46,8 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
+        ViewAdjuster.adjustView(findViewById(R.id.limitless_logo))
+
         supportFragmentManager.beginTransaction().replace(R.id.fragment_login, LoginSignFragment()).commit()
 
     }

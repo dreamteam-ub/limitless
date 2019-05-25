@@ -34,7 +34,7 @@
             android:textSize="24sp"
             android:id="@+id/MyMapText"
             android:singleLine="false" tools:text="@string/text_mymap" android:text="@string/text_mymap"
-            android:layout_marginBottom="20dp" android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp" android:layout_height="60dp"
             android:layout_gravity="center_horizontal"/>
     <ImageButton
             android:layout_width="250dp"
@@ -52,7 +52,7 @@
             android:singleLine="false"
             style="@style/cts_limitless_purple"
             android:textSize="24sp"
-            android:layout_height="wrap_content" android:id="@+id/infiniteText"
+            android:layout_height="60dp" android:id="@+id/infiniteText"
             android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"/>
     <ImageButton
             android:layout_width="250dp"
@@ -71,7 +71,7 @@
             android:singleLine="false"
             style="@style/cts_limitless_purple"
             android:textSize="24sp"
-            android:layout_height="wrap_content" android:id="@+id/versus_text"
+            android:layout_height="60dp" android:id="@+id/versus_text"
             android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"/>
 
 </LinearLayout>

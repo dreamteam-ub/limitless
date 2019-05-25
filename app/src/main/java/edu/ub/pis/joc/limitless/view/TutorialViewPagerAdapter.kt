@@ -58,6 +58,7 @@ class TutorialViewPagerAdapter(
                     (context as TutorialActivity).finish()
                 }
             }
+            ViewAdjuster.adjustView(button_exit_tutorial)
         }
 
         val image: ImageView = layout.findViewById(R.id.image)

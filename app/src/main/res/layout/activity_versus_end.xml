@@ -11,126 +11,130 @@
 
     <TextView
             android:text="@string/p1_wins"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
             android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_white_worlds" android:textSize="60sp"
-            android:textAlignment="center" android:id="@+id/winners"/>
+            style="@style/cts_limitless_white_worlds" android:textSize="50sp"
+            android:textAlignment="center" android:id="@+id/winners" android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"/>
 
     <TextView
             android:text="@string/ranking_lines"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
             android:id="@+id/ranking_lines_1" style="@style/cts_limitless_yellow" android:textSize="40sp"
-            android:maxLines="1" android:gravity="center_horizontal"/>
+            android:maxLines="1" android:gravity="center_horizontal" android:layout_gravity="center_horizontal"/>
 
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
-            android:paddingStart="30dp" android:paddingEnd="30dp" android:layout_marginBottom="5dp">
+            android:layout_height="wrap_content"
+            android:paddingStart="30dp" android:paddingEnd="30dp" android:layout_marginBottom="5dp"
+            android:gravity="center_horizontal">
 
 
         <TextView
                 android:text="@string/p1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="30sp"
-                android:textAlignment="center"
+                style="@style/cts_limitless_yellow" android:textSize="24sp"
+                android:textAlignment="textStart"
                 android:layout_marginEnd="30dp" android:id="@+id/first_pos"/>
 
         <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="170dp"
+                android:layout_height="30dp"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="30sp"
-                android:textAlignment="textEnd" android:id="@+id/first_punt" tools:text="X"/>
+                style="@style/cts_limitless_yellow" android:textSize="24sp"
+                android:textAlignment="textEnd" android:id="@+id/first_punt" tools:text="20:23"/>
 
     </LinearLayout>
 
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
-            android:paddingStart="30dp" android:paddingEnd="30dp">
+            android:layout_height="wrap_content"
+            android:paddingStart="30dp" android:paddingEnd="30dp" android:gravity="center_horizontal"
+            android:layout_marginBottom="15dp">
 
 
         <TextView
                 android:text="@string/p2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="30sp"
-                android:textAlignment="center"
+                style="@style/cts_limitless_yellow" android:textSize="24sp"
+                android:textAlignment="textStart"
                 android:layout_marginEnd="30dp" android:id="@+id/second_pos"/>
 
         <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="170dp"
+                android:layout_height="30dp"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="30sp"
-                android:textAlignment="textEnd" android:id="@+id/second_punt" tools:text="X"/>
+                style="@style/cts_limitless_yellow" android:textSize="24sp"
+                android:textAlignment="textEnd" android:id="@+id/second_punt" tools:text="10:25"/>
 
     </LinearLayout>
 
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="5dp" android:paddingStart="30dp" android:paddingEnd="30dp">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp" android:paddingStart="30dp" android:paddingEnd="30dp"
+            android:gravity="center_horizontal">
 
 
         <TextView
                 android:text="@string/score1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="130dp"
+                android:layout_height="30dp"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="30sp"
-                android:textAlignment="center"
+                style="@style/cts_limitless_yellow" android:textSize="24sp"
+                android:textAlignment="textStart"
                 android:layout_marginEnd="30dp" android:id="@+id/score1_text"/>
 
         <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="30sp"
-                android:textAlignment="textEnd" android:id="@+id/score1_puntuation" tools:text="X"/>
+                style="@style/cts_limitless_yellow" android:textSize="24sp"
+                android:textAlignment="textEnd" android:id="@+id/score1_puntuation" tools:text="300"/>
 
     </LinearLayout>
 
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
-            android:paddingStart="30dp" android:paddingEnd="30dp">
+            android:layout_height="wrap_content"
+            android:paddingStart="30dp" android:paddingEnd="30dp" android:gravity="center_horizontal">
 
 
         <TextView
                 android:text="@string/score2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="130dp"
+                android:layout_height="30dp"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="30sp"
-                android:textAlignment="center"
+                style="@style/cts_limitless_yellow" android:textSize="24sp"
+                android:textAlignment="textStart"
                 android:layout_marginEnd="30dp" android:id="@+id/score2_text"/>
 
         <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="30sp"
-                android:textAlignment="textEnd" android:id="@+id/score2_puntuation" tools:text="X"/>
+                style="@style/cts_limitless_yellow" android:textSize="24sp"
+                android:textAlignment="textEnd" android:id="@+id/score2_puntuation" tools:text="20"
+        />
 
     </LinearLayout>
 
 
     <TextView
             android:text="@string/ranking_lines"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
             android:id="@+id/ranking_lines_2" style="@style/cts_limitless_yellow" android:textSize="40sp"
             android:maxLines="1" android:gravity="center_horizontal"/>
 

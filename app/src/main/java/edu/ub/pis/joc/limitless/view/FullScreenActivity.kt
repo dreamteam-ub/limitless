@@ -71,11 +71,12 @@ abstract class FullScreenActivity : AppCompatActivity() {
         val layout = layoutInflater.inflate(R.layout.custom_image_toast, findViewById(R.id.custom_image_toast_layout))
 
         val image = layout.findViewById(R.id.image_toast) as ImageView
-
         image.setImageResource(r_draw_image)
+        ViewAdjuster.adjustView(image)
 
         val msg = layout.findViewById(R.id.text_toast) as TextView
         msg.text = text
+        ViewAdjuster.adjustView(msg)
 
         val toast = Toast(applicationContext)
 
@@ -95,6 +96,7 @@ abstract class FullScreenActivity : AppCompatActivity() {
 
         val msg = layout.findViewById(R.id.text_toast) as TextView
         msg.text = text
+        ViewAdjuster.adjustView(msg)
 
         val toast = Toast(applicationContext)
 

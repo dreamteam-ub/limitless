@@ -18,12 +18,25 @@ class InfoActivity : FullScreenActivity() {
 
         val versionView: TextView = findViewById(R.id.version_details)
         versionView.text = BuildConfig.VERSION_NAME
+        ViewAdjuster.adjustView(versionView)
 
         infoBackArrow = findViewById(R.id.info_back_button)
         infoBackArrow.setOnClickListener {
             finish()
             infoBackArrow.isClickable = false
         }
+        ViewAdjuster.adjustView(infoBackArrow)
+
+        ViewAdjuster.adjustView(findViewById(R.id.info_version))
+        ViewAdjuster.adjustView(findViewById(R.id.info_developers))
+        ViewAdjuster.adjustView(findViewById(R.id.info_music_rights))
+
+        ViewAdjuster.adjustView(findViewById(R.id.developers_details1))
+        ViewAdjuster.adjustView(findViewById(R.id.developers_details2))
+        ViewAdjuster.adjustView(findViewById(R.id.developers_details3))
+        ViewAdjuster.adjustView(findViewById(R.id.developers_details4))
+
+        ViewAdjuster.adjustView(findViewById(R.id.music_rights_details))
     }
 
     override fun onStart() {

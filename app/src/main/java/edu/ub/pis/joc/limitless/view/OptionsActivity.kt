@@ -50,7 +50,10 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         db = FirebaseFirestore.getInstance()
 
         vibrateButton = findViewById(R.id.vibrationButton)
+        ViewAdjuster.adjustView(vibrateButton)
+
         musicSeekBar = findViewById(R.id.music_seekbar)
+        ViewAdjuster.adjustView(musicSeekBar)
 
         if (Data.user.vibration == null) {
             Data.user.vibration = true
@@ -70,8 +73,10 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
             finish()
             optionsBackArrow.isClickable = false
         }
+        ViewAdjuster.adjustView(optionsBackArrow)
 
         userName = findViewById(R.id.userNameTv)
+        ViewAdjuster.adjustView(userName)
 
         userListener = db.collection(USERS).document(mAuth.currentUser!!.uid).addSnapshotListener { docSnapshot, exception ->
             if (exception != null) {
@@ -94,6 +99,7 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
             startActivity(intent)
             logoutButton.isClickable = false
         }
+        ViewAdjuster.adjustView(logoutButton)
 
         vibrateButton.setOnClickListener {
             presenter.updateVibrate(Data.user.vibration!!)
@@ -111,6 +117,9 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
                 presenter.updateMusic(musicSeekBar.progress)
             }
         })
+
+        ViewAdjuster.adjustView(findViewById(R.id.music_options))
+        ViewAdjuster.adjustView(findViewById(R.id.vibrate_options))
     }
 
     override fun onDestroy() {

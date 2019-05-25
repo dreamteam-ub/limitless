@@ -36,9 +36,8 @@ class GameDeadActivity : FullScreenActivity() {
 
         val typeface = Typeface.createFromAsset(assets, FONT_LIMITS)
 
-
         if (intent.extras!!.getBoolean(LOST_GAME_NOT_DEAD)) {
-            val textLose : ImageView = findViewById(R.id.youDiedImg)
+            val textLose: ImageView = findViewById(R.id.youDiedImg)
             textLose.setImageDrawable(getDrawable(R.drawable.you_lost))
         }
 
@@ -55,6 +54,7 @@ class GameDeadActivity : FullScreenActivity() {
             finish()
             retryButton.isClickable = false
         }
+        ViewAdjuster.adjustView(retryButton)
 
         worldsButton = findViewById(R.id.dead_worldsButton)
         if (modo) {
@@ -71,6 +71,7 @@ class GameDeadActivity : FullScreenActivity() {
             finish()
             worldsButton.isClickable = false
         }
+        ViewAdjuster.adjustView(worldsButton)
 
         menuButton = findViewById(R.id.dead_menuButton)
         menuButton.setOnClickListener {
@@ -80,23 +81,31 @@ class GameDeadActivity : FullScreenActivity() {
             finish()
             menuButton.isClickable = false
         }
+        ViewAdjuster.adjustView(menuButton)
 
         final_score = findViewById(R.id.score_puntuation)
-        final_score.setTypeface(typeface)
+        final_score.typeface = typeface
         final_score.text = score.toString()
 
+        ViewAdjuster.adjustView(findViewById(R.id.score_text))
+        ViewAdjuster.adjustView(final_score)
 
         time_text = findViewById(R.id.time_text)
-        time_text.setTypeface(typeface)
+        time_text.typeface = typeface
+
+        ViewAdjuster.adjustView(time_text)
 
         time = findViewById(R.id.time)
-        if(modo) {
+        if (modo) {
             time_text.text = Data.numberToMMSS(Data.versus_survived[0])
-        }else{
+        } else {
             time_text.visibility = View.GONE
-            time.visibility =  View.GONE
-
+            time.visibility = View.GONE
         }
+        ViewAdjuster.adjustView(time)
+
+        ViewAdjuster.adjustView(findViewById(R.id.youDiedImg))
+        ViewAdjuster.adjustView(findViewById(R.id.dead_heart))
 
     }
 

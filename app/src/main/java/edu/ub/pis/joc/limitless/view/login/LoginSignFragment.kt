@@ -7,9 +7,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import com.google.android.gms.common.SignInButton
+import android.widget.ImageButton
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.adjustView
 
 class LoginSignFragment : Fragment() {
 
@@ -25,13 +25,14 @@ class LoginSignFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val signInButton: SignInButton = view.findViewById(R.id.signin_btn)
-        val textView = signInButton.getChildAt(0) as TextView
-        textView.text = getString(R.string.cuenta_google_btn)
+        val signInButton: ImageButton = view.findViewById(R.id.signin_btn)
 
         signInButton.setOnClickListener {
             onButtonPressed()
         }
+
+        adjustView(signInButton)
+        adjustView(view.findViewById(R.id.signin_tv))
     }
 
     fun onButtonPressed() {

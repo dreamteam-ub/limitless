@@ -123,8 +123,15 @@ class GameActivity : FullScreenActivity() {
         dialog.window!!.decorView.systemUiVisibility = window.decorView.systemUiVisibility
 
         resumeDiag = vista.findViewById(R.id.resumeButtonDiag)
+        ViewAdjuster.adjustView(resumeDiag)
+
         worldsDiag = vista.findViewById(R.id.worldsButtonPauseDiag)
+        ViewAdjuster.adjustView(worldsDiag)
+
         menuDiag = vista.findViewById(R.id.menuButtonPauseDiag)
+        ViewAdjuster.adjustView(menuDiag)
+
+        ViewAdjuster.adjustView(vista.findViewById(R.id.pauseHeartDiag))
 
         if (mode) {
             worldsDiag.visibility = View.GONE

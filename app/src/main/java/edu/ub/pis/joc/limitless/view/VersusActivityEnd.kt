@@ -32,28 +32,51 @@ class VersusActivityEnd : FullScreenActivity() {
 
         val typeface = Typeface.createFromAsset(assets, FONT_LIMITS)
 
-
         title = findViewById(R.id.winners)
-        first_pos = findViewById(R.id.first_pos)
-        second_pos = findViewById(R.id.second_pos)
-        first_time = findViewById(R.id.first_punt)
-        second_time = findViewById(R.id.second_punt)
-        retry_p2m = findViewById(R.id.retryButton_2PM)
-        menu_p2m = findViewById(R.id.menuButton_2PM)
-        score1_punt = findViewById(R.id.score1_puntuation)
-        score2_punt = findViewById(R.id.score2_puntuation)
-        score1_text = findViewById(R.id.score1_text)
-        score2_text = findViewById(R.id.score2_text)
+        ViewAdjuster.adjustView(title)
 
-        score2_punt.setTypeface(typeface)
-        score1_punt.setTypeface(typeface)
-        first_time.setTypeface(typeface)
-        second_time.setTypeface(typeface)
-        title.setTypeface(typeface)
-        first_pos.setTypeface(typeface)
-        second_pos.setTypeface(typeface)
-        score1_text.setTypeface(typeface)
-        score2_text.setTypeface(typeface)
+        first_pos = findViewById(R.id.first_pos)
+        ViewAdjuster.adjustView(first_pos)
+
+        second_pos = findViewById(R.id.second_pos)
+        ViewAdjuster.adjustView(second_pos)
+
+        first_time = findViewById(R.id.first_punt)
+        ViewAdjuster.adjustView(first_time)
+
+        second_time = findViewById(R.id.second_punt)
+        ViewAdjuster.adjustView(second_time)
+
+        retry_p2m = findViewById(R.id.retryButton_2PM)
+        ViewAdjuster.adjustView(retry_p2m)
+
+        menu_p2m = findViewById(R.id.menuButton_2PM)
+        ViewAdjuster.adjustView(menu_p2m)
+
+        score1_punt = findViewById(R.id.score1_puntuation)
+        ViewAdjuster.adjustView(score1_punt)
+
+        score2_punt = findViewById(R.id.score2_puntuation)
+        ViewAdjuster.adjustView(score2_punt)
+
+        score1_text = findViewById(R.id.score1_text)
+        ViewAdjuster.adjustView(score1_text)
+
+        score2_text = findViewById(R.id.score2_text)
+        ViewAdjuster.adjustView(score2_text)
+
+        ViewAdjuster.adjustView(findViewById(R.id.ranking_lines_1))
+        ViewAdjuster.adjustView(findViewById(R.id.ranking_lines_2))
+
+        score2_punt.typeface = typeface
+        score1_punt.typeface = typeface
+        first_time.typeface = typeface
+        second_time.typeface = typeface
+        title.typeface = typeface
+        first_pos.typeface = typeface
+        second_pos.typeface = typeface
+        score1_text.typeface = typeface
+        score2_text.typeface = typeface
 
         score1_punt.text = Data.versus_score[0].toString()
         score2_punt.text = Data.versus_score[1].toString()

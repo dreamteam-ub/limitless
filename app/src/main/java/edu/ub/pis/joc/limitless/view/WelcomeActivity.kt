@@ -44,7 +44,15 @@ class WelcomeActivity : FullScreenActivity() {
 
         emailNameTv.text = mAuth.currentUser!!.email!!.split('@')[0]
 
+        ViewAdjuster.adjustView(emailNameTv)
+
+        ViewAdjuster.adjustView(findViewById(R.id.logo_img))
+
         val nameField: EditText = findViewById(R.id.input_name_et)
+        ViewAdjuster.adjustView(nameField)
+
+        ViewAdjuster.adjustView(findViewById(R.id.welcome_tv))
+        ViewAdjuster.adjustView(findViewById(R.id.ask_name_tv))
 
         setnameButton = findViewById(R.id.setname_btn)
         setnameButton.setOnClickListener {
@@ -66,6 +74,7 @@ class WelcomeActivity : FullScreenActivity() {
                             Gravity.FILL_HORIZONTAL,0,200).show()
             }
         }
+        ViewAdjuster.adjustView(setnameButton)
     }
 
     private fun createUser(uid: String, userName: String) {

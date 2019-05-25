@@ -6,10 +6,10 @@
 
     <TextView
             style="@style/cts_limitless_blue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/loading_tv" tools:text="@string/loading_content"
+            android:layout_width="150dp"
+            android:layout_height="60dp" android:id="@+id/loading_tv" tools:text="@string/loading_content"
             android:layout_gravity="center_horizontal" android:text="@string/loading_content" android:textSize="50sp"
-            android:layout_marginBottom="25dp"/>
+            android:layout_marginBottom="25dp" android:textAlignment="center"/>
     <ProgressBar
             style="@style/Widget.AppCompat.ProgressBar"
             android:layout_width="80dp"

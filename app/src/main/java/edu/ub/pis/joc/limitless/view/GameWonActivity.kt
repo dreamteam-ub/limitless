@@ -37,6 +37,8 @@ class GameWonActivity : FullScreenActivity() {
             nextLevel.isClickable = false
         }
 
+        ViewAdjuster.adjustView(nextLevel)
+
         if (Data.user.level!! != MAX_LEVEL + 1 && Data.user.world!! != MAX_WORLD) {
             if (Data.user.level!! <= Data.currentLvl && Data.user.world == Data.currentWorld) {
                 Data.user.level = (Data.user.level!! + 1)
@@ -72,6 +74,8 @@ class GameWonActivity : FullScreenActivity() {
             worlds.isClickable = false
         }
 
+        ViewAdjuster.adjustView(worlds)
+
         backToMenu = findViewById(R.id.menuButton)
         backToMenu.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
@@ -80,6 +84,10 @@ class GameWonActivity : FullScreenActivity() {
             finish()
             backToMenu.isClickable = false
         }
+        ViewAdjuster.adjustView(backToMenu)
+
+        ViewAdjuster.adjustView(findViewById(R.id.youWonImage))
+        ViewAdjuster.adjustView(findViewById(R.id.heartWon))
     }
 
     // DESACTIVAMOS EL BACK DENTRO DEL JUEGO

@@ -13,7 +13,7 @@
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
                 android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="270dp"
                 android:contentDescription="@string/you_won"
                 android:layout_height="52dp" app:srcCompat="@drawable/win_text" android:id="@+id/youWonImage"
                 android:layout_marginBottom="30dp"/>

@@ -18,13 +18,17 @@ class SecondPlayerVsActivity : FullScreenActivity() {
         val versus = intent.extras!!.getBoolean(MODE_INFINITY_VERSUS)
         val round = intent.extras!!.getInt(MODE_INFINITY_VERSUS_COUNT)
 
+        val textLose : TextView = findViewById(R.id.player1_dead)
+
         if (intent.extras!!.getBoolean(LOST_GAME_NOT_DEAD)) {
-            val textLose : TextView = findViewById(R.id.player1_dead)
             textLose.text = getString(R.string.player1_lost)
         }
 
-        start_player2_btn = findViewById(R.id.player2_start_button)
+        ViewAdjuster.adjustView(textLose)
 
+        ViewAdjuster.adjustView(findViewById(R.id.losePlayer1))
+
+        start_player2_btn = findViewById(R.id.player2_start_button)
         start_player2_btn.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra(MODE_INFINITY, infinity)
@@ -35,6 +39,7 @@ class SecondPlayerVsActivity : FullScreenActivity() {
             finish()
             start_player2_btn.isClickable = false
         }
+        ViewAdjuster.adjustView(start_player2_btn)
 
     }
 

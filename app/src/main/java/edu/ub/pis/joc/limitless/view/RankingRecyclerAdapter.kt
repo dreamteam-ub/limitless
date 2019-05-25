@@ -30,6 +30,12 @@ class RankingRecyclerAdapter(private val llista: ArrayList<Ranking>) :
         val posRank = itemView.findViewById(R.id.ranking_position) as TextView
         val tvName = itemView.findViewById(R.id.ranking_user) as TextView
         val tvSurvived = itemView.findViewById(R.id.ranking_time) as TextView
+
+        init {
+            ViewAdjuster.adjustView(posRank)
+            ViewAdjuster.adjustView(tvName)
+            ViewAdjuster.adjustView(tvSurvived)
+        }
     }
 
 }

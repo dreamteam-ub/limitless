@@ -22,30 +22,30 @@
                 android:contentDescription="@string/back"
                 android:id="@+id/ranking_back_button" android:layout_marginEnd="30dp"/>
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/userNameTv"
+                android:layout_width="320dp"
+                android:layout_height="40dp" android:id="@+id/userNameTv"
                 style="@style/cts_limitless_pink"
                 tools:text="USERNAME" android:textSize="35sp" android:layout_gravity="center_vertical"
         />
     </LinearLayout>
     <TextView
             android:text="@string/volume"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
             android:fontFamily="@font/crimes_times_six"
             style="@style/cts_limitless_pink" android:textSize="40sp"
-    />
+            android:id="@+id/music_options"/>
     <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="320dp"
+            android:layout_height="20dp"
             android:id="@+id/music_seekbar"
             android:progress="100"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"/>
     <TextView
             android:text="@string/vibration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/vibrate_options" style="@style/cts_limitless_pink"
+            android:layout_width="320dp"
+            android:layout_height="50dp" android:id="@+id/vibrate_options" style="@style/cts_limitless_pink"
             android:textSize="40sp"/>
 
     <ImageButton
@@ -54,7 +54,7 @@
             android:contentDescription="@string/vibration"
             android:layout_width="110dp"
             android:background="@android:color/transparent"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/active_vibration"
+            android:layout_height="70dp" app:srcCompat="@drawable/active_vibration"
             android:id="@+id/vibrationButton"
             android:layout_marginTop="20dp" android:layout_marginBottom="40dp"
             android:layout_gravity="center_horizontal"/>
@@ -64,7 +64,7 @@
             android:background="@android:color/transparent"
             android:layout_height="80dp" app:srcCompat="@drawable/logout"
             android:id="@+id/logout_button"
-            android:contentDescription="@string/logout" android:layout_width="wrap_content"
+            android:contentDescription="@string/logout" android:layout_width="200dp"
             android:adjustViewBounds="true" android:cropToPadding="true"
             android:layout_gravity="center_horizontal"/>
 </LinearLayout>

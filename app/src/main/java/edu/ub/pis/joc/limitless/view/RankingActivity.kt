@@ -100,6 +100,14 @@ class RankingActivity : FullScreenActivity(), RankingPresenter.View {
             finish()
             rankingBackArrow.isClickable = false
         }
+
+        ViewAdjuster.adjustView(rankingBackArrow)
+
+        ViewAdjuster.adjustView(findViewById(R.id.infinity_title))
+        ViewAdjuster.adjustView(findViewById(R.id.ranking_lines))
+        ViewAdjuster.adjustView(findViewById(R.id.ranking_lines2))
+        ViewAdjuster.adjustView(findViewById(R.id.my_user_name))
+        ViewAdjuster.adjustView(findViewById(R.id.my_time))
     }
 
     override fun onDestroy() {
