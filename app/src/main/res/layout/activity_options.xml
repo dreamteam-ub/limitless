@@ -22,31 +22,31 @@
                 android:contentDescription="@string/back"
                 android:id="@+id/ranking_back_button" android:layout_marginEnd="30dp"/>
         <TextView
-                android:layout_width="320dp"
-                android:layout_height="40dp" android:id="@+id/userNameTv"
-                style="@style/cts_limitless_pink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/userNameTv"
+                style="@style/cts_limitless"
                 tools:text="USERNAME" android:textSize="35sp" android:layout_gravity="center_vertical"
-        />
+                android:textColor="@color/colorLiteBlue"/>
     </LinearLayout>
     <TextView
             android:text="@string/volume"
-            android:layout_width="320dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_pink" android:textSize="40sp"
-            android:id="@+id/music_options"/>
+            style="@style/cts_limitless" android:textSize="40sp"
+            android:id="@+id/music_options" android:textColor="@color/colorStylePink"/>
     <SeekBar
             android:layout_width="320dp"
             android:layout_height="20dp"
             android:id="@+id/music_seekbar"
             android:progress="100"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp" style="@android:style/Widget.DeviceDefault.Light.SeekBar"/>
     <TextView
             android:text="@string/vibration"
-            android:layout_width="320dp"
-            android:layout_height="50dp" android:id="@+id/vibrate_options" style="@style/cts_limitless_pink"
-            android:textSize="40sp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/vibrate_options" style="@style/cts_limitless"
+            android:textSize="40sp" android:textColor="@color/colorStylePink"/>
 
     <ImageButton
             android:scaleType="fitXY"

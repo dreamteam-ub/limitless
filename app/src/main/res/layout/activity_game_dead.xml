@@ -41,19 +41,19 @@
 
         <TextView
                 android:text="@string/score"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="30sp"
+                style="@style/cts_limitless" android:textSize="30sp"
                 android:textAlignment="textStart"
-                android:layout_marginEnd="30dp" android:id="@+id/score_text"/>
+                android:layout_marginEnd="30dp" android:id="@+id/score_text" android:textColor="@color/colorYellow"/>
 
         <TextView
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="25sp"
-                android:textAlignment="textEnd" android:id="@+id/score_puntuation" tools:text="234"/>
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                style="@style/road_limitless" android:textSize="24sp"
+                android:textAlignment="textEnd" android:id="@+id/score_puntuation" tools:text="234"
+                android:textColor="@color/colorYellow"/>
 
     </LinearLayout>
 
@@ -61,24 +61,24 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
-            android:paddingStart="30dp" android:paddingEnd="30dp" android:layout_marginBottom="15dp">
+            android:paddingStart="30dp" android:paddingEnd="30dp" android:layout_marginBottom="20dp">
 
 
         <TextView
                 android:text="@string/time"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="30sp"
+                style="@style/cts_limitless" android:textSize="30sp"
                 android:textAlignment="textStart"
-                android:layout_marginEnd="30dp" android:id="@+id/time"/>
+                android:layout_marginEnd="30dp" android:id="@+id/time" android:textColor="@color/colorYellow"/>
 
         <TextView
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="25sp"
-                android:textAlignment="textEnd" android:id="@+id/time_text" tools:text="00:00"/>
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                style="@style/road_limitless" android:textSize="24sp"
+                android:textAlignment="textEnd" android:id="@+id/time_text" tools:text="00:00"
+                android:textColor="@color/colorYellow"/>
 
     </LinearLayout>
 

@@ -19,7 +19,7 @@
     <TextView android:id="@+id/text_toast"
               android:layout_width="wrap_content"
               android:layout_height="fill_parent"
-              style="@style/cts_limitless_white"
+              style="@style/cts_limitless"
               tools:text="Toast" android:textSize="20sp" android:gravity="center_vertical"
               android:layout_gravity="center_horizontal"/>
 

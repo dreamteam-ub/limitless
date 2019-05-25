@@ -12,8 +12,8 @@ import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import java.util.*
 
 const val NIVEL_INFINITO = -1
-const val FONT_LIMITS = "fonts/Road_Rage.otf"
-const val FONT_COINS = "fonts/Crimes_Times_Six4.ttf"
+const val FONT_LIMITS = "fonts/road_rage.otf"
+const val FONT_COINS = "fonts/crimes_times_six.ttf"
 
 abstract class Level(
     var assets: AssetManager,
@@ -72,9 +72,10 @@ abstract class Level(
     }
 
 
-    fun buildPlayer(): PlayerCharacter {
+    fun buildPlayer(round : Int): PlayerCharacter {
+        val player = if (round == 0) "PlayerCharacter" else "PlayerCharacter2"
         return characterFactory.createCharacter(
-            "PlayerCharacter",
+            player,
             (ViewAdjuster.screenWidth * 0.5).toInt(),
             (ViewAdjuster.screenHeight * 0.5).toInt()
         ) as PlayerCharacter

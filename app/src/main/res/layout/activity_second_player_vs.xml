@@ -10,10 +10,10 @@
         android:background="@color/colorBlack">
 
     <TextView
-            android:layout_width="320dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/player1_dead" style="@style/cts_limitless_yellow" android:textSize="40sp"
+            android:id="@+id/player1_dead" style="@style/road_limitless" android:textSize="32sp"
             android:maxLines="1" android:gravity="center_horizontal" android:layout_marginBottom="30dp"
             android:text="@string/player1_dead" android:textColor="@color/colorWhite"/>
 

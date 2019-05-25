@@ -11,19 +11,20 @@
 
     <TextView
             android:text="@string/p1_wins"
-            android:layout_width="320dp"
-            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_white_worlds" android:textSize="50sp"
+            style="@style/cts_limitless" android:textSize="50sp"
             android:textAlignment="center" android:id="@+id/winners" android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"/>
 
     <TextView
             android:text="@string/ranking_lines"
-            android:layout_width="320dp"
-            android:layout_height="40dp"
-            android:id="@+id/ranking_lines_1" style="@style/cts_limitless_yellow" android:textSize="40sp"
-            android:maxLines="1" android:gravity="center_horizontal" android:layout_gravity="center_horizontal"/>
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ranking_lines_1" style="@style/cts_limitless" android:textSize="40sp"
+            android:maxLines="1" android:gravity="center_horizontal" android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorYellow"/>
 
     <LinearLayout
             android:orientation="horizontal"
@@ -35,19 +36,18 @@
 
         <TextView
                 android:text="@string/p1"
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/cts_limitless" android:textSize="30sp"
                 android:textAlignment="textStart"
-                android:layout_marginEnd="30dp" android:id="@+id/first_pos"/>
+                android:layout_marginEnd="30dp" android:id="@+id/first_pos" android:textColor="@color/colorYellow"/>
 
         <TextView
-                android:layout_width="170dp"
-                android:layout_height="30dp"
-                android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="24sp"
-                android:textAlignment="textEnd" android:id="@+id/first_punt" tools:text="20:23"/>
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                style="@style/road_limitless" android:textSize="24sp"
+                android:textAlignment="textEnd" android:id="@+id/first_punt" tools:text="20:23"
+                android:textColor="@color/colorYellow"/>
 
     </LinearLayout>
 
@@ -61,19 +61,18 @@
 
         <TextView
                 android:text="@string/p2"
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/cts_limitless" android:textSize="30sp"
                 android:textAlignment="textStart"
-                android:layout_marginEnd="30dp" android:id="@+id/second_pos"/>
+                android:layout_marginEnd="30dp" android:id="@+id/second_pos" android:textColor="@color/colorYellow"/>
 
         <TextView
-                android:layout_width="170dp"
-                android:layout_height="30dp"
-                android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="24sp"
-                android:textAlignment="textEnd" android:id="@+id/second_punt" tools:text="10:25"/>
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                style="@style/road_limitless" android:textSize="24sp"
+                android:textAlignment="textEnd" android:id="@+id/second_punt" tools:text="10:25"
+                android:textColor="@color/colorYellow"/>
 
     </LinearLayout>
 
@@ -87,19 +86,18 @@
 
         <TextView
                 android:text="@string/score1"
-                android:layout_width="130dp"
-                android:layout_height="30dp"
-                android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/cts_limitless" android:textSize="30sp"
                 android:textAlignment="textStart"
-                android:layout_marginEnd="30dp" android:id="@+id/score1_text"/>
+                android:layout_marginEnd="30dp" android:id="@+id/score1_text" android:textColor="@color/colorYellow"/>
 
         <TextView
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="24sp"
-                android:textAlignment="textEnd" android:id="@+id/score1_puntuation" tools:text="300"/>
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                style="@style/road_limitless" android:textSize="24sp"
+                android:textAlignment="textEnd" android:id="@+id/score1_puntuation" tools:text="300"
+                android:textColor="@color/colorYellow"/>
 
     </LinearLayout>
 
@@ -112,31 +110,29 @@
 
         <TextView
                 android:text="@string/score2"
-                android:layout_width="130dp"
-                android:layout_height="30dp"
-                android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/cts_limitless" android:textSize="30sp"
                 android:textAlignment="textStart"
-                android:layout_marginEnd="30dp" android:id="@+id/score2_text"/>
+                android:layout_marginEnd="30dp" android:id="@+id/score2_text" android:textColor="@color/colorYellow"/>
 
         <TextView
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:fontFamily="@font/crimes_times_six"
-                style="@style/cts_limitless_yellow" android:textSize="24sp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                style="@style/road_limitless" android:textSize="24sp"
                 android:textAlignment="textEnd" android:id="@+id/score2_puntuation" tools:text="20"
-        />
+                android:textColor="@color/colorYellow"/>
 
     </LinearLayout>
 
 
     <TextView
             android:text="@string/ranking_lines"
-            android:layout_width="320dp"
-            android:layout_height="40dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/ranking_lines_2" style="@style/cts_limitless_yellow" android:textSize="40sp"
-            android:maxLines="1" android:gravity="center_horizontal"/>
+            android:id="@+id/ranking_lines_2" style="@style/cts_limitless" android:textSize="40sp"
+            android:maxLines="1" android:gravity="center_horizontal" android:textColor="@color/colorYellow"/>
 
     <ImageButton
             android:scaleType="fitXY"

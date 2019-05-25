@@ -30,8 +30,6 @@ class VersusActivityEnd : FullScreenActivity() {
         var puntuacio1 : Long = Data.versus_survived[0]
         var puntuacio2: Long = Data.versus_survived[1]
 
-        val typeface = Typeface.createFromAsset(assets, FONT_LIMITS)
-
         title = findViewById(R.id.winners)
         ViewAdjuster.adjustView(title)
 
@@ -67,16 +65,6 @@ class VersusActivityEnd : FullScreenActivity() {
 
         ViewAdjuster.adjustView(findViewById(R.id.ranking_lines_1))
         ViewAdjuster.adjustView(findViewById(R.id.ranking_lines_2))
-
-        score2_punt.typeface = typeface
-        score1_punt.typeface = typeface
-        first_time.typeface = typeface
-        second_time.typeface = typeface
-        title.typeface = typeface
-        first_pos.typeface = typeface
-        second_pos.typeface = typeface
-        score1_text.typeface = typeface
-        score2_text.typeface = typeface
 
         score1_punt.text = Data.versus_score[0].toString()
         score2_punt.text = Data.versus_score[1].toString()

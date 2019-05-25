@@ -9,7 +9,7 @@ import edu.ub.pis.joc.limitless.engine.GameEngine
 
 const val IMG_ASSETS = "images"
 
-class GameView(appContext: Context, private val gameActivity: GameActivity, mode : Boolean, versus : Boolean) : SurfaceView(appContext), SurfaceHolder.Callback {
+class GameView(appContext: Context, private val gameActivity: GameActivity, mode : Boolean, versus : Boolean, round : Int = 0) : SurfaceView(appContext), SurfaceHolder.Callback {
     private var thread: GameThread
     private val gameEngine: GameEngine
 
@@ -18,7 +18,7 @@ class GameView(appContext: Context, private val gameActivity: GameActivity, mode
     init {
         // add callback
         holder.addCallback(this)
-        gameEngine = GameEngine(appContext, mode, versus)
+        gameEngine = GameEngine(appContext, mode, versus, round)
         // instantiate the game thread
         thread = GameThread(holder, this, gameEngine)
     }

@@ -1,19 +1,16 @@
 package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.engine.FONT_LIMITS
 import edu.ub.pis.joc.limitless.model.Data
 
 const val LOST_GAME_NOT_DEAD = "lost_game"
 const val SCORE = "score"
-const val TIME = "time"
 
 class GameDeadActivity : FullScreenActivity() {
 
@@ -33,8 +30,6 @@ class GameDeadActivity : FullScreenActivity() {
 
         val modo = intent.extras!!.getBoolean(MODE_INFINITY)
         val score = intent.extras!!.getInt(SCORE)
-
-        val typeface = Typeface.createFromAsset(assets, FONT_LIMITS)
 
         if (intent.extras!!.getBoolean(LOST_GAME_NOT_DEAD)) {
             val textLose: ImageView = findViewById(R.id.youDiedImg)
@@ -84,14 +79,12 @@ class GameDeadActivity : FullScreenActivity() {
         ViewAdjuster.adjustView(menuButton)
 
         final_score = findViewById(R.id.score_puntuation)
-        final_score.typeface = typeface
         final_score.text = score.toString()
 
         ViewAdjuster.adjustView(findViewById(R.id.score_text))
         ViewAdjuster.adjustView(final_score)
 
         time_text = findViewById(R.id.time_text)
-        time_text.typeface = typeface
 
         ViewAdjuster.adjustView(time_text)
 

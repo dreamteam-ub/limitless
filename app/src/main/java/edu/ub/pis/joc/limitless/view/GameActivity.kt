@@ -93,10 +93,10 @@ class GameActivity : FullScreenActivity() {
             val icon: Int
             val player: String
             if (round == 0) {
-                icon = R.drawable.world1_select
+                icon = R.drawable.player_1
                 player = "1"
             } else {
-                icon = R.drawable.world2_select
+                icon = R.drawable.player_2
                 player = "2"
             }
 
@@ -110,7 +110,7 @@ class GameActivity : FullScreenActivity() {
 
         dialog = Dialog(this)
 
-        surface = GameView(this, this, mode, modeVersus)
+        surface = GameView(this, this, mode, modeVersus, round)
         setContentView(surface)
 
         val layoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

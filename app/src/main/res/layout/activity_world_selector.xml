@@ -86,20 +86,18 @@
 
     <TextView
             android:text="@string/world_one_title"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/world_one_title"
-            android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_white_worlds" android:layout_marginTop="20dp" android:textAlignment="center"
-            android:textSize="30sp" android:layout_gravity="center_horizontal"/>
+            style="@style/road_limitless" android:layout_marginTop="20dp" android:textAlignment="center"
+            android:textSize="24sp" android:layout_gravity="center_horizontal"/>
 
     <TextView
             android:text="@string/first_level"
-            android:layout_width="220dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/level_title"
-            android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_white_worlds" android:layout_marginTop="20dp" android:textAlignment="center"
+            style="@style/cts_limitless" android:layout_marginTop="20dp" android:textAlignment="center"
             android:textSize="24sp" android:layout_gravity="center_horizontal"/>
     <ImageButton
             android:layout_width="150dp"

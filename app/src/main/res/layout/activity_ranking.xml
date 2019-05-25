@@ -19,47 +19,48 @@
             android:id="@+id/ranking_back_button" android:layout_marginBottom="30dp"/>
     <TextView
             android:text="@string/inf_mode"
-            android:layout_width="320dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless_yellow" android:textSize="40sp" android:id="@+id/infinity_title"/>
+            style="@style/cts_limitless" android:textSize="40sp" android:id="@+id/infinity_title"
+            android:textColor="@color/colorYellow"/>
     <TextView
             android:text="@string/ranking_lines"
-            android:layout_width="320dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/ranking_lines" style="@style/cts_limitless_yellow" android:textSize="40sp"
-            android:maxLines="1" android:gravity="center_horizontal"/>
+            android:id="@+id/ranking_lines" style="@style/cts_limitless" android:textSize="40sp"
+            android:maxLines="1" android:gravity="center_horizontal" android:textColor="@color/colorYellow"/>
     <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:id="@+id/ranking_recicler"
             android:background="@android:color/transparent" android:layout_marginTop="10dp" android:layout_weight="1"
-            android:layout_height="0dp" android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp" android:layout_height="0dp"/>
 
     <TextView
             android:text="@string/ranking_lines"
-            android:layout_width="320dp"
-            android:layout_height="50dp"
-            android:id="@+id/ranking_lines2" style="@style/cts_limitless_yellow" android:textSize="40sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ranking_lines2" style="@style/cts_limitless" android:textSize="40sp"
             android:gravity="center_horizontal" android:layout_marginBottom="10dp" android:maxLines="1"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" android:textColor="@color/colorYellow"/>
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_vertical" android:id="@+id/my_rank_ly">
         <TextView
-                android:layout_width="320dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/my_user_name"
-                style="@style/cts_limitless_white" android:textSize="24sp" tools:text="Cepeda Calvo"
+                style="@style/cts_limitless" android:textSize="30sp" tools:text="Cepeda Calvo"
         />
         <TextView
-                android:layout_width="320dp"
-                android:layout_height="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/my_time"
-                android:textSize="20sp"
-                style="@style/cts_limitless_white" tools:text="Time: MM:SS"/>
+                android:textSize="24sp"
+                style="@style/road_limitless" tools:text="Time: MM:SS"/>
 
     </LinearLayout>
 </LinearLayout>

@@ -13,7 +13,6 @@ class GameWonActivity : FullScreenActivity() {
 
     private val TAG = "GameWonActivity"
 
-
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 

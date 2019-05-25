@@ -11,13 +11,13 @@
     <color name="colorYellow">#BCE201</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDarkWhite">#ACACAC</color>
-    <color name="colorStylePurple">#6164cf</color>
-    <color name="colorStylePink">#ff4cda</color>
+    <color name="colorStylePurple">#6164CF</color>
+    <color name="colorStylePink">#FF4CDA</color>
 
     <color name="colorLiteBlue">#3DBEC4</color>
 
     <!-- Welcome Activity -->
-    <color name="colorWelcomeText">#3075c8</color>
+    <color name="colorWelcomeText">#3075C8</color>
     <color name="colorWelcomeName">#e91922</color>
     <color name="colorETGrayWelcome">#545454</color>
 

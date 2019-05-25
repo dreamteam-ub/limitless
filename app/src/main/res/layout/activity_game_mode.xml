@@ -29,13 +29,13 @@
             android:layout_marginBottom="20dp"
             android:layout_gravity="center_horizontal" android:adjustViewBounds="true"/>
     <TextView
-            style="@style/cts_limitless_purple"
-            android:layout_width="250dp"
+            style="@style/cts_limitless"
+            android:layout_width="wrap_content"
             android:textSize="24sp"
             android:id="@+id/MyMapText"
             android:singleLine="false" tools:text="@string/text_mymap" android:text="@string/text_mymap"
-            android:layout_marginBottom="20dp" android:layout_height="60dp"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_marginBottom="20dp" android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" android:textColor="@color/colorStylePurple"/>
     <ImageButton
             android:layout_width="250dp"
             android:background="@android:color/transparent"
@@ -48,12 +48,13 @@
     <TextView
             android:text="@string/text_infinite"
             tools:text="@string/text_infinite"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:singleLine="false"
-            style="@style/cts_limitless_purple"
+            style="@style/cts_limitless"
             android:textSize="24sp"
-            android:layout_height="60dp" android:id="@+id/infiniteText"
-            android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"/>
+            android:layout_height="wrap_content" android:id="@+id/infiniteText"
+            android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"
+            android:textColor="@color/colorStylePurple"/>
     <ImageButton
             android:layout_width="250dp"
             android:background="@android:color/transparent"
@@ -67,11 +68,12 @@
     <TextView
             android:text="@string/text_versus"
             tools:text="@string/text_versus"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:singleLine="false"
-            style="@style/cts_limitless_purple"
+            style="@style/cts_limitless"
             android:textSize="24sp"
-            android:layout_height="60dp" android:id="@+id/versus_text"
-            android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"/>
+            android:layout_height="wrap_content" android:id="@+id/versus_text"
+            android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"
+            android:textColor="@color/colorStylePurple"/>
 
 </LinearLayout>

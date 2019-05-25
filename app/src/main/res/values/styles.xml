@@ -14,41 +14,14 @@
         <item name="android:padding">10dp</item>
     </style>
     <!-- Font -->
-    <style name="cts_limitless_yellow">
-        <item name="android:textColor">@color/colorYellow</item>
-        <item name="android:includeFontPadding">true</item>
-        <item name="android:fontFamily">@font/crimes_times_six</item>
-    </style>
-    <style name="cts_limitless_white">
+    <style name="cts_limitless">
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:includeFontPadding">true</item>
         <item name="android:fontFamily">@font/crimes_times_six</item>
     </style>
-    <style name="cts_limitless_purple">
-        <item name="android:textColor">@color/colorStylePurple</item>
-        <item name="android:includeFontPadding">true</item>
-        <item name="android:fontFamily">@font/crimes_times_six</item>
-    </style>
-    <style name="cts_limitless_pink">
-        <item name="android:textColor">@color/colorStylePink</item>
-        <item name="android:includeFontPadding">true</item>
-        <item name="android:fontFamily">@font/crimes_times_six</item>
-    </style>
-
-    <style name="cts_limitless_white_worlds">
+    <style name="road_limitless">
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:includeFontPadding">true</item>
-        <item name="android:fontFamily">@font/crimes_times_six</item>
+        <item name="android:fontFamily">@font/road_rage</item>
     </style>
-    <style name="cts_limitless_blue">
-        <item name="android:textColor">@color/colorWelcomeText</item>
-        <item name="android:includeFontPadding">true</item>
-        <item name="android:fontFamily">@font/crimes_times_six</item>
-    </style>
-    <style name="cts_limitless_red">
-        <item name="android:textColor">@color/colorWelcomeName</item>
-        <item name="android:includeFontPadding">true</item>
-        <item name="android:fontFamily">@font/crimes_times_six</item>
-    </style>
-
 </resources>

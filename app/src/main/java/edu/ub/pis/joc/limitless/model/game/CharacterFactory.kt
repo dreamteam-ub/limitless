@@ -15,6 +15,7 @@ const val DEMON_CHAR = "Demon"
 const val EYE_CHAR = "Eye"
 const val GHOST_CHAR = "Ghost"
 const val PLAYER_CHARACTER = "PlayerCharacter"
+const val PLAYER_CHARACTER2 = "PlayerCharacter2"
 const val SKULL_CHAR = "Skull"
 const val SKULL_LASER = "SkullLaser"
 const val EYE_PROJECTILE = "EyeProjectile"
@@ -38,6 +39,7 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
     var arrayImatgesBombes: ArrayList<Bitmap>
     var arrayImatgesGhost: ArrayList<Bitmap>
     var arrayImatgesPlayer: ArrayList<Bitmap>
+    var arrayImatgesPlayer2: ArrayList<Bitmap>
     var arrayImatgesCoin: ArrayList<Bitmap>
     var arrayImatgesSkullLaser: ArrayList<Bitmap>
     var arrayImatgesEyeProyectile: ArrayList<Bitmap>
@@ -143,6 +145,14 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
         arrayImatgesPlayer = arrayListOf(
             BitmapFactory.decodeStream(
                 BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "main_character.png")),
+                null,
+                optionsCharacter
+            )!!
+        )
+
+        arrayImatgesPlayer2 = arrayListOf(
+            BitmapFactory.decodeStream(
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "main_character_2.png")),
                 null,
                 optionsCharacter
             )!!
@@ -630,6 +640,10 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
 
             PLAYER_CHARACTER -> {
                 PlayerCharacter(arrayImatgesPlayer, posX, posY)
+            }
+
+            PLAYER_CHARACTER2 -> {
+                PlayerCharacter(arrayImatgesPlayer2, posX, posY)
             }
 
             NUMBER_COIN -> {

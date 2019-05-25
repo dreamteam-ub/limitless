@@ -24,7 +24,7 @@ import java.util.*
 
 
 @Suppress("DEPRECATION")
-class GameEngine(private var contextEngine: Context, var mode: Boolean, var versus: Boolean) {
+class GameEngine(private var contextEngine: Context, var mode: Boolean, var versus: Boolean, var round : Int = 0) {
 
     var assets = contextEngine.resources.assets
 
@@ -85,7 +85,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         )
 
 
-    var player: PlayerCharacter = level.buildPlayer()
+    var player: PlayerCharacter = level.buildPlayer(round)
 
     var scoreLimits = level.createLimits(currentLevelWorld)
 
