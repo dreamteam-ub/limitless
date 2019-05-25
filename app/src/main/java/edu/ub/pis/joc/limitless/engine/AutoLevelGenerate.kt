@@ -3,7 +3,7 @@ package edu.ub.pis.joc.limitless.engine
 import android.graphics.Rect
 import android.util.Log
 import edu.ub.pis.joc.limitless.model.game.*
-import java.util.ArrayList
+import java.util.*
 import kotlin.random.Random
 
 class AutoLevelGenerate {
@@ -132,9 +132,7 @@ class AutoLevelGenerate {
     }
 
     fun generateCoinValues() : Int{
-        var valCoin = 0
-
-        valCoin = (Random.nextInt(-limitLow / 2,  limitHigh / 2))
+        var valCoin = (Random.nextInt(-limitLow / 2,  limitHigh / 2))
 
         if (valCoin == 0) {valCoin++}
 

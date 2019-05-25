@@ -1,13 +1,12 @@
 package edu.ub.pis.joc.limitless.model.game
 
-import android.graphics.Bitmap
-import edu.ub.pis.joc.limitless.model.Data
-import android.content.Context
 import android.content.res.AssetManager
+import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.util.Log
-import edu.ub.pis.joc.limitless.model.Data.screenHeight
-import edu.ub.pis.joc.limitless.model.Data.screenWidth
+import edu.ub.pis.joc.limitless.view.ViewAdjuster
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenHeight
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenWidth
 import kotlin.math.PI
 import kotlin.math.sin
 
@@ -32,7 +31,7 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList:Int, asset
         }
 
         if(dissapearTimer == 0){
-            if(x<=0 || x>=Data.screenWidth || y<=0 || y>= Data.screenHeight){
+            if(x<=0 || x>=ViewAdjuster.screenWidth || y<=0 || y>= ViewAdjuster.screenHeight){
                 dissapearTimer = -1
             }
         }
@@ -40,35 +39,35 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList:Int, asset
         when (concreteBehaviour) {
             0 -> {
                 //Sinusoidal esquerra a dreta
-                val altura = Data.screenHeight*0.05 //Subir el multiplicador para mas altura
+                val altura = ViewAdjuster.screenHeight*0.05 //Subir el multiplicador para mas altura
                 val movimientos = 2 //Se haran tantos movimientos sinusoidales
                 x += xVelocity
-                y = yOriginal-(sin(((x.toDouble()/Data.screenWidth)*movimientos*2* PI)) *altura).toInt()
+                y = yOriginal-(sin(((x.toDouble()/ViewAdjuster.screenWidth)*movimientos*2* PI)) *altura).toInt()
             }
             1 -> {
                 //Sinusoidal dreta a esquerra
-                val altura = Data.screenHeight*0.05 //Subir el multiplicador para mas altura
+                val altura = ViewAdjuster.screenHeight*0.05 //Subir el multiplicador para mas altura
                 val movimientos = 2 //Se haran tantos movimientos sinusoidales
                 x -= xVelocity
-                y = yOriginal-(sin(((x.toDouble()/Data.screenWidth)*movimientos*2* PI)) *altura).toInt()
+                y = yOriginal-(sin(((x.toDouble()/ViewAdjuster.screenWidth)*movimientos*2* PI)) *altura).toInt()
             }
             2 -> {
                 //Sinusoidal dalt a baix
-                val altura = Data.screenWidth*0.1 //Subir el multiplicador para mas altura
+                val altura = ViewAdjuster.screenWidth*0.1 //Subir el multiplicador para mas altura
                 val movimientos = 6 //Se haran tantos movimientos sinusoidales
-                x = xOriginal-(sin(((y.toDouble()/Data.screenHeight)*movimientos*2* PI)) *altura).toInt()
+                x = xOriginal-(sin(((y.toDouble()/ViewAdjuster.screenHeight)*movimientos*2* PI)) *altura).toInt()
                 y += (1.3*yVelocity).toInt() //A mas multiplicador mas rapido ira
             }
             3 -> {
                 //Sinusoidal baix a dalt
-                val altura = Data.screenWidth*0.1 //Subir el multiplicador para mas altura
+                val altura = ViewAdjuster.screenWidth*0.1 //Subir el multiplicador para mas altura
                 val movimientos = 6 //Se haran tantos movimientos sinusoidales
-                x = xOriginal-(sin(((y.toDouble()/Data.screenHeight)*movimientos*2* PI)) *altura).toInt()
+                x = xOriginal-(sin(((y.toDouble()/ViewAdjuster.screenHeight)*movimientos*2* PI)) *altura).toInt()
                 y -= (1.3*yVelocity).toInt() //A mas multiplicador mas rapido ira
             }
             4 -> {
                 //Abajo Izquierda
-                if ((x >= Data.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
+                if ((x >= ViewAdjuster.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
                     xVelocity *= -1
                 }
                 x += (xVelocity*1.5).toInt()
@@ -76,7 +75,7 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList:Int, asset
             }
             5 -> {
                 //Arriba Izquierda
-                if ((x >= Data.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
+                if ((x >= ViewAdjuster.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
                     xVelocity *= -1
                 }
                 x += (xVelocity*1.5).toInt()
@@ -84,7 +83,7 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList:Int, asset
             }
             6 -> {
                 //Arriba Derecha
-                if ((x >= Data.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
+                if ((x >= ViewAdjuster.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
                     xVelocity *= -1
                 }
                 x += (xVelocity*1.5).toInt()
@@ -92,17 +91,17 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList:Int, asset
             }
             7 -> {
                 //Abajo Derecha
-                if ((x >= Data.screenWidth && xVelocity>0)|| ((x <= 0)&& xVelocity<0) ) {
+                if ((x >= ViewAdjuster.screenWidth && xVelocity>0)|| ((x <= 0)&& xVelocity<0) ) {
                     xVelocity *= -1
                 }
                 x += (xVelocity*1.5).toInt()
                 y += yVelocity
             }
             8->{
-                if ((x>=Data.screenWidth && xVelocity>0) || (x <= 0&& xVelocity<0) ) {
+                if ((x>=ViewAdjuster.screenWidth && xVelocity>0) || (x <= 0&& xVelocity<0) ) {
                     xVelocity *= -1
                 }
-                if ((y>=Data.screenHeight && yVelocity>0) || (y <= 0&& yVelocity<0)) {
+                if ((y>=ViewAdjuster.screenHeight && yVelocity>0) || (y <= 0&& yVelocity<0)) {
                     yVelocity *= -1
                 }
 

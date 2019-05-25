@@ -3,8 +3,8 @@ package edu.ub.pis.joc.limitless.view.gamescreen
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
-import edu.ub.pis.joc.limitless.model.Data.screenHeight
-import edu.ub.pis.joc.limitless.model.Data.screenWidth
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenHeight
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenWidth
 
 class InGameBorder(var image: Bitmap) {
     var w = screenWidth * 0.8

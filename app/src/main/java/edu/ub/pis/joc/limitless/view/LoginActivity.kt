@@ -15,7 +15,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.model.*
+import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.USER_NAME
+import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.view.login.LoginSignFragment
 import edu.ub.pis.joc.limitless.view.login.LoginWaitFragment
 

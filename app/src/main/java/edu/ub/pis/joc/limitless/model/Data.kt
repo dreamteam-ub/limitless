@@ -1,6 +1,5 @@
 package edu.ub.pis.joc.limitless.model
 
-import android.content.res.Resources
 import edu.ub.pis.joc.limitless.view.MAX_LEVEL
 import edu.ub.pis.joc.limitless.view.MAX_WORLD
 import edu.ub.pis.joc.limitless.view.MIN_LVL_WORLD
@@ -8,7 +7,6 @@ import edu.ub.pis.joc.limitless.view.MIN_LVL_WORLD
 object Data  {
     var currentLvl : Int = 0
     var currentWorld : Int = 0
-
 
     var user : User = User()
     set(u) {
@@ -30,11 +28,6 @@ object Data  {
     }
 
     var ranking : ArrayList<Ranking> = ArrayList()
-
-    val screenWidth = Resources.getSystem().displayMetrics.widthPixels
-    val screenHeight = Resources.getSystem().displayMetrics.heightPixels
-
-    val screenDpi = Resources.getSystem().displayMetrics.densityDpi
 
     var versus_survived : Array <Long> = arrayOf(0L,0L)
     var versus_score : Array<Int> = arrayOf(0,0)

@@ -1,10 +1,9 @@
 package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.*
-import android.util.Log
-import edu.ub.pis.joc.limitless.model.Data
-import edu.ub.pis.joc.limitless.model.Data.screenHeight
-import edu.ub.pis.joc.limitless.model.Data.screenWidth
+import edu.ub.pis.joc.limitless.view.ViewAdjuster
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenHeight
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenWidth
 
 class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), ObjectsInGameInterface {
 
@@ -164,37 +163,37 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
             canvas.drawBitmap(imageList[6], null, rect, null)
 
             if (value.toString().length == 1 && value >= 0) { //positius 1 xifra
-                paint.textSize = (Data.screenWidth * 60.0f) / 1080
+                paint.textSize = (ViewAdjuster.screenHeight * 60.0f) / 2028
                 canvas.drawText(
                     value.toString(),
-                    x.toFloat() - (Data.screenWidth * 15f) / 1080,
-                    y.toFloat() + (Data.screenHeight * 12f) / 2028,
+                    x.toFloat() - (ViewAdjuster.screenWidth * 15f) / 1080,
+                    y.toFloat() + (ViewAdjuster.screenHeight * 12f) / 2028,
                     paint
                 )
             } else if (value.toString().length == 2 && value < 0) { //negatius 1 xifra
-                paint.textSize = (Data.screenWidth * 60.0f) / 1080
+                paint.textSize = (ViewAdjuster.screenWidth * 60.0f) / 1080
                 paint.color = Color.WHITE
                 canvas.drawText(
                     value.toString(),
-                    x.toFloat() - (Data.screenWidth * 25f) / 1080,
-                    y.toFloat() + (Data.screenHeight * 12f) / 2028,
+                    x.toFloat() - (ViewAdjuster.screenWidth * 25f) / 1080,
+                    y.toFloat() + (ViewAdjuster.screenHeight * 12f) / 2028,
                     paint
                 )
             } else if (value.toString().length == 2 && value > 0) { //positius 2 xifres
-                paint.textSize = (Data.screenWidth * 60.0f) / 1080
+                paint.textSize = (ViewAdjuster.screenWidth * 60.0f) / 1080
                 canvas.drawText(
                     value.toString(),
-                    x.toFloat() - (Data.screenWidth * 20f) / 1080,
-                    y.toFloat() + (Data.screenHeight * 12f) / 2028,
+                    x.toFloat() - (ViewAdjuster.screenWidth * 20f) / 1080,
+                    y.toFloat() + (ViewAdjuster.screenHeight * 12f) / 2028,
                     paint
                 )
             } else if (value.toString().length == 3 && value < 0) { //negatius 2 xifres
-                paint.textSize = (Data.screenWidth * 55.0f) / 1080
+                paint.textSize = (ViewAdjuster.screenWidth * 55.0f) / 1080
                 paint.color = Color.WHITE
                 canvas.drawText(
                     value.toString(),
-                    x.toFloat() - (Data.screenWidth * 33f) / 1080,
-                    y.toFloat() + (Data.screenHeight * 12f) / 2028,
+                    x.toFloat() - (ViewAdjuster.screenWidth * 33f) / 1080,
+                    y.toFloat() + (ViewAdjuster.screenHeight * 12f) / 2028,
                     paint
                 )
             }

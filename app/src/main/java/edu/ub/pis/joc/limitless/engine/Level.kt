@@ -3,13 +3,13 @@ package edu.ub.pis.joc.limitless.engine
 import android.content.res.AssetManager
 import android.graphics.Typeface
 import android.util.Log
-import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.game.CharacterFactory
 import edu.ub.pis.joc.limitless.model.game.Coin
 import edu.ub.pis.joc.limitless.model.game.Enemy
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
+import edu.ub.pis.joc.limitless.view.ViewAdjuster
 import edu.ub.pis.joc.limitless.view.gamescreen.Limits
-import java.util.ArrayList
+import java.util.*
 
 const val NIVEL_INFINITO = -1
 const val FONT_LIMITS = "fonts/Road_Rage.otf"
@@ -59,8 +59,8 @@ abstract class Level(
 
     fun createComplexEnemy(
         character: String,
-        posX: Int = (Data.screenWidth * 0.5).toInt(),
-        posY: Int = (Data.screenHeight * 0.5).toInt(),
+        posX: Int = (ViewAdjuster.screenWidth * 0.5).toInt(),
+        posY: Int = (ViewAdjuster.screenHeight * 0.5).toInt(),
         behaviour: Int,
         dissapearTimer: Int,
         childList : Int
@@ -75,8 +75,8 @@ abstract class Level(
     fun buildPlayer(): PlayerCharacter {
         return characterFactory.createCharacter(
             "PlayerCharacter",
-            (Data.screenWidth * 0.5).toInt(),
-            (Data.screenHeight * 0.5).toInt()
+            (ViewAdjuster.screenWidth * 0.5).toInt(),
+            (ViewAdjuster.screenHeight * 0.5).toInt()
         ) as PlayerCharacter
     }
 

@@ -4,12 +4,12 @@ import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.util.Log
-import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.view.ViewAdjuster
 
 class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,assets: AssetManager, behaviour: Int) : ComplexEnemy(image, posX, posY,childList,assets,behaviour) {
 
-    override var w: Int = (Data.screenWidth * 0.103703).toInt()
-    override var h: Int = (Data.screenHeight * 0.073964).toInt()
+    override var w: Int = (ViewAdjuster.screenWidth * 0.103703).toInt()
+    override var h: Int = (ViewAdjuster.screenHeight * 0.073964).toInt()
 
     var contador: Int = 0
 
@@ -28,65 +28,65 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,assets:
         when(concreteBehaviour){
             0->{
                 degrees = 0f
-                x= (Data.screenWidth*0.34).toInt()
+                x= (ViewAdjuster.screenWidth*0.34).toInt()
                 y= 0
             }
             1->{
                 degrees = 0f
-                x= (Data.screenWidth*0.67).toInt()
+                x= (ViewAdjuster.screenWidth*0.67).toInt()
                 y= 0
             }
             2->{
                 degrees = 90f
-                x= Data.screenWidth
-                y= (Data.screenHeight*0.25).toInt()
-                w = (Data.screenHeight * 0.073964).toInt()
-                h = (Data.screenWidth * 0.103703).toInt()
+                x= ViewAdjuster.screenWidth
+                y= (ViewAdjuster.screenHeight*0.25).toInt()
+                w = (ViewAdjuster.screenHeight * 0.073964).toInt()
+                h = (ViewAdjuster.screenWidth * 0.103703).toInt()
             }
             3->{
                 degrees = 90f
-                x= Data.screenWidth
-                y= (Data.screenHeight*0.5).toInt()
-                w = (Data.screenHeight * 0.073964).toInt()
-                h = (Data.screenWidth * 0.103703).toInt()
+                x= ViewAdjuster.screenWidth
+                y= (ViewAdjuster.screenHeight*0.5).toInt()
+                w = (ViewAdjuster.screenHeight * 0.073964).toInt()
+                h = (ViewAdjuster.screenWidth * 0.103703).toInt()
             }
             4->{
                 degrees = 90f
-                x= Data.screenWidth
-                y= (Data.screenHeight*0.75).toInt()
-                w = (Data.screenHeight * 0.073964).toInt()
-                h = (Data.screenWidth * 0.103703).toInt()
+                x= ViewAdjuster.screenWidth
+                y= (ViewAdjuster.screenHeight*0.75).toInt()
+                w = (ViewAdjuster.screenHeight * 0.073964).toInt()
+                h = (ViewAdjuster.screenWidth * 0.103703).toInt()
             }
             5->{
                 degrees = 180f
-                x= (Data.screenWidth*0.67).toInt()
-                y= Data.screenHeight
+                x= (ViewAdjuster.screenWidth*0.67).toInt()
+                y= ViewAdjuster.screenHeight
             }
             6->{
                 degrees = 180f
-                x= (Data.screenWidth*0.34).toInt()
-                y= Data.screenHeight
+                x= (ViewAdjuster.screenWidth*0.34).toInt()
+                y= ViewAdjuster.screenHeight
             }
             7->{
                 degrees = 270f
                 x= 0
-                y= (Data.screenHeight*0.75).toInt()
-                w = (Data.screenHeight * 0.073964).toInt()
-                h = (Data.screenWidth * 0.103703).toInt()
+                y= (ViewAdjuster.screenHeight*0.75).toInt()
+                w = (ViewAdjuster.screenHeight * 0.073964).toInt()
+                h = (ViewAdjuster.screenWidth * 0.103703).toInt()
             }
             8->{
                 degrees = 270f
                 x= 0
-                y= (Data.screenHeight*0.5).toInt()
-                w = (Data.screenHeight * 0.073964).toInt()
-                h = (Data.screenWidth * 0.103703).toInt()
+                y= (ViewAdjuster.screenHeight*0.5).toInt()
+                w = (ViewAdjuster.screenHeight * 0.073964).toInt()
+                h = (ViewAdjuster.screenWidth * 0.103703).toInt()
             }
             9->{
                 degrees = 270f
                 x= 0
-                y= (Data.screenHeight*0.25).toInt()
-                w = (Data.screenHeight * 0.073964).toInt()
-                h = (Data.screenWidth * 0.103703).toInt()
+                y= (ViewAdjuster.screenHeight*0.25).toInt()
+                w = (ViewAdjuster.screenHeight * 0.073964).toInt()
+                h = (ViewAdjuster.screenWidth * 0.103703).toInt()
             }
             else->{
                 degrees = 0f

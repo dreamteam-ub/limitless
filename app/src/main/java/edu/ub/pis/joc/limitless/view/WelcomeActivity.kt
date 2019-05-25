@@ -16,7 +16,6 @@ import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.USER_NAME
 import edu.ub.pis.joc.limitless.model.User
-import kotlinx.android.synthetic.main.activity_welcome.*
 
 
 class WelcomeActivity : FullScreenActivity() {

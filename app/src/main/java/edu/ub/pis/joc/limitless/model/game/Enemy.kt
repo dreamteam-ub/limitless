@@ -1,8 +1,8 @@
 package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
-import edu.ub.pis.joc.limitless.model.Data.screenHeight
-import edu.ub.pis.joc.limitless.model.Data.screenWidth
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenHeight
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenWidth
 
 open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) : Character(image, posX, posY), EnemyInterface {
 

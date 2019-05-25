@@ -1,13 +1,11 @@
 package edu.ub.pis.joc.limitless.engine
 
-import android.content.Context
 import android.content.res.AssetManager
 import android.graphics.Typeface
 import android.util.Log
 import edu.ub.pis.joc.limitless.model.game.*
-import edu.ub.pis.joc.limitless.view.end_game
 import edu.ub.pis.joc.limitless.view.gamescreen.Limits
-import java.util.ArrayList
+import java.util.*
 import kotlin.random.Random
 
 class LevelInfinite(assets: AssetManager,

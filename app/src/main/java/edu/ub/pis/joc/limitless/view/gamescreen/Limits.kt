@@ -4,9 +4,9 @@ package edu.ub.pis.joc.limitless.view.gamescreen
 import android.content.res.AssetManager
 import android.graphics.*
 import edu.ub.pis.joc.limitless.engine.FONT_LIMITS
-import edu.ub.pis.joc.limitless.model.Data
-import edu.ub.pis.joc.limitless.model.Data.screenWidth
-import edu.ub.pis.joc.limitless.model.Data.screenHeight
+import edu.ub.pis.joc.limitless.view.ViewAdjuster
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenHeight
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenWidth
 
 class Limits (var min: Int, var max: Int, assets : AssetManager) {
 
@@ -23,7 +23,7 @@ class Limits (var min: Int, var max: Int, assets : AssetManager) {
     init {
         paint.color = Color.WHITE
         paint.style = Paint.Style.FILL
-        paint.textSize = (Data.screenWidth * 60.0f) / 1080
+        paint.textSize = (ViewAdjuster.screenHeight * 60.0f) / 2028
         paint.typeface = Typeface.createFromAsset(assets, FONT_LIMITS)
     }
 
@@ -32,6 +32,6 @@ class Limits (var min: Int, var max: Int, assets : AssetManager) {
         val halfW: Int = (w / 2).toInt()
         val halfH: Int = (h / 2).toInt()
         rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
-        canvas.drawText("MIN: $min  MAX: $max", (rect.left.toFloat() + Data.screenWidth/3.5f),rect.top.toFloat()+(Data.screenHeight * 15f)/2028, paint)
+        canvas.drawText("MIN: $min  MAX: $max", (rect.left.toFloat() + ViewAdjuster.screenWidth/3.5f),rect.top.toFloat()+(ViewAdjuster.screenHeight * 15f)/2028, paint)
     }
 }

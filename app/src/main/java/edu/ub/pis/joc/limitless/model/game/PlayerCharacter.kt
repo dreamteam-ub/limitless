@@ -1,8 +1,8 @@
 package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
-import edu.ub.pis.joc.limitless.model.Data.screenHeight
-import edu.ub.pis.joc.limitless.model.Data.screenWidth
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenHeight
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenWidth
 import edu.ub.pis.joc.limitless.view.end_game
 import java.lang.Math.abs
 

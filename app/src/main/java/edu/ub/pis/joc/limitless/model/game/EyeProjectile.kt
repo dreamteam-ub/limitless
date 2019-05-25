@@ -2,9 +2,9 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import edu.ub.pis.joc.limitless.model.Data
-import edu.ub.pis.joc.limitless.model.Data.screenHeight
-import edu.ub.pis.joc.limitless.model.Data.screenWidth
+import edu.ub.pis.joc.limitless.view.ViewAdjuster
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenHeight
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenWidth
 
 
 class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour : Int) : Enemy(image, posX, posY,behaviour) {
@@ -43,7 +43,7 @@ class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour : 
         }
 
         if(dissapearTimer == 0){
-            if(x<=0 || x>= Data.screenWidth || y<=0 || y>= Data.screenHeight){
+            if(x<=0 || x>= ViewAdjuster.screenWidth || y<=0 || y>= ViewAdjuster.screenHeight){
                 dissapearTimer = -1
             }
         }

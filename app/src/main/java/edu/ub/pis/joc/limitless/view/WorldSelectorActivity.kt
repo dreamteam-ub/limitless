@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
@@ -65,15 +64,34 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         db = FirebaseFirestore.getInstance()
 
         worldTitle = findViewById(R.id.world_one_title)
+        ViewAdjuster.adjustView(worldTitle)
+
         lvlTitle = findViewById(R.id.level_title)
+        ViewAdjuster.adjustView(lvlTitle)
+
         arrowBack = findViewById(R.id.world_back_button)
+        ViewAdjuster.adjustView(arrowBack)
+
         worldPhoto = findViewById(R.id.world_one)
+        ViewAdjuster.adjustView(worldPhoto)
+
         leftArrow = findViewById(R.id.change_left_arrow)
+        ViewAdjuster.adjustView(leftArrow)
+
         rightArrow = findViewById(R.id.change_right_arrow)
+        ViewAdjuster.adjustView(rightArrow)
+
         downArrow = findViewById(R.id.change_down_arrow)
+        ViewAdjuster.adjustView(downArrow)
+
         upArrow = findViewById(R.id.change_up_arrow)
+        ViewAdjuster.adjustView(upArrow)
+
         playWorlds = findViewById(R.id.playButtonWorlds)
+        ViewAdjuster.adjustView(playWorlds)
+
         tutorialBtn = findViewById(R.id.tutorialButton)
+        ViewAdjuster.adjustView(tutorialBtn)
 
         userListener =
             db.collection(USERS).document(mAuth.currentUser!!.uid).addSnapshotListener { docSnapshot, exception ->

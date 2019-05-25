@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Rect
 import android.util.Log
-import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.view.IMG_ASSETS
 import java.io.BufferedInputStream
 import java.io.File

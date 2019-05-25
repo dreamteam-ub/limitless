@@ -6,7 +6,7 @@ import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.MUSIC
 import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.model.VIBRATION
-import edu.ub.pis.joc.limitless.view.*
+import edu.ub.pis.joc.limitless.view.USERS
 
 class OptionsPresenter(var view : OptionsPresenter.View) {
 

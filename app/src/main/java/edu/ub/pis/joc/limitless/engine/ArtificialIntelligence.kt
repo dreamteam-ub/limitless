@@ -1,9 +1,7 @@
 package edu.ub.pis.joc.limitless.engine
 
-import android.util.Log
 import edu.ub.pis.joc.limitless.model.game.*
 import kotlin.random.Random
-
 
 class ArtificialIntelligence {
 

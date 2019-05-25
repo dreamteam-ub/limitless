@@ -1,10 +1,10 @@
 package edu.ub.pis.joc.limitless.view
 
 import android.os.Bundle
-import edu.ub.pis.joc.limitless.R
 import android.support.v4.view.ViewPager
 import android.view.Gravity
 import android.widget.Toast
+import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.Page
 

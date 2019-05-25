@@ -26,7 +26,7 @@ abstract class Character(image: ArrayList<Bitmap>, posX: Int, posY: Int) {
         matrix.postRotate(degrees)
 
         val tmpImgList = ArrayList<Bitmap>(imageList.size)
-        for ((i, img) in imageList.withIndex()) {
+        for (img in imageList) {
             tmpImgList.add(Bitmap.createBitmap(img, 0, 0, img.width, img.height, matrix, false))
         }
         imageList = tmpImgList

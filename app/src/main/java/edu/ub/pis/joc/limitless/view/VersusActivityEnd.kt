@@ -3,7 +3,6 @@ package edu.ub.pis.joc.limitless.view
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import edu.ub.pis.joc.limitless.R

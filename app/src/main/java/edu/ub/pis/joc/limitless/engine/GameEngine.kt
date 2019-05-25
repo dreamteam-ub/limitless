@@ -2,20 +2,26 @@ package edu.ub.pis.joc.limitless.engine
 
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.media.MediaPlayer
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
 import edu.ub.pis.joc.limitless.model.Data
-import edu.ub.pis.joc.limitless.model.game.*
+import edu.ub.pis.joc.limitless.model.game.Coin
+import edu.ub.pis.joc.limitless.model.game.Enemy
+import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 import edu.ub.pis.joc.limitless.view.GameActivity
 import edu.ub.pis.joc.limitless.view.IMG_ASSETS
+import edu.ub.pis.joc.limitless.view.SOUND_ASSETS
 import edu.ub.pis.joc.limitless.view.end_game
 import edu.ub.pis.joc.limitless.view.gamescreen.InGameBorder
 import edu.ub.pis.joc.limitless.view.gamescreen.PauseButton
 import java.io.BufferedInputStream
 import java.io.File
 import java.util.*
+
 
 @Suppress("DEPRECATION")
 class GameEngine(private var contextEngine: Context, var mode: Boolean, var versus: Boolean) {
@@ -40,6 +46,8 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
     var optionsGameBorder: BitmapFactory.Options = BitmapFactory.Options()
     var optionsPauseButton: BitmapFactory.Options = BitmapFactory.Options()
 
+    private var soundPlayer: MediaPlayer
+
 
     init {
         if (mode) {
@@ -52,6 +60,15 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
 
         Log.d("CURRENT LEVEL", currentLevelWorld.toString())
 
+        soundPlayer = MediaPlayer()
+
+        val descriptor = assets.openFd(SOUND_ASSETS + File.separator + "get_coin.wav")
+        soundPlayer.setDataSource(descriptor.fileDescriptor, descriptor.startOffset, descriptor.length)
+        descriptor.close()
+        soundPlayer.prepare()
+        val volume = if (Data.user.music != null) Data.user.music!!.toFloat()/100.0f else 0.0f
+        soundPlayer.setVolume(volume, volume)
+        soundPlayer.isLooping = false
 
         optionsGameBorder.inSampleSize = 16
         optionsPauseButton.inSampleSize = 8
@@ -106,6 +123,8 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         while (coinIterator < listOfCoins.size) {
             val taken: Boolean = player.takesCoin(listOfCoins[coinIterator])
             if (taken) {
+                soundPlayer.start()
+                soundPlayer.seekTo(0)
                 if (Data.user.vibration!!) {
                     if (android.os.Build.VERSION.SDK_INT >= 26) {
                         vibrator.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
@@ -191,6 +210,8 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         val dead = player.imageList[0].isRecycled
         val gOverPoints = !(player.accumulate >= scoreLimits[0] && player.accumulate <= scoreLimits[1])
         var score: Int = player.accumulate
+
+        soundPlayer.release()
         if (dead) {
             if (mode) {
                 if (!versus) {
@@ -208,6 +229,5 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             }
         }
         activity.onEndGame(contextEngine, updateDb, time, dead, gOverPoints,score)
-
     }
 }

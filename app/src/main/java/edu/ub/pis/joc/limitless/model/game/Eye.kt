@@ -1,16 +1,13 @@
 package edu.ub.pis.joc.limitless.model.game
 
-import android.content.Context
 import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.util.Log
-import edu.ub.pis.joc.limitless.model.Data
-import edu.ub.pis.joc.limitless.model.Data.screenHeight
-import edu.ub.pis.joc.limitless.model.Data.screenWidth
+import edu.ub.pis.joc.limitless.view.ViewAdjuster
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenHeight
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenWidth
 import kotlin.math.PI
 import kotlin.math.sin
-import kotlin.math.abs
 
 class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets: AssetManager, behaviour:Int) :
     ComplexEnemy(image, posX, posY, childList, assets,behaviour) {
@@ -44,12 +41,12 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
         projectileRelocate = generateBooleans()
         when (concreteBehaviour) {
             0,1 -> {
-                projectileStep = ((Data.screenWidth*0.8)/(projectileWavesList.size+1)).toInt()
-                currentRange = (Data.screenWidth*0.1).toInt()
+                projectileStep = ((ViewAdjuster.screenWidth*0.8)/(projectileWavesList.size+1)).toInt()
+                currentRange = (ViewAdjuster.screenWidth*0.1).toInt()
             }
             2,3,4,5,6,7 -> {
-                projectileStep = ((Data.screenHeight*0.8)/(projectileWavesList.size+1)).toInt()
-                currentRange = (Data.screenHeight*0.1).toInt()
+                projectileStep = ((ViewAdjuster.screenHeight*0.8)/(projectileWavesList.size+1)).toInt()
+                currentRange = (ViewAdjuster.screenHeight*0.1).toInt()
             }
         }
     }
@@ -58,35 +55,35 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
         when (concreteBehaviour) {
             0 -> {
                 //Sinusoidal esquerra a dreta
-                val altura = Data.screenHeight * 0.05 //Subir el multiplicador para mas altura
+                val altura = ViewAdjuster.screenHeight * 0.05 //Subir el multiplicador para mas altura
                 val movimientos = 2 //Se haran tantos movimientos sinusoidales
                 x += (xVelocity * 1.4).toInt()
-                y = yOriginal - (sin(((x.toDouble() / Data.screenWidth) * movimientos * 2 * PI)) * altura).toInt()
+                y = yOriginal - (sin(((x.toDouble() / ViewAdjuster.screenWidth) * movimientos * 2 * PI)) * altura).toInt()
             }
             1 -> {
                 //Sinusoidal dreta a esquerra
-                val altura = Data.screenHeight * 0.05 //Subir el multiplicador para mas altura
+                val altura = ViewAdjuster.screenHeight * 0.05 //Subir el multiplicador para mas altura
                 val movimientos = 2 //Se haran tantos movimientos sinusoidales
                 x -= (xVelocity * 1.4).toInt()
-                y = yOriginal - (sin(((x.toDouble() / Data.screenWidth) * movimientos * 2 * PI)) * altura).toInt()
+                y = yOriginal - (sin(((x.toDouble() / ViewAdjuster.screenWidth) * movimientos * 2 * PI)) * altura).toInt()
             }
             2 -> {
                 //Sinusoidal dalt a baix
-                val altura = Data.screenWidth * 0.1 //Subir el multiplicador para mas altura
+                val altura = ViewAdjuster.screenWidth * 0.1 //Subir el multiplicador para mas altura
                 val movimientos = 6 //Se haran tantos movimientos sinusoidales
-                x = xOriginal - (sin(((y.toDouble() / Data.screenHeight) * movimientos * 2 * PI)) * altura).toInt()
+                x = xOriginal - (sin(((y.toDouble() / ViewAdjuster.screenHeight) * movimientos * 2 * PI)) * altura).toInt()
                 y += (1.4 * yVelocity).toInt() //A mas multiplicador mas rapido ira
             }
             3 -> {
                 //Sinusoidal baix a dalt
-                val altura = Data.screenWidth * 0.1 //Subir el multiplicador para mas altura
+                val altura = ViewAdjuster.screenWidth * 0.1 //Subir el multiplicador para mas altura
                 val movimientos = 6 //Se haran tantos movimientos sinusoidales
-                x = xOriginal - (sin(((y.toDouble() / Data.screenHeight) * movimientos * 2 * PI)) * altura).toInt()
+                x = xOriginal - (sin(((y.toDouble() / ViewAdjuster.screenHeight) * movimientos * 2 * PI)) * altura).toInt()
                 y -= (1.4 * yVelocity).toInt() //A mas multiplicador mas rapido ira
             }
             4 -> {
                 //Abajo Izquierda
-                if ((x >= Data.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
+                if ((x >= ViewAdjuster.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
                     xVelocity *= -1
                 }
                 x += (xVelocity*1.5).toInt()
@@ -94,7 +91,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
             }
             5 -> {
                 //Arriba Izquierda
-                if ((x >= Data.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
+                if ((x >= ViewAdjuster.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
                         xVelocity *= -1
                 }
                 x += (xVelocity*1.5).toInt()
@@ -102,7 +99,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
             }
             6 -> {
                 //Arriba Derecha
-                if ((x >= Data.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
+                if ((x >= ViewAdjuster.screenWidth && xVelocity>0) || ((x <= 0)&& xVelocity<0) ) {
                     xVelocity *= -1
                 }
                 x += (xVelocity*1.5).toInt()
@@ -110,7 +107,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
             }
             7 -> {
                 //Abajo Derecha
-                if ((x >= Data.screenWidth && xVelocity>0)|| ((x <= 0)&& xVelocity<0) ) {
+                if ((x >= ViewAdjuster.screenWidth && xVelocity>0)|| ((x <= 0)&& xVelocity<0) ) {
                     xVelocity *= -1
                 }
                 x += (xVelocity*1.5).toInt()
@@ -130,7 +127,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
             }
             1->{
                 //Empieza derecha
-                if(x<(Data.screenWidth-(currentRange+projectileStep)) && !projectileDraw[indexProjectileCount]){
+                if(x<(ViewAdjuster.screenWidth-(currentRange+projectileStep)) && !projectileDraw[indexProjectileCount]){
                     projectileRelocate[indexProjectileCount] = true
                     projectileDraw[indexProjectileCount] = true
                     indexProjectileCount = (indexProjectileCount+1)%(projectileWavesList.size)
@@ -148,7 +145,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
             }
             3,4,7-> {
                 //Empiezan abajo
-                if(y<(Data.screenHeight-(currentRange+projectileStep)) && !projectileDraw[indexProjectileCount]){
+                if(y<(ViewAdjuster.screenHeight-(currentRange+projectileStep)) && !projectileDraw[indexProjectileCount]){
                     projectileRelocate[indexProjectileCount] = true
                     projectileDraw[indexProjectileCount] = true
                     indexProjectileCount = (indexProjectileCount+1)%(projectileWavesList.size)
@@ -181,7 +178,7 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
         }
 
         if(dissapearTimer == 0){
-            if(x<=0 || x>=Data.screenWidth || y<=0 || y>= Data.screenHeight){
+            if(x<=0 || x>=ViewAdjuster.screenWidth || y<=0 || y>= ViewAdjuster.screenHeight){
                 dissapearTimer = -1
             }
         }

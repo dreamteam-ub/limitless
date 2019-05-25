@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -12,12 +14,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.model.User
-import edu.ub.pis.joc.limitless.presenter.OptionsPresenter
-import android.widget.SeekBar
 import edu.ub.pis.joc.limitless.model.Data
-import android.widget.SeekBar.OnSeekBarChangeListener
+import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.model.VIBRATION
+import edu.ub.pis.joc.limitless.presenter.OptionsPresenter
 import kotlinx.android.synthetic.main.activity_options.*
 
 class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {

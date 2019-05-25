@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
 
+
 abstract class FullScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

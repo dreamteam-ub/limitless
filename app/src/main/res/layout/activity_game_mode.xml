@@ -23,7 +23,7 @@
             android:layout_width="250dp"
             android:scaleType="fitXY"
             android:background="@android:color/transparent"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/my_map"
+            android:layout_height="80dp" app:srcCompat="@drawable/my_map"
             android:id="@+id/myMapButton"
             android:contentDescription="@string/mymap_button"
             android:layout_marginBottom="20dp"
@@ -42,7 +42,7 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:contentDescription="@string/inf_button"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/infinite_mode"
+            android:layout_height="80dp" app:srcCompat="@drawable/infinite_mode"
             android:id="@+id/infiniteModeButton"
             android:layout_marginBottom="20dp" android:layout_gravity="center_horizontal"/>
     <TextView
@@ -60,7 +60,7 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:contentDescription="@string/inf_button"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/versus_mode"
+            android:layout_height="80dp" app:srcCompat="@drawable/versus_mode"
             android:id="@+id/infiniteModeVersusButton"
             android:layout_marginBottom="20dp" android:layout_gravity="center_horizontal"/>
 

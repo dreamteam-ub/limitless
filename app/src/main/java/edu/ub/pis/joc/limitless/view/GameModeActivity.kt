@@ -25,12 +25,13 @@ class GameModeActivity : FullScreenActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_mode)
 
-
         backArrow = findViewById(R.id.blackArrowButton)
         backArrow.setOnClickListener {
             finish()
             backArrow.isClickable = false
         }
+
+        ViewAdjuster.adjustView(backArrow)
 
         myMap = findViewById(R.id.myMapButton)
         myMap.setOnClickListener {
@@ -39,6 +40,8 @@ class GameModeActivity : FullScreenActivity() {
             startActivity(intent)
             myMap.isClickable = false
         }
+
+        ViewAdjuster.adjustView(myMap)
 
         infiniteMode = findViewById(R.id.infiniteModeButton)
         infiniteMode.setOnClickListener {
@@ -58,6 +61,7 @@ class GameModeActivity : FullScreenActivity() {
 
             }
         }
+        ViewAdjuster.adjustView(infiniteMode)
 
         infiniteModeVersus = findViewById(R.id.infiniteModeVersusButton)
         infiniteModeVersus.setOnClickListener {
@@ -80,12 +84,12 @@ class GameModeActivity : FullScreenActivity() {
 
             }
         }
+        ViewAdjuster.adjustView(infiniteModeVersus)
 
-        val textMyMap: TextView = findViewById(R.id.MyMapText)
-        textMyMap.text = getString(R.string.text_mymap)
 
-        val textInf: TextView = findViewById(R.id.infiniteText)
-        textInf.text = getString(R.string.text_infinite)
+        ViewAdjuster.adjustView(findViewById(R.id.MyMapText))
+        ViewAdjuster.adjustView(findViewById(R.id.infiniteText))
+        ViewAdjuster.adjustView(findViewById(R.id.versus_text))
     }
 
     override fun onStart() {

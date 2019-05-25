@@ -1,7 +1,6 @@
 package edu.ub.pis.joc.limitless.engine
 
-import edu.ub.pis.joc.limitless.model.Data
-import kotlin.random.Random
+import edu.ub.pis.joc.limitless.view.ViewAdjuster
 
 object AIData {
 
@@ -16,69 +15,69 @@ object AIData {
     var childEye = arrayOf(6,6,6,7,6,6,6,7,6,6,6,7,6,6,6,7,20)
 
     val leftSpawns : Array<Array<Int>> = arrayOf(
-        arrayOf(0,(Data.screenHeight*0.2).toInt()),
-        arrayOf(0,(Data.screenHeight*0.4).toInt()),
-        arrayOf(0,(Data.screenHeight*0.6).toInt()),
-        arrayOf(0,(Data.screenHeight*0.8).toInt())
+        arrayOf(0,(ViewAdjuster.screenHeight*0.2).toInt()),
+        arrayOf(0,(ViewAdjuster.screenHeight*0.4).toInt()),
+        arrayOf(0,(ViewAdjuster.screenHeight*0.6).toInt()),
+        arrayOf(0,(ViewAdjuster.screenHeight*0.8).toInt())
     )
 
     val rightSpawns : Array<Array<Int>> = arrayOf(
-        arrayOf(Data.screenWidth,(Data.screenHeight*0.2).toInt()),
-        arrayOf(Data.screenWidth,(Data.screenHeight*0.4).toInt()),
-        arrayOf(Data.screenWidth,(Data.screenHeight*0.6).toInt()),
-        arrayOf(Data.screenWidth,(Data.screenHeight*0.8).toInt())
+        arrayOf(ViewAdjuster.screenWidth,(ViewAdjuster.screenHeight*0.2).toInt()),
+        arrayOf(ViewAdjuster.screenWidth,(ViewAdjuster.screenHeight*0.4).toInt()),
+        arrayOf(ViewAdjuster.screenWidth,(ViewAdjuster.screenHeight*0.6).toInt()),
+        arrayOf(ViewAdjuster.screenWidth,(ViewAdjuster.screenHeight*0.8).toInt())
     )
 
     val topSpawns : Array<Array<Int>> = arrayOf(
-        arrayOf((Data.screenWidth*0.3).toInt(),0),
-        arrayOf((Data.screenWidth*0.5).toInt(),0),
-        arrayOf((Data.screenWidth*0.7).toInt(),0)
+        arrayOf((ViewAdjuster.screenWidth*0.3).toInt(),0),
+        arrayOf((ViewAdjuster.screenWidth*0.5).toInt(),0),
+        arrayOf((ViewAdjuster.screenWidth*0.7).toInt(),0)
     )
 
     val bottomSpawns : Array<Array<Int>> = arrayOf(
-        arrayOf((Data.screenWidth*0.3).toInt(),Data.screenHeight),
-        arrayOf((Data.screenWidth*0.5).toInt(),Data.screenHeight),
-        arrayOf((Data.screenWidth*0.7).toInt(),Data.screenHeight)
+        arrayOf((ViewAdjuster.screenWidth*0.3).toInt(),ViewAdjuster.screenHeight),
+        arrayOf((ViewAdjuster.screenWidth*0.5).toInt(),ViewAdjuster.screenHeight),
+        arrayOf((ViewAdjuster.screenWidth*0.7).toInt(),ViewAdjuster.screenHeight)
     )
 
     val bottomLeftSpawns : Array<Array<Int>> = arrayOf(
-        arrayOf((Data.screenWidth*0.2).toInt(),Data.screenHeight),
-        arrayOf((Data.screenWidth*0.3).toInt(),Data.screenHeight)
+        arrayOf((ViewAdjuster.screenWidth*0.2).toInt(),ViewAdjuster.screenHeight),
+        arrayOf((ViewAdjuster.screenWidth*0.3).toInt(),ViewAdjuster.screenHeight)
     )
 
     val bottomRightSpawns : Array<Array<Int>> = arrayOf(
-        arrayOf((Data.screenWidth*0.7).toInt(),Data.screenHeight),
-        arrayOf((Data.screenWidth*0.8).toInt(),Data.screenHeight)
+        arrayOf((ViewAdjuster.screenWidth*0.7).toInt(),ViewAdjuster.screenHeight),
+        arrayOf((ViewAdjuster.screenWidth*0.8).toInt(),ViewAdjuster.screenHeight)
     )
 
     val topLeftSpawns : Array<Array<Int>> = arrayOf(
-        arrayOf((Data.screenWidth*0.2).toInt(),0),
-        arrayOf((Data.screenWidth*0.3).toInt(),0)
+        arrayOf((ViewAdjuster.screenWidth*0.2).toInt(),0),
+        arrayOf((ViewAdjuster.screenWidth*0.3).toInt(),0)
     )
 
     val topRightSpawns : Array<Array<Int>> = arrayOf(
-        arrayOf((Data.screenWidth*0.7).toInt(),0),
-        arrayOf((Data.screenWidth*0.8).toInt(),0)
+        arrayOf((ViewAdjuster.screenWidth*0.7).toInt(),0),
+        arrayOf((ViewAdjuster.screenWidth*0.8).toInt(),0)
     )
 
     val spawnCoinAndBombsX : Array<Int> = arrayOf(
-        (Data.screenWidth*0.2).toInt(),
-        (Data.screenWidth*0.3).toInt(),
-        (Data.screenWidth*0.4).toInt(),
-        (Data.screenWidth*0.5).toInt(),
-        (Data.screenWidth*0.6).toInt(),
-        (Data.screenWidth*0.7).toInt(),
-        (Data.screenWidth*0.8).toInt()
+        (ViewAdjuster.screenWidth*0.2).toInt(),
+        (ViewAdjuster.screenWidth*0.3).toInt(),
+        (ViewAdjuster.screenWidth*0.4).toInt(),
+        (ViewAdjuster.screenWidth*0.5).toInt(),
+        (ViewAdjuster.screenWidth*0.6).toInt(),
+        (ViewAdjuster.screenWidth*0.7).toInt(),
+        (ViewAdjuster.screenWidth*0.8).toInt()
     )
 
     val spawnCoinAndBombsY : Array<Int> = arrayOf(
-        (Data.screenHeight*0.2).toInt(),
-        (Data.screenHeight*0.3).toInt(),
-        (Data.screenHeight*0.4).toInt(),
-        (Data.screenHeight*0.5).toInt(),
-        (Data.screenHeight*0.6).toInt(),
-        (Data.screenHeight*0.7).toInt(),
-        (Data.screenHeight*0.8).toInt()
+        (ViewAdjuster.screenHeight*0.2).toInt(),
+        (ViewAdjuster.screenHeight*0.3).toInt(),
+        (ViewAdjuster.screenHeight*0.4).toInt(),
+        (ViewAdjuster.screenHeight*0.5).toInt(),
+        (ViewAdjuster.screenHeight*0.6).toInt(),
+        (ViewAdjuster.screenHeight*0.7).toInt(),
+        (ViewAdjuster.screenHeight*0.8).toInt()
     )
 
 }

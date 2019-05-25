@@ -7,16 +7,15 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.os.Handler
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageButton
-import edu.ub.pis.joc.limitless.R
-import android.view.Gravity
 import android.view.WindowManager
+import android.widget.ImageButton
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.Data.versus_score
 import edu.ub.pis.joc.limitless.model.Data.versus_survived
@@ -33,9 +32,7 @@ class GameActivity : FullScreenActivity() {
     private val TAG = "GameActivity"
 
     private lateinit var musicPlayer: MediaPlayer
-    private lateinit var musicHandler : Handler
 
-    private var startTime = 0.0
     private var length : Int = 0
 
     private lateinit var surface: GameView
@@ -56,13 +53,6 @@ class GameActivity : FullScreenActivity() {
     private lateinit var worldsDiag: ImageButton
     private lateinit var menuDiag: ImageButton
 
-    private val updateSongTime = object : Runnable {
-        override fun run() {
-            startTime = musicPlayer.currentPosition.toDouble()
-            musicHandler.postDelayed(this, 100)
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -79,11 +69,7 @@ class GameActivity : FullScreenActivity() {
 
         musicPlayer.setVolume(volume, volume)
 
-        musicHandler = Handler()
-        musicPlayer.start()
-        musicPlayer.seekTo(length)
-        startTime = musicPlayer.currentPosition.toDouble()
-        musicHandler.postDelayed(updateSongTime, 100)
+        musicPlayer.isLooping = true
 
         if (Data.user.vibration == null) {
             Data.user.vibration = true
@@ -178,6 +164,9 @@ class GameActivity : FullScreenActivity() {
 
         dialog.setOnCancelListener { resumeDiag.performClick() }
         dialog.setOnShowListener { surface.pauseThread() }
+
+        musicPlayer.start()
+        musicPlayer.seekTo(0)
     }
 
     // DESACTIVAMOS EL BACK DENTRO DEL JUEGO
@@ -209,6 +198,8 @@ class GameActivity : FullScreenActivity() {
         if (dialog.isShowing) {
             dialog.dismiss()
         }
+
+        musicPlayer.release()
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
