@@ -32,7 +32,6 @@ class LoginSignFragment : Fragment() {
         }
 
         adjustView(signInButton)
-        adjustView(view.findViewById(R.id.signin_tv))
     }
 
     fun onButtonPressed() {

@@ -5,20 +5,13 @@
               android:orientation="vertical"
               android:gravity="clip_horizontal" android:layout_margin="40dp">
 
-    <TextView
-            android:text="@string/sigin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/signin_tv"
-            android:textColor="@color/colorPrimary" android:layout_gravity="center" android:textSize="30sp"
-            android:textStyle="bold" android:layout_marginBottom="40dp" android:textAlignment="center"/>
-
 
     <ImageButton
             android:layout_height="60dp"
             android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
             android:background="@android:color/transparent"
-            app:srcCompat="@drawable/play_button" android:id="@+id/signin_btn"
+            app:srcCompat="@drawable/custom_signin" android:id="@+id/signin_btn"
             android:adjustViewBounds="true" android:contentDescription="@string/sigin"
             android:cropToPadding="true" android:layout_width="180dp"
             android:layout_marginBottom="30dp"/>

@@ -12,7 +12,7 @@ import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import java.util.*
 
 const val NIVEL_INFINITO = -1
-const val FONT_LIMITS = "fonts/road_rage.otf"
+const val FONT_LIMITS = "fonts/Road_Rage.otf"
 const val FONT_COINS = "fonts/crimes_times_six.ttf"
 
 abstract class Level(
