@@ -9,8 +9,8 @@ import edu.ub.pis.joc.limitless.view.WIDTH_REFERENCE
 
 class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), ObjectsInGameInterface {
 
-    override var w: Int = (screenWidth * 0.005555).toInt()
-    override var h: Int = (screenHeight * 0.002958).toInt()
+    override var w: Int = CharacterData.wCoin[0]
+    override var h: Int = CharacterData.hCoin[0]
 
     val paint = Paint()
 
@@ -57,102 +57,102 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
         if (firstDraw) {
             if (contador <= 2) {
                 //Empieza a crecer
-                w = (screenWidth * 0.005555).toInt()
-                h = (screenHeight * 0.002958).toInt()
+                w = CharacterData.wCoin[0]
+                h = CharacterData.hCoin[0]
                 canvas.drawBitmap(imageList[0], null, rect, null)
             } else if (contador <= 4) {
-                w = (screenWidth * 0.011111).toInt()
-                h = (screenHeight * 0.0059171).toInt()
+                w = CharacterData.wCoin[1]
+                h = CharacterData.hCoin[1]
                 canvas.drawBitmap(imageList[1], null, rect, null)
             } else if (contador <= 6) {
-                w = (screenWidth * 0.023148).toInt()
-                h = (screenHeight * 0.012327).toInt()
+                w = CharacterData.wCoin[2]
+                h = CharacterData.hCoin[2]
                 canvas.drawBitmap(imageList[2], null, rect, null)
             } else if (contador <= 8) {
-                w = (screenWidth * 0.034259).toInt()
-                h = (screenHeight * 0.018244).toInt()
+                w = CharacterData.wCoin[3]
+                h = CharacterData.hCoin[3]
                 canvas.drawBitmap(imageList[3], null, rect, null)
             } else if (contador <= 10) {
-                w = (screenWidth * 0.046296).toInt()
-                h = (screenHeight * 0.027120).toInt()
+                w = CharacterData.wCoin[4]
+                h = CharacterData.hCoin[4]
                 canvas.drawBitmap(imageList[4], null, rect, null)
             } else if (contador <= 12) {
-                w = (screenWidth * 0.057407).toInt()
-                h = (screenHeight * 0.030571).toInt()
+                w = CharacterData.wCoin[5]
+                h = CharacterData.hCoin[5]
                 canvas.drawBitmap(imageList[5], null, rect, null)
             } else if (contador <= 14) {
                 //Moneda normal
-                w = (screenWidth * 0.069444).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[6]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[6], null, rect, null)
             } else if (contador <= 16) {
                 //Empieza a girar
-                w = (screenWidth * 0.060185).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[7]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[7], null, rect, null)
             } else if (contador <= 18) {
-                w = (screenWidth * 0.050925).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[8]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[8], null, rect, null)
             } else if (contador <= 20) {
-                w = (screenWidth * 0.041666).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[9]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[9], null, rect, null)
             } else if (contador <= 22) {
-                w = (screenWidth * 0.025925).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[10]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[10], null, rect, null)
             } else if (contador <= 24) {
-                w = (screenWidth * 0.0046296).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[4]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[11], null, rect, null)
             } else if (contador <= 26) {
-                w = (screenWidth * 0.025925).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[10]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[12], null, rect, null)
             } else if (contador <= 28) {
-                w = (screenWidth * 0.041666).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[9]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[13], null, rect, null)
             } else if (contador <= 30) {
-                w = (screenWidth * 0.050925).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[8]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[14], null, rect, null)
             } else if (contador <= 32) {
-                w = (screenWidth * 0.060185).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[7]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[15], null, rect, null)
             } else if (contador <= 34) {
-                w = (screenWidth * 0.050925).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[8]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[14], null, rect, null)
             } else if (contador <= 36) {
-                w = (screenWidth * 0.041666).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[9]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[13], null, rect, null)
             } else if (contador <= 38) {
-                w = (screenWidth * 0.025925).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[10]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[12], null, rect, null)
             } else if (contador <= 40) {
-                w = (screenWidth * 0.0046296).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[11]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[11], null, rect, null)
             } else if (contador <= 42) {
-                w = (screenWidth * 0.025925).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[10]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[10], null, rect, null)
             } else if (contador <= 44) {
-                w = (screenWidth * 0.041666).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[9]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[9], null, rect, null)
             } else if (contador <= 46) {
-                w = (screenWidth * 0.050925).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[8]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[8], null, rect, null)
             } else if (contador <= 48) {
-                w = (screenWidth * 0.065185).toInt()
-                h = (screenHeight * 0.0369822).toInt()
+                w = CharacterData.wCoin[12]
+                h = CharacterData.hCoin[6]
                 canvas.drawBitmap(imageList[7], null, rect, null)
             }
             contador = (contador + 1)

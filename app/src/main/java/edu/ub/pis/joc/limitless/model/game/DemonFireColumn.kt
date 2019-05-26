@@ -9,8 +9,8 @@ import java.lang.Math.*
 
 class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,wDemon:Int,hDemon:Int) : Enemy(image, posX, posY, behaviour) {
 
-    override var w: Int = (screenWidth * 0.037037).toInt()
-    override var h: Int = (screenHeight * 0.051775).toInt()
+    override var w: Int = CharacterData.wDemonFire[0]
+    override var h: Int = CharacterData.hDemonFire[0]
 
     override var xVelocity: Int = 26
     override var yVelocity: Int = 26
@@ -42,8 +42,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.037037).toInt()
-            h = (screenHeight * 0.051775).toInt()
+            w = CharacterData.wDemonFire[0]
+            h = CharacterData.hDemonFire[0]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[0], null, rect, null)
         } else if (contador <= 6) {
@@ -52,8 +52,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.039814).toInt()
-            h = (screenHeight * 0.051775).toInt()
+            w = CharacterData.wDemonFire[1]
+            h = CharacterData.hDemonFire[1]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[1], null, rect, null)
         } else if (contador <= 9) {
@@ -62,8 +62,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.05).toInt()
-            h = (screenHeight * 0.050295).toInt()
+            w = CharacterData.wDemonFire[2]
+            h = CharacterData.hDemonFire[2]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[2], null, rect, null)
         } else if (contador <= 12) {
@@ -72,8 +72,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.060185).toInt()
-            h = (screenHeight * 0.04684).toInt()
+            w = CharacterData.wDemonFire[3]
+            h = CharacterData.hDemonFire[3]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[3], null, rect, null)
         } else if (contador <= 15) {
@@ -82,8 +82,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.07037).toInt()
-            h = (screenHeight * 0.042406).toInt()
+            w = CharacterData.wDemonFire[4]
+            h = CharacterData.hDemonFire[4]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[4], null, rect, null)
         } else if (contador <= 18) {
@@ -92,8 +92,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.079629).toInt()
-            h = (screenHeight * 0.037475).toInt()
+            w = CharacterData.wDemonFire[5]
+            h = CharacterData.hDemonFire[5]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[5], null, rect, null)
         } else if (contador <= 21) {
@@ -102,8 +102,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.087962).toInt()
-            h = (screenHeight * 0.032544).toInt()
+            w = CharacterData.wDemonFire[6]
+            h = CharacterData.hDemonFire[6]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[6], null, rect, null)
         } else if (contador <= 24) {
@@ -112,8 +112,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.09351).toInt()
-            h = (screenHeight * 0.026134).toInt()
+            w = CharacterData.wDemonFire[7]
+            h = CharacterData.hDemonFire[7]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[7], null, rect, null)
         } else if (contador <= 27) {
@@ -122,8 +122,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.096296).toInt()
-            h = (screenHeight * 0.018244).toInt()
+            w = CharacterData.wDemonFire[8]
+            h = CharacterData.hDemonFire[8]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[8], null, rect, null)
         } else if (contador <= 30) {
@@ -132,8 +132,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.097222).toInt()
-            h = (screenHeight * 0.015285).toInt()
+            w = CharacterData.wDemonFire[9]
+            h = CharacterData.hDemonFire[9]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[9], null, rect, null)
         } else if (contador <= 33) {
@@ -142,8 +142,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.096296).toInt()
-            h = (screenHeight * 0.020216).toInt()
+            w = CharacterData.wDemonFire[10]
+            h = CharacterData.hDemonFire[10]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[10], null, rect, null)
         } else if (contador <= 36) {
@@ -152,8 +152,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.095370).toInt()
-            h = (screenHeight * 0.025147).toInt()
+            w = CharacterData.wDemonFire[11]
+            h = CharacterData.hDemonFire[11]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[11], null, rect, null)
         } else if (contador <= 39) {
@@ -163,8 +163,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.087962).toInt()
-            h = (screenHeight * 0.032544).toInt()
+            w = CharacterData.wDemonFire[6]
+            h = CharacterData.hDemonFire[6]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[12], null, rect, null)
         } else if (contador <= 42) {
@@ -173,8 +173,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.081481).toInt()
-            h = (screenHeight * 0.036489).toInt()
+            w = CharacterData.wDemonFire[12]
+            h = CharacterData.hDemonFire[12]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[13], null, rect, null)
         } else if (contador <= 45) {
@@ -183,8 +183,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.069444).toInt()
-            h = (screenHeight * 0.042899).toInt()
+            w = CharacterData.wDemonFire[13]
+            h = CharacterData.hDemonFire[13]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[14], null, rect, null)
         } else if (contador <= 48) {
@@ -193,8 +193,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.057407).toInt()
-            h = (screenHeight * 0.04733).toInt()
+            w = CharacterData.wDemonFire[14]
+            h = CharacterData.hDemonFire[14]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[15], null, rect, null)
         } else if (contador <= 51) {
@@ -203,8 +203,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.043518).toInt()
-            h = (screenHeight * 0.050295).toInt()
+            w = CharacterData.wDemonFire[15]
+            h = CharacterData.hDemonFire[2]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[16], null, rect, null)
         } else if (contador <= 54) {
@@ -213,8 +213,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.036111).toInt()
-            h = (screenHeight * 0.051282).toInt()
+            w = CharacterData.wDemonFire[16]
+            h = CharacterData.hDemonFire[15]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[17], null, rect, null)
         } else if (contador <= 57) {
@@ -223,8 +223,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.032407).toInt()
-            h = (screenHeight * 0.05177).toInt()
+            w = CharacterData.wDemonFire[17]
+            h = CharacterData.hDemonFire[1]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[18], null, rect, null)
         } else if (contador <= 60) {
@@ -233,8 +233,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.034259).toInt()
-            h = (screenHeight * 0.05177).toInt()
+            w = CharacterData.wDemonFire[18]
+            h = CharacterData.hDemonFire[1]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[19], null, rect, null)
         } else if (contador <= 63) {
@@ -243,8 +243,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.049074).toInt()
-            h = (screenHeight * 0.049802).toInt()
+            w = CharacterData.wDemonFire[19]
+            h = CharacterData.hDemonFire[16]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[20], null, rect, null)
         } else if (contador <= 66) {
@@ -253,8 +253,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.060185).toInt()
-            h = (screenHeight * 0.046844).toInt()
+            w = CharacterData.wDemonFire[3]
+            h = CharacterData.hDemonFire[3]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[21], null, rect, null)
         } else if (contador <= 69) {
@@ -263,8 +263,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.071296).toInt()
-            h = (screenHeight * 0.042406).toInt()
+            w = CharacterData.wDemonFire[20]
+            h = CharacterData.hDemonFire[4]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[22], null, rect, null)
         } else if (contador <= 72) {
@@ -273,8 +273,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.077777).toInt()
-            h = (screenHeight * 0.03796).toInt()
+            w = CharacterData.wDemonFire[21]
+            h = CharacterData.hDemonFire[17]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[23], null, rect, null)
         } else if (contador <= 75) {
@@ -283,8 +283,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.087962).toInt()
-            h = (screenHeight * 0.036571).toInt()
+            w = CharacterData.wDemonFire[6]
+            h = CharacterData.hDemonFire[18]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[24], null, rect, null)
         } else if (contador <= 78) {
@@ -293,8 +293,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.093518).toInt()
-            h = (screenHeight * 0.024664).toInt()
+            w = CharacterData.wDemonFire[22]
+            h = CharacterData.hDemonFire[19]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[25], null, rect, null)
         } else if (contador <= 81) {
@@ -303,8 +303,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.096296).toInt()
-            h = (screenHeight * 0.01775).toInt()
+            w = CharacterData.wDemonFire[8]
+            h = CharacterData.hDemonFire[20]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[26], null, rect, null)
         } else if (contador <= 84) {
@@ -313,8 +313,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.097222).toInt()
-            h = (screenHeight * 0.015285).toInt()
+            w = CharacterData.wDemonFire[23]
+            h = CharacterData.hDemonFire[21]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[27], null, rect, null)
         } else if (contador <= 87) {
@@ -323,8 +323,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.096296).toInt()
-            h = (screenHeight * 0.01923).toInt()
+            w = CharacterData.wDemonFire[8]
+            h = CharacterData.hDemonFire[22]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[28], null, rect, null)
         } else if (contador <= 90) {
@@ -333,8 +333,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.094444).toInt()
-            h = (screenHeight * 0.023175).toInt()
+            w = CharacterData.wDemonFire[24]
+            h = CharacterData.hDemonFire[23]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[29], null, rect, null)
         } else if (contador <= 93) {
@@ -343,8 +343,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.088888).toInt()
-            h = (screenHeight * 0.030571).toInt()
+            w = CharacterData.wDemonFire[25]
+            h = CharacterData.hDemonFire[24]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[30], null, rect, null)
         }else if (contador <= 96) {
@@ -353,8 +353,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.080555).toInt()
-            h = (screenHeight * 0.03698).toInt()
+            w = CharacterData.wDemonFire[26]
+            h = CharacterData.hDemonFire[25]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[31], null, rect, null)
         }else if (contador <= 99) {
@@ -363,8 +363,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.069444).toInt()
-            h = (screenHeight * 0.042406).toInt()
+            w = CharacterData.wDemonFire[13]
+            h = CharacterData.hDemonFire[4]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[32], null, rect, null)
         }else if (contador <= 102) {
@@ -373,8 +373,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.057407).toInt()
-            h = (screenHeight * 0.047337).toInt()
+            w = CharacterData.wDemonFire[27]
+            h = CharacterData.wDemonFire[14]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[33], null, rect, null)
         }else if (contador <= 105) {
@@ -383,8 +383,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.043518).toInt()
-            h = (screenHeight * 0.05029).toInt()
+            w = CharacterData.wDemonFire[15]
+            h = CharacterData.hDemonFire[2]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[34], null, rect, null)
         }else if (contador <= 108) {
@@ -393,8 +393,8 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
             } else {
                 degrees += 3.3
             }
-            w = (screenWidth * 0.097222).toInt()
-            h = (screenHeight * 0.051775).toInt()
+            w = CharacterData.wDemonFire[23]
+            h = CharacterData.hDemonFire[0]
             rect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
             canvas.drawBitmap(imageList[35], null, rect, null)
         }

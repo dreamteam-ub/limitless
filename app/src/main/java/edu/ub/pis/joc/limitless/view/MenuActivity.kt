@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.game.CharacterData
 import edu.ub.pis.joc.limitless.view.ViewAdjuster.adjustView
 
 class MenuActivity : FullScreenActivity() {
@@ -34,6 +35,7 @@ class MenuActivity : FullScreenActivity() {
                 clickcount = 0
             }
         }
+
 
         adjustView(findViewById(R.id.menu_game_logo))
 

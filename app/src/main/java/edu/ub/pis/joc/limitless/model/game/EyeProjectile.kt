@@ -22,17 +22,17 @@ class EyeProjectile (image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour : 
     init{
         when (behaviour) {
             0,4 -> {
-                w = (screenWidth * 0.032407).toInt()
-                h = (screenHeight * 0.029585).toInt()
+                w = CharacterData.wEyeProyectile[0]
+                h = CharacterData.hEyeProyectile[0]
             }
             2,6 -> {
-                w = (screenWidth * 0.055555).toInt()
-                h = (screenHeight * 0.017258).toInt()
+                w = CharacterData.wEyeProyectile[1]
+                h = CharacterData.hEyeProyectile[1]
             }
             else -> {
                 //Arriba
-                w = (screenWidth * 0.04537).toInt()
-                h = (screenHeight * 0.024654).toInt()
+                w = CharacterData.wEyeProyectile[2]
+                h = CharacterData.hEyeProyectile[2]
             }
         }
     }

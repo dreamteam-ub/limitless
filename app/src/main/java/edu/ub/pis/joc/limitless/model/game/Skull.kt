@@ -8,8 +8,8 @@ import edu.ub.pis.joc.limitless.view.ViewAdjuster
 
 class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,assets: AssetManager, behaviour: Int) : ComplexEnemy(image, posX, posY,childList,assets,behaviour) {
 
-    override var w: Int = (ViewAdjuster.screenWidth * 0.103703).toInt()
-    override var h: Int = (ViewAdjuster.screenHeight * 0.073964).toInt()
+    override var w: Int = CharacterData.wSkull[0]
+    override var h: Int = CharacterData.hSkull[0]
 
     var contador: Int = 0
 
@@ -40,22 +40,22 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,assets:
                 degrees = 90f
                 x= ViewAdjuster.screenWidth
                 y= (ViewAdjuster.screenHeight*0.25).toInt()
-                w = (ViewAdjuster.screenHeight * 0.073964).toInt()
-                h = (ViewAdjuster.screenWidth * 0.103703).toInt()
+                w = CharacterData.hSkull[0]
+                h = CharacterData.wSkull[0]
             }
             3->{
                 degrees = 90f
                 x= ViewAdjuster.screenWidth
                 y= (ViewAdjuster.screenHeight*0.5).toInt()
-                w = (ViewAdjuster.screenHeight * 0.073964).toInt()
-                h = (ViewAdjuster.screenWidth * 0.103703).toInt()
+                w = CharacterData.hSkull[0]
+                h = CharacterData.wSkull[0]
             }
             4->{
                 degrees = 90f
                 x= ViewAdjuster.screenWidth
                 y= (ViewAdjuster.screenHeight*0.75).toInt()
-                w = (ViewAdjuster.screenHeight * 0.073964).toInt()
-                h = (ViewAdjuster.screenWidth * 0.103703).toInt()
+                w = CharacterData.hSkull[0]
+                h = CharacterData.wSkull[0]
             }
             5->{
                 degrees = 180f
@@ -71,22 +71,22 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,assets:
                 degrees = 270f
                 x= 0
                 y= (ViewAdjuster.screenHeight*0.75).toInt()
-                w = (ViewAdjuster.screenHeight * 0.073964).toInt()
-                h = (ViewAdjuster.screenWidth * 0.103703).toInt()
+                w = CharacterData.hSkull[0]
+                h = CharacterData.wSkull[0]
             }
             8->{
                 degrees = 270f
                 x= 0
                 y= (ViewAdjuster.screenHeight*0.5).toInt()
-                w = (ViewAdjuster.screenHeight * 0.073964).toInt()
-                h = (ViewAdjuster.screenWidth * 0.103703).toInt()
+                w = CharacterData.hSkull[0]
+                h = CharacterData.wSkull[0]
             }
             9->{
                 degrees = 270f
                 x= 0
                 y= (ViewAdjuster.screenHeight*0.25).toInt()
-                w = (ViewAdjuster.screenHeight * 0.073964).toInt()
-                h = (ViewAdjuster.screenWidth * 0.103703).toInt()
+                w = CharacterData.hSkull[0]
+                h = CharacterData.wSkull[0]
             }
             else->{
                 degrees = 0f

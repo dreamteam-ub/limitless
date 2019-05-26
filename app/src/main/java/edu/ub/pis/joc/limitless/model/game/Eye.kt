@@ -12,8 +12,8 @@ import kotlin.math.sin
 class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets: AssetManager, behaviour:Int) :
     ComplexEnemy(image, posX, posY, childList, assets,behaviour) {
 
-    override var w: Int = (screenWidth * 0.162037).toInt()
-    override var h: Int = (screenHeight * 0.041913).toInt()
+    override var w: Int = CharacterData.wEye
+    override var h: Int =  CharacterData.hEye
 
     override var xVelocity: Int = 10
     override var yVelocity: Int = 9

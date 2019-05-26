@@ -9,8 +9,8 @@ import kotlin.math.sin
 
 class Ghost(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour: Int) : Enemy(image, posX, posY, behaviour) {
 
-    override var w: Int = (screenWidth * 0.137962).toInt()
-    override var h: Int = (screenHeight * 0.071499).toInt()
+    override var w: Int = CharacterData.wGhost
+    override var h: Int = CharacterData.hGhost
 
     override var xVelocity: Int = 20
     override var yVelocity: Int = 20

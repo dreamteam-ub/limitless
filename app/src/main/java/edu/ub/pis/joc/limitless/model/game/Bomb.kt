@@ -8,8 +8,8 @@ import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenWidth
 class Bomb(
     image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) : Enemy(image, posX, posY, behaviour) {
 
-    override var w: Int = (screenWidth * 0.087962).toInt()
-    override var h: Int = (screenHeight * 0.040433).toInt()
+    override var w: Int = CharacterData.wBomb[0]
+    override var h: Int = CharacterData.hBomb[0]
 
     override var xVelocity: Int = 0
     override var yVelocity: Int = 0
@@ -33,8 +33,8 @@ class Bomb(
 
         if(firstDraw){
             if (contador <= 3) {
-                w = (screenWidth * 0.087962).toInt()
-                h = (screenHeight * 0.040433).toInt()
+                w = CharacterData.wBomb[0]
+                h = CharacterData.hBomb[0]
                 //Aparicion 1
                 canvas.drawBitmap(imageList[10], null, rect, null)
             } else if (contador <= 6) {
@@ -71,34 +71,34 @@ class Bomb(
                 //Aparicion 5
                 canvas.drawBitmap(imageList[13], null, rect, null)
             } else if (contador <= 39) {
-                w = (screenWidth * 0.00277).toInt()
-                h = (screenHeight * 0.001479).toInt()
+                w = CharacterData.wBomb[1]
+                h = CharacterData.hBomb[1]
                 rect.set(x - w/2, y - h/2, x + w/2, y + h/2)
                 //Aparicion 5
                 canvas.drawBitmap(imageList[0], null, rect, null)
             } else if (contador <= 42) {
-                w = (screenWidth * 0.007407).toInt()
-                h = (screenHeight * 0.003451).toInt()
+                w = CharacterData.wBomb[2]
+                h = CharacterData.hBomb[2]
                 //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[1], null, rect, null)
             }else if (contador <= 45) {
-                w = (screenWidth * 0.01481).toInt()
-                h = (screenHeight * 0.0069033).toInt()
+                w = CharacterData.wBomb[3]
+                h = CharacterData.hBomb[3]
                 //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[2], null, rect, null)
             }else if (contador <= 48) {
-                w = (screenWidth * 0.03055).toInt()
-                h = (screenHeight * 0.0138).toInt()
+                w = CharacterData.wBomb[4]
+                h = CharacterData.hBomb[4]
                 //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[3], null, rect, null)
             }else if (contador <= 51) {
-                w = (screenWidth * 0.04629).toInt()
-                h = (screenHeight * 0.021203).toInt()
+                w = CharacterData.wBomb[5]
+                h = CharacterData.hBomb[5]
                 //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[4], null, rect, null)
             }else if (contador <= 54) {
-                w = (screenWidth * 0.061111).toInt()
-                h = (screenHeight * 0.028106).toInt()
+                w = CharacterData.wBomb[6]
+                h = CharacterData.hBomb[6]
                 //Ultima animacion aparicion
                 canvas.drawBitmap(imageList[5], null, rect, null)
             }
@@ -106,41 +106,41 @@ class Bomb(
             if(contador == 55){
                 firstDraw = false
                 contador = 0
-                w = (screenWidth * 0.087962).toInt()
-                h = (screenHeight * 0.040433).toInt()
+                w = CharacterData.wBomb[0]
+                h = CharacterData.hBomb[0]
                 activeEnemy=true
             }
         } else {
             if(dissapearTimer<=15){
                 if (dissapearTimer >= 15) {
-                    w = (screenWidth * 0.061111).toInt()
-                    h = (screenHeight * 0.028106).toInt()
+                    w = CharacterData.wBomb[6]
+                    h = CharacterData.hBomb[6]
                     //Desparicion 1
                     canvas.drawBitmap(imageList[5], null, rect, null)
                 } else if (dissapearTimer >= 12) {
-                    w = (screenWidth * 0.04629).toInt()
-                    h = (screenHeight * 0.021203).toInt()
+                    w = CharacterData.wBomb[5]
+                    h = CharacterData.hBomb[5]
                     //Desparicion 2
                     canvas.drawBitmap(imageList[4], null, rect, null)
                 } else if (dissapearTimer >= 9) {
-                    w = (screenWidth * 0.03055).toInt()
-                    h = (screenHeight * 0.0138).toInt()
+                    w = CharacterData.wBomb[4]
+                    h = CharacterData.hBomb[4]
                     //Desparicion 3
                     canvas.drawBitmap(imageList[3], null, rect, null)
                 } else if (dissapearTimer >= 6) {
-                    w = (screenWidth * 0.01481).toInt()
-                    h = (screenHeight * 0.0069033).toInt()
+                    w = CharacterData.wBomb[3]
+                    h = CharacterData.hBomb[3]
                     //Desparicion 4
                     canvas.drawBitmap(imageList[2], null, rect, null)
                 } else if (dissapearTimer >= 3) {
-                    w = (screenWidth * 0.007407).toInt()
-                    h = (screenHeight * 0.003451).toInt()
+                    w = CharacterData.wBomb[2]
+                    h = CharacterData.hBomb[2]
                     //Desparicion 4
                     canvas.drawBitmap(imageList[1], null, rect, null)
                 }
                 else if (dissapearTimer >= 0) {
-                    w = (screenWidth * 0.00277).toInt()
-                    h = (screenHeight * 0.001479).toInt()
+                    w = CharacterData.wBomb[1]
+                    h = CharacterData.hBomb[1]
                     //Desparicion 4
                     canvas.drawBitmap(imageList[0], null, rect, null)
                 }
