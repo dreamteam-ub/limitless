@@ -57,14 +57,14 @@ class Eye(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList: Int, assets
                 //Sinusoidal esquerra a dreta
                 val altura = ViewAdjuster.screenHeight * 0.05 //Subir el multiplicador para mas altura
                 val movimientos = 2 //Se haran tantos movimientos sinusoidales
-                x += (xVelocity * 1.4).toInt()
+                x += (xVelocity * 1.2).toInt()
                 y = yOriginal - (sin(((x.toDouble() / ViewAdjuster.screenWidth) * movimientos * 2 * PI)) * altura).toInt()
             }
             1 -> {
                 //Sinusoidal dreta a esquerra
                 val altura = ViewAdjuster.screenHeight * 0.05 //Subir el multiplicador para mas altura
                 val movimientos = 2 //Se haran tantos movimientos sinusoidales
-                x -= (xVelocity * 1.4).toInt()
+                x -= (xVelocity * 1.2).toInt()
                 y = yOriginal - (sin(((x.toDouble() / ViewAdjuster.screenWidth) * movimientos * 2 * PI)) * altura).toInt()
             }
             2 -> {
