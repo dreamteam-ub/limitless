@@ -4,6 +4,22 @@ import edu.ub.pis.joc.limitless.view.ViewAdjuster
 
 object CharacterData {
 
+    //InSampleSizes
+
+    var optionsBombs = 16
+    var optionsEye = 4
+    var optionsDemon = 4
+    var optionsSkull = 4
+    var optionsDemonFire = 4
+    var optionsEyeProyec = 4
+    var optionsSkullLaser = 2
+    var optionsGhost = 4
+    var optionsCharacter = 4
+    var optionsCoin = 8
+
+
+
+
     // Dimensiones del demonio
     var demonWidth = (ViewAdjuster.screenWidth * 0.106491).toInt()
     var demonHeight = (ViewAdjuster.screenHeight * 0.073964).toInt()

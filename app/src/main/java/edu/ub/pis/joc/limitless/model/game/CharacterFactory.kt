@@ -1,13 +1,20 @@
 package edu.ub.pis.joc.limitless.model.game
 
+import android.content.Context
 import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Rect
 import android.util.Log
+import edu.ub.pis.joc.limitless.view.FullScreenActivity
 import edu.ub.pis.joc.limitless.view.IMG_ASSETS
+import edu.ub.pis.joc.limitless.view.OptionsActivity
 import java.io.BufferedInputStream
 import java.io.File
+import android.os.Debug.getMemoryInfo
+import android.app.ActivityManager
+
+
 
 
 const val BOMB_CHAR = "Bomb"
@@ -49,16 +56,16 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
     var arrayImatgesEye: ArrayList<Bitmap>
 
     init {
-        optionsBombs.inSampleSize = 4
-        optionsEye.inSampleSize = 4
-        optionsDemon.inSampleSize = 4
-        optionsSkull.inSampleSize = 4
-        optionsDemonFire.inSampleSize = 4
-        optionsEyeProyec.inSampleSize = 4
-        optionsSkullLaser.inSampleSize = 2
-        optionsGhost.inSampleSize = 4
-        optionsCharacter.inSampleSize = 4
-        optionsCoin.inSampleSize = 4
+        optionsBombs.inSampleSize = CharacterData.optionsBombs
+        optionsEye.inSampleSize = CharacterData.optionsEye
+        optionsDemon.inSampleSize = CharacterData.optionsDemon
+        optionsSkull.inSampleSize = CharacterData.optionsSkull
+        optionsDemonFire.inSampleSize = CharacterData.optionsDemonFire
+        optionsEyeProyec.inSampleSize = CharacterData.optionsEyeProyec
+        optionsSkullLaser.inSampleSize = CharacterData.optionsSkullLaser
+        optionsGhost.inSampleSize = CharacterData.optionsGhost
+        optionsCharacter.inSampleSize = CharacterData.optionsCharacter
+        optionsCoin.inSampleSize = CharacterData.optionsCoin
 
 
         arrayImatgesBombes = arrayListOf(

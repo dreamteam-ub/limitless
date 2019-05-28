@@ -25,7 +25,6 @@ class AutoLevelGenerate {
     var positiveCoins = 0
     var negativeCoins = 0
     var firstCall = true
-    var firstRound = true
     var ai = ArtificialIntelligence()
 
 
@@ -157,15 +156,12 @@ class AutoLevelGenerate {
 
     //funcion que hará que a cada time se llame al generate para que nunca acabe la partida
     fun increaseTime() {
-        if (!firstRound) {
             time += timeStage
             if (spawnEnemyFreq < 7) {
                 spawnEnemyFreq += 1
             }
             Log.d("INCREASETIME2", spawnEnemyFreq.toString())
 
-        }
-        firstRound = false
         Log.d("INCREASETIME", time.toString())
     }
 

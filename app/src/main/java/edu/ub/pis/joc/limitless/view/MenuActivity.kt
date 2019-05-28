@@ -9,6 +9,10 @@ import android.widget.Toast
 import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.game.CharacterData
 import edu.ub.pis.joc.limitless.view.ViewAdjuster.adjustView
+import android.app.ActivityManager
+import android.content.Context
+
+
 
 class MenuActivity : FullScreenActivity() {
 
@@ -75,6 +79,9 @@ class MenuActivity : FullScreenActivity() {
 
         adjustView(infoButton)
 
+        setInSampleSizes()
+
+
     }
 
     override fun onStart() {
@@ -83,5 +90,55 @@ class MenuActivity : FullScreenActivity() {
         rankButton.isClickable = true
         optButton.isClickable = true
         infoButton.isClickable = true
+    }
+
+    fun setInSampleSizes(){
+        val actManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val memInfo = ActivityManager.MemoryInfo()
+        actManager.getMemoryInfo(memInfo)
+        val totalMemory = memInfo.totalMem / (1024L*1024L)
+
+
+        if (totalMemory < 1000L){   // si tenemos menos de 1GB
+
+            CharacterData.optionsBombs = 16
+            CharacterData.optionsEye = 8
+            CharacterData.optionsDemon = 8
+            CharacterData.optionsSkull = 8
+            CharacterData.optionsDemonFire = 16
+            CharacterData.optionsEyeProyec = 16
+            CharacterData.optionsSkullLaser = 16
+            CharacterData.optionsGhost = 8
+            CharacterData.optionsCharacter = 4
+            CharacterData.optionsCoin = 16
+
+        }
+        else if (totalMemory >= 1000L && totalMemory < 2000L){ //si tenemos entre 1GB y menos de 2GB
+            CharacterData.optionsBombs = 16
+            CharacterData.optionsEye = 8
+            CharacterData.optionsDemon = 8
+            CharacterData.optionsSkull = 8
+            CharacterData.optionsDemonFire = 16
+            CharacterData.optionsEyeProyec = 16
+            CharacterData.optionsSkullLaser = 8
+            CharacterData.optionsGhost = 8
+            CharacterData.optionsCharacter = 4
+            CharacterData.optionsCoin = 16
+
+        }
+        else if ((totalMemory >= 2000L && totalMemory < 3000L) ||
+            (totalMemory>=3000L && totalMemory<3500L)){ //si tenemos entre 2GB y menos de 3GB
+            CharacterData.optionsBombs = 16
+            CharacterData.optionsEye = 8
+            CharacterData.optionsDemon = 8
+            CharacterData.optionsSkull = 4
+            CharacterData.optionsDemonFire = 16
+            CharacterData.optionsEyeProyec = 16
+            CharacterData.optionsSkullLaser = 4
+            CharacterData.optionsGhost = 8
+            CharacterData.optionsCharacter = 4
+            CharacterData.optionsCoin = 16
+        }
+
     }
 }

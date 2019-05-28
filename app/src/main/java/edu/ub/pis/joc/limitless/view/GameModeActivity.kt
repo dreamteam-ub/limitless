@@ -45,44 +45,27 @@ class GameModeActivity : FullScreenActivity() {
 
         infiniteMode = findViewById(R.id.infiniteModeButton)
         infiniteMode.setOnClickListener {
-            if (Data.user.level == 2 && Data.user.world == 3) {
-                val intent = Intent(this, GameActivity::class.java)
-                intent.putExtra(MODE_INFINITY, true)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-                finish()
-                infiniteMode.isClickable = false
-            }else{
-                customImageToast(
-                    R.drawable.world4_select, getString(R.string.mustPassPractice),
-                    Toast.LENGTH_SHORT, Gravity.TOP or
-                            Gravity.FILL_HORIZONTAL, 0, 200
-                ).show()
+            val intent = Intent(this, GameActivity::class.java)
+            intent.putExtra(MODE_INFINITY, true)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            finish()
+            infiniteMode.isClickable = false
 
-            }
         }
         ViewAdjuster.adjustView(infiniteMode)
 
         infiniteModeVersus = findViewById(R.id.infiniteModeVersusButton)
         infiniteModeVersus.setOnClickListener {
-            if (Data.user.level == 2 && Data.user.world == 3) {
-                val intent = Intent(this, GameActivity::class.java)
-                intent.putExtra(MODE_INFINITY, true)
-                intent.putExtra(MODE_INFINITY_VERSUS, true)
-                intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 0)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-                finish()
-                infiniteModeVersus.isClickable = false
-            }else{
+            val intent = Intent(this, GameActivity::class.java)
+            intent.putExtra(MODE_INFINITY, true)
+            intent.putExtra(MODE_INFINITY_VERSUS, true)
+            intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 0)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            finish()
+            infiniteModeVersus.isClickable = false
 
-                customImageToast(
-                    R.drawable.world4_select, getString(R.string.mustPassPractice),
-                    Toast.LENGTH_SHORT, Gravity.TOP or
-                            Gravity.FILL_HORIZONTAL, 0, 200
-                ).show()
-
-            }
         }
         ViewAdjuster.adjustView(infiniteModeVersus)
 
