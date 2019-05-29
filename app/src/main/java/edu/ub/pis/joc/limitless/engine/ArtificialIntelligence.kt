@@ -4,7 +4,9 @@ import edu.ub.pis.joc.limitless.model.game.*
 import kotlin.random.Random
 
 class ArtificialIntelligence {
-
+    /*
+    Aquesta serà la classe on farem tots els càlculs de la IA
+     */
 
 
     var allBehavioursList = arrayListOf(AIData.behaviourDemon,AIData.behaviourGhost,AIData.behaviourSkull,
@@ -14,7 +16,11 @@ class ArtificialIntelligence {
 
     var calls = 0
 
-    // in complex enemies we will take its childList and in simple enemies we will take its behaviour
+    /*
+    Aquesta funció serà cridada quan matin al personatge principal. Li passarem per parametre
+    l'enemic que ha matat i recalcularem les probabilitats de dit comportament.
+    @params : Enemy
+     */
     fun updateBestBehaviour(enemy : Enemy){
 
         when(enemy){
@@ -41,6 +47,12 @@ class ArtificialIntelligence {
         }
 
     }
+    /*
+    Aquesta funció té la mateixa mecànica que la funcio updateBestBehaviour, pero
+    actualitzarà les probabilitats de les armes dels Demon i Eye (projectils i columnes
+    de foc)
+    @params : Enemy
+     */
 
     fun updateBestChild(enemy : Enemy){
 
@@ -58,7 +70,15 @@ class ArtificialIntelligence {
         }
 
     }
+    /*
+    Aquesta funcio calcularà les probabilitats de cada llista de AIData, hem de tenir en compte, que
+    cap probabilitat por superar un cert pes, totes tenen un limit.
+    Ens retornarà la llista modificada amb les probabilitats actualitzades
+    @params : array<Int>
+    @params : Int
 
+    @return : Array<Int>
+     */
     fun calculateProbabilities(listProb : Array<Int>, winCondition : Int) : Array<Int>{
 
         val maxValue = listProb[listProb.size-1]
@@ -82,7 +102,11 @@ class ArtificialIntelligence {
         return listProb
 
     }
-
+    /*
+    Funció util per obtenir qualsevol llista de probabilitats
+    @param : string
+    @return : Array<Int>
+     */
     fun getList(chr: String): Array<Int> {
         val lista = emptyArray<Int>()
         return when (chr) {
@@ -95,7 +119,14 @@ class ArtificialIntelligence {
             else -> lista
         }
     }
+    /*
+    Funció que farà un random entre 1 i 100, ens donarà un nombre i escollirà el comportament
+    que estigui en el rang del nombre. D'aquesta forma, quan més pes té el comportament,
+    més probabilitats té a que el nombre random estigui en el seu rang.
 
+    @params : string
+    @return : int
+     */
     fun pickABehaviour(str: String): Int {
         val list = getList(str)
         if(list.isEmpty()){
@@ -114,6 +145,14 @@ class ArtificialIntelligence {
         }
         return behaviour
     }
+
+    /*
+    Aquesta funció ens permetrà generar posicions adequades per a cada comportament
+    @params : string
+    @params : int
+
+    @return : arrayList<Int>
+     */
 
     fun generatePositionsForBehaviour(str: String, behaviour: Int): ArrayList<Int> {
 

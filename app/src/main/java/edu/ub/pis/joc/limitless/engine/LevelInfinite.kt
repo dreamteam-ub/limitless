@@ -21,6 +21,12 @@ class LevelInfinite(assets: AssetManager,
     init {
         limits = Limits(autoLvl.limitLow,autoLvl.limitHigh, assets)
     }
+    /*
+    Funcio amb la que crearem enemics i els posarem a la llista dels enemics per a ser dibuixats/
+    actualitzats.
+    @params : Int
+    @params : Long
+     */
     @Synchronized
     override fun buildEnemies(levelWorld: Int, time: Long) {
         var listOfTmpEnemies = ArrayList<Enemy>()
@@ -220,6 +226,12 @@ class LevelInfinite(assets: AssetManager,
         }
         listOfEnemyCharacters.addAll(listOfTmpEnemies)
     }
+    /*
+    Funcio amb la que crearem monedes i les posarem a la llista de les monedes per a ser dibuixades/
+    actualitzades.
+    @params : Int
+    @params : Long
+     */
     @Synchronized
     override fun buildCoins(levelWorld: Int, time: Long) {
         //Log.d("TIME", (time).toInt().toString())
@@ -325,7 +337,12 @@ class LevelInfinite(assets: AssetManager,
         listOfCoins.addAll(tmpListOfCoins)
     }
 
+    /*
+    Funcio on els limits del mode infinit seràn creats
+    @params : Int
 
+    @return : ArrayList<Int>
+     */
     override fun createLimits(levelWorld: Int): ArrayList<Int> {
         var limit = ArrayList<Int>()
         if (!infiniteMode){

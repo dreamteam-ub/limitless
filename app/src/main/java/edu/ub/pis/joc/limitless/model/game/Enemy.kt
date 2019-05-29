@@ -33,7 +33,11 @@ open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) 
         }
     }
 }
-
+    /*
+    Funció que farà que el personatge principal mori si es tocat per algun enemic
+    @params : PlayerCharacter
+    @return : Boolean
+     */
     open fun characterHitsPlayer(playerCharacter: PlayerCharacter) : Boolean {
         var hit = false
         if (this.rect.intersects(playerCharacter.rect.left,playerCharacter.rect.top,playerCharacter.rect.right,playerCharacter.rect.bottom) && this.activeEnemy) {

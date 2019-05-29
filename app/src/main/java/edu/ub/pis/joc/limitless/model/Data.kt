@@ -22,7 +22,7 @@ object Data  {
         }
         field = u
     }
-
+    //Relacion que nos indica que nivel del modo practica es
     fun getCurrenLevel():Int{
         return Data.currentWorld * MAX_WORLD + Data.currentLvl
     }
@@ -31,7 +31,9 @@ object Data  {
 
     var versus_survived : Array <Long> = arrayOf(0L,0L)
     var versus_score : Array<Int> = arrayOf(0,0)
-
+    /*
+    Pasamos al formato MMSS el numero de tiempo que ha sobrevivido
+     */
     fun numberToMMSS(num: Long): String {
         return String.format("%02d:%02d", num / 60, num % 60)
     }

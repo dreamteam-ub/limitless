@@ -20,7 +20,13 @@ class PlayerCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Characte
             moveNormal(_x, _y)
         }
     }
+    /*
+    Funcio que al colissionar amb una moneda farà que se li sumi el seu valor al comptador i retorni
+    cert o fals si l'ha tocat o no.
+    @params : Coin
 
+    @return : Boolean
+     */
     override fun takesCoin(coin: Coin) : Boolean {
         if (this.rect.intersect(coin.rect) && coin.activeCoin) {
             accumulate += coin.value
@@ -35,7 +41,12 @@ class PlayerCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Characte
         this.imageList[0].recycle()
         end_game = true
     }
-
+    /*
+    Funció que permet el moviment del personatge principal per la pantalla, aquest moviment es produeix
+    quan arrosseguem el dit per la pantalla
+    @params : Int
+    @params : Int
+     */
     fun moveNormal(_x: Int, _y: Int) {
 
         x = _x
@@ -58,7 +69,12 @@ class PlayerCharacter(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Characte
         }
 
     }
-
+    /*
+    A diferència de l'anterior moveNormal, aquest es caracteritza per moure's ràpidament d'un lloc a un
+    altre quan fem tocs a la pantalla
+    @params : Int
+    @params : Int
+     */
     fun moveFast(_x: Int, _y: Int) {
 
         var xVelocity: Int = (abs(_x - x) / 3)*2

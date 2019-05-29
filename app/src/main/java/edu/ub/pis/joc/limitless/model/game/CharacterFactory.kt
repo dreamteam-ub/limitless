@@ -31,7 +31,9 @@ const val DEMON_FIRE_COLUMN = "DemonFireColumn"
 const val NUMBER_COIN = "Coin"
 
 class CharacterFactory(assets: AssetManager) : FactoryPattern {
-
+    /*
+    Aquesta classe utilitzem el patró factory per a la creació de Characters en el joc
+     */
     var optionsBombs: BitmapFactory.Options = BitmapFactory.Options()
     var optionsEye: BitmapFactory.Options = BitmapFactory.Options()
     var optionsDemon: BitmapFactory.Options = BitmapFactory.Options()
@@ -54,7 +56,11 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
     var arrayImatgesDemon: ArrayList<Bitmap>
     var arrayImatgesSkull: ArrayList<Bitmap>
     var arrayImatgesEye: ArrayList<Bitmap>
-
+    /*
+    En el init el que farem serà definir tots els InSampleSize que estaran determinats segons la
+    RAM del dispositiu i seguidament carregarem totes les imatges per a que no s'hagin de carregar
+    múltiples cops i no tinguem errors de memòria.
+     */
     init {
         optionsBombs.inSampleSize = CharacterData.optionsBombs
         optionsEye.inSampleSize = CharacterData.optionsEye
@@ -626,7 +632,17 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
         )
 
     }
+    /*
+    Mètode on crearem el Character
+    @params: String
+    @params : Int
+    @params : Int
+    @params : Int
+    @params : Int
+    @params : Int
 
+    @return : Character
+     */
     override fun createCharacter(
         character: String,
         posX: Int,
@@ -673,7 +689,17 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
             }
         }
     }
+    /*
+   Mètode on crearem el Character complex
+   @params: String
+   @params : Int
+   @params : Int
+   @params : Int
+   @params : AssetManager
+   @params : Int
 
+   @return : Character
+    */
     override fun createComplexCharacter(
         character: String,
         posX: Int,

@@ -48,7 +48,9 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
 
     private var soundPlayer: MediaPlayer
 
-
+    /*
+    Init que farà depèn del mode de joc crearà un tipus de nivell o altre
+     */
     init {
         if (mode) {
             currentLevelWorld = NIVEL_INFINITO
@@ -59,7 +61,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         }
 
         Log.d("CURRENT LEVEL", currentLevelWorld.toString())
-
+        // Reproductor de música en el joc
         soundPlayer = MediaPlayer()
 
         val descriptor = assets.openFd(SOUND_ASSETS + File.separator + "get_coin.wav")
@@ -69,8 +71,9 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         val volume = if (Data.user.music != null) Data.user.music!!.toFloat()/100.0f else 0.0f
         soundPlayer.setVolume(volume, volume)
         soundPlayer.isLooping = false
-
+        //marge del joc
         optionsGameBorder.inSampleSize = 16
+        //botó de pausa del joc
         optionsPauseButton.inSampleSize = 8
     }
 
@@ -88,7 +91,9 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
     var player: PlayerCharacter = level.buildPlayer(round)
 
     var scoreLimits = level.createLimits(currentLevelWorld)
-
+    /*
+    Funció que actualitzarà tot el joc a cada x segons
+     */
     fun update() {
         for (i in 0 until listOfEnemyCharacters.size) {
             if (listOfEnemyCharacters[i].appearTime <= gameTime) {
@@ -98,6 +103,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             if (mode && (listOfEnemyCharacters[i].characterHitsPlayer(player))) {
                 if (ai.calls < 1) {
                     ai.updateBestBehaviour(listOfEnemyCharacters[i])
+                    ai.updateBestChild(listOfEnemyCharacters[i])
                 }
             }
 
@@ -146,25 +152,18 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
 
         if (mode && level.newStage && level.infiniteMode) {
             if (!(player.accumulate >= scoreLimits[0] && player.accumulate <= scoreLimits[1])) {
-                Log.d("playerACC", player.accumulate.toString())
                 end_game = true
             }
             scoreLimits = level.createLimits(-1)
-            Log.d("scoreLIM1", scoreLimits[0].toString())
-            Log.d("scoreLIM2", scoreLimits[1].toString())
             level.newStage = false
         } else if (mode && level.newStage && !level.infiniteMode) {
             if (!(player.accumulate >= scoreLimits[0] && player.accumulate <= scoreLimits[1])) {
-                Log.d("playerACC", player.accumulate.toString())
-                Log.d("scoreLIM1", scoreLimits[0].toString())
-                Log.d("scoreLIM2", scoreLimits[1].toString())
                 end_game = true
 
             } else {
                 scoreLimits = level.createLimits(-1)
                 level.newStage = false
             }
-
 
         }
         level.buildEnemies(currentLevelWorld, gameTime)
@@ -173,8 +172,9 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
 
     }
 
-    /**
-     * Everything that has to be drawn on Canvas
+    /*
+     Mètode draw on anirem iterant tot el que s'ha de dibuixar per pantalla
+     @params : canvas
      */
 
     fun draw(canvas: Canvas) {
@@ -202,7 +202,9 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             }
         }
     }
-
+    /*
+    Funció que ens permetrà acabar la partida i fer les gestions de punts, base de dades, etc necessàries
+     */
     fun endGame() {
         val activity = (contextEngine as GameActivity)
         val time = gameTime / 30

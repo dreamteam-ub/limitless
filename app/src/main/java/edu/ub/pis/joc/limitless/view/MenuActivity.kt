@@ -92,6 +92,10 @@ class MenuActivity : FullScreenActivity() {
         infoButton.isClickable = true
     }
 
+    /*
+    Funcio que esta col·locada en el menu per a calcular la RAM del dispositiu. D'aquesta forma podrem
+    saber quin InSampleSize li pertoca per a que no hi hagi errors de memòria.
+     */
     fun setInSampleSizes(){
         val actManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         val memInfo = ActivityManager.MemoryInfo()
@@ -120,21 +124,21 @@ class MenuActivity : FullScreenActivity() {
             CharacterData.optionsSkull = 8
             CharacterData.optionsDemonFire = 16
             CharacterData.optionsEyeProyec = 16
-            CharacterData.optionsSkullLaser = 8
+            CharacterData.optionsSkullLaser = 16
             CharacterData.optionsGhost = 8
             CharacterData.optionsCharacter = 4
             CharacterData.optionsCoin = 16
 
         }
         else if ((totalMemory >= 2000L && totalMemory < 3000L) ||
-            (totalMemory>=3000L && totalMemory<3500L)){ //si tenemos entre 2GB y menos de 3GB
+            (totalMemory>=3000L && totalMemory<3500L)){ //si tenemos entre 2GB y menos de 3GB o 3gb y <3.5gb
             CharacterData.optionsBombs = 16
             CharacterData.optionsEye = 8
             CharacterData.optionsDemon = 8
             CharacterData.optionsSkull = 4
             CharacterData.optionsDemonFire = 16
             CharacterData.optionsEyeProyec = 16
-            CharacterData.optionsSkullLaser = 4
+            CharacterData.optionsSkullLaser = 8
             CharacterData.optionsGhost = 8
             CharacterData.optionsCharacter = 4
             CharacterData.optionsCoin = 16

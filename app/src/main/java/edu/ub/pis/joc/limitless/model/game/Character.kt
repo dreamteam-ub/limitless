@@ -21,6 +21,10 @@ abstract class Character(image: ArrayList<Bitmap>, posX: Int, posY: Int) {
     open var appearTime : Long = 0L
 
     var rect: Rect = Rect() //hitbox
+    /*
+    Funcio que permetrà rotar la nostra imatge els graus que vulguem
+    @params : Float
+     */
     open fun rotate(degrees : Float) {
         val matrix = Matrix()
         matrix.postRotate(degrees)

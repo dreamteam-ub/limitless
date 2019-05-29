@@ -27,7 +27,17 @@ abstract class Level(
     //o en el modo de generación automática
     var characterFactory: CharacterFactory =
         CharacterFactory(assets)
+    /*
+    Funcio amb la que crearem monedes
+    @params : String
+    @params : Int
+    @params : Int
+    @params : Int
+    @params : Typeface
+    @params : Int
 
+    @return : Coin
+     */
     fun createCoin(
         character: String,
         posX: Int ,
@@ -43,7 +53,16 @@ abstract class Level(
         coin.dissapearTimer = dissapearTimer
         return coin
     }
+    /*
+    Funcio amb la que crearem Enemics simples
+    @params : String
+    @params : Int
+    @params : Int
+    @params : Int
+    @params : Int
 
+    @return : Enemy
+     */
     fun createEnemy(
         character: String,
         posX: Int,
@@ -56,7 +75,17 @@ abstract class Level(
         enemy.dissapearTimer = dissapearTimer
         return enemy
     }
+    /*
+    Funcio amb la que crearem Enemics complexes
+    @params : String
+    @params : Int
+    @params : Int
+    @params : Int
+    @params : Int
+    @params : Int
 
+    @return : Enemy
+     */
     fun createComplexEnemy(
         character: String,
         posX: Int = (ViewAdjuster.screenWidth * 0.5).toInt(),
@@ -70,7 +99,12 @@ abstract class Level(
         enemy.dissapearTimer = dissapearTimer
         return enemy
     }
+    /*
+    Funcio amb la que crearem el jugador principal
+    @params : Int
 
+    @return : PlayerCharacter
+     */
 
     fun buildPlayer(round : Int): PlayerCharacter {
         val player = if (round == 0) "PlayerCharacter" else "PlayerCharacter2"
@@ -80,7 +114,9 @@ abstract class Level(
             (ViewAdjuster.screenHeight * 0.5).toInt()
         ) as PlayerCharacter
     }
-
+    /*
+    Funcions abstractes que s'utilitzaran a LevelPractice i LevelInfinite
+     */
     abstract fun buildEnemies(levelWorld: Int, time: Long)
     abstract fun buildCoins(levelWorld: Int, time: Long)
     abstract fun createLimits(levelWorld: Int): ArrayList<Int>

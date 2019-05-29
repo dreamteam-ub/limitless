@@ -7,7 +7,10 @@ import java.util.*
 import kotlin.random.Random
 
 class AutoLevelGenerate {
-
+    /*
+    Aquesta classe serà l'encarregada de generar el nivell infinit de forma automàtica, tindrà com a suport
+    la AI que hem creat
+     */
     var time = 1500L
     val timeStage = 300L
     var spawnEnemyFreq = 2 //frecuencia inicial de spàwn de enemigos : 2
@@ -27,6 +30,11 @@ class AutoLevelGenerate {
     var firstCall = true
     var ai = ArtificialIntelligence()
 
+    /*
+    Funció que ens permetrà crear els paràmetres d'un enemic, com el seu tipus(GHOST, BOMB..),
+    la seva posició, comportament, temps en el joc, etc.
+    @return : ArrayList<Any>
+     */
 
     fun generateEnemy(): ArrayList<Any> {
 
@@ -55,8 +63,13 @@ class AutoLevelGenerate {
         return listOfEnemyParams
     }
 
-    //AMb aquesta funcio podrem crear facilment els enemics de les stages preeliminars del mode infinit
-    //que faran que sigui un joc més progressiu i no tant agressiu al començament.
+    /*
+    Amb aquesta funcio podrem crear facilment els enemics de les stages preeliminars del mode infinit
+    que faran que sigui un joc més progressiu i no tant agressiu al començament.
+    @params : String
+
+    @return : ArrayList<Any>
+     */
 
     fun generateEnemiesInPreviousStages(str: String): ArrayList<Any> {
 
@@ -86,7 +99,11 @@ class AutoLevelGenerate {
 
     }
 
-    //hacemos lo mismo con las monedas
+    /*
+    Aquesta funció ens permetrà crear els parametres de la Coin (posició, valor, etc)
+
+    @return : ArrayList<Any>
+     */
     fun generateCoins(): ArrayList<Any> {
 
         val listOfCoinParams = ArrayList<Any>()
@@ -100,12 +117,15 @@ class AutoLevelGenerate {
         listOfCoinParams.add(coords[1])
         listOfCoinParams.add(generateCoinValues())
         listOfCoinParams.add(Random.nextLong(minTimeInGameCoins, maxTimeInGameCoins))
-        Log.d("LIMITLOW", limitLow.toString())
-        Log.d("LIMITHIGH", limitHigh.toString())
-
         return listOfCoinParams
 
     }
+    /*
+    Funció que ens permetrà generar els limits de cada stage de forma aleatòria, però controlada
+    entre uns valors.
+
+    @return ArrayList<Int>
+     */
 
     fun generateAutoLimits(): ArrayList<Int> {
         if (firstCall) {
@@ -130,6 +150,13 @@ class AutoLevelGenerate {
         }
     }
 
+    /*
+    Aquesta funció ens permetrà controlar el valor que adquireixen les monedes, d'aquesta manera,
+    no sortiran valors que no tinguin res a veure i seràn lògics en relació als límits que
+    apareixen en aquell stage.
+
+    @return : Int
+     */
     fun generateCoinValues() : Int{
         var valCoin = (Random.nextInt(-limitLow / 2,  limitHigh / 2))
 
@@ -154,18 +181,26 @@ class AutoLevelGenerate {
         }
     }
 
-    //funcion que hará que a cada time se llame al generate para que nunca acabe la partida
+    /*
+    Funció que es cridarà per a que no acabi la partida i no parin de generar-se enemics i monedes.
+    Cada cop incrementa el time un cert valor per a que només s'afegeixin enemics i monedes noves a
+    partir de cada 300L
+     */
     fun increaseTime() {
             time += timeStage
             if (spawnEnemyFreq < 7) {
                 spawnEnemyFreq += 1
             }
-            Log.d("INCREASETIME2", spawnEnemyFreq.toString())
-
-        Log.d("INCREASETIME", time.toString())
     }
 
+    /*
+    Funcio que farà que no apareixin monedes una sobre de l'altre, se'ns indicarà si
+    estan en la mateixa posició o no
+    @params : ArrayList<Coin>
+    @params : Coin
 
+    @return : Boolean
+     */
     fun reallocateCoin(listCoin: ArrayList<Coin>, coin: Coin): Boolean {
         var same = false
         if (listCoin.size <= 1) {
@@ -176,17 +211,22 @@ class AutoLevelGenerate {
             var tmpcoin = listCoin[i]
             if (coin.rect.contains(tmpcoin.rect) || tmpcoin.rect.contains(coin.rect)) {
                 listCoin.remove(coin)
-                Log.d("REALTRUE", i.toString())
                 same = true
             } else if (coin.x == tmpcoin.x && coin.y == tmpcoin.y) {
                 listCoin.remove(coin)
-                Log.d("REALTRUE2", i.toString())
                 same = true
             }
         }
         return same
     }
+    /*
+    Funcio que farà que no apareixin bombes una sobre de l'altre, se'ns indicarà si
+    estan en la mateixa posició o no
+    @params : ArrayList<Enemy>
+    @params : Bomb
 
+    @return : Boolean
+     */
     fun reallocateBombs(listBomb: ArrayList<Enemy>, enemy: Enemy): Boolean {
         var same = false
         if (enemy is Bomb) {
@@ -209,7 +249,15 @@ class AutoLevelGenerate {
         }
         return same
     }
+    /*
+    Funcio que farà que no apareixin bombes sombre monedes, se'ns indicarà si
+    estan en la mateixa posició o no
+    @params : ArrayList<Enemy>
+    @params : Coin
+    @params : ArrayList<Coin>
 
+    @return : Boolean
+     */
     fun reallocCoinsAndBombs(coin: Coin , listOfEnemy: ArrayList<Enemy>, listCoin: ArrayList<Coin>) : Boolean {
         var same = false
         for(i in 0 until listOfEnemy.size){

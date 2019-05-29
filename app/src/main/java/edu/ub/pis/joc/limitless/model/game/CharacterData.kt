@@ -5,6 +5,11 @@ import edu.ub.pis.joc.limitless.view.ViewAdjuster
 object CharacterData {
 
     //InSampleSizes
+    /*
+    Aquestes variables són els valors amb els que farem inSampleSize a les imatges, amb això conseguirem
+    regular el pes que tenen en memòria. Aquestes són les que hi ha per defecte, però en un altre mètode
+    modifiquem els valors segons la RAM que tingui el dispositiu.
+     */
 
     var optionsBombs = 16
     var optionsEye = 4
@@ -17,8 +22,11 @@ object CharacterData {
     var optionsCharacter = 4
     var optionsCoin = 8
 
-
-
+    /*
+    Aquesta classe (object) ens servirà per fer els càlculs de les imatges dels personatges només un cop,
+    d'aquesta manera no hem de fer càlculs en coma flotant tota l'estona i això ens estalviarà
+    consum.
+     */
 
     // Dimensiones del demonio
     var demonWidth = (ViewAdjuster.screenWidth * 0.106491).toInt()

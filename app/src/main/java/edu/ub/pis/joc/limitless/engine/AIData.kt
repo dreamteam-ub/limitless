@@ -4,6 +4,15 @@ import edu.ub.pis.joc.limitless.view.ViewAdjuster
 
 object AIData {
 
+    /*
+    Aquesta classe (object) l'utilitzarem per a guardar la manera de jugar que te el jugador.
+    Cada enemic te diversos comportaments, cada cop que el mati un enemic amb un comportament
+    concret, aquestes dades s'actualitzaran i donaran més pes al comportament d'aquell enemic X.
+    D'aquesta manera, si li donem un pes doncs tindrà més probabilitats a que els enemics adquireixin
+    aquell comportament i d'aquesta forma fer el joc més competitiu.
+    Aquestes dades es reestableixen quan l'usuari surt del joc.
+     */
+
     //la llista de probabilitats de cada enemic consisteix en el numero de comportaments/childLists que tenen
     // i l'últim index representa el valor límit que pot adquirir cada index de probabilitat
     var behaviourDemon = arrayOf(11,11,11,11,11,11,11,11,12,40)
@@ -13,6 +22,11 @@ object AIData {
 
     var childDemon = arrayOf(25,25,25,25,40)
     var childEye = arrayOf(6,6,6,7,6,6,6,7,6,6,6,7,6,6,6,7,20)
+
+    /*
+    Aquestes llistes són els spawns possibles dels enemics, que posen pautes per a que apareixin
+    tots correctament en pantalla
+     */
 
     val leftSpawns : Array<Array<Int>> = arrayOf(
         arrayOf(0,(ViewAdjuster.screenHeight*0.2).toInt()),
