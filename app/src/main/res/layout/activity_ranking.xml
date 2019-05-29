@@ -21,15 +21,15 @@
             android:text="@string/inf_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless" android:textSize="40sp" android:id="@+id/infinity_title"
+            android:fontFamily="@font/crimestimessix"
+            style="@style/cts_limitless" android:textSize="40dp" android:id="@+id/infinity_title"
             android:textColor="@color/colorYellow"/>
     <TextView
             android:text="@string/ranking_lines"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/ranking_lines" style="@style/cts_limitless" android:textSize="40sp"
+            android:id="@+id/ranking_lines" style="@style/cts_limitless" android:textSize="40dp"
             android:maxLines="1" android:gravity="center_horizontal" android:textColor="@color/colorYellow"/>
     <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
@@ -41,7 +41,7 @@
             android:text="@string/ranking_lines"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ranking_lines2" style="@style/cts_limitless" android:textSize="40sp"
+            android:id="@+id/ranking_lines2" style="@style/cts_limitless" android:textSize="40dp"
             android:gravity="center_horizontal" android:layout_marginBottom="10dp" android:maxLines="1"
             android:layout_gravity="center" android:textColor="@color/colorYellow"/>
     <LinearLayout
@@ -53,13 +53,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/my_user_name"
-                style="@style/cts_limitless" android:textSize="30sp" tools:text="Cepeda Calvo"
+                style="@style/cts_limitless" android:textSize="30dp" tools:text="Cepeda Calvo"
         />
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/my_time"
-                android:textSize="24sp"
+                android:textSize="24dp"
                 style="@style/road_limitless" tools:text="Time: MM:SS"/>
 
     </LinearLayout>

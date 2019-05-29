@@ -3,9 +3,11 @@ package edu.ub.pis.joc.limitless.view
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
@@ -72,7 +74,7 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         arrowBack = findViewById(R.id.world_back_button)
         ViewAdjuster.adjustView(arrowBack)
 
-        worldPhoto = findViewById(R.id.world_one)
+        worldPhoto = findViewById(R.id.world)
         ViewAdjuster.adjustView(worldPhoto)
 
         leftArrow = findViewById(R.id.change_left_arrow)
@@ -152,6 +154,18 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         downArrow.setOnClickListener {
             presenter.updateWorld(+1)
             presenter.updateLevel()
+        }
+
+        var clickcountWorld = 0
+        worldPhoto.setOnClickListener {
+            clickcountWorld++
+            if (clickcountWorld == 2) {
+                customImageToast(
+                    R.drawable.calvo, getString(R.string.easter_egg_playworld),
+                    Toast.LENGTH_LONG, Gravity.TOP or Gravity.FILL_HORIZONTAL, 0, 100
+                , font = R.font.roadrage).show()
+                clickcountWorld = 0
+            }
         }
 
         playWorlds.setOnClickListener {

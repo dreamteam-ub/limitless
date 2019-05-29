@@ -1,11 +1,7 @@
 package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.*
-import edu.ub.pis.joc.limitless.view.HEIGHT_REFERENCE
-import edu.ub.pis.joc.limitless.view.ViewAdjuster
-import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenHeight
-import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenWidth
-import edu.ub.pis.joc.limitless.view.WIDTH_REFERENCE
+import edu.ub.pis.joc.limitless.model.game.CharacterData.coinTextDim
 
 class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, posX, posY), ObjectsInGameInterface {
 
@@ -31,18 +27,13 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
     override fun update() {
         dissapearTimer--
         if (dissapearTimer <= 65) {
-            if (dissapearTimer >= 65) {
-                y = y - 7
-            } else if (dissapearTimer >= 62) {
-                y = y - 7
-            } else if (dissapearTimer >= 59) {
-                y = y - 7
-            } else if (dissapearTimer >= 56) {
-                y = y + 7
-            } else if (dissapearTimer >= 53) {
-                y = y + 7
-            } else if (dissapearTimer >= 50) {
-                y = y + 7
+            when {
+                dissapearTimer >= 65 -> y -= 7
+                dissapearTimer >= 62 -> y -= 7
+                dissapearTimer >= 59 -> y -= 7
+                dissapearTimer >= 56 -> y += 7
+                dissapearTimer >= 53 -> y += 7
+                dissapearTimer >= 50 -> y += 7
             }
         }
     }
@@ -165,37 +156,37 @@ class Coin(image: ArrayList<Bitmap>, posX: Int, posY: Int) : Character(image, po
             canvas.drawBitmap(imageList[6], null, rect, null)
 
             if (value.toString().length == 1 && value >= 0) { //positius 1 xifra
-                paint.textSize = (ViewAdjuster.screenHeight * 60.0f) / HEIGHT_REFERENCE
+                paint.textSize = coinTextDim[0]
                 canvas.drawText(
                     value.toString(),
-                    x.toFloat() - (ViewAdjuster.screenWidth * 15f) / WIDTH_REFERENCE,
-                    y.toFloat() + (ViewAdjuster.screenHeight * 12f) / HEIGHT_REFERENCE,
+                    x-(paint.measureText(value.toString())/2),
+                    y+(h/5).toFloat(),
                     paint
                 )
             } else if (value.toString().length == 2 && value < 0) { //negatius 1 xifra
-                paint.textSize = (ViewAdjuster.screenWidth * 60.0f) / WIDTH_REFERENCE
+                paint.textSize = coinTextDim[0]
                 paint.color = Color.WHITE
                 canvas.drawText(
                     value.toString(),
-                    x.toFloat() - (ViewAdjuster.screenWidth * 25f) / WIDTH_REFERENCE,
-                    y.toFloat() + (ViewAdjuster.screenHeight * 12f) / HEIGHT_REFERENCE,
+                    x-(paint.measureText(value.toString())/2),
+                    y+(h/5).toFloat(),
                     paint
                 )
             } else if (value.toString().length == 2 && value > 0) { //positius 2 xifres
-                paint.textSize = (ViewAdjuster.screenWidth * 60.0f) / WIDTH_REFERENCE
+                paint.textSize = coinTextDim[0]
                 canvas.drawText(
                     value.toString(),
-                    x.toFloat() - (ViewAdjuster.screenWidth * 20f) / WIDTH_REFERENCE,
-                    y.toFloat() + (ViewAdjuster.screenHeight * 12f) / HEIGHT_REFERENCE,
+                    x-(paint.measureText(value.toString())/2),
+                    y+(h/5).toFloat(),
                     paint
                 )
             } else if (value.toString().length == 3 && value < 0) { //negatius 2 xifres
-                paint.textSize = (ViewAdjuster.screenWidth * 55.0f) / WIDTH_REFERENCE
+                paint.textSize = coinTextDim[1]
                 paint.color = Color.WHITE
                 canvas.drawText(
                     value.toString(),
-                    x.toFloat() - (ViewAdjuster.screenWidth * 33f) / WIDTH_REFERENCE,
-                    y.toFloat() + (ViewAdjuster.screenHeight * 12f) / HEIGHT_REFERENCE,
+                    x-(paint.measureText(value.toString())/2),
+                    y+(h/5).toFloat(),
                     paint
                 )
             }

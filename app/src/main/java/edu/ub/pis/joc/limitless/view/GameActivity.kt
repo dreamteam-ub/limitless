@@ -90,10 +90,13 @@ class GameActivity : FullScreenActivity() {
             modeVersus = true
             round = intentExtras.getInt(MODE_INFINITY_VERSUS_COUNT)
 
-            val icon: Int
+            var icon: Int
             val player: String
             if (round == 0) {
                 icon = R.drawable.player_1
+                if (Data.user.androidchar != null && Data.user.androidchar!!) {
+                    icon = R.drawable.player_1_android
+                }
                 player = "1"
             } else {
                 icon = R.drawable.player_2
@@ -104,7 +107,7 @@ class GameActivity : FullScreenActivity() {
                 icon, getString(R.string.player) + " " + player,
                 Toast.LENGTH_SHORT, Gravity.TOP or
                         Gravity.FILL_HORIZONTAL, 0, 200
-            ).show()
+            , font = R.font.roadrage).show()
 
         }
 

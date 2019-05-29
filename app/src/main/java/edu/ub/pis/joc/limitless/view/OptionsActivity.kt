@@ -2,11 +2,14 @@ package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.util.Log
+import android.view.Gravity
 import android.widget.ImageButton
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
+import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -14,9 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import edu.ub.pis.joc.limitless.R
-import edu.ub.pis.joc.limitless.model.Data
-import edu.ub.pis.joc.limitless.model.User
-import edu.ub.pis.joc.limitless.model.VIBRATION
+import edu.ub.pis.joc.limitless.model.*
 import edu.ub.pis.joc.limitless.presenter.OptionsPresenter
 import kotlinx.android.synthetic.main.activity_options.*
 
@@ -78,14 +79,21 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         userName = findViewById(R.id.userNameTv)
         ViewAdjuster.adjustView(userName)
 
-        userListener = db.collection(USERS).document(mAuth.currentUser!!.uid).addSnapshotListener { docSnapshot, exception ->
-            if (exception != null) {
-                Log.w(TAG, "Listen failed.", exception)
-            }
-            if (docSnapshot != null && docSnapshot.exists()) {
-                presenter.updateUser(docSnapshot.toObject(User::class.java)!!)
-            }
+        if (Data.user.androidchar == null || !Data.user.androidchar!!) {
+            userName.setTextColor(ContextCompat.getColor(this, R.color.colorLiteBlue))
+        } else {
+            userName.setTextColor(ContextCompat.getColor(this, R.color.colorAndroid))
         }
+
+        userListener =
+            db.collection(USERS).document(mAuth.currentUser!!.uid).addSnapshotListener { docSnapshot, exception ->
+                if (exception != null) {
+                    Log.w(TAG, "Listen failed.", exception)
+                }
+                if (docSnapshot != null && docSnapshot.exists()) {
+                    presenter.updateUser(docSnapshot.toObject(User::class.java)!!)
+                }
+            }
 
         val logoutButton: ImageButton = findViewById(R.id.logout_button)
         logoutButton.setOnClickListener {
@@ -120,6 +128,19 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
 
         ViewAdjuster.adjustView(findViewById(R.id.music_options))
         ViewAdjuster.adjustView(findViewById(R.id.vibrate_options))
+
+        var clickcountUser : Int = 0
+        userName.setOnClickListener {
+            clickcountUser++
+            if (clickcountUser == 4) {
+                clickcountUser = 0
+                var tmp = true
+                if (Data.user.androidchar == null || Data.user.androidchar == false) {
+                    tmp = false
+                }
+                presenter.updateChar(tmp)
+            }
+        }
     }
 
     override fun onDestroy() {
@@ -143,5 +164,21 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         super.onStart()
         optionsBackArrow.isClickable = true
         logout_button.isClickable = true
+    }
+
+    override fun updateChar(value: Boolean) {
+        var msgAndroid = R.string.easter_egg_android_welcome
+        var drawAndroid = R.drawable.player_1_android
+        if (!value) {
+            drawAndroid = R.drawable.player_1
+            msgAndroid = R.string.easter_egg_android_bye
+            userName.setTextColor(ContextCompat.getColor(this, R.color.colorLiteBlue))
+        } else {
+            userName.setTextColor(ContextCompat.getColor(this, R.color.colorAndroid))
+        }
+        customImageToast(
+            drawAndroid, getString(msgAndroid),
+            Toast.LENGTH_LONG, Gravity.TOP or Gravity.FILL_HORIZONTAL, 0, 100
+        ).show()
     }
 }

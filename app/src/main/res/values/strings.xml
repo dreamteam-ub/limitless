@@ -84,5 +84,8 @@
     <string name="score1">SCORE P1:</string>
     <string name="score2">SCORE P2:</string>
     <string name="time">Time:</string>
+    <string name="easter_egg_playworld">This ain\'t play button XD</string>
+    <string name="easter_egg_android_welcome">Hello Android</string>
+    <string name="easter_egg_android_bye">Bye bye Android</string>
 
 </resources>

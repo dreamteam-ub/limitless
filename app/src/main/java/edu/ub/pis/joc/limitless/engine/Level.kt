@@ -9,11 +9,14 @@ import edu.ub.pis.joc.limitless.model.game.Enemy
 import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
 import edu.ub.pis.joc.limitless.view.ViewAdjuster
 import edu.ub.pis.joc.limitless.view.gamescreen.Limits
+import java.io.File
 import java.util.*
 
 const val NIVEL_INFINITO = -1
-const val FONT_LIMITS = "fonts/Road_Rage.otf"
-const val FONT_COINS = "fonts/crimes_times_six.ttf"
+
+const val FONTS_ASSETS = "fonts"
+const val FONT_LIMITS = "roadrage.otf"
+const val FONT_COINS = "crimestimessix.ttf"
 
 abstract class Level(
     var assets: AssetManager,
@@ -43,7 +46,7 @@ abstract class Level(
         posX: Int ,
         posY: Int ,
         value: Int,
-        font: Typeface = Typeface.createFromAsset(assets, FONT_COINS),
+        font: Typeface = Typeface.createFromAsset(assets, FONTS_ASSETS + File.separator + FONT_COINS),
         dissapearTimer: Int
     ): Coin {
         Log.d("AÑADE MONEDA", character)

@@ -57,7 +57,7 @@
                 android:contentDescription="@string/world_one"
                 app:srcCompat="@drawable/world1_select"
                 android:background="@android:color/transparent"
-                android:id="@+id/world_one" android:layout_marginLeft="20dp" android:layout_marginRight="20dp"/>
+                android:id="@+id/world" android:layout_marginLeft="20dp" android:layout_marginRight="20dp"/>
 
         <ImageButton
                 android:scaleType="fitXY"
@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/world_one_title"
             style="@style/road_limitless" android:layout_marginTop="20dp" android:textAlignment="center"
-            android:textSize="24sp" android:layout_gravity="center_horizontal"/>
+            android:textSize="24dp" android:layout_gravity="center_horizontal"/>
 
     <TextView
             android:text="@string/first_level"
@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/level_title"
             style="@style/cts_limitless" android:layout_marginTop="20dp" android:textAlignment="center"
-            android:textSize="24sp" android:layout_gravity="center_horizontal"/>
+            android:textSize="24dp" android:layout_gravity="center_horizontal"/>
     <ImageButton
             android:layout_width="150dp"
             android:contentDescription="@string/play_button"

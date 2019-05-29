@@ -12,12 +12,12 @@
             android:text="@string/welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/welcome_tv" android:gravity="center_horizontal"
-            android:textSize="35sp" style="@style/cts_limitless"
+            android:textSize="35dp" style="@style/cts_limitless"
             android:layout_marginTop="30dp" android:layout_marginBottom="5dp"
             android:layout_gravity="center_horizontal" android:textColor="@color/colorWelcomeText"/>
     <TextView
             android:layout_height="wrap_content" android:id="@+id/usermail_tv" tools:text="EXAMPLEUSER"
-            style="@style/cts_limitless" android:textSize="30sp" android:layout_gravity="center_horizontal"
+            style="@style/cts_limitless" android:textSize="30dp" android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content" android:textAlignment="center" android:layout_marginBottom="30dp"
             android:textColor="@color/colorWelcomeText"/>
     <ImageView
@@ -29,7 +29,7 @@
     <TextView
             android:text="@string/ask_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/ask_name_tv" android:textSize="25sp"
+            android:layout_height="wrap_content" android:id="@+id/ask_name_tv" android:textSize="25dp"
             style="@style/cts_limitless" android:textColor="@color/colorWelcomeName"
             android:layout_marginBottom="20dp" android:layout_marginStart="20dp"/>
     <EditText

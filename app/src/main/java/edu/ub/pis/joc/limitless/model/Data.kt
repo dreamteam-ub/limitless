@@ -31,6 +31,7 @@ object Data  {
 
     var versus_survived : Array <Long> = arrayOf(0L,0L)
     var versus_score : Array<Int> = arrayOf(0,0)
+
     /*
     Pasamos al formato MMSS el numero de tiempo que ha sobrevivido
      */

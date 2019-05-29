@@ -13,7 +13,6 @@ import android.app.ActivityManager
 import android.content.Context
 
 
-
 class MenuActivity : FullScreenActivity() {
 
     private val TAG = "MenuActivity"
@@ -31,7 +30,7 @@ class MenuActivity : FullScreenActivity() {
         var clickcount = 0
         menuLogo.setOnClickListener {
             clickcount++
-            if (clickcount == 4) {
+            if (clickcount == 7) {
                 customImageToast(
                     R.drawable.calvo, getString(R.string.easter_egg_menu),
                     Toast.LENGTH_LONG, Gravity.TOP or Gravity.FILL_HORIZONTAL, 0, 100

@@ -10,7 +10,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/ranking_position"
-            style="@style/road_limitless" tools:text="1" android:textSize="32sp"
+            style="@style/road_limitless" tools:text="1" android:textSize="32dp"
             android:layout_marginEnd="20dp" android:textStyle="bold"
             android:gravity="center" android:textAlignment="center" android:textColor="@color/colorYellow"/>
         <LinearLayout
@@ -21,13 +21,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/ranking_user"
-                    style="@style/cts_limitless" android:textSize="30sp" tools:text="Cepeda Calvo"
+                    style="@style/cts_limitless" android:textSize="30dp" tools:text="Cepeda Calvo"
                     android:textColor="@color/colorYellow"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/ranking_time"
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     style="@style/road_limitless" tools:text="Time: MM:SS" android:textColor="@color/colorYellow"/>
         </LinearLayout>
 

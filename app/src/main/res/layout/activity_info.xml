@@ -22,51 +22,51 @@
             android:text="@string/info_version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/info_version"
-            android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless" android:textSize="45sp"/>
+            android:fontFamily="@font/crimestimessix"
+            style="@style/cts_limitless" android:textSize="45dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/version_details"
             style="@style/road_limitless"
-            android:layout_marginStart="40dp" android:textSize="24sp" tools:text="1.0.0"/>
+            android:layout_marginStart="40dp" android:textSize="24dp" tools:text="1.0.0"/>
 
     <TextView
             android:text="@string/developers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/info_developers"
-            android:fontFamily="@font/crimes_times_six" android:textColor="@color/colorWhite"
-            style="@style/cts_limitless" android:layout_marginTop="20dp" android:textSize="45sp"/>
+            android:fontFamily="@font/crimestimessix" android:textColor="@color/colorWhite"
+            style="@style/cts_limitless" android:layout_marginTop="20dp" android:textSize="45dp"/>
     <TextView
             android:text="@string/detail_developers1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/developers_details1"
-            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
+            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30dp"/>
     <TextView
             android:text="@string/detail_developers2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/developers_details2"
-            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
+            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30dp"/>
     <TextView
             android:text="@string/detail_developers3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/developers_details3"
-            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
+            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30dp"/>
     <TextView
             android:text="@string/detail_developers4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/developers_details4"
-            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
+            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30dp"/>
 
     <TextView
             android:text="@string/music_rights"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/info_music_rights"
-            android:fontFamily="@font/crimes_times_six" android:textColor="@color/colorWhite"
-            style="@style/cts_limitless" android:layout_marginTop="20dp" android:textSize="45sp"/>
+            android:fontFamily="@font/crimestimessix" android:textColor="@color/colorWhite"
+            style="@style/cts_limitless" android:layout_marginTop="20dp" android:textSize="45dp"/>
     <TextView
             android:text="@string/detail_music_rights"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/music_rights_details"
-            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30sp"/>
+            android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30dp"/>
 
 </LinearLayout>

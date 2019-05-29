@@ -5,9 +5,11 @@ import android.graphics.Typeface
 import android.util.Log
 import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.gamescreen.Limits
+import java.io.File
 import java.util.*
 import kotlin.random.Random
 
+@Suppress("NAME_SHADOWING")
 class LevelInfinite(assets: AssetManager,
                     listOfEnemyCharacters: ArrayList<Enemy>,
                     listOfCoins: ArrayList<Coin>):
@@ -250,7 +252,7 @@ class LevelInfinite(assets: AssetManager,
                             parameters[1].toString().toInt(),
                             parameters[2].toString().toInt(),
                             parameters[3].toString().toInt(),
-                            Typeface.createFromAsset(assets, FONT_COINS),
+                            Typeface.createFromAsset(assets, FONTS_ASSETS + File.separator + FONT_COINS),
                             parameters[4].toString().toInt()
                         )
 
@@ -267,7 +269,7 @@ class LevelInfinite(assets: AssetManager,
                                 parameters[1].toString().toInt(),
                                 parameters[2].toString().toInt(),
                                 parameters[3].toString().toInt(),
-                                Typeface.createFromAsset(assets, FONT_COINS),
+                                Typeface.createFromAsset(assets, FONTS_ASSETS + File.separator + FONT_COINS),
                                 parameters[4].toString().toInt()
                             )
                             Log.d("REALLOCATEPositive",autoLvl.positiveCoins.toString())
@@ -296,7 +298,7 @@ class LevelInfinite(assets: AssetManager,
                             parameters[1].toString().toInt(),
                             parameters[2].toString().toInt(),
                             parameters[3].toString().toInt(),
-                            Typeface.createFromAsset(assets, FONT_COINS),
+                            Typeface.createFromAsset(assets, FONTS_ASSETS + File.separator + FONT_COINS),
                             parameters[4].toString().toInt()
                         )
                         //Log.d("COINS CREATED", parameters[3].toString())
@@ -312,7 +314,7 @@ class LevelInfinite(assets: AssetManager,
                                 parameters[1].toString().toInt(),
                                 parameters[2].toString().toInt(),
                                 parameters[3].toString().toInt(),
-                                Typeface.createFromAsset(assets, FONT_COINS),
+                                Typeface.createFromAsset(assets, FONTS_ASSETS + File.separator + FONT_COINS),
                                 parameters[4].toString().toInt()
                             )
                             Log.d("REALLOCATE","REALLOCATION COIN")

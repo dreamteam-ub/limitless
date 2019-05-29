@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/player1_dead" style="@style/road_limitless" android:textSize="32sp"
+            android:id="@+id/player1_dead" style="@style/road_limitless" android:textSize="32dp"
             android:maxLines="1" android:gravity="center_horizontal" android:layout_marginBottom="30dp"
             android:text="@string/player1_dead" android:textColor="@color/colorWhite"/>
 

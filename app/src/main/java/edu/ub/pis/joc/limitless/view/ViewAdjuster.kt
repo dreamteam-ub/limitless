@@ -8,34 +8,40 @@ import android.widget.TextView
 import android.view.ViewGroup
 
 // PIXEL 2 REFERENCE
-const val HEIGHT_REFERENCE = 1794
-const val WIDTH_REFERENCE = 1080
+const val XDPI_REFERENCE = 420.0f
+const val YDPI_REFERENCE = 420.0f
 
 object ViewAdjuster {
 
     val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
+    val xdpi = Resources.getSystem().displayMetrics.xdpi
+    val ydpi = Resources.getSystem().displayMetrics.ydpi
+
     val scaledDensity = Resources.getSystem().displayMetrics.scaledDensity
     val density = Resources.getSystem().displayMetrics.density
 
     fun adjustView(view: View) {
+
+        Log.d("FAK", xdpi.toString() + " " + density.toString())
+
         if (view is TextView) {
             val px = view.textSize
-            val sp = px / scaledDensity
+            val dpi = px / density
 
-            view.setTextSize(TypedValue.COMPLEX_UNIT_SP, screenHeight * sp / HEIGHT_REFERENCE)
+            view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, ydpi * dpi / YDPI_REFERENCE)
         }
 
         // convert the DP into pixel
 
-        if(view.layoutParams.height != ViewGroup.LayoutParams.WRAP_CONTENT && view.layoutParams.height != ViewGroup.LayoutParams.MATCH_PARENT) {
-            val height = (((screenHeight * view.layoutParams.height / density) / HEIGHT_REFERENCE) * density).toInt()
+        if (view.layoutParams.height != ViewGroup.LayoutParams.WRAP_CONTENT && view.layoutParams.height != ViewGroup.LayoutParams.MATCH_PARENT) {
+            val height = (ydpi * view.layoutParams.height / YDPI_REFERENCE).toInt()
             view.layoutParams.height = height
         }
 
-        if(view.layoutParams.width != ViewGroup.LayoutParams.WRAP_CONTENT && view.layoutParams.width != ViewGroup.LayoutParams.MATCH_PARENT) {
-            val width = (((screenWidth * view.layoutParams.width / density) / WIDTH_REFERENCE) * density).toInt()
+        if (view.layoutParams.width != ViewGroup.LayoutParams.WRAP_CONTENT && view.layoutParams.width != ViewGroup.LayoutParams.MATCH_PARENT) {
+            val width = (xdpi * view.layoutParams.width / XDPI_REFERENCE).toInt()
             view.layoutParams.width = width
         }
 
@@ -47,19 +53,19 @@ object ViewAdjuster {
         var right = params.rightMargin
 
         if (top > 0) {
-            top = (((screenHeight * top / density) / HEIGHT_REFERENCE) * density).toInt()
+            top = (ydpi * top / YDPI_REFERENCE).toInt()
         }
 
         if (bottom > 0) {
-            bottom = (((screenHeight * bottom / density) / HEIGHT_REFERENCE) * density).toInt()
+            bottom = (ydpi * bottom / YDPI_REFERENCE).toInt()
         }
 
         if (left > 0) {
-            left = (((screenWidth * left / density) / HEIGHT_REFERENCE) * density).toInt()
+            left = (xdpi * left / XDPI_REFERENCE).toInt()
         }
 
         if (right > 0) {
-            right = (((screenWidth * right / density) / HEIGHT_REFERENCE) * density).toInt()
+            right = (xdpi * right / XDPI_REFERENCE).toInt()
         }
 
         (view.layoutParams as ViewGroup.MarginLayoutParams).setMargins(left, top, right, bottom)

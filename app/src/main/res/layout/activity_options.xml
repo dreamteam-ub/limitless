@@ -25,28 +25,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/userNameTv"
                 style="@style/cts_limitless"
-                tools:text="USERNAME" android:textSize="35sp" android:layout_gravity="center_vertical"
+                tools:text="USERNAME" android:textSize="35dp" android:layout_gravity="center_vertical"
                 android:textColor="@color/colorLiteBlue"/>
     </LinearLayout>
     <TextView
             android:text="@string/volume"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/crimes_times_six"
-            style="@style/cts_limitless" android:textSize="40sp"
+            android:fontFamily="@font/crimestimessix"
+            style="@style/cts_limitless" android:textSize="40dp"
             android:id="@+id/music_options" android:textColor="@color/colorStylePink"/>
     <SeekBar
-            android:layout_width="320dp"
-            android:layout_height="20dp"
+            android:layout_width="match_parent"
             android:id="@+id/music_seekbar"
             android:progress="100"
+            android:progressDrawable="@drawable/volume_style"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp" style="@android:style/Widget.DeviceDefault.Light.SeekBar"/>
+            android:layout_marginBottom="20dp"
+            android:thumb="@drawable/thumb_volume" android:layout_height="wrap_content"/>
     <TextView
             android:text="@string/vibration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/vibrate_options" style="@style/cts_limitless"
-            android:textSize="40sp" android:textColor="@color/colorStylePink"/>
+            android:textSize="40dp" android:textColor="@color/colorStylePink"/>
 
     <ImageButton
             android:scaleType="fitXY"

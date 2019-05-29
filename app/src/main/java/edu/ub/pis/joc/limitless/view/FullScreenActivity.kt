@@ -2,7 +2,9 @@ package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.graphics.Typeface
 import android.os.Bundle
+import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import android.view.View
@@ -65,8 +67,8 @@ abstract class FullScreenActivity : AppCompatActivity() {
 
     fun customImageToast(
         r_draw_image: Int, text: String, length: Int, gravity: Int = (Gravity.TOP
-                or Gravity.FILL_HORIZONTAL), offX: Int = 0, offY: Int = 0
-    ): Toast {
+                or Gravity.FILL_HORIZONTAL), offX: Int = 0, offY: Int = 0,
+        font : Int = R.font.crimestimessix): Toast {
 
         val layout = layoutInflater.inflate(R.layout.custom_image_toast, findViewById(R.id.custom_image_toast_layout))
 
@@ -76,6 +78,8 @@ abstract class FullScreenActivity : AppCompatActivity() {
 
         val msg = layout.findViewById(R.id.text_toast) as TextView
         msg.text = text
+
+        msg.typeface = ResourcesCompat.getFont(this, font)
         ViewAdjuster.adjustView(msg)
 
         val toast = Toast(applicationContext)
@@ -89,13 +93,15 @@ abstract class FullScreenActivity : AppCompatActivity() {
 
     fun customToast(
         text: String, length: Int, gravity: Int = (Gravity.TOP or
-                Gravity.FILL_HORIZONTAL), offX: Int = 0, offY: Int = 0
-    ): Toast {
+                Gravity.FILL_HORIZONTAL), offX: Int = 0, offY: Int = 0,
+        font : Int = R.font.crimestimessix): Toast {
 
         val layout = layoutInflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_layout))
 
         val msg = layout.findViewById(R.id.text_toast) as TextView
         msg.text = text
+        msg.typeface = ResourcesCompat.getFont(this, font)
+
         ViewAdjuster.adjustView(msg)
 
         val toast = Toast(applicationContext)

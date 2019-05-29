@@ -13,8 +13,7 @@ import java.io.BufferedInputStream
 import java.io.File
 import android.os.Debug.getMemoryInfo
 import android.app.ActivityManager
-
-
+import edu.ub.pis.joc.limitless.model.Data
 
 
 const val BOMB_CHAR = "Bomb"
@@ -155,9 +154,14 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
             )!!
         )
 
+        var sprite_player = "main_character.png"
+        if (Data.user.androidchar != null && Data.user.androidchar!!) {
+            sprite_player = "android_character.png"
+        }
+
         arrayImatgesPlayer = arrayListOf(
             BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "main_character.png")),
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + sprite_player)),
                 null,
                 optionsCharacter
             )!!

@@ -121,5 +121,7 @@ object CharacterData {
         (ViewAdjuster.screenHeight * 0.01923).toInt(), (ViewAdjuster.screenHeight * 0.023175).toInt(),
         (ViewAdjuster.screenHeight * 0.030571).toInt(), (ViewAdjuster.screenHeight * 0.03698).toInt())
 
-
+    var coinTextDim = arrayOf(
+        ViewAdjuster.screenHeight * 0.035f, ViewAdjuster.screenHeight * 0.030f
+    )
 }

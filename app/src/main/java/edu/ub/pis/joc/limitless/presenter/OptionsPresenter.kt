@@ -1,14 +1,17 @@
 package edu.ub.pis.joc.limitless.presenter
 
+import android.view.Gravity
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import edu.ub.pis.joc.limitless.model.Data
-import edu.ub.pis.joc.limitless.model.MUSIC
-import edu.ub.pis.joc.limitless.model.User
-import edu.ub.pis.joc.limitless.model.VIBRATION
+import edu.ub.pis.joc.limitless.R
+import edu.ub.pis.joc.limitless.model.*
 import edu.ub.pis.joc.limitless.view.USERS
 
-class OptionsPresenter(var view : OptionsPresenter.View) {
+class OptionsPresenter(var view: OptionsPresenter.View) {
+
+    val mAuth = FirebaseAuth.getInstance()
+    val db = FirebaseFirestore.getInstance()
 
     fun updateUser(user: User) {
         Data.user = user
@@ -16,9 +19,6 @@ class OptionsPresenter(var view : OptionsPresenter.View) {
     }
 
     fun updateVibrate(value: Boolean) {
-        val mAuth = FirebaseAuth.getInstance()
-        val db = FirebaseFirestore.getInstance()
-
         val newVibrate = !value
 
         db.collection(USERS).document(mAuth.currentUser!!.uid).update(VIBRATION, newVibrate)
@@ -26,14 +26,19 @@ class OptionsPresenter(var view : OptionsPresenter.View) {
     }
 
     fun updateMusic(value: Int) {
-        val mAuth = FirebaseAuth.getInstance()
-        val db = FirebaseFirestore.getInstance()
-
         db.collection(USERS).document(mAuth.currentUser!!.uid).update(MUSIC, value)
     }
 
-    interface View {
-        fun updateUserInfo(user: User)
-        fun updateVibrateButton(value : Boolean)
+    fun updateChar(androidchar: Boolean) {
+        val setting = !androidchar
+        db.collection(USERS).document(mAuth.currentUser!!.uid).update(ANDROIDCHAR, setting)
+        view.updateChar(setting)
     }
+
+
+interface View {
+    fun updateUserInfo(user: User)
+    fun updateVibrateButton(value: Boolean)
+    fun updateChar(value: Boolean)
+}
 }

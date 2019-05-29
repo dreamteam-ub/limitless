@@ -20,7 +20,7 @@
               android:layout_width="wrap_content"
               android:layout_height="fill_parent"
               style="@style/cts_limitless"
-              tools:text="Toast" android:textSize="20sp" android:gravity="center_vertical"
+              tools:text="Toast" android:textSize="20dp" android:gravity="center_vertical"
               android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

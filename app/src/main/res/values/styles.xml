@@ -17,11 +17,11 @@
     <style name="cts_limitless">
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:includeFontPadding">true</item>
-        <item name="android:fontFamily">@font/crimes_times_six</item>
+        <item name="android:fontFamily">@font/crimestimessix</item>
     </style>
     <style name="road_limitless">
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:includeFontPadding">true</item>
-        <item name="android:fontFamily">@font/road_rage</item>
+        <item name="android:fontFamily">@font/roadrage</item>
     </style>
 </resources>
