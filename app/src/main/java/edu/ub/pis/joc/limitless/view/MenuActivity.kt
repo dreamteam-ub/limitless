@@ -106,11 +106,11 @@ class MenuActivity : FullScreenActivity() {
         if (totalMemory < 1000L){   // si tenemos menos de 1GB
 
             CharacterData.optionsBombs = 16
-            CharacterData.optionsEye = 8
-            CharacterData.optionsDemon = 8
+            CharacterData.optionsEye = 16
+            CharacterData.optionsDemon = 16
             CharacterData.optionsSkull = 8
-            CharacterData.optionsDemonFire = 16
-            CharacterData.optionsEyeProyec = 16
+            CharacterData.optionsDemonFire = 32
+            CharacterData.optionsEyeProyec = 32
             CharacterData.optionsSkullLaser = 16
             CharacterData.optionsGhost = 8
             CharacterData.optionsCharacter = 4
@@ -120,7 +120,7 @@ class MenuActivity : FullScreenActivity() {
         else if (totalMemory >= 1000L && totalMemory < 2000L){ //si tenemos entre 1GB y menos de 2GB
             CharacterData.optionsBombs = 16
             CharacterData.optionsEye = 8
-            CharacterData.optionsDemon = 8
+            CharacterData.optionsDemon = 16
             CharacterData.optionsSkull = 8
             CharacterData.optionsDemonFire = 16
             CharacterData.optionsEyeProyec = 16
@@ -135,13 +135,13 @@ class MenuActivity : FullScreenActivity() {
             CharacterData.optionsBombs = 16
             CharacterData.optionsEye = 8
             CharacterData.optionsDemon = 8
-            CharacterData.optionsSkull = 4
+            CharacterData.optionsSkull = 8
             CharacterData.optionsDemonFire = 16
             CharacterData.optionsEyeProyec = 16
             CharacterData.optionsSkullLaser = 8
             CharacterData.optionsGhost = 8
             CharacterData.optionsCharacter = 4
-            CharacterData.optionsCoin = 16
+            CharacterData.optionsCoin = 8
         }
 
     }

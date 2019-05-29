@@ -13,10 +13,10 @@ object CharacterData {
 
     var optionsBombs = 16
     var optionsEye = 4
-    var optionsDemon = 4
+    var optionsDemon = 8
     var optionsSkull = 4
-    var optionsDemonFire = 4
-    var optionsEyeProyec = 4
+    var optionsDemonFire = 16
+    var optionsEyeProyec = 16
     var optionsSkullLaser = 2
     var optionsGhost = 4
     var optionsCharacter = 4
