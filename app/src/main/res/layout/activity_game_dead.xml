@@ -24,10 +24,10 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal"
-            android:layout_width="204dp"
+            android:layout_width="180dp"
             android:contentDescription="@string/youDiedheart"
             android:background="@android:color/transparent"
-            android:layout_height="185dp"
+            android:layout_height="170dp"
             app:srcCompat="@drawable/corazon_muerte"
             android:id="@+id/dead_heart" android:layout_marginBottom="20dp"/>
 
@@ -43,7 +43,7 @@
                 android:text="@string/score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/road_limitless" android:textSize="30dp"
+                style="@style/road_limitless" android:textSize="24dp"
                 android:textAlignment="textStart"
                 android:layout_marginEnd="30dp" android:id="@+id/score_text" android:textColor="@color/colorYellow"/>
 
@@ -67,7 +67,7 @@
                 android:text="@string/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/road_limitless" android:textSize="30dp"
+                style="@style/road_limitless" android:textSize="24dp"
                 android:textAlignment="textStart"
                 android:layout_marginEnd="30dp" android:id="@+id/time" android:textColor="@color/colorYellow"/>
 
@@ -81,15 +81,14 @@
     </LinearLayout>
 
 
-
     <ImageButton
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal"
-            android:layout_width="220dp"
+            android:layout_width="180dp"
             android:contentDescription="@string/retry_level"
             android:background="@android:color/transparent"
-            android:layout_height="60dp" app:srcCompat="@drawable/retry_button" android:id="@+id/retryButton_normal"
+            android:layout_height="50dp" app:srcCompat="@drawable/retry_button" android:id="@+id/retryButton_normal"
             android:layout_marginBottom="30dp"/>
 
     <ImageButton
@@ -97,18 +96,18 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/worlds_button"
             android:layout_gravity="center_horizontal"
-            android:layout_width="220dp"
+            android:layout_width="180dp"
             android:background="@android:color/transparent"
-            android:layout_height="60dp" app:srcCompat="@drawable/worlds" android:id="@+id/dead_worldsButton"
+            android:layout_height="50dp" app:srcCompat="@drawable/worlds" android:id="@+id/dead_worldsButton"
             android:layout_marginBottom="30dp"/>
     <ImageButton
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:contentDescription="@string/menu_button"
             android:layout_gravity="center_horizontal"
-            android:layout_width="220dp"
+            android:layout_width="180dp"
             android:background="@android:color/transparent"
-            android:layout_height="60dp" app:srcCompat="@drawable/menu" android:id="@+id/dead_menuButton"/>
+            android:layout_height="50dp" app:srcCompat="@drawable/menu" android:id="@+id/dead_menuButton"/>
 
 
 

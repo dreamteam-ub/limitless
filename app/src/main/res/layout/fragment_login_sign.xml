@@ -7,12 +7,12 @@
 
 
     <ImageButton
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/custom_signin" android:id="@+id/signin_btn"
             android:adjustViewBounds="true" android:contentDescription="@string/sigin"
-            android:cropToPadding="true" android:layout_width="180dp"
+            android:cropToPadding="true" android:layout_width="150dp"
             android:layout_marginBottom="30dp"/>
 </LinearLayout>
