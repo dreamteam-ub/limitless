@@ -27,6 +27,10 @@ object Data  {
         return Data.currentWorld * MAX_WORLD + Data.currentLvl
     }
 
+    fun getTotalLevel():Int{
+        return user.world!! * MAX_WORLD + user.level!!
+    }
+
     var ranking : ArrayList<Ranking> = ArrayList()
 
     var versus_survived : Array <Long> = arrayOf(0L,0L)

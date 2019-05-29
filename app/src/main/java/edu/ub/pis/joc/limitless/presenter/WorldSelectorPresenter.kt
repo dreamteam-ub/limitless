@@ -64,11 +64,13 @@ class WorldSelectorPresenter(var view: View) {
         }
 
         view.changeLevelView(Data.currentLvl, hideLeft, hideRight)
+        view.changeClearedStage(Data.currentWorld,Data.currentLvl)
     }
 
 
     interface View {
         fun changeWorldView(world: Int, hideTop: Boolean, hideDown: Boolean)
         fun changeLevelView(level: Int, hideLeft: Boolean, hideRight: Boolean)
+        fun changeClearedStage(world: Int, level: Int)
     }
 }

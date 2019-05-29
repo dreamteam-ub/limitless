@@ -2,6 +2,7 @@ package edu.ub.pis.joc.limitless.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.Gravity
 import android.view.View
@@ -43,6 +44,7 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
 
     private lateinit var worldTitle: TextView
     private lateinit var lvlTitle: TextView
+    private lateinit var cleared_stage: TextView
     private lateinit var arrowBack: ImageButton
     private lateinit var worldPhoto: ImageButton
     private lateinit var leftArrow: ImageButton
@@ -70,6 +72,9 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
 
         lvlTitle = findViewById(R.id.level_title)
         ViewAdjuster.adjustView(lvlTitle)
+
+        cleared_stage = findViewById(R.id.cleared_level)
+        ViewAdjuster.adjustView(cleared_stage)
 
         arrowBack = findViewById(R.id.world_back_button)
         ViewAdjuster.adjustView(arrowBack)
@@ -156,6 +161,18 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
             presenter.updateLevel()
         }
 
+        var clickcountWorld = 0
+        worldPhoto.setOnClickListener {
+            clickcountWorld++
+            if (clickcountWorld == 2) {
+                customImageToast(
+                    R.drawable.calvo, getString(R.string.easter_egg_playworld),
+                    Toast.LENGTH_LONG, Gravity.TOP or Gravity.FILL_HORIZONTAL, 0, 100
+                , font = R.font.roadrage).show()
+                clickcountWorld = 0
+            }
+        }
+
         playWorlds.setOnClickListener {
             if (
                 ((Data.user.tutorial == null || Data.user.tutorial == WORLD1) && Data.currentLvl == 0 && Data.currentWorld == WORLD1)
@@ -220,6 +237,24 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         lvlTitle.text = resources.getString(strLvl[level])
 
     }
+    override fun changeClearedStage(world: Int, level:Int) {
+        var currentLevel = Data.getCurrenLevel()
+        var totalLevel = Data.getTotalLevel()
+        if(totalLevel == 11){
+            totalLevel = 12
+        }
+        Log.d("CURRENT LEVEL", currentLevel.toString())
+        Log.d("TOTAL LEVEL", totalLevel.toString())
+
+        if(currentLevel< totalLevel){
+            cleared_stage.setText(R.string.cleared)
+            cleared_stage.setTextColor(ContextCompat.getColor(this, R.color.colorStyleGreen))
+        } else {
+            cleared_stage.setText(R.string.not_cleared)
+            cleared_stage.setTextColor(ContextCompat.getColor(this, R.color.colorWelcomeName))
+        }
+    }
+
 
     override fun onStart() {
         super.onStart()
