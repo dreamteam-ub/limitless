@@ -23,9 +23,6 @@ object ViewAdjuster {
     val density = Resources.getSystem().displayMetrics.density
 
     fun adjustView(view: View) {
-
-        Log.d("FAK", xdpi.toString() + " " + density.toString())
-
         if (view is TextView) {
             val px = view.textSize
             val dpi = px / density
