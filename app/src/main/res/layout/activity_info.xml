@@ -37,22 +37,22 @@
             android:fontFamily="@font/crimestimessix" android:textColor="@color/colorWhite"
             style="@style/cts_limitless" android:layout_marginTop="20dp" android:textSize="45dp"/>
     <TextView
-            android:text="@string/detail_developers1"
+            android:text="@string/detail_developer1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/developers_details1"
             android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30dp"/>
     <TextView
-            android:text="@string/detail_developers2"
+            android:text="@string/detail_developer2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/developers_details2"
             android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30dp"/>
     <TextView
-            android:text="@string/detail_developers3"
+            android:text="@string/detail_developer3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/developers_details3"
             android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30dp"/>
     <TextView
-            android:text="@string/detail_developers4"
+            android:text="@string/detail_developer4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/developers_details4"
             android:layout_marginStart="40dp" android:textColor="@color/colorWhite" android:textSize="30dp"/>

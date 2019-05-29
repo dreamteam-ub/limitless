@@ -30,10 +30,14 @@
     <string name="ranking_lines">-----------------------</string>
     <string name="info_version">VERSION</string>
     <string name="developers">DEVELOPERS</string>
-    <string name="detail_developers1">Aaron Peruga</string>
-    <string name="detail_developers2">Pau Bernabe</string>
-    <string name="detail_developers3">Arnau Rovira</string>
-    <string name="detail_developers4">Manuel Martinez</string>
+    <string name="detail_developer1">Aaron Peruga</string>
+    <string name="detail_developer2">Pau Bernabe</string>
+    <string name="detail_developer3">Arnau Rovira</string>
+    <string name="detail_developer4">Manuel Martinez</string>
+    <string name="detail_github_developer1">https://github.com/aaronPeruga</string>
+    <string name="detail_github_developer2">https://github.com/paubernabe</string>
+    <string name="detail_github_developer3">https://github.com/arnauRoviraPerez</string>
+    <string name="detail_github_developer4">https://github.com/manuMatnez</string>
     <string name="music_rights">MUSIC RIGHTS</string>
     <string name="volume">MUSIC VOLUME</string>
     <string name="detail_music_rights">Andreas Solano</string>
@@ -84,7 +88,6 @@
     <string name="score1">SCORE P1:</string>
     <string name="score2">SCORE P2:</string>
     <string name="time">Time:</string>
-    <string name="easter_egg_playworld">This ain\'t play button XD</string>
     <string name="easter_egg_android_welcome">Hello Android</string>
     <string name="easter_egg_android_bye">Bye bye Android</string>
 
