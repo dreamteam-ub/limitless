@@ -209,7 +209,9 @@ class AutoLevelGenerate {
 
         for (i in 0 until listCoin.size) {
             var tmpcoin = listCoin[i]
-            if (coin.rect.contains(tmpcoin.rect) || tmpcoin.rect.contains(coin.rect)) {
+            if (coin.rect.intersects(tmpcoin.rect.left,tmpcoin.rect.top,tmpcoin.rect.right,tmpcoin.rect.bottom)
+                || tmpcoin.rect.intersects(coin.rect.left,coin.rect.top,coin.rect.right,coin.rect.bottom)) {
+                Log.d("INTERSECTCOIN","coin")
                 listCoin.remove(coin)
                 same = true
             } else if (coin.x == tmpcoin.x && coin.y == tmpcoin.y) {
@@ -278,5 +280,40 @@ class AutoLevelGenerate {
         }
         return same
 
+    }
+
+    fun reallocSkulls(skull : Skull, listOfEnemy: ArrayList<Enemy>) : Boolean{
+        var same = false
+        for (i in 0 until listOfEnemy.size){
+            if (listOfEnemy[i] is Skull){
+
+                if (skull.concreteBehaviour == 1 && listOfEnemy[i].concreteBehaviour == 7
+                    || skull.concreteBehaviour == 7 && listOfEnemy[i].concreteBehaviour == 1){
+                    listOfEnemy.remove(skull)
+                    same = true
+                }else if (skull.concreteBehaviour == 2 && listOfEnemy[i].concreteBehaviour == 6
+                    || skull.concreteBehaviour == 6 && listOfEnemy[i].concreteBehaviour == 2){
+                    listOfEnemy.remove(skull)
+                    same = true
+                }else if (skull.concreteBehaviour == 3 && listOfEnemy[i].concreteBehaviour == 10
+                    || skull.concreteBehaviour == 10 && listOfEnemy[i].concreteBehaviour == 3){
+                    listOfEnemy.remove(skull)
+                    same = true
+                }else if (skull.concreteBehaviour == 4 && listOfEnemy[i].concreteBehaviour == 9
+                    || skull.concreteBehaviour == 9 && listOfEnemy[i].concreteBehaviour == 4){
+                    listOfEnemy.remove(skull)
+                    same = true
+                }else if (skull.concreteBehaviour == 8 && listOfEnemy[i].concreteBehaviour == 5
+                    || skull.concreteBehaviour == 5 && listOfEnemy[i].concreteBehaviour == 8){
+                    listOfEnemy.remove(skull)
+                    same = true
+                }else if (skull.concreteBehaviour == listOfEnemy[i].concreteBehaviour){
+                    listOfEnemy.remove(skull)
+                    same = true
+                }
+
+            }
+        }
+        return same
     }
 }

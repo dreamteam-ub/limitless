@@ -23,6 +23,7 @@ class LevelInfinite(assets: AssetManager,
     init {
         limits = Limits(autoLvl.limitLow,autoLvl.limitHigh, assets)
     }
+    var skullCtr = 0
     /*
     Funcio amb la que crearem enemics i els posarem a la llista dels enemics per a ser dibuixats/
     actualitzats.
@@ -199,16 +200,61 @@ class LevelInfinite(assets: AssetManager,
                             )) as Eye
                             listOfTmpEnemies.add(eye)
                         }else{
-                            listOfTmpEnemies.add(createComplexEnemy(
-                                parameters[0].toString(),
-                                parameters[1].toString().toInt(),
-                                parameters[2].toString().toInt(),
-                                parameters[3].toString().toInt(),
-                                parameters[4].toString().toInt(),
-                                parameters[5].toString().toInt()
-                            ))
+                            if (parameters[0].toString().equals(SKULL_CHAR)){
+                                var skull : Skull
+                                if (skullCtr < 5){
+                                    skull = (createComplexEnemy(
+                                        parameters[0].toString(),
+                                        parameters[1].toString().toInt(),
+                                        parameters[2].toString().toInt(),
+                                        parameters[3].toString().toInt(),
+                                        parameters[4].toString().toInt(),
+                                        parameters[5].toString().toInt()
+                                    )) as Skull
+                                    while(autoLvl.reallocSkulls(skull,listOfTmpEnemies)){
+                                        parameters = autoLvl.generateEnemiesInPreviousStages(SKULL_CHAR)
+                                        skull = (createComplexEnemy(
+                                            parameters[0].toString(),
+                                            parameters[1].toString().toInt(),
+                                            parameters[2].toString().toInt(),
+                                            parameters[3].toString().toInt(),
+                                            parameters[4].toString().toInt(),
+                                            parameters[5].toString().toInt()
+                                        )) as Skull
+                                        Log.d("SKULLREALLOC", "REALLOC")
+                                    }
+                                    skullCtr++
+                                    listOfTmpEnemies.add(skull)
+                                }else{
+                                    while(parameters[0].toString().equals(SKULL_CHAR)){
+                                        parameters = autoLvl.generateEnemy()
+                                    }
+                                    listOfTmpEnemies.add(
+                                        createComplexEnemy(
+                                            parameters[0].toString(),
+                                            parameters[1].toString().toInt(),
+                                            parameters[2].toString().toInt(),
+                                            parameters[3].toString().toInt(),
+                                            parameters[4].toString().toInt(),
+                                            parameters[5].toString().toInt()
+                                        )
+                                    )
+
+                                }
+                            }else {
+                                listOfTmpEnemies.add(
+                                    createComplexEnemy(
+                                        parameters[0].toString(),
+                                        parameters[1].toString().toInt(),
+                                        parameters[2].toString().toInt(),
+                                        parameters[3].toString().toInt(),
+                                        parameters[4].toString().toInt(),
+                                        parameters[5].toString().toInt()
+                                    )
+                                )
+                            }
                         }
-                        listOfTmpEnemies[i].appearTime = Random.nextLong(time,time+250L)
+                        listOfTmpEnemies[i].appearTime = Random.nextLong(time,time+200L)
 
                     }
                 }
@@ -221,6 +267,7 @@ class LevelInfinite(assets: AssetManager,
                         contador--
                     }
                     listOfTmpEnemies.clear()
+                    skullCtr = 0
                     contador++
                 }
             }
@@ -276,7 +323,10 @@ class LevelInfinite(assets: AssetManager,
                             Log.d("REALLOCATENegative",autoLvl.negativeCoins.toString())
 
                         }
+
+
                         tmpListOfCoins.add(coin)
+
 
 
                         if (time<1000) {
