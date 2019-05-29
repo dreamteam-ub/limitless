@@ -3,7 +3,6 @@ package edu.ub.pis.joc.limitless.view.login
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.LoaderManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,7 @@ class LoginWaitFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.activity_login_wait, container, false)
+        return inflater.inflate(R.layout.fragment_login_wait, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

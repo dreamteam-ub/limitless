@@ -33,7 +33,7 @@ class GameActivity : FullScreenActivity() {
 
     private lateinit var musicPlayer: MediaPlayer
 
-    private var length : Int = 0
+    private var length: Int = 0
 
     private lateinit var surface: GameView
 
@@ -59,7 +59,7 @@ class GameActivity : FullScreenActivity() {
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        val volume = if (Data.user.music != null) Data.user.music!!.toFloat()/100.0f else 0.0f
+        val volume = if (Data.user.music != null) Data.user.music!!.toFloat() / 100.0f else 0.0f
         musicPlayer = MediaPlayer()
 
         val descriptor = assets.openFd(SOUND_ASSETS + File.separator + "stage.mp3")
@@ -81,15 +81,13 @@ class GameActivity : FullScreenActivity() {
         val intentExtras = intent.extras!!
 
         mode = intentExtras.getBoolean(MODE_INFINITY)
-
+        round = intentExtras.getInt(MODE_INFINITY_VERSUS_COUNT)
         val tmpVersus: Boolean? = intentExtras.getBoolean(MODE_INFINITY_VERSUS)
 
         if (tmpVersus == null || !tmpVersus) {
             modeVersus = false
         } else {
             modeVersus = true
-            round = intentExtras.getInt(MODE_INFINITY_VERSUS_COUNT)
-
             var icon: Int
             val player: String
             if (round == 0) {
@@ -107,13 +105,14 @@ class GameActivity : FullScreenActivity() {
                 icon, getString(R.string.player) + " " + player,
                 Toast.LENGTH_SHORT, Gravity.TOP or
                         Gravity.FILL_HORIZONTAL, 0, 200
-            , font = R.font.roadrage).show()
+                , font = R.font.roadrage
+            ).show()
 
         }
 
         dialog = Dialog(this)
 
-        surface = GameView(this, this, mode, modeVersus, round)
+        surface = GameView(this, mode, modeVersus, round)
         setContentView(surface)
 
         val layoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -122,7 +121,10 @@ class GameActivity : FullScreenActivity() {
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCanceledOnTouchOutside(false)
 
-        dialog.window!!.setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+        dialog.window!!.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+        )
         dialog.window!!.decorView.systemUiVisibility = window.decorView.systemUiVisibility
 
         resumeDiag = vista.findViewById(R.id.resumeButtonDiag)
@@ -231,89 +233,91 @@ class GameActivity : FullScreenActivity() {
         gOverPoints: Boolean,
         score: Int
     ) {
-        if (dead) {
-            if (modeVersus) {
-                if (round == 1) {
-                    val intent = Intent(context, VersusActivityEnd::class.java)
-                    intent.putExtra(MODE_INFINITY, mode)
-                    versus_survived[1] = time
-                    versus_score[1]=score
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    startActivity(intent)
-                    finish()
+        runOnUiThread {
+            if (dead) {
+                if (modeVersus) {
+                    if (round == 1) {
+                        val intent = Intent(context, VersusActivityEnd::class.java)
+                        intent.putExtra(MODE_INFINITY, mode)
+                        versus_survived[1] = time
+                        versus_score[1] = score
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        val intent = Intent(context, SecondPlayerVsActivity::class.java)
+                        intent.putExtra(MODE_INFINITY, mode)
+                        intent.putExtra(MODE_INFINITY_VERSUS, modeVersus)
+                        intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 1)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        versus_survived[0] = time
+                        versus_score[0] = score
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                        startActivity(intent)
+                        finish()
+                    }
                 } else {
-                    val intent = Intent(context, SecondPlayerVsActivity::class.java)
+                    if (updateDb) {
+                        db.collection(USERS).document(mAuth.currentUser!!.uid).update(SURVIVED, Data.user.survived!!)
+                    }
+                    val intent = Intent(context, GameDeadActivity::class.java)
                     intent.putExtra(MODE_INFINITY, mode)
-                    intent.putExtra(MODE_INFINITY_VERSUS, modeVersus)
-                    intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 1)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    intent.putExtra(SCORE, score)
                     versus_survived[0] = time
-                    versus_score[0]=score
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
                     finish()
                 }
-            } else {
-                if (updateDb) {
-                    db.collection(USERS).document(mAuth.currentUser!!.uid).update(SURVIVED, Data.user.survived!!)
-                }
-                val intent = Intent(context, GameDeadActivity::class.java)
-                intent.putExtra(MODE_INFINITY, mode)
-                intent.putExtra(SCORE, score)
-                versus_survived[0] = time
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                startActivity(intent)
-                finish()
-            }
-        } else if(gOverPoints) {
-            if (modeVersus) {
-                if (round == 1) {
-                    val intent = Intent(context, VersusActivityEnd::class.java)
+            } else if (gOverPoints) {
+                if (modeVersus) {
+                    if (round == 1) {
+                        val intent = Intent(context, VersusActivityEnd::class.java)
+                        intent.putExtra(MODE_INFINITY, mode)
+                        versus_survived[1] = time
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        val intent = Intent(context, SecondPlayerVsActivity::class.java)
+                        intent.putExtra(MODE_INFINITY, mode)
+                        intent.putExtra(MODE_INFINITY_VERSUS, modeVersus)
+                        intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 1)
+                        intent.putExtra(LOST_GAME_NOT_DEAD, gOverPoints)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        versus_survived[0] = time
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                        startActivity(intent)
+                        finish()
+                    }
+                } else if (mode && !modeVersus) {
+                    if (updateDb) {
+                        db.collection(USERS).document(mAuth.currentUser!!.uid).update(SURVIVED, Data.user.survived!!)
+                    }
+                    val intent = Intent(context, GameDeadActivity::class.java)
                     intent.putExtra(MODE_INFINITY, mode)
-                    versus_survived[1] = time
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    val intent = Intent(context, SecondPlayerVsActivity::class.java)
-                    intent.putExtra(MODE_INFINITY, mode)
-                    intent.putExtra(MODE_INFINITY_VERSUS, modeVersus)
-                    intent.putExtra(MODE_INFINITY_VERSUS_COUNT, 1)
                     intent.putExtra(LOST_GAME_NOT_DEAD, gOverPoints)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    intent.putExtra(SCORE, score)
+                    versus_survived[0] = time
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    val intent = Intent(context, GameDeadActivity::class.java)
+                    intent.putExtra(MODE_INFINITY, mode)
+                    intent.putExtra(LOST_GAME_NOT_DEAD, gOverPoints)
+                    intent.putExtra(SCORE, score)
                     versus_survived[0] = time
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
                     finish()
                 }
-            } else if (mode && !modeVersus) {
-                if (updateDb) {
-                    db.collection(USERS).document(mAuth.currentUser!!.uid).update(SURVIVED, Data.user.survived!!)
-                }
-                val intent = Intent(context, GameDeadActivity::class.java)
+
+            } else if (!dead && !mode && !modeVersus) {
+                val intent = Intent(context, GameWonActivity::class.java)
                 intent.putExtra(MODE_INFINITY, mode)
-                intent.putExtra(LOST_GAME_NOT_DEAD, gOverPoints)
-                intent.putExtra(SCORE, score)
-                versus_survived[0] = time
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                startActivity(intent)
-                finish()
-            }else{
-                val intent = Intent(context, GameDeadActivity::class.java)
-                intent.putExtra(MODE_INFINITY, mode)
-                intent.putExtra(LOST_GAME_NOT_DEAD, gOverPoints)
-                intent.putExtra(SCORE, score)
-                versus_survived[0] = time
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
                 finish()
             }
-
-        } else if(!dead && !mode && !modeVersus){
-            val intent = Intent(context, GameWonActivity::class.java)
-            intent.putExtra(MODE_INFINITY, mode)
-            startActivity(intent)
-            finish()
         }
     }
 

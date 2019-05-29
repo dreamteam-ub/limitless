@@ -9,7 +9,7 @@ import edu.ub.pis.joc.limitless.engine.GameEngine
 
 const val IMG_ASSETS = "images"
 
-class GameView(appContext: Context, private val gameActivity: GameActivity, mode : Boolean, versus : Boolean, round : Int = 0) : SurfaceView(appContext), SurfaceHolder.Callback {
+class GameView(appContext: Context, mode : Boolean, versus : Boolean, round : Int = 0) : SurfaceView(appContext), SurfaceHolder.Callback {
     private var thread: GameThread
     private val gameEngine: GameEngine
 
@@ -65,7 +65,7 @@ class GameView(appContext: Context, private val gameActivity: GameActivity, mode
                     && gameEngine.touched_y < (gameEngine.pauseButton.y + gameEngine.pauseButton.h)
                     && gameEngine.touched_y > (gameEngine.pauseButton.y - gameEngine.pauseButton.h)
                 ) {
-                    gameActivity.pause()
+                    (context as GameActivity).pause()
                 } else {
                     gameEngine.touched = 2
                 }

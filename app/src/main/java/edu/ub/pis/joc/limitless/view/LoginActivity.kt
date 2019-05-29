@@ -34,7 +34,6 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_login)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
