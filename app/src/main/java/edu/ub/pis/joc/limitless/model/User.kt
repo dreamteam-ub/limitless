@@ -6,7 +6,7 @@ const val USER_NAME = "userName"
 const val SURVIVED = "survived"
 const val VIBRATION = "vibration"
 const val MUSIC = "music"
-const val ANDROIDCHAR = "androidchar"
+const val SKINSELECTED = "skinSelected"
 
 class User : Serializable {
     var userName: String? = null

@@ -161,18 +161,6 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
             presenter.updateLevel()
         }
 
-        var clickcountWorld = 0
-        worldPhoto.setOnClickListener {
-            clickcountWorld++
-            if (clickcountWorld == 2) {
-                customImageToast(
-                    R.drawable.calvo, getString(R.string.easter_egg_playworld),
-                    Toast.LENGTH_LONG, Gravity.TOP or Gravity.FILL_HORIZONTAL, 0, 100
-                , font = R.font.roadrage).show()
-                clickcountWorld = 0
-            }
-        }
-
         playWorlds.setOnClickListener {
             if (
                 ((Data.user.tutorial == null || Data.user.tutorial == WORLD1) && Data.currentLvl == 0 && Data.currentWorld == WORLD1)

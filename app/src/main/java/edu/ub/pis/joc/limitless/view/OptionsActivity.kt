@@ -147,20 +147,4 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         optionsBackArrow.isClickable = true
         logout_button.isClickable = true
     }
-
-    override fun updateChar(value: Boolean) {
-        var msgAndroid = R.string.easter_egg_android_welcome
-        var drawAndroid = R.drawable.player_1_android
-        if (!value) {
-            drawAndroid = R.drawable.player_1
-            msgAndroid = R.string.easter_egg_android_bye
-            userName.setTextColor(ContextCompat.getColor(this, R.color.colorLiteBlue))
-        } else {
-            userName.setTextColor(ContextCompat.getColor(this, R.color.colorAndroid))
-        }
-        customImageToast(
-            drawAndroid, getString(msgAndroid),
-            Toast.LENGTH_LONG, Gravity.TOP or Gravity.FILL_HORIZONTAL, 0, 100
-        ).show()
-    }
 }

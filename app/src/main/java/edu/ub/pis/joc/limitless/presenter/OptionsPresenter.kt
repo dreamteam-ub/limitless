@@ -29,16 +29,9 @@ class OptionsPresenter(var view: OptionsPresenter.View) {
         db.collection(USERS).document(mAuth.currentUser!!.uid).update(MUSIC, value)
     }
 
-    fun updateChar(androidchar: Boolean) {
-        val setting = !androidchar
-        db.collection(USERS).document(mAuth.currentUser!!.uid).update(ANDROIDCHAR, setting)
-        view.updateChar(setting)
+
+    interface View {
+        fun updateUserInfo(user: User)
+        fun updateVibrateButton(value: Boolean)
     }
-
-
-interface View {
-    fun updateUserInfo(user: User)
-    fun updateVibrateButton(value: Boolean)
-    fun updateChar(value: Boolean)
-}
 }

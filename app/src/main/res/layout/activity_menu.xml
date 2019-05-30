@@ -57,9 +57,9 @@
                 app:srcCompat="@drawable/skin_window_button"
                 android:id="@+id/skin_window_button"
                 android:adjustViewBounds="true"
-                android:contentDescription="@string/options_button" android:layout_gravity="end"/>
+                android:contentDescription="@string/options_button" android:layout_gravity="start"/>
         <Space
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content" android:layout_weight="1"/>
         <ImageButton
                 android:layout_width="50dp"

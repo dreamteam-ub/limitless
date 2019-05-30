@@ -1,10 +1,16 @@
 package edu.ub.pis.joc.limitless.presenter
 
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.model.SKINSELECTED
 import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.view.*
 
 class SkinSelectorPresenter(var view: View) {
+
+    val mAuth = FirebaseAuth.getInstance()
+    val db = FirebaseFirestore.getInstance()
 
     fun updateUser(user: User) {
         Data.user = user
@@ -24,11 +30,12 @@ class SkinSelectorPresenter(var view: View) {
             }
         }
 
+        db.collection(USERS).document(mAuth.currentUser!!.uid).update(SKINSELECTED, Data.currentSkin)
         view.changeSkinPreview(Data.currentSkin, hideLeft, hideRight)
     }
 
 
     interface View {
-        fun changeSkinPreview(currentSkin: Int, hideRight: Boolean, hideLeft: Boolean)
+        fun changeSkinPreview(skin : Int, hideRight: Boolean, hideLeft: Boolean)
     }
 }
