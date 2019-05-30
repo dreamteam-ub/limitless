@@ -24,11 +24,11 @@ class LevelInfinite(assets: AssetManager,
         limits = Limits(autoLvl.limitLow,autoLvl.limitHigh, assets)
     }
     var skullCtr = 0
-    /*
-    Funcio amb la que crearem enemics i els posarem a la llista dels enemics per a ser dibuixats/
-    actualitzats.
-    @params : Int
-    @params : Long
+    /**
+    *Funcio amb la que crearem enemics i els posarem a la llista dels enemics per a ser dibuixats/
+    *actualitzats.
+    * @params : Int
+    * @params : Long
      */
     @Synchronized
     override fun buildEnemies(levelWorld: Int, time: Long) {
@@ -107,7 +107,7 @@ class LevelInfinite(assets: AssetManager,
                             parameters[5].toString().toInt()
                         )) as Eye
                         listOfTmpEnemies.add(eye)
-                        listOfTmpEnemies[i].appearTime = Random.nextLong(600L, 850L)
+                        listOfTmpEnemies[i].appearTime = Random.nextLong(600L, 650L)
 
                     }
                     //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
@@ -254,7 +254,12 @@ class LevelInfinite(assets: AssetManager,
                                 )
                             }
                         }
-                        listOfTmpEnemies[i].appearTime = Random.nextLong(time,time+200L)
+                        if (listOfTmpEnemies[i] is Eye){
+                            listOfTmpEnemies[i].appearTime = Random.nextLong(time,time+100L)
+
+                        }else {
+                            listOfTmpEnemies[i].appearTime = Random.nextLong(time, time + 200L)
+                        }
 
                     }
                 }
@@ -275,11 +280,11 @@ class LevelInfinite(assets: AssetManager,
         }
         listOfEnemyCharacters.addAll(listOfTmpEnemies)
     }
-    /*
+    /**
     Funcio amb la que crearem monedes i les posarem a la llista de les monedes per a ser dibuixades/
     actualitzades.
-    @params : Int
-    @params : Long
+    *@params : Int
+    *@params : Long
      */
     @Synchronized
     override fun buildCoins(levelWorld: Int, time: Long) {
@@ -387,11 +392,11 @@ class LevelInfinite(assets: AssetManager,
         listOfCoins.addAll(tmpListOfCoins)
     }
 
-    /*
+    /**
     Funcio on els limits del mode infinit seràn creats
-    @params : Int
+    *@params : Int
 
-    @return : ArrayList<Int>
+    *@return : ArrayList<Int>
      */
     override fun createLimits(levelWorld: Int): ArrayList<Int> {
         var limit = ArrayList<Int>()

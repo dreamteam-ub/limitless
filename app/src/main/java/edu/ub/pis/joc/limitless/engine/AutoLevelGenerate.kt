@@ -31,10 +31,10 @@ class AutoLevelGenerate {
     var firstRound = true
     var ai = ArtificialIntelligence()
 
-    /*
+    /**
     Funció que ens permetrà crear els paràmetres d'un enemic, com el seu tipus(GHOST, BOMB..),
     la seva posició, comportament, temps en el joc, etc.
-    @return : ArrayList<Any>
+    *@return : ArrayList<Any>
      */
 
     fun generateEnemy(): ArrayList<Any> {
@@ -64,12 +64,12 @@ class AutoLevelGenerate {
         return listOfEnemyParams
     }
 
-    /*
+    /**
     Amb aquesta funcio podrem crear facilment els enemics de les stages preeliminars del mode infinit
     que faran que sigui un joc més progressiu i no tant agressiu al començament.
-    @params : String
+    *@params : String
 
-    @return : ArrayList<Any>
+    *@return : ArrayList<Any>
      */
 
     fun generateEnemiesInPreviousStages(str: String): ArrayList<Any> {
@@ -100,10 +100,10 @@ class AutoLevelGenerate {
 
     }
 
-    /*
+    /**
     Aquesta funció ens permetrà crear els parametres de la Coin (posició, valor, etc)
 
-    @return : ArrayList<Any>
+    *@return : ArrayList<Any>
      */
     fun generateCoins(): ArrayList<Any> {
 
@@ -121,11 +121,11 @@ class AutoLevelGenerate {
         return listOfCoinParams
 
     }
-    /*
+    /**
     Funció que ens permetrà generar els limits de cada stage de forma aleatòria, però controlada
     entre uns valors.
 
-    @return ArrayList<Int>
+    *@return ArrayList<Int>
      */
 
     fun generateAutoLimits(): ArrayList<Int> {
@@ -151,20 +151,20 @@ class AutoLevelGenerate {
         }
     }
 
-    /*
+    /**
     Aquesta funció ens permetrà controlar el valor que adquireixen les monedes, d'aquesta manera,
     no sortiran valors que no tinguin res a veure i seràn lògics en relació als límits que
     apareixen en aquell stage.
 
-    @return : Int
+    *@return : Int
      */
     fun generateCoinValues() : Int{
-        if (firstRound){
+        if (firstRound){    // facilitarem a l'usuari el primer valor per a que no hi hagi errors
             var valCoinFirst = limitLow
             firstRound = false
             return valCoinFirst
         }
-        var valCoin = (Random.nextInt(-limitLow / 2,  limitHigh / 2))
+        var valCoin = (Random.nextInt(-limitLow / 2,  limitHigh / 3))
 
         if (valCoin == 0) {valCoin++}
 
@@ -199,13 +199,13 @@ class AutoLevelGenerate {
             }
     }
 
-    /*
+    /**
     Funcio que farà que no apareixin monedes una sobre de l'altre, se'ns indicarà si
     estan en la mateixa posició o no
-    @params : ArrayList<Coin>
-    @params : Coin
+    *@params : ArrayList<Coin>
+    *@params : Coin
 
-    @return : Boolean
+    *@return : Boolean
      */
     fun reallocateCoin(listCoin: ArrayList<Coin>, coin: Coin): Boolean {
         var same = false
@@ -227,13 +227,13 @@ class AutoLevelGenerate {
         }
         return same
     }
-    /*
+    /**
     Funcio que farà que no apareixin bombes una sobre de l'altre, se'ns indicarà si
     estan en la mateixa posició o no
-    @params : ArrayList<Enemy>
-    @params : Bomb
+    *@params : ArrayList<Enemy>
+    *@params : Bomb
 
-    @return : Boolean
+    *@return : Boolean
      */
     fun reallocateBombs(listBomb: ArrayList<Enemy>, enemy: Enemy): Boolean {
         var same = false
@@ -257,14 +257,14 @@ class AutoLevelGenerate {
         }
         return same
     }
-    /*
+    /**
     Funcio que farà que no apareixin bombes sombre monedes, se'ns indicarà si
     estan en la mateixa posició o no
-    @params : ArrayList<Enemy>
-    @params : Coin
-    @params : ArrayList<Coin>
+    *@params : ArrayList<Enemy>
+    *@params : Coin
+    *@params : ArrayList<Coin>
 
-    @return : Boolean
+    *@return : Boolean
      */
     fun reallocCoinsAndBombs(coin: Coin , listOfEnemy: ArrayList<Enemy>, listCoin: ArrayList<Coin>) : Boolean {
         var same = false
