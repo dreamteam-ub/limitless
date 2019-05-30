@@ -68,7 +68,6 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
                 firebaseAuthWithGoogle(account)
             } catch (e: ApiException) {
                 // Google Sign In failed
-                Log.w(TAG, "Google sign in failed", e)
                 customToast(
                     getString(R.string.fail_google_auth),
                     Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL,0,100).show()
@@ -78,13 +77,11 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
     }
 
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.id!!)
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithCredential:success")
                     val user = mAuth.currentUser
                     setAuth(user)
                 } else {
@@ -116,14 +113,12 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
                 if (task.isSuccessful) {
                     val doc = task.result!!
                     if (doc.exists()) {
-                        Log.d(TAG, "User document: " + doc.data!!)
                         customImageToast(
                             R.drawable.world4_select, getString(R.string.ok_auth) + "\n" + doc.data!![USER_NAME],
                             Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL,0,100).show()
                         val myUser = doc.toObject(User::class.java)!!
                         Data.user = myUser
                     } else {
-                        Log.d(TAG, "No such document")
                         intent = Intent(this, WelcomeActivity::class.java)
                     }
                     startActivity(intent)

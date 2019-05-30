@@ -126,9 +126,9 @@ class LevelPractice(
                 auxEnemies.add(tmp)
                 tmp = createComplexEnemy(DEMON_CHAR, 0, (screenWidth * 1.3).toInt(), 0, 100, 3)
                 auxEnemies.add(tmp)
-                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1).toInt(), (screenWidth * 0.3).toInt(), 1, 100, 3)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 0.3).toInt(), 1, 100, 3)
                 auxEnemies.add(tmp)
-                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1).toInt(), (screenWidth * 1.3).toInt(), 1, 100, 3)
+                tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 1), (screenWidth * 1.3).toInt(), 1, 100, 3)
                 auxEnemies.add(tmp)
                 tmp = createComplexEnemy(DEMON_CHAR, (screenWidth * 0.2).toInt(), 0, 2, 100, 1)
                 auxEnemies.add(tmp)
@@ -223,9 +223,7 @@ class LevelPractice(
 
 
     @Synchronized override fun buildEnemies(levelWorld: Int, time: Long) {
-        //Log.d("TIME", (time).toInt().toString())
-        //Log.d("CONTADOR ENEMIGOS", enemyCounter.toString())
-        var listOfTmpEnemies = ArrayList<Enemy>()
+        val listOfTmpEnemies = ArrayList<Enemy>()
         var tmp: Enemy
         when (levelWorld) {
             0 -> {
@@ -261,7 +259,7 @@ class LevelPractice(
                     end_game = true
 
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfEnemyCharacters.size){
                     if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
@@ -303,7 +301,7 @@ class LevelPractice(
                 }else if(time == 500L){
                     end_game=true
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfEnemyCharacters.size){
                     if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
@@ -391,7 +389,7 @@ class LevelPractice(
                     listOfEnemyCharacters.clear()
                     end_game=true
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfEnemyCharacters.size){
                     if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
@@ -401,8 +399,6 @@ class LevelPractice(
                 }
             }
             3 -> {
-                var tmpEye:Eye
-                var tmpEye2:Eye
                 if (time == 0L) {
                     tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 20,0)
                     listOfTmpEnemies.add(tmp)
@@ -438,7 +434,7 @@ class LevelPractice(
                     listOfEnemyCharacters.clear()
                     end_game=true
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfEnemyCharacters.size){
                     if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
@@ -448,8 +444,6 @@ class LevelPractice(
                 }
             }
             4 -> {
-                var tmpEye : Eye
-                var tmpEye2 : Eye
                 if (time == 0L) {
                     tmp = createComplexEnemy(EYE_CHAR, (screenWidth * 0.5).toInt(), 0, 2, 20,2)
                     listOfTmpEnemies.add(tmp)
@@ -481,7 +475,7 @@ class LevelPractice(
                     listOfEnemyCharacters.clear()
                     end_game=true
                 }
-                var contador : Int = 0
+                var contador= 0
                 while(contador < listOfEnemyCharacters.size){
                     if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
@@ -491,7 +485,6 @@ class LevelPractice(
                 }
             }
             5 -> {
-                var tmpEye : Eye
                 if (time == 0L) {
                     tmp = createComplexEnemy(EYE_CHAR, 0, (screenHeight * 0.5).toInt(), 0, 100,4)
                     listOfTmpEnemies.add(tmp)
@@ -527,7 +520,7 @@ class LevelPractice(
                     listOfEnemyCharacters.clear()
                     end_game=true
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfEnemyCharacters.size){
                     if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
@@ -578,7 +571,7 @@ class LevelPractice(
                     listOfEnemyCharacters.clear()
                     end_game=true
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfEnemyCharacters.size){
                     if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
@@ -632,7 +625,7 @@ class LevelPractice(
                     listOfEnemyCharacters.clear()
                     end_game=true
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfEnemyCharacters.size){
                     if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
@@ -705,7 +698,7 @@ class LevelPractice(
                     end_game=true
                 }
 
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfEnemyCharacters.size){
                     if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
@@ -789,7 +782,7 @@ class LevelPractice(
                     listOfEnemyCharacters.clear()
                     end_game=true
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfEnemyCharacters.size){
                     if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
@@ -873,7 +866,7 @@ class LevelPractice(
                     listOfEnemyCharacters.clear()
                     end_game=true
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfEnemyCharacters.size){
                     if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
@@ -1011,7 +1004,7 @@ class LevelPractice(
                     listOfEnemyCharacters.clear()
                     end_game=true
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfEnemyCharacters.size){
                     if(listOfEnemyCharacters.get(contador).dissapearTimer == -1){
                         listOfEnemyCharacters.removeAt(contador)
@@ -1029,8 +1022,6 @@ class LevelPractice(
     }
 
     @Synchronized override fun buildCoins(levelWorld: Int, time: Long) {
-        //Log.d("TIME", (time).toInt().toString())
-        //Log.d("CONTADOR MONEDAS", coinCounter.toString())
 
         var tmpListOfCoins: ArrayList<Coin> = ArrayList()
 
@@ -1050,7 +1041,7 @@ class LevelPractice(
                     tmpListOfCoins = arrayListOf(
                         createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.7).toInt(), -8,dissapearTimer = 150))
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfCoins.size){
                     if(listOfCoins.get(contador).dissapearTimer == 0){
                         listOfCoins.removeAt(contador)
@@ -1079,7 +1070,7 @@ class LevelPractice(
                         createCoin("Coin", (screenWidth * 0.2).toInt(), (screenHeight * 0.2).toInt(),7 ,dissapearTimer = 150),
                         createCoin("Coin", (screenWidth * 0.8).toInt(), (screenHeight * 0.65).toInt(), -4,dissapearTimer = 150))
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfCoins.size){
                     if(listOfCoins.get(contador).dissapearTimer == 0){
                         listOfCoins.removeAt(contador)
@@ -1140,7 +1131,7 @@ class LevelPractice(
                         createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.7).toInt(), 2,dissapearTimer = 150))
                 }
 
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfCoins.size){
                     if(listOfCoins.get(contador).dissapearTimer == 0){
                         listOfCoins.removeAt(contador)
@@ -1175,7 +1166,7 @@ class LevelPractice(
                         createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.5).toInt(), 8,dissapearTimer = 150))
                 }
 
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfCoins.size){
                     if(listOfCoins.get(contador).dissapearTimer == 0){
                         listOfCoins.removeAt(contador)
@@ -1214,7 +1205,7 @@ class LevelPractice(
                         createCoin("Coin", (screenWidth * 0.3).toInt(), (screenHeight * 0.5).toInt(), 4,dissapearTimer = 150),
                         createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.5).toInt(), -6,dissapearTimer = 150))
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfCoins.size){
                     if(listOfCoins.get(contador).dissapearTimer == 0){
                         listOfCoins.removeAt(contador)
@@ -1269,7 +1260,7 @@ class LevelPractice(
                         createCoin("Coin", (screenWidth * 0.7).toInt(), (screenHeight * 0.7).toInt(), -4,dissapearTimer = 200))
 
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfCoins.size){
                     if(listOfCoins.get(contador).dissapearTimer == 0){
                         listOfCoins.removeAt(contador)
@@ -1323,7 +1314,7 @@ class LevelPractice(
 
                 }
 
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfCoins.size){
                     if(listOfCoins.get(contador).dissapearTimer == 0){
                         listOfCoins.removeAt(contador)
@@ -1437,7 +1428,7 @@ class LevelPractice(
 
                 }
 
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfCoins.size){
                     if(listOfCoins.get(contador).dissapearTimer == 0){
                         listOfCoins.removeAt(contador)
@@ -1530,7 +1521,7 @@ class LevelPractice(
                         createCoin("Coin", (screenWidth * 0.6).toInt(), (screenHeight * 0.3).toInt(), -28 ,dissapearTimer = 100))
 
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfCoins.size){
                     if(listOfCoins.get(contador).dissapearTimer == 0){
                         listOfCoins.removeAt(contador)
@@ -1591,7 +1582,7 @@ class LevelPractice(
                         createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.8).toInt(),  -4,dissapearTimer = 150))
 
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfCoins.size){
                     if(listOfCoins.get(contador).dissapearTimer == 0){
                         listOfCoins.removeAt(contador)
@@ -1654,7 +1645,7 @@ class LevelPractice(
                         createCoin("Coin", (screenWidth * 0.5).toInt(), (screenHeight * 0.5).toInt(), 10,dissapearTimer = 200))
 
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfCoins.size){
                     if(listOfCoins.get(contador).dissapearTimer == 0){
                         listOfCoins.removeAt(contador)
@@ -1729,7 +1720,7 @@ class LevelPractice(
 
 
                 }
-                var contador : Int = 0
+                var contador = 0
                 while(contador < listOfCoins.size){
                     if(listOfCoins.get(contador).dissapearTimer == 0){
                         listOfCoins.removeAt(contador)
@@ -1746,7 +1737,7 @@ class LevelPractice(
 
     override fun createLimits(levelWorld: Int): ArrayList<Int> {
 
-        var listOfLimits: ArrayList<Int> = ArrayList()
+        val listOfLimits: ArrayList<Int> = ArrayList()
 
         when (levelWorld) {
             0 -> {

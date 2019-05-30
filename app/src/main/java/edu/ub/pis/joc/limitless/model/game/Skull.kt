@@ -22,9 +22,7 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,assets:
     var childDissapearTimeSet = false
 
     init {
-        var degrees : Float
-        Log.d("SKULL WITH BEHAVIOUR", behaviour.toString())
-        Log.d("SKULL WITH BEHAVIOUR", concreteBehaviour.toString())
+        val degrees : Float
         when(concreteBehaviour){
             0->{
                 degrees = 0f
@@ -234,8 +232,8 @@ class Skull(image: ArrayList<Bitmap>, posX: Int, posY: Int,childList:Int,assets:
 
     fun generateChildList(): ArrayList<SkullLaser>{
 
-        var tmp : ArrayList<SkullLaser> = ArrayList()
-        var enemy : SkullLaser = characterFactory.createCharacter(SKULL_LASER,this.x,this.y, concreteBehaviour,w,h) as SkullLaser
+        val tmp : ArrayList<SkullLaser> = ArrayList()
+        val enemy : SkullLaser = characterFactory.createCharacter(SKULL_LASER,this.x,this.y, concreteBehaviour,w,h) as SkullLaser
         tmp.add(enemy)
 
         return tmp

@@ -15,8 +15,8 @@ import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.presenter.SkinSelectorPresenter
 
-const val MEDAL_1 = 900
-const val MEDAL_2 = 1200
+const val MEDAL_1 = 180
+const val MEDAL_2 = 300
 
 class SkinSelectorActivity : FullScreenActivity(), SkinSelectorPresenter.View {
 

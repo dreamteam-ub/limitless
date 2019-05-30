@@ -2,12 +2,15 @@ package edu.ub.pis.joc.limitless.model.game
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.util.Log
-import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenHeight
-import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenWidth
 import java.lang.Math.*
 
-class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int,wDemon:Int,hDemon:Int) : Enemy(image, posX, posY, behaviour) {
+class DemonFireColumn(
+    image: ArrayList<Bitmap>,
+    posX: Int,
+    posY: Int,
+    behaviour: Int,
+    var hDemon: Int
+) : Enemy(image, posX, posY, behaviour) {
 
     override var w: Int = CharacterData.wDemonFire[0]
     override var h: Int = CharacterData.hDemonFire[0]
@@ -17,7 +20,6 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
 
     override var concreteBehaviour = behaviour
 
-    var hDemon = hDemon
     var xDemon = 0
     var yDemon = 0
 
@@ -28,7 +30,6 @@ class DemonFireColumn(image:ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:I
     var contador: Int = 0
 
     override fun update() {
-        Log.d("H DEMON",hDemon.toString())
         dissapearTimer--
         x = (xDemon + ((hDemon/2)*sin(((degrees)*PI)/180))*1.5).toInt()
         y = (yDemon - ((hDemon/2)*cos(((degrees)*PI)/180))*1.5).toInt()

@@ -32,7 +32,7 @@ class LevelInfinite(assets: AssetManager,
      */
     @Synchronized
     override fun buildEnemies(levelWorld: Int, time: Long) {
-        var listOfTmpEnemies = ArrayList<Enemy>()
+        val listOfTmpEnemies = ArrayList<Enemy>()
         when (levelWorld) {
             -1 -> {
 
@@ -98,7 +98,7 @@ class LevelInfinite(assets: AssetManager,
                     var parameters : ArrayList<Any>
                     for (i in 0 until autoLvl.spawnEnemyFreq){
                         parameters = autoLvl.generateEnemiesInPreviousStages(EYE_CHAR)
-                        var eye : Eye = (createComplexEnemy(
+                        val eye : Eye = (createComplexEnemy(
                             parameters[0].toString(),
                             parameters[1].toString().toInt(),
                             parameters[2].toString().toInt(),
@@ -190,7 +190,7 @@ class LevelInfinite(assets: AssetManager,
                             }
                             listOfTmpEnemies.add(enemy)
                         } else if(parameters[0].toString()== EYE_CHAR) {
-                            var eye : Eye = (createComplexEnemy(
+                            val eye : Eye = (createComplexEnemy(
                                 parameters[0].toString(),
                                 parameters[1].toString().toInt(),
                                 parameters[2].toString().toInt(),
@@ -221,7 +221,6 @@ class LevelInfinite(assets: AssetManager,
                                             parameters[4].toString().toInt(),
                                             parameters[5].toString().toInt()
                                         )) as Skull
-                                        Log.d("SKULLREALLOC", "REALLOC")
                                     }
                                     skullCtr++
                                     listOfTmpEnemies.add(skull)
@@ -288,16 +287,14 @@ class LevelInfinite(assets: AssetManager,
      */
     @Synchronized
     override fun buildCoins(levelWorld: Int, time: Long) {
-        //Log.d("TIME", (time).toInt().toString())
-        //Log.d("CONTADOR MONEDAS", coinCounter.toString())
-        var tmpListOfCoins: ArrayList<Coin> = ArrayList()
+        val tmpListOfCoins: ArrayList<Coin> = ArrayList()
         var coin : Coin
         when (levelWorld) {
             -1 -> {
                 if (!infiniteMode && coinSpawnInf){
                     listOfCoins.clear()
                     for (j in 0 until autoLvl.spawnCoinFreq) {
-                        var parameters = autoLvl.generateCoins()
+                        val parameters = autoLvl.generateCoins()
 
                         coin = createCoin(
                             parameters[0].toString(),
@@ -308,14 +305,13 @@ class LevelInfinite(assets: AssetManager,
                             parameters[4].toString().toInt()
                         )
 
-                        //Log.d("COINS CREATED", parameters[3].toString())
                         while (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
                             if (coin.value > 0){
                                 autoLvl.positiveCoins--
                             }else if (coin.value < 0){
                                 autoLvl.negativeCoins--
                             }
-                            var parameters = autoLvl.generateCoins()
+                            val parameters = autoLvl.generateCoins()
                             coin = createCoin(
                                 parameters[0].toString(),
                                 parameters[1].toString().toInt(),
@@ -344,7 +340,7 @@ class LevelInfinite(assets: AssetManager,
                 else if (time!= 0L && coinSpawnInf && infiniteMode) {
                     listOfCoins.clear()
                     for (j in 0 until autoLvl.spawnCoinFreq) {
-                        var parameters = autoLvl.generateCoins()
+                        val parameters = autoLvl.generateCoins()
 
                         coin = createCoin(
                             parameters[0].toString(),
@@ -354,14 +350,13 @@ class LevelInfinite(assets: AssetManager,
                             Typeface.createFromAsset(assets, FONTS_ASSETS + File.separator + FONT_COINS),
                             parameters[4].toString().toInt()
                         )
-                        //Log.d("COINS CREATED", parameters[3].toString())
                         while (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
                             if (coin.value > 0){
                                 autoLvl.positiveCoins--
                             }else if (coin.value < 0){
                                 autoLvl.negativeCoins--
                             }
-                            var parameters = autoLvl.generateCoins()
+                            val parameters = autoLvl.generateCoins()
                             coin = createCoin(
                                 parameters[0].toString(),
                                 parameters[1].toString().toInt(),
@@ -370,7 +365,6 @@ class LevelInfinite(assets: AssetManager,
                                 Typeface.createFromAsset(assets, FONTS_ASSETS + File.separator + FONT_COINS),
                                 parameters[4].toString().toInt()
                             )
-                            Log.d("REALLOCATE","REALLOCATION COIN")
                         }
                         tmpListOfCoins.add(coin)
                         tmpListOfCoins[j].appearTime = Random.nextLong(time, time+150)
@@ -379,7 +373,7 @@ class LevelInfinite(assets: AssetManager,
                     }
                     coinSpawnInf = false
                 }
-                var contador: Int = 0
+                var contador = 0
                 while (contador < listOfCoins.size) {
                     if (listOfCoins[contador].dissapearTimer == 0) {
                         listOfCoins.removeAt(contador)
@@ -399,7 +393,7 @@ class LevelInfinite(assets: AssetManager,
     *@return : ArrayList<Int>
      */
     override fun createLimits(levelWorld: Int): ArrayList<Int> {
-        var limit = ArrayList<Int>()
+        val limit = ArrayList<Int>()
         if (!infiniteMode){
             when(infiniteStage){
                 0 -> {
@@ -449,15 +443,12 @@ class LevelInfinite(assets: AssetManager,
             }
         }
         else{
-            var lims = (autoLvl.generateAutoLimits())
+            val lims = (autoLvl.generateAutoLimits())
             limits.min = lims[0]
             limits.max = lims[1]
-            Log.d("limits", lims[0].toString())
-            Log.d("limits2", lims[1].toString())
 
             return lims
         }
-        Log.d("INFstage", infiniteStage.toString())
         return limit
     }
 }

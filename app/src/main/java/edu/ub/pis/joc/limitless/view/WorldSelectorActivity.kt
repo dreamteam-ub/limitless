@@ -229,13 +229,11 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
 
     }
     override fun changeClearedStage(world: Int, level:Int) {
-        var currentLevel = Data.getCurrenLevel()
+        val currentLevel = Data.getCurrenLevel()
         var totalLevel = Data.getTotalLevel()
         if(totalLevel == 11){
             totalLevel = 12
         }
-        Log.d("CURRENT LEVEL", currentLevel.toString())
-        Log.d("TOTAL LEVEL", totalLevel.toString())
 
         if(currentLevel< totalLevel){
             cleared_stage.setText(R.string.cleared)

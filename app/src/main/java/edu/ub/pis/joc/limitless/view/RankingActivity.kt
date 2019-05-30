@@ -76,10 +76,8 @@ class RankingActivity : FullScreenActivity(), RankingPresenter.View {
         )
         rankListener = rank.addSnapshotListener { docSnapshot, exception ->
             if (exception != null) {
-                Log.w(TAG, "Listen failed.", exception)
             }
             if (docSnapshot != null && !docSnapshot.isEmpty) {
-                Log.d(TAG, "Current data: " + docSnapshot.documents)
                 val ranking : ArrayList<Ranking> = ArrayList()
                 for ((i, u) in docSnapshot.documents.withIndex()) {
                     val user = u.toObject(User::class.java)
@@ -92,7 +90,6 @@ class RankingActivity : FullScreenActivity(), RankingPresenter.View {
                 }
                 presenter.updateRanking(ranking)
             } else {
-                Log.d(TAG, "Current data: null")
             }
         }
         // SYNC DB END

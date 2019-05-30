@@ -137,7 +137,6 @@ class Demon(image: ArrayList<Bitmap>, posX: Int, posY: Int, childList:Int, asset
         var enemy : Enemy
         when(childListConditional){
             0->{
-                Log.d("H DEMON PARENT", h.toString())
                 enemy = characterFactory.createCharacter(DEMON_FIRE_COLUMN,this.x,this.y-150,0,w,h) as DemonFireColumn
                 enemy.dissapearTimer = 200
                 enemy.xDemon = x

@@ -24,7 +24,7 @@ import java.util.*
 
 
 @Suppress("DEPRECATION")
-class GameEngine(private var contextEngine: Context, var mode: Boolean, var versus: Boolean, var round : Int = 0) {
+class GameEngine(private var contextEngine: Context, var mode: Boolean, var versus: Boolean, round : Int = 0) {
 
     var assets = contextEngine.resources.assets
 
@@ -60,7 +60,6 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
             level = LevelPractice(assets, listOfEnemyCharacters, listOfCoins, currentLevelWorld)
         }
 
-        Log.d("CURRENT LEVEL", currentLevelWorld.toString())
         // Reproductor de música en el joc
         soundPlayer = MediaPlayer()
 
@@ -211,7 +210,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         var updateDb = false
         val dead = player.imageList[0].isRecycled
         val gOverPoints = !(player.accumulate >= scoreLimits[0] && player.accumulate <= scoreLimits[1])
-        var score: Int = player.accumulate
+        val score: Int = player.accumulate
 
         soundPlayer.release()
         if (dead) {

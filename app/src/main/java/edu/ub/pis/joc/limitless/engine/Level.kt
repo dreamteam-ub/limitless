@@ -46,7 +46,6 @@ abstract class Level(
         font: Typeface = Typeface.createFromAsset(assets, FONTS_ASSETS + File.separator + FONT_COINS),
         dissapearTimer: Int
     ): Coin {
-        Log.d("AÑADE MONEDA", character)
         val coin = characterFactory.createCharacter(character, posX, posY) as Coin
         coin.value = value
         coin.paint.typeface = font
@@ -70,7 +69,6 @@ abstract class Level(
         behaviour: Int,
         dissapearTimer: Int
     ): Enemy {
-        Log.d("AÑADE ENEMY", character)
         val enemy = characterFactory.createCharacter(character, posX, posY, behaviour) as Enemy
         enemy.dissapearTimer = dissapearTimer
         return enemy
@@ -94,7 +92,6 @@ abstract class Level(
         dissapearTimer: Int,
         childList : Int
     ): Enemy {
-        Log.d("AÑADE COMPLEX ENEMY", character)
         val enemy = characterFactory.createComplexCharacter(character, posX, posY,childList, assets, behaviour) as Enemy
         enemy.dissapearTimer = dissapearTimer
         return enemy

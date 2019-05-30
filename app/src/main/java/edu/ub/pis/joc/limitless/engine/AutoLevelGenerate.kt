@@ -39,7 +39,7 @@ class AutoLevelGenerate {
 
     fun generateEnemy(): ArrayList<Any> {
 
-        var listOfEnemyParams: ArrayList<Any> = ArrayList()
+        val listOfEnemyParams: ArrayList<Any> = ArrayList()
 
         val enemyString = listOfEnemies[(0 until listOfEnemies.size).random()]
 
@@ -74,7 +74,7 @@ class AutoLevelGenerate {
 
     fun generateEnemiesInPreviousStages(str: String): ArrayList<Any> {
 
-        var listOfEnemyParamsStage: ArrayList<Any> = ArrayList()
+        val listOfEnemyParamsStage: ArrayList<Any> = ArrayList()
 
         val enemyString = str
 
@@ -146,7 +146,7 @@ class AutoLevelGenerate {
                 limitLow = lastLow
                 limitHigh = lastHigh
             }
-            var lims = arrayListOf(limitLow, limitHigh)
+            val lims = arrayListOf(limitLow, limitHigh)
             return lims
         }
     }
@@ -160,7 +160,7 @@ class AutoLevelGenerate {
      */
     fun generateCoinValues() : Int{
         if (firstRound){    // facilitarem a l'usuari el primer valor per a que no hi hagi errors
-            var valCoinFirst = limitLow
+            val valCoinFirst = limitLow
             firstRound = false
             return valCoinFirst
         }
@@ -214,10 +214,9 @@ class AutoLevelGenerate {
         }
 
         for (i in 0 until listCoin.size) {
-            var tmpcoin = listCoin[i]
+            val tmpcoin = listCoin[i]
             if (coin.rect.intersects(tmpcoin.rect.left,tmpcoin.rect.top,tmpcoin.rect.right,tmpcoin.rect.bottom)
                 || tmpcoin.rect.intersects(coin.rect.left,coin.rect.top,coin.rect.right,coin.rect.bottom)) {
-                Log.d("INTERSECTCOIN","coin")
                 listCoin.remove(coin)
                 same = true
             } else if (coin.x == tmpcoin.x && coin.y == tmpcoin.y) {
@@ -242,15 +241,13 @@ class AutoLevelGenerate {
                 return same
             }
             for (i in 0 until listBomb.size) {
-                var tmpBomb = listBomb[i]
+                val tmpBomb = listBomb[i]
                 if (Rect.intersects(enemy.rect, tmpBomb.rect)) {
                     listBomb.remove(enemy)
-                    Log.d("REALTRUEBOMB", i.toString())
                     same = true
 
                 } else if (enemy.x == tmpBomb.x && enemy.y == tmpBomb.y) {
                     listBomb.remove(enemy)
-                    Log.d("REALTRUEBOMB2", i.toString())
                     same = true
                 }
             }
@@ -270,15 +267,13 @@ class AutoLevelGenerate {
         var same = false
         for(i in 0 until listOfEnemy.size){
             if (listOfEnemy[i] is Bomb){
-                var tmpBomb = listOfEnemy[i]
+                val tmpBomb = listOfEnemy[i]
                 if (Rect.intersects(coin.rect, tmpBomb.rect)) {
                     listCoin.remove(coin)
-                    Log.d("REALTRUEBOMBCOIN", i.toString())
                     same = true
 
                 } else if (coin.x == tmpBomb.x && coin.y == tmpBomb.y) {
                     listCoin.remove(coin)
-                    Log.d("REALTRUEBOMBCOIN2", i.toString())
                     same = true
                 }
 

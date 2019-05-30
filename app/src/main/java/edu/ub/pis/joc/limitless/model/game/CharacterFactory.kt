@@ -4,7 +4,6 @@ import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Rect
-import android.util.Log
 import edu.ub.pis.joc.limitless.view.IMG_ASSETS
 import java.io.BufferedInputStream
 import java.io.File
@@ -681,7 +680,7 @@ class CharacterFactory(private var assets: AssetManager) : FactoryPattern {
                     imgSkins.add("android_skin.png")
                 }
 
-                var sprite_player: String
+                val sprite_player: String
                 if(Data.user.skinSelected!! < imgSkins.size){
                     sprite_player = imgSkins[Data.user.skinSelected!!]
                 } else {
@@ -732,8 +731,7 @@ class CharacterFactory(private var assets: AssetManager) : FactoryPattern {
                 EyeProjectile(arrayImatgesEyeProyectile, posX, posY, behaviour)
             }
             DEMON_FIRE_COLUMN -> {
-                Log.d("HPARENT", hParent.toString())
-                DemonFireColumn(arrayImatgesDemonColumn, posX, posY, behaviour, wParent, hParent)
+                DemonFireColumn(arrayImatgesDemonColumn, posX, posY, behaviour, hParent)
             }
             else -> {
                 null
