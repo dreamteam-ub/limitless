@@ -668,7 +668,7 @@ class CharacterFactory(private var assets: AssetManager) : FactoryPattern {
                     "demon_skin.png",
                     "skull_skin.png"
                 )
-
+                
                 if (Data.user.survived!! >= MEDAL_1) {
                     imgSkins.add("pro2_skin.png")
                 }
@@ -681,8 +681,13 @@ class CharacterFactory(private var assets: AssetManager) : FactoryPattern {
                     imgSkins.add("android_skin.png")
                 }
 
-                val sprite_player = imgSkins[Data.user.skinSelected!!]
-
+                var sprite_player: String
+                if(Data.user.skinSelected!! < imgSkins.size){
+                    sprite_player = imgSkins[Data.user.skinSelected!!]
+                } else {
+                    sprite_player = imgSkins[imgSkins.size-1]
+                }
+                
                 arrayImatgesPlayer = arrayListOf(
                     BitmapFactory.decodeStream(
                         BufferedInputStream(assets.open(IMG_ASSETS + File.separator + sprite_player)),

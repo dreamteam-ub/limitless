@@ -28,7 +28,6 @@ class OptionsPresenter(var view: OptionsPresenter.View) {
 
     fun enableAndroidChar(tmp: Boolean) {
         val setting = !tmp
-        Data.user.skinSelected = 0
         db.collection(USERS).document(mAuth.currentUser!!.uid).update(ANDROIDCHAR, setting)
         db.collection(USERS).document(mAuth.currentUser!!.uid).update(SKINSELECTED, Data.user.skinSelected)
         view.updateChar(setting)
