@@ -4,6 +4,7 @@ import android.graphics.Rect
 import android.util.Log
 import edu.ub.pis.joc.limitless.model.game.*
 import java.util.*
+import kotlin.math.min
 import kotlin.random.Random
 
 class AutoLevelGenerate {
@@ -51,7 +52,15 @@ class AutoLevelGenerate {
         listOfEnemyParams.add(coords[0])
         listOfEnemyParams.add(coords[1])
         listOfEnemyParams.add(behaviour)
-        listOfEnemyParams.add((Random.nextLong(minTimeInGame, maxTimeInGame)))
+        if (enemyString == EYE_CHAR) {
+            if(behaviour == 0 || behaviour == 1){
+                listOfEnemyParams.add(min(100,(Random.nextLong(minTimeInGame, maxTimeInGame))))
+            } else {
+                listOfEnemyParams.add(min(150,(Random.nextLong(minTimeInGame, maxTimeInGame))))
+            }
+        } else {
+            listOfEnemyParams.add((Random.nextLong(minTimeInGame, maxTimeInGame)))
+        }
 
         if (enemyString == EYE_CHAR) {
             listOfEnemyParams.add(ai.pickABehaviour(EYE_PROJECTILE))

@@ -87,7 +87,6 @@ class LevelInfinite(assets: AssetManager,
 
                     }
 
-                    //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }else if (time == 600L) {   // Tercera stage eyes
                     infiniteStage = 2
                     newStage = true
@@ -110,7 +109,6 @@ class LevelInfinite(assets: AssetManager,
                         listOfTmpEnemies[i].appearTime = Random.nextLong(600L, 650L)
 
                     }
-                    //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }else if (time == 900L) {   // quarta stage demons
                     infiniteStage = 3
                     newStage = true
@@ -134,7 +132,6 @@ class LevelInfinite(assets: AssetManager,
                         listOfTmpEnemies[i].appearTime = Random.nextLong(900L, 1150L)
 
                     }
-                    //HARDCODEAR MAXIMO Y MINIMO PUNTUACION
                 }else if (time == 1200L) { //cinquena stage skulls
                     infiniteStage = 4
                     newStage = true
