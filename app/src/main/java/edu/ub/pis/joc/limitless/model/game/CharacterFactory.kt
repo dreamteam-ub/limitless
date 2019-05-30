@@ -155,9 +155,19 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
         )
 
         var sprite_player = "main_character.png"
-        if (Data.user.androidchar != null && Data.user.androidchar!!) {
-            sprite_player = "android_character.png"
+
+        if(Data.currentSkin == 1){
+            sprite_player = "ghost_skin.png"
+        } else if(Data.currentSkin == 2){
+            sprite_player = "eye_skin.png"
+        } else if(Data.currentSkin == 3){
+            sprite_player = "demon_skin.png"
+        } else if(Data.currentSkin == 4){
+            sprite_player = "skull_skin.png"
+        } else if(Data.currentSkin == 5){
+            sprite_player = "android_skin.png"
         }
+
 
         arrayImatgesPlayer = arrayListOf(
             BitmapFactory.decodeStream(

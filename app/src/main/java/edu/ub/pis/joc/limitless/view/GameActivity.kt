@@ -92,9 +92,6 @@ class GameActivity : FullScreenActivity() {
             val player: String
             if (round == 0) {
                 icon = R.drawable.player_1
-                if (Data.user.androidchar != null && Data.user.androidchar!!) {
-                    icon = R.drawable.player_1_android
-                }
                 player = "1"
             } else {
                 icon = R.drawable.player_2

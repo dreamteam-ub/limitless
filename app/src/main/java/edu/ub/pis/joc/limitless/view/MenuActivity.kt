@@ -21,6 +21,7 @@ class MenuActivity : FullScreenActivity() {
     private lateinit var rankButton: ImageButton
     private lateinit var optButton: ImageButton
     private lateinit var infoButton: ImageButton
+    private lateinit var skinWindowButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +79,17 @@ class MenuActivity : FullScreenActivity() {
 
         adjustView(infoButton)
 
+        skinWindowButton = findViewById(R.id.skin_window_button)
+        skinWindowButton.setOnClickListener {
+            val gameModeInt = Intent(this, SkinSelector::class.java)
+            startActivity(gameModeInt)
+            skinWindowButton.isClickable = false
+        }
+
+        adjustView(skinWindowButton)
+
+
+
         setInSampleSizes()
 
 
@@ -89,6 +101,7 @@ class MenuActivity : FullScreenActivity() {
         rankButton.isClickable = true
         optButton.isClickable = true
         infoButton.isClickable = true
+        skinWindowButton.isClickable = true
     }
 
     /*

@@ -79,12 +79,6 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         userName = findViewById(R.id.userNameTv)
         ViewAdjuster.adjustView(userName)
 
-        if (Data.user.androidchar == null || !Data.user.androidchar!!) {
-            userName.setTextColor(ContextCompat.getColor(this, R.color.colorLiteBlue))
-        } else {
-            userName.setTextColor(ContextCompat.getColor(this, R.color.colorAndroid))
-        }
-
         userListener =
             db.collection(USERS).document(mAuth.currentUser!!.uid).addSnapshotListener { docSnapshot, exception ->
                 if (exception != null) {
@@ -129,18 +123,6 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         ViewAdjuster.adjustView(findViewById(R.id.music_options))
         ViewAdjuster.adjustView(findViewById(R.id.vibrate_options))
 
-        var clickcountUser : Int = 0
-        userName.setOnClickListener {
-            clickcountUser++
-            if (clickcountUser == 4) {
-                clickcountUser = 0
-                var tmp = true
-                if (Data.user.androidchar == null || Data.user.androidchar == false) {
-                    tmp = false
-                }
-                presenter.updateChar(tmp)
-            }
-        }
     }
 
     override fun onDestroy() {

@@ -19,7 +19,7 @@ class User : Serializable {
     var vibration: Boolean? = null
     var music: Int? = null
 
-    var androidchar: Boolean? = null
+    var skinSelected: Int? = 0
 
     constructor() {
     }
@@ -32,7 +32,7 @@ class User : Serializable {
         vibration: Boolean = true,
         music: Int = 100,
         tutorial: Int = 0,
-        androidchar : Boolean = false
+        skinSelected : Int = 0
     ) {
         this.userName = userName
         this.survived = survived
@@ -41,6 +41,6 @@ class User : Serializable {
         this.world = world
         this.level = level
         this.tutorial = tutorial
-        this.androidchar = androidchar
+        this.skinSelected = skinSelected
     }
 }

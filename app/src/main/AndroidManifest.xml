@@ -75,6 +75,10 @@
                 android:name=".view.WelcomeActivity"
                 android:screenOrientation="portrait">
         </activity>
+        <activity
+                android:name=".view.SkinSelector"
+                android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
