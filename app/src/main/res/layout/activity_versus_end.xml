@@ -13,17 +13,9 @@
             android:text="@string/p1_wins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/road_limitless" android:textSize="50dp"
+            style="@style/road_limitless" android:textSize="40dp"
             android:textAlignment="center" android:id="@+id/winners" android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"/>
-
-    <TextView
-            android:text="@string/ranking_lines"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ranking_lines_1" style="@style/road_limitless" android:textSize="40dp"
-            android:maxLines="1" android:gravity="center_horizontal" android:layout_gravity="center_horizontal"
-            android:textColor="@color/colorYellow"/>
+            android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"/>
 
     <LinearLayout
             android:orientation="horizontal"
@@ -37,7 +29,7 @@
                 android:text="@string/p1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/road_limitless" android:textSize="30dp"
+                style="@style/road_limitless" android:textSize="24dp"
                 android:textAlignment="textStart"
                 android:layout_marginEnd="30dp" android:id="@+id/first_pos" android:textColor="@color/colorYellow"
                 android:fontFamily="@font/roadrage"/>
@@ -63,7 +55,7 @@
                 android:text="@string/p2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/road_limitless" android:textSize="30dp"
+                style="@style/road_limitless" android:textSize="24dp"
                 android:textAlignment="textStart"
                 android:layout_marginEnd="30dp" android:id="@+id/second_pos" android:textColor="@color/colorYellow"
                 android:fontFamily="@font/roadrage"/>
@@ -89,7 +81,7 @@
                 android:text="@string/score1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/road_limitless" android:textSize="30dp"
+                style="@style/road_limitless" android:textSize="24dp"
                 android:textAlignment="textStart"
                 android:layout_marginEnd="30dp" android:id="@+id/score1_text" android:textColor="@color/colorYellow"
                 android:fontFamily="@font/roadrage"/>
@@ -114,7 +106,7 @@
                 android:text="@string/score2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/road_limitless" android:textSize="30dp"
+                style="@style/road_limitless" android:textSize="24dp"
                 android:textAlignment="textStart"
                 android:layout_marginEnd="30dp" android:id="@+id/score2_text" android:textColor="@color/colorYellow"
                 android:fontFamily="@font/roadrage"/>
@@ -129,22 +121,14 @@
     </LinearLayout>
 
 
-    <TextView
-            android:text="@string/ranking_lines"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/ranking_lines_2" style="@style/road_limitless" android:textSize="40dp"
-            android:maxLines="1" android:gravity="center_horizontal" android:textColor="@color/colorYellow"/>
-
     <ImageButton
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal"
-            android:layout_width="220dp"
+            android:layout_width="180dp"
             android:contentDescription="@string/retry_level"
             android:background="@android:color/transparent"
-            android:layout_height="60dp" app:srcCompat="@drawable/retry_button" android:id="@+id/retryButton_2PM"
+            android:layout_height="50dp" app:srcCompat="@drawable/retry_button" android:id="@+id/retryButton_2PM"
             android:layout_marginBottom="30dp" android:layout_margin="30dp"/>
 
     <ImageButton
@@ -152,8 +136,8 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/menu_button"
             android:layout_gravity="center_horizontal"
-            android:layout_width="220dp"
+            android:layout_width="180dp"
             android:background="@android:color/transparent"
-            android:layout_height="60dp" app:srcCompat="@drawable/menu" android:id="@+id/menuButton_2PM"/>
+            android:layout_height="50dp" app:srcCompat="@drawable/menu" android:id="@+id/menuButton_2PM"/>
 
 </LinearLayout>

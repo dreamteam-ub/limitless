@@ -21,7 +21,7 @@
             android:layout_width="wrap_content" android:textAlignment="center" android:layout_marginBottom="30dp"
             android:textColor="@color/colorWelcomeText"/>
     <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="130dp" app:srcCompat="@drawable/nickname_logo"
             android:id="@+id/logo_img"
             android:contentDescription="@string/app_name" android:adjustViewBounds="true"
@@ -43,9 +43,9 @@
     <ImageButton
             android:scaleType="fitXY"
             android:background="@android:color/transparent"
-            android:layout_height="100dp" app:srcCompat="@drawable/go_button"
+            android:layout_height="80dp" app:srcCompat="@drawable/go_button"
             android:id="@+id/setname_btn"
             android:layout_gravity="center_horizontal"
-            android:contentDescription="@string/go" android:layout_width="wrap_content"
+            android:contentDescription="@string/go" android:layout_width="90dp"
             android:adjustViewBounds="true" android:cropToPadding="true"/>
 </LinearLayout>

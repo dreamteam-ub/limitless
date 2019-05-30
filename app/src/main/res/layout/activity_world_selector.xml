@@ -36,7 +36,7 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp">
+    >
 
         <ImageButton
                 android:scaleType="fitXY"
@@ -82,47 +82,54 @@
             android:background="@android:color/transparent"
             android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal" android:visibility="visible" android:clickable="false"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp" android:layout_marginTop="20dp"/>
 
     <TextView
             android:text="@string/world_one_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/world_one_title"
-            style="@style/road_limitless" android:layout_marginTop="20dp" android:textAlignment="center"
-            android:textSize="24dp" android:layout_gravity="center_horizontal"/>
+            style="@style/road_limitless" android:textAlignment="center"
+            android:textSize="24dp" android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"/>
 
-    <TextView
-            android:text="@string/first_level"
+    <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/level_title"
-            style="@style/cts_limitless" android:layout_marginTop="20dp" android:textAlignment="center"
-            android:textSize="24dp" android:layout_gravity="center_horizontal"/>
+            android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
+        <TextView
+                android:text="@string/first_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/level_title"
+                style="@style/cts_limitless" android:textAlignment="center"
+                android:textSize="20dp" android:layout_gravity="center_horizontal" android:layout_marginEnd="20dp"/>
+        <TextView
+                android:text="@string/not_cleared"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cleared_level"
+                style="@style/cts_limitless" android:textAlignment="center"
+                android:textSize="20dp" android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorWelcomeName"/>
+    </LinearLayout><![CDATA[
 
-    <TextView
-            android:text="@string/not_cleared"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cleared_level"
-            style="@style/cts_limitless" android:layout_marginTop="20dp" android:textAlignment="center"
-            android:textSize="24dp" android:layout_gravity="center_horizontal"
-            android:textColor="@color/colorWelcomeName"/>/>
+    />
 
+    ]]>
     <ImageButton
             android:layout_width="150dp"
             android:contentDescription="@string/play_button"
             android:background="@android:color/transparent"
             android:layout_height="50dp" app:srcCompat="@drawable/play" android:id="@+id/playButtonWorlds"
-            android:layout_marginTop="20dp" android:textAlignment="center" android:scaleType="fitXY"
-            android:layout_gravity="center_horizontal"/>
-
+            android:textAlignment="center" android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal" android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"/>
     <ImageButton
             android:layout_width="150dp"
             android:contentDescription="@string/tutorial"
             android:background="@android:color/transparent"
             android:layout_height="50dp" app:srcCompat="@drawable/tutorial" android:id="@+id/tutorialButton"
-            android:layout_marginTop="20dp" android:textAlignment="center" android:scaleType="fitXY"
+            android:textAlignment="center" android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

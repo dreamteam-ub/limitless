@@ -63,9 +63,6 @@ class VersusActivityEnd : FullScreenActivity() {
         score2_text = findViewById(R.id.score2_text)
         ViewAdjuster.adjustView(score2_text)
 
-        ViewAdjuster.adjustView(findViewById(R.id.ranking_lines_1))
-        ViewAdjuster.adjustView(findViewById(R.id.ranking_lines_2))
-
         score1_punt.text = Data.versus_score[0].toString()
         score2_punt.text = Data.versus_score[1].toString()
 

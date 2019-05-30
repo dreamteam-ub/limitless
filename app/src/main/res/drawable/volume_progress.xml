@@ -2,7 +2,9 @@
 <layer-list
         xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
-            android:id="@+id/progressshape" >
+            android:id="@+id/progressshape"
+            android:height="10dp"
+            android:gravity="center">
         <clip>
             <shape
                     android:shape="rectangle" >

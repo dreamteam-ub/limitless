@@ -1,15 +1,14 @@
 package edu.ub.pis.joc.limitless.view
 
 import android.content.res.Resources
-import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.TextView
 import android.view.ViewGroup
 
 // PIXEL 2 REFERENCE
-const val XDPI_REFERENCE = 420.0f
-const val YDPI_REFERENCE = 420.0f
+const val HEIGHT_REFERENCE = 2028
+const val WIDTH_REFERENCE = 1080
 
 object ViewAdjuster {
 
@@ -25,20 +24,20 @@ object ViewAdjuster {
     fun adjustView(view: View) {
         if (view is TextView) {
             val px = view.textSize
-            val dpi = px / density
+            val dpi = screenHeight * px / HEIGHT_REFERENCE / density
 
-            view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, ydpi * dpi / YDPI_REFERENCE)
+            view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, dpi)
         }
 
         // convert the DP into pixel
 
         if (view.layoutParams.height != ViewGroup.LayoutParams.WRAP_CONTENT && view.layoutParams.height != ViewGroup.LayoutParams.MATCH_PARENT) {
-            val height = (ydpi * view.layoutParams.height / YDPI_REFERENCE).toInt()
+            val height = (screenHeight * view.layoutParams.height / HEIGHT_REFERENCE).toInt()
             view.layoutParams.height = height
         }
 
         if (view.layoutParams.width != ViewGroup.LayoutParams.WRAP_CONTENT && view.layoutParams.width != ViewGroup.LayoutParams.MATCH_PARENT) {
-            val width = (xdpi * view.layoutParams.width / XDPI_REFERENCE).toInt()
+            val width = (screenWidth * view.layoutParams.width / WIDTH_REFERENCE).toInt()
             view.layoutParams.width = width
         }
 
@@ -50,19 +49,19 @@ object ViewAdjuster {
         var right = params.rightMargin
 
         if (top > 0) {
-            top = (ydpi * top / YDPI_REFERENCE).toInt()
+            top = (screenHeight * top / HEIGHT_REFERENCE).toInt()
         }
 
         if (bottom > 0) {
-            bottom = (ydpi * bottom / YDPI_REFERENCE).toInt()
+            bottom = (screenHeight * bottom / HEIGHT_REFERENCE).toInt()
         }
 
         if (left > 0) {
-            left = (xdpi * left / XDPI_REFERENCE).toInt()
+            left = (screenWidth * left / WIDTH_REFERENCE).toInt()
         }
 
         if (right > 0) {
-            right = (xdpi * right / XDPI_REFERENCE).toInt()
+            right = (screenWidth * right / WIDTH_REFERENCE).toInt()
         }
 
         (view.layoutParams as ViewGroup.MarginLayoutParams).setMargins(left, top, right, bottom)

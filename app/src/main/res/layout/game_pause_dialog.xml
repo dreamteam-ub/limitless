@@ -9,9 +9,9 @@
     <ImageButton
             android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
-            android:layout_width="220dp"
+            android:layout_width="180dp"
             android:contentDescription="@string/resume_button"
-            android:layout_height="60dp" android:src="@drawable/resume"
+            android:layout_height="50dp" android:src="@drawable/resume"
             android:background="@android:color/transparent"
             android:adjustViewBounds="true"
             android:id="@+id/resumeButtonDiag"
@@ -19,9 +19,9 @@
     <ImageButton
             android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
-            android:layout_width="220dp"
+            android:layout_width="180dp"
             android:contentDescription="@string/worlds_button"
-            android:layout_height="60dp" android:src="@drawable/worlds"
+            android:layout_height="50dp" android:src="@drawable/worlds"
             android:background="@android:color/transparent"
             android:adjustViewBounds="true"
             android:id="@+id/worldsButtonPauseDiag"
@@ -29,9 +29,9 @@
     <ImageButton
             android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
-            android:layout_width="220dp"
+            android:layout_width="180dp"
             android:contentDescription="@string/menu_button"
-            android:layout_height="60dp" android:src="@drawable/menu"
+            android:layout_height="50dp" android:src="@drawable/menu"
             android:background="@android:color/transparent"
             android:adjustViewBounds="true"
             android:id="@+id/menuButtonPauseDiag"
@@ -40,9 +40,9 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal"
-            android:layout_width="168dp"
+            android:layout_width="160dp"
             android:contentDescription="@string/pause_heart"
-            android:layout_height="152dp" android:src="@drawable/pause_heart"
+            android:layout_height="150dp" android:src="@drawable/pause_heart"
             android:id="@+id/pauseHeartDiag"/>
 
 </LinearLayout>
