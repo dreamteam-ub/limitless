@@ -6,11 +6,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.MenuActivity" android:background="@color/colorBlack"
-        android:padding="40dp" android:orientation="vertical">
+        android:padding="40dp" android:orientation="vertical" android:id="@+id/root">
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_gravity="top" android:layout_marginBottom="30dp">
+            android:layout_height="wrap_content" android:layout_gravity="top">
         <ImageButton
                 android:scaleType="fitXY"
                 android:layout_gravity="top"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/crimestimessix"
             style="@style/cts_limitless" android:textSize="40dp"
-            android:id="@+id/music_options" android:textColor="@color/colorStylePink"/>
+            android:id="@+id/music_options" android:textColor="@color/colorStylePink" android:layout_marginTop="40dp"/>
     <SeekBar
             android:layout_width="match_parent"
             android:id="@+id/music_seekbar"

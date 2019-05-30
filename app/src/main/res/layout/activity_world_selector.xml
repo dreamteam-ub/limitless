@@ -8,7 +8,7 @@
         android:background="@color/colorBlack"
         tools:context=".view.WorldSelectorActivity"
         android:orientation="vertical"
-        android:padding="40dp">
+        android:padding="40dp" android:id="@+id/root">
 
     <ImageButton
             android:scaleType="fitXY"
@@ -19,7 +19,7 @@
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/back_arrow"
             android:contentDescription="@string/back"
-            android:id="@+id/world_back_button" android:layout_marginBottom="20dp"/>
+            android:id="@+id/world_back_button" android:layout_marginBottom="40dp"/>
 
     <ImageButton
             android:scaleType="fitXY"
@@ -111,7 +111,8 @@
                 style="@style/cts_limitless" android:textAlignment="center"
                 android:textSize="20dp" android:layout_gravity="center_horizontal"
                 android:textColor="@color/colorWelcomeName"/>
-    </LinearLayout><![CDATA[
+    </LinearLayout>
+    <![CDATA[
 
     />
 

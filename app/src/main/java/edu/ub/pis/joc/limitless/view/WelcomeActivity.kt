@@ -33,6 +33,8 @@ class WelcomeActivity : FullScreenActivity() {
 
         setContentView(R.layout.activity_welcome)
 
+        ViewAdjuster.adjustViewLayoutPadding(findViewById(R.id.root))
+
         mGoogleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)
         mAuth = FirebaseAuth.getInstance()
 

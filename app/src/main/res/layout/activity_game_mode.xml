@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.GameModeActivity" android:orientation="vertical" android:background="@color/colorBlack"
-        android:padding="40dp">
+        android:padding="40dp" android:id="@+id/root">
 
 
     <ImageButton
@@ -18,7 +18,7 @@
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/back_arrow"
             android:contentDescription="@string/back"
-            android:id="@+id/blackArrowButton" android:layout_marginBottom="30dp"/>
+            android:id="@+id/blackArrowButton" android:layout_marginBottom="40dp"/>
     <ImageButton
             android:layout_width="200dp"
             android:scaleType="fitXY"

@@ -28,6 +28,8 @@ class GameDeadActivity : FullScreenActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_dead)
 
+        ViewAdjuster.adjustViewLayoutPadding(findViewById(R.id.root))
+
         val modo = intent.extras!!.getBoolean(MODE_INFINITY)
         val score = intent.extras!!.getInt(SCORE)
 

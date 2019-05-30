@@ -27,6 +27,8 @@ class VersusActivityEnd : FullScreenActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_versus_end)
 
+        ViewAdjuster.adjustViewLayoutPadding(findViewById(R.id.root))
+
         var puntuacio1 : Long = Data.versus_survived[0]
         var puntuacio2: Long = Data.versus_survived[1]
 

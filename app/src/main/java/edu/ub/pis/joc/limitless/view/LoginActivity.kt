@@ -36,6 +36,8 @@ class LoginActivity : FullScreenActivity(), LoginSignFragment.OnLoginSignListene
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        ViewAdjuster.adjustViewLayoutPadding(findViewById(R.id.root))
+
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.web_client_id))
             .requestEmail()

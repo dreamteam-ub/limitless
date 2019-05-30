@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.MenuActivity" android:orientation="vertical" android:background="@color/colorBlack"
-        android:padding="40dp" android:gravity="center_vertical">
+        android:padding="40dp" android:gravity="center_vertical" android:id="@+id/root">
 
     <ImageView
             android:layout_width="200dp"
@@ -48,7 +48,7 @@
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
         <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="50dp"

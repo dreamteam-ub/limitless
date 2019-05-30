@@ -18,6 +18,8 @@ class InfoActivity : FullScreenActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
+        ViewAdjuster.adjustViewLayoutPadding(findViewById(R.id.root))
+
         val versionView: TextView = findViewById(R.id.version_details)
         versionView.text = BuildConfig.VERSION_NAME
         ViewAdjuster.adjustView(versionView)

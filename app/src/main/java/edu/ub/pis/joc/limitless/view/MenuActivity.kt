@@ -11,6 +11,7 @@ import edu.ub.pis.joc.limitless.model.game.CharacterData
 import edu.ub.pis.joc.limitless.view.ViewAdjuster.adjustView
 import android.app.ActivityManager
 import android.content.Context
+import edu.ub.pis.joc.limitless.view.ViewAdjuster.adjustViewLayoutPadding
 
 
 class MenuActivity : FullScreenActivity() {
@@ -26,6 +27,8 @@ class MenuActivity : FullScreenActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
+
+        adjustViewLayoutPadding(findViewById(R.id.root))
 
         val menuLogo: ImageView = findViewById(R.id.menu_game_logo)
         var clickcount = 0
@@ -81,7 +84,7 @@ class MenuActivity : FullScreenActivity() {
 
         skinWindowButton = findViewById(R.id.skin_window_button)
         skinWindowButton.setOnClickListener {
-            val gameModeInt = Intent(this, SkinSelector::class.java)
+            val gameModeInt = Intent(this, SkinSelectorActivity::class.java)
             startActivity(gameModeInt)
             skinWindowButton.isClickable = false
         }

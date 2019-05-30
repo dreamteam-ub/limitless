@@ -23,9 +23,16 @@ const val SKULL_LASER = "SkullLaser"
 const val EYE_PROJECTILE = "EyeProjectile"
 const val DEMON_FIRE_COLUMN = "DemonFireColumn"
 
+const val SKIN_1 = 1
+const val SKIN_2 = 2
+const val SKIN_3 = 3
+const val SKIN_4 = 4
+const val SKIN_5 = 5
+
+
 const val NUMBER_COIN = "Coin"
 
-class CharacterFactory(assets: AssetManager) : FactoryPattern {
+class CharacterFactory(private var assets: AssetManager) : FactoryPattern {
     /*
     Aquesta classe utilitzem el patró factory per a la creació de Characters en el joc
      */
@@ -42,9 +49,7 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
 
     var arrayImatgesBombes: ArrayList<Bitmap>
     var arrayImatgesGhost: ArrayList<Bitmap>
-    var arrayImatgesPlayer: ArrayList<Bitmap>
-    var arrayImatgesPlayer1: ArrayList<Bitmap>
-    var arrayImatgesPlayer2: ArrayList<Bitmap>
+    var arrayImatgesPlayer: ArrayList<Bitmap>? = null
     var arrayImatgesCoin: ArrayList<Bitmap>
     var arrayImatgesSkullLaser: ArrayList<Bitmap>
     var arrayImatgesEyeProyectile: ArrayList<Bitmap>
@@ -52,6 +57,7 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
     var arrayImatgesDemon: ArrayList<Bitmap>
     var arrayImatgesSkull: ArrayList<Bitmap>
     var arrayImatgesEye: ArrayList<Bitmap>
+
     /*
     En el init el que farem serà definir tots els InSampleSize que estaran determinats segons la
     RAM del dispositiu i seguidament carregarem totes les imatges per a que no s'hagin de carregar
@@ -148,45 +154,6 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
                 BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "ghost.png")),
                 null,
                 optionsGhost
-            )!!
-        )
-
-        var sprite_player = "main_character.png"
-
-        if(Data.user.skinSelected == 1){
-            sprite_player = "ghost_skin.png"
-        } else if(Data.user.skinSelected == 2){
-            sprite_player = "eye_skin.png"
-        } else if(Data.user.skinSelected == 3){
-            sprite_player = "demon_skin.png"
-        } else if(Data.user.skinSelected == 4){
-            sprite_player = "skull_skin.png"
-        } else if(Data.user.skinSelected == 5 && Data.user.androidchar != null && Data.user.androidchar!!){
-            sprite_player = "android_skin.png"
-        }
-
-
-        arrayImatgesPlayer = arrayListOf(
-            BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + sprite_player)),
-                null,
-                optionsCharacter
-            )!!
-        )
-
-        arrayImatgesPlayer1 = arrayListOf(
-            BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "main_character.png")),
-                null,
-                optionsCharacter
-            )!!
-        )
-
-        arrayImatgesPlayer2 = arrayListOf(
-            BitmapFactory.decodeStream(
-                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "main_character_2.png")),
-                null,
-                optionsCharacter
             )!!
         )
 
@@ -634,10 +601,26 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
         )
 
         arrayImatgesEye = arrayListOf(
-            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye1.png")), null, optionsEye)!!,
-            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye2.png")), null, optionsEye)!!,
-            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye3.png")), null, optionsEye)!!,
-            BitmapFactory.decodeStream(BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye4.png")), null, optionsEye)!!,
+            BitmapFactory.decodeStream(
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye1.png")),
+                null,
+                optionsEye
+            )!!,
+            BitmapFactory.decodeStream(
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye2.png")),
+                null,
+                optionsEye
+            )!!,
+            BitmapFactory.decodeStream(
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye3.png")),
+                null,
+                optionsEye
+            )!!,
+            BitmapFactory.decodeStream(
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye4.png")),
+                null,
+                optionsEye
+            )!!,
             BitmapFactory.decodeStream(
                 BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "eye5_test.png")),
                 null,
@@ -651,14 +634,15 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
         )
 
     }
+
     /**
     Mètode on crearem el Character
-    *@param String
-    *@param Int
-    *@param Int
-    *@param Int
-    *@param Int
-    *@param Int
+     *@param String
+     *@param Int
+     *@param Int
+     *@param Int
+     *@param Int
+     *@param Int
 
     @return : Character
      */
@@ -681,15 +665,51 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
             }
 
             PLAYER_CHARACTER -> {
-                PlayerCharacter(arrayImatgesPlayer, posX, posY)
+                val sprite_player = when (Data.user.skinSelected) {
+                    SKIN_1 -> "ghost_skin.png"
+                    SKIN_2 -> "eye_skin.png"
+                    SKIN_3 -> "demon_skin.png"
+                    SKIN_4 -> "skull_skin.png"
+                    SKIN_5 -> {
+                        if (Data.user.androidchar != null && Data.user.androidchar!!) {
+                            "android_skin.png"
+                        } else {
+                            "main_character.png"
+                        }
+                    }
+                    else -> "main_character.png"
+                }
+
+                arrayImatgesPlayer = arrayListOf(
+                    BitmapFactory.decodeStream(
+                        BufferedInputStream(assets.open(IMG_ASSETS + File.separator + sprite_player)),
+                        null,
+                        optionsCharacter
+                    )!!
+                )
+                PlayerCharacter(arrayImatgesPlayer!!, posX, posY)
             }
 
             PLAYER_CHARACTER1 -> {
-                PlayerCharacter(arrayImatgesPlayer1, posX, posY)
+                arrayImatgesPlayer = arrayListOf(
+                    BitmapFactory.decodeStream(
+                        BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "main_character.png")),
+                        null,
+                        optionsCharacter
+                    )!!
+                )
+                PlayerCharacter(arrayImatgesPlayer!!, posX, posY)
             }
 
             PLAYER_CHARACTER2 -> {
-                PlayerCharacter(arrayImatgesPlayer2, posX, posY)
+                arrayImatgesPlayer = arrayListOf(
+                    BitmapFactory.decodeStream(
+                        BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "main_character_2.png")),
+                        null,
+                        optionsCharacter
+                    )!!
+                )
+                PlayerCharacter(arrayImatgesPlayer!!, posX, posY)
             }
 
             NUMBER_COIN -> {
@@ -712,17 +732,18 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
             }
         }
     }
-    /**
-   Mètode on crearem el Character complex
-   *@param String
-   *@param Int
-   *@param Int
-   *@param Int
-   *@param AssetManager
-   *@param Int
 
-   @return : Character
-    */
+    /**
+    Mètode on crearem el Character complex
+     *@param String
+     *@param Int
+     *@param Int
+     *@param Int
+     *@param AssetManager
+     *@param Int
+
+    @return : Character
+     */
     override fun createComplexCharacter(
         character: String,
         posX: Int,

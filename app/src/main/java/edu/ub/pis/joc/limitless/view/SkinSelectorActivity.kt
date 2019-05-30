@@ -14,7 +14,7 @@ import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.presenter.SkinSelectorPresenter
 
 
-class SkinSelector : FullScreenActivity(), SkinSelectorPresenter.View {
+class SkinSelectorActivity : FullScreenActivity(), SkinSelectorPresenter.View {
 
     private val TAG = "WorldSelectorActivity"
 
@@ -36,6 +36,8 @@ class SkinSelector : FullScreenActivity(), SkinSelectorPresenter.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_skin_selector)
+
+        ViewAdjuster.adjustViewLayoutPadding(findViewById(R.id.root))
 
         presenter = SkinSelectorPresenter(this)
 

@@ -12,6 +12,7 @@ class RankingRecyclerAdapter(private val llista: ArrayList<Ranking>) :
     RecyclerView.Adapter<RankingRecyclerAdapter.ViewHolder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(p0.context).inflate(R.layout.ranking_list, p0, false)
+        ViewAdjuster.adjustViewLayoutPadding(v)
         return ViewHolder(v)
     }
 

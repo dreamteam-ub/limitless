@@ -23,6 +23,9 @@ class GameWonActivity : FullScreenActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_won)
+
+        ViewAdjuster.adjustViewLayoutPadding(findViewById(R.id.root))
+
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 

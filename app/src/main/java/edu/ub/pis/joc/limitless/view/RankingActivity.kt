@@ -44,6 +44,8 @@ class RankingActivity : FullScreenActivity(), RankingPresenter.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
 
+        ViewAdjuster.adjustViewLayoutPadding(findViewById(R.id.root))
+
         presenter = RankingPresenter(this)
 
         mAuth = FirebaseAuth.getInstance()

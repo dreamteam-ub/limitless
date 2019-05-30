@@ -76,7 +76,7 @@
                 android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".view.SkinSelector"
+                android:name=".view.SkinSelectorActivity"
                 android:screenOrientation="portrait">
         </activity>
     </application>

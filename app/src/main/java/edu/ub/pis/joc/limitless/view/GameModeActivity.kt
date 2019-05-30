@@ -25,6 +25,8 @@ class GameModeActivity : FullScreenActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_mode)
 
+        ViewAdjuster.adjustViewLayoutPadding(findViewById(R.id.root))
+
         backArrow = findViewById(R.id.blackArrowButton)
         backArrow.setOnClickListener {
             finish()

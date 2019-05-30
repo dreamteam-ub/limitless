@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.MenuActivity" android:background="@color/colorBlack"
-        android:padding="40dp" android:orientation="vertical">
+        android:padding="40dp" android:orientation="vertical" android:id="@+id/root">
     <ImageButton
             android:scaleType="fitXY"
             android:layout_gravity="top"
@@ -16,7 +16,7 @@
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/back_arrow"
             android:contentDescription="@string/back"
-            android:id="@+id/info_back_button" android:layout_marginBottom="30dp"/>
+            android:id="@+id/info_back_button" android:layout_marginBottom="40dp"/>
 
     <TextView
             android:text="@string/info_version"

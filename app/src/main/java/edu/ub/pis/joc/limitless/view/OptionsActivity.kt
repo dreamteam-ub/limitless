@@ -43,6 +43,8 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_options)
 
+        ViewAdjuster.adjustViewLayoutPadding(findViewById(R.id.root))
+
         presenter = OptionsPresenter(this)
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)

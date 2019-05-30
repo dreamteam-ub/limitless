@@ -8,7 +8,7 @@
         android:background="@color/colorBlack"
         tools:context=".view.WorldSelectorActivity"
         android:orientation="vertical"
-        android:padding="40dp">
+        android:padding="40dp" android:id="@+id/root">
 
     <ImageButton
             android:scaleType="fitXY"
@@ -19,20 +19,20 @@
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/back_arrow"
             android:contentDescription="@string/back"
-            android:id="@+id/skins_back_button" android:layout_marginBottom="20dp"/>
+            android:id="@+id/skins_back_button" android:layout_marginBottom="40dp"/>
 
     <TextView
             android:text="@string/select_skin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/skins_selection"
-            style="@style/cts_limitless" android:layout_marginTop="20dp" android:textAlignment="center"
+            style="@style/cts_limitless" android:textAlignment="center"
             android:textSize="40sp" android:layout_gravity="center_horizontal" android:layout_marginBottom="30dp"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp">
+    >
 
         <ImageButton
                 android:scaleType="fitXY"

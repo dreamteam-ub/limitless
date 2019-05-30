@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".view.SecondPlayerVsActivity" android:orientation="vertical"
         android:padding="50dp"
-        android:background="@color/colorBlack">
+        android:background="@color/colorBlack" android:id="@+id/root">
 
     <TextView
             android:layout_width="wrap_content"

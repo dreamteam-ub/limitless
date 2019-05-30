@@ -62,6 +62,8 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_world_selector)
 
+        ViewAdjuster.adjustViewLayoutPadding(findViewById(R.id.root))
+
         presenter = WorldSelectorPresenter(this)
 
         mAuth = FirebaseAuth.getInstance()

@@ -14,6 +14,8 @@ class SecondPlayerVsActivity : FullScreenActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second_player_vs)
 
+        ViewAdjuster.adjustViewLayoutPadding(findViewById(R.id.root))
+
         val infinity = intent.extras!!.getBoolean(MODE_INFINITY)
         val versus = intent.extras!!.getBoolean(MODE_INFINITY_VERSUS)
         val round = intent.extras!!.getInt(MODE_INFINITY_VERSUS_COUNT)

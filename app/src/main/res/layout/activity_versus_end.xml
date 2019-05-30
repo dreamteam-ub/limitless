@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".view.VersusActivityEnd" android:orientation="vertical"
         android:padding="40dp"
-        android:background="@color/colorBlack">
+        android:background="@color/colorBlack" android:id="@+id/root">
 
     <TextView
             android:text="@string/p1_wins"
@@ -21,7 +21,6 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="30dp" android:paddingEnd="30dp" android:layout_marginBottom="5dp"
             android:gravity="center_horizontal">
 
 
@@ -35,7 +34,7 @@
                 android:fontFamily="@font/roadrage"/>
 
         <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/road_limitless" android:textSize="24dp"
                 android:textAlignment="textEnd" android:id="@+id/first_punt" tools:text="20:23"
@@ -47,8 +46,8 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="30dp" android:paddingEnd="30dp" android:gravity="center_horizontal"
-            android:layout_marginBottom="15dp">
+            android:gravity="center_horizontal"
+    >
 
 
         <TextView
@@ -61,7 +60,7 @@
                 android:fontFamily="@font/roadrage"/>
 
         <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/road_limitless" android:textSize="24dp"
                 android:textAlignment="textEnd" android:id="@+id/second_punt" tools:text="10:25"
@@ -73,7 +72,6 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp" android:paddingStart="30dp" android:paddingEnd="30dp"
             android:gravity="center_horizontal">
 
 
@@ -87,7 +85,7 @@
                 android:fontFamily="@font/roadrage"/>
 
         <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/road_limitless" android:textSize="24dp"
                 android:textAlignment="textEnd" android:id="@+id/score1_puntuation" tools:text="300"
@@ -99,7 +97,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="30dp" android:paddingEnd="30dp" android:gravity="center_horizontal">
+            android:gravity="center_horizontal">
 
 
         <TextView
@@ -112,7 +110,7 @@
                 android:fontFamily="@font/roadrage"/>
 
         <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/road_limitless" android:textSize="24dp"
                 android:textAlignment="textEnd" android:id="@+id/score2_puntuation" tools:text="20"

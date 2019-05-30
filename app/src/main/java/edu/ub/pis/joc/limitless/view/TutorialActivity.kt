@@ -13,6 +13,9 @@ class TutorialActivity : FullScreenActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tutorial)
+
+        ViewAdjuster.adjustViewLayoutPadding(findViewById(R.id.root))
+
         val viewPager = findViewById<ViewPager>(R.id.tutorialpage)
 
         customToast(

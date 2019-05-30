@@ -7,7 +7,7 @@
         android:orientation="vertical"
         android:layout_height="match_parent"
         tools:context=".view.GameWonActivity" android:background="@color/colorBlack"
-        android:padding="40dp">
+        android:padding="40dp" android:id="@+id/root">
 
         <ImageView
                 android:scaleType="fitXY"
