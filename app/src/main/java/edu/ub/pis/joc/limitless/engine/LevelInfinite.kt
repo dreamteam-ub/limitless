@@ -319,8 +319,6 @@ class LevelInfinite(assets: AssetManager,
                                 Typeface.createFromAsset(assets, FONTS_ASSETS + File.separator + FONT_COINS),
                                 parameters[4].toString().toInt()
                             )
-                            Log.d("REALLOCATEPositive",autoLvl.positiveCoins.toString())
-                            Log.d("REALLOCATENegative",autoLvl.negativeCoins.toString())
 
                         }
 

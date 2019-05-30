@@ -20,7 +20,7 @@ class AutoLevelGenerate {
     val minTimeInGame = 200L //tiempo minimo que deberan estar los personajes en partida
     val minTimeInGameCoins = 150L
     val maxTimeInGameCoins = 250L
-    val maxTimeInGame = 500L
+    val maxTimeInGame = 250L
     var limitLow = 15
     var limitHigh = 25
     var lastLow = 1
@@ -28,6 +28,7 @@ class AutoLevelGenerate {
     var positiveCoins = 0
     var negativeCoins = 0
     var firstCall = true
+    var firstRound = true
     var ai = ArtificialIntelligence()
 
     /*
@@ -138,10 +139,10 @@ class AutoLevelGenerate {
             lastLow = limitLow
             lastHigh = limitHigh
             limitLow += Random.nextInt(-5, 5)
-            limitHigh += Random.nextInt(-5, 5)
+            limitHigh = limitLow + 10
             while (limitLow >= limitHigh){
                 lastLow += Random.nextInt(-5, 5)
-                lastHigh += Random.nextInt(-5, 5)
+                lastHigh = limitLow + 10
                 limitLow = lastLow
                 limitHigh = lastHigh
             }
@@ -158,6 +159,11 @@ class AutoLevelGenerate {
     @return : Int
      */
     fun generateCoinValues() : Int{
+        if (firstRound){
+            var valCoinFirst = limitLow
+            firstRound = false
+            return valCoinFirst
+        }
         var valCoin = (Random.nextInt(-limitLow / 2,  limitHigh / 2))
 
         if (valCoin == 0) {valCoin++}
