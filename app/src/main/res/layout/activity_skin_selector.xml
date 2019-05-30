@@ -65,7 +65,5 @@
                 android:background="@android:color/transparent"
                 android:adjustViewBounds="true"
                 android:layout_gravity="center_vertical"/>
-
     </LinearLayout>
-
 </LinearLayout>

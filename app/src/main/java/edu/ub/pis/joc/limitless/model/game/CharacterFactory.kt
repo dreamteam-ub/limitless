@@ -9,6 +9,8 @@ import edu.ub.pis.joc.limitless.view.IMG_ASSETS
 import java.io.BufferedInputStream
 import java.io.File
 import edu.ub.pis.joc.limitless.model.Data
+import edu.ub.pis.joc.limitless.view.MEDAL_1
+import edu.ub.pis.joc.limitless.view.MEDAL_2
 
 
 const val BOMB_CHAR = "Bomb"
@@ -22,12 +24,6 @@ const val SKULL_CHAR = "Skull"
 const val SKULL_LASER = "SkullLaser"
 const val EYE_PROJECTILE = "EyeProjectile"
 const val DEMON_FIRE_COLUMN = "DemonFireColumn"
-
-const val SKIN_1 = 1
-const val SKIN_2 = 2
-const val SKIN_3 = 3
-const val SKIN_4 = 4
-const val SKIN_5 = 5
 
 
 const val NUMBER_COIN = "Coin"
@@ -665,20 +661,27 @@ class CharacterFactory(private var assets: AssetManager) : FactoryPattern {
             }
 
             PLAYER_CHARACTER -> {
-                val sprite_player = when (Data.user.skinSelected) {
-                    SKIN_1 -> "ghost_skin.png"
-                    SKIN_2 -> "eye_skin.png"
-                    SKIN_3 -> "demon_skin.png"
-                    SKIN_4 -> "skull_skin.png"
-                    SKIN_5 -> {
-                        if (Data.user.androidchar != null && Data.user.androidchar!!) {
-                            "android_skin.png"
-                        } else {
-                            "main_character.png"
-                        }
-                    }
-                    else -> "main_character.png"
+                val imgSkins = arrayListOf(
+                    "main_character.png",
+                    "ghost_skin.png",
+                    "eye_skin.png",
+                    "demon_skin.png",
+                    "skull_skin.png"
+                )
+
+                if (Data.user.survived!! >= MEDAL_1) {
+                    imgSkins.add("pro2_skin.png")
                 }
+
+                if (Data.user.survived!! >= MEDAL_2) {
+                    imgSkins.add("pro_skin.png")
+                }
+
+                if (Data.user.androidchar != null && Data.user.androidchar!!) {
+                    imgSkins.add("android_skin.png")
+                }
+
+                val sprite_player = imgSkins[Data.user.skinSelected!!]
 
                 arrayImatgesPlayer = arrayListOf(
                     BitmapFactory.decodeStream(

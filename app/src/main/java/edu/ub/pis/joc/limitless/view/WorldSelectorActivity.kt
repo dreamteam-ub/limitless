@@ -109,8 +109,6 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
                 }
                 if (docSnapshot != null && docSnapshot.exists()) {
                     presenter.updateUser(docSnapshot.toObject(User::class.java)!!)
-                    presenter.updateWorld()
-                    presenter.updateLevel()
                 }
             }
 
@@ -186,6 +184,9 @@ class WorldSelectorActivity : FullScreenActivity(), WorldSelectorPresenter.View 
             intent.putExtra(MANUAL_TUTORIAL,true)
             startActivity(intent)
         }
+
+        presenter.updateWorld()
+        presenter.updateLevel()
 
     }
 

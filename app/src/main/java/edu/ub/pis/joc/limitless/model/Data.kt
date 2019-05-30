@@ -9,19 +9,7 @@ object Data  {
     var currentWorld : Int = 0
 
     var user : User = User()
-    set(u) {
-        u.world = when {
-            u.world!! > MAX_WORLD -> MAX_WORLD
-            u.world!! < MIN_LVL_WORLD -> 0
-            else -> u.world
-        }
-        u.level = when {
-            u.level!! > MAX_LEVEL -> MAX_LEVEL
-            u.level!! < MIN_LVL_WORLD -> 0
-            else -> u.level
-        }
-        field = u
-    }
+
     //Relacion que nos indica que nivel del modo practica es
     fun getCurrenLevel():Int{
         return Data.currentWorld * MAX_WORLD + Data.currentLvl

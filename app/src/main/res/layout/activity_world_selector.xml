@@ -112,11 +112,7 @@
                 android:textSize="20dp" android:layout_gravity="center_horizontal"
                 android:textColor="@color/colorWelcomeName"/>
     </LinearLayout>
-    <![CDATA[
 
-    />
-
-    ]]>
     <ImageButton
             android:layout_width="150dp"
             android:contentDescription="@string/play_button"

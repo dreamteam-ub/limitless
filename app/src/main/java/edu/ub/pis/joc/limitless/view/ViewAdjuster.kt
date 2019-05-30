@@ -39,8 +39,6 @@ object ViewAdjuster {
 
     fun adjustViewLayoutPadding(view: View) {
 
-        Log.d("S R", screenHeight.toString() + " "+ multy.toString() + " " + screenInches.toString())
-
         var top = view.paddingTop
         var bottom = view.paddingBottom
         var left = view.paddingLeft
@@ -108,6 +106,7 @@ object ViewAdjuster {
             right = (screenWidth * right * multy / WIDTH_REFERENCE).toInt()
         }
 
+        adjustViewLayoutPadding(view)
         (view.layoutParams as ViewGroup.MarginLayoutParams).setMargins(left, top, right, bottom)
 
     }

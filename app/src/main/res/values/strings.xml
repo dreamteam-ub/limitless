@@ -97,4 +97,5 @@
     <string name="select_skin">Select your skin</string>
     <string name="easter_egg_android_welcome">Hello Android</string>
     <string name="easter_egg_android_bye">Bye bye Android</string>
+    <string name="skin_changed">Skin changed</string>
 </resources>

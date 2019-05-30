@@ -9,7 +9,7 @@ import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenHeight
 import edu.ub.pis.joc.limitless.view.ViewAdjuster.screenWidth
 import java.io.File
 
-class Limits (var min: Int, var max: Int, assets : AssetManager) {
+class Limits(var min: Int, var max: Int, assets: AssetManager) {
 
     val paint = Paint()
 
@@ -33,6 +33,7 @@ class Limits (var min: Int, var max: Int, assets : AssetManager) {
         val halfW: Int = (w / 2).toInt()
         val halfH: Int = (h / 2).toInt()
         rect.set(x - halfW, y - halfH, x + halfW, y + halfH)
-        canvas.drawText("MIN: $min  MAX: $max", 0f + screenWidth / 3f,h.toFloat()/1.5f, paint)
+        val texto = "MIN: $min  MAX: $max"
+        canvas.drawText(texto, 0f + (screenWidth / 2) - (paint.measureText(texto) / 2), h.toFloat() / 1.5f, paint)
     }
 }

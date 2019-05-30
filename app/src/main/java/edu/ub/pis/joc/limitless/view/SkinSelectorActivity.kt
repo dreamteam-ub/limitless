@@ -2,9 +2,11 @@ package edu.ub.pis.joc.limitless.view
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
@@ -13,6 +15,8 @@ import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.presenter.SkinSelectorPresenter
 
+const val MEDAL_1 = 900
+const val MEDAL_2 = 1200
 
 class SkinSelectorActivity : FullScreenActivity(), SkinSelectorPresenter.View {
 
@@ -67,6 +71,14 @@ class SkinSelectorActivity : FullScreenActivity(), SkinSelectorPresenter.View {
             R.drawable.skin_select_skull
         )
 
+        if (Data.user.survived!! >= MEDAL_1) {
+            imgSkins.add(R.drawable.skin_select_pro2)
+        }
+
+        if (Data.user.survived!! >= MEDAL_2) {
+            imgSkins.add(R.drawable.skin_select_pro)
+        }
+
         if (Data.user.androidchar != null && Data.user.androidchar!!) {
             imgSkins.add(R.drawable.skin_select_android)
         }
@@ -78,9 +90,10 @@ class SkinSelectorActivity : FullScreenActivity(), SkinSelectorPresenter.View {
                 }
                 if (docSnapshot != null && docSnapshot.exists()) {
                     presenter.updateUser(docSnapshot.toObject(User::class.java)!!)
-                    presenter.updateSkinPreview(listSize = imgSkins.size)
                 }
             }
+
+        presenter.updateSkinPreview(listSize = imgSkins.size)
 
         arrowBack.setOnClickListener {
             finish()
@@ -101,7 +114,7 @@ class SkinSelectorActivity : FullScreenActivity(), SkinSelectorPresenter.View {
         userListener.remove() // IMPORTANTE
     }
 
-    override fun changeSkinPreview(skin: Int, hideLeft: Boolean, hideRight: Boolean) {
+    override fun changeSkinPreview(levelPlus : Int, skin: Int, hideLeft: Boolean, hideRight: Boolean) {
         if (hideLeft) {
             leftArrow.visibility = View.INVISIBLE
         } else {
@@ -115,6 +128,13 @@ class SkinSelectorActivity : FullScreenActivity(), SkinSelectorPresenter.View {
         }
 
         skinPhoto.setImageResource(imgSkins[skin])
+
+        if (levelPlus != 0) {
+            customToast(
+                getString(R.string.skin_changed),
+                Toast.LENGTH_SHORT, Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 100
+            ).show()
+        }
 
     }
 
