@@ -7,7 +7,6 @@ import edu.ub.pis.joc.limitless.view.MIN_LVL_WORLD
 object Data  {
     var currentLvl : Int = 0
     var currentWorld : Int = 0
-    var currentSkin : Int = 0
 
     var user : User = User()
     set(u) {

@@ -1,10 +1,7 @@
 package edu.ub.pis.joc.limitless.presenter
 
-import android.view.Gravity
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import edu.ub.pis.joc.limitless.R
 import edu.ub.pis.joc.limitless.model.*
 import edu.ub.pis.joc.limitless.view.USERS
 
@@ -29,9 +26,18 @@ class OptionsPresenter(var view: OptionsPresenter.View) {
         db.collection(USERS).document(mAuth.currentUser!!.uid).update(MUSIC, value)
     }
 
+    fun enableAndroidChar(tmp: Boolean) {
+        val setting = !tmp
+        Data.user.skinSelected = 0
+        db.collection(USERS).document(mAuth.currentUser!!.uid).update(ANDROIDCHAR, setting)
+        db.collection(USERS).document(mAuth.currentUser!!.uid).update(SKINSELECTED, Data.user.skinSelected)
+        view.updateChar(setting)
+    }
+
 
     interface View {
         fun updateUserInfo(user: User)
         fun updateVibrateButton(value: Boolean)
+        fun updateChar(value: Boolean)
     }
 }

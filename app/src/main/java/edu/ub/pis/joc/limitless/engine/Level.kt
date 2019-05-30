@@ -3,10 +3,7 @@ package edu.ub.pis.joc.limitless.engine
 import android.content.res.AssetManager
 import android.graphics.Typeface
 import android.util.Log
-import edu.ub.pis.joc.limitless.model.game.CharacterFactory
-import edu.ub.pis.joc.limitless.model.game.Coin
-import edu.ub.pis.joc.limitless.model.game.Enemy
-import edu.ub.pis.joc.limitless.model.game.PlayerCharacter
+import edu.ub.pis.joc.limitless.model.game.*
 import edu.ub.pis.joc.limitless.view.ViewAdjuster
 import edu.ub.pis.joc.limitless.view.gamescreen.Limits
 import java.io.File
@@ -110,7 +107,7 @@ abstract class Level(
      */
 
     fun buildPlayer(round : Int): PlayerCharacter {
-        val player = if (round == 0) "PlayerCharacter" else "PlayerCharacter2"
+        val player = if (round == -1) PLAYER_CHARACTER else if (round == 0) PLAYER_CHARACTER1 else PLAYER_CHARACTER2
         return characterFactory.createCharacter(
             player,
             (ViewAdjuster.screenWidth * 0.5).toInt(),

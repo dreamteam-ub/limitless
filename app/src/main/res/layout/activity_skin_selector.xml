@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/skins_selection"
-            style="@style/cts_limitless" android:layout_marginTop="50dp" android:textAlignment="center"
+            style="@style/cts_limitless" android:layout_marginTop="20dp" android:textAlignment="center"
             android:textSize="40sp" android:layout_gravity="center_horizontal" android:layout_marginBottom="30dp"/>
     <LinearLayout
             android:orientation="horizontal"

@@ -1,18 +1,13 @@
 package edu.ub.pis.joc.limitless.model.game
 
-import android.content.Context
 import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Rect
 import android.util.Log
-import edu.ub.pis.joc.limitless.view.FullScreenActivity
 import edu.ub.pis.joc.limitless.view.IMG_ASSETS
-import edu.ub.pis.joc.limitless.view.OptionsActivity
 import java.io.BufferedInputStream
 import java.io.File
-import android.os.Debug.getMemoryInfo
-import android.app.ActivityManager
 import edu.ub.pis.joc.limitless.model.Data
 
 
@@ -21,6 +16,7 @@ const val DEMON_CHAR = "Demon"
 const val EYE_CHAR = "Eye"
 const val GHOST_CHAR = "Ghost"
 const val PLAYER_CHARACTER = "PlayerCharacter"
+const val PLAYER_CHARACTER1 = "PlayerCharacter1"
 const val PLAYER_CHARACTER2 = "PlayerCharacter2"
 const val SKULL_CHAR = "Skull"
 const val SKULL_LASER = "SkullLaser"
@@ -47,6 +43,7 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
     var arrayImatgesBombes: ArrayList<Bitmap>
     var arrayImatgesGhost: ArrayList<Bitmap>
     var arrayImatgesPlayer: ArrayList<Bitmap>
+    var arrayImatgesPlayer1: ArrayList<Bitmap>
     var arrayImatgesPlayer2: ArrayList<Bitmap>
     var arrayImatgesCoin: ArrayList<Bitmap>
     var arrayImatgesSkullLaser: ArrayList<Bitmap>
@@ -156,15 +153,15 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
 
         var sprite_player = "main_character.png"
 
-        if(Data.currentSkin == 1){
+        if(Data.user.skinSelected == 1){
             sprite_player = "ghost_skin.png"
-        } else if(Data.currentSkin == 2){
+        } else if(Data.user.skinSelected == 2){
             sprite_player = "eye_skin.png"
-        } else if(Data.currentSkin == 3){
+        } else if(Data.user.skinSelected == 3){
             sprite_player = "demon_skin.png"
-        } else if(Data.currentSkin == 4){
+        } else if(Data.user.skinSelected == 4){
             sprite_player = "skull_skin.png"
-        } else if(Data.currentSkin == 5){
+        } else if(Data.user.skinSelected == 5 && Data.user.androidchar != null && Data.user.androidchar!!){
             sprite_player = "android_skin.png"
         }
 
@@ -172,6 +169,14 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
         arrayImatgesPlayer = arrayListOf(
             BitmapFactory.decodeStream(
                 BufferedInputStream(assets.open(IMG_ASSETS + File.separator + sprite_player)),
+                null,
+                optionsCharacter
+            )!!
+        )
+
+        arrayImatgesPlayer1 = arrayListOf(
+            BitmapFactory.decodeStream(
+                BufferedInputStream(assets.open(IMG_ASSETS + File.separator + "main_character.png")),
                 null,
                 optionsCharacter
             )!!
@@ -677,6 +682,10 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
 
             PLAYER_CHARACTER -> {
                 PlayerCharacter(arrayImatgesPlayer, posX, posY)
+            }
+
+            PLAYER_CHARACTER1 -> {
+                PlayerCharacter(arrayImatgesPlayer1, posX, posY)
             }
 
             PLAYER_CHARACTER2 -> {

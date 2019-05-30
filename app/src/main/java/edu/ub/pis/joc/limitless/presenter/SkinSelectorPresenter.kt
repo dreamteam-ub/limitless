@@ -14,28 +14,31 @@ class SkinSelectorPresenter(var view: View) {
 
     fun updateUser(user: User) {
         Data.user = user
-        Data.currentSkin = Data.user.skinSelected!!
     }
-    fun updateSkinPreview(levelPlus: Int = 0) {
+    fun updateSkinPreview(levelPlus: Int = 0, listSize : Int) {
         var hideLeft = false
         var hideRight = false
 
-        if (Data.currentSkin + levelPlus in MIN_SKIN..(MAX_SKIN+1)) {
-            Data.currentSkin += levelPlus
-            if (Data.currentSkin == MIN_SKIN) {
+        if (Data.user.skinSelected!! >= listSize) {
+            Data.user.skinSelected = 0
+        }
+
+        if (Data.user.skinSelected!! + levelPlus in 0..(listSize+1)) {
+            Data.user.skinSelected = Data.user.skinSelected!! + levelPlus
+            if (Data.user.skinSelected == 0) {
                 hideLeft = true
             }
-            if (Data.currentSkin == MAX_SKIN) {
+            if (Data.user.skinSelected == listSize-1) {
                 hideRight = true
             }
         }
 
-        db.collection(USERS).document(mAuth.currentUser!!.uid).update(SKINSELECTED, Data.currentSkin)
-        view.changeSkinPreview(Data.currentSkin, hideLeft, hideRight)
+        db.collection(USERS).document(mAuth.currentUser!!.uid).update(SKINSELECTED, Data.user.skinSelected)
+        view.changeSkinPreview(Data.user.skinSelected!!, hideLeft, hideRight)
     }
 
 
     interface View {
-        fun changeSkinPreview(skin : Int, hideRight: Boolean, hideLeft: Boolean)
+        fun changeSkinPreview(skin : Int, hideLeft: Boolean, hideRight: Boolean)
     }
 }

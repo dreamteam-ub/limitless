@@ -22,7 +22,6 @@ import edu.ub.pis.joc.limitless.presenter.OptionsPresenter
 import kotlinx.android.synthetic.main.activity_options.*
 
 class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
-
     private val TAG = "OptionsActivity"
 
     private lateinit var presenter : OptionsPresenter
@@ -123,6 +122,25 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         ViewAdjuster.adjustView(findViewById(R.id.music_options))
         ViewAdjuster.adjustView(findViewById(R.id.vibrate_options))
 
+        if (Data.user.androidchar == null || !Data.user.androidchar!!) {
+            userName.setTextColor(ContextCompat.getColor(this, R.color.colorLiteBlue))
+        } else {
+            userName.setTextColor(ContextCompat.getColor(this, R.color.colorAndroid))
+        }
+
+        var clickcountUser : Int = 0
+        userName.setOnClickListener {
+            clickcountUser++
+            if (clickcountUser == 4) {
+                clickcountUser = 0
+                var tmp = true
+                if (Data.user.androidchar == null || Data.user.androidchar == false) {
+                    tmp = false
+                }
+                presenter.enableAndroidChar(tmp)
+            }
+        }
+
     }
 
     override fun onDestroy() {
@@ -146,5 +164,21 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         super.onStart()
         optionsBackArrow.isClickable = true
         logout_button.isClickable = true
+    }
+
+    override fun updateChar(value: Boolean) {
+        var msgAndroid = R.string.easter_egg_android_welcome
+        var drawAndroid = R.drawable.player_1_android
+        if (!value) {
+            drawAndroid = R.drawable.player_1
+            msgAndroid = R.string.easter_egg_android_bye
+            userName.setTextColor(ContextCompat.getColor(this, R.color.colorLiteBlue))
+        } else {
+            userName.setTextColor(ContextCompat.getColor(this, R.color.colorAndroid))
+        }
+        customImageToast(
+            drawAndroid, getString(msgAndroid),
+            Toast.LENGTH_LONG, Gravity.TOP or Gravity.FILL_HORIZONTAL, 0, 100
+        ).show()
     }
 }

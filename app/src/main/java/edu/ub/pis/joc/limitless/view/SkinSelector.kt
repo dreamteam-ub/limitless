@@ -13,8 +13,6 @@ import edu.ub.pis.joc.limitless.model.Data
 import edu.ub.pis.joc.limitless.model.User
 import edu.ub.pis.joc.limitless.presenter.SkinSelectorPresenter
 
-const val MAX_SKIN = 5 // 0-5
-const val MIN_SKIN= 0
 
 class SkinSelector : FullScreenActivity(), SkinSelectorPresenter.View {
 
@@ -33,7 +31,7 @@ class SkinSelector : FullScreenActivity(), SkinSelectorPresenter.View {
     private lateinit var leftArrow: ImageButton
     private lateinit var rightArrow: ImageButton
 
-    private lateinit var imgSkins: Array<Int>
+    private lateinit var imgSkins: ArrayList<Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +57,18 @@ class SkinSelector : FullScreenActivity(), SkinSelectorPresenter.View {
         rightArrow = findViewById(R.id.change_right_arrow_skins)
         ViewAdjuster.adjustView(rightArrow)
 
+        imgSkins = arrayListOf(
+            R.drawable.skin_select_default,
+            R.drawable.skin_select_ghost,
+            R.drawable.skin_select_eye,
+            R.drawable.skin_select_demon,
+            R.drawable.skin_select_skull
+        )
+
+        if (Data.user.androidchar != null && Data.user.androidchar!!) {
+            imgSkins.add(R.drawable.skin_select_android)
+        }
+
         userListener =
             db.collection(USERS).document(mAuth.currentUser!!.uid).addSnapshotListener { docSnapshot, exception ->
                 if (exception != null) {
@@ -66,20 +76,9 @@ class SkinSelector : FullScreenActivity(), SkinSelectorPresenter.View {
                 }
                 if (docSnapshot != null && docSnapshot.exists()) {
                     presenter.updateUser(docSnapshot.toObject(User::class.java)!!)
-                    presenter.updateSkinPreview()
+                    presenter.updateSkinPreview(listSize = imgSkins.size)
                 }
             }
-
-        imgSkins = arrayOf(
-            R.drawable.skin_select_default,
-            R.drawable.skin_select_ghost,
-            R.drawable.skin_select_eye,
-            R.drawable.skin_select_demon,
-            R.drawable.skin_select_skull,
-            R.drawable.skin_select_android
-        )
-
-        skinPhoto.setImageResource(imgSkins[Data.currentSkin])
 
         arrowBack.setOnClickListener {
             finish()
@@ -87,11 +86,11 @@ class SkinSelector : FullScreenActivity(), SkinSelectorPresenter.View {
         }
 
         leftArrow.setOnClickListener {
-            presenter.updateSkinPreview(-1)
+            presenter.updateSkinPreview(-1, imgSkins.size)
         }
 
         rightArrow.setOnClickListener {
-            presenter.updateSkinPreview(+1)
+            presenter.updateSkinPreview(+1, imgSkins.size)
         }
     }
 

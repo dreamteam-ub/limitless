@@ -88,7 +88,7 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
         )
 
 
-    var player: PlayerCharacter = level.buildPlayer(round)
+    var player: PlayerCharacter = if (versus) level.buildPlayer(round) else level.buildPlayer(-1)
 
     var scoreLimits = level.createLimits(currentLevelWorld)
     /*
