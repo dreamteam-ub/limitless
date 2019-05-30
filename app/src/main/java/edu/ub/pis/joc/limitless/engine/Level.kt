@@ -27,16 +27,16 @@ abstract class Level(
     //o en el modo de generación automática
     var characterFactory: CharacterFactory =
         CharacterFactory(assets)
-    /*
+    /**
     Funcio amb la que crearem monedes
-    @params : String
-    @params : Int
-    @params : Int
-    @params : Int
-    @params : Typeface
-    @params : Int
+    *@param String
+    *@param Int
+    *@param Int
+    *@param Int
+    *@param Typeface
+    *@param Int
 
-    @return : Coin
+    *@return : Coin
      */
     fun createCoin(
         character: String,
@@ -53,15 +53,15 @@ abstract class Level(
         coin.dissapearTimer = dissapearTimer
         return coin
     }
-    /*
+    /**
     Funcio amb la que crearem Enemics simples
-    @params : String
-    @params : Int
-    @params : Int
-    @params : Int
-    @params : Int
+    *@param  String
+    *@param  Int
+    *@param  Int
+    *@param  Int
+    *@param  Int
 
-    @return : Enemy
+    *@return : Enemy
      */
     fun createEnemy(
         character: String,
@@ -75,16 +75,16 @@ abstract class Level(
         enemy.dissapearTimer = dissapearTimer
         return enemy
     }
-    /*
+    /**
     Funcio amb la que crearem Enemics complexes
-    @params : String
-    @params : Int
-    @params : Int
-    @params : Int
-    @params : Int
-    @params : Int
+    *@param String
+    *@param Int
+    *@param Int
+    *@param Int
+    *@param Int
+    *@param Int
 
-    @return : Enemy
+    *@return : Enemy
      */
     fun createComplexEnemy(
         character: String,
@@ -99,11 +99,11 @@ abstract class Level(
         enemy.dissapearTimer = dissapearTimer
         return enemy
     }
-    /*
+    /**
     Funcio amb la que crearem el jugador principal
-    @params : Int
+    *@param Int
 
-    @return : PlayerCharacter
+    *@return : PlayerCharacter
      */
 
     fun buildPlayer(round : Int): PlayerCharacter {

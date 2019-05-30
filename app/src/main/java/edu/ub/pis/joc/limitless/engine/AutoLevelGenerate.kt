@@ -67,7 +67,7 @@ class AutoLevelGenerate {
     /**
     Amb aquesta funcio podrem crear facilment els enemics de les stages preeliminars del mode infinit
     que faran que sigui un joc més progressiu i no tant agressiu al començament.
-    *@params : String
+    *@param String
 
     *@return : ArrayList<Any>
      */
@@ -202,8 +202,8 @@ class AutoLevelGenerate {
     /**
     Funcio que farà que no apareixin monedes una sobre de l'altre, se'ns indicarà si
     estan en la mateixa posició o no
-    *@params : ArrayList<Coin>
-    *@params : Coin
+    *@param ArrayList<Coin>
+    *@param Coin
 
     *@return : Boolean
      */
@@ -230,8 +230,8 @@ class AutoLevelGenerate {
     /**
     Funcio que farà que no apareixin bombes una sobre de l'altre, se'ns indicarà si
     estan en la mateixa posició o no
-    *@params : ArrayList<Enemy>
-    *@params : Bomb
+    *@param ArrayList<Enemy>
+    *@param Bomb
 
     *@return : Boolean
      */
@@ -260,9 +260,9 @@ class AutoLevelGenerate {
     /**
     Funcio que farà que no apareixin bombes sombre monedes, se'ns indicarà si
     estan en la mateixa posició o no
-    *@params : ArrayList<Enemy>
-    *@params : Coin
-    *@params : ArrayList<Coin>
+    *@param ArrayList<Enemy>
+    *@param Coin
+    *@param ArrayList<Coin>
 
     *@return : Boolean
      */
@@ -287,6 +287,15 @@ class AutoLevelGenerate {
         return same
 
     }
+
+    /**
+     * Funció que utilitzarem per a que les calaveres es col·loquin en posicions
+     * estratègiques i facin el joc més amè. Evita que les calaveres es col·loquin
+     * encarades una amb l'altre o una sobre de l'altre
+     * @param Skull
+     * @param ArrayList<Enemy>
+     *
+     */
 
     fun reallocSkulls(skull : Skull, listOfEnemy: ArrayList<Enemy>) : Boolean{
         var same = false

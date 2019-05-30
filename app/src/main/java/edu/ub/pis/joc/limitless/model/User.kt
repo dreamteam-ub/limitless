@@ -27,6 +27,18 @@ class User : Serializable {
     constructor() {
     }
 
+    /**
+     * Metodo constructor de cada usuario del juego
+     * @param String
+     * @param Long
+     * @param Int
+     * @param Int
+     * @param Boolean
+     * @param Int
+     * @param Int
+     * @param Int
+     * @param Boolean
+     */
     constructor(
         userName: String,
         survived: Long = 0,

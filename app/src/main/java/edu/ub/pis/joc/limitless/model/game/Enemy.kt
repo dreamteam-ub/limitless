@@ -33,9 +33,9 @@ open class Enemy(image: ArrayList<Bitmap>, posX: Int, posY: Int, behaviour:Int) 
         }
     }
 }
-    /*
+    /**
     Funció que farà que el personatge principal mori si es tocat per algun enemic
-    @params : PlayerCharacter
+    *@param PlayerCharacter
     @return : Boolean
      */
     open fun characterHitsPlayer(playerCharacter: PlayerCharacter) : Boolean {

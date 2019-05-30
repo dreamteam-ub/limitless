@@ -16,10 +16,10 @@ class ArtificialIntelligence {
 
     var calls = 0
 
-    /*
+    /**
     Aquesta funció serà cridada quan matin al personatge principal. Li passarem per parametre
     l'enemic que ha matat i recalcularem les probabilitats de dit comportament.
-    @params : Enemy
+    *@param Enemy
      */
     fun updateBestBehaviour(enemy : Enemy){
 
@@ -47,11 +47,11 @@ class ArtificialIntelligence {
         }
 
     }
-    /*
+    /**
     Aquesta funció té la mateixa mecànica que la funcio updateBestBehaviour, pero
     actualitzarà les probabilitats de les armes dels Demon i Eye (projectils i columnes
     de foc)
-    @params : Enemy
+    *@param Enemy
      */
 
     fun updateBestChild(enemy : Enemy){
@@ -70,14 +70,14 @@ class ArtificialIntelligence {
         }
 
     }
-    /*
+    /**
     Aquesta funcio calcularà les probabilitats de cada llista de AIData, hem de tenir en compte, que
     cap probabilitat por superar un cert pes, totes tenen un limit.
     Ens retornarà la llista modificada amb les probabilitats actualitzades
-    @params : array<Int>
-    @params : Int
+    *@param  array<Int>
+    *@param  Int
 
-    @return : Array<Int>
+    *@return : Array<Int>
      */
     fun calculateProbabilities(listProb : Array<Int>, winCondition : Int) : Array<Int>{
 
@@ -102,10 +102,10 @@ class ArtificialIntelligence {
         return listProb
 
     }
-    /*
+    /**
     Funció util per obtenir qualsevol llista de probabilitats
-    @param : string
-    @return : Array<Int>
+    *@param  String
+    *@return  Array<Int>
      */
     fun getList(chr: String): Array<Int> {
         val lista = emptyArray<Int>()
@@ -119,13 +119,13 @@ class ArtificialIntelligence {
             else -> lista
         }
     }
-    /*
+    /**
     Funció que farà un random entre 1 i 100, ens donarà un nombre i escollirà el comportament
     que estigui en el rang del nombre. D'aquesta forma, quan més pes té el comportament,
     més probabilitats té a que el nombre random estigui en el seu rang.
 
-    @params : string
-    @return : int
+    *@param string
+    *@return : int
      */
     fun pickABehaviour(str: String): Int {
         val list = getList(str)
@@ -146,12 +146,12 @@ class ArtificialIntelligence {
         return behaviour
     }
 
-    /*
+    /**
     Aquesta funció ens permetrà generar posicions adequades per a cada comportament
-    @params : string
-    @params : int
+    *@param string
+    *@param int
 
-    @return : arrayList<Int>
+    *@return : arrayList<Int>
      */
 
     fun generatePositionsForBehaviour(str: String, behaviour: Int): ArrayList<Int> {

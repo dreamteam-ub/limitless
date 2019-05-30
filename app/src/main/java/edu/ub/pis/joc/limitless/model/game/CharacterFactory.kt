@@ -651,14 +651,14 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
         )
 
     }
-    /*
+    /**
     Mètode on crearem el Character
-    @params: String
-    @params : Int
-    @params : Int
-    @params : Int
-    @params : Int
-    @params : Int
+    *@param String
+    *@param Int
+    *@param Int
+    *@param Int
+    *@param Int
+    *@param Int
 
     @return : Character
      */
@@ -712,14 +712,14 @@ class CharacterFactory(assets: AssetManager) : FactoryPattern {
             }
         }
     }
-    /*
+    /**
    Mètode on crearem el Character complex
-   @params: String
-   @params : Int
-   @params : Int
-   @params : Int
-   @params : AssetManager
-   @params : Int
+   *@param String
+   *@param Int
+   *@param Int
+   *@param Int
+   *@param AssetManager
+   *@param Int
 
    @return : Character
     */

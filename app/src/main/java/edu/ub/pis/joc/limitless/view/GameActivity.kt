@@ -222,6 +222,10 @@ class GameActivity : FullScreenActivity() {
         super.onWindowFocusChanged(hasFocus)
     }
 
+    /**
+     * Aqusta funció determinarà a quina pantalla et porta (Win o Lose) segons el mode que estiguis
+     * jugant (Practice, Infinit o Versus). També guardarà a la BDD si pertoca
+     */
     fun onEndGame(
         context: Context,
         updateDb: Boolean,

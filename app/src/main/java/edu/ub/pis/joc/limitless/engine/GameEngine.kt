@@ -172,9 +172,9 @@ class GameEngine(private var contextEngine: Context, var mode: Boolean, var vers
 
     }
 
-    /*
+    /**
      Mètode draw on anirem iterant tot el que s'ha de dibuixar per pantalla
-     @params : canvas
+     *@params : canvas
      */
 
     fun draw(canvas: Canvas) {

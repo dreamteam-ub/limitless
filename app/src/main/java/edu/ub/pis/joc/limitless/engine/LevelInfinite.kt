@@ -27,8 +27,8 @@ class LevelInfinite(assets: AssetManager,
     /**
     *Funcio amb la que crearem enemics i els posarem a la llista dels enemics per a ser dibuixats/
     *actualitzats.
-    * @params : Int
-    * @params : Long
+    * @param Int
+    * @param Long
      */
     @Synchronized
     override fun buildEnemies(levelWorld: Int, time: Long) {
@@ -283,8 +283,8 @@ class LevelInfinite(assets: AssetManager,
     /**
     Funcio amb la que crearem monedes i les posarem a la llista de les monedes per a ser dibuixades/
     actualitzades.
-    *@params : Int
-    *@params : Long
+    *@param  Int
+    *@param Long
      */
     @Synchronized
     override fun buildCoins(levelWorld: Int, time: Long) {
@@ -394,7 +394,7 @@ class LevelInfinite(assets: AssetManager,
 
     /**
     Funcio on els limits del mode infinit seràn creats
-    *@params : Int
+    *@param Int
 
     *@return : ArrayList<Int>
      */
