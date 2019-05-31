@@ -170,7 +170,7 @@ class AutoLevelGenerate {
     fun generateCoinValues() : Int{
         if (firstRound){    // facilitarem a l'usuari el primer valor per a que no hi hagi errors
             val valCoinFirst = limitLow
-            firstRound = false
+            //firstRound = false
             positiveCoins++
             return valCoinFirst
         }

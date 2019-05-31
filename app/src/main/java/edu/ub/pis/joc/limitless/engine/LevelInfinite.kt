@@ -302,23 +302,36 @@ class LevelInfinite(assets: AssetManager,
                             parameters[4].toString().toInt()
                         )
 
-                        while (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)){
-                            if (coin.value > 0){
+                        while (autoLvl.reallocateCoin(tmpListOfCoins,coin) || autoLvl.reallocCoinsAndBombs(coin,listOfEnemyCharacters,tmpListOfCoins)) {
+                            if (coin.value > 0) {
                                 autoLvl.positiveCoins--
-                            }else if (coin.value < 0){
+                            } else if (coin.value < 0) {
                                 autoLvl.negativeCoins--
                             }
-                            val parameters = autoLvl.generateCoins()
-                            coin = createCoin(
-                                parameters[0].toString(),
-                                parameters[1].toString().toInt(),
-                                parameters[2].toString().toInt(),
-                                parameters[3].toString().toInt(),
-                                Typeface.createFromAsset(assets, FONTS_ASSETS + File.separator + FONT_COINS),
-                                parameters[4].toString().toInt()
-                            )
+                            if (autoLvl.firstRound) {
+                                val parameters = autoLvl.generateCoins()
+                                coin = createCoin(
+                                    parameters[0].toString(),
+                                    parameters[1].toString().toInt(),
+                                    parameters[2].toString().toInt(),
+                                    autoLvl.limitLow,
+                                    Typeface.createFromAsset(assets, FONTS_ASSETS + File.separator + FONT_COINS),
+                                    parameters[4].toString().toInt()
+                                )
+                            } else {
+                                val parameters = autoLvl.generateCoins()
+                                coin = createCoin(
+                                    parameters[0].toString(),
+                                    parameters[1].toString().toInt(),
+                                    parameters[2].toString().toInt(),
+                                    parameters[3].toString().toInt(),
+                                    Typeface.createFromAsset(assets, FONTS_ASSETS + File.separator + FONT_COINS),
+                                    parameters[4].toString().toInt()
+                                )
 
+                            }
                         }
+                        autoLvl.firstRound = false
 
 
                         tmpListOfCoins.add(coin)
