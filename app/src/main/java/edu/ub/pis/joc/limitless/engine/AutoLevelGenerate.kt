@@ -171,6 +171,7 @@ class AutoLevelGenerate {
         if (firstRound){    // facilitarem a l'usuari el primer valor per a que no hi hagi errors
             val valCoinFirst = limitLow
             firstRound = false
+            positiveCoins++
             return valCoinFirst
         }
         var valCoin = (Random.nextInt(-limitLow / 2,  limitHigh / 3))
