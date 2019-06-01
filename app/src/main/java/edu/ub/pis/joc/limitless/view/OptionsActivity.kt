@@ -42,8 +42,6 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
 
     private lateinit var logoutButton: ImageButton
 
-    private lateinit var resetTutorialsInfVs: ImageButton
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_options)
@@ -109,13 +107,6 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         }
         ViewAdjuster.adjustView(logoutButton)
 
-        resetTutorialsInfVs = findViewById(R.id.reset_infvs_button)
-        resetTutorialsInfVs.setOnClickListener {
-            presenter.resetTutos()
-            resetTutorialsInfVs.isClickable = false
-        }
-        ViewAdjuster.adjustView(resetTutorialsInfVs)
-
         vibrateButton.setOnClickListener {
             presenter.updateVibrate(Data.user.vibration!!)
         }
@@ -178,7 +169,6 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         super.onStart()
         optionsBackArrow.isClickable = true
         logoutButton.isClickable = true
-        resetTutorialsInfVs.isClickable = true
     }
 
     override fun updateChar(value: Boolean) {
@@ -194,14 +184,6 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         customImageToast(
             drawAndroid, getString(msgAndroid),
             Toast.LENGTH_LONG, Gravity.TOP or Gravity.FILL_HORIZONTAL, 0, 100
-        ).show()
-    }
-
-    override fun resetTutos() {
-        customToast(
-            getString(R.string.reset_tutorials),
-            Toast.LENGTH_LONG, Gravity.TOP or Gravity.FILL_HORIZONTAL, 0, 100,
-            font = R.font.roadrage
         ).show()
     }
 }

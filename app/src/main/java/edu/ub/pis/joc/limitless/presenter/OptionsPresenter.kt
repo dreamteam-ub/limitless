@@ -27,14 +27,6 @@ class OptionsPresenter(var view: OptionsPresenter.View) {
         db.collection(USERS).document(mAuth.currentUser!!.uid).update(MUSIC, value)
     }
 
-    fun resetTutos() {
-        db.collection(USERS).document(mAuth.currentUser!!.uid).update(TUTORIAL_VS, false).addOnSuccessListener {
-            db.collection(USERS).document(mAuth.currentUser!!.uid).update(TUTORIAL_INF, false).addOnSuccessListener {
-                view.resetTutos()
-            }
-        }
-    }
-
     fun enableAndroidChar(tmp: Boolean) {
         val setting = !tmp
         db.collection(USERS).document(mAuth.currentUser!!.uid).update(ANDROIDCHAR, setting).addOnSuccessListener {
@@ -52,6 +44,5 @@ class OptionsPresenter(var view: OptionsPresenter.View) {
         fun updateUserInfo(user: User)
         fun updateVibrateButton(value: Boolean)
         fun updateChar(value: Boolean)
-        fun resetTutos()
     }
 }
