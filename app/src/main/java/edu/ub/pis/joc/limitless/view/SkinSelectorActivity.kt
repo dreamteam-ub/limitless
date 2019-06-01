@@ -72,11 +72,11 @@ class SkinSelectorActivity : FullScreenActivity(), SkinSelectorPresenter.View {
         )
 
         if (Data.user.survived!! >= MEDAL_1) {
-            imgSkins.add(R.drawable.skin_select_pro2)
+            imgSkins.add(R.drawable.skin_select_medal1)
         }
 
         if (Data.user.survived!! >= MEDAL_2) {
-            imgSkins.add(R.drawable.skin_select_pro)
+            imgSkins.add(R.drawable.skin_select_medal2)
         }
 
         if (Data.user.androidchar != null && Data.user.androidchar!!) {
@@ -93,7 +93,7 @@ class SkinSelectorActivity : FullScreenActivity(), SkinSelectorPresenter.View {
                 }
             }
 
-        presenter.updateSkinPreview(listSize = imgSkins.size)
+        presenter.updateSkinPreview(list = imgSkins)
 
         arrowBack.setOnClickListener {
             finish()
@@ -101,11 +101,11 @@ class SkinSelectorActivity : FullScreenActivity(), SkinSelectorPresenter.View {
         }
 
         leftArrow.setOnClickListener {
-            presenter.updateSkinPreview(-1, imgSkins.size)
+            presenter.updateSkinPreview(-1, imgSkins)
         }
 
         rightArrow.setOnClickListener {
-            presenter.updateSkinPreview(+1, imgSkins.size)
+            presenter.updateSkinPreview(+1, imgSkins)
         }
     }
 

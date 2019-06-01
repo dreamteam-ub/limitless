@@ -22,6 +22,7 @@ import edu.ub.pis.joc.limitless.presenter.OptionsPresenter
 import kotlinx.android.synthetic.main.activity_options.*
 
 class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
+
     private val TAG = "OptionsActivity"
 
     private lateinit var presenter : OptionsPresenter
@@ -38,6 +39,10 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
     private lateinit var musicSeekBar: SeekBar
 
     private lateinit var optionsBackArrow: ImageButton
+
+    private lateinit var logoutButton: ImageButton
+
+    private lateinit var resetTutorialsInfVs: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,7 +95,7 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
                 }
             }
 
-        val logoutButton: ImageButton = findViewById(R.id.logout_button)
+        logoutButton = findViewById(R.id.logout_button)
         logoutButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -103,6 +108,13 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
             logoutButton.isClickable = false
         }
         ViewAdjuster.adjustView(logoutButton)
+
+        resetTutorialsInfVs = findViewById(R.id.reset_infvs_button)
+        resetTutorialsInfVs.setOnClickListener {
+            presenter.resetTutos()
+            resetTutorialsInfVs.isClickable = false
+        }
+        ViewAdjuster.adjustView(resetTutorialsInfVs)
 
         vibrateButton.setOnClickListener {
             presenter.updateVibrate(Data.user.vibration!!)
@@ -165,7 +177,8 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
     override fun onStart() {
         super.onStart()
         optionsBackArrow.isClickable = true
-        logout_button.isClickable = true
+        logoutButton.isClickable = true
+        resetTutorialsInfVs.isClickable = true
     }
 
     override fun updateChar(value: Boolean) {
@@ -181,6 +194,14 @@ class OptionsActivity : FullScreenActivity(), OptionsPresenter.View {
         customImageToast(
             drawAndroid, getString(msgAndroid),
             Toast.LENGTH_LONG, Gravity.TOP or Gravity.FILL_HORIZONTAL, 0, 100
+        ).show()
+    }
+
+    override fun resetTutos() {
+        customToast(
+            getString(R.string.reset_tutorials),
+            Toast.LENGTH_LONG, Gravity.TOP or Gravity.FILL_HORIZONTAL, 0, 100,
+            font = R.font.roadrage
         ).show()
     }
 }

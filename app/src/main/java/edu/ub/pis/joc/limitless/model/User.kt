@@ -8,21 +8,26 @@ const val VIBRATION = "vibration"
 const val MUSIC = "music"
 const val SKINSELECTED = "skinSelected"
 const val ANDROIDCHAR = "androidchar"
+const val TUTORIAL_INF = "tutorial_inf"
+const val TUTORIAL_VS = "tutorial_vs"
 
 class User : Serializable {
     var userName: String? = null
-    var survived: Long? = null
-    var world: Int? = null
-    var level: Int? = null
+    var survived: Long? = 0
+    var world: Int? = 0
+    var level: Int? = 0
 
-    var tutorial: Int? = null
+    var tutorial: Int? = 0
 
-    var vibration: Boolean? = null
-    var music: Int? = null
+    var vibration: Boolean? = true
+    var music: Int? = 100
 
     var skinSelected: Int? = 0
 
     var androidchar: Boolean? = false
+
+    var tutorial_inf: Boolean? = false
+    var tutorial_vs: Boolean? = false
 
     constructor() {
     }
@@ -48,7 +53,9 @@ class User : Serializable {
         music: Int = 100,
         tutorial: Int = 0,
         skinSelected : Int = 0,
-        androidchar : Boolean = false
+        androidchar : Boolean = false,
+        tutorial_inf : Boolean = false,
+        tutorial_vs : Boolean = false
     ) {
         this.userName = userName
         this.survived = survived
@@ -59,5 +66,7 @@ class User : Serializable {
         this.tutorial = tutorial
         this.skinSelected = skinSelected
         this.androidchar = androidchar
+        this.tutorial_inf = tutorial_inf
+        this.tutorial_vs = tutorial_vs
     }
 }

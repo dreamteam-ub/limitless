@@ -25,21 +25,30 @@ class TutorialActivity : FullScreenActivity() {
 
         var manual : Boolean = false
 
+        var infinity : Boolean = false
+        var versus : Boolean = false
+
         if (intent.extras != null) {
             manual = intent.extras!!.getBoolean(MANUAL_TUTORIAL)
+            infinity = intent.extras!!.getBoolean(INF_TUTORIAL)
+            versus = intent.extras!!.getBoolean(VS_TUTORIAL)
         }
 
         if (manual) {
-            viewPager.adapter = TutorialViewPagerAdapter(this, getTutorial(Data.currentWorld), 0, Data.currentWorld, manual)
+            viewPager.adapter = TutorialViewPagerAdapter(this, 0, getTutorial(Data.currentWorld), manual = manual)
+        } else if (infinity) {
+            viewPager.adapter = TutorialViewPagerAdapter(this, INF, getTutorial(INF))
+        } else if (versus) {
+            viewPager.adapter = TutorialViewPagerAdapter(this, VS, getTutorial(VS))
         } else {
             if (Data.user.tutorial == null || Data.user.tutorial == 0) { // tutorial mundo 1
-                viewPager.adapter = TutorialViewPagerAdapter(this, getTutorial(WORLD1), 0, 0)
+                viewPager.adapter = TutorialViewPagerAdapter(this, 0, getTutorial(WORLD1), 0, 0)
             } else if (Data.user.tutorial == 1) { // tutorial mundo 2
-                viewPager.adapter = TutorialViewPagerAdapter(this, getTutorial(WORLD2), 0, 1)
+                viewPager.adapter = TutorialViewPagerAdapter(this, 0, getTutorial(WORLD2), 0, 1)
             } else if (Data.user.tutorial == 2) {  // tutorial mundo 3
-                viewPager.adapter = TutorialViewPagerAdapter(this, getTutorial(WORLD3), 0, 2)
+                viewPager.adapter = TutorialViewPagerAdapter(this, 0, getTutorial(WORLD3), 0, 2)
             } else if(Data.user.tutorial == 3){
-                viewPager.adapter = TutorialViewPagerAdapter(this, getTutorial(WORLD4), 0, 3)
+                viewPager.adapter = TutorialViewPagerAdapter(this, 0, getTutorial(WORLD4), 0, 3)
             }
         }
     }
@@ -73,6 +82,21 @@ class TutorialActivity : FullScreenActivity() {
                     Page(false, R.drawable.tutorial_w4_1,"0"),
                     Page(false, R.drawable.tutorial_w4_2,"1"),
                     Page(true, R.drawable.tutorial_w4_3,"3")
+                )
+            }
+            INF -> {
+                arrayOf(
+                    Page(false, R.drawable.tutorial_infinite_1,"0"),
+                    Page(false, R.drawable.tutorial_infinite_2,"1"),
+                    Page(false, R.drawable.tutorial_infinite_3,"2"),
+                    Page(false, R.drawable.tutorial_infinite_4,"3"),
+                    Page(true, R.drawable.tutorial_infinite_5,"4")
+                )
+            }
+            VS -> {
+                arrayOf(
+                    Page(false, R.drawable.tutorial_versus_1,"0"),
+                    Page(true, R.drawable.tutorial_versus_2,"1")
                 )
             }
             else -> {

@@ -97,4 +97,5 @@
     <string name="easter_egg_android_welcome">Hello Android</string>
     <string name="easter_egg_android_bye">Bye bye Android</string>
     <string name="skin_changed">Skin changed</string>
+    <string name="reset_tutorials">Tutorials Infinite and Versus restored</string>
 </resources>

@@ -8,8 +8,6 @@ import edu.ub.pis.joc.limitless.view.IMG_ASSETS
 import java.io.BufferedInputStream
 import java.io.File
 import edu.ub.pis.joc.limitless.model.Data
-import edu.ub.pis.joc.limitless.view.MEDAL_1
-import edu.ub.pis.joc.limitless.view.MEDAL_2
 
 
 const val BOMB_CHAR = "Bomb"
@@ -23,6 +21,15 @@ const val SKULL_CHAR = "Skull"
 const val SKULL_LASER = "SkullLaser"
 const val EYE_PROJECTILE = "EyeProjectile"
 const val DEMON_FIRE_COLUMN = "DemonFireColumn"
+
+// CHARS INDEX
+const val GHOST_CHAR_INDEX = 1
+const val EYE_CHAR_INDEX = 2
+const val DEMON_CHAR_INDEX = 3
+const val SKULL_CHAR_INDEX = 4
+const val MEDAL1_CHAR_INDEX = 5
+const val MEDAL2_CHAR_INDEX = 6
+const val ANDROID_CHAR_INDEX = 7
 
 
 const val NUMBER_COIN = "Coin"
@@ -660,31 +667,16 @@ class CharacterFactory(private var assets: AssetManager) : FactoryPattern {
             }
 
             PLAYER_CHARACTER -> {
-                val imgSkins = arrayListOf(
-                    "main_character.png",
-                    "ghost_skin.png",
-                    "eye_skin.png",
-                    "demon_skin.png",
-                    "skull_skin.png"
-                )
-                
-                if (Data.user.survived!! >= MEDAL_1) {
-                    imgSkins.add("pro2_skin.png")
-                }
 
-                if (Data.user.survived!! >= MEDAL_2) {
-                    imgSkins.add("pro_skin.png")
-                }
-
-                if (Data.user.androidchar != null && Data.user.androidchar!!) {
-                    imgSkins.add("android_skin.png")
-                }
-
-                val sprite_player: String
-                if(Data.user.skinSelected!! < imgSkins.size){
-                    sprite_player = imgSkins[Data.user.skinSelected!!]
-                } else {
-                    sprite_player = imgSkins[imgSkins.size-1]
+                val sprite_player: String = when(Data.user.skinSelected) {
+                    GHOST_CHAR_INDEX -> "ghost_skin.png"
+                    EYE_CHAR_INDEX -> "eye_skin.png"
+                    DEMON_CHAR_INDEX -> "demon_skin.png"
+                    SKULL_CHAR_INDEX -> "skull_skin.png"
+                    MEDAL1_CHAR_INDEX -> "medal1_skin.png"
+                    MEDAL2_CHAR_INDEX -> "medal2_skin.png"
+                    ANDROID_CHAR_INDEX -> "android_skin.png"
+                    else -> "main_character.png"
                 }
                 
                 arrayImatgesPlayer = arrayListOf(
